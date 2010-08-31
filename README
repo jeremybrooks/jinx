@@ -10,13 +10,17 @@ CURRENT STATUS
 ==============
 This project is currently in development phase. You can download, build, and use it, but don't cry when it breaks.
 
-The Auth and Photos API's have been implemented. There are some errors when calling a couple of the Photos methods, but overall it works now. The test class has not been implemented.
-
 Error handling should probably be improved, and argument checking needs to be done.
 
 June 21, 2010:
 The AuthApi, PhotosApi, and PhotosetsApi should be pretty stable now. Each method call
 has been tested and verified working.
+
+August 31, 2010:
+The ActivityApi is working.
+Added support for Medium 640 size.
+Added support for flickr.blogs.* via BlogsApi class.
+
 
 BUILDING
 ========
