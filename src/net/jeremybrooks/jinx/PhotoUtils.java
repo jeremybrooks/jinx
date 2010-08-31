@@ -74,6 +74,10 @@ public class PhotoUtils {
 		sb.append(photo.getSecret()).append(".jpg");
 		break;
 
+	    case JinxConstants.SIZE_MEDIUM_640:
+		sb.append(photo.getSecret()).append("_z.jpg");
+		break;
+		
 	    case JinxConstants.SIZE_LARGE:
 		sb.append(photo.getSecret()).append("_b.jpg");
 		break;

@@ -159,6 +159,7 @@ public class JinxConstants {
     public static final String EXTRAS_URL_T = "url_t";
     public static final String EXTRAS_URL_S = "url_s";
     public static final String EXTRAS_URL_M = "url_m";
+    public static final String EXTRAS_URL_Z = "url_z";
     public static final String EXTRAS_URL_O = "url_o";
     public static final String EXTRAS_ALL = "description,license,date_upload,date_taken," +
 	    "owner_name,icon_server,original_format,last_update,geo,tags," +
@@ -199,10 +200,13 @@ public class JinxConstants {
      /** Medium, 500 on longest side */
      public static final int SIZE_MEDIUM = 3;
 
+     /** Medium 640, 640 on longest side */
+     public static final int SIZE_MEDIUM_640 = 4;
+
      /** Large, 1024 on longest side */
-     public static final int SIZE_LARGE = 4;
+     public static final int SIZE_LARGE = 5;
 
      /** Original image, either a jpg, gif or png, depending on source format */
-     public static final int SIZE_ORIGINAL = 5;
+     public static final int SIZE_ORIGINAL = 6;
      
 }

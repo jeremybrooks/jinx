@@ -28,18 +28,20 @@ import java.util.List;
  */
 public class Sizes {
 
+    
     /*
-    <?xml version="1.0" encoding="utf-8" ?>
-    <rsp stat="ok">
+     <?xml version="1.0" encoding="utf-8" ?>
+     <rsp stat="ok">
 	<sizes canblog="0" canprint="0" candownload="1">
-	    <size label="Square" width="75" height="75" source="http://farm5.static.flickr.com/4002/4634128194_ed83a858d6_s.jpg" url="http://www.flickr.com/photos/jeremybrooks/4634128194/sizes/sq/" media="photo" />
-	    <size label="Thumbnail" width="100" height="100" source="http://farm5.static.flickr.com/4002/4634128194_ed83a858d6_t.jpg" url="http://www.flickr.com/photos/jeremybrooks/4634128194/sizes/t/" media="photo" />
-	    <size label="Small" width="240" height="240" source="http://farm5.static.flickr.com/4002/4634128194_ed83a858d6_m.jpg" url="http://www.flickr.com/photos/jeremybrooks/4634128194/sizes/s/" media="photo" />
-	    <size label="Medium" width="500" height="500" source="http://farm5.static.flickr.com/4002/4634128194_ed83a858d6.jpg" url="http://www.flickr.com/photos/jeremybrooks/4634128194/sizes/m/" media="photo" />
-	    <size label="Large" width="1024" height="1024" source="http://farm5.static.flickr.com/4002/4634128194_ed83a858d6_b.jpg" url="http://www.flickr.com/photos/jeremybrooks/4634128194/sizes/l/" media="photo" />
-	    <size label="Original" width="3744" height="3744" source="http://farm5.static.flickr.com/4002/4634128194_533350d34f_o.jpg" url="http://www.flickr.com/photos/jeremybrooks/4634128194/sizes/o/" media="photo" />
+	    <size label="Square" width="75" height="75" source="http://farm5.static.flickr.com/4033/4682390041_dc3773e3ff_s.jpg" url="http://www.flickr.com/photos/jeremybrooks/4682390041/sizes/sq/" media="photo" />
+	    <size label="Thumbnail" width="100" height="100" source="http://farm5.static.flickr.com/4033/4682390041_dc3773e3ff_t.jpg" url="http://www.flickr.com/photos/jeremybrooks/4682390041/sizes/t/" media="photo" />
+	    <size label="Small" width="240" height="240" source="http://farm5.static.flickr.com/4033/4682390041_dc3773e3ff_m.jpg" url="http://www.flickr.com/photos/jeremybrooks/4682390041/sizes/s/" media="photo" />
+	    <size label="Medium" width="500" height="500" source="http://farm5.static.flickr.com/4033/4682390041_dc3773e3ff.jpg" url="http://www.flickr.com/photos/jeremybrooks/4682390041/sizes/m/" media="photo" />
+	    <size label="Medium 640" width="640" height="640" source="http://farm5.static.flickr.com/4033/4682390041_dc3773e3ff_z.jpg" url="http://www.flickr.com/photos/jeremybrooks/4682390041/sizes/z/" media="photo" />
+	    <size label="Large" width="1024" height="1024" source="http://farm5.static.flickr.com/4033/4682390041_dc3773e3ff_b.jpg" url="http://www.flickr.com/photos/jeremybrooks/4682390041/sizes/l/" media="photo" />
+	    <size label="Original" width="3744" height="3744" source="http://farm5.static.flickr.com/4033/4682390041_f25e31107e_o.jpg" url="http://www.flickr.com/photos/jeremybrooks/4682390041/sizes/o/" media="photo" />
 	</sizes>
-    </rsp>
+     </rsp>
      */
 
     private String id;
