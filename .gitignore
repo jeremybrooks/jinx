@@ -1,0 +1,12 @@
+dist/
+build/
+log/*.log
+tmp/*
+tmp/**/*
+doc/api
+doc/app
+db/*.sqlite3
+*.swp
+*~
+.DS_Store
+
