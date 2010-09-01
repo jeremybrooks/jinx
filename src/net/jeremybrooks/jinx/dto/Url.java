@@ -18,12 +18,14 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 /**
  * Represents a URL for a photo.
  * 
  * @author jeremyb
  */
-public class Url {
+public class Url implements Serializable {
 
     private String type;
     private String url;

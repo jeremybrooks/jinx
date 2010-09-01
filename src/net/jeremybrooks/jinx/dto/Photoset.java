@@ -18,16 +18,15 @@
 */
 package net.jeremybrooks.jinx.dto;
 
-import java.util.List;
-import net.jeremybrooks.jinx.Jinx;
-import net.jeremybrooks.jinx.JinxUtils;
+import java.io.Serializable;
+
 
 /**
  * Represents a set of photos on Flickr.
  * 
  * @author jeremyb
  */
-public class Photoset {
+public class Photoset implements Serializable {
 
     private String id;
     private String primary;

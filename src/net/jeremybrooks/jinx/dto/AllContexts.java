@@ -18,6 +18,7 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ import java.util.List;
  *
  * @author jeremyb
  */
-public class AllContexts {
+public class AllContexts implements Serializable {
 
     private String id;
     private List<Photoset> sets;

@@ -18,6 +18,7 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ import java.util.List;
  * 
  * @author jeremyb
  */
-public class Favorites {
+public class Favorites implements Serializable {
 
     private String id;
     private String secret;

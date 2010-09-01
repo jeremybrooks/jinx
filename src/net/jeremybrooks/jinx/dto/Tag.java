@@ -18,12 +18,14 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 /**
  * Representation of a tag.
  * 
  * @author jeremyb
  */
-public class Tag {
+public class Tag implements Serializable {
 
     private String id;
     private String author;

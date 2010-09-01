@@ -18,13 +18,15 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 /**
  * This class represents a blogging service as returned by the call to
  * BlogsApi.getServices()
  *
  * @author jeremyb
  */
-public class BlogService {
+public class BlogService implements Serializable {
 /*
 	 <?xml version="1.0" encoding="utf-8" ?>
 	 <rsp stat="ok">

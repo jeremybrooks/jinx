@@ -18,6 +18,8 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 /**
  * Data representing the perms for a given photo.
  *
@@ -26,7 +28,7 @@ package net.jeremybrooks.jinx.dto;
  * 
  * @author jeremyb
  */
-public class Perms {
+public class Perms implements Serializable {
 
 
     private String id;

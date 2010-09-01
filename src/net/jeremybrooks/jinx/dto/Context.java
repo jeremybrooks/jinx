@@ -18,6 +18,8 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 
 /**
  * NOTE: This object contains Photo objects representing
@@ -35,7 +37,7 @@ package net.jeremybrooks.jinx.dto;
  * </ul>
  * @author jeremyb
  */
-public class Context {
+public class Context implements Serializable {
 
     private int count;
 

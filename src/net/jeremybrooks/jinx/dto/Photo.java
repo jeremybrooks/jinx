@@ -18,6 +18,7 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxUtils;
@@ -35,7 +36,7 @@ import net.jeremybrooks.jinx.JinxUtils;
  * 
  * @author jeremyb
  */
-public class Photo extends PhotoBase {
+public class Photo extends PhotoBase implements Serializable {
 
 
     private String latitude;

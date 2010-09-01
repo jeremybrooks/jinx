@@ -18,6 +18,7 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +28,7 @@ import java.util.List;
  * 
  * @author jeremyb
  */
-public class Photocounts {
+public class Photocounts implements Serializable {
 
 
     private List<Photocount> photocountList;

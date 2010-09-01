@@ -1,6 +1,7 @@
 package net.jeremybrooks.jinx.dto;
 
 import java.awt.Image;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Date;
 import javax.imageio.ImageIO;
@@ -12,7 +13,7 @@ import net.jeremybrooks.jinx.JinxUtils;
  *
  * @author jeremyb
  */
-public class PhotoBase {
+public class PhotoBase implements Serializable {
     private String id;
     private String secret;
     private String server;

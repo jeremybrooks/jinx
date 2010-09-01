@@ -21,6 +21,7 @@ package net.jeremybrooks.jinx.dto;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Properties;
 
@@ -38,7 +39,7 @@ import java.util.Properties;
  *
  * @author jeremyb
  */
-public class Token {
+public class Token implements Serializable {
 
     private String token;
     private String perms;

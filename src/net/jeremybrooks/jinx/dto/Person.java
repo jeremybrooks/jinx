@@ -18,6 +18,7 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -25,7 +26,7 @@ import java.util.Date;
  *
  * @author jeremyb
  */
-public class Person {
+public class Person implements Serializable {
 
     private String nsid;
     private String username;

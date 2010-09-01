@@ -18,11 +18,13 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jeremyb
  */
-public class PhotosetInfo {
+public class PhotosetInfo implements Serializable {
     private String id;
     private String owner;
 

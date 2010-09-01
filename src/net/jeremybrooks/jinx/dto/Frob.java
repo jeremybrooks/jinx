@@ -18,6 +18,8 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 
 
 /**
@@ -25,7 +27,7 @@ package net.jeremybrooks.jinx.dto;
  * 
  * @author jeremyb
  */
-public class Frob {
+public class Frob implements Serializable {
 
     private String loginUrl;
 

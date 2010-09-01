@@ -18,12 +18,14 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 /**
  * Information about a photo pool.
  * 
  * @author jeremyb
  */
-public class Pool {
+public class Pool implements Serializable {
 
     private String id;
     private String title;

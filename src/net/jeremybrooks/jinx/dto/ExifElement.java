@@ -18,6 +18,8 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 /**
  * A single Exif element representing a unit of Exif information.
  *
@@ -27,7 +29,7 @@ package net.jeremybrooks.jinx.dto;
  * 
  * @author jeremyb
  */
-public class ExifElement {
+public class ExifElement implements Serializable {
 
     /** Tagspace value from the returned exif element. */
     private String tagspace;

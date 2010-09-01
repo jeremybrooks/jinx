@@ -18,6 +18,7 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import java.util.List;
  *
  * @author jeremyb
  */
-public class PhotoInfo extends PhotoBase {
+public class PhotoInfo extends PhotoBase implements Serializable {
 
     private boolean isFavorite;
     private int rotation;

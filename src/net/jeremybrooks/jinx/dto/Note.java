@@ -18,12 +18,14 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 /**
  * Data representing a note.
  * 
  * @author jeremyb
  */
-public class Note {
+public class Note implements Serializable {
 
     private String id;
     private String author;

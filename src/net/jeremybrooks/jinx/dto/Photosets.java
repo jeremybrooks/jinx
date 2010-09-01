@@ -18,13 +18,14 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author jeremyb
  */
-public class Photosets {
+public class Photosets implements Serializable {
     private boolean canCreate;
     private List<Photoset> photosetList;
 

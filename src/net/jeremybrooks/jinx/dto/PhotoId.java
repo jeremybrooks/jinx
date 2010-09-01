@@ -18,12 +18,14 @@
 */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 /**
  * Identifying information about a photo.
  *
  * @author jeremyb
  */
-public class PhotoId {
+public class PhotoId implements Serializable {
 
     
     private String id;
