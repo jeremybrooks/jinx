@@ -36,6 +36,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class provides access to the Flickr Blogs API.
  *
+ * @see http://www.flickr.com/services/api/
  * @author jeremyb
  */
 public class BlogsApi {

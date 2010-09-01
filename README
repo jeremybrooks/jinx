@@ -26,3 +26,5 @@ BUILDING
 ========
 There are project files here for NetBeans, but NetBeans is not required. To build the project, execute ant jar. The compiled jar file will be in dist/.
 
+TODO:
+Add photo_z info to Photos class, and populate it from PhotosApi.
