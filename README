@@ -21,6 +21,8 @@ The ActivityApi is working.
 Added support for Medium 640 size.
 Added support for flickr.blogs.* via BlogsApi class.
 
+September 1, 2010:
+Added support for Collections via the CollectionsApi class.
 
 BUILDING
 ========

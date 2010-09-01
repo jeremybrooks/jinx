@@ -64,6 +64,9 @@ public class Photo extends PhotoBase {
     private String urlT;
     private int heightT;
     private int widthT;
+    private String urlZ;
+    private int heightZ;
+    private int widthZ;
 
     private String url;
     private String thumb;
@@ -585,6 +588,9 @@ public class Photo extends PhotoBase {
 	sb.append("urlT=").append(this.urlT).append(" | ");
 	sb.append("heightT=").append(this.heightT).append(" | ");
 	sb.append("widthT=").append(this.widthT).append(" | ");
+	sb.append("urlZ=").append(this.urlZ).append(" | ");
+	sb.append("heightZ=").append(this.heightZ).append(" | ");
+	sb.append("widthZ=").append(this.widthZ).append(" | ");
 	sb.append("views=").append(super.getViews()).append(" | ");
 	sb.append("description=").append(super.getDescription()).append(" | ");
 	sb.append("url=").append(this.url).append(" | ");
@@ -593,5 +599,53 @@ public class Photo extends PhotoBase {
 	sb.append(" ]");
 
 	return sb.toString();
+    }
+
+
+    /**
+     * @return the urlZ
+     */
+    public String getUrlZ() {
+	return urlZ;
+    }
+
+
+    /**
+     * @param urlZ the urlZ to set
+     */
+    public void setUrlZ(String urlZ) {
+	this.urlZ = urlZ;
+    }
+
+
+    /**
+     * @return the heightZ
+     */
+    public int getHeightZ() {
+	return heightZ;
+    }
+
+
+    /**
+     * @param heightZ the heightZ to set
+     */
+    public void setHeightZ(int heightZ) {
+	this.heightZ = heightZ;
+    }
+
+
+    /**
+     * @return the widthZ
+     */
+    public int getWidthZ() {
+	return widthZ;
+    }
+
+
+    /**
+     * @param widthZ the widthZ to set
+     */
+    public void setWidthZ(int widthZ) {
+	this.widthZ = widthZ;
     }
 }
