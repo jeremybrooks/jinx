@@ -52,4 +52,52 @@ public class Comments implements Serializable {
     private String photoId;
     private List<Comment> commentList;
 
+
+    /**
+     * @return the photoId
+     */
+    public String getPhotoId() {
+	return photoId;
+    }
+
+
+    /**
+     * @param photoId the photoId to set
+     */
+    public void setPhotoId(String photoId) {
+	this.photoId = photoId;
+    }
+
+
+    /**
+     * @return the commentList
+     */
+    public List<Comment> getCommentList() {
+	return commentList;
+    }
+
+
+    /**
+     * @param commentList the commentList to set
+     */
+    public void setCommentList(List<Comment> commentList) {
+	this.commentList = commentList;
+    }
+
+    @Override
+    public String toString() {
+	StringBuilder sb = new StringBuilder(this.getClass().getName());
+
+	sb.append(" [ ");
+	sb.append("photoId=").append(this.photoId).append(" | ");
+	sb.append("commentList=");
+	if (this.commentList != null) {
+	    for (Comment c : this.commentList) {
+		sb.append('<').append(c.toString()).append('>');
+	    }
+	}
+
+	sb.append(" ]");
+	return sb.toString();
+    }
 }

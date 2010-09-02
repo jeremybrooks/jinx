@@ -33,4 +33,116 @@ public class Comment implements Serializable {
     private String permalink;
     private String comment;
 
+
+    /**
+     * @return the commentId
+     */
+    public String getCommentId() {
+	return commentId;
+    }
+
+
+    /**
+     * @param commentId the commentId to set
+     */
+    public void setCommentId(String commentId) {
+	this.commentId = commentId;
+    }
+
+
+    /**
+     * @return the author
+     */
+    public String getAuthor() {
+	return author;
+    }
+
+
+    /**
+     * @param author the author to set
+     */
+    public void setAuthor(String author) {
+	this.author = author;
+    }
+
+
+    /**
+     * @return the authorName
+     */
+    public String getAuthorName() {
+	return authorName;
+    }
+
+
+    /**
+     * @param authorName the authorName to set
+     */
+    public void setAuthorName(String authorName) {
+	this.authorName = authorName;
+    }
+
+
+    /**
+     * @return the dateCreate
+     */
+    public Date getDateCreate() {
+	return dateCreate;
+    }
+
+
+    /**
+     * @param dateCreate the dateCreate to set
+     */
+    public void setDateCreate(Date dateCreate) {
+	this.dateCreate = dateCreate;
+    }
+
+
+    /**
+     * @return the permalink
+     */
+    public String getPermalink() {
+	return permalink;
+    }
+
+
+    /**
+     * @param permalink the permalink to set
+     */
+    public void setPermalink(String permalink) {
+	this.permalink = permalink;
+    }
+
+
+    /**
+     * @return the comment
+     */
+    public String getComment() {
+	return comment;
+    }
+
+
+    /**
+     * @param comment the comment to set
+     */
+    public void setComment(String comment) {
+	this.comment = comment;
+    }
+
+    
+    @Override
+    public String toString() {
+	StringBuilder sb = new StringBuilder(this.getClass().getName());
+
+	sb.append(" [ ");
+	sb.append("commentId=").append(this.commentId).append(" | ");
+	sb.append("author=").append(this.author).append(" | ");
+	sb.append("authorName=").append(this.authorName).append(" | ");
+	sb.append("dateCreate=").append(this.dateCreate).append(" | ");
+	sb.append("permalink=").append(this.permalink).append(" | ");
+	sb.append("comment=").append(this.comment);
+
+	sb.append(" ]");
+	return sb.toString();
+    }
 }

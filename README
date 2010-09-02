@@ -12,17 +12,15 @@ This project is currently in development phase. You can download, build, and use
 
 Error handling should probably be improved, and argument checking needs to be done.
 
-June 21, 2010:
-The AuthApi, PhotosApi, and PhotosetsApi should be pretty stable now. Each method call
-has been tested and verified working.
+This list shows which API entry points have been implemented:
+  * activity
+  * auth
+  * blogs
+  * collections
+  * photos
+  * photosets
 
-August 31, 2010:
-The ActivityApi is working.
-Added support for Medium 640 size.
-Added support for flickr.blogs.* via BlogsApi class.
 
-September 1, 2010:
-Added support for Collections via the CollectionsApi class.
 
 BUILDING
 ========
@@ -30,3 +28,31 @@ There are project files here for NetBeans, but NetBeans is not required. To buil
 
 TODO:
 Add photo_z info to Photos class, and populate it from PhotosApi.
+
+Implement these API entry points:
+commons
+contacts
+favorites
+galleries
+groups
+groups.members
+groups.pools
+interestingness
+machinetags
+panda
+people
+photos.comments
+photos.geo
+photos.licenses
+photos.notes
+photos.people
+photos.transform
+photos.upload
+photosets.comments
+places
+prefs
+reflection
+stats
+tags
+test
+urls

@@ -203,7 +203,7 @@ public class FlickrCollectionInfo implements Serializable {
     
     @Override
     public String toString() {
-	StringBuilder sb = new StringBuilder("Blog [ ");
+	StringBuilder sb = new StringBuilder("FlickrCollectionInfo [ ");
 
 	sb.append("id=").append(this.id).append(" | ");
 	sb.append("childCount=").append(this.childCount).append(" | ");

@@ -15,15 +15,24 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package net.jeremybrooks.jinx.api;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
+import net.jeremybrooks.jinx.dto.ActivityEvent;
+import net.jeremybrooks.jinx.dto.ActivityItem;
+import net.jeremybrooks.jinx.dto.ActivityItems;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 
 /**
  *
@@ -31,11 +40,14 @@ import org.w3c.dom.Document;
  */
 public class ActivityApi {
 
+    
+
     private static ActivityApi instance;
 
-    private ActivityApi() {
 
+    private ActivityApi() {
     }
+
 
     public static ActivityApi getInstance() {
 	if (instance == null) {
@@ -45,7 +57,6 @@ public class ActivityApi {
     }
 
 
-    
     /**
      * Returns a list of recent activity on photos commented on by the calling user.
      *
@@ -61,52 +72,58 @@ public class ActivityApi {
      * @param page the page of results to return.
      * @throws JinxException if there are any errors.
      */
-    public void userComments(int perPage, int page) throws JinxException {
+    public ActivityItems userComments(int perPage, int page) throws JinxException {
 	/*
-	 <?xml version="1.0" encoding="utf-8" ?>
-	 <rsp stat="ok">
-	   <items page="1" pages="1" perpage="10" total="5">
-	     <item type="photo" id="4317730840" owner="7262596@N08" ownername="emma.c"
-	       secret="6125a2313a" server="4028" farm="5" comments="45" notes="0"
-	       views="553" faves="89">
-	       <title />
-	       <activity>
-	         <event type="comment" user="45710177@N05" username="Jaleeesa"
-	           dateadded="1277316113" commentid="72157624216618193">Aahhh I love this car
-	         </event>
-	       </activity>
-	     </item>
-	     <item type="photo" id="4723647710" owner="19180182@N07" ownername="Generik11"
-	       secret="4d9335dcfa" server="1366" farm="2" comments="5" notes="0" views="25"
-	       faves="1">
-	       <title>I Feel Terrible About Taking This</title>
-	       <activity>
-	         <event type="comment" user="19180182@N07" username="Generik11"
-	           dateadded="1277246685" commentid="72157624210919911">
-	           Well, it certainly does bother me that some people live this way,
-	           and obviously I didn't feel bad enough about the image to not post it, but
-	           I do appreciate the encouraging words. Thanks.
-	         </event>
-	         <event type="comment" user="50815861@N00" username="Dollar Bin"
-	           dateadded="1277251123"  commentid="72157624211333427">
-	           This is great art, so I'm glad you posted it,
-	           and I can appreciate your qualms about doing so.
-	         </event>
-	         <event type="comment" user="19180182@N07" username="Generik11"
-	           dateadded="1277301660"  commentid="72157624339835962">
-	           Thanks, Tom.
-	         </event>
-	         <event type="comment" user="51372874@N00" username="wawrus"
-	           dateadded="1277303623"  commentid="72157624340025568">
-	           Don't feel bad. This sort of thing needs to be photographed,
-	           documented. Far too many people would just choose to look the
-	           other way and deny that folks
-	           do indeed live like this.
-	         </event>
-   	       </activity>
-	     </item>
-	 </items>
-	 </rsp>
+	<?xml version="1.0" encoding="utf-8" ?>
+	<rsp stat="ok">
+	<items page="1" pages="1" perpage="10" total="6">
+	<item type="photo" id="4949725413" owner="9571747@N04"
+	ownername="The Real Devil Doll" secret="573682e936" server="4116"
+	farm="5" comments="4" notes="0" views="9" faves="3">
+	<title>Wendell's Drive-In</title>
+	<activity>
+	<event type="comment" user="85853333@N00" username="Jeremy Brooks"
+	dateadded="1283399462"
+	commentid="72157624860585562">You really did find some great signs down there.</event>
+	</activity>
+	</item>
+	<item type="photo" id="4946877125" owner="9571747@N04" ownername="The Real Devil Doll" secret="9c7b89152a" server="4088" farm="5" comments="10" notes="0" views="29" faves="5">
+	<title>I drove many miles, whilst falling asleep at the wheel, to photograph this sign. It was worth it.</title>
+	<activity>
+	<event type="comment" user="30115839@N06" username="TooMuchFire" dateadded="1283389567" commentid="72157624859786432">Definitely worth it!  Nice one.</event>
+	<event type="comment" user="35528040@N04" username="Denver Pam" dateadded="1283397920" commentid="72157624860470418">It definitely was worth it</event>
+	</activity>
+	</item>
+	<item type="photo" id="4934061330" owner="8171213@N03" ownername="Dave van Hulsteyn" secret="31c49fae9b" server="4097" farm="5" comments="13" notes="0" views="43" faves="9">
+	<title>Oh, see!</title>
+	<activity>
+	<event type="comment" user="35528040@N04" username="Denver Pam" dateadded="1283395565" commentid="72157624735834109">stunning</event>
+	</activity>
+	</item>
+	<item type="photo" id="4948695452" owner="8171213@N03" ownername="Dave van Hulsteyn" secret="88f11a012d" server="4144" farm="5" comments="7" notes="0" views="20" faves="7">
+	<title>Uh oh, this doesn't look good.</title>
+	<activity>
+	<event type="comment" user="8171213@N03" username="Dave van Hulsteyn" dateadded="1283385325" commentid="72157624734996469">Oh, cool, thanks! So it's from a chocolate shop? I wouldn't have remembered that. Yeah, it's from way back then. That was a fun day, huh? Maybe we can organize another such outing in, say, October, the one month out of the year in San Francisco when I don't have to dress like I'm going on an expedition to the North Pole.</event>
+	<event type="comment" user="93277896@N00" username="Joanne Dale" dateadded="1283393693" commentid="72157624735683651">*snicker*</event>
+	<event type="comment" user="85853333@N00" username="Jeremy Brooks" dateadded="1283393765" commentid="72157624735689155">&lt;a href=&quot;/photos/8171213@N03/&quot;&gt;&lt;img class=&quot;notsowide personmenu-trigger&quot; src=&quot;http://farm1.static.flickr.com/192/buddyicons/8171213@N03.jpg?1244960366#8171213@N03&quot; alt=&quot;&quot; width=&quot;24&quot; height=&quot;24&quot; border=&quot;0&quot; class=&quot;BuddyIconX&quot;&gt;&lt;/a&gt; Yeah, chocolate, candy, and goofy toys, such as what they show in the window. I'm up for another expedition for sure!</event>
+	<event type="comment" user="35528040@N04" username="Denver Pam" dateadded="1283395529" commentid="72157624735831245">lovin' it</event>
+	</activity>
+	</item>
+	<item type="photo" id="4947160444" owner="33766795@N05" ownername="Travis Jensen SF" secret="08cf3cf33c" server="4122" farm="5" comments="3" notes="0" views="39" faves="2">
+	<title>Kids</title>
+	<activity>
+	<event type="comment" user="53337180@N00" username="elee1147" dateadded="1283392070" commentid="72157624859982556">nice...agree with jeremy....first kiss?
+	: )</event>
+	</activity>
+	</item>
+	<item type="photo" id="4946901537" owner="95409971@N00" ownername="Let There Be More Light" secret="3846ac9b35" server="4093" farm="5" comments="14" notes="0" views="58" faves="6">
+	<title>A Couple Of Years Later</title>
+	<activity>
+	<event type="comment" user="20905078@N04" username="patrickjoust" dateadded="1283386572" commentid="72157624735097381">Impressive perspective! Great capture!</event>
+	</activity>
+	</item>
+	</items>
+	</rsp>
 	 */
 	Map<String, String> params = new TreeMap<String, String>();
 	params.put("method", "flickr.activity.userComments");
@@ -118,12 +135,9 @@ public class ActivityApi {
 	    params.put("page", Integer.toString(page));
 	}
 
-	Document doc = Jinx.getInstance().callFlickr(params);
+	return parseDoc(Jinx.getInstance().callFlickr(params));
 
-
-	
     }
-
 
     /**
      * Returns a list of recent activity on photos belonging to the calling user.
@@ -148,10 +162,10 @@ public class ActivityApi {
      * @param page the page of results to return.
      * @throws JinxException
      */
-    public void userPhotos(String timeframe, int perPage, int page) throws JinxException {
+    public ActivityItems userPhotos(String timeframe, int perPage, int page) throws JinxException {
 	Map<String, String> params = new TreeMap<String, String>();
 	params.put("method", "flickr.activity.userPhotos");
-	if (! JinxUtils.isEmpty(timeframe)) {
+	if (!JinxUtils.isEmpty(timeframe)) {
 	    params.put("timeframe", timeframe);
 	}
 	params.put("api_key", Jinx.getInstance().getApiKey());
@@ -162,6 +176,95 @@ public class ActivityApi {
 	    params.put("page", Integer.toString(page));
 	}
 
-	Document doc = Jinx.getInstance().callFlickr(params);
+	return parseDoc(Jinx.getInstance().callFlickr(params));
+
     }
+
+    private ActivityItems parseDoc(Document doc) {
+
+	/*
+	 * The items element looks like this:
+	 <?xml version="1.0" encoding="utf-8" ?>
+	 <rsp stat="ok">
+	    <items page="1" pages="1" perpage="10" total="6">
+		<item .....
+	 */
+	ActivityItems ai = new ActivityItems();
+	ai.setPage(JinxUtils.getValueByXPathAsInt(doc, "/rsp/items/@page"));
+	ai.setPages(JinxUtils.getValueByXPathAsInt(doc, "/rsp/items/@pages"));
+	ai.setPerPage(JinxUtils.getValueByXPathAsInt(doc, "/rsp/items/@perpage"));
+	ai.setTotal(JinxUtils.getValueByXPathAsInt(doc, "/rsp/items/@total"));
+
+	/*
+	 * An item looks like this
+	<item type="photo" id="4949725413" owner="9571747@N04"
+	    ownername="The Real Devil Doll" secret="573682e936" server="4116"
+	    farm="5" comments="4" notes="0" views="9" faves="3">
+	    <title>Wendell's Drive-In</title>
+	    <activity>
+		<event type="comment" user="85853333@N00" username="Jeremy Brooks"
+		    dateadded="1283399462"
+		    commentid="72157624860585562">You really did find some great signs down there.</event>
+	    </activity>
+	</item>
+	 */
+	List<ActivityItem> itemList = new ArrayList<ActivityItem>();
+	NodeList itemNodes = doc.getElementsByTagName("item");
+	if (itemNodes != null) {
+	    for (int i = 0; i < itemNodes.getLength(); i++) {
+		ActivityItem item = new ActivityItem();
+		Node itemNode = itemNodes.item(i);
+		NamedNodeMap attrs = itemNode.getAttributes();
+		item.setType(JinxUtils.getAttribute(attrs, "type"));
+		item.setId(JinxUtils.getAttribute(attrs, "id"));
+		item.setOwner(JinxUtils.getAttribute(attrs, "owner"));
+		item.setOwnerName(JinxUtils.getAttribute(attrs, "ownername"));
+		item.setSecret(JinxUtils.getAttribute(attrs, "secret"));
+		item.setServer(JinxUtils.getAttribute(attrs, "server"));
+		item.setFarm(JinxUtils.getAttribute(attrs, "farm"));
+		item.setComments(JinxUtils.getAttributeAsInt(attrs, "comments"));
+		item.setNotes(JinxUtils.getAttributeAsInt(attrs, "notes"));
+		item.setViews(JinxUtils.getAttributeAsInt(attrs, "views"));
+		item.setFaves(JinxUtils.getAttributeAsInt(attrs, "faves"));
+		item.setTitle(JinxUtils.getNamedChildTextContent(itemNode, "title"));
+
+		List<ActivityEvent> eventList = new ArrayList<ActivityEvent>();
+		NodeList itemChildren = itemNode.getChildNodes();
+		if (itemChildren != null) {
+		    for (int j = 0; j < itemChildren.getLength(); j++) {
+			Node n = itemChildren.item(j);
+			if (n.getNodeName().equals("activity")) {
+			    NodeList eventNodes = n.getChildNodes();
+			    for (int k = 0; k < eventNodes.getLength(); k++) {
+				Node eventNode = eventNodes.item(k);
+				if (eventNode.getNodeName().equals("event")) {
+				    ActivityEvent event = new ActivityEvent();
+				    NamedNodeMap eventAttrs = eventNode.getAttributes();
+				    event.setType(JinxUtils.getAttribute(eventAttrs, "type"));
+				    event.setUser(JinxUtils.getAttribute(eventAttrs, "user"));
+				    event.setUserName(JinxUtils.getAttribute(eventAttrs, "username"));
+				    event.setDateAdded(JinxUtils.parseTimestampToDate(JinxUtils.getAttribute(eventAttrs, "dateadded")));
+				    event.setCommentId(JinxUtils.getAttribute(eventAttrs, "commentid"));
+				    event.setEventText(JinxUtils.getFirstChildTextContent(eventNode));
+
+				    eventList.add(event);
+				}
+			    }
+
+			}
+		    }
+		}
+		item.setEventList(eventList);
+
+		itemList.add(item);
+	    }
+	}
+	ai.setItemList(itemList);
+
+	return ai;
+    }
+
+
+    
+
 }

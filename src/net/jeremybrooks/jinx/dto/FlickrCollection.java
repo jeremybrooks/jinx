@@ -134,7 +134,7 @@ public class FlickrCollection implements Serializable {
 
     @Override
     public String toString() {
-	StringBuilder sb = new StringBuilder("Collection [ ");
+	StringBuilder sb = new StringBuilder("FlickrCollection [ ");
 
 	sb.append("id=").append(this.id).append(" | ");
 	sb.append("title=").append(this.title).append(" | ");
