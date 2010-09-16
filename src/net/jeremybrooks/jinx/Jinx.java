@@ -22,7 +22,8 @@ import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.util.Map;
 import net.jeremybrooks.jinx.dto.Token;
-import net.jeremybrooks.jinx.HTTPRequestPoster;
+import net.jeremybrooks.jinx.logger.DefaultLogger;
+import net.jeremybrooks.jinx.logger.JinxLogger;
 import org.w3c.dom.Document;
 
 /**
@@ -113,6 +114,9 @@ public class Jinx {
     public static Jinx getInstance() {
 	if (instance == null) {
 	    instance = new Jinx();
+	    if (JinxLogger.getLogger() == null) {
+		JinxLogger.setLogger(new DefaultLogger());
+	    }
 	}
 
 	return instance;
@@ -241,10 +245,8 @@ public class Jinx {
 
 	StringBuilder sb = new StringBuilder();
 	for (String key : params.keySet()) {
-	    //sb.append(key).append('=').append(params.get(key)).append('&');
 	    try {
-//		System.out.println("*********************************");
-//		System.out.println("Encoding key '" + key + "' and value '" + params.get(key) + "'");
+		JinxLogger.getLogger().log("Encoding key '" + key + "' and value '" + params.get(key) + "'");
 		sb.append(URLEncoder.encode(key, "UTF-8")).append('=').append(URLEncoder.encode(params.get(key), "UTF-8")).append('&');
 	    } catch (Exception e) {
 		throw new JinxException("Error encoding.", e);
@@ -264,7 +266,8 @@ public class Jinx {
 	    response = HTTPRequestPoster.sendGetRequest(JinxConstants.REST_ENDPOINT, args);
 	}
 
-//System.out.println(response);
+	JinxLogger.getLogger().log("RESPONSE: " + response);
+	
 	return JinxUtils.parseStatus(response);
     }
 
