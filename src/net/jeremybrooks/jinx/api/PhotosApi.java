@@ -675,9 +675,6 @@ public class PhotosApi {
     }
 
 
-
-
-
     /**
      * Returns the people who have favorited a given photo.
      *
@@ -687,10 +684,30 @@ public class PhotosApi {
      * @param page The page of results to return. If this argument is < 1, it defaults to 1.
      * @param perPage Number of users to return per page. If this argument is
      *	      < 1, it defaults to 10. The maximum allowed value is 50.
-     * @return
-     * @throws JinxException
+     * @return <code>Favorites</code> object for the specified photo.
+     * @throws JinxException if there are any errors.
      */
     public Favorites getFavorites(String photoId, int page, int perPage) throws JinxException {
+	return getFavorites(photoId, page, perPage, false);
+    }
+
+
+
+    /**
+     * Returns the people who have favorited a given photo.
+     *
+     * This method does not require authentication. However, if you need to
+     * return information about a non-public photo, the call must be authenticated.
+     *
+     * @param photoId the ID of the photo to fetch the favoriters list for.
+     * @param page The page of results to return. If this argument is < 1, it defaults to 1.
+     * @param perPage Number of users to return per page. If this argument is
+     *	      < 1, it defaults to 10. The maximum allowed value is 50.
+     * @param auth if true, this call will be authenticated.
+     * @return <code>Favorites</code> object for the specified photo.
+     * @throws JinxException if there are any errors.
+     */
+    public Favorites getFavorites(String photoId, int page, int perPage, boolean auth) throws JinxException {
 	Map<String, String> params = new TreeMap<String, String>();
 	params.put("method", "flickr.photos.getFavorites");
 	params.put("api_key", Jinx.getInstance().getApiKey());
@@ -702,7 +719,7 @@ public class PhotosApi {
 	    params.put("perpage", Integer.toString(perPage));
 	}
 
-	Document doc = Jinx.getInstance().callFlickr(params, false);
+	Document doc = Jinx.getInstance().callFlickr(params, auth);
 
 	Favorites f = new Favorites();
 	List<Person> personList = new ArrayList<Person>();
