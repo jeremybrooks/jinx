@@ -50,6 +50,7 @@ public class HTTPRequestPoster {
 
 		URL url = new URL(urlStr);
 		URLConnection conn = url.openConnection();
+		
 		// Get the response
 		BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		StringBuilder sb = new StringBuilder();
