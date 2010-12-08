@@ -1783,7 +1783,7 @@ public class PhotosApi {
      * @return Photos object
      * @throws JinxException if there are any errors.
      */
-    private Photos parsePhotosXml(Document doc) throws JinxException {
+    Photos parsePhotosXml(Document doc) throws JinxException {
 	Photos photos = new Photos();
 	List<Photo> photoList = new ArrayList<Photo>();
 
