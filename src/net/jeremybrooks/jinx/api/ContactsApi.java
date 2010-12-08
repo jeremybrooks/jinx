@@ -273,7 +273,7 @@ public class ContactsApi {
 	    </rsp>
 	 */
 
-	Document doc = Jinx.getInstance().callFlickr(params);
+	Document doc = Jinx.getInstance().callFlickr(params, false);
 
 	contacts.setPage(JinxUtils.getValueByXPathAsInt(doc, "/rsp/contacts/@page"));
 	contacts.setPages(JinxUtils.getValueByXPathAsInt(doc, "/rsp/contacts/@pages"));
