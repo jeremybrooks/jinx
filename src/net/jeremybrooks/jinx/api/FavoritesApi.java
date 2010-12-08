@@ -252,7 +252,7 @@ public class FavoritesApi {
 	    params.put("page", Integer.toString(page));
 	}
 
-	Document doc = Jinx.getInstance().callFlickr(params);
+	Document doc = Jinx.getInstance().callFlickr(params, false);
 
 	return PhotosApi.getInstance().parsePhotosXml(doc);
     }
