@@ -18,6 +18,7 @@
  */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ import java.util.List;
  *
  * @author jeremyb
  */
-public class Contacts {
+public class Contacts implements Serializable {
     
     private int page;
     private int pages;

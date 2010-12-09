@@ -18,6 +18,8 @@
  */
 package net.jeremybrooks.jinx.dto;
 
+import java.io.Serializable;
+
 /**
  * This class represents a contact element, as returned by the Contact API
  * methods.
@@ -27,7 +29,7 @@ package net.jeremybrooks.jinx.dto;
  * 
  * @author jeremyb
  */
-public class Contact {
+public class Contact implements Serializable {
     private String nsid;
     private String username;
     private String iconServer;

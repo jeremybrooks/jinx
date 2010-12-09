@@ -20,6 +20,7 @@ This list shows which API entry points have been implemented:
   * commons
   * contacts
   * favorites
+  * galleries
   * photos
   * photosets
 
@@ -32,7 +33,6 @@ There are project files here for NetBeans, but NetBeans is not required. To buil
 TODO:
 
 Implement these API entry points:
-galleries
 groups
 groups.members
 groups.pools

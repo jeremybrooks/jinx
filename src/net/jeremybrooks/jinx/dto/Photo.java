@@ -72,6 +72,9 @@ public class Photo extends PhotoBase implements Serializable {
     private String url;
     private String thumb;
 
+    // may be returned by methods in the Gallery API
+    private boolean hasComment;
+    private String comment;
 
 
 
@@ -595,7 +598,9 @@ public class Photo extends PhotoBase implements Serializable {
 	sb.append("views=").append(super.getViews()).append(" | ");
 	sb.append("description=").append(super.getDescription()).append(" | ");
 	sb.append("url=").append(this.url).append(" | ");
-	sb.append("thumb=").append(this.thumb);
+	sb.append("thumb=").append(this.thumb).append(" | ");
+	sb.append("hasComment=").append(this.hasComment).append(" | ");
+	sb.append("comment=").append(this.comment);
 
 	sb.append(" ]");
 
@@ -648,5 +653,43 @@ public class Photo extends PhotoBase implements Serializable {
      */
     public void setWidthZ(int widthZ) {
 	this.widthZ = widthZ;
+    }
+
+
+    /**
+     * Note: This refers to the comment left on a photo that is in a gallery,
+     *       not comments left on the photo in a user's photostream.
+     * 
+     * @return the hasComment
+     */
+    public boolean isHasComment() {
+	return hasComment;
+    }
+
+
+    /**
+     * @param hasComment the hasComment to set
+     */
+    public void setHasComment(boolean hasComment) {
+	this.hasComment = hasComment;
+    }
+
+
+    /**
+     * Note: This refers to the comment left on a photo that is in a gallery,
+     *       not comments left on the photo in a user's photostream.
+     * 
+     * @return the comment
+     */
+    public String getComment() {
+	return comment;
+    }
+
+
+    /**
+     * @param comment the comment to set
+     */
+    public void setComment(String comment) {
+	this.comment = comment;
     }
 }
