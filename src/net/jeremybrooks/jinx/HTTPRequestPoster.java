@@ -23,6 +23,7 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import net.jeremybrooks.jinx.logger.JinxLogger;
 
 
 public class HTTPRequestPoster {
@@ -46,7 +47,7 @@ public class HTTPRequestPoster {
 		if (requestParameters != null && requestParameters.length() > 0) {
 		    urlStr += "?" + requestParameters;
 		}
-		//System.out.println("URL is " + urlStr);
+		JinxLogger.getLogger().log("sendGetRequest URL is " + urlStr);
 
 		URL url = new URL(urlStr);
 		URLConnection conn = url.openConnection();
