@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "1.0">
+   <FileBreakpoints>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer.xcodeproj/Constants.m"
+         timestampString = "323312250.939899"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "13"
+         endingLineNumber = "13"
+         landmarkName = "@implementation Constants"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer.xcodeproj/SourceImagePhoto.m"
+         timestampString = "325118145.951846"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "104"
+         endingLineNumber = "104"
+         landmarkName = "-copyPreviewImageDataTo:fromRow:skipRows:withWidth:andHeight:andRowHeight:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer.xcodeproj/SourceImagePhoto.m"
+         timestampString = "325118145.951846"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
+         landmarkName = "-copyImageDataForImage:to:fromRow:skipRows:withWidth:andHeight:andRowHeight:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/InterlacerViewController.m"
+         timestampString = "325176303.960592"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
+         landmarkName = "-updateSourcePhotoView"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/InterlacerViewController.m"
+         timestampString = "325178400.185659"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "189"
+         endingLineNumber = "189"
+         landmarkName = "-showImageSettings:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/InterlacerViewController.m"
+         timestampString = "325178400.185659"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
+         landmarkName = "-showImageSettings:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/InterlacerViewController.m"
+         timestampString = "325176303.960592"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
+         landmarkName = "-updateSourcePhotoView"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer.xcodeproj/SourceImagePhoto.m"
+         timestampString = "325118145.951846"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "136"
+         endingLineNumber = "136"
+         landmarkName = "-copyImageDataTo:fromRow:skipRows:withWidth:andHeight:andRowHeight:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer.xcodeproj/SourceImagePhoto.m"
+         timestampString = "325118145.951846"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "137"
+         endingLineNumber = "137"
+         landmarkName = "-copyImageDataTo:fromRow:skipRows:withWidth:andHeight:andRowHeight:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/Model.m"
+         timestampString = "324830355.514825"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
+         landmarkName = "-smallestSizeForFinalImage"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/Model.m"
+         timestampString = "324830355.514825"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "70"
+         endingLineNumber = "70"
+         landmarkName = "-smallestSizeForFinalImage"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/Model.m"
+         timestampString = "324830355.514825"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "72"
+         endingLineNumber = "72"
+         landmarkName = "-smallestSizeForFinalImage"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/Model.m"
+         timestampString = "324830355.514825"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "61"
+         endingLineNumber = "61"
+         landmarkName = "-smallestSizeForFinalImage"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/Model.m"
+         timestampString = "324830355.514825"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "64"
+         endingLineNumber = "64"
+         landmarkName = "-smallestSizeForFinalImage"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/Model.m"
+         timestampString = "324830355.514825"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "81"
+         endingLineNumber = "81"
+         landmarkName = "-smallestSizeForFinalImage"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/Model.m"
+         timestampString = "324830355.514825"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
+         landmarkName = "-smallestSizeForFinalImage"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/InterlacerViewController.m"
+         timestampString = "325176303.960592"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
+         landmarkName = "-updateSourcePhotoView"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/Model.m"
+         timestampString = "324830355.514825"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
+         landmarkName = "-smallestSizeForFinalImage"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/InterlacerViewController.m"
+         timestampString = "325178400.185659"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "415"
+         endingLineNumber = "415"
+         landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer.xcodeproj/SourceImagePhoto.m"
+         timestampString = "325118145.951846"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "230"
+         endingLineNumber = "230"
+         landmarkName = "-copyImageDataTo:fromRow:skipRows:withWidth:andHeight:andRowHeight:andShift:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/SourceImageColor.m"
+         timestampString = "325102948.586787"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
+         landmarkName = "-copyImageDataTo:fromRow:skipRows:withWidth:andHeight:andRowHeight:andShift:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/SourceImageColor.m"
+         timestampString = "325114188.044875"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
+         landmarkName = "-copyImageDataTo:fromRow:skipRows:withWidth:andHeight:andRowHeight:andShift:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/SourceImageColor.m"
+         timestampString = "325114188.044875"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "161"
+         endingLineNumber = "161"
+         landmarkName = "-copyImageDataTo:fromRow:skipRows:withWidth:andHeight:andRowHeight:andShift:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/SourceImageColor.m"
+         timestampString = "325114188.044875"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "163"
+         endingLineNumber = "163"
+         landmarkName = "-copyImageDataTo:fromRow:skipRows:withWidth:andHeight:andRowHeight:andShift:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/SourceImageColor.m"
+         timestampString = "325113158.051792"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "124"
+         endingLineNumber = "124"
+         landmarkName = "-copyImageDataTo:fromRow:skipRows:withWidth:andHeight:andRowHeight:andShift:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Interlacer/InterlacerViewController.m"
+         timestampString = "325178632.821205"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "193"
+         endingLineNumber = "193"
+         landmarkName = "-createImage"
+         landmarkType = "5">
+      </FileBreakpoint>
+   </FileBreakpoints>
+</Bucket>
