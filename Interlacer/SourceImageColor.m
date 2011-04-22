@@ -30,84 +30,6 @@
 {
     return imageSizeMax;
 }
-/*
-- (void)doCopyTo:(unsigned char *)targetImage fromRow:(int)startRow skipRows:(int)skip  withWidth:(int)width andHeight:(int)height andRowHeight:(int)rowHeight 
-{
-    const CGFloat * components = CGColorGetComponents(self.color.CGColor);
-    
-    int targetIndex = width * BYTES_PER_PIXEL * startRow;
-    
-    // loop until we reach height rows
-    for (int row = startRow; row < height; row+=rowHeight*(skip+1)) {
-        
-        // if rowHeight is > remaning rows, rowHeight = rows
-        if (rowHeight > height-row) {
-            rowHeight = height - row;
-        }
-        
-        // copy rowHeight rows of data
-        for (int j = 0; j < rowHeight; j++) {
-            for (int k = 0; k < width; k++) {
-                targetImage[targetIndex++] = components[0]*255;
-                targetImage[targetIndex++] = components[1]*255;
-                targetImage[targetIndex++] = components[2]*255;
-                targetImage[targetIndex++] = components[3]*255;
-            }
-        }
-        
-        // move indexes skip rows
-        targetIndex += width * BYTES_PER_PIXEL * skip * rowHeight;
-    }
-    
-}
- */
-/*
-- (void)copyPreviewImageDataTo:(unsigned char *)targetImage fromRow:(int)startRow skipRows:(int)skip  withWidth:(int)width andHeight:(int)height andRowHeight:(int)rowHeight
-{
-    [self doCopyTo:targetImage
-           fromRow:startRow
-          skipRows:skip
-         withWidth:width
-         andHeight:height
-      andRowHeight:rowHeight];
-}*/
-/*
-- (void)copyImageDataTo:(unsigned char *)targetImage fromRow:(int)startRow skipRows:(int)skip  withWidth:(int)width andHeight:(int)height andRowHeight:(int)rowHeight
-{
-   // [self doCopyTo:targetImage
-   //        fromRow:startRow
-   //       skipRows:skip
-   //      withWidth:width
-   //      andHeight:height
-   //   andRowHeight:rowHeight];
-    const CGFloat * components = CGColorGetComponents(self.color.CGColor);
-    
-    int targetIndex = width * BYTES_PER_PIXEL * startRow;
-    
-    // loop until we reach height rows
-    for (int row = startRow; row < height; row+=rowHeight*(skip+1)) {
-        
-        // if rowHeight is > remaning rows, rowHeight = rows
-        if (rowHeight > height-row) {
-            rowHeight = height - row;
-        }
-        
-        // copy rowHeight rows of data
-        for (int j = 0; j < rowHeight; j++) {
-            for (int k = 0; k < width; k++) {
-                targetImage[targetIndex++] = components[0]*255;
-                targetImage[targetIndex++] = components[1]*255;
-                targetImage[targetIndex++] = components[2]*255;
-                targetImage[targetIndex++] = components[3]*255;
-            }
-        }
-        
-        // move indexes skip rows
-        targetIndex += width * BYTES_PER_PIXEL * skip * rowHeight;
-    }
-    
-}
- */
 
 
 /*
@@ -124,9 +46,7 @@
     const CGFloat * components = CGColorGetComponents(self.color.CGColor);
     
     int targetIndex = width * BYTES_PER_PIXEL * startRow * rowHeight;
-    
-    //skip = rowHeight;
-    
+        
     // loop until we reach height rows
     //for (int row = startRow; row < height; row+=rowHeight*(skip+1)) {
     for (int row = startRow * rowHeight; row < height; ) {

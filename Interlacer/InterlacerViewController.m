@@ -50,6 +50,7 @@
 
 - (void)updateSourcePhotoView
 {
+    
     for (UIView *view in self.sourceImageView.subviews) {
         [view removeFromSuperview];
     }
@@ -516,10 +517,10 @@
     
     [picker dismissModalViewControllerAnimated:YES];
     
-    SourceImagePhoto *sip = [[SourceImagePhoto alloc] init];
-    [self.model addSourceImage:sip];
+    //SourceImagePhoto *sip = [[SourceImagePhoto alloc] init];
+    //[self.model addSourceImage:sip];
     
-    [self updateSourcePhotoView];
+    //[self updateSourcePhotoView];
         
     self.statusLabel.text = @"Preparing image for use...";
     
@@ -527,6 +528,10 @@
     
     // now do the time consuming image operations in the background
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+        
+        SourceImagePhoto *sip = [[SourceImagePhoto alloc] init];
+        
         UIImage *tempImage = [info objectForKey:UIImagePickerControllerOriginalImage];
                 
         // metadata will be nil if the image came from photo album
@@ -552,8 +557,11 @@
                                                         bounds:CGSizeMake(THUMB_SIZE, THUMB_SIZE)
                                           interpolationQuality:kCGInterpolationMedium];
         
+        [self.model addSourceImage:sip];
         [sip release];
 
+        [pool drain];
+        
         dispatch_async( dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self updateSourcePhotoView];

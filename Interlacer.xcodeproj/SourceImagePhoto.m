@@ -23,13 +23,11 @@
 // 
 // This is the designated initializer.
 //
-// The thumbnail will be set to a generic waiting image, allowing immediate display of
-// something while the real thumbnail is generated.
 - (id)init
 {
     self = [super init];
     if (self) {
-        thumbnail = [UIImage imageNamed:@"wait.jpg"];
+
     }
     
     return self;
@@ -41,149 +39,6 @@
     return [self.image size];
 }
 
-/*
-- (void)copyImageDataForImage:(UIImage *)theImage to:(unsigned char *)targetImage fromRow:(int)startRow skipRows:(int)skip withWidth:(int)width andHeight:(int)height andRowHeight:(int)rowHeight
-{
-    // convert image data to a char array
-    CGImageRef imageRef = [theImage CGImage];
-    NSUInteger imageWidth = CGImageGetWidth(imageRef);
-    NSUInteger imageHeight = CGImageGetHeight(imageRef);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    unsigned char *rawData = malloc(imageWidth * imageHeight * BYTES_PER_PIXEL);
-    NSUInteger bytesPerRow = BYTES_PER_PIXEL * imageWidth;
-    NSUInteger bitsPerComponent = 8;
-    CGContextRef context = CGBitmapContextCreate(rawData, 
-                                                 imageWidth, 
-                                                 imageHeight,
-                                                 bitsPerComponent, 
-                                                 bytesPerRow, 
-                                                 colorSpace,
-                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
-    CGColorSpaceRelease(colorSpace);
-    
-    CGContextDrawImage(context, CGRectMake(0, 0, imageWidth, imageHeight), imageRef);
-    CGContextRelease(context);
-    // end convert image data to a char array
-    
-    int rowRemainder = imageWidth - width;
-    int sourceIndex = imageWidth * BYTES_PER_PIXEL * startRow;
-    int targetIndex = width * BYTES_PER_PIXEL * startRow;
-    
-    // loop until we reach height rows
-    for (int row = startRow; row < height; row+=rowHeight*(skip+1)) {
-        
-        // copy rowHeight rows of data from source to target
-        // if rowHeight is > remaning rows, rowHeight = rows
-        if (rowHeight > height-row) {
-            rowHeight = height - row;
-        }
-        
-        // copy rowHeight rows of data
-        for (int j = 0; j < rowHeight; j++) {
-            for (int k = 0; k < width * BYTES_PER_PIXEL; k++) {
-                targetImage[targetIndex] = rawData[sourceIndex];
-                targetIndex++;
-                sourceIndex++;
-            }
-            // move source index to the end of the row in the source image
-            sourceIndex += rowRemainder * BYTES_PER_PIXEL;
-        }
-        
-        // move indexes skip rows
-        sourceIndex += imageWidth * BYTES_PER_PIXEL * skip * rowHeight;
-        targetIndex += width * BYTES_PER_PIXEL * skip * rowHeight;
-    }
-    
-    free(rawData);    
-}
-*/
-/*
-- (void)copyPreviewImageDataTo:(unsigned char *)targetImage fromRow:(int)startRow skipRows:(int)skip  withWidth:(int)width andHeight:(int)height andRowHeight:(int)rowHeight
-{
-    [self copyImageDataForImage:self.previewImage
-                             to:targetImage
-                        fromRow:startRow
-                       skipRows:skip
-                      withWidth:width
-                      andHeight:height
-                   andRowHeight:rowHeight];
-}
-*/
-/*
-- (void)copyImageDataTo:(unsigned char *)targetImage fromRow:(int)startRow skipRows:(int)skip withWidth:(int)width andHeight:(int)height andRowHeight:(int)rowHeight
-{
-    
-    
-    \\[self copyImageDataForImage:self.image
-    \\                        to:targetImage
-    \\                    fromRow:startRow
-    \\                   skipRows:skip
-    \\                  withWidth:width
-    \\                 andHeight:height
-    \\               andRowHeight:rowHeight];
-    
-    int targetImageSize = width * height * BYTES_PER_PIXEL;
-    
-    // convert image data to a char array
-    CGImageRef imageRef = [self.image CGImage];
-    NSUInteger imageWidth = CGImageGetWidth(imageRef);
-    NSUInteger imageHeight = CGImageGetHeight(imageRef);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    unsigned char *rawData = malloc(imageWidth * imageHeight * BYTES_PER_PIXEL);
-    int sourceImageSize = imageWidth * imageHeight * BYTES_PER_PIXEL;
-    NSUInteger bytesPerRow = BYTES_PER_PIXEL * imageWidth;
-    NSUInteger bitsPerComponent = 8;
-    CGContextRef context = CGBitmapContextCreate(rawData, 
-                                                 imageWidth, 
-                                                 imageHeight,
-                                                 bitsPerComponent, 
-                                                 bytesPerRow, 
-                                                 colorSpace,
-                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
-    CGColorSpaceRelease(colorSpace);
-    
-    CGContextDrawImage(context, CGRectMake(0, 0, imageWidth, imageHeight), imageRef);
-    CGContextRelease(context);
-    // end convert image data to a char array
-    
-    int rowRemainder = imageWidth - width;
-    int sourceIndex = imageWidth * BYTES_PER_PIXEL * startRow;
-    int targetIndex = width * BYTES_PER_PIXEL * startRow;
-    
-    // loop until we reach height rows
-    for (int row = startRow; row < height; row+=rowHeight*(skip+1)) {
-        
-        // copy rowHeight rows of data from source to target
-        // if rowHeight is > remaning rows, rowHeight = rows
-        if (rowHeight > height-row) {
-            rowHeight = height - row;
-        }
-        
-        // copy rowHeight rows of data
-        for (int j = 0; j < rowHeight; j++) {
-            for (int k = 0; k < width * BYTES_PER_PIXEL; k++) {
-                // If the index has run past the size of the image, do not copy data
-                // this will prevent a crash in the case of unexpected image problems.
-                // The resulting image will not look right, but that is better than a crash.
-                if (targetIndex > targetImageSize || sourceIndex > sourceImageSize) {
-                    break;
-                }
-                targetImage[targetIndex] = rawData[sourceIndex];
-                targetIndex++;
-                sourceIndex++;
-            }
-            // move source index to the end of the row in the source image
-            sourceIndex += rowRemainder * BYTES_PER_PIXEL;
-        }
-        
-        // move indexes skip rows
-        sourceIndex += imageWidth * BYTES_PER_PIXEL * skip * rowHeight;
-        targetIndex += width * BYTES_PER_PIXEL * skip * rowHeight;
-    }
-    
-    free(rawData);
-}
-*/
 
 /*
  * startRow and skipRows do not take into account the rowHeight.

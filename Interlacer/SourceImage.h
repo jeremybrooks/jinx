@@ -12,6 +12,5 @@
 
 - (UIImage *)thumbnail;
 - (CGSize)imageSize;
-//- (void)copyImageDataTo:(unsigned char *)targetImage fromRow:(int)startRow skipRows:(int)skip  withWidth:(int)width andHeight:(int)height andRowHeight:(int)rowHeight;
 - (void)copyImageDataTo:(unsigned char *)targetImage fromRow:(int)startRow skipRows:(int)skip  withWidth:(int)width andHeight:(int)height andRowHeight:(int)rowHeight andShift:(int)shift;
 @end
