@@ -16,6 +16,7 @@
 #import "GradientView.h"
 #import "IASKAppSettingsViewController.h"
 #import "SourceImageColor.h"
+#import "AboutViewController.h"
 
 #import <MobileCoreServices/UTCoreTypes.h>
 
@@ -43,7 +44,6 @@
 #pragma  mark - UI Update Methods
 - (void)updatePreviewImageView
 {
-    //self.previewImage.image = self.model.previewImage;
     self.previewImage.image = self.model.processedImage;
 }
 
@@ -135,14 +135,9 @@
 {
     if ([self.model.sourceImageArray count] == 0 ||
         ([self.model.sourceImageArray count] < 2 && self.shiftValue == 0) ) {
-        // do not display message; doing auto image creation
-        /*
-         [[[[UIAlertView alloc] initWithTitle:@"Nothing To Process"
-         message:@"With the current settings, processing will not make any changes. Try adding more images/colors, or change the Shift slider."
-         delegate:nil
-         cancelButtonTitle:@"OK"
-         otherButtonTitles:nil]autorelease] show];
-         */
+        // this means that there is not enough going on to do any processing, so 
+        // we remove the preview image (if there is one)
+        self.previewImage.image = nil;
         
     } else {
         self.model.processedImage = nil;
@@ -230,7 +225,7 @@
                                          orientation:ALAssetOrientationUp
                                      completionBlock:^(NSURL *assetURL, NSError *error) {
                                          if (error == nil) {
-                                             self.statusLabel.text = @"Image saved to camera roll.";
+                                             self.statusLabel.text = @"Image has been saved.";
                                          } else {
                                              self.statusLabel.text = @"Error while saving image.";
                                              NSLog(@"%@", [error description]);
@@ -681,7 +676,7 @@
                          completionBlock:^(NSURL *assetURL, NSError *error) {
                              [MBProgressHUD hideHUDForView:self.view animated:YES];
                              if (error == nil) {
-                                 self.statusLabel.text = @"Image saved to camera roll.";
+                                 self.statusLabel.text = @"Image has been saved.";
                              } else {
                                  self.statusLabel.text = @"Error while saving image.";
                                  NSLog(@"%@", [error description]);
@@ -692,6 +687,14 @@
     }
 }
 
+- (IBAction)showAboutViewController:(UIButton *)sender
+{
+    AboutViewController *vc = [[AboutViewController alloc] init];
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentModalViewController:vc animated:YES];
+
+    [vc release];
+}
 
 
 - (IBAction)clear:(UIButton *)sender
@@ -700,6 +703,7 @@
     [self updatePreviewImageView];
     [self updateSourcePhotoView];
 }
+
 
 
 - (void)releaseObjects

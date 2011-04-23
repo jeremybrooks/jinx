@@ -31,12 +31,12 @@
 			<string>PSToggleSwitchSpecifier</string>
 		</dict>
 		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string></string>
 			<key>FooterText</key>
 			<string>Enabling Photo Overlay will use the first image in the list as an overlay for the camera viewfinder.</string>
+			<key>Title</key>
+			<string></string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -53,6 +53,14 @@
 			<string>AUTO_SAVE_PROCESSED</string>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>Enabling autosave will result in many images being saved on your device. You have been warned.</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string></string>
 		</dict>
 	</array>
 	<key>StringsTable</key>

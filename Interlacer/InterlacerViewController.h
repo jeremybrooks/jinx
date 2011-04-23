@@ -67,6 +67,7 @@
 - (IBAction)hideImageDetailView:(UIButton *)sender;
 - (IBAction)deleteImageFromList:(UIButton *)sender;
 
+- (IBAction)showAboutViewController:(UIButton *)sender;
 
 - (IBAction)saveProcessedImage:(UIButton *)sender;
 - (IBAction)clear:(UIButton *)sender;

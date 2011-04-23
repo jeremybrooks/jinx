@@ -90,9 +90,8 @@
 							<object class="IBUIButton" id="478166661">
 								<reference key="NSNextResponder" ref="503143383"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{121, 7}, {29, 31}}</string>
+								<string key="NSFrame">{{94, 8}, {29, 31}}</string>
 								<reference key="NSSuperview" ref="503143383"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -122,7 +121,7 @@
 							<object class="IBUIButton" id="170144652">
 								<reference key="NSNextResponder" ref="503143383"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{237, 8}, {29, 29}}</string>
+								<string key="NSFrame">{{225, 8}, {29, 29}}</string>
 								<reference key="NSSuperview" ref="503143383"/>
 								<reference key="NSNextKeyView" ref="478166661"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -165,7 +164,7 @@
 							<object class="IBUIButton" id="52544393">
 								<reference key="NSNextResponder" ref="503143383"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{72, 8}, {29, 29}}</string>
+								<string key="NSFrame">{{57, 9}, {29, 29}}</string>
 								<reference key="NSSuperview" ref="503143383"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -333,6 +332,15 @@
 					</object>
 					<int key="connectionID">47</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">showAboutViewController:</string>
+						<reference key="source" ref="2827665"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">49</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -386,9 +394,9 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="1006904540"/>
-							<reference ref="52544393"/>
 							<reference ref="2827665"/>
 							<reference ref="170144652"/>
+							<reference ref="52544393"/>
 							<reference ref="478166661"/>
 						</object>
 						<reference key="parent" ref="774585933"/>
@@ -485,7 +493,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">48</int>
+			<int key="maxID">49</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

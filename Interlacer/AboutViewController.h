@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-
-@interface AboutViewController : UIViewController {
+@interface AboutViewController : UIViewController <UIWebViewDelegate, MFMailComposeViewControllerDelegate> {
     
 }
+
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) IBOutlet UIButton *button;
+@property (nonatomic, retain) IBOutlet UILabel *versionLabel;
+@property (nonatomic, retain) IBOutlet UIButton *backButton;
+
+- (IBAction)dismiss:(UIButton *)sender;
+- (IBAction)backButtonPressed:(UIButton *)backButton;
 
 @end
