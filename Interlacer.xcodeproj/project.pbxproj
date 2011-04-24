@@ -12,7 +12,7 @@
 		7F1B9E721356051100051A0C /* disk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F1B9E701356051100051A0C /* disk@2x.png */; };
 		7F1B9E751356107200051A0C /* 106-sliders-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F1B9E731356107200051A0C /* 106-sliders-light.png */; };
 		7F1B9E761356107200051A0C /* 106-sliders-light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F1B9E741356107200051A0C /* 106-sliders-light@2x.png */; };
-		7F1D72B1134D17DE005EC2CD /* wait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F1D72B0134D17DE005EC2CD /* wait.jpg */; };
+		7F277D2013621D0900F41065 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 7F277D1F13621D0900F41065 /* about.html */; };
 		7F2B39C6134FE35D0034AB48 /* SourceImageColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2B39C5134FE35D0034AB48 /* SourceImageColor.m */; };
 		7F2C0EDD134FC0630057E823 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F2C0EDC134FC0630057E823 /* background.png */; };
 		7F2C0EDF134FC2870057E823 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F2C0EDE134FC2870057E823 /* background@2x.png */; };
@@ -66,6 +66,7 @@
 		7F7790D1135005F000DC8A3C /* bar_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F7790C7135005F000DC8A3C /* bar_select.png */; };
 		7F7790D2135005F000DC8A3C /* colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F7790C8135005F000DC8A3C /* colormap.png */; };
 		7F7790D3135005F000DC8A3C /* crosshair.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F7790C9135005F000DC8A3C /* crosshair.png */; };
+		7F9AF2F813626FCB00EE288A /* Example.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F9AF2F713626FCB00EE288A /* Example.png */; };
 		7FAD51BA134C3B22006FA4DD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FAD51B9134C3B22006FA4DD /* MBProgressHUD.m */; };
 		7FADE00913458F5000D1C416 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FADE00813458F5000D1C416 /* Model.m */; };
 		7FADE00C1345908A00D1C416 /* SourceImagePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FADE00B1345908A00D1C416 /* SourceImagePhoto.m */; };
@@ -108,7 +109,7 @@
 		7F1B9E701356051100051A0C /* disk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disk@2x.png"; sourceTree = "<group>"; };
 		7F1B9E731356107200051A0C /* 106-sliders-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "106-sliders-light.png"; sourceTree = "<group>"; };
 		7F1B9E741356107200051A0C /* 106-sliders-light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "106-sliders-light@2x.png"; sourceTree = "<group>"; };
-		7F1D72B0134D17DE005EC2CD /* wait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wait.jpg; sourceTree = "<group>"; };
+		7F277D1F13621D0900F41065 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		7F2B39C4134FE35D0034AB48 /* SourceImageColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceImageColor.h; sourceTree = "<group>"; };
 		7F2B39C5134FE35D0034AB48 /* SourceImageColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImageColor.m; sourceTree = "<group>"; };
 		7F2C0EDC134FC0630057E823 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		7F7790C7135005F000DC8A3C /* bar_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_select.png; sourceTree = "<group>"; };
 		7F7790C8135005F000DC8A3C /* colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colormap.png; sourceTree = "<group>"; };
 		7F7790C9135005F000DC8A3C /* crosshair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair.png; sourceTree = "<group>"; };
+		7F9AF2F713626FCB00EE288A /* Example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Example.png; sourceTree = "<group>"; };
 		7FAD51B8134C3B22006FA4DD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7FAD51B9134C3B22006FA4DD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7FADDFF713455A3100D1C416 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Interlacer.xcodeproj/Constants.h; sourceTree = SOURCE_ROOT; };
@@ -294,6 +296,7 @@
 			children = (
 				7FBF26801361455A00880056 /* AboutViewController.h */,
 				7FBF26811361455A00880056 /* AboutViewController.m */,
+				7F277D1F13621D0900F41065 /* about.html */,
 				7FBF26821361455A00880056 /* AboutViewController.xib */,
 				7FADDFF713455A3100D1C416 /* Constants.h */,
 				7F501C6E13450D330032B517 /* InterlacerAppDelegate.h */,
@@ -346,6 +349,7 @@
 		7F501C83134511460032B517 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				7F9AF2F713626FCB00EE288A /* Example.png */,
 				7F3624B91360DD7700AA2A50 /* 02-redo-light.png */,
 				7F3624BA1360DD7700AA2A50 /* 02-redo-light@2x.png */,
 				7F1B9E731356107200051A0C /* 106-sliders-light.png */,
@@ -371,7 +375,6 @@
 				7FCD19FA134E0F7200DA3868 /* gear.png */,
 				7F2C0EE2134FCB440057E823 /* rainbow.png */,
 				7F2C0EE3134FCB440057E823 /* rainbow@2x.png */,
-				7F1D72B0134D17DE005EC2CD /* wait.jpg */,
 				7F2C0EDC134FC0630057E823 /* background.png */,
 				7F2C0EDE134FC2870057E823 /* background@2x.png */,
 			);
@@ -557,7 +560,6 @@
 				7F501C6A13450D330032B517 /* InfoPlist.strings in Resources */,
 				7F501C7313450D330032B517 /* MainWindow.xib in Resources */,
 				7F501C7913450D330032B517 /* InterlacerViewController.xib in Resources */,
-				7F1D72B1134D17DE005EC2CD /* wait.jpg in Resources */,
 				7FF4C2DE134D6C8A004B2EE2 /* SettingsViewController.xib in Resources */,
 				7FF4C322134D803A004B2EE2 /* IASKAppSettingsView.xib in Resources */,
 				7FF4C323134D803A004B2EE2 /* IASKAppSettingsWebView.xib in Resources */,
@@ -606,6 +608,8 @@
 				7F3624BB1360DD7700AA2A50 /* 02-redo-light.png in Resources */,
 				7F3624BC1360DD7700AA2A50 /* 02-redo-light@2x.png in Resources */,
 				7FBF26841361455A00880056 /* AboutViewController.xib in Resources */,
+				7F277D2013621D0900F41065 /* about.html in Resources */,
+				7F9AF2F813626FCB00EE288A /* Example.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,7 +694,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -710,7 +714,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -764,7 +768,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 23;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
