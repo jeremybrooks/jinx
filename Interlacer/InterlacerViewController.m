@@ -164,7 +164,7 @@
                 
                 int startRow = 0;
                 for (id sourceImage in self.model.sourceImageArray) {
-                    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+                    //NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
                     
                     // if random row height selected, and this is the first image,
                     // copy the entire image. Otherwise, there will be missing parts
@@ -188,7 +188,7 @@
                     }
                     startRow++;
                     
-                    [pool drain];
+                    //[pool drain];
                 }
                 
                 // write back into an image
@@ -523,7 +523,7 @@
     
     // now do the time consuming image operations in the background
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+       // NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
         
         SourceImagePhoto *sip = [[SourceImagePhoto alloc] init];
         
@@ -555,7 +555,7 @@
         [self.model addSourceImage:sip];
         [sip release];
 
-        [pool drain];
+        //[pool drain];
         
         dispatch_async( dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
