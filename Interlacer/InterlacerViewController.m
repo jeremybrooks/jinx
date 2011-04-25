@@ -504,20 +504,18 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissModalViewControllerAnimated:YES];        
     
-    //SourceImagePhoto *sip = [[SourceImagePhoto alloc] init];
-    //[self.model addSourceImage:sip];
+    // the disclosure button is showing up when the camera view is dismissed
+    // this works around that issue.
+    self.previewImageDetailButton.hidden = (self.model.processedImage == nil);
     
-    //[self updateSourcePhotoView];
-        
     self.statusLabel.text = @"Preparing image for use...";
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     // now do the time consuming image operations in the background
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-       // NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
         
         SourceImagePhoto *sip = [[SourceImagePhoto alloc] init];
         
@@ -526,6 +524,11 @@
         // metadata will be nil if the image came from photo album
         NSDictionary *metadata = [info objectForKey:UIImagePickerControllerMediaMetadata];
         
+        if (metadata != nil) {
+            for (NSString *key in [metadata keyEnumerator]) {
+                NSLog(@"%@ : %@", key, [metadata objectForKey:key]);
+            }
+        }
         if (metadata != nil && [[NSUserDefaults standardUserDefaults] boolForKey:kSaveCameraPhotos]) {
             // save photo to camera roll
             ALAssetsLibrary *al = [[ALAssetsLibrary alloc] init];
@@ -548,8 +551,6 @@
         
         [self.model addSourceImage:sip];
         [sip release];
-
-        //[pool drain];
         
         dispatch_async( dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
