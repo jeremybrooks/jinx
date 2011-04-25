@@ -248,6 +248,25 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 					</object>
+					<object class="IBUIButton" id="280163621">
+						<reference key="NSNextResponder" ref="774585933"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{262, 237}, {29, 31}}</string>
+						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="228616312"/>
+						<int key="IBUIButtonType">2</int>
+						<reference key="IBUIHighlightedTitleColor" ref="786416593"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="16339245"/>
+					</object>
 				</object>
 				<string key="NSFrame">{{0, 44}, {320, 436}}</string>
 				<reference key="NSSuperview"/>
@@ -352,6 +371,23 @@
 					</object>
 					<int key="connectionID">49</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">showFullSizeImage:</string>
+						<reference key="source" ref="280163621"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">51</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">previewImageDetailButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="280163621"/>
+					</object>
+					<int key="connectionID">52</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -383,6 +419,7 @@
 							<reference ref="597483159"/>
 							<reference ref="684291846"/>
 							<reference ref="320322296"/>
+							<reference ref="280163621"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -447,6 +484,11 @@
 						<reference key="object" ref="2827665"/>
 						<reference key="parent" ref="503143383"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">50</int>
+						<reference key="object" ref="280163621"/>
+						<reference key="parent" ref="774585933"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -466,6 +508,7 @@
 					<string>43.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>46.IBPluginDependency</string>
 					<string>48.IBPluginDependency</string>
+					<string>50.IBPluginDependency</string>
 					<string>6.IBEditorWindowLastContentRect</string>
 					<string>6.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
@@ -486,6 +529,7 @@
 					<real value="0.0"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{239, 654}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -504,7 +548,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">49</int>
+			<int key="maxID">52</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -538,6 +582,7 @@
 							<string>shiftValueSliderChanged:</string>
 							<string>showAboutViewController:</string>
 							<string>showAddButtons:</string>
+							<string>showFullSizeImage:</string>
 							<string>showImageDetailView:</string>
 							<string>showImageSettings:</string>
 						</object>
@@ -555,6 +600,7 @@
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UISlider</string>
+							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
@@ -579,6 +625,7 @@
 							<string>shiftValueSliderChanged:</string>
 							<string>showAboutViewController:</string>
 							<string>showAddButtons:</string>
+							<string>showFullSizeImage:</string>
 							<string>showImageDetailView:</string>
 							<string>showImageSettings:</string>
 						</object>
@@ -641,6 +688,10 @@
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">showFullSizeImage:</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">showImageDetailView:</string>
 								<string key="candidateClassName">UIButton</string>
 							</object>
@@ -660,6 +711,7 @@
 							<string>imageSettingsView</string>
 							<string>mainButtonView</string>
 							<string>previewImage</string>
+							<string>previewImageDetailButton</string>
 							<string>removeImageButton</string>
 							<string>shiftSlider</string>
 							<string>shiftSliderLabel</string>
@@ -677,6 +729,7 @@
 							<string>UIView</string>
 							<string>UIView</string>
 							<string>UIImageView</string>
+							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UISlider</string>
 							<string>UILabel</string>
@@ -697,6 +750,7 @@
 							<string>imageSettingsView</string>
 							<string>mainButtonView</string>
 							<string>previewImage</string>
+							<string>previewImageDetailButton</string>
 							<string>removeImageButton</string>
 							<string>shiftSlider</string>
 							<string>shiftSliderLabel</string>
@@ -731,6 +785,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">previewImage</string>
 								<string key="candidateClassName">UIImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">previewImageDetailButton</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">removeImageButton</string>

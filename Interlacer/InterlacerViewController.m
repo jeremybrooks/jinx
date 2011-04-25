@@ -17,6 +17,7 @@
 #import "IASKAppSettingsViewController.h"
 #import "SourceImageColor.h"
 #import "AboutViewController.h"
+#import "FullSizeImageViewController.h"
 
 #import <MobileCoreServices/UTCoreTypes.h>
 
@@ -29,7 +30,7 @@
 
 @implementation InterlacerViewController
 
-@synthesize previewImage;
+@synthesize previewImage, previewImageDetailButton;
 @synthesize sourceImageView;
 @synthesize model;
 @synthesize slider, sliderLabel;
@@ -45,6 +46,8 @@
 - (void)updatePreviewImageView
 {
     self.previewImage.image = self.model.processedImage;
+    self.previewImageDetailButton.hidden = (self.model.processedImage == nil);
+
 }
 
 
@@ -697,6 +700,15 @@
 }
 
 
+- (IBAction)showFullSizeImage:(UIButton *)sender
+{
+    FullSizeImageViewController *fs = [[FullSizeImageViewController alloc] init];
+    fs.image = self.model.processedImage;
+    [self.navigationController pushViewController:fs animated:YES];
+    [fs release];
+}
+
+
 - (IBAction)clear:(UIButton *)sender
 {
     [self.model clear];
@@ -709,6 +721,7 @@
 - (void)releaseObjects
 {
     self.previewImage = nil;
+    self.previewImageDetailButton = nil;
     self.sourceImageView = nil;
     self.slider = nil;
     self.sliderLabel = nil;
@@ -751,6 +764,8 @@
         self.model = [[Model alloc] init];
         self.rowHeight = MIN_ROW_HEIGHT;
         self.shiftValue = DEFAULT_SHIFT_VALUE;
+        
+        self.previewImageDetailButton.hidden = (self.model.processedImage == nil);
     }
     [self updateSourcePhotoView];
 }

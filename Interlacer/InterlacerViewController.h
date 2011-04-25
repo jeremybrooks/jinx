@@ -25,6 +25,7 @@
 @property (nonatomic, assign) int shiftValue;
 
 @property (nonatomic, retain) IBOutlet UIImageView *previewImage;
+@property (nonatomic, retain) IBOutlet UIButton *previewImageDetailButton;
 @property (nonatomic, retain) IBOutlet UIScrollView *sourceImageView;
 @property (nonatomic, retain) IBOutlet UISlider *slider;
 @property (nonatomic, retain) IBOutlet UILabel *sliderLabel;
@@ -72,5 +73,6 @@
 - (IBAction)saveProcessedImage:(UIButton *)sender;
 - (IBAction)clear:(UIButton *)sender;
 
+- (IBAction)showFullSizeImage:(UIButton *)sender;
 
 @end

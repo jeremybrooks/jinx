@@ -77,6 +77,8 @@
 		7FCEBDA61346993B00A0B559 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCEBDA51346993B00A0B559 /* AssetsLibrary.framework */; };
 		7FE27F051357C85900CCCC87 /* betaicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE27F041357C85900CCCC87 /* betaicon@2x.png */; };
 		7FE27F071357C85F00CCCC87 /* betaicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE27F061357C85F00CCCC87 /* betaicon.png */; };
+		7FEB9B941365B0A700DC9672 /* FullSizeImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB9B921365B0A700DC9672 /* FullSizeImageViewController.m */; };
+		7FEB9B951365B0A700DC9672 /* FullSizeImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB9B931365B0A700DC9672 /* FullSizeImageViewController.xib */; };
 		7FF4C2DD134D6C8A004B2EE2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4C2DB134D6C8A004B2EE2 /* SettingsViewController.m */; };
 		7FF4C2DE134D6C8A004B2EE2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FF4C2DC134D6C8A004B2EE2 /* SettingsViewController.xib */; };
 		7FF4C313134D803A004B2EE2 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4C2ED134D803A004B2EE2 /* IASKAppSettingsViewController.m */; };
@@ -198,6 +200,9 @@
 		7FCEBDA51346993B00A0B559 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		7FE27F041357C85900CCCC87 /* betaicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "betaicon@2x.png"; sourceTree = "<group>"; };
 		7FE27F061357C85F00CCCC87 /* betaicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = betaicon.png; sourceTree = "<group>"; };
+		7FEB9B911365B0A700DC9672 /* FullSizeImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullSizeImageViewController.h; sourceTree = "<group>"; };
+		7FEB9B921365B0A700DC9672 /* FullSizeImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullSizeImageViewController.m; sourceTree = "<group>"; };
+		7FEB9B931365B0A700DC9672 /* FullSizeImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullSizeImageViewController.xib; sourceTree = "<group>"; };
 		7FF4C2DA134D6C8A004B2EE2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		7FF4C2DB134D6C8A004B2EE2 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		7FF4C2DC134D6C8A004B2EE2 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -316,6 +321,9 @@
 				7FF4C2DA134D6C8A004B2EE2 /* SettingsViewController.h */,
 				7FF4C2DB134D6C8A004B2EE2 /* SettingsViewController.m */,
 				7FF4C2DC134D6C8A004B2EE2 /* SettingsViewController.xib */,
+				7FEB9B911365B0A700DC9672 /* FullSizeImageViewController.h */,
+				7FEB9B921365B0A700DC9672 /* FullSizeImageViewController.m */,
+				7FEB9B931365B0A700DC9672 /* FullSizeImageViewController.xib */,
 				7F501C83134511460032B517 /* icons */,
 				7F501C6613450D330032B517 /* Supporting Files */,
 				7FADDFFA13458C4900D1C416 /* SourceImage.h */,
@@ -610,6 +618,7 @@
 				7FBF26841361455A00880056 /* AboutViewController.xib in Resources */,
 				7F277D2013621D0900F41065 /* about.html in Resources */,
 				7F9AF2F813626FCB00EE288A /* Example.png in Resources */,
+				7FEB9B951365B0A700DC9672 /* FullSizeImageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +664,7 @@
 				7F7790CE135005F000DC8A3C /* UIColor-Expanded.m in Sources */,
 				7F7790CF135005F000DC8A3C /* UIColor-HSVAdditions.m in Sources */,
 				7FBF26831361455A00880056 /* AboutViewController.m in Sources */,
+				7FEB9B941365B0A700DC9672 /* FullSizeImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,7 +704,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -714,7 +724,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -768,7 +778,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
