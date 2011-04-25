@@ -140,15 +140,14 @@
         ([self.model.sourceImageArray count] < 2 && self.shiftValue == 0) ) {
         // this means that there is not enough going on to do any processing, so 
         // we remove the preview image (if there is one)
-        self.previewImage.image = nil;
+        self.model.processedImage = nil;
+        [self updatePreviewImageView];
         
     } else {
         self.model.processedImage = nil;
         [self updatePreviewImageView];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.statusLabel.text = @"Interlacing images...";
-        //MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        //hud.labelText = @"Processing";
         
         dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             if ([self.model.sourceImageArray count] > 0) {
@@ -166,9 +165,7 @@
                 unsigned char *newImageData = malloc(height * width * BYTES_PER_PIXEL);            
                 
                 int startRow = 0;
-                for (id sourceImage in self.model.sourceImageArray) {
-                    //NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-                    
+                for (id sourceImage in self.model.sourceImageArray) {                    
                     // if random row height selected, and this is the first image,
                     // copy the entire image. Otherwise, there will be missing parts
                     if (rowHeight == MAX_ROW_HEIGHT && startRow == 0) {
@@ -191,7 +188,6 @@
                     }
                     startRow++;
                     
-                    //[pool drain];
                 }
                 
                 // write back into an image
@@ -215,12 +211,7 @@
                 self.model.processedImage = rawImage;
                 
                 
-                // create preview size image from image
-                /*
-                self.model.previewImage = [rawImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit
-                                                                         bounds:CGSizeMake(PREVIEW_SIZE, PREVIEW_SIZE)
-                                                           interpolationQuality:kCGInterpolationHigh];
-                */
+                
                 // save if auto-save is enabled
                 if ([[NSUserDefaults standardUserDefaults] boolForKey:kAutoSaveProcessedImage]) {
                     ALAssetsLibrary *al = [[ALAssetsLibrary alloc] init];
