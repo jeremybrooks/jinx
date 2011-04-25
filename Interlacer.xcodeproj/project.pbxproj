@@ -24,6 +24,7 @@
 		7F3A88F1134F78D000F21B44 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3A88F0134F78D000F21B44 /* GradientView.m */; };
 		7F3A88F5134F81A400F21B44 /* SourcePhotoInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3A88F3134F81A400F21B44 /* SourcePhotoInfoView.m */; };
 		7F3A88F6134F81A400F21B44 /* SourcePhotoInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F3A88F4134F81A400F21B44 /* SourcePhotoInfoView.xib */; };
+		7F3C6D92136601E7006CD9A9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3C6D91136601E6006CD9A9 /* ImageIO.framework */; };
 		7F3D216313451FBC00EA6BFE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3D216213451FBC00EA6BFE /* MobileCoreServices.framework */; };
 		7F501C6013450D330032B517 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F501C5F13450D330032B517 /* UIKit.framework */; };
 		7F501C6213450D330032B517 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F501C6113450D330032B517 /* Foundation.framework */; };
@@ -126,6 +127,7 @@
 		7F3A88F2134F81A400F21B44 /* SourcePhotoInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcePhotoInfoView.h; sourceTree = "<group>"; };
 		7F3A88F3134F81A400F21B44 /* SourcePhotoInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcePhotoInfoView.m; sourceTree = "<group>"; };
 		7F3A88F4134F81A400F21B44 /* SourcePhotoInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcePhotoInfoView.xib; sourceTree = "<group>"; };
+		7F3C6D91136601E6006CD9A9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		7F3D216213451FBC00EA6BFE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		7F501C5B13450D330032B517 /* Interlacer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Interlacer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F501C5F13450D330032B517 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -250,6 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F3C6D92136601E7006CD9A9 /* ImageIO.framework in Frameworks */,
 				7FF4C329134D80FB004B2EE2 /* MessageUI.framework in Frameworks */,
 				7FCEBDA61346993B00A0B559 /* AssetsLibrary.framework in Frameworks */,
 				7F3D216313451FBC00EA6BFE /* MobileCoreServices.framework in Frameworks */,
@@ -265,6 +268,7 @@
 		7F501C5013450D320032B517 = {
 			isa = PBXGroup;
 			children = (
+				7F3C6D91136601E6006CD9A9 /* ImageIO.framework */,
 				7FE27F061357C85F00CCCC87 /* betaicon.png */,
 				7FE27F041357C85900CCCC87 /* betaicon@2x.png */,
 				7FCD19F5134E0C1300DA3868 /* Root.strings */,
@@ -704,7 +708,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 29;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -712,7 +716,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				SDKROOT = iphoneos;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -724,12 +728,12 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 29;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -746,7 +750,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Interlacer/Interlacer-Prefix.pch";
 				INFOPLIST_FILE = "Interlacer/Interlacer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -763,7 +767,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Interlacer/Interlacer-Prefix.pch";
 				INFOPLIST_FILE = "Interlacer/Interlacer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -778,12 +782,12 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 29;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -801,7 +805,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Interlacer/Interlacer-Prefix.pch";
 				INFOPLIST_FILE = "Interlacer/Interlacer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

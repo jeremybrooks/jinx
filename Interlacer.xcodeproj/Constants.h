@@ -20,9 +20,14 @@
 
 #define OVERLAY_ALPHA 0.5f
 
+// MAX_DISPLAYED_ROW_HEIGHT is the maximum allowed row height
+// MAX_ROW_HEIGHT triggers Random mode
+// MAX_ROW_HEIGHT should be larger than MAX_DISPLAYED_ROW_HEIGHT so that
+// there is a perceived dead spot before switching to random
 #define MIN_ROW_HEIGHT 1
-#define MAX_DISPLAYED_ROW_HEIGHT 10
-#define MAX_ROW_HEIGHT 12
+#define MAX_DISPLAYED_ROW_HEIGHT 15
+#define MAX_ROW_HEIGHT 17
+
 
 #define DEFAULT_SHIFT_VALUE 0
 #define MIN_SHIFT_VALUE -50

@@ -28,6 +28,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import <ImageIO/CGImageProperties.h>
+
 @implementation InterlacerViewController
 
 @synthesize previewImage, previewImageDetailButton;
@@ -214,19 +216,7 @@
                 
                 // save if auto-save is enabled
                 if ([[NSUserDefaults standardUserDefaults] boolForKey:kAutoSaveProcessedImage]) {
-                    ALAssetsLibrary *al = [[ALAssetsLibrary alloc] init];
-                    [al writeImageToSavedPhotosAlbum:[rawImage CGImage]
-                                         orientation:ALAssetOrientationUp
-                                     completionBlock:^(NSURL *assetURL, NSError *error) {
-                                         if (error == nil) {
-                                             self.statusLabel.text = @"Image has been saved.";
-                                         } else {
-                                             self.statusLabel.text = @"Error while saving image.";
-                                             NSLog(@"%@", [error description]);
-                                         }
-                                     }];
-                    
-                    [al release];
+                    [self saveProcessedImage:nil];
                 }             
             }
             
@@ -563,6 +553,7 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissModalViewControllerAnimated:YES];
+    self.previewImageDetailButton.hidden = (self.model.processedImage == nil);
 }
 //
 // END Implement the UIPickerControllerDelegate protocol
@@ -664,10 +655,62 @@
     if (self.model.processedImage != nil) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"Saving";
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy:MM:dd HH:mm:ss"];
+        NSString *now = [formatter stringFromDate:[NSDate date]];
+        [formatter release];
         
+        // Exif metadata
+        NSMutableDictionary *exifDictionary = [NSMutableDictionary dictionary];
+        [exifDictionary setValue:now forKey:(NSString *)kCGImagePropertyExifDateTimeOriginal];
+        [exifDictionary setValue:now forKey:(NSString *)kCGImagePropertyExifDateTimeDigitized];
+        [exifDictionary setValue:[NSNumber numberWithFloat:self.model.processedImage.size.width]forKey:(NSString *)kCGImagePropertyExifPixelXDimension];
+        [exifDictionary setValue:[NSNumber numberWithFloat:self.model.processedImage.size.height]  forKey:(NSString *)kCGImagePropertyExifPixelYDimension];
+        
+        // Tiff metadata
+        NSMutableDictionary *tiffDictionary = [NSMutableDictionary dictionary];
+        [tiffDictionary setValue:now forKey:(NSString *)kCGImagePropertyTIFFDateTime];
+        [tiffDictionary setValue:@"Interlacer" forKey:(NSString *)kCGImagePropertyTIFFMake];
+        
+        // model is the version
+        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+        [tiffDictionary setValue:[NSString stringWithFormat:@"%@ (%@)", version, build] forKey:(NSString *)kCGImagePropertyTIFFModel];
+        
+        // software contains image/color info, line height, shift
+        NSMutableString *software = [NSMutableString string];
+        for (id<SourceImage> source in [self.model sourceImageArray]) {
+            if ([source isKindOfClass:[SourceImagePhoto class]]) {
+                [software appendFormat:@"[Image %gx%g] ", 
+                 ((SourceImagePhoto *)source).image.size.width,
+                 ((SourceImagePhoto *)source).image.size.height];
+            } else if ([source isKindOfClass:[SourceImageColor class]]) {
+                const CGFloat * components = CGColorGetComponents([((SourceImageColor *)source) color].CGColor);
+                int red = 255 * components[0];
+                int green = 255 * components[1];
+                int blue = 255 * components[2];
+                [software appendFormat:@"[RGB %d,%d,%d] ", red, green, blue];
+            }
+        }
+        if (self.rowHeight == MAX_ROW_HEIGHT) {
+            [software appendString:@"[Line Size Random] "];
+        } else {
+            [software appendFormat:@"[Line Size %d] ", self.rowHeight];
+        }
+        [software appendFormat:@"[Shift %d]", self.shiftValue];
+        [tiffDictionary setValue:software forKey:(NSString *)kCGImagePropertyTIFFSoftware];
+                     
+        // image metadata
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:[NSNumber numberWithFloat:self.model.processedImage.size.width] forKey:(NSString *)kCGImagePropertyPixelWidth];
+        [dict setValue:[NSNumber numberWithFloat:self.model.processedImage.size.height] forKey:(NSString *)kCGImagePropertyPixelHeight];
+        [dict setValue:exifDictionary forKey:(NSString *)kCGImagePropertyExifDictionary];
+        [dict setValue:tiffDictionary forKey:(NSString *)kCGImagePropertyTIFFDictionary];
+                
         ALAssetsLibrary *al = [[ALAssetsLibrary alloc] init];
+        
         [al writeImageToSavedPhotosAlbum:[self.model.processedImage CGImage]
-                             orientation:ALAssetOrientationUp
+                                metadata:dict
                          completionBlock:^(NSURL *assetURL, NSError *error) {
                              [MBProgressHUD hideHUDForView:self.view animated:YES];
                              if (error == nil) {

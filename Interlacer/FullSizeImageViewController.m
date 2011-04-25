@@ -76,11 +76,14 @@
     
     // set min/max zoom, and zoom to show full image
     self.scrollView.maximumZoomScale = 3.0f;
-    if (self.image.size.width > self.image.size.height) {
-        self.scrollView.minimumZoomScale = self.scrollView.bounds.size.width / self.image.size.width;
+    float wRatio = self.scrollView.bounds.size.width / self.image.size.width;
+    float hRatio = self.scrollView.bounds.size.height / self.image.size.height;
+    if (wRatio < hRatio) {
+        self.scrollView.minimumZoomScale = wRatio;
     } else {
-        self.scrollView.minimumZoomScale = self.scrollView.bounds.size.height / self.image.size.height;
+        self.scrollView.minimumZoomScale = hRatio;
     }
+    
     self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
     
     // support double tap
