@@ -49,10 +49,14 @@
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MAA</bytes>
+						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<float key="IBUIMinimumZoomScale">0.5</float>
+						<float key="IBUIMinimumZoomScale">0.30000001192092896</float>
 						<float key="IBUIMaximumZoomScale">3</float>
 					</object>
 				</object>

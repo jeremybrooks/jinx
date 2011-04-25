@@ -31,7 +31,11 @@
 - (void)doubleTap:(UIPinchGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateRecognized) {
-        [self.scrollView setZoomScale:1.0f animated:YES];
+        if (self.scrollView.zoomScale == 1.0f) {
+            [self.scrollView setZoomScale:self.scrollView.minimumZoomScale animated:YES];
+        } else {
+            [self.scrollView setZoomScale:1.0f animated:YES];
+        }
     }
 }
 
@@ -63,11 +67,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = [NSString stringWithFormat:@"%gx%g", self.image.size.width, self.image.size.height];
+
     self.scrollView.contentSize = self.image.size;
     imageView = [[UIImageView alloc] initWithImage:self.image];
     [self.scrollView addSubview:imageView];
     
     self.scrollView.delegate = self;
+    
+    // set min/max zoom, and zoom to show full image
+    self.scrollView.maximumZoomScale = 3.0f;
+    if (self.image.size.width > self.image.size.height) {
+        self.scrollView.minimumZoomScale = self.scrollView.bounds.size.width / self.image.size.width;
+    } else {
+        self.scrollView.minimumZoomScale = self.scrollView.bounds.size.height / self.image.size.height;
+    }
+    self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
     
     // support double tap
     UITapGestureRecognizer *doubletap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
