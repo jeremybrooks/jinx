@@ -17,7 +17,7 @@
 
 @property (nonatomic, readonly) NSMutableArray *sourceImageArray;
 @property (nonatomic, retain) UIImage *processedImage;
-//@property (nonatomic, retain) UIImage *previewImage;
+@property (nonatomic, retain) UIImage *previewImage;
 
 - (void)addSourceImage:(id<SourceImage>)sourceImage;
 - (UIImage *)imageForOverlay;

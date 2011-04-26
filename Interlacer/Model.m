@@ -15,7 +15,7 @@
 
 @synthesize sourceImageArray;
 @synthesize processedImage;
-//@synthesize previewImage;
+@synthesize previewImage;
 
 - (id)init
 {
@@ -30,7 +30,7 @@
 {
     [self.sourceImageArray removeAllObjects];
     self.processedImage = nil;
-//    self.previewImage = nil;
+    self.previewImage = nil;
 }
 
 
@@ -132,7 +132,7 @@
 - (void)dealloc {
     [sourceImageArray release];
     [processedImage release];
-    //[previewImage release];
+    [previewImage release];
     [super dealloc];
 }
 @end

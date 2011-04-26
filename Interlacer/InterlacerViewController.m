@@ -47,8 +47,8 @@
 #pragma  mark - UI Update Methods
 - (void)updatePreviewImageView
 {
-    self.previewImage.image = self.model.processedImage;
-    self.previewImageDetailButton.hidden = (self.model.processedImage == nil);
+    self.previewImage.image = self.model.previewImage;
+    self.previewImageDetailButton.hidden = (self.model.previewImage == nil);
 
 }
 
@@ -212,7 +212,10 @@
                 
                 self.model.processedImage = rawImage;
                 
-                
+                // create preview image
+                self.model.previewImage = [rawImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit
+                                                                         bounds:CGSizeMake(PREVIEW_SIZE, PREVIEW_SIZE)
+                                                           interpolationQuality:kCGInterpolationHigh];
                 
                 // save if auto-save is enabled
                 if ([[NSUserDefaults standardUserDefaults] boolForKey:kAutoSaveProcessedImage]) {
