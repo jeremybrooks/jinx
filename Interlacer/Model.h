@@ -12,7 +12,7 @@
 @private
     NSMutableArray *sourceImageArray;
     UIImage *processedImage;
-    //UIImage *previewImage;
+    UIImage *previewImage;
 }
 
 @property (nonatomic, readonly) NSMutableArray *sourceImageArray;

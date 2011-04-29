@@ -268,7 +268,6 @@
 		7F501C5013450D320032B517 = {
 			isa = PBXGroup;
 			children = (
-				7F3C6D91136601E6006CD9A9 /* ImageIO.framework */,
 				7FE27F061357C85F00CCCC87 /* betaicon.png */,
 				7FE27F041357C85900CCCC87 /* betaicon@2x.png */,
 				7FCD19F5134E0C1300DA3868 /* Root.strings */,
@@ -290,6 +289,7 @@
 		7F501C5E13450D330032B517 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F3C6D91136601E6006CD9A9 /* ImageIO.framework */,
 				7FF4C328134D80FA004B2EE2 /* MessageUI.framework */,
 				7FCEBDA51346993B00A0B559 /* AssetsLibrary.framework */,
 				7F3D216213451FBC00EA6BFE /* MobileCoreServices.framework */,
@@ -708,7 +708,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -728,7 +728,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -782,7 +782,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

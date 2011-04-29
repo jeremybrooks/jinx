@@ -142,11 +142,11 @@
         ([self.model.sourceImageArray count] < 2 && self.shiftValue == 0) ) {
         // this means that there is not enough going on to do any processing, so 
         // we remove the preview image (if there is one)
-        self.model.processedImage = nil;
+        self.model.previewImage = nil;
         [self updatePreviewImageView];
         
     } else {
-        self.model.processedImage = nil;
+        self.model.previewImage = nil;
         [self updatePreviewImageView];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.statusLabel.text = @"Interlacing images...";
