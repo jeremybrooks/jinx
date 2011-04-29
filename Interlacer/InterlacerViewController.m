@@ -501,7 +501,7 @@
     
     // the disclosure button is showing up when the camera view is dismissed
     // this works around that issue.
-    self.previewImageDetailButton.hidden = (self.model.processedImage == nil);
+    self.previewImageDetailButton.hidden = (self.model.previewImage == nil);
     
     self.statusLabel.text = @"Preparing image for use...";
     
@@ -556,7 +556,7 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissModalViewControllerAnimated:YES];
-    self.previewImageDetailButton.hidden = (self.model.processedImage == nil);
+    self.previewImageDetailButton.hidden = (self.model.previewImage == nil);
 }
 //
 // END Implement the UIPickerControllerDelegate protocol
@@ -803,7 +803,7 @@
         self.rowHeight = MIN_ROW_HEIGHT;
         self.shiftValue = DEFAULT_SHIFT_VALUE;
         
-        self.previewImageDetailButton.hidden = (self.model.processedImage == nil);
+        self.previewImageDetailButton.hidden = (self.model.previewImage == nil);
     }
     [self updateSourcePhotoView];
 }
