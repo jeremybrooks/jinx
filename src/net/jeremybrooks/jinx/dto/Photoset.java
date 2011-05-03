@@ -20,7 +20,6 @@ package net.jeremybrooks.jinx.dto;
 
 import java.io.Serializable;
 
-
 /**
  * Represents a set of photos on Flickr.
  * 

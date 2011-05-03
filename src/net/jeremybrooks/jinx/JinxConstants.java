@@ -208,5 +208,12 @@ public class JinxConstants {
 
      /** Original image, either a jpg, gif or png, depending on source format */
      public static final int SIZE_ORIGINAL = 6;
+
+
+     public static enum GroupMemberType {
+	 member,
+	 moderator,
+	 admin
+     }
      
 }

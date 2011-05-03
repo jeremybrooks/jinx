@@ -424,6 +424,17 @@ public class PhotoBase implements Serializable {
 
     /**
      * Get the image at the specified size.
+     * <p>The available sizes are:
+     * <ul>
+     * <li>JinxConstants.SIZE_SMALL_SQUARE</li>
+     * <li>JinxConstants.SIZE_THUMBNAIL</li>
+     * <li>JinxConstants.SIZE_SMALL</li>
+     * <li>JinxConstants.SIZE_MEDIUM</li>
+     * <li>JinxConstants.SIZE_MEDIUM_640</li>
+     * <li>JinxConstants.SIZE_LARGE</li>
+     * <li>JinxConstants.SIZE_ORIGINAL</li>
+     * </ul>
+     * </p>
      *
      * @param size the desired size.
      * @return image at the desired size.

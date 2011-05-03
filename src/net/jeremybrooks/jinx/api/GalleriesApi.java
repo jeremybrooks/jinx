@@ -18,15 +18,12 @@
  */
 package net.jeremybrooks.jinx.api;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
-import net.jeremybrooks.jinx.dto.Contact;
-import net.jeremybrooks.jinx.dto.Contacts;
 import net.jeremybrooks.jinx.dto.Galleries;
 import net.jeremybrooks.jinx.dto.Gallery;
 import net.jeremybrooks.jinx.dto.Photos;
@@ -308,22 +305,6 @@ public class GalleriesApi {
 
 	NodeList nodes = doc.getElementsByTagName("gallery");
 	return parseGalleryNode(nodes.item(0));
-//	Gallery gallery = new Gallery();
-//	gallery.setId(JinxUtils.getValueByXPath(doc, "/rsp/gallery/@id"));
-//	gallery.setUrl(JinxUtils.getValueByXPath(doc, "/rsp/gallery/@url"));
-//	gallery.setOwner(JinxUtils.getValueByXPath(doc, "/rsp/gallery/@owner"));
-//	gallery.setPrimaryPhotoId(JinxUtils.getValueByXPath(doc, "/rsp/gallery/@primary_photo_id"));
-//	gallery.setDateCreate(JinxUtils.parseTimestampToDate(JinxUtils.getValueByXPath(doc, "/rsp/gallery/@date_create")));
-//	gallery.setDateUpdate(JinxUtils.parseTimestampToDate(JinxUtils.getValueByXPath(doc, "/rsp/gallery/@date_update")));
-//	gallery.setCountPhotos(JinxUtils.getValueByXPathAsInt(doc, "/rsp/gallery/@count_photos"));
-//	gallery.setCountVideos(JinxUtils.getValueByXPathAsInt(doc, "/rsp/gallery/@count_videos"));
-//	gallery.setPrimaryPhotoServer(JinxUtils.getValueByXPath(doc, "/rsp/gallery/@primary_photo_server"));
-//	gallery.setPrimaryPhotoFarm(JinxUtils.getValueByXPath(doc, "/rsp/gallery/@primary_photo_farm"));
-//	gallery.setPrimaryPhotoSecret(JinxUtils.getValueByXPath(doc, "/rsp/gallery/@primary_photo_secret"));
-//	gallery.setTitle(JinxUtils.getNamedChildTextContent(doc, "title"));
-//	gallery.setDescription(JinxUtils.getNamedChildTextContent(doc, "description"));
-//
-//	return gallery;
     }
 
 

@@ -21,6 +21,8 @@ This list shows which API entry points have been implemented:
   * contacts
   * favorites
   * galleries
+  * groups
+  * groups.members
   * photos
   * photosets
 
@@ -33,8 +35,6 @@ There are project files here for NetBeans, but NetBeans is not required. To buil
 TODO:
 
 Implement these API entry points:
-groups
-groups.members
 groups.pools
 interestingness
 machinetags
