@@ -1,4 +1,21 @@
-package net.jeremybrooks.jinx.api;
+/*
+ * Jinx is Copyright 2011 by Jeremy Brooks
+ *
+ * This file is part of Jinx.
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+ */package net.jeremybrooks.jinx.api;
 
 import java.util.Map;
 import java.util.Set;
@@ -20,11 +37,27 @@ import org.w3c.dom.NodeList;
 public class GroupsMembersApi {
 
 
+    private static GroupsMembersApi instance = null;
+
+
+    private GroupsMembersApi() {
+    }
+
+
+    public static GroupsMembersApi getInstance() {
+	if (GroupsMembersApi.instance == null) {
+	    GroupsMembersApi.instance = new GroupsMembersApi();
+	}
+
+	return GroupsMembersApi.instance;
+    }
+
+
     /**
      * Get a list of the members of a group.
      *
      * This method is equivalent to calling
-     * <code>GroupsMembersApi.getList(groupId, null, 0, 0);</code>
+     * <code>getList(groupId, null, 0, 0);</code>
      *
      * @param groupId (required) id of the group to get a list of members for. The group
      *        must be viewable by the Flickr member on whose behalf the API call is made.
@@ -32,8 +65,8 @@ public class GroupsMembersApi {
      * @throws JinxException if the groupId is null or empty, or if there are any errors.
      * @see http://www.flickr.com/services/api/flickr.groups.members.getList.html
      */
-    public static Members getList(String groupId) throws JinxException {
-	return GroupsMembersApi.getList(groupId, null, 0, 0);
+    public Members getList(String groupId) throws JinxException {
+	return this.getList(groupId, null, 0, 0);
     }
 
     
@@ -55,7 +88,7 @@ public class GroupsMembersApi {
      * @throws JinxException if the groupId is null or empty, or if there are any errors.
      * @see http://www.flickr.com/services/api/flickr.groups.members.getList.html
      */
-    public static Members getList(String groupId, Set<GroupMemberType> memberTypes, int perPage, int page)
+    public Members getList(String groupId, Set<GroupMemberType> memberTypes, int perPage, int page)
     throws JinxException {
 	if (groupId == null || groupId.isEmpty()) {
 	    throw new JinxException("Parameter groupId is required.");

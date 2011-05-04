@@ -23,6 +23,7 @@ package net.jeremybrooks.jinx.dto;
  * @author jeremyb
  */
 public class Group {
+    private String nsid;
     private String id;
     private String iconserver;
     private String iconfarm;
@@ -31,6 +32,7 @@ public class Group {
     private String name;
     private String description;
     private int members;
+    private int photos;
     private String online;
     private String chatnsid;
     private String inchat;
@@ -39,6 +41,23 @@ public class Group {
     private Throttle throttle;
     private Restrictions restrictions;
     private boolean eighteenPlus;
+    private boolean admin;
+
+    /**
+     * @return the nsid
+     */
+    public String getNsid() {
+	return nsid;
+    }
+
+
+    /**
+     * @param nsid the nsid to set
+     */
+    public void setNsid(String nsid) {
+	this.nsid = nsid;
+    }
+
 
     /**
      * @return the id
@@ -149,6 +168,21 @@ public class Group {
      */
     public void setMembers(int members) {
 	this.members = members;
+    }
+
+    /**
+     * @return the photos
+     */
+    public int getPhotos() {
+	return photos;
+    }
+
+
+    /**
+     * @param photos the photos to set
+     */
+    public void setPhotos(int photos) {
+	this.photos = photos;
     }
 
 
@@ -293,12 +327,29 @@ public class Group {
 	this.eighteenPlus = eighteenPlus;
     }
 
+
+    /**
+     * @return the admin
+     */
+    public boolean isAdmin() {
+	return admin;
+    }
+
+
+    /**
+     * @param admin the admin to set
+     */
+    public void setAdmin(boolean admin) {
+	this.admin = admin;
+    }
+
     
     @Override
     public String toString() {
 	StringBuilder sb = new StringBuilder(this.getClass().getName());
 
 	sb.append(" [ ");
+	sb.append("nsid=").append(this.getNsid()).append(" | ");
 	sb.append("id=").append(this.getId()).append(" | ");
 	sb.append("iconserver=").append(this.getIconserver()).append(" | ");
 	sb.append("iconfarm=").append(this.getIconfarm()).append(" | ");
@@ -307,6 +358,7 @@ public class Group {
 	sb.append("name=").append(this.getName()).append(" | ");
 	sb.append("description=").append(this.getDescription()).append(" | ");
 	sb.append("members=").append(this.getMembers()).append(" | ");
+	sb.append("photos=").append(this.getPhotos()).append(" | ");
 	sb.append("online=").append(this.getOnline()).append(" | ");
 	sb.append("chatnsid=").append(this.getChatnsid()).append(" | ");
 	sb.append("inchat=").append(this.getInchat()).append(" | ");
@@ -314,10 +366,12 @@ public class Group {
 	sb.append("blast=").append(this.getBlast()).append(" | ");
 	sb.append("throttle=").append(this.getThrottle()).append(" | ");
 	sb.append("restrictions=").append(this.getRestrictions()).append(" | ");
-	sb.append("eighteenPlus=").append(this.isEighteenPlus());
+	sb.append("eighteenPlus=").append(this.isEighteenPlus()).append(" | ");
+	sb.append("admin=").append(this.isAdmin());
 
 	sb.append(" ]");
 	return sb.toString();
     }
-    
+
+
 }

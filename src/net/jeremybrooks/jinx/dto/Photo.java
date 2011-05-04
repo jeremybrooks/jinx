@@ -76,6 +76,7 @@ public class Photo extends PhotoBase implements Serializable {
     private boolean hasComment;
     private String comment;
 
+    private boolean faved;
 
 
     /**
@@ -599,6 +600,7 @@ public class Photo extends PhotoBase implements Serializable {
 	sb.append("description=").append(super.getDescription()).append(" | ");
 	sb.append("url=").append(this.url).append(" | ");
 	sb.append("thumb=").append(this.thumb).append(" | ");
+	sb.append("faved=").append(this.isFaved()).append(" | ");
 	sb.append("hasComment=").append(this.hasComment).append(" | ");
 	sb.append("comment=").append(this.comment);
 
@@ -691,5 +693,21 @@ public class Photo extends PhotoBase implements Serializable {
      */
     public void setComment(String comment) {
 	this.comment = comment;
+    }
+
+
+    /**
+     * @return the faved
+     */
+    public boolean isFaved() {
+	return faved;
+    }
+
+
+    /**
+     * @param faved the faved to set
+     */
+    public void setFaved(boolean faved) {
+	this.faved = faved;
     }
 }

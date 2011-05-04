@@ -1848,7 +1848,6 @@ public class PhotosApi {
 	    p.setViews(JinxUtils.getAttributeAsInt(map, "views"));
 	    p.setHasComment(JinxUtils.getAttributeAsBoolean(map, "has_comment"));
 	    p.setDescription(JinxUtils.getNamedChildTextContent(photoNode, "description"));
-	    //p.setDescription(JinxUtils.getFirstChildTextContent(photoNode));
 	    p.setComment(JinxUtils.getNamedChildTextContent(photoNode, "comment"));
 
 	    photoList.add(p);

@@ -23,6 +23,7 @@ This list shows which API entry points have been implemented:
   * galleries
   * groups
   * groups.members
+  * groups.pools
   * photos
   * photosets
 
@@ -35,7 +36,6 @@ There are project files here for NetBeans, but NetBeans is not required. To buil
 TODO:
 
 Implement these API entry points:
-groups.pools
 interestingness
 machinetags
 panda

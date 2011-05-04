@@ -41,6 +41,21 @@ import org.w3c.dom.NodeList;
  */
 public class GroupsApi {
 
+    private static GroupsApi instance = null;
+
+
+    private GroupsApi() {
+    }
+
+
+    public static GroupsApi getInstance() {
+	if (GroupsApi.instance == null) {
+	    GroupsApi.instance = new GroupsApi();
+	}
+
+	return GroupsApi.instance;
+    }
+
 
     /**
      * Browse the group category tree, finding groups and sub-categories.
@@ -55,7 +70,7 @@ public class GroupsApi {
      * @throws JinxException if there are any errors.
      * @see http://www.flickr.com/services/api/flickr.groups.browse.html
      */
-    public static Category browse(String categoryId) throws JinxException {
+    public Category browse(String categoryId) throws JinxException {
 	Map<String, String> params = new TreeMap<String, String>();
 	params.put("method", "flickr.groups.browse");
 	params.put("api_key", Jinx.getInstance().getApiKey());
@@ -102,7 +117,7 @@ public class GroupsApi {
 		 Node groupNode = groupNodes.item(i);
 		 Group group = new Group();
 		 NamedNodeMap attrs = groupNode.getAttributes();
-		 group.setId(JinxUtils.getAttribute(attrs, "nsid"));
+		 group.setNsid(JinxUtils.getAttribute(attrs, "nsid"));
 		 group.setName(JinxUtils.getAttribute(attrs, "name"));
 		 group.setMembers(JinxUtils.getAttributeAsInt(attrs, "members"));
 		 group.setOnline(JinxUtils.getAttribute(attrs, "online"));
@@ -128,7 +143,7 @@ public class GroupsApi {
      * @throws JinxException if groupId is null or empty, or if there are any errors.
      * @see http://www.flickr.com/services/api/flickr.groups.getInfo.html
      */
-    public static Group getInfo(String groupId, String lang) throws JinxException {
+    public Group getInfo(String groupId, String lang) throws JinxException {
 	if (groupId == null || groupId.isEmpty()) {
 	    throw new JinxException("Parameter groupId is required.");
 	}
@@ -204,15 +219,15 @@ public class GroupsApi {
      * This method does not require authentication.
      *
      * This method is equivalent to calling 
-     * <code>GroupsApi.search(text, 0, 0);</code>
+     * <code>search(text, 0, 0);</code>
      * 
      * @param text the text to search for (required).
      * @return list of groups that match the search.
      * @throws JinxException if text is null or empty, or if there are any errors.
      * @see http://www.flickr.com/services/api/flickr.groups.search.html
      */
-    public static Groups search(String text) throws JinxException {
-	return GroupsApi.search(text, 0, 0);
+    public Groups search(String text) throws JinxException {
+	return this.search(text, 0, 0);
     }
 
 
@@ -231,7 +246,7 @@ public class GroupsApi {
      * @throws JinxException if text is null or empty, or if there are any errors.
      * @see http://www.flickr.com/services/api/flickr.groups.search.html
      */
-    public static Groups search(String text, int perPage, int page) throws JinxException {
+    public Groups search(String text, int perPage, int page) throws JinxException {
 	if (text == null || text.isEmpty()) {
 	    throw new JinxException("Parameter text is required.");
 	}
@@ -276,7 +291,7 @@ public class GroupsApi {
 	    for (int i = 0; i < groupNodes.getLength(); i++) {
 		NamedNodeMap attrs =  groupNodes.item(i).getAttributes();
 		Group g = new Group();
-		g.setId(JinxUtils.getAttribute(attrs, "nsid"));
+		g.setNsid(JinxUtils.getAttribute(attrs, "nsid"));
 		g.setName(JinxUtils.getAttribute(attrs, "name"));
 		g.setEighteenPlus(JinxUtils.getAttributeAsBoolean(attrs, "eighteenplus"));
 

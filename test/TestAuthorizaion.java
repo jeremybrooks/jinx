@@ -41,7 +41,7 @@ public class TestAuthorizaion {
 		// No token exists, so initialize with our key and secret,
 		// then prompt user to authorize our application
 		Jinx.getInstance().init(KEY, SECRET);
-		Frob frob = AuthApi.getInstance().getFrob(JinxConstants.PERMS_READ);
+		Frob frob = AuthApi.getInstance().getFrob(JinxConstants.PERMS_WRITE);
 
 		// Send user to the login URL
 		// In a real application, you would probably do this in a GUI
