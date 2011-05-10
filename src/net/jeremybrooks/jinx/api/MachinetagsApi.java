@@ -21,6 +21,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
+ * http://www.flickr.com/services/api/
  * http://code.flickr.com/blog/2008/12/15/machine-tag-hierarchies/
  * @author emeraldjava
  */
