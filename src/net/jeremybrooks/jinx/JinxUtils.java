@@ -46,6 +46,7 @@ public class JinxUtils {
 	documentBuilderFactory = DocumentBuilderFactory.newInstance();
 	xPathFactory = XPathFactory.newInstance();
 	formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	ymdFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 
@@ -57,6 +58,9 @@ public class JinxUtils {
 
     /* Dates look like this: 2004-11-29 16:01:26 */
     private static SimpleDateFormat formatter;
+
+    /* Formatter for YYYY-MM-DD dates. */
+    private static SimpleDateFormat ymdFormatter;
 
     /**
      * Parses the status from an xml document.
@@ -176,11 +180,17 @@ public class JinxUtils {
     /**
      * Format a date in MySQL format.
      *
+     * If the date is null, this method will return an empty string.
+     *
      * @param date the date to format.
      * @return formatted date.
      */
     public static String formatDateAsMySqlTimestamp(Date date) {
-	return JinxUtils.formatter.format(date);
+	String retString = "";
+	if (date != null) {
+	    retString = JinxUtils.formatter.format(date);
+	}
+	return retString;
     }
 
 
@@ -201,6 +211,23 @@ public class JinxUtils {
 	    // will return null
 	}
 	return date;
+    }
+
+
+    /**
+     * Format a date in YYYY-MM-DD format.
+     *
+     * If the date is null, this method will return an empty string.
+     *
+     * @param date the date to format.
+     * @return formatted date.
+     */
+    public static String formatDateAsYMD(Date date) {
+	String retString = "";
+	if (date != null) {
+	    retString = JinxUtils.ymdFormatter.format(date);
+	}
+	return retString;
     }
 
     /**
