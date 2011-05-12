@@ -1,9 +1,9 @@
 package net.jeremybrooks.jinx.api;
 
 import junit.framework.Assert;
-import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxTestUtil;
 import net.jeremybrooks.jinx.dto.Namespaces;
+import net.jeremybrooks.jinx.dto.Pairs;
 import net.jeremybrooks.jinx.dto.Predicates;
 import net.jeremybrooks.jinx.dto.Values;
 import net.jeremybrooks.jinx.logger.JinxLogger;
@@ -41,5 +41,21 @@ public class MachinetagsApiTest {
         Namespaces namespaces = MachinetagsApi.getInstance().getNamespaces("b",null,null);
         JinxLogger.getLogger().log(namespaces+" "+namespaces.getNamespaces());
         Assert.assertNotNull(namespaces);
+	}
+	
+	@Test
+	public void getRecentValues() throws Exception
+	{
+		Values values = MachinetagsApi.getInstance().getRecentValues("a","a",null);
+        JinxLogger.getLogger().log(values+" "+values.getValues());
+        Assert.assertNotNull(values);
+	}
+	
+	@Test
+	public void getPairs() throws Exception
+	{
+		Pairs pairs = MachinetagsApi.getInstance().getPairs("b",null,null,null);
+        JinxLogger.getLogger().log(pairs+" "+pairs.getPairs());
+        Assert.assertNotNull(pairs);
 	}
 }

@@ -25,14 +25,10 @@ package net.jeremybrooks.jinx.logger;
  */
 public class DefaultLogger implements LogInterface {
 
-
-    @Override
     public void log(String message) {
 	// Does nothing
     }
 
-
-    @Override
     public void log(String message, Throwable exception) {
 	// Does nothing
     }

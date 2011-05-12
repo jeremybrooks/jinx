@@ -2,6 +2,11 @@ package net.jeremybrooks.jinx.dto;
 
 import java.util.List;
 
+/**
+ * <values namespace="taxonomy" predicate="common" page="1" total="500" perpage="500" pages="1">
+ * @author assure
+ *
+ */
 public class Values {
 
 	private String namespace;

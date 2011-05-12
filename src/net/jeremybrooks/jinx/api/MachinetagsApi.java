@@ -10,6 +10,8 @@ import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.dto.Namespace;
 import net.jeremybrooks.jinx.dto.Namespaces;
+import net.jeremybrooks.jinx.dto.Pair;
+import net.jeremybrooks.jinx.dto.Pairs;
 import net.jeremybrooks.jinx.dto.Predicate;
 import net.jeremybrooks.jinx.dto.Predicates;
 import net.jeremybrooks.jinx.dto.Value;
@@ -138,9 +140,19 @@ public class MachinetagsApi {
      * @param predicate String optional
      * @param added_since String optional
      */
-    public void getRecentValues(String namespace,String predicate,String added_since) throws JinxException
+    public Values getRecentValues(String namespace,String predicate,String added_since) throws JinxException
     {
-    	throw new JinxException("",new UnsupportedOperationException("getRecentValues()"));
+    	Map<String, String> params = new TreeMap<String, String>();
+    	params.put("method", "flickr.machinetags.getRecentValues");
+    	params.put("api_key", Jinx.getInstance().getApiKey());
+    	if (namespace != null && !namespace.trim().isEmpty())
+    		params.put("namespace", namespace);
+    	if (predicate != null && !predicate.trim().isEmpty())
+    		params.put("predicate", predicate);
+    	if (added_since != null && !added_since.trim().isEmpty())
+    		params.put("added_since", added_since);
+    	Document doc = Jinx.getInstance().callFlickr(params,false,false);
+    	return parseValuesXml(doc);
     }
     
     /**
@@ -190,6 +202,10 @@ public class MachinetagsApi {
     		Value value = new Value();
     	    Node node = nodeList.item(i);
     	    NamedNodeMap attrs = node.getAttributes();
+    	    value.setNamespace(JinxUtils.getAttribute(attrs, "namespace"));
+    	    value.setPredicate(JinxUtils.getAttribute(attrs, "predicate"));
+    	    value.setFirstadded(JinxUtils.getAttributeAsInt(attrs, "first_added"));
+    	    value.setLastadded(JinxUtils.getAttributeAsInt(attrs, "last_added"));
     	    value.setUsage(JinxUtils.getAttributeAsInt(attrs, "usage"));
     	    value.setValue(JinxUtils.getFirstChildTextContent(node));
     	    valueList.add(value);
@@ -199,10 +215,48 @@ public class MachinetagsApi {
     }
     
     /**
+     * Return a list of unique namespace and predicate pairs, optionally limited by predicate or namespace, in alphabetical order.
      * http://www.flickr.com/services/api/flickr.machinetags.getPairs.html
      */
-    public void getPairs() throws JinxException
+    public Pairs getPairs(String namespace,String predicate,String per_page,String page) throws JinxException
     {
-    	throw new JinxException("",new UnsupportedOperationException("getPairs()"));
+    	Map<String, String> params = new TreeMap<String, String>();
+    	params.put("method", "flickr.machinetags.getPairs");
+    	params.put("api_key", Jinx.getInstance().getApiKey());
+    	if (namespace != null && !namespace.trim().isEmpty())
+    		params.put("namespace", namespace);
+    	if (predicate != null && !predicate.trim().isEmpty())
+    		params.put("predicate", predicate);
+    	if (per_page != null && !per_page.trim().isEmpty())
+    		params.put("per_page", per_page);
+   		if (page != null && !page.trim().isEmpty())
+   			params.put("page", page);
+    	Document doc = Jinx.getInstance().callFlickr(params,false,false);
+    	return this.parsePairsXml(doc);
+    }
+    
+    private Pairs parsePairsXml(Document doc) throws JinxException {
+    	Pairs pairs = new Pairs();
+    	List<Pair> pairsList = new ArrayList<Pair>();
+
+    	pairs.setPage(JinxUtils.getValueByXPathAsInt(doc, "/rsp/values/@page"));
+    	pairs.setPages(JinxUtils.getValueByXPathAsInt(doc, "/rsp/values/@pages"));
+    	pairs.setPerpage(JinxUtils.getValueByXPathAsInt(doc, "/rsp/values/@perpage"));
+    	pairs.setTotal(JinxUtils.getValueByXPathAsInt(doc, "/rsp/values/@total"));
+
+    	// Get all the predicate nodes
+    	NodeList nodeList = doc.getElementsByTagName("namespace");
+    	for (int i = 0; i < nodeList.getLength(); i++) {
+    		Pair pair = new Pair();
+    	    Node node = nodeList.item(i);
+    	    NamedNodeMap attrs = node.getAttributes();
+    	    pair.setUsage(JinxUtils.getAttributeAsInt(attrs, "usage"));
+    	    pair.setPredicates(JinxUtils.getAttribute(attrs, "predicates"));
+    	    pair.setNamespace(JinxUtils.getAttribute(attrs, "namespace"));
+    	    pair.setValue(JinxUtils.getFirstChildTextContent(node));
+    	    pairsList.add(pair);
+    	}
+    	pairs.setPairs(pairsList);
+    	return pairs;
     }
 }
