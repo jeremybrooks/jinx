@@ -37,7 +37,6 @@ public class StdoutLogger implements LogInterface {
      *
      * @param message the message to log.
      */
-    @Override
     public void log(String message) {
 	System.out.println(message);
     }
@@ -49,7 +48,6 @@ public class StdoutLogger implements LogInterface {
      * @param message the message to log.
      * @param t the Throwable to log.
      */
-    @Override
     public void log(String message, Throwable t) {
 	System.out.println(message);
 	System.out.println(getStackTrace(t));
