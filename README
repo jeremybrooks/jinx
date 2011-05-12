@@ -55,3 +55,23 @@ stats
 tags
 test
 urls
+
+
+DEVELOPERS READ THIS
+====================
+Flickr apps need an API key to work properly. Jinx is no exception. To run
+the unit tests, you need to go to Flickr and apply for an API key. Once you have
+this key, copy the test/flickr.properties file to test/net/jeremybrooks/jinx/secret.properties
+and fill in the key and secret. This file is excluded by the .gitignore file,
+so your secrets will not end up on github.
+
+When you create a unit test, your setUpClass method should look like this:
+
+@BeforeClass
+public static void setUpClass() throws Exception {
+    Setup.doSetup();
+}
+
+This will ensure that Jinx is set up with you key, secret, and token, and the
+unit tests can be executed.
+
