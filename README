@@ -1,0 +1,57 @@
+Jinx - Flickr API for Java
+
+Jinx is a Java interface to the Flickr API. The project goals are:
+
+1) Simple to use
+2) Pure java with no other dependencies
+3) Complete coverage of the Flickr API
+
+CURRENT STATUS
+==============
+This project is currently in development phase. You can download, build, and use it, but don't cry when it breaks.
+
+Error handling should probably be improved, and argument checking needs to be done.
+
+This list shows which API entry points have been implemented:
+  * activity
+  * auth
+  * blogs
+  * collections
+  * commons
+  * contacts
+  * favorites
+  * galleries
+  * groups
+  * groups.members
+  * groups.pools
+  * interestingness
+  * machinetags (partial)
+  * photos
+  * photosets
+
+
+
+BUILDING
+========
+There are project files here for NetBeans, but NetBeans is not required. To build the project, execute ant jar. The compiled jar file will be in dist/.
+
+TODO:
+
+Implement these API entry points:
+panda
+people
+photos.comments
+photos.geo
+photos.licenses
+photos.notes
+photos.people
+photos.transform
+photos.upload
+photosets.comments
+places
+prefs
+reflection
+stats
+tags
+test
+urls
