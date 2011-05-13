@@ -1791,6 +1791,7 @@ public class PhotosApi {
 	photos.setPages(JinxUtils.getValueByXPathAsInt(doc, "/rsp/photos/@pages"));
 	photos.setPerPage(JinxUtils.getValueByXPathAsInt(doc, "/rsp/photos/@perpage"));
 	photos.setTotal(JinxUtils.getValueByXPathAsInt(doc, "/rsp/photos/@total"));
+	photos.setHasNextPage(JinxUtils.getValueByXPathAsBoolean(doc, "/rsp/photos/@has_next_page"));
 
 	// Get all the photo nodes
 	NodeList nodeList = doc.getElementsByTagName("photo");

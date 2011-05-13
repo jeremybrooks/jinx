@@ -48,6 +48,7 @@ public class Photos implements Serializable {
     private int pages;
     private int perPage;
     private int total;
+    private boolean hasNextPage;
 
 
     private List<Photo> photos;
@@ -207,6 +208,7 @@ public class Photos implements Serializable {
 	sb.append("pages=").append(this.pages).append(" | ");
 	sb.append("perPage=").append(this.perPage).append(" | ");
 	sb.append("total=").append(this.total).append(" | ");
+	sb.append("hasNextPage=").append(this.hasNextPage).append(" | ");
 
 	if (this.photos == null) {
 	    sb.append("photos=null");
@@ -217,6 +219,27 @@ public class Photos implements Serializable {
 	sb.append(" ]");
 
 	return sb.toString();
+    }
+
+
+    /**
+     * This is only available for certain Flickr calls that return this
+     * information. Check the Flickr API documentation to determine if
+     * this value can be used. Most of the time, you should use the total and pages
+     * values instead of this flag.
+     * 
+     * @return the hasNextPage
+     */
+    public boolean isHasNextPage() {
+	return hasNextPage;
+    }
+
+
+    /**
+     * @param hasNextPage the hasNextPage to set
+     */
+    public void setHasNextPage(boolean hasNextPage) {
+	this.hasNextPage = hasNextPage;
     }
 
 }

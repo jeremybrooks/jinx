@@ -27,6 +27,7 @@ This list shows which API entry points have been implemented:
   * interestingness
   * machinetags (partial)
   * panda
+  * people
   * photos
   * photosets
 
@@ -39,7 +40,6 @@ There are project files here for NetBeans, but NetBeans is not required. To buil
 TODO:
 
 Implement these API entry points:
-people
 photos.comments
 photos.geo
 photos.licenses

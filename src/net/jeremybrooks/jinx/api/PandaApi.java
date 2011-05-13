@@ -61,6 +61,7 @@ public class PandaApi {
      *
      * @return list of Flickr pandas.
      * @throws JinxException if there are any errors.
+     * @see http://www.flickr.com/services/api/flickr.panda.getList.html
      */
     public List<Panda> getList() throws JinxException {
 	List<Panda> list = new ArrayList<Panda>();
@@ -103,6 +104,7 @@ public class PandaApi {
      * @param panda (required) the panda to ask for photos from.
      * @return photos from the specified panda.
      * @throws JinxException if panda is null or if there are any errors.
+     * @see http://www.flickr.com/services/api/flickr.panda.getPhotos.html
      */
     public Photos getPhotos(Panda panda) throws JinxException {
 	return this.getPhotos(panda, null, 0, 0);
@@ -149,6 +151,7 @@ public class PandaApi {
      *        less than 1, it defaults to 100. The maximum allowed value is 500.
      * @return photos from the specified panda.
      * @throws JinxException if panda is null or if there are any errors.
+     * @see http://www.flickr.com/services/api/flickr.panda.getPhotos.html
      */
     public Photos getPhotos(Panda panda, List<String> extras, int page, int perPage) throws JinxException {
 	if (panda == null) {

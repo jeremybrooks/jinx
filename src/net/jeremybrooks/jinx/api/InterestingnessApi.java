@@ -66,6 +66,7 @@ public class InterestingnessApi {
      *
      * @return data about the interesting photos.
      * @throws JinxException if there are any errors.
+     * @see http://www.flickr.com/services/api/flickr.interestingness.getList.html
      */
     public Photos getList() throws JinxException {
 	return this.getList(null, null, 0, 0);
@@ -113,6 +114,7 @@ public class InterestingnessApi {
      *        less than 1, it defaults to 100. The maximum allowed value is 500.
      * @return data about the interesting photos.
      * @throws JinxException if there are any errors.
+     * @see http://www.flickr.com/services/api/flickr.interestingness.getList.html
      */
     public Photos getList(Date date, List<String> extras, int page, int perPage) throws JinxException {
 	Map<String, String> params = new TreeMap<String, String>();
