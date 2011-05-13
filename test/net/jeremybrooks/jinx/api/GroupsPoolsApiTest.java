@@ -8,6 +8,8 @@ import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.dto.Context;
 import net.jeremybrooks.jinx.dto.Groups;
 import net.jeremybrooks.jinx.dto.Photos;
+import net.jeremybrooks.jinx.logger.JinxLogger;
+import net.jeremybrooks.jinx.logger.StdoutLogger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -151,6 +153,7 @@ public class GroupsPoolsApiTest {
 	List<String> extras = new ArrayList<String>();
 	extras.add(JinxConstants.EXTRAS_DESCRIPTION);
 	extras.add(JinxConstants.EXTRAS_DATE_UPLOAD);
+	extras.add(JinxConstants.EXTRAS_DATE_TAKEN);
 	int page = 0;
 	int perPage = 3;
 	GroupsPoolsApi instance = GroupsPoolsApi.getInstance();
