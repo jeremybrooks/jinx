@@ -8,9 +8,7 @@ Jinx is a Java interface to the Flickr API. The project goals are:
 
 CURRENT STATUS
 ==============
-This project is currently in development phase. You can download, build, and use it, but don't cry when it breaks.
-
-Error handling should probably be improved, and argument checking needs to be done.
+The API is being implemented a section at a time. The parts that are implemented should be stable enough for production use. This library is used by SuprSetr, which is making thousands of calls to the API every day.
 
 This list shows which API entry points have been implemented:
   * activity
