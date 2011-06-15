@@ -32,6 +32,8 @@ public class Comment implements Serializable {
     private Date dateCreate;
     private String permalink;
     private String comment;
+    private String iconServer;
+    private String iconFarm;
 
 
     /**
@@ -129,6 +131,38 @@ public class Comment implements Serializable {
 	this.comment = comment;
     }
 
+
+    /**
+     * @return the iconServer
+     */
+    public String getIconServer() {
+	return iconServer;
+    }
+
+
+    /**
+     * @param iconServer the iconServer to set
+     */
+    public void setIconServer(String iconServer) {
+	this.iconServer = iconServer;
+    }
+
+
+    /**
+     * @return the iconFarm
+     */
+    public String getIconFarm() {
+	return iconFarm;
+    }
+
+
+    /**
+     * @param iconFarm the iconFarm to set
+     */
+    public void setIconFarm(String iconFarm) {
+	this.iconFarm = iconFarm;
+    }
+
     
     @Override
     public String toString() {
@@ -139,10 +173,15 @@ public class Comment implements Serializable {
 	sb.append("author=").append(this.author).append(" | ");
 	sb.append("authorName=").append(this.authorName).append(" | ");
 	sb.append("dateCreate=").append(this.dateCreate).append(" | ");
+	sb.append("iconServer=").append(this.iconServer).append(" | ");
+	sb.append("iconFarm=").append(this.iconFarm).append(" | ");
 	sb.append("permalink=").append(this.permalink).append(" | ");
 	sb.append("comment=").append(this.comment);
 
 	sb.append(" ]");
 	return sb.toString();
     }
+
+
+    
 }
