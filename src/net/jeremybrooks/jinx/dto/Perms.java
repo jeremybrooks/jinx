@@ -35,6 +35,7 @@ public class Perms implements Serializable {
     private boolean isPublic;
     private boolean isFriend;
     private boolean isFamily;
+    private boolean isContact;
     private String permComment;
     private String permAddMeta;
 
@@ -152,6 +153,22 @@ public class Perms implements Serializable {
     }
 
 
+    /**
+     * @return the isContact
+     */
+    public boolean isIsContact() {
+	return isContact;
+    }
+
+
+    /**
+     * @param isContact the isContact to set
+     */
+    public void setIsContact(boolean isContact) {
+	this.isContact = isContact;
+    }
+
+
     @Override
     public String toString() {
 	StringBuilder sb = new StringBuilder("Perms [ ");
@@ -160,10 +177,14 @@ public class Perms implements Serializable {
 	sb.append("isPublic=").append(this.isPublic).append(" | ");
 	sb.append("isFriend=").append(this.isFriend).append(" | ");
 	sb.append("isFamily=").append(this.isFamily).append(" | ");
+	sb.append("isContact=").append(this.isContact).append(" | ");
 	sb.append("permComment=").append(this.permComment).append(" | ");
 	sb.append("permAddMeta=").append(this.permAddMeta);
 	
 	sb.append(" ]");
 	return sb.toString();
     }
+
+
+    
 }

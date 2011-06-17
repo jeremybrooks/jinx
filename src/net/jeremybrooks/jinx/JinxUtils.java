@@ -157,6 +157,24 @@ public class JinxUtils {
 	return x;
     }
 
+    /**
+     * Get a value by xpath and return as a long.
+     *
+     * @param document xml document to apply xpath to.
+     * @param xpath the xpath to get the value from.
+     * @return value contained at the xpath, or 0 if parsing fails.
+     */
+    public static long getValueByXPathAsLong(Document document, String xpath) {
+	long x = 0;
+
+	try {
+	    x = Long.parseLong(getValueByXPath(document, xpath));
+	} catch (Exception e) {
+	    // ignore, will return 0
+	}
+	return x;
+    }
+
 
     /**
      * Get a value by xpath and return as a boolean.

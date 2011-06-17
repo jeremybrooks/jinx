@@ -28,6 +28,9 @@ This list shows which API entry points have been implemented:
   * people
   * photos
   * photos.comments
+  * photos.geo          (NOTE: Some of the methods in photos.geo do not work correctly.
+                               They also do not work in the Flickr API Explorer,
+                               so there is likely little that can be done about it.)
   * photosets
 
 
@@ -39,7 +42,6 @@ There are project files here for NetBeans, but NetBeans is not required. To buil
 TODO:
 
 Implement these API entry points:
-photos.geo
 photos.licenses
 photos.notes
 photos.people
