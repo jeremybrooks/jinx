@@ -38,7 +38,12 @@ This list shows which API entry points have been implemented:
 
 BUILDING
 ========
-There are project files here for NetBeans, but NetBeans is not required. To build the project, execute ant jar. The compiled jar file will be in dist/.
+To build the project, use Maven. The jar file will end up in the "target" directory.
+mvn clean package
+
+If the tests are failing and you want to build the jar anyway, add -DskipTests.
+mvn clean package -DskipTests
+
 
 TODO:
 
