@@ -10,5 +10,6 @@ db/*.sqlite3
 *~
 .DS_Store
 test/net/jeremybrooks/jinx/secret.properties
+test/resources/secret.properties
 test_token.xml
-
+*.iml
