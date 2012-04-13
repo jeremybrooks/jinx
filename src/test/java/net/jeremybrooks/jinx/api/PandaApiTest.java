@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2011 by Jeremy Brooks
+ * Jinx is Copyright 2010-2012 by Jeremy Brooks and Contributors
  *
  * This file is part of Jinx.
  *
@@ -18,21 +18,23 @@
  */
 package net.jeremybrooks.jinx.api;
 
-import net.jeremybrooks.jinx.dto.Photo;
 import net.jeremybrooks.jinx.JinxConstants;
-import java.util.ArrayList;
-import net.jeremybrooks.jinx.dto.Panda;
 import net.jeremybrooks.jinx.Setup;
-import java.util.List;
+import net.jeremybrooks.jinx.dto.Panda;
+import net.jeremybrooks.jinx.dto.Photo;
 import net.jeremybrooks.jinx.dto.Photos;
-import net.jeremybrooks.jinx.logger.JinxLogger;
-import net.jeremybrooks.jinx.logger.StdoutLogger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -129,10 +131,9 @@ public class PandaApiTest {
 	extras.add(JinxConstants.EXTRAS_DESCRIPTION);
 	extras.add(JinxConstants.EXTRAS_DATE_UPLOAD);
 	extras.add(JinxConstants.EXTRAS_DATE_TAKEN);
-	perPage = 10;
 	result = instance.getPhotos(panda, extras, page, perPage);
 	assertNotNull(result);
-	assertEquals(perPage, result.getPhotos().size());
+        assertTrue(result.getPhotos().size() > 0);
 	for (Photo photo : result.getPhotos()) {
 	    System.out.println(photo.toString());
 	    assertNotNull(photo.getDateUploaded());
