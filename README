@@ -2,13 +2,14 @@ Jinx - Flickr API for Java
 
 Jinx is a Java interface to the Flickr API. The project goals are:
 
-1) Simple to use
+1) Simple and straightforward to use
 2) Pure java with no other dependencies
 3) Complete coverage of the Flickr API
 
 CURRENT STATUS
 ==============
-The API is being implemented a section at a time. The parts that are implemented should be stable enough for production use. This library is used by SuprSetr, which is making thousands of calls to the API every day.
+The API is being implemented a section at a time. The parts that are implemented should be stable enough for production use.
+This library is used by SuprSetr, which is making thousands of calls to the API every day.
 
 This list shows which API entry points have been implemented:
   * activity
@@ -38,10 +39,12 @@ This list shows which API entry points have been implemented:
 
 BUILDING
 ========
-To build the project, use Maven. The jar file will end up in the "target" directory.
+To build the project, use Maven. The jar file will end up in the "target" directory:
+
 mvn clean package
 
-If the tests are failing and you want to build the jar anyway, add -DskipTests.
+If the tests are failing and you want to build the jar anyway, add -DskipTests:
+
 mvn clean package -DskipTests
 
 
@@ -66,9 +69,18 @@ DEVELOPERS READ THIS
 ====================
 Flickr apps need an API key to work properly. Jinx is no exception. To run
 the unit tests, you need to go to Flickr and apply for an API key. Once you have
-this key, copy the test/flickr.properties file to test/net/jeremybrooks/jinx/secret.properties
-and fill in the key and secret. This file is excluded by the .gitignore file,
-so your secrets will not end up on github.
+this key, you need to do the following:
+  * Copy the file test/resources/flickr.properties to test/resources/secret.properties
+  * Fill in the key, secret, and a valid full path where the token will be saved
+  * Run the AuthApiTest
+  * Authorize the application
+  * Close the browser window and wait for the test to complete
+
+You should now be able to run the rest of the tests. The secret.properties file is excluded by the .gitignore file,
+so your secrets should not end up on github.
+
+NOTE: The test token will have WRITE access to your photostream! Do not authorize the test application if
+      you are concerned about possible data loss due to test errors!
 
 When you create a unit test, your setUpClass method should look like this:
 
@@ -77,6 +89,6 @@ public static void setUpClass() throws Exception {
     Setup.doSetup();
 }
 
-This will ensure that Jinx is set up with you key, secret, and token, and the
+This will ensure that Jinx is set up with your key, secret, and token, and the
 unit tests can be executed.
 
