@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010 by Jeremy Brooks
+ * Jinx is Copyright 2010-2012 by Jeremy Brooks and Contributors
  *
  * This file is part of Jinx.
  *
@@ -18,10 +18,10 @@
 */
 package net.jeremybrooks.jinx.dto;
 
-import java.io.Serializable;
-import java.util.Date;
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxUtils;
+
+import java.io.Serializable;
 
 /**
  * Information about a photo.
@@ -68,6 +68,19 @@ public class Photo extends PhotoBase implements Serializable {
     private String urlZ;
     private int heightZ;
     private int widthZ;
+    private String urlQ;
+    private int heightQ;
+    private int widthQ;
+    private String urlN;
+    private int heightN;
+    private int widthN;
+    private String urlC;
+    private int heightC;
+    private int widthC;
+    private String urlL;
+    private int heightL;
+    private int widthL;
+
 
     private String url;
     private String thumb;
@@ -594,10 +607,22 @@ public class Photo extends PhotoBase implements Serializable {
 	sb.append("heightT=").append(this.heightT).append(" | ");
 	sb.append("widthT=").append(this.widthT).append(" | ");
 	sb.append("urlZ=").append(this.urlZ).append(" | ");
-	sb.append("heightZ=").append(this.heightZ).append(" | ");
-	sb.append("widthZ=").append(this.widthZ).append(" | ");
-	sb.append("views=").append(super.getViews()).append(" | ");
-	sb.append("description=").append(super.getDescription()).append(" | ");
+        sb.append("heightZ=").append(this.heightZ).append(" | ");
+        sb.append("widthZ=").append(this.widthZ).append(" | ");
+        sb.append("urlQ=").append(this.getUrlQ()).append(" | ");
+        sb.append("heightQ=").append(this.getHeightQ()).append(" | ");
+        sb.append("widthQ=").append(this.getWidthQ()).append(" | ");
+        sb.append("urlN=").append(this.getUrlN()).append(" | ");
+        sb.append("heightN=").append(this.getHeightN()).append(" | ");
+        sb.append("widthN=").append(this.getWidthN()).append(" | ");
+        sb.append("urlC=").append(this.getUrlC()).append(" | ");
+        sb.append("heightC=").append(this.getHeightC()).append(" | ");
+        sb.append("widthC=").append(this.getWidthC()).append(" | ");
+        sb.append("urlL=").append(this.getUrlL()).append(" | ");
+        sb.append("heightL=").append(this.getHeightL()).append(" | ");
+        sb.append("widthL=").append(this.getWidthL()).append(" | ");
+        sb.append("views=").append(super.getViews()).append(" | ");
+        sb.append("description=").append(super.getDescription()).append(" | ");
 	sb.append("url=").append(this.url).append(" | ");
 	sb.append("thumb=").append(this.thumb).append(" | ");
 	sb.append("faved=").append(this.isFaved()).append(" | ");
@@ -709,5 +734,101 @@ public class Photo extends PhotoBase implements Serializable {
      */
     public void setFaved(boolean faved) {
 	this.faved = faved;
+    }
+
+    public String getUrlQ() {
+        return urlQ;
+    }
+
+    public void setUrlQ(String urlQ) {
+        this.urlQ = urlQ;
+    }
+
+    public int getHeightQ() {
+        return heightQ;
+    }
+
+    public void setHeightQ(int heightQ) {
+        this.heightQ = heightQ;
+    }
+
+    public int getWidthQ() {
+        return widthQ;
+    }
+
+    public void setWidthQ(int widthQ) {
+        this.widthQ = widthQ;
+    }
+
+    public String getUrlN() {
+        return urlN;
+    }
+
+    public void setUrlN(String urlN) {
+        this.urlN = urlN;
+    }
+
+    public int getHeightN() {
+        return heightN;
+    }
+
+    public void setHeightN(int heightN) {
+        this.heightN = heightN;
+    }
+
+    public int getWidthN() {
+        return widthN;
+    }
+
+    public void setWidthN(int widthN) {
+        this.widthN = widthN;
+    }
+
+    public String getUrlC() {
+        return urlC;
+    }
+
+    public void setUrlC(String urlC) {
+        this.urlC = urlC;
+    }
+
+    public int getHeightC() {
+        return heightC;
+    }
+
+    public void setHeightC(int heightC) {
+        this.heightC = heightC;
+    }
+
+    public int getWidthC() {
+        return widthC;
+    }
+
+    public void setWidthC(int widthC) {
+        this.widthC = widthC;
+    }
+
+    public String getUrlL() {
+        return urlL;
+    }
+
+    public void setUrlL(String urlL) {
+        this.urlL = urlL;
+    }
+
+    public int getHeightL() {
+        return heightL;
+    }
+
+    public void setHeightL(int heightL) {
+        this.heightL = heightL;
+    }
+
+    public int getWidthL() {
+        return widthL;
+    }
+
+    public void setWidthL(int widthL) {
+        this.widthL = widthL;
     }
 }

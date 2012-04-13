@@ -1,9 +1,22 @@
+/*
+ * Jinx is Copyright 2010-2012 by Jeremy Brooks and Contributors
+ *
+ * This file is part of Jinx.
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+*/
 package net.jeremybrooks.jinx.api;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxException;
@@ -16,11 +29,15 @@ import net.jeremybrooks.jinx.dto.Predicate;
 import net.jeremybrooks.jinx.dto.Predicates;
 import net.jeremybrooks.jinx.dto.Value;
 import net.jeremybrooks.jinx.dto.Values;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * http://www.flickr.com/services/api/

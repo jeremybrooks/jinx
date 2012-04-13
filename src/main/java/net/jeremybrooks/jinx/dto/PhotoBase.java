@@ -1,16 +1,16 @@
 package net.jeremybrooks.jinx.dto;
 
-import java.awt.Image;
-import java.io.Serializable;
-import java.net.URL;
-import java.util.Date;
-import javax.imageio.ImageIO;
 import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
 
+import javax.imageio.ImageIO;
+import java.awt.Image;
+import java.io.Serializable;
+import java.net.URL;
+import java.util.Date;
+
 /**
- *
  * @author jeremyb
  */
 public class PhotoBase implements Serializable {
@@ -40,7 +40,7 @@ public class PhotoBase implements Serializable {
      * @return the id
      */
     public String getId() {
-	return id;
+        return id;
     }
 
 
@@ -48,7 +48,7 @@ public class PhotoBase implements Serializable {
      * @param id the id to set
      */
     public void setId(String id) {
-	this.id = id;
+        this.id = id;
     }
 
 
@@ -56,7 +56,7 @@ public class PhotoBase implements Serializable {
      * @return the secret
      */
     public String getSecret() {
-	return secret;
+        return secret;
     }
 
 
@@ -64,7 +64,7 @@ public class PhotoBase implements Serializable {
      * @param secret the secret to set
      */
     public void setSecret(String secret) {
-	this.secret = secret;
+        this.secret = secret;
     }
 
 
@@ -72,7 +72,7 @@ public class PhotoBase implements Serializable {
      * @return the server
      */
     public String getServer() {
-	return server;
+        return server;
     }
 
 
@@ -80,7 +80,7 @@ public class PhotoBase implements Serializable {
      * @param server the server to set
      */
     public void setServer(String server) {
-	this.server = server;
+        this.server = server;
     }
 
 
@@ -88,7 +88,7 @@ public class PhotoBase implements Serializable {
      * @return the farm
      */
     public String getFarm() {
-	return farm;
+        return farm;
     }
 
 
@@ -96,7 +96,7 @@ public class PhotoBase implements Serializable {
      * @param farm the farm to set
      */
     public void setFarm(String farm) {
-	this.farm = farm;
+        this.farm = farm;
     }
 
 
@@ -104,7 +104,7 @@ public class PhotoBase implements Serializable {
      * @return the license
      */
     public String getLicense() {
-	return license;
+        return license;
     }
 
 
@@ -112,7 +112,7 @@ public class PhotoBase implements Serializable {
      * @param license the license to set
      */
     public void setLicense(String license) {
-	this.license = license;
+        this.license = license;
     }
 
 
@@ -120,7 +120,7 @@ public class PhotoBase implements Serializable {
      * @return the originalSecret
      */
     public String getOriginalSecret() {
-	return originalSecret;
+        return originalSecret;
     }
 
 
@@ -128,7 +128,7 @@ public class PhotoBase implements Serializable {
      * @param originalSecret the originalSecret to set
      */
     public void setOriginalSecret(String originalSecret) {
-	this.originalSecret = originalSecret;
+        this.originalSecret = originalSecret;
     }
 
 
@@ -136,7 +136,7 @@ public class PhotoBase implements Serializable {
      * @return the originalFormat
      */
     public String getOriginalFormat() {
-	return originalFormat;
+        return originalFormat;
     }
 
 
@@ -144,7 +144,7 @@ public class PhotoBase implements Serializable {
      * @param originalFormat the originalFormat to set
      */
     public void setOriginalFormat(String originalFormat) {
-	this.originalFormat = originalFormat;
+        this.originalFormat = originalFormat;
     }
 
 
@@ -152,7 +152,7 @@ public class PhotoBase implements Serializable {
      * @return the views
      */
     public int getViews() {
-	return views;
+        return views;
     }
 
 
@@ -160,7 +160,7 @@ public class PhotoBase implements Serializable {
      * @param views the views to set
      */
     public void setViews(int views) {
-	this.views = views;
+        this.views = views;
     }
 
 
@@ -168,7 +168,7 @@ public class PhotoBase implements Serializable {
      * @return the media
      */
     public String getMedia() {
-	return media;
+        return media;
     }
 
 
@@ -176,7 +176,7 @@ public class PhotoBase implements Serializable {
      * @param media the media to set
      */
     public void setMedia(String media) {
-	this.media = media;
+        this.media = media;
     }
 
 
@@ -184,7 +184,7 @@ public class PhotoBase implements Serializable {
      * @return the title
      */
     public String getTitle() {
-	return title;
+        return title;
     }
 
 
@@ -192,7 +192,7 @@ public class PhotoBase implements Serializable {
      * @param title the title to set
      */
     public void setTitle(String title) {
-	this.title = title;
+        this.title = title;
     }
 
 
@@ -200,7 +200,7 @@ public class PhotoBase implements Serializable {
      * @return the description
      */
     public String getDescription() {
-	return description;
+        return description;
     }
 
 
@@ -208,7 +208,7 @@ public class PhotoBase implements Serializable {
      * @param description the description to set
      */
     public void setDescription(String description) {
-	this.description = description;
+        this.description = description;
     }
 
 
@@ -216,7 +216,7 @@ public class PhotoBase implements Serializable {
      * @return the isPublic
      */
     public boolean isIsPublic() {
-	return isPublic;
+        return isPublic;
     }
 
 
@@ -224,7 +224,7 @@ public class PhotoBase implements Serializable {
      * @param isPublic the isPublic to set
      */
     public void setIsPublic(boolean isPublic) {
-	this.isPublic = isPublic;
+        this.isPublic = isPublic;
     }
 
 
@@ -232,7 +232,7 @@ public class PhotoBase implements Serializable {
      * @return the isFriend
      */
     public boolean isIsFriend() {
-	return isFriend;
+        return isFriend;
     }
 
 
@@ -240,7 +240,7 @@ public class PhotoBase implements Serializable {
      * @param isFriend the isFriend to set
      */
     public void setIsFriend(boolean isFriend) {
-	this.isFriend = isFriend;
+        this.isFriend = isFriend;
     }
 
 
@@ -248,7 +248,7 @@ public class PhotoBase implements Serializable {
      * @return the isFamily
      */
     public boolean isIsFamily() {
-	return isFamily;
+        return isFamily;
     }
 
 
@@ -256,7 +256,7 @@ public class PhotoBase implements Serializable {
      * @param isFamily the isFamily to set
      */
     public void setIsFamily(boolean isFamily) {
-	this.isFamily = isFamily;
+        this.isFamily = isFamily;
     }
 
 
@@ -264,7 +264,7 @@ public class PhotoBase implements Serializable {
      * @return the dateTaken
      */
     public Date getDateTaken() {
-	return dateTaken;
+        return dateTaken;
     }
 
 
@@ -272,7 +272,7 @@ public class PhotoBase implements Serializable {
      * @param dateTaken the dateTaken to set
      */
     public void setDateTaken(Date dateTaken) {
-	this.dateTaken = dateTaken;
+        this.dateTaken = dateTaken;
     }
 
 
@@ -280,7 +280,7 @@ public class PhotoBase implements Serializable {
      * @return the dateTakenGranularity
      */
     public String getDateTakenGranularity() {
-	return dateTakenGranularity;
+        return dateTakenGranularity;
     }
 
 
@@ -288,7 +288,7 @@ public class PhotoBase implements Serializable {
      * @param dateTakenGranularity the dateTakenGranularity to set
      */
     public void setDateTakenGranularity(String dateTakenGranularity) {
-	this.dateTakenGranularity = dateTakenGranularity;
+        this.dateTakenGranularity = dateTakenGranularity;
     }
 
 
@@ -296,7 +296,7 @@ public class PhotoBase implements Serializable {
      * @return the dateLastUpdate
      */
     public Date getDateLastUpdate() {
-	return dateLastUpdate;
+        return dateLastUpdate;
     }
 
 
@@ -304,7 +304,7 @@ public class PhotoBase implements Serializable {
      * @param dateLastUpdate the dateLastUpdate to set
      */
     public void setDateLastUpdate(Date dateLastUpdate) {
-	this.dateLastUpdate = dateLastUpdate;
+        this.dateLastUpdate = dateLastUpdate;
     }
 
 
@@ -312,7 +312,7 @@ public class PhotoBase implements Serializable {
      * @return the dateUploaded
      */
     public Date getDateUploaded() {
-	return dateUploaded;
+        return dateUploaded;
     }
 
 
@@ -320,7 +320,7 @@ public class PhotoBase implements Serializable {
      * @param dateUploaded the dateUploaded to set
      */
     public void setDateUploaded(Date dateUploaded) {
-	this.dateUploaded = dateUploaded;
+        this.dateUploaded = dateUploaded;
     }
 
 
@@ -328,7 +328,7 @@ public class PhotoBase implements Serializable {
      * @return the ownerNsid
      */
     public String getOwnerNsid() {
-	return ownerNsid;
+        return ownerNsid;
     }
 
 
@@ -336,7 +336,7 @@ public class PhotoBase implements Serializable {
      * @param ownerNsid the ownerNsid to set
      */
     public void setOwnerNsid(String ownerNsid) {
-	this.ownerNsid = ownerNsid;
+        this.ownerNsid = ownerNsid;
     }
 
 
@@ -344,7 +344,7 @@ public class PhotoBase implements Serializable {
      * @return the ownerUsername
      */
     public String getOwnerUsername() {
-	return ownerUsername;
+        return ownerUsername;
     }
 
 
@@ -352,73 +352,88 @@ public class PhotoBase implements Serializable {
      * @param ownerUsername the ownerUsername to set
      */
     public void setOwnerUsername(String ownerUsername) {
-	this.ownerUsername = ownerUsername;
+        this.ownerUsername = ownerUsername;
     }
 
 
     /**
      * Get the URL for a specific photo size.
      *
-     * @param size the desired size.
-     * @param photo
+     * @param size  the desired size.
      * @return URL for the photo at the requested size.
      * @throws JinxException if there are any errors, or if some of the
-     *         fields required to build the URL do not exist.
+     *                       fields required to build the URL do not exist.
      */
     public String getUrlForSize(int size) throws JinxException {
-	if (JinxUtils.isEmpty(this.secret)) {
-	    throw new JinxException("URL for size " + size + " not available: no secret available.");
-	}
-	if (JinxUtils.isEmpty(this.farm)) {
-	    throw new JinxException("URL for size " + size + " not available: no farm available.");
-	}
-	if (JinxUtils.isEmpty(this.server)) {
-	    throw new JinxException("URL for size " + size + " not available: no server available.");
-	}
-	if (size == JinxConstants.SIZE_ORIGINAL) {
-	    if (JinxUtils.isEmpty(this.originalFormat) || JinxUtils.isEmpty(this.originalSecret)) {
-		throw new JinxException("URL for original size not available.");
-	    }
-	}
+        if (JinxUtils.isEmpty(this.secret)) {
+            throw new JinxException("URL for size " + size + " not available: no secret available.");
+        }
+        if (JinxUtils.isEmpty(this.farm)) {
+            throw new JinxException("URL for size " + size + " not available: no farm available.");
+        }
+        if (JinxUtils.isEmpty(this.server)) {
+            throw new JinxException("URL for size " + size + " not available: no server available.");
+        }
+        if (size == JinxConstants.SIZE_ORIGINAL) {
+            if (JinxUtils.isEmpty(this.originalFormat) || JinxUtils.isEmpty(this.originalSecret)) {
+                throw new JinxException("URL for original size not available.");
+            }
+        }
 
-	StringBuilder sb = new StringBuilder("http://farm");
-	sb.append(this.farm);
-	sb.append(".static.flickr.com/");
-	sb.append(this.server).append("/");
-	sb.append(this.id).append('_');
+        StringBuilder sb = new StringBuilder("http://farm");
+        sb.append(this.farm);
+        sb.append(".static.flickr.com/");
+        sb.append(this.server).append("/");
+        sb.append(this.id).append('_');
 
-	switch (size) {
-	    case JinxConstants.SIZE_SMALL_SQUARE:
-		sb.append(this.secret).append("_s.jpg");
-		break;
+        switch (size) {
+            case JinxConstants.SIZE_SMALL_SQUARE:
+                sb.append(this.secret).append("_s.jpg");
+                break;
 
-	    case JinxConstants.SIZE_THUMBNAIL:
-		sb.append(this.secret).append("_t.jpg");
-		break;
+            case JinxConstants.SIZE_LARGE_SQUARE:
+                sb.append(this.secret).append("_q.jpg");
+                break;
 
-	    case JinxConstants.SIZE_SMALL:
-		sb.append(this.secret).append("_m.jpg");
-		break;
+            case JinxConstants.SIZE_THUMBNAIL:
+                sb.append(this.secret).append("_t.jpg");
+                break;
 
-	    case JinxConstants.SIZE_MEDIUM:
-		sb.append(this.secret).append(".jpg");
-		break;
+            case JinxConstants.SIZE_SMALL:
+                sb.append(this.secret).append("_m.jpg");
+                break;
 
-	    case JinxConstants.SIZE_LARGE:
-		sb.append(this.secret).append("_b.jpg");
-		break;
+            case JinxConstants.SIZE_SMALL_320:
+                sb.append(this.secret).append("_n.jpg");
+                break;
 
-	    case JinxConstants.SIZE_ORIGINAL:
-		sb.append(this.originalSecret).append("_o");
-		sb.append('.').append(this.originalFormat);
-		break;
+            case JinxConstants.SIZE_MEDIUM:
+                sb.append(this.secret).append(".jpg");
+                break;
 
-	    default:
-		throw new JinxException("Undefined size: " + size);
+            case JinxConstants.SIZE_MEDIUM_640:
+                sb.append(this.secret).append("_z.jpg");
+                break;
 
-	}
+            case JinxConstants.SIZE_MEDIUM_800:
+                sb.append(this.secret).append("_c.jpg");
+                break;
 
-	return sb.toString();
+            case JinxConstants.SIZE_LARGE:
+                sb.append(this.secret).append("_b.jpg");
+                break;
+
+            case JinxConstants.SIZE_ORIGINAL:
+                sb.append(this.originalSecret).append("_o");
+                sb.append('.').append(this.originalFormat);
+                break;
+
+            default:
+                throw new JinxException("Undefined size: " + size);
+
+        }
+
+        return sb.toString();
     }
 
 
@@ -441,46 +456,46 @@ public class PhotoBase implements Serializable {
      * @throws JinxException if there are any errors.
      */
     public Image getImageForSize(int size) throws JinxException {
-	Image image = null;
+        Image image = null;
 
-	try {
-	    image = ImageIO.read(new URL(this.getUrlForSize(size)));
-	} catch (Exception e) {
-	    throw new JinxException("Unable to get image for size " + size, e);
-	}
+        try {
+            image = ImageIO.read(new URL(this.getUrlForSize(size)));
+        } catch (Exception e) {
+            throw new JinxException("Unable to get image for size " + size, e);
+        }
 
-	return image;
+        return image;
     }
 
 
     @Override
     public String toString() {
-	StringBuilder sb = new StringBuilder("PhotoBase [ ");
+        StringBuilder sb = new StringBuilder("PhotoBase [ ");
 
-	sb.append("id=").append(this.id).append(" | ");
-	sb.append("secret=").append(this.secret).append(" | ");
-	sb.append("server=").append(this.server).append(" | ");
-	sb.append("farm=").append(this.farm).append(" | ");
-	sb.append("license=").append(this.license).append(" | ");
-	sb.append("originalSecret=").append(this.originalSecret).append(" | ");
-	sb.append("originalFormat=").append(this.originalFormat).append(" | ");
-	sb.append("views=").append(this.views).append(" | ");
-	sb.append("media=").append(this.media).append(" | ");
-	sb.append("title=").append(this.title).append(" | ");
-	sb.append("description=").append(this.description).append(" | ");
-	sb.append("isPublic=").append(this.isPublic).append(" | ");
-	sb.append("isFriend=").append(this.isFriend).append(" | ");
-	sb.append("isFamily=").append(this.isFamily).append(" | ");
-	sb.append("dateTaken=").append(this.dateTaken).append(" | ");
-	sb.append("dateTakenGranularity=").append(this.dateTakenGranularity).append(" | ");
-	sb.append("dateLastUpdate=").append(this.dateLastUpdate).append(" | ");
-	sb.append("dateUploaded=").append(this.dateUploaded).append(" | ");
-	sb.append("ownerNsid=").append(this.ownerNsid).append(" | ");
-	sb.append("ownerUsername=").append(this.ownerUsername);
-	
-	sb.append(" ]");
+        sb.append("id=").append(this.id).append(" | ");
+        sb.append("secret=").append(this.secret).append(" | ");
+        sb.append("server=").append(this.server).append(" | ");
+        sb.append("farm=").append(this.farm).append(" | ");
+        sb.append("license=").append(this.license).append(" | ");
+        sb.append("originalSecret=").append(this.originalSecret).append(" | ");
+        sb.append("originalFormat=").append(this.originalFormat).append(" | ");
+        sb.append("views=").append(this.views).append(" | ");
+        sb.append("media=").append(this.media).append(" | ");
+        sb.append("title=").append(this.title).append(" | ");
+        sb.append("description=").append(this.description).append(" | ");
+        sb.append("isPublic=").append(this.isPublic).append(" | ");
+        sb.append("isFriend=").append(this.isFriend).append(" | ");
+        sb.append("isFamily=").append(this.isFamily).append(" | ");
+        sb.append("dateTaken=").append(this.dateTaken).append(" | ");
+        sb.append("dateTakenGranularity=").append(this.dateTakenGranularity).append(" | ");
+        sb.append("dateLastUpdate=").append(this.dateLastUpdate).append(" | ");
+        sb.append("dateUploaded=").append(this.dateUploaded).append(" | ");
+        sb.append("ownerNsid=").append(this.ownerNsid).append(" | ");
+        sb.append("ownerUsername=").append(this.ownerUsername);
 
-	return sb.toString();
+        sb.append(" ]");
+
+        return sb.toString();
     }
 
 

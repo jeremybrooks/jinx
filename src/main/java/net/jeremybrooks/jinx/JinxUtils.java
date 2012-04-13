@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010 by Jeremy Brooks
+ * Jinx is Copyright 2010-2012 by Jeremy Brooks and Contributors
  *
  * This file is part of Jinx.
  *
@@ -18,35 +18,36 @@
 */
 package net.jeremybrooks.jinx;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathFactory;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.w3c.dom.Document;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathFactory;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 
 /**
  * This class contains public static methods that perform common functionality
  * for other parts of Jinx.
- *
+ * <p/>
  * Document objects are created here, and there are methods for common XML
  * parsing operations here as well.
- * 
+ *
  * @author jeremyb
  */
 public class JinxUtils {
 
     static {
-	documentBuilderFactory = DocumentBuilderFactory.newInstance();
-	xPathFactory = XPathFactory.newInstance();
-	formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	ymdFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        xPathFactory = XPathFactory.newInstance();
+        formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        ymdFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 
@@ -64,13 +65,13 @@ public class JinxUtils {
 
     /**
      * Parses the status from an xml document.
-     *
+     * <p/>
      * The XML response from Flickr has "stat", "err", and "msg"
      * attributes which indicate the status of the request and any error
      * codes and messages. An attribute value of "fail" for the attribute "stat"
      * indicates that there was an error. If there was an error, an instance
      * of JinxException is thrown with the error code and error message.
-     *
+     * <p/>
      * If there were no errors, the Document object is returned so that callers
      * can parse the payload.
      *
@@ -79,63 +80,63 @@ public class JinxUtils {
      * @throws JinxException if there are any errors.
      */
     public static Document parseStatus(String xml) throws JinxException {
-	InputStream in = null;
-	Document xmlDoc = getDocument(xml);
-	
-	String stat;
-	int errorCode;
-	String errorMessage;
+        InputStream in = null;
+        Document xmlDoc = getDocument(xml);
 
-	try {
-	    stat = getValueByXPath(xmlDoc, "/rsp/@stat");
+        String stat;
+        int errorCode;
+        String errorMessage;
 
-	    if (stat.equals("fail")) {
-		errorCode = getValueByXPathAsInt(xmlDoc, "/rsp/err/@code");
-		errorMessage = getValueByXPath(xmlDoc, "/rsp/err/@msg");
+        try {
+            stat = getValueByXPath(xmlDoc, "/rsp/@stat");
 
-		throw new JinxException("Call to Flickr failed with error code " +
-			errorCode + ":" + errorMessage + ".", null, errorCode, errorMessage);
-	    }
+            if (stat.equals("fail")) {
+                errorCode = getValueByXPathAsInt(xmlDoc, "/rsp/err/@code");
+                errorMessage = getValueByXPath(xmlDoc, "/rsp/err/@msg");
 
-	} catch (JinxException fe) {
-	    throw fe;
-	    
-	} catch (Exception e) {
-	    throw new JinxException("Unexpected error while parsing status from XML. " +
-		    "XML was '" + xml + "'", e);
-	} finally {
-	    if (in != null) {
-		try {
-		    in.close();
-		} catch (Exception e) {
-		    // ignore
-		}
-	    }
-	}
+                throw new JinxException("Call to Flickr failed with error code " +
+                        errorCode + ":" + errorMessage + ".", null, errorCode, errorMessage);
+            }
 
-	return xmlDoc;
+        } catch (JinxException fe) {
+            throw fe;
+
+        } catch (Exception e) {
+            throw new JinxException("Unexpected error while parsing status from XML. " +
+                    "XML was '" + xml + "'", e);
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (Exception e) {
+                    // ignore
+                }
+            }
+        }
+
+        return xmlDoc;
     }
 
 
     /**
      * Get a value by xpath.
-     *
+     * <p/>
      * This method will return an empty string if there are any errors, such
      * as an invalid xpath or an invalid document object.
      *
      * @param document xml document to apply xpath to.
-     * @param xpath the xpath to get the value from.
+     * @param xpath    the xpath to get the value from.
      * @return value from the xpath, or an empty string.
      */
     public static String getValueByXPath(Document document, String xpath) {
-	String value = "";
-	try {
-	    value = getxPath().evaluate(xpath, document).trim();
-	} catch (Exception e) {
-	    // ignore; will return empty string
-	}
+        String value = "";
+        try {
+            value = getxPath().evaluate(xpath, document).trim();
+        } catch (Exception e) {
+            // ignore; will return empty string
+        }
 
-	return value;
+        return value;
     }
 
 
@@ -143,36 +144,36 @@ public class JinxUtils {
      * Get a value by xpath and return as an int.
      *
      * @param document xml document to apply xpath to.
-     * @param xpath the xpath to get the value from.
+     * @param xpath    the xpath to get the value from.
      * @return value contained at the xpath, or 0 if parsing fails.
      */
     public static int getValueByXPathAsInt(Document document, String xpath) {
-	int x = 0;
+        int x = 0;
 
-	try {
-	    x = Integer.parseInt(getValueByXPath(document, xpath));
-	} catch (Exception e) {
-	    // ignore, will return 0
-	}
-	return x;
+        try {
+            x = Integer.parseInt(getValueByXPath(document, xpath));
+        } catch (Exception e) {
+            // ignore, will return 0
+        }
+        return x;
     }
 
     /**
      * Get a value by xpath and return as a long.
      *
      * @param document xml document to apply xpath to.
-     * @param xpath the xpath to get the value from.
+     * @param xpath    the xpath to get the value from.
      * @return value contained at the xpath, or 0 if parsing fails.
      */
     public static long getValueByXPathAsLong(Document document, String xpath) {
-	long x = 0;
+        long x = 0;
 
-	try {
-	    x = Long.parseLong(getValueByXPath(document, xpath));
-	} catch (Exception e) {
-	    // ignore, will return 0
-	}
-	return x;
+        try {
+            x = Long.parseLong(getValueByXPath(document, xpath));
+        } catch (Exception e) {
+            // ignore, will return 0
+        }
+        return x;
     }
 
 
@@ -180,41 +181,41 @@ public class JinxUtils {
      * Get a value by xpath and return as a boolean.
      *
      * @param document xml document to apply xpath to.
-     * @param xpath the xpath to get the value from.
+     * @param xpath    the xpath to get the value from.
      * @return true if the value is "1", false otherwise.
      */
     public static boolean getValueByXPathAsBoolean(Document document, String xpath) {
-	boolean b = false;
-	try {
-	    b = getValueByXPath(document, xpath).equals("1");
-	} catch (Exception e) {
-	    // ignore; will return false
-	}
+        boolean b = false;
+        try {
+            b = getValueByXPath(document, xpath).equals("1");
+        } catch (Exception e) {
+            // ignore; will return false
+        }
 
-	return b;
+        return b;
     }
 
 
     /**
      * Format a date in MySQL format.
-     *
+     * <p/>
      * If the date is null, this method will return an empty string.
      *
      * @param date the date to format.
      * @return formatted date.
      */
     public static String formatDateAsMySqlTimestamp(Date date) {
-	String retString = "";
-	if (date != null) {
-	    retString = JinxUtils.formatter.format(date);
-	}
-	return retString;
+        String retString = "";
+        if (date != null) {
+            retString = JinxUtils.formatter.format(date);
+        }
+        return retString;
     }
 
 
     /**
      * Convert a MySql datetime to a Java date.
-     *
+     * <p/>
      * The MySql datetime should look something like this: 2004-11-29 16:01:26
      *
      * @param datetime the datetime to convert to a Java date object.
@@ -222,144 +223,143 @@ public class JinxUtils {
      *         format.
      */
     public static Date parseMySqlDatetimeToDate(String datetime) {
-	Date date = null;
-	try {
-	    date = JinxUtils.formatter.parse(datetime);
-	} catch (Exception e) {
-	    // will return null
-	}
-	return date;
+        Date date = null;
+        try {
+            date = JinxUtils.formatter.parse(datetime);
+        } catch (Exception e) {
+            // will return null
+        }
+        return date;
     }
 
 
     /**
      * Format a date in YYYY-MM-DD format.
-     *
+     * <p/>
      * If the date is null, this method will return an empty string.
      *
      * @param date the date to format.
      * @return formatted date.
      */
     public static String formatDateAsYMD(Date date) {
-	String retString = "";
-	if (date != null) {
-	    retString = JinxUtils.ymdFormatter.format(date);
-	}
-	return retString;
+        String retString = "";
+        if (date != null) {
+            retString = JinxUtils.ymdFormatter.format(date);
+        }
+        return retString;
     }
 
     /**
      * Get a named value from the NamedNodeMap.
-     *
+     * <p/>
      * If the value does not exist, or if there is an error getting data from
      * the map, an empty string will be returned.
      *
-     * @param map the NamedNodeMap to get a value from.
+     * @param map  the NamedNodeMap to get a value from.
      * @param name the name of the attribute to find.
      * @return value of the named attribute from the map, or an empty String.
      */
     public static String getAttribute(NamedNodeMap map, String name) {
-	String value = "";
+        String value = "";
 
-	try {
-	    Node node = map.getNamedItem(name);
-	    if (node != null) {
-		value = node.getNodeValue().trim();
-	    }
-	} catch (Exception e) {
-	    // ignore; will return empty string
-	}
+        try {
+            Node node = map.getNamedItem(name);
+            if (node != null) {
+                value = node.getNodeValue().trim();
+            }
+        } catch (Exception e) {
+            // ignore; will return empty string
+        }
 
-	return value;
+        return value;
     }
 
 
     /**
      * Get a named value from the NamedNodeMap as an int.
-     *
+     * <p/>
      * If the value does not exist, or if there is an error getting data from
      * the map, 0 will be returned.
      *
-     * @param map the NamedNodeMap to get a value from.
+     * @param map  the NamedNodeMap to get a value from.
      * @param name the name of the attribute to find.
      * @return value of the named attribute from the map as an int.
      */
     public static int getAttributeAsInt(NamedNodeMap map, String name) {
-	int value = 0;
+        int value = 0;
 
-	try {
-	    value = Integer.parseInt(getAttribute(map, name));
-	} catch (Exception e) {
-	    // will return 0
-	}
+        try {
+            value = Integer.parseInt(getAttribute(map, name));
+        } catch (Exception e) {
+            // will return 0
+        }
 
-	return value;
+        return value;
     }
 
     /**
      * Get a named value from the NamedNodeMap as a boolean.
-     *
+     * <p/>
      * Returns true only if the attribute is "1".
-     * 
+     * <p/>
      * If the value does not exist, or if there is an error getting data from
      * the map, false will be returned.
      *
-     * @param map the NamedNodeMap to get a value from.
+     * @param map  the NamedNodeMap to get a value from.
      * @param name the name of the attribute to find.
      * @return value of the named attribute from the map as a boolean.
      */
     public static boolean getAttributeAsBoolean(NamedNodeMap map, String name) {
-	boolean value = false;
+        boolean value = false;
 
-	try {
-	    value = (getAttribute(map, name)).equals("1");
-	} catch (Exception e) {
-	    // will return false
-	}
+        try {
+            value = (getAttribute(map, name)).equals("1");
+        } catch (Exception e) {
+            // will return false
+        }
 
-	return value;
+        return value;
     }
-
 
 
     public static String getFirstChildTextContent(Node node) {
-	String content = "";
+        String content = "";
 
-	if (node != null) {
-	    try {
-		Node n = node.getFirstChild();
-		if (n != null) {
-		    content = n.getTextContent();
-		}
-	    } catch (Exception e) {
-		// will return empty string
-	    }
-	}
+        if (node != null) {
+            try {
+                Node n = node.getFirstChild();
+                if (n != null) {
+                    content = n.getTextContent();
+                }
+            } catch (Exception e) {
+                // will return empty string
+            }
+        }
 
-	return content.trim();
+        return content.trim();
     }
 
     public static String getNamedChildTextContent(Node node, String name) {
-	String content = "";
+        String content = "";
 
-	if (node != null) {
-	    try {
-		NodeList nodes = node.getChildNodes();
-		if (nodes != null) {
-		    for (int i = 0; i < nodes.getLength(); i++) {
-			Node child = nodes.item(i);
-			if (child.getNodeName().equals(name)) {
-			    content = child.getTextContent();
-			    break;
-			}
-		    }
-		}
-	    } catch (Exception e) {
-		// ignore, will return empty string
-	    }
-	}
+        if (node != null) {
+            try {
+                NodeList nodes = node.getChildNodes();
+                if (nodes != null) {
+                    for (int i = 0; i < nodes.getLength(); i++) {
+                        Node child = nodes.item(i);
+                        if (child.getNodeName().equals(name)) {
+                            content = child.getTextContent();
+                            break;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                // ignore, will return empty string
+            }
+        }
 
-	return content.trim();
+        return content.trim();
     }
 
 
@@ -370,17 +370,17 @@ public class JinxUtils {
      * @return true if the string is null or empty.
      */
     public static boolean isEmpty(String string) {
-	return (string == null || string.trim().length() == 0);
+        return (string == null || string.trim().length() == 0);
     }
 
 
     /**
      * Create a Date object from a Unix timestamp.
-     *
+     * <p/>
      * A Unix timestamp is is the number of seconds that have elapsed since
      * January 1, 1970. This value is converted into milliseconds, then used
      * to create a Date object.
-     *
+     * <p/>
      * If the timestamp is not a valid long, this method will return null.
      *
      * @param timestamp Unix timestamp to convert to a Date.
@@ -388,21 +388,21 @@ public class JinxUtils {
      *         invalid.
      */
     public static Date parseTimestampToDate(String timestamp) {
-	Date d = null;
-	try {
-	    long millis = Long.parseLong(timestamp) * 1000;
-	    d = new Date(millis);
-	} catch (Exception e) {
-	    // ignore; will return null
-	}
+        Date d = null;
+        try {
+            long millis = Long.parseLong(timestamp) * 1000;
+            d = new Date(millis);
+        } catch (Exception e) {
+            // ignore; will return null
+        }
 
-	return d;
+        return d;
     }
 
 
     /**
      * Convert a Date to a Unix timestamp.
-     *
+     * <p/>
      * If the date object is null or invalid, this method will return an empty
      * String.
      *
@@ -411,14 +411,14 @@ public class JinxUtils {
      *         String if the date object is invalid.
      */
     public static String formatDateAsUnixTimestamp(Date date) {
-	String timestamp = "";
-	try {
-	    timestamp = Long.toString(date.getTime() / 1000L);
-	} catch (Exception e) {
-	    // ignore; will return empty string
-	}
+        String timestamp = "";
+        try {
+            timestamp = Long.toString(date.getTime() / 1000L);
+        } catch (Exception e) {
+            // ignore; will return empty string
+        }
 
-	return timestamp;
+        return timestamp;
     }
 
 
@@ -429,36 +429,34 @@ public class JinxUtils {
      * @return "1" for true, "0" for false.
      */
     public static String booleanToString(boolean value) {
-	return value ? "1" : "0";
+        return value ? "1" : "0";
     }
 
 
-
     /**
-     *
-     * @param xml 
+     * @param xml
      * @return
      * @throws JinxException
      */
     private static Document getDocument(String xml) throws JinxException {
-	Document retDoc = null;
-	InputStream in = null;
-	try {
-	    in = new ByteArrayInputStream(xml.getBytes("UTF-8"));
-	    retDoc = documentBuilderFactory.newDocumentBuilder().parse(in);
-	} catch (Exception e) {
-	    throw new JinxException("Unable to create Document.", e);
-	} finally {
-	    if (in != null) {
-		try {
-		    in.close();
-		} catch (Exception e) {
-		    // ignore
-		}
-	    }
-	}
+        Document retDoc = null;
+        InputStream in = null;
+        try {
+            in = new ByteArrayInputStream(xml.getBytes("UTF-8"));
+            retDoc = documentBuilderFactory.newDocumentBuilder().parse(in);
+        } catch (Exception e) {
+            throw new JinxException("Unable to create Document.", e);
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (Exception e) {
+                    // ignore
+                }
+            }
+        }
 
-	return retDoc;
+        return retDoc;
     }
 
 
@@ -466,14 +464,14 @@ public class JinxUtils {
      * @return an XPath ready to use.
      */
     private static XPath getxPath() {
-	return xPathFactory.newXPath();
+        return xPathFactory.newXPath();
     }
 
-static char[] hexChar = {
-        '0', '1', '2', '3',
-        '4', '5', '6', '7',
-        '8', '9', 'a', 'b',
-        'c', 'd', 'e', 'f'};
+    static char[] hexChar = {
+            '0', '1', '2', '3',
+            '4', '5', '6', '7',
+            '8', '9', 'a', 'b',
+            'c', 'd', 'e', 'f'};
 
     /**
      * Convert a byte array to a hex string.
@@ -492,5 +490,5 @@ static char[] hexChar = {
         }
         return sb.toString();
     }
-    
+
 }

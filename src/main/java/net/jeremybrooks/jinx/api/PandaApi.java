@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2011 by Jeremy Brooks
+ * Jinx is Copyright 2010-2012 by Jeremy Brooks and Contributors
  *
  * This file is part of Jinx.
  *
@@ -18,10 +18,6 @@
  */
 package net.jeremybrooks.jinx.api;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
@@ -30,6 +26,11 @@ import net.jeremybrooks.jinx.dto.Photos;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *

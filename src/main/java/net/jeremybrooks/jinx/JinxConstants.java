@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010 by Jeremy Brooks
+ * Jinx is Copyright 2010-2012 by Jeremy Brooks and Contributors
  *
  * This file is part of Jinx.
  *
@@ -140,6 +140,7 @@ public class JinxConstants {
     /**
      * Constants for Extras.
      */
+
     public static final String EXTRAS_DESCRIPTION = "description";
     public static final String EXTRAS_LICENSE = "license";
     public static final String EXTRAS_DATE_UPLOAD = "date_upload";
@@ -158,13 +159,17 @@ public class JinxConstants {
     public static final String EXTRAS_URL_SQ = "url_sq";
     public static final String EXTRAS_URL_T = "url_t";
     public static final String EXTRAS_URL_S = "url_s";
+    public static final String EXTRAS_URL_Q = "url_q";
     public static final String EXTRAS_URL_M = "url_m";
+    public static final String EXTRAS_URL_N = "url_n";
     public static final String EXTRAS_URL_Z = "url_z";
+    public static final String EXTRAS_URL_C = "url_c";
+    public static final String EXTRAS_URL_L = "url_l";
     public static final String EXTRAS_URL_O = "url_o";
     public static final String EXTRAS_ALL = "description,license,date_upload,date_taken," +
 	    "owner_name,icon_server,original_format,last_update,geo,tags," +
 	    "machine_tags,o_dims,views,media,path_alias,url_sq,url_t,url_s," +
-	    "url_m,url_z,url_o";
+	    "url_q,url_m,url_n,url_z,url_c,url_l,url_o";
 
 
 
@@ -208,6 +213,17 @@ public class JinxConstants {
 
      /** Original image, either a jpg, gif or png, depending on source format */
      public static final int SIZE_ORIGINAL = 6;
+
+    /** Large Square, 150x150 */
+    public static final int SIZE_LARGE_SQUARE = 7;
+
+    /** Small 320, 320 on longest side. */
+    public static final int SIZE_SMALL_320 = 8;
+
+    /** Medium 800, 800 on longest side. */
+    public static final int SIZE_MEDIUM_800 = 9;
+
+
 
 
      public static enum GroupMemberType {
