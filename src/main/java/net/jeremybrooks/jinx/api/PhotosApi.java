@@ -1838,6 +1838,12 @@ public class PhotosApi {
             p.setUrlL(JinxUtils.getAttribute(map, "url_l"));
             p.setHeightL(JinxUtils.getAttributeAsInt(map, "height_l"));
             p.setWidthL(JinxUtils.getAttributeAsInt(map, "width_l"));
+			p.setUrlH(JinxUtils.getAttribute(map, "url_h"));
+			p.setHeightH(JinxUtils.getAttributeAsInt(map, "height_h"));
+			p.setWidthH(JinxUtils.getAttributeAsInt(map, "width_h"));
+			p.setUrlK(JinxUtils.getAttribute(map, "url_k"));
+			p.setHeightK(JinxUtils.getAttributeAsInt(map, "height_k"));
+			p.setWidthK(JinxUtils.getAttributeAsInt(map, "width_k"));
 
             p.setViews(JinxUtils.getAttributeAsInt(map, "views"));
             p.setHasComment(JinxUtils.getAttributeAsBoolean(map, "has_comment"));

@@ -61,4 +61,32 @@ public class PhotosApiTest {
 	    }
 	    Assert.assertNotNull(photos);
 	}
+
+	@Test
+	public void testSizes() throws Exception {
+		SearchParameters search = new SearchParameters();
+		search.setUserId("85853333@N00"); // search Jeremy's photos
+		search.setTags("vinyl,blogged"); // this photos should have all sizes
+		search.setPerPage(1);
+		StringBuilder sb = new StringBuilder(JinxConstants.SIZE_LARGE);
+		sb.append(",").append(JinxConstants.SIZE_LARGE_1600);
+		sb.append(",").append(JinxConstants.SIZE_LARGE_2048);
+		sb.append(",").append(JinxConstants.SIZE_LARGE_SQUARE);
+		sb.append(",").append(JinxConstants.SIZE_MEDIUM);
+		sb.append(",").append(JinxConstants.SIZE_MEDIUM_640);
+		sb.append(",").append(JinxConstants.SIZE_MEDIUM_800);
+		sb.append(",").append(JinxConstants.SIZE_ORIGINAL);
+		sb.append(",").append(JinxConstants.SIZE_SMALL);
+		sb.append(",").append(JinxConstants.SIZE_SMALL_320);
+		sb.append(",").append(JinxConstants.SIZE_SMALL_SQUARE);
+		sb.append(",").append(JinxConstants.SIZE_THUMBNAIL);
+
+		search.setExtras(sb.toString());
+
+		Photos photos = PhotosApi.getInstance().search(search);
+
+		for (Photo p :photos.getPhotos()) {
+			System.out.println(p.toString());
+		}
+	}
 }

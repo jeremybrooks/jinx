@@ -166,10 +166,12 @@ public class JinxConstants {
     public static final String EXTRAS_URL_C = "url_c";
     public static final String EXTRAS_URL_L = "url_l";
     public static final String EXTRAS_URL_O = "url_o";
+	public static final String EXTRAS_URL_H = "url_h";
+	public static final String EXTRAS_URL_K = "url_k";
     public static final String EXTRAS_ALL = "description,license,date_upload,date_taken," +
 	    "owner_name,icon_server,original_format,last_update,geo,tags," +
 	    "machine_tags,o_dims,views,media,path_alias,url_sq,url_t,url_s," +
-	    "url_q,url_m,url_n,url_z,url_c,url_l,url_o";
+	    "url_q,url_m,url_n,url_z,url_c,url_l,url_o,url_h,url_k";
 
 
 
@@ -222,6 +224,12 @@ public class JinxConstants {
 
     /** Medium 800, 800 on longest side. */
     public static final int SIZE_MEDIUM_800 = 9;
+
+	/** Large 1600, 1600 on longest side. */
+	public static final int SIZE_LARGE_1600 = 10;
+
+	/** Large 2048, 2048 on longest side. */
+	public static final int SIZE_LARGE_2048 = 11;
 
 
 

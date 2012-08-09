@@ -80,6 +80,12 @@ public class Photo extends PhotoBase implements Serializable {
     private String urlL;
     private int heightL;
     private int widthL;
+	private String urlH;
+	private int heightH;
+	private int widthH;
+	private String urlK;
+	private int heightK;
+	private int widthK;
 
 
     private String url;
@@ -621,6 +627,12 @@ public class Photo extends PhotoBase implements Serializable {
         sb.append("urlL=").append(this.getUrlL()).append(" | ");
         sb.append("heightL=").append(this.getHeightL()).append(" | ");
         sb.append("widthL=").append(this.getWidthL()).append(" | ");
+		sb.append("urlH=").append(this.getUrlH()).append(" | ");
+		sb.append("heightH=").append(this.getHeightH()).append(" | ");
+		sb.append("widthH=").append(this.getWidthH()).append(" | ");
+		sb.append("urlK=").append(this.getUrlK()).append(" | ");
+		sb.append("heightK=").append(this.getHeightK()).append(" | ");
+		sb.append("widthK=").append(this.getWidthK()).append(" | ");
         sb.append("views=").append(super.getViews()).append(" | ");
         sb.append("description=").append(super.getDescription()).append(" | ");
 	sb.append("url=").append(this.url).append(" | ");
@@ -831,4 +843,52 @@ public class Photo extends PhotoBase implements Serializable {
     public void setWidthL(int widthL) {
         this.widthL = widthL;
     }
+
+	public String getUrlH() {
+	        return urlH;
+	    }
+
+	    public void setUrlH(String urlH) {
+	        this.urlH = urlH;
+	    }
+
+	    public int getHeightH() {
+	        return heightH;
+	    }
+
+	    public void setHeightH(int heightH) {
+	        this.heightH = heightH;
+	    }
+
+	    public int getWidthH() {
+	        return widthH;
+	    }
+
+	    public void setWidthH(int widthH) {
+	        this.widthH = widthH;
+	    }
+
+	public String getUrlK() {
+	        return urlK;
+	    }
+
+	    public void setUrlK(String urlK) {
+	        this.urlK = urlK;
+	    }
+
+	    public int getHeightK() {
+	        return heightK;
+	    }
+
+	    public void setHeightK(int heightK) {
+	        this.heightK = heightK;
+	    }
+
+	    public int getWidthK() {
+	        return widthK;
+	    }
+
+	    public void setWidthK(int widthK) {
+	        this.widthK = widthK;
+	    }
 }

@@ -428,6 +428,14 @@ public class PhotoBase implements Serializable {
                 sb.append('.').append(this.originalFormat);
                 break;
 
+			case JinxConstants.SIZE_LARGE_1600:
+				sb.append(this.secret).append("_h.jpg");
+				break;
+
+			case JinxConstants.SIZE_LARGE_2048:
+				sb.append(this.secret).append("_k.jpg");
+				break;
+
             default:
                 throw new JinxException("Undefined size: " + size);
 
