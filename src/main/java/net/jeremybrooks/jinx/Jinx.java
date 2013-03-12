@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2012 by Jeremy Brooks and Contributors and Contributors
+ * Jinx is Copyright 2010-2013 by Jeremy Brooks and Contributors
  *
  * This file is part of Jinx.
  *
@@ -137,7 +137,9 @@ public class Jinx {
 		this.apiKey = apiKey;
 		this.apiSecret = apiSecret;
 		this.oAuthAccessToken = oAuthAccessToken;
+
 		this.gson = new Gson();
+
 		this.consumer = new DefaultOAuthConsumer(apiKey, apiSecret);
 		if (oAuthAccessToken != null) {
 			consumer.setTokenWithSecret(oAuthAccessToken.getOauthToken(), oAuthAccessToken.getOauthTokenSecret());
@@ -187,6 +189,8 @@ public class Jinx {
 
 	/**
 	 * Call Flickr, returning the specified class deserialized from the Flickr response.
+	 * <p/>
+	 * This will make a signed call to Flickr using http GET.
 	 *
 	 * @param params
 	 * @param tClass
@@ -195,7 +199,23 @@ public class Jinx {
 	 * @throws JinxException
 	 */
 	public <T> T flickrGet(Map<String, String> params, Class<T> tClass) throws JinxException {
-		return callFlickr(params, Method.GET, tClass);
+		return callFlickr(params, Method.GET, tClass, true);
+	}
+
+	/**
+	 * Call Flickr, returning the specified class deserialized from the Flickr response.
+	 * <p/>
+	 * This will make a call to Flickr using http GET. The caller can specify if the request should be signed.
+	 *
+	 * @param params
+	 * @param tClass
+	 * @param sign
+	 * @param <T>
+	 * @return
+	 * @throws JinxException
+	 */
+	public <T> T flickrGet(Map<String, String> params, Class<T> tClass, boolean sign) throws JinxException {
+		return callFlickr(params, Method.GET, tClass, sign);
 	}
 
 
@@ -209,11 +229,11 @@ public class Jinx {
 	 * @throws JinxException
 	 */
 	public <T> T flickrPost(Map<String, String> params, Class<T> tClass) throws JinxException {
-		return callFlickr(params, Method.POST, tClass);
+		return callFlickr(params, Method.POST, tClass, true);
 	}
 
 
-	protected <T> T callFlickr(Map<String, String> params, Method method, Class<T> tClass) throws JinxException {
+	protected <T> T callFlickr(Map<String, String> params, Method method, Class<T> tClass, boolean sign) throws JinxException {
 		if (this.oAuthAccessToken == null) {
 			throw new JinxException("Jinx has not been configured with an OAuth Access Token.");
 		}
@@ -237,7 +257,7 @@ public class Jinx {
 		if (method == Method.POST) {
 //			json = HTTPRequestPoster.post(JinxConstants.REST_ENDPOINT, sb.toString());
 		} else {
-			json = this.doGet(JinxConstants.REST_ENDPOINT, sb.toString());
+			json = this.doGet(JinxConstants.REST_ENDPOINT, sb.toString(), sign);
 		}
 
 		if (json == null) {
@@ -247,7 +267,7 @@ public class Jinx {
 	}
 
 
-	protected String doGet(String endpoint, String requestParameters) {
+	protected String doGet(String endpoint, String requestParameters, boolean sign) {
 		String result = null;
 		BufferedReader reader = null;
 		if (endpoint.startsWith("http://")) {
@@ -261,7 +281,9 @@ public class Jinx {
 				URL url = new URL(urlStr);
 				HttpURLConnection request = (HttpURLConnection) url.openConnection();
 
-				this.consumer.sign(request);
+				if (sign) {
+					this.consumer.sign(request);
+				}
 
 				request.connect();
 

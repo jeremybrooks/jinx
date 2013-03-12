@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2012 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2013 by Jeremy Brooks and Contributors
  *
  * This file is part of Jinx.
  *
