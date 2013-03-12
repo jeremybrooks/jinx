@@ -18,324 +18,267 @@
 */
 package net.jeremybrooks.jinx;
 
+import com.google.gson.Gson;
+import oauth.signpost.OAuthConsumer;
+import oauth.signpost.basic.DefaultOAuthConsumer;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLEncoder;
-import java.security.MessageDigest;
 import java.util.Map;
-import net.jeremybrooks.jinx.dto.Token;
-import net.jeremybrooks.jinx.logger.DefaultLogger;
-import net.jeremybrooks.jinx.logger.JinxLogger;
-import org.w3c.dom.Document;
+
+import static net.jeremybrooks.jinx.JinxConstants.Method;
 
 /**
  * This class contains the information needed to make calls to Flickr.
- *
- * Before you can make any calls to the API, you need to initialize this class
- * with at least the API key and secret for your application:
+ * <p/>
+ * <p>
+ * Jinx uses OAuth to sign requests. Your application must have a valid OAuth token.
+ * </p>
+ * <p/>
+ * <p>
+ * If you have used Jinx in the past and have a legacy access token, you can convert it to
+ * an OAuth access token as follows:
  * <code>
- * Jinx f = Jinx.getInstance();
- * f.init(API_KEY, API_SECRET);
+ * // initialize Jinx and an OAuthApi instance
+ * Jinx jinx = new Jinx(API_KEY, API_SECRET);
+ * <p/>
+ * // this is where we have saved the legacy access token
+ * InputStream in = new FileInputStream(new File(filename));
+ * <p/>
+ * // convert old token to OAuth token
+ * OAuthApi oauthApi = new OAuthApi(jinx);
+ * OAuthAccessToken oAuthToken = oauthApi.getAccessToken(in);
+ * <p/>
+ * // save the oauth token for next time
+ * oAuthToken.store(new FileOutputStream(new File(filename)));
  * </code>
- *
- * If you have obtained an auth token previously, you can initialize this class
- * with the token at the same time:
+ * </p>
+ * <p/>
+ * <p>
+ * If you need to get a new OAuth access token, you must get a request token, send the user to the URL to
+ * grant permission to your application, then use the returned access code to get the access token.
+ * This example shows how a desktop app would get an access token. Notice that the user is prompted for
+ * the access code, since desktop apps do not have callback URL's:
  * <code>
- * Jinx f = Jinx.getInstance();
- * f.init(API_KEY, API_SECRET, token);
+ * // initialize Jinx and an OAuthApi instance
+ * Jinx jinx = new Jinx(API_KEY, API_SECRET);
+ * OAuthApi oAuthApi = new OAuthApi(jinx);
+ * <p/>
+ * // get a request token, direct the user to the URL, and prompt them for the validation code
+ * String url = oAuthApi.getOAuthRequestToken(null);
+ * String verificationCode = JOptionPane.showInputDialog("Authorize at \n " + url + "\nand then enter the validation code.");
+ * <p/>
+ * // exchange the validation code for an access token
+ * OAuthAccessToken oAuthToken = oAuthApi.getOAuthAccessToken(verificationCode);
+ * <p/>
+ * // save it somewhere for next time
+ * oAuthToken.store(new FileOutputStream(new File(filename)));
  * </code>
- *
- * If you do not have a token, you will need to obtain one by going through the
- * authorization process with the user, then set the token. This can be done
- * as follows:
+ * </p>
+ * <p/>
+ * <p>
+ * Once you have an access token, you can use it the next time. Assuming you have stored it somewhere,
+ * using it again is simple:
  * <code>
- * Jinx f = Jinx.getInstance();
- * f.init(API_KEY, API_SECRET);
- *
- * // permissions are PERMS_READ, PERMS_WRITE, or PERMS_DELETE
- * // it is best to obtain the minimum permission level that your application
- * // will need.
- * Frob frob = AuthApi.getInstance().getFrob(JinxConstants.PERMS_READ);
- *
- * // direct the user to the login url so they can authorize your application
- * // depending on your application, you may want to do this in a GUI dialog
- * System.out.println("Go to this URL to authorize the application:");
- * System.out.println(frob.getLoginUrl());
- *
- * System.out.print("When you have authorized the app, press Enter to continue...");
- * System.in.read();
- *
- * Token token = AuthApi.getInstance().getToken(frob);
- * if (token.getStat().equals("ok")) {
- *     System.out.println("Authorization successful.");
- *     File file = new File(path_to_store_auth_token);
- *     token.store(file);
- *
- *     // put the token in the Jinx class instance
- *     f.setToken(token);
- *
- *     // now you can do all the cool stuff....
- * 
- *  } else {
- *     System.out.println("Authorization failed.");
- *     System.out.println("Error code: " + token.getErrorCode() +
- *         " - " + token.getErrorMessage());
- *     System.exit(1);
- *  }
+ * OAuthAccessToken oAuthToken = new OAuthAccessToken();
+ * oAuthToken.load(new FileInputStream(new File(filename)));
+ * <p/>
+ * Jinx jinx = new Jinx(API_KEY, API_SECRET, oAuthToken);
  * </code>
+ * </p>
  *
  * @author jeremyb
  */
 public class Jinx {
 
-    /** Reference to the only instance of this class. */
-    private static Jinx instance = null;
+	/**
+	 * The Jinx API key to use.
+	 */
+	private String apiKey;
 
-    /** The Jinx API key to use. */
-    private String apiKey;
+	/**
+	 * The Jinx API secret to use.
+	 */
+	private String apiSecret;
 
-    /** The Jinx API secret to use. */
-    private String apiSecret;
+	private OAuthAccessToken oAuthAccessToken;
 
-    /** The auth token to use when making authenticated calls. */
-    private Token token;
+	private Gson gson;
 
-
-    /**
-     * Private constructor.
-     */
-    private Jinx() {
-    }
+	private OAuthConsumer consumer;
 
 
-    /**
-     * Get a reference to the only instance of this class.
-     *
-     * @return reference to the only instance of this class.
-     */
-    public static Jinx getInstance() {
-	if (instance == null) {
-	    instance = new Jinx();
-	    if (JinxLogger.getLogger() == null) {
-		JinxLogger.setLogger(new DefaultLogger());
-	    }
+	private Jinx() {
+		// Jinx must be created with a key and secret.
 	}
 
-	return instance;
-    }
-
-
-    /**
-     * Initialize the Jinx class instance with an API key and secret.
-     *
-     * You must call one of the init methods before using this class.
-     *
-     * This method is sufficient when you do not have an auth token to use yet,
-     * such as before you have authenticated your user. Once you have an auth
-     * token, you must call setToken before making calls that require
-     * authentication.
-     *
-     * @param apiKey the API key to use.
-     * @param apiSecret the API secret to use.
-     */
-    public void init(String apiKey, String apiSecret) {
-	this.apiKey = apiKey;
-	this.apiSecret = apiSecret;
-    }
-
-    /**
-     * Initialize the Jinx class instance with an API key and secret.
-     *
-     * You must call one of the init methods before using this class.
-     *
-     * This method can be called to initialize all the required parameters at
-     * once. If you have loaded an auth token from the filesystem or from other
-     * persistent storage, you can pass it in here.
-     *
-     * @param apiKey the API key to use.
-     * @param apiSecret the API secret to use.
-     * @param token the auth token object to use.
-     */
-    public void init(String apiKey, String apiSecret, Token token) {
-	this.apiKey = apiKey;
-	this.apiSecret = apiSecret;
-	this.token = token;
-    }
-
-
-    /**
-     * Get the API key.
-     *
-     * @return API key.
-     */
-    public String getApiKey() throws JinxException {
-	if (this.apiKey == null) {
-	    throw new JinxException("Missing API key. Please initialize Jinx.");
-	}
-	return this.apiKey;
-    }
-
-
-    /**
-     * Get the API secret.
-     *
-     * @return API secret.
-     */
-    public String getApiSecret() throws JinxException {
-	if (this.apiSecret == null) {
-	    throw new JinxException("Missing API secret. Please initialize Jinx.");
-	}
-	return this.apiSecret;
-    }
-
-
-    /**
-     * Make a Jinx API call.
-     *
-     * The call will be made using HTTP GET, the auth token will be included
-     * in the parameters, and the call will be signed.
-     *
-     * @param params the parameters to use for the API call.
-     * @return results of the API call.
-     * @throws JinxException if there are any errors.
-     */
-    public Document callFlickr(Map<String, String> params) throws JinxException {
-	return this.callFlickr(params, true, false);
-
-    }
-
-    /**
-     * Make a Jinx API call.
-     *
-     * The call will be made using HTTP GET.
-     * 
-     * @param params the parameters to use for the API call.
-     * @param auth if true, the auth token parameter will be added to the call,
-     *        and the call will be signed.
-     * @return results of the API call.
-     * @throws JinxException if there are any errors.
-     */
-    public Document callFlickr(Map<String, String> params, boolean auth) throws JinxException {
-	return this.callFlickr(params, auth, false);
-
-    }
-
-    /**
-     * Make a Jinx API call.
-     * 
-     * @param params the parameters to use for the API call.
-     * @param auth if true, the auth token parameter will be added to the call,
-     *        and the call will be signed.
-     * @param post if true, the call will be made using HTTP POST, otherwise
-     *        the call will be made using HTTP GET.
-     * @return results of the API call.
-     * @throws JinxException if there are any errors.
-     */
-    public Document callFlickr(Map<String, String> params, boolean auth, boolean post) throws JinxException {
-	String sig = null;
-	String response = null;
-
-	if (auth) {
-	    // If we have a valid token, add the auth_token parameter
-	    // This should be the case except when doing the initial auth
-	    if (Jinx.getInstance().getToken() != null) {
-		params.put("auth_token", Jinx.getInstance().getToken().getToken());
-	    }
-	    
-	    sig = sign(params);
+	/**
+	 * Initialize the Jinx class instance with an API key and secret.
+	 * <p/>
+	 * You must call one of the init methods before using this class.
+	 * <p/>
+	 * This method is sufficient when you do not have an access token to use yet,
+	 * such as before you have authenticated your user. Once you have an access
+	 * token, you must call setAccessToken before making calls that require
+	 * authentication.
+	 *
+	 * @param apiKey    the API key to use.
+	 * @param apiSecret the API secret to use.
+	 */
+	public Jinx(String apiKey, String apiSecret) {
+		this(apiKey, apiSecret, null);
 	}
 
-	StringBuilder sb = new StringBuilder();
-	for (String key : params.keySet()) {
-	    try {
-		JinxLogger.getLogger().log("Encoding key '" + key + "' and value '" + params.get(key) + "'");
-		sb.append(URLEncoder.encode(key, "UTF-8")).append('=').append(URLEncoder.encode(params.get(key), "UTF-8")).append('&');
-	    } catch (Exception e) {
-		throw new JinxException("Error encoding.", e);
-	    }
-	}
-	if (auth) {
-	    sb.append("api_sig=").append(sig);
-	} else {
-	    sb.deleteCharAt(sb.lastIndexOf("&"));
+
+	public Jinx(String apiKey, String apiSecret, OAuthAccessToken oAuthAccessToken) {
+		this.apiKey = apiKey;
+		this.apiSecret = apiSecret;
+		this.oAuthAccessToken = oAuthAccessToken;
+		this.gson = new Gson();
+		this.consumer = new DefaultOAuthConsumer(apiKey, apiSecret);
+		if (oAuthAccessToken != null) {
+			consumer.setTokenWithSecret(oAuthAccessToken.getOauthToken(), oAuthAccessToken.getOauthTokenSecret());
+		}
 	}
 
-	String args = sb.toString();
 
-	if (post) {
-	    response = HTTPRequestPoster.post(JinxConstants.REST_ENDPOINT, args);
-	} else {
-	    response = HTTPRequestPoster.sendGetRequest(JinxConstants.REST_ENDPOINT, args);
+	public OAuthConsumer getConsumer() {
+		return this.consumer;
 	}
 
-	JinxLogger.getLogger().log("RESPONSE: " + response);
-	
-	return JinxUtils.parseStatus(response);
-    }
 
-
-    /**
-     * Compute the MD5 hash of the parameter string.
-     *
-     * @param params the parameter string to compute the hash for.
-     * @return MD5 hash for the parameter string.
-     * @throws JinxException if there are any errors.
-     */
-    public String sign(String params) throws JinxException {
-	String apiSig = null;
-	try {
-	    MessageDigest m = MessageDigest.getInstance("MD5");
-	    m.reset();
-	    m.update(params.getBytes("UTF-8"));
-	    byte[] digest = m.digest();
-	    apiSig = JinxUtils.toHexString(digest);
-	} catch (Exception e) {
-	    throw new JinxException("Error computing MD5 value.", e);
+	/**
+	 * Get the API key.
+	 *
+	 * @return API key.
+	 */
+	public String getApiKey() throws JinxException {
+		if (this.apiKey == null) {
+			throw new JinxException("Missing API key. Please initialize Jinx.");
+		}
+		return this.apiKey;
 	}
 
-	return apiSig;
-    }
 
-
-    /**
-     * Compute the MD5 sum for the named parameters.
-     *
-     * The parameters are first appended to each other as keyvaluekeyvalue....
-     * then the MD5 hash is calculated.
-     * 
-     * @param params key/value map of parameters. Must be in alphabetic order to
-     *        conform to Jinx signing rules.
-     * @return MD5 hash for the parameters.
-     * @throws JinxException if there are any errors.
-     */
-    public String sign(Map<String, String> params) throws JinxException {
-	StringBuilder authSb = new StringBuilder(Jinx.getInstance().getApiSecret());
-	for (String key : params.keySet()) {
-	    authSb.append(key).append(params.get(key));
+	/**
+	 * Get the API secret.
+	 *
+	 * @return API secret.
+	 */
+	public String getApiSecret() throws JinxException {
+		if (this.apiSecret == null) {
+			throw new JinxException("Missing API secret. Please initialize Jinx.");
+		}
+		return this.apiSecret;
 	}
 
-	return sign(authSb.toString());
-    }
+	public OAuthAccessToken oAuthAccessToken() {
+		return this.oAuthAccessToken;
+	}
+
+	public void setoAuthAccessToken(OAuthAccessToken oAuthAccessToken) {
+		this.oAuthAccessToken = oAuthAccessToken;
+		this.consumer.setTokenWithSecret(oAuthAccessToken.getOauthToken(), oAuthAccessToken.getOauthTokenSecret());
+	}
 
 
-    /**
-     * Get the auth token.
-     *
-     * @return the auth token.
-     */
-    public Token getToken() {
-	return token;
-    }
+	/**
+	 * Call Flickr, returning the specified class deserialized from the Flickr response.
+	 *
+	 * @param params
+	 * @param tClass
+	 * @param <T>
+	 * @return
+	 * @throws JinxException
+	 */
+	public <T> T flickrGet(Map<String, String> params, Class<T> tClass) throws JinxException {
+		return callFlickr(params, Method.GET, tClass);
+	}
 
 
-    /**
-     * Set the auth token.
-     *
-     * @param token the auth token to set
-     */
-    public void setToken(Token token) {
-	this.token = token;
-    }
+	/**
+	 * Call Flickr, returning the specified class deserialized from the Flickr response.
+	 *
+	 * @param params
+	 * @param tClass
+	 * @param <T>
+	 * @return
+	 * @throws JinxException
+	 */
+	public <T> T flickrPost(Map<String, String> params, Class<T> tClass) throws JinxException {
+		return callFlickr(params, Method.POST, tClass);
+	}
 
 
-    
+	protected <T> T callFlickr(Map<String, String> params, Method method, Class<T> tClass) throws JinxException {
+		if (this.oAuthAccessToken == null) {
+			throw new JinxException("Jinx has not been configured with an OAuth Access Token.");
+		}
+		String json = null;
+		params.put("format", "json");
+		params.put("nojsoncallback", "1");
+		params.put("api_key", getApiKey());
 
+		StringBuilder sb = new StringBuilder();
+		for (String key : params.keySet()) {
+			try {
+				// TODO: LOGGING
+				sb.append(URLEncoder.encode(key, "UTF-8")).append('=').append(URLEncoder.encode(params.get(key), "UTF-8")).append('&');
+			} catch (Exception e) {
+				throw new JinxException("Error encoding.", e);
+			}
+		}
+		sb.deleteCharAt(sb.lastIndexOf("&"));
+
+
+		if (method == Method.POST) {
+//			json = HTTPRequestPoster.post(JinxConstants.REST_ENDPOINT, sb.toString());
+		} else {
+			json = this.doGet(JinxConstants.REST_ENDPOINT, sb.toString());
+		}
+
+		if (json == null) {
+			throw new JinxException("Null return from call to Flickr.");
+		}
+		return gson.fromJson(json, tClass);
+	}
+
+
+	protected String doGet(String endpoint, String requestParameters) {
+		String result = null;
+		BufferedReader reader = null;
+		if (endpoint.startsWith("http://")) {
+			try {
+				String urlStr = endpoint;
+				if (requestParameters != null && requestParameters.length() > 0) {
+					urlStr += "?" + requestParameters;
+				}
+//					JinxLogger.getLogger().log("sendGetRequest URL is " + urlStr);
+
+				URL url = new URL(urlStr);
+				HttpURLConnection request = (HttpURLConnection) url.openConnection();
+
+				this.consumer.sign(request);
+
+				request.connect();
+
+				// Get the response
+				reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
+				StringBuilder sb = new StringBuilder();
+				String line;
+				while ((line = reader.readLine()) != null) {
+					sb.append(line);
+				}
+				result = sb.toString();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JinxUtils.close(reader);
+			}
+		}
+		return result;
+	}
 }
