@@ -27,6 +27,8 @@ import net.jeremybrooks.jinx.response.Response;
 public class JinxException extends java.lang.Exception {
 
 
+	private static final long serialVersionUID = -8987959765204324519L;
+
 	/**
 	 * Constructs an instance of <code>JinxException</code> with the specified detail message.
 	 *
