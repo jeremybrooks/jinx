@@ -1,0 +1,8 @@
+{ "services": {
+    "service": [
+      { "id": "beta.blogger.com", "_content": "Blogger" },
+      { "id": "LiveJournal", "_content": "LiveJournal" },
+      { "id": "MetaWeblogAPI", "_content": "Wordpress" },
+      { "id": "BloggerAPI", "_content": "BloggerAPI" },
+      { "id": "Twitter", "_content": "Twitter" }
+    ] }, "stat": "ok" }
