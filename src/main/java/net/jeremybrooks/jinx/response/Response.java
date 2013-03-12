@@ -49,8 +49,7 @@ public class Response implements Serializable {
 	@Override
 	public String toString() {
 		final StringBuilder sb = new StringBuilder();
-		sb.append("classname=").append(this.getClass().getName());
-		sb.append(",stat=\"").append(stat).append('\"');
+		sb.append("stat=\"").append(stat).append('\"');
 		sb.append(",code=").append(code);
 		sb.append(",message=\"").append(message).append('\"');
 		return sb.toString();
