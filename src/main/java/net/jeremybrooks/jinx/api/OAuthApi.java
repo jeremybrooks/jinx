@@ -98,7 +98,7 @@ public class OAuthApi {
 		for (String key : params.keySet()) {
 			sb.append(key).append('=').append(params.get(key)).append('&');
 		}
-		sb.deleteCharAt(sb.length());
+		sb.deleteCharAt(sb.lastIndexOf("&"));
 
 		BufferedReader in = null;
 		StringBuilder json = new StringBuilder();
