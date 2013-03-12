@@ -19,74 +19,35 @@
 package net.jeremybrooks.jinx;
 
 
+import net.jeremybrooks.jinx.response.Response;
+
 /**
- *
  * @author jeremyb
  */
 public class JinxException extends java.lang.Exception {
 
-    private int errorCode;
-    private String errorMessage;
 
-    /**
-     * Creates a new instance of <code>JinxException</code> without detail message.
-     */
-    public JinxException() {
-    }
-
-
-    /**
-     * Constructs an instance of <code>JinxException</code> with the specified detail message.
-     * @param msg the detail message.
-     */
-    public JinxException(String msg) {
-	super(msg);
-    }
+	/**
+	 * Constructs an instance of <code>JinxException</code> with the specified detail message.
+	 *
+	 * @param msg the detail message.
+	 */
+	public JinxException(String msg) {
+		super(msg);
+	}
 
 
-    /**
-     * Constructs an instance of <code>JinxException</code> with the specified detail message.
-     * @param msg the detail message.
-     */
-    public JinxException(String msg, Throwable cause) {
-	super(msg, cause);
-    }
+	/**
+	 * Constructs an instance of <code>JinxException</code> with the specified detail message.
+	 *
+	 * @param msg the detail message.
+	 */
+	public JinxException(String msg, Throwable cause) {
+		super(msg, cause);
+	}
 
-    public JinxException(String msg, Throwable cause, int errorCode, String errorMessage) {
-	super(msg, cause);
-	this.errorCode = errorCode;
-	this.errorMessage = errorMessage;
-    }
-
-    /**
-     * @return the errorCode
-     */
-    public int getErrorCode() {
-	return errorCode;
-    }
-
-
-    /**
-     * @param errorCode the errorCode to set
-     */
-    public void setErrorCode(int errorCode) {
-	this.errorCode = errorCode;
-    }
-
-
-    /**
-     * @return the errorMessage
-     */
-    public String getErrorMessage() {
-	return errorMessage;
-    }
-
-
-    /**
-     * @param errorMessage the errorMessage to set
-     */
-    public void setErrorMessage(String errorMessage) {
-	this.errorMessage = errorMessage;
-    }
+	public JinxException(String msg, Throwable cause, Response response) {
+		super(msg + " [" + response.getCode() + ": " + response.getMessage() + "]", cause);
+	}
 
 }
