@@ -18,16 +18,10 @@
 */
 package net.jeremybrooks.jinx;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathFactory;
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -44,156 +38,17 @@ import java.util.Date;
 public class JinxUtils {
 
     static {
-        documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        xPathFactory = XPathFactory.newInstance();
         formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ymdFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
     }
 
-    /* Instance of the document builder factory. */
-    private static DocumentBuilderFactory documentBuilderFactory;
-
-    /* Instance of the xpath factory. */
-    private static XPathFactory xPathFactory;
 
     /* Dates look like this: 2004-11-29 16:01:26 */
     private static SimpleDateFormat formatter;
 
     /* Formatter for YYYY-MM-DD dates. */
     private static SimpleDateFormat ymdFormatter;
-
-    /**
-     * Parses the status from an xml document.
-     * <p/>
-     * The XML response from Flickr has "stat", "err", and "msg"
-     * attributes which indicate the status of the request and any error
-     * codes and messages. An attribute value of "fail" for the attribute "stat"
-     * indicates that there was an error. If there was an error, an instance
-     * of JinxException is thrown with the error code and error message.
-     * <p/>
-     * If there were no errors, the Document object is returned so that callers
-     * can parse the payload.
-     *
-     * @param xml the xml to parse the status from.
-     * @return document object created from the xml.
-     * @throws JinxException if there are any errors.
-     */
-    public static Document parseStatus(String xml) throws JinxException {
-        InputStream in = null;
-        Document xmlDoc = getDocument(xml);
-
-        String stat;
-        int errorCode;
-        String errorMessage;
-
-        try {
-            stat = getValueByXPath(xmlDoc, "/rsp/@stat");
-
-            if (stat.equals("fail")) {
-                errorCode = getValueByXPathAsInt(xmlDoc, "/rsp/err/@code");
-                errorMessage = getValueByXPath(xmlDoc, "/rsp/err/@msg");
-
-                throw new JinxException("Call to Flickr failed with error code " +
-                        errorCode + ":" + errorMessage + ".", null, errorCode, errorMessage);
-            }
-
-        } catch (JinxException fe) {
-            throw fe;
-
-        } catch (Exception e) {
-            throw new JinxException("Unexpected error while parsing status from XML. " +
-                    "XML was '" + xml + "'", e);
-        } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (Exception e) {
-                    // ignore
-                }
-            }
-        }
-
-        return xmlDoc;
-    }
-
-
-    /**
-     * Get a value by xpath.
-     * <p/>
-     * This method will return an empty string if there are any errors, such
-     * as an invalid xpath or an invalid document object.
-     *
-     * @param document xml document to apply xpath to.
-     * @param xpath    the xpath to get the value from.
-     * @return value from the xpath, or an empty string.
-     */
-    public static String getValueByXPath(Document document, String xpath) {
-        String value = "";
-        try {
-            value = getxPath().evaluate(xpath, document).trim();
-        } catch (Exception e) {
-            // ignore; will return empty string
-        }
-
-        return value;
-    }
-
-
-    /**
-     * Get a value by xpath and return as an int.
-     *
-     * @param document xml document to apply xpath to.
-     * @param xpath    the xpath to get the value from.
-     * @return value contained at the xpath, or 0 if parsing fails.
-     */
-    public static int getValueByXPathAsInt(Document document, String xpath) {
-        int x = 0;
-
-        try {
-            x = Integer.parseInt(getValueByXPath(document, xpath));
-        } catch (Exception e) {
-            // ignore, will return 0
-        }
-        return x;
-    }
-
-    /**
-     * Get a value by xpath and return as a long.
-     *
-     * @param document xml document to apply xpath to.
-     * @param xpath    the xpath to get the value from.
-     * @return value contained at the xpath, or 0 if parsing fails.
-     */
-    public static long getValueByXPathAsLong(Document document, String xpath) {
-        long x = 0;
-
-        try {
-            x = Long.parseLong(getValueByXPath(document, xpath));
-        } catch (Exception e) {
-            // ignore, will return 0
-        }
-        return x;
-    }
-
-
-    /**
-     * Get a value by xpath and return as a boolean.
-     *
-     * @param document xml document to apply xpath to.
-     * @param xpath    the xpath to get the value from.
-     * @return true if the value is "1", false otherwise.
-     */
-    public static boolean getValueByXPathAsBoolean(Document document, String xpath) {
-        boolean b = false;
-        try {
-            b = getValueByXPath(document, xpath).equals("1");
-        } catch (Exception e) {
-            // ignore; will return false
-        }
-
-        return b;
-    }
 
 
     /**
@@ -249,129 +104,6 @@ public class JinxUtils {
         return retString;
     }
 
-    /**
-     * Get a named value from the NamedNodeMap.
-     * <p/>
-     * If the value does not exist, or if there is an error getting data from
-     * the map, an empty string will be returned.
-     *
-     * @param map  the NamedNodeMap to get a value from.
-     * @param name the name of the attribute to find.
-     * @return value of the named attribute from the map, or an empty String.
-     */
-    public static String getAttribute(NamedNodeMap map, String name) {
-        String value = "";
-
-        try {
-            Node node = map.getNamedItem(name);
-            if (node != null) {
-                value = node.getNodeValue().trim();
-            }
-        } catch (Exception e) {
-            // ignore; will return empty string
-        }
-
-        return value;
-    }
-
-
-    /**
-     * Get a named value from the NamedNodeMap as an int.
-     * <p/>
-     * If the value does not exist, or if there is an error getting data from
-     * the map, 0 will be returned.
-     *
-     * @param map  the NamedNodeMap to get a value from.
-     * @param name the name of the attribute to find.
-     * @return value of the named attribute from the map as an int.
-     */
-    public static int getAttributeAsInt(NamedNodeMap map, String name) {
-        int value = 0;
-
-        try {
-            value = Integer.parseInt(getAttribute(map, name));
-        } catch (Exception e) {
-            // will return 0
-        }
-
-        return value;
-    }
-
-    /**
-     * Get a named value from the NamedNodeMap as a boolean.
-     * <p/>
-     * Returns true only if the attribute is "1".
-     * <p/>
-     * If the value does not exist, or if there is an error getting data from
-     * the map, false will be returned.
-     *
-     * @param map  the NamedNodeMap to get a value from.
-     * @param name the name of the attribute to find.
-     * @return value of the named attribute from the map as a boolean.
-     */
-    public static boolean getAttributeAsBoolean(NamedNodeMap map, String name) {
-        boolean value = false;
-
-        try {
-            value = (getAttribute(map, name)).equals("1");
-        } catch (Exception e) {
-            // will return false
-        }
-
-        return value;
-    }
-
-
-    public static String getFirstChildTextContent(Node node) {
-        String content = "";
-
-        if (node != null) {
-            try {
-                Node n = node.getFirstChild();
-                if (n != null) {
-                    content = n.getTextContent();
-                }
-            } catch (Exception e) {
-                // will return empty string
-            }
-        }
-
-        return content.trim();
-    }
-
-    public static String getNamedChildTextContent(Node node, String name) {
-        String content = "";
-
-        if (node != null) {
-            try {
-                NodeList nodes = node.getChildNodes();
-                if (nodes != null) {
-                    for (int i = 0; i < nodes.getLength(); i++) {
-                        Node child = nodes.item(i);
-                        if (child.getNodeName().equals(name)) {
-                            content = child.getTextContent();
-                            break;
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                // ignore, will return empty string
-            }
-        }
-
-        return content.trim();
-    }
-
-
-    /**
-     * Determine if the String object is null or empty.
-     *
-     * @param string the string to check.
-     * @return true if the string is null or empty.
-     */
-    public static boolean isEmpty(String string) {
-        return (string == null || string.trim().length() == 0);
-    }
 
 
     /**
@@ -433,39 +165,6 @@ public class JinxUtils {
     }
 
 
-    /**
-     * @param xml
-     * @return
-     * @throws JinxException
-     */
-    private static Document getDocument(String xml) throws JinxException {
-        Document retDoc = null;
-        InputStream in = null;
-        try {
-            in = new ByteArrayInputStream(xml.getBytes("UTF-8"));
-            retDoc = documentBuilderFactory.newDocumentBuilder().parse(in);
-        } catch (Exception e) {
-            throw new JinxException("Unable to create Document.", e);
-        } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (Exception e) {
-                    // ignore
-                }
-            }
-        }
-
-        return retDoc;
-    }
-
-
-    /**
-     * @return an XPath ready to use.
-     */
-    private static XPath getxPath() {
-        return xPathFactory.newXPath();
-    }
 
     static char[] hexChar = {
             '0', '1', '2', '3',
@@ -491,4 +190,48 @@ public class JinxUtils {
         return sb.toString();
     }
 
+	public static void validateParams(Object...params) throws JinxException {
+		for (Object o : params) {
+			if (o == null) {
+				throw new JinxException("Parameters cannot be null.");
+			}
+		}
+	}
+
+	public static void close(InputStream in) {
+		if (in != null) {
+			try {
+				in.close();
+			} catch (Exception e) {
+				// ignore
+			}
+		}
+	}
+	public static void close(Reader in) {
+			if (in != null) {
+				try {
+					in.close();
+				} catch (Exception e) {
+					// ignore
+				}
+			}
+		}
+	public static void close(OutputStream out) {
+			if (out != null) {
+				try {
+					out.close();
+				} catch (Exception e) {
+					// ignore
+				}
+			}
+		}
+		public static void close(Writer writer) {
+				if (writer != null) {
+					try {
+						writer.close();
+					} catch (Exception e) {
+						// ignore
+					}
+				}
+			}
 }
