@@ -25,15 +25,32 @@ package net.jeremybrooks.jinx;
  */
 public class JinxConstants {
 
-    
 
-    public static final String PERMS_READ = "read";
-    public static final String PERMS_WRITE = "write";
-    public static final String PERMS_DELETE = "delete";
-    
+	public static enum Method {
+		POST,
+		GET
+	}
+
     public static final String REST_ENDPOINT = "http://api.flickr.com/services/rest/";
+	public static final String OAUTH_REQUEST_TOKEN_ENDPOINT_URL = "http://www.flickr.com/services/oauth/request_token";
+	public static final String OAUTH_ACCESS_TOKEN_ENDPOINT_URL = "http://www.flickr.com/services/oauth/access_token";
+	public static final String OAUTH_AUTHORIZE_WEBSITE_URL = "http://www.flickr.com/services/oauth/authorize";
+
+
+
+	// ----------------------------------------------
+	// move constants needed by new jinx above this line
+
+	public static final String PERMS_READ = "read";
+    public static final String PERMS_WRITE = "write";
+
+
+
+    public static final String PERMS_DELETE = "delete";
+
 
     public static final String AUTH_ENDPOINT = "http://flickr.com/services/auth/";
+
 
     /** Constant for tag mode "any". */
     public static final String TAG_MODE_ANY = "any";
