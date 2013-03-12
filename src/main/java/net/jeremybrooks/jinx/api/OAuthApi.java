@@ -27,7 +27,9 @@ import java.util.TreeMap;
  * Provides access to the Flickr OAuth API.
  * <p>
  *     This class is used when getting OAuth tokens, querying the oauth api, and converting legacy tokens to oauth tokens.
+ *     See {@link Jinx} documentation for examples of how to use this class.
  * </p>
+ *
  * @author Jeremy Brooks
  * @see <a href="http://www.flickr.com/services/api/">Flickr Services</a>
  */
