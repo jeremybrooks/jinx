@@ -17,6 +17,7 @@ public class OAuthCredentialsTest {
 					"\t    \"token\": { \"_content\": \"72157632940881881-6db7bec3c46b67b2\" }, \n" +
 					"\t    \"perms\": { \"_content\": \"delete\" }, \n" +
 					"\t    \"user\": { \"nsid\": \"85853333@N00\", \"username\": \"Jeremy Brooks\", \"fullname\": \"Jeremy Brooks\" } }, \"stat\": \"ok\" }";
+		System.out.println(json);
 			OAuthCredentials oAuthCredentials = gson.fromJson(json, OAuthCredentials.class);
 
 			assertEquals("ok", oAuthCredentials.getStat());
