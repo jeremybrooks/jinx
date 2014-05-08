@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
@@ -52,7 +52,7 @@ public class ActivityApi {
 	 */
 	public ActivityResponse userComments(Integer perPage, Integer page) throws JinxException {
 		/* sample URL:
-			http://api.flickr.com/services/rest/?method=flickr.activity.userComments&api_key=be21c1db5ab3dee07f7907de26d1e9be&per_page=10&page=1&format=json&nojsoncallback=1&auth_token=72157632971491247-fb7b422f825749fb&api_sig=9e917303e6bef519ba28f6913a433734
+			https://api.flickr.com/services/rest/?method=flickr.activity.userComments&api_key=be21c1db5ab3dee07f7907de26d1e9be&per_page=10&page=1&format=json&nojsoncallback=1&auth_token=72157632971491247-fb7b422f825749fb&api_sig=9e917303e6bef519ba28f6913a433734
 		*/
 		Map<String, String> params = new TreeMap<String, String>();
 		params.put("method", "flickr.activity.userComments");
@@ -94,7 +94,7 @@ public class ActivityApi {
 	 */
 	public ActivityResponse userPhotos(String timeframe, Integer perPage, Integer page) throws JinxException {
 		/* sample URL for userPhotos
-			http://api.flickr.com/services/rest/?method=flickr.activity.userPhotos&api_key=be21c1db5ab3dee07f7907de26d1e9be&timeframe=2d&per_page=10&page=1&format=json&nojsoncallback=1&auth_token=72157632971491247-fb7b422f825749fb&api_sig=0e1e87e75be6915b6ba4c93ad8bae934
+			https://api.flickr.com/services/rest/?method=flickr.activity.userPhotos&api_key=be21c1db5ab3dee07f7907de26d1e9be&timeframe=2d&per_page=10&page=1&format=json&nojsoncallback=1&auth_token=72157632971491247-fb7b422f825749fb&api_sig=0e1e87e75be6915b6ba4c93ad8bae934
 		*/
 
 		Map<String, String> params = new TreeMap<String, String>();
