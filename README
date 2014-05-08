@@ -28,6 +28,8 @@ Version 0.6.0-SNAPSHOT is a major rewrite of Jinx. It will not be compatible wit
 
 This list shows which API entry points have been implemented:
   * activity
+  * blogs (have not really tested the postPhoto method, though)
+  * cameras
   * oauth
 
 
@@ -46,7 +48,6 @@ mvn clean package -DskipTests
 TODO:
 
 Implement these API entry points:
-* blogs
   collections
   commons
   contacts
