@@ -11,4 +11,5 @@ db/*.sqlite3
 .DS_Store
 **/secret.properties
 test_token.xml
+test_oauth_token.xml
 *.iml
