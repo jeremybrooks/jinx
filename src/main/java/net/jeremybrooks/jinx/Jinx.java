@@ -23,6 +23,7 @@ import oauth.signpost.OAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthConsumer;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -221,6 +222,8 @@ public class Jinx {
 
 	/**
 	 * Call Flickr, returning the specified class deserialized from the Flickr response.
+	 * <p/>
+	 * This will make a signed call to Flickr using http POST.
 	 *
 	 * @param params
 	 * @param tClass
@@ -233,14 +236,41 @@ public class Jinx {
 	}
 
 
+	/**
+	 * Call Flickr, returning the specified class deserialized from the Flickr response.
+	 * <p/>
+	 * This will make a call to Flickr using http GET. The caller can specify if the request should be signed.
+	 *
+	 * @param params
+	 * @param tClass
+	 * @param sign
+	 * @param <T>
+	 * @return
+	 * @throws JinxException
+	 */
+	public <T> T flickrPost(Map<String, String> params, Class<T> tClass, boolean sign) throws JinxException {
+		return callFlickr(params, Method.POST, tClass, sign);
+	}
+
+
+	/**
+	 * @param params
+	 * @param method
+	 * @param tClass
+	 * @param sign
+	 * @param <T>
+	 * @return
+	 * @throws JinxException
+	 */
 	protected <T> T callFlickr(Map<String, String> params, Method method, Class<T> tClass, boolean sign) throws JinxException {
 		if (this.oAuthAccessToken == null) {
 			throw new JinxException("Jinx has not been configured with an OAuth Access Token.");
 		}
-		String json = null;
+		String json;
 		params.put("format", "json");
 		params.put("nojsoncallback", "1");
 		params.put("api_key", getApiKey());
+
 
 		StringBuilder sb = new StringBuilder();
 		for (String key : params.keySet()) {
@@ -253,24 +283,34 @@ public class Jinx {
 		}
 		sb.deleteCharAt(sb.lastIndexOf("&"));
 
-
 		if (method == Method.POST) {
-//			json = HTTPRequestPoster.post(JinxConstants.REST_ENDPOINT, sb.toString());
-		} else {
+//			Map<String, String> encodedParams = new HashMap<String, String>();
+//			for (String key : params.keySet()) {
+//				try {
+//					encodedParams.put(URLEncoder.encode(key, UTF8), URLEncoder.encode(params.get(key), UTF8));
+//				} catch (Exception e) {
+//					throw new JinxException("Error encoding.", e);
+//				}
+//			}
+			json = this.doPost(JinxConstants.REST_ENDPOINT, sb.toString(), sign);
+		} else if (method == Method.GET) {
 			json = this.doGet(JinxConstants.REST_ENDPOINT, sb.toString(), sign);
+		} else {
+			throw new JinxException("Unsupported method: " + method);
 		}
 
 		if (json == null) {
 			throw new JinxException("Null return from call to Flickr.");
 		}
+		System.out.println(json);
 		return gson.fromJson(json, tClass);
 	}
 
 
-	protected String doGet(String endpoint, String requestParameters, boolean sign) {
+	protected String doGet(String endpoint, String requestParameters, boolean sign) throws JinxException {
 		String result = null;
 		BufferedReader reader = null;
-		if (endpoint.startsWith("http://")) {
+		if (endpoint.startsWith("https://")) {
 			try {
 				String urlStr = endpoint;
 				if (requestParameters != null && requestParameters.length() > 0) {
@@ -296,11 +336,79 @@ public class Jinx {
 				}
 				result = sb.toString();
 			} catch (Exception e) {
-				e.printStackTrace();
+				throw new JinxException("Error while performing https GET operation.", e);
 			} finally {
 				JinxUtils.close(reader);
 			}
 		}
 		return result;
+	}
+
+	protected String doPost(String endpoint, String requestParameters, boolean sign) throws JinxException {
+		DataOutputStream out = null;
+		BufferedReader in = null;
+		StringBuilder sb = new StringBuilder();
+
+		try {
+
+			// Send data
+
+//			//----
+//			StringBuilder sb2 = new StringBuilder(endpoint).append('?');
+//									for (String key : encodedParams.keySet()) {
+//										sb2.append(key).append('=').append(encodedParams.get(key)).append('&');
+//									}
+//									sb2.deleteCharAt(sb2.lastIndexOf("&"));
+//			//----
+//
+//
+//			URL url = new URL(sb2.toString());
+//			HttpURLConnection request = (HttpURLConnection) url.openConnection();
+//
+////			for (String key : encodedParams.keySet()) {
+////				request.addRequestProperty(key, encodedParams.get(key));
+////			}
+
+			String urlStr = endpoint;
+							if (requestParameters != null && requestParameters.length() > 0) {
+								urlStr += "?" + requestParameters;
+							}
+			//					JinxLogger.getLogger().log("sendGetRequest URL is " + urlStr);
+
+							URL url = new URL(urlStr);
+							HttpURLConnection request = (HttpURLConnection) url.openConnection();
+
+
+			request.setDoInput(true);
+			request.setDoOutput(true);
+			request.setUseCaches(false);
+			request.setConnectTimeout(30000);
+			request.setReadTimeout(600000);    // 10 minutes
+
+			if (sign) {
+				this.consumer.sign(request);
+			}
+
+			request.connect();
+
+//			out = new DataOutputStream(request.getOutputStream());
+//			out.writeBytes(data);
+//			out.flush();
+
+			// Get the response
+			in = new BufferedReader(new InputStreamReader(request.getInputStream()));
+			String line;
+			while ((line = in.readLine()) != null) {
+				sb.append(line);
+			}
+
+		} catch (Exception e) {
+			throw new JinxException("Error while performing http POST operation.", e);
+		} finally {
+			JinxUtils.close(out);
+			JinxUtils.close(in);
+		}
+
+		return sb.toString();
 	}
 }

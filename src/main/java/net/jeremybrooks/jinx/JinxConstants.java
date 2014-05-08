@@ -31,11 +31,13 @@ public class JinxConstants {
 		GET
 	}
 
-    public static final String REST_ENDPOINT = "http://api.flickr.com/services/rest/";
-	public static final String OAUTH_REQUEST_TOKEN_ENDPOINT_URL = "http://www.flickr.com/services/oauth/request_token";
-	public static final String OAUTH_ACCESS_TOKEN_ENDPOINT_URL = "http://www.flickr.com/services/oauth/access_token";
-	public static final String OAUTH_AUTHORIZE_WEBSITE_URL = "http://www.flickr.com/services/oauth/authorize";
+    public static final String REST_ENDPOINT = "https://api.flickr.com/services/rest/";
+	public static final String OAUTH_REQUEST_TOKEN_ENDPOINT_URL = "https://www.flickr.com/services/oauth/request_token";
+	public static final String OAUTH_ACCESS_TOKEN_ENDPOINT_URL = "https://www.flickr.com/services/oauth/access_token";
+	public static final String OAUTH_AUTHORIZE_WEBSITE_URL = "https://www.flickr.com/services/oauth/authorize";
 
+
+	public static final String UTF8 = "UTF-8";
 
 
 	// ----------------------------------------------
