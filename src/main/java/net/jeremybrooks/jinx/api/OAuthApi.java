@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package net.jeremybrooks.jinx.api;
 
 import com.google.gson.Gson;

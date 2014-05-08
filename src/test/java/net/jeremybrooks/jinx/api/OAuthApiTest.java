@@ -62,9 +62,9 @@ public class OAuthApiTest {
 	 */
 	@Test
 	public void testOauth() throws Exception {
-		// testGetOauthAccessToken();
-		// testCheckToken();
-		// testGetAccessToken();	// This will cause the legacy token to be removed from Flickr in 24 hours
+		//testGetOauthAccessToken();
+		//testCheckToken();
+		//testGetAccessToken();	// This will cause the legacy token to be removed from Flickr in 24 hours
 	}
 
 
