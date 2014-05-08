@@ -1,0 +1,58 @@
+{ "cameras": { "brand": "canon", 
+    "camera": [
+      { "id": "eos_5d_mark_ii", 
+        "name": { "_content": "Canon EOS 5D Mark II" }, 
+        "details": { 
+          "megapixels": { "_content": 21.1 }, 
+          "lcd_screen_size": { "_content": 3 }, 
+          "memory_type": { "_content": "CompactFlash (CF) Card" } }, 
+        "images": { 
+          "small": { "_content": "http:\/\/farm4.staticflickr.com\/3154\/cameras\/72157607348761901_model_small_a874952616.jpg" }, 
+          "large": { "_content": "http:\/\/farm4.staticflickr.com\/3154\/cameras\/72157607348761901_model_large_97198e11ef.jpg" } } },
+      { "id": "eos_7d", 
+        "name": { "_content": "Canon EOS 7D" }, 
+        "details": { 
+          "megapixels": { "_content": 18 }, 
+          "lcd_screen_size": { "_content": 3 }, 
+          "memory_type": { "_content": "CompactFlash (CF) Card" } }, 
+        "images": { 
+          "small": { "_content": "http:\/\/farm4.staticflickr.com\/3487\/cameras\/72157602280763141_model_small_d6e5af0712.jpg" }, 
+          "large": { "_content": "http:\/\/farm4.staticflickr.com\/3487\/cameras\/72157602280763141_model_large_1f77f7e0f2.jpg" } } },
+      { "id": "eos_rebel_t2i", 
+        "name": { "_content": "Canon EOS REBEL T2i" }, 
+        "details": { 
+          "megapixels": { "_content": 18 }, 
+          "lcd_screen_size": { "_content": 3 }, 
+          "memory_type": { "_content": "SDXC, Secure Digital, SDHC" } }, 
+        "images": { 
+          "small": { "_content": "http:\/\/farm4.staticflickr.com\/3369\/cameras\/72157623502347808_model_small_d6f54d07c8.jpg" }, 
+          "large": { "_content": "http:\/\/farm4.staticflickr.com\/3369\/cameras\/72157623502347808_model_large_692b09d10c.jpg" } } },
+      { "id": "eos_rebel_t3i", 
+        "name": { "_content": "Canon EOS REBEL T3i" }, 
+        "details": { 
+          "megapixels": { "_content": 18 }, 
+          "lcd_screen_size": { "_content": 3 }, 
+          "memory_type": { "_content": "Secure Digital, SDXC, SDHC" } }, 
+        "images": { 
+          "small": { "_content": "http:\/\/farm6.staticflickr.com\/5035\/cameras\/72157625858229685_model_small_82002d6bd6.jpg" }, 
+          "large": { "_content": "http:\/\/farm6.staticflickr.com\/5035\/cameras\/72157625858229685_model_large_7c02ddbfe1.jpg" } } },
+      { "id": "eos_60d", 
+        "name": { "_content": "Canon EOS 60D" }, 
+        "details": { 
+          "megapixels": { "_content": 18 }, 
+          "lcd_screen_size": { "_content": 3 }, 
+          "memory_type": { "_content": "Secure Digital, SDHC, SDXC" } }, 
+        "images": { 
+          "small": { "_content": "http:\/\/farm6.staticflickr.com\/5249\/cameras\/72157624493316109_model_small_93c8e25107.jpg" }, 
+          "large": { "_content": "http:\/\/farm6.staticflickr.com\/5249\/cameras\/72157624493316109_model_large_c07377e8d4.jpg" } } },
+      { "id": "eos_5d_mark_iii", 
+        "name": { "_content": "Canon EOS 5D Mark III" }, 
+        "details": { 
+          "megapixels": { "_content": 22.3 }, 
+          "lcd_screen_size": { "_content": 3.2 }, 
+          "memory_type": { "_content": "CompactFlash, Secure Digital, SDHC, SDXC" } }, 
+        "images": { 
+          "small": { "_content": "http:\/\/farm8.staticflickr.com\/7184\/cameras\/72157622292089908_model_small_99bff53988.jpg" }, 
+          "large": { "_content": "http:\/\/farm8.staticflickr.com\/7184\/cameras\/72157622292089908_model_large_497d3698ba.jpg" } } }
+
+    ] }, "stat": "ok" }
