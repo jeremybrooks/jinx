@@ -20,7 +20,7 @@ package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxException;
-import net.jeremybrooks.jinx.response.ActivityResponse;
+import net.jeremybrooks.jinx.response.activity.ActivityResponse;
 
 import java.util.Map;
 import java.util.TreeMap;

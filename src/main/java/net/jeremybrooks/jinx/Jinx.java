@@ -294,6 +294,7 @@ public class Jinx {
 //			}
 			json = this.doPost(JinxConstants.REST_ENDPOINT, sb.toString(), sign);
 		} else if (method == Method.GET) {
+			System.out.println(sb.toString());
 			json = this.doGet(JinxConstants.REST_ENDPOINT, sb.toString(), sign);
 		} else {
 			throw new JinxException("Unsupported method: " + method);
@@ -316,7 +317,8 @@ public class Jinx {
 				if (requestParameters != null && requestParameters.length() > 0) {
 					urlStr += "?" + requestParameters;
 				}
-//					JinxLogger.getLogger().log("sendGetRequest URL is " + urlStr);
+				System.out.println("sendGetRequest URL is " + urlStr);
+//				JinxLogger.getLogger().log("sendGetRequest URL is " + urlStr);
 
 				URL url = new URL(urlStr);
 				HttpURLConnection request = (HttpURLConnection) url.openConnection();

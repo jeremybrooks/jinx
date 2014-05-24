@@ -20,7 +20,7 @@ package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.OAuthAccessToken;
-import net.jeremybrooks.jinx.response.OAuthCredentials;
+import net.jeremybrooks.jinx.response.auth.oauth.OAuthCredentials;
 import org.junit.Test;
 
 import javax.swing.JOptionPane;
@@ -70,7 +70,7 @@ public class OAuthApiTest {
 
 	private void testGetOauthAccessToken() throws Exception {
 		Properties p = new Properties();
-		p.load(OAuthApiTest.class.getResourceAsStream("/secret.properties"));
+		p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
 
 		String filename = p.getProperty("path.to.oauth.token");
 
@@ -92,7 +92,7 @@ public class OAuthApiTest {
 
 	private void testCheckToken() throws Exception {
 		Properties p = new Properties();
-		p.load(OAuthApiTest.class.getResourceAsStream("/secret.properties"));
+		p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
 
 		String filename = p.getProperty("path.to.oauth.token");
 		assertNotNull(filename);
@@ -121,7 +121,7 @@ public class OAuthApiTest {
 
 	private void testGetAccessToken() throws Exception {
 		Properties p = new Properties();
-		p.load(OAuthApiTest.class.getResourceAsStream("/secret.properties"));
+		p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
 
 		String filename = p.getProperty("path.to.token");
 		assertNotNull(filename);

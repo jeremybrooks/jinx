@@ -20,7 +20,7 @@ package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.OAuthAccessToken;
-import net.jeremybrooks.jinx.response.ActivityResponse;
+import net.jeremybrooks.jinx.response.activity.ActivityResponse;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -41,7 +41,7 @@ public class ActivityApiTest {
 	@BeforeClass
 	public static void beforeClass() throws Exception {
 		Properties p = new Properties();
-		p.load(OAuthApiTest.class.getResourceAsStream("/secret.properties"));
+		p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
 
 		String filename = p.getProperty("path.to.oauth.token");
 		assertNotNull(filename);

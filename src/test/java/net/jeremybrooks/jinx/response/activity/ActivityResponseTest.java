@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
 */
-package net.jeremybrooks.jinx.response;
+package net.jeremybrooks.jinx.response.activity;
 
 import com.google.gson.Gson;
 import org.junit.Test;
@@ -39,7 +39,7 @@ public class ActivityResponseTest {
 	 */
 	@Test
 	public void testUserPhotosFromJson() throws Exception {
-		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/sample_user_photos.json"));
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/activity/sample_user_photos.json"));
 		ActivityResponse response = new Gson().fromJson(reader, ActivityResponse.class);
 		reader.close();
 
@@ -100,7 +100,7 @@ public class ActivityResponseTest {
 	 */
 	@Test
 		public void testUserCommentsFromJson() throws Exception {
-			InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/sample_user_comments.json"));
+			InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/activity/sample_user_comments.json"));
 			ActivityResponse response = new Gson().fromJson(reader, ActivityResponse.class);
 			reader.close();
 

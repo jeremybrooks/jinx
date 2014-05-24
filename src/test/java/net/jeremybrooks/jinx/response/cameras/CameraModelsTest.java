@@ -17,9 +17,10 @@
  * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.jeremybrooks.jinx.response;
+package net.jeremybrooks.jinx.response.cameras;
 
 import com.google.gson.Gson;
+import net.jeremybrooks.jinx.response.activity.ActivityResponseTest;
 import org.junit.Test;
 
 import java.io.InputStreamReader;
@@ -35,7 +36,7 @@ public class CameraModelsTest {
 
 	@Test
 	public void testModelsFromJson() throws Exception {
-		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/sample_brand_models.json"));
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/cameras/sample_brand_models.json"));
 		CameraModels models = new Gson().fromJson(reader, CameraModels.class);
 		reader.close();
 

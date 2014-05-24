@@ -16,9 +16,10 @@
  * You should have received a copy of the GNU General Public License
  * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
 */
-package net.jeremybrooks.jinx.response;
+package net.jeremybrooks.jinx.response.auth.oauth;
 
 import com.google.gson.Gson;
+import net.jeremybrooks.jinx.response.auth.oauth.OAuthCredentials;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;

@@ -1,0 +1,25 @@
+{ "photoset": {
+    "id": "72157644326967779",
+    "owner": "85853333@N00",
+    "username": "Jeremy Brooks",
+    "primary": "2472223927",
+    "secret": "7081aec34e",
+    "server": "2026",
+    "farm": 3,
+    "photos": 87,
+    "count_views": 10,
+    "count_comments": 20,
+    "count_photos": 87,
+    "count_videos": 1,
+    "title": {
+        "_content": "Neon of Nebraska"
+    },
+    "description": {
+        "_content": "Neon signs in Nebraska.\n\nThis set is managed by <a href=\"http:\/\/www.jeremybrooks.net\/suprsetr\" rel=\"nofollow\">SuprSetr<\/a>"
+    },
+    "can_comment": 1,
+    "date_create": "1400476343",
+    "date_update": "1400476349",
+    "coverphoto_server": 0,
+    "coverphoto_farm": 0
+}, "stat": "ok" }

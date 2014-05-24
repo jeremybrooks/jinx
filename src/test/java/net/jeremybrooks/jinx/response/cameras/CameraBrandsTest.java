@@ -16,27 +16,35 @@
  * You should have received a copy of the GNU General Public License
  * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
 */
-package net.jeremybrooks.jinx.response;
+package net.jeremybrooks.jinx.response.cameras;
 
 import com.google.gson.Gson;
+import net.jeremybrooks.jinx.response.activity.ActivityResponseTest;
 import org.junit.Test;
 
+import java.io.InputStreamReader;
+
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 
 /**
  * @author Jeremy Brooks
  */
-public class OAuthExchangedTokenTest {
+public class CameraBrandsTest {
 
 	@Test
-		public void testFromJson() throws Exception {
-			Gson gson = new Gson();
-			String json = "{ \"auth\": { \n" +
-					"    \"access_token\": { \"oauth_token\": \"72157632940281881-6db7bec1c46b67b2\", \"oauth_token_secret\": \"7267af804d085953\" } }, \"stat\": \"ok\" }";
-			OAuthExchangedToken auth = gson.fromJson(json, OAuthExchangedToken.class);
+	public void testGetBrands() throws Exception {
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/cameras/sample_brands.json"));
+		CameraBrands brands = new Gson().fromJson(reader, CameraBrands.class);
+		reader.close();
 
-			assertEquals("ok", auth.getStat());
-			assertEquals("72157632940281881-6db7bec1c46b67b2", auth.getOAuthToken());
-			assertEquals("7267af804d085953", auth.getOAuthTokenSecret());
+		assertNotNull(brands);
+		assertEquals("ok", brands.getStat());
+
+		assertEquals(41, brands.getBrandList().size());
+		for (CameraBrands.Brand brand : brands.getBrandList()) {
+			assertNotNull(brand.getId());
+			assertNotNull(brand.getName());
 		}
+	}
 }

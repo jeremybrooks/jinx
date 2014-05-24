@@ -22,8 +22,8 @@ package net.jeremybrooks.jinx.api;
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
-import net.jeremybrooks.jinx.response.BlogList;
-import net.jeremybrooks.jinx.response.BlogServices;
+import net.jeremybrooks.jinx.response.blogs.BlogList;
+import net.jeremybrooks.jinx.response.blogs.BlogServices;
 import net.jeremybrooks.jinx.response.Response;
 
 import java.util.Map;

@@ -17,9 +17,10 @@
  * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.jeremybrooks.jinx.response;
+package net.jeremybrooks.jinx.response.cameras;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.response.Response;
 
 import java.util.List;
 

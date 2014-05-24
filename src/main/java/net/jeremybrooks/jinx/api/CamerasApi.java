@@ -22,8 +22,8 @@ package net.jeremybrooks.jinx.api;
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
-import net.jeremybrooks.jinx.response.CameraBrands;
-import net.jeremybrooks.jinx.response.CameraModels;
+import net.jeremybrooks.jinx.response.cameras.CameraBrands;
+import net.jeremybrooks.jinx.response.cameras.CameraModels;
 
 import java.util.Map;
 import java.util.TreeMap;

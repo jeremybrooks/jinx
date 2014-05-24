@@ -20,8 +20,8 @@ package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.OAuthAccessToken;
-import net.jeremybrooks.jinx.response.BlogList;
-import net.jeremybrooks.jinx.response.BlogServices;
+import net.jeremybrooks.jinx.response.blogs.BlogList;
+import net.jeremybrooks.jinx.response.blogs.BlogServices;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -43,7 +43,7 @@ public class BlogApiTest {
 	@BeforeClass
 	public static void beforeClass() throws Exception {
 		Properties p = new Properties();
-		p.load(OAuthApiTest.class.getResourceAsStream("/secret.properties"));
+		p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
 
 		String filename = p.getProperty("path.to.oauth.token");
 		assertNotNull(filename);
