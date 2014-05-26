@@ -31,6 +31,7 @@ This list shows which API entry points have been implemented:
   * blogs (have not really tested the postPhoto method, though)
   * cameras
   * oauth
+  * photosets (photo extras in getList is not working)
 
 
 
@@ -70,8 +71,6 @@ Implement these API entry points:
   photos.people
   photos.transform
   photos.upload
-  photosets
-	  flickr.photosets.getList - some tests failing
 
 
 photosets.comments
