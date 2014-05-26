@@ -220,10 +220,29 @@ public class PhotosetsApi {
 		if (perPage > 0) {
 			params.put("per_page", Integer.toString(perPage));
 		}
-		if (! JinxUtils.isNullOrEmpty(photoExtras)) {
+		if (!JinxUtils.isNullOrEmpty(photoExtras)) {
 			params.put("photo_extras", JinxUtils.buildCommaDelimitedList(photoExtras));
 		}
 		return jinx.flickrGet(params, PhotosetList.class);
 	}
 
+	/**
+	 * Set the order of photosets for the calling user.
+	 * <p/>
+	 * This method requires authentication with 'write' permission.
+	 * <p/>
+	 * Note: This method requires an HTTP POST request.
+	 *
+	 * @param photosetIds a list containing photoset IDs, ordered with the set to show first, first in the list. Any set IDs
+	 *                    not given in the list will be set to appear at the end of the list, ordered by their IDs.
+	 * @return an empty success response if it completes without error.
+	 * @throws JinxException if the list of photoset id's is null or empty, or if there are any errors.
+	 */
+	public Response orderSets(List<String> photosetIds) throws JinxException {
+		JinxUtils.validateParams(photosetIds);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photosets.orderSets");
+		params.put("photoset_ids", JinxUtils.buildCommaDelimitedList(photosetIds));
+		return jinx.flickrPost(params, Response.class);
+	}
 }

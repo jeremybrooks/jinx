@@ -23,9 +23,9 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 
 /**
@@ -207,16 +207,16 @@ public class JinxUtils {
 	public static boolean isNullOrEmpty(String s) {
 		return s == null || s.trim().length() == 0;
 	}
-	public static boolean isNullOrEmpty(Set set) {
-		return set == null || set.size() == 0;
+	public static boolean isNullOrEmpty(Collection collection) {
+		return collection == null || collection.size() == 0;
 	}
 
-	public static String buildCommaDelimitedList(Set set) {
-		if (isNullOrEmpty(set)) {
+	public static String buildCommaDelimitedList(Collection collection) {
+		if (isNullOrEmpty(collection)) {
 			return null;
 		}
 		StringBuilder sb = new StringBuilder();
-		for (Object o : set) {
+		for (Object o : collection) {
 			sb.append(o.toString()).append(',');
 		}
 		sb.deleteCharAt(sb.length()-1);

@@ -73,7 +73,6 @@ Implement these API entry points:
   photosets
 	  flickr.photosets.getList - some tests failing
 	  flickr.photosets.getPhotos
-	  flickr.photosets.orderSets
 	  flickr.photosets.removePhoto
 	  flickr.photosets.removePhotos
 	  flickr.photosets.reorderPhotos
