@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.fail;
 
@@ -36,5 +37,14 @@ public class JinxUtilsTest {
 		}
 		assertNotNull(exception);
 		assertNotNull(exception1);
+	}
+
+	@Test
+	public void testToFlickrPrivacy() throws Exception {
+		assertEquals(1, JinxUtils.toFlickrPrivacy(JinxConstants.PrivacyFilter.privacyPublic));
+		assertEquals(2, JinxUtils.toFlickrPrivacy(JinxConstants.PrivacyFilter.privacyFriends));
+		assertEquals(3, JinxUtils.toFlickrPrivacy(JinxConstants.PrivacyFilter.privacyFamily));
+		assertEquals(4, JinxUtils.toFlickrPrivacy(JinxConstants.PrivacyFilter.privacyFriendsAndFamily));
+		assertEquals(5, JinxUtils.toFlickrPrivacy(JinxConstants.PrivacyFilter.privacyPrivate));
 	}
 }

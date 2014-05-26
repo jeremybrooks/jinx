@@ -72,7 +72,6 @@ Implement these API entry points:
   photos.upload
   photosets
 	  flickr.photosets.getList - some tests failing
-	  flickr.photosets.getPhotos
 
 
 photosets.comments

@@ -45,6 +45,15 @@ public class JinxConstants {
 
 	}
 
+	public static enum PrivacyFilter {
+		privacyPublic, privacyFriends, privacyFamily, privacyFriendsAndFamily, privacyPrivate
+	}
+
+
+	public static enum MediaType {
+		all, photos, videos
+	}
+
 
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line

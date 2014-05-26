@@ -8,6 +8,8 @@ import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photosets.Photoset;
 import net.jeremybrooks.jinx.response.photosets.PhotosetInfo;
 import net.jeremybrooks.jinx.response.photosets.PhotosetList;
+import net.jeremybrooks.jinx.response.photosets.PhotosetPhoto;
+import net.jeremybrooks.jinx.response.photosets.PhotosetPhotos;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -154,6 +156,33 @@ public class PhotosetsApiTest {
 		assertEquals("ok", response.getStat());
 		PhotosetInfo info = photosetsApi.getInfo(createdPhotosetId);
 		assertEquals(photo6, info.getPhotoset().getPrimary());
+	}
+
+	@Test
+	public void testGetPhotos() throws Exception {
+		PhotosetPhotos photosetPhotos = photosetsApi.getPhotos(createdPhotosetId, null, null, 0, 0, null);
+		assertNotNull(photosetPhotos);
+		List<PhotosetPhoto> photos = photosetPhotos.getPhotoList();
+		assertNotNull(photos);
+		assertEquals(7, photos.size());
+		for (PhotosetPhoto photo : photos) {
+		assertNotNull(photo);
+		}
+	}
+
+	@Test
+	public void testGetPhotosWithExtras() throws Exception {
+		EnumSet<JinxConstants.PhotoExtras> extras = EnumSet.of(JinxConstants.PhotoExtras.date_upload, JinxConstants.PhotoExtras.owner_name);
+		PhotosetPhotos photosetPhotos = photosetsApi.getPhotos(createdPhotosetId, extras, JinxConstants.PrivacyFilter.privacyPublic, 0, 0, JinxConstants.MediaType.all);
+		assertNotNull(photosetPhotos);
+		List<PhotosetPhoto> photos = photosetPhotos.getPhotoList();
+		assertNotNull(photos);
+		assertEquals(7, photos.size());
+		for (PhotosetPhoto photo : photos) {
+			assertNotNull(photo);
+			assertNotNull(photo.getDateUpload());
+			assertEquals("jinxlib", photo.getOwnerName());
+		}
 	}
 
 	@Test

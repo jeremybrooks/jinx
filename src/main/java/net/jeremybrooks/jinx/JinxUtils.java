@@ -223,6 +223,31 @@ public class JinxUtils {
 		return sb.toString();
 	}
 
+	public static int toFlickrPrivacy(JinxConstants.PrivacyFilter privacyFilter) {
+		int level = 0;
+		switch (privacyFilter) {
+			case privacyPublic:
+				level = 1;
+				break;
+			case privacyFriends:
+				level = 2;
+				break;
+			case privacyFamily:
+				level = 3;
+				break;
+			case privacyFriendsAndFamily:
+				level = 4;
+				break;
+			case privacyPrivate:
+				level = 5;
+				break;
+			default:
+				level = 0;
+				break;
+		}
+		return level;
+	}
+
 	public static void close(InputStream in) {
 		if (in != null) {
 			try {

@@ -8,6 +8,7 @@ import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photosets.PhotosetInfo;
 import net.jeremybrooks.jinx.response.photosets.PhotosetList;
+import net.jeremybrooks.jinx.response.photosets.PhotosetPhotos;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -225,6 +226,49 @@ public class PhotosetsApi {
 		}
 		return jinx.flickrGet(params, PhotosetList.class);
 	}
+
+
+	/**
+	 * Get the list of photos in a set.
+	 * <p/>
+	 * This method does not require authentication.
+	 *
+	 * @param photosetId    id of the photoset to return photos for. Required.
+	 * @param photoExtras   Optional. A list of extra information to fetch for the primary photo. Currently supported fields are:
+	 *                      license, date_upload, date_taken, owner_name, icon_server, original_format, last_update,
+	 *                      geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_m, url_o
+	 * @param privacyFilter Optional. Return photos only matching a certain privacy level. This only applies when making an authenticated call to view a photoset you own.
+	 * @param perPage       Optional. Number of photos to return per page. If this argument is zero, it defaults to 500. The maximum allowed value is 500.
+	 * @param page          Optional. The page of results to return. If this argument is zero, it defaults to 1.
+	 * @param mediaType     Optional. Filter results by media type.
+	 * @return object containing some basic photoset metadata information, along with a list of photos in the photoset.
+	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+	 */
+	public PhotosetPhotos getPhotos(String photosetId, EnumSet<JinxConstants.PhotoExtras> photoExtras, JinxConstants.PrivacyFilter privacyFilter,
+									int perPage, int page, JinxConstants.MediaType mediaType) throws JinxException {
+		JinxUtils.validateParams(photosetId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photosets.getPhotos");
+		params.put("photoset_id", photosetId);
+		if (!JinxUtils.isNullOrEmpty(photoExtras)) {
+			params.put("extras", JinxUtils.buildCommaDelimitedList(photoExtras));
+		}
+		if (privacyFilter != null) {
+			params.put("privacy_filter", Integer.toString(JinxUtils.toFlickrPrivacy(privacyFilter)));
+		}
+		if (perPage > 0) {
+			params.put("per_page", Integer.toString(perPage));
+		}
+		if (page > 0) {
+			params.put("page", Integer.toString(page));
+		}
+		if (mediaType != null) {
+			params.put("media", mediaType.toString());
+		}
+
+		return jinx.flickrGet(params, PhotosetPhotos.class);
+	}
+
 
 	/**
 	 * Set the order of photosets for the calling user.
