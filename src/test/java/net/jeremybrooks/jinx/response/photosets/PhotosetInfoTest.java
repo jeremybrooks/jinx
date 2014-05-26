@@ -5,6 +5,7 @@ import net.jeremybrooks.jinx.response.activity.ActivityResponseTest;
 import org.junit.Test;
 
 import java.io.InputStreamReader;
+import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
@@ -16,12 +17,6 @@ import static org.junit.Assert.assertNotNull;
  */
 public class PhotosetInfoTest {
 
-	/*
-	{ "photoset": {
-	    "id": "72157644586245015",
-	    "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/sets\/72157644586245015\/"
-	}, "stat": "ok" }
-	 */
 	@Test
 	public void testPhotosetCreate() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photosets/sample_photoset_create.json"));
@@ -34,33 +29,6 @@ public class PhotosetInfoTest {
 		assertEquals("https://www.flickr.com/photos/jeremybrooks/sets/72157644586245015/", info.getPhotoset().getUrl());
 	}
 
-	/*
-	{ "photoset": {
-	    "id": "72157644326967779",
-	    "owner": "85853333@N00",
-	    "username": "Jeremy Brooks",
-	    "primary": "2472223927",
-	    "secret": "7081aec34e",
-	    "server": "2026",
-	    "farm": 3,
-	    "photos": 87,
-	    "count_views": 10,
-	    "count_comments": 20,
-	    "count_photos": 87,
-	    "count_videos": 1,
-	    "title": {
-	        "_content": "Neon of Nebraska"
-	    },
-	    "description": {
-	        "_content": "Neon signs in Nebraska.\n\nThis set is managed by <a href=\"http:\/\/www.jeremybrooks.net\/suprsetr\" rel=\"nofollow\">SuprSetr<\/a>"
-	    },
-	    "can_comment": 1,
-	    "date_create": "1400476343",
-	    "date_update": "1400476349",
-	    "coverphoto_server": 0,
-	    "coverphoto_farm": 0
-	}, "stat": "ok" }
-	 */
 	@Test
 	public void testPhotosetInfo() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photosets/sample_photoset_info.json"));
@@ -91,87 +59,7 @@ public class PhotosetInfoTest {
 		assertEquals(0, (int) p.getCoverphotoFarm());
 	}
 
-	/*
-	{ "photosets": {
-	    "cancreate": 1,
-	    "page": 1,
-	    "pages": 45,
-	    "perpage": 10,
-	    "total": "447",
-	    "photoset": [
-	        {
-	            "id": "72157644326967779",
-	            "primary": "2472223927",
-	            "secret": "7081aec34e",
-	            "server": "2026",
-	            "farm": 3,
-	            "photos": 87,
-	            "videos": 0,
-	            "title": {
-	                "_content": "Neon of Nebraska"
-	            },
-	            "description": {
-	                "_content": "Neon signs in Nebraska.\n\nThis set is managed by <a href=\"http:\/\/www.jeremybrooks.net\/suprsetr\" rel=\"nofollow\">SuprSetr<\/a>"
-	            },
-	            "needs_interstitial": 0,
-	            "visibility_can_see_set": 1,
-	            "count_views": 0,
-	            "count_comments": 0,
-	            "can_comment": 1,
-	            "date_create": "1400476343",
-	            "date_update": "1400476349",
-	            "primary_photo_extras": {
-	                "license": 2,
-	                "o_width": "3888",
-	                "o_height": "2588",
-	                "dateupload": "1210135559",
-	                "lastupdate": "1385342902",
-	                "datetaken": "2008-05-03 08:34:09",
-	                "datetakengranularity": 0,
-	                "ownername": "Jeremy Brooks",
-	                "iconserver": "5332",
-	                "iconfarm": 6,
-	                "views": "1084",
-	                "tags": "food restaurant nebraska neon day unitedstates meat steak lucky omaha",
-	                "machine_tags": "",
-	                "originalsecret": "e64cd9f5d9",
-	                "originalformat": "jpg",
-	                "latitude": 41.248833,
-	                "longitude": -95.929666,
-	                "accuracy": 16,
-	                "context": 0,
-	                "place_id": "gNIcefxTWrgrNXMkFQ",
-	                "woeid": "28288811",
-	                "geo_is_family": 0,
-	                "geo_is_friend": 0,
-	                "geo_is_contact": 0,
-	                "geo_is_public": 1,
-	                "media": "photo",
-	                "media_status": "ready",
-	                "url_sq": "https:\/\/farm3.staticflickr.com\/2026\/2472223927_7081aec34e_s.jpg",
-	                "height_sq": 75,
-	                "width_sq": 75,
-	                "url_t": "https:\/\/farm3.staticflickr.com\/2026\/2472223927_7081aec34e_t.jpg",
-	                "height_t": 67,
-	                "width_t": 100,
-	                "url_s": "https:\/\/farm3.staticflickr.com\/2026\/2472223927_7081aec34e_m.jpg",
-	                "height_s": "160",
-	                "width_s": "240",
-	                "url_m": "https:\/\/farm3.staticflickr.com\/2026\/2472223927_7081aec34e.jpg",
-	                "height_m": "333",
-	                "width_m": "500",
-	                "url_o": "https:\/\/farm3.staticflickr.com\/2026\/2472223927_e64cd9f5d9_o.jpg",
-	                "height_o": "2588",
-	                "width_o": "3888",
-	                "pathalias": "jeremybrooks"
-	            }
-	        },
-	        ... 9 more ...
-	        }
-	    ]
-	}, "stat": "ok" }
 
-	 */
 	@Test
 	public void testGetPhotosetList() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photosets/sample_photoset_list.json"));
@@ -260,5 +148,79 @@ public class PhotosetInfoTest {
 		assertEquals(2588, (int) ppe.getHeightO());
 		assertEquals(3888, (int) ppe.getWidthO());
 		assertEquals("jeremybrooks", ppe.getPathAlias());
+	}
+
+	@Test
+	public void testGetPhotos() throws Exception {
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photosets/sample_photosets_get_photos.json"));
+		PhotosetPhotos photosetPhotos = new Gson().fromJson(reader, PhotosetPhotos.class);
+		reader.close();
+		assertNotNull(photosetPhotos);
+		assertEquals("ok", photosetPhotos.getStat());
+		List<PhotosetPhoto> photoList = photosetPhotos.getPhotoList();
+		assertNotNull(photoList);
+		assertEquals( 6, photoList.size());
+
+		assertEquals("72157644807061466", photosetPhotos.getPhotosetId());
+		assertEquals("14296772893", photosetPhotos.getPrimary());
+		assertEquals("124857539@N03", photosetPhotos.getOwner());
+		assertEquals("jinxlib", photosetPhotos.getOwnerName());
+		assertEquals(1, (int)photosetPhotos.getPage());
+		assertEquals("500", photosetPhotos.getPerPage());
+		assertEquals(1, (int)photosetPhotos.getPages());
+		assertEquals(6, (int)photosetPhotos.getTotal());
+		assertEquals("Neon Signs", photosetPhotos.getTitle());
+
+		PhotosetPhoto photo = photosetPhotos.getPhotoList().get(0);
+		assertNotNull(photo);
+		assertEquals("14296772893", photo.getPhotoId());
+		assertEquals("270d516d2b", photo.getSecret());
+		assertEquals("3688", photo.getServer());
+		assertEquals(4, (int)photo.getFarm());
+		assertEquals("Right Outside", photo.getTitle());
+		assertTrue(photo.isPrimary());
+		assertEquals(0, (int)photo.getLicense());
+		assertEquals("1401130554", photo.getDateUpload());
+		assertEquals("1401138922", photo.getLastUpdate());
+		assertEquals("2010-08-27 12:17:49", photo.getDateTaken());
+		assertEquals(0, (int)photo.getDateTakenGranularity());
+		assertEquals("jinxlib", photo.getOwnerName());
+		assertEquals(0, (int)photo.getIconServer());
+		assertEquals(0, (int)photo.getIconFarm());
+		assertEquals(1, (int)photo.getViews());
+		assertEquals("sanfrancisco california usa bar vintage neon chinatown day arrow cocktails lipo sanfranciscocounty sign:type=neon", photo.getTags());
+		assertEquals("sign:type=neon", photo.getMachineTags());
+		assertEquals("ae304bdb6c", photo.getOriginalSecret());
+		assertEquals("jpg", photo.getOriginalFormat());
+		assertEquals(37.795387, photo.getLatitude());
+		assertEquals(-122.406486, photo.getLongitude());
+		assertEquals(16, (int)photo.getAccuracy());
+		assertEquals(0, (int)photo.getContext());
+		assertEquals("iIt1rq9TUb1LDiek", photo.getPlaceId());
+		assertEquals("2379855", photo.getWoeId());
+		assertFalse(photo.isGeoIsFamily());
+		assertFalse(photo.isGeoIsFriend());
+		assertFalse(photo.isGeoIsContact());
+		assertTrue(photo.isGeoIsPublic());
+		assertEquals("photo", photo.getMedia());
+		assertEquals("ready", photo.getMediaStatus());
+		assertEquals("", photo.getPathAlias());
+
+		assertEquals("https://farm4.staticflickr.com/3688/14296772893_270d516d2b_s.jpg", photo.getUrlSq());
+		assertEquals(75, (int)photo.getHeightSq());
+		assertEquals(75, (int)photo.getWidthSq());
+		assertEquals("https://farm4.staticflickr.com/3688/14296772893_270d516d2b_t.jpg", photo.getUrlT());
+		assertEquals(67, (int)photo.getHeightT());
+		assertEquals(100, (int)photo.getWidthT());
+		assertEquals("https://farm4.staticflickr.com/3688/14296772893_270d516d2b_m.jpg", photo.getUrlS());
+		assertEquals(160, (int)photo.getHeightS());
+		assertEquals(240, (int)photo.getWidthS());
+		assertEquals("https://farm4.staticflickr.com/3688/14296772893_270d516d2b.jpg", photo.getUrlM());
+		assertEquals(333, (int)photo.getHeightM());
+		assertEquals(500, (int)photo.getWidthM());
+
+		assertEquals("https://farm4.staticflickr.com/3688/14296772893_ae304bdb6c_o.jpg", photo.getUrlO());
+		assertEquals(3744, (int)photo.getHeightO());
+		assertEquals(5616, (int)photo.getWidthO());
 	}
 }
