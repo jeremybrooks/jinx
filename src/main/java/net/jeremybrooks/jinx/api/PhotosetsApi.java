@@ -245,4 +245,92 @@ public class PhotosetsApi {
 		params.put("photoset_ids", JinxUtils.buildCommaDelimitedList(photosetIds));
 		return jinx.flickrPost(params, Response.class);
 	}
+
+
+	/**
+	 * Remove a photo from a photoset.
+	 * <p/>
+	 * This method requires authentication with 'write' permission.
+	 * <p/>
+	 * Note: This method requires an HTTP POST request.
+	 *
+	 * @param photosetId id of the photoset to remove a photo from.
+	 * @param photoId    id of the photo to remove from the set.
+	 * @return an empty success response if it completes without error.
+	 * @throws JinxException if any parameter is null or empty, or if there are other errors.
+	 */
+	public Response removePhoto(String photosetId, String photoId) throws JinxException {
+		JinxUtils.validateParams(photosetId, photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photosets.removePhoto");
+		params.put("photoset_id", photosetId);
+		params.put("photo_id", photoId);
+		return jinx.flickrPost(params, Response.class);
+	}
+
+
+	/**
+	 * Remove multiple photos from a photoset.
+	 * <p/>
+	 * This method requires authentication with 'write' permission.
+	 * <p/>
+	 * Note: This method requires an HTTP POST request.
+	 *
+	 * @param photosetId id of the photoset to remove a photo from.
+	 * @param photoIds   list of photo id's to remove from the photoset.
+	 * @return an empty success response if it completes without error.
+	 * @throws JinxException if any parameter is null or empty, or if there are other errors.
+	 */
+	public Response removePhotos(String photosetId, List<String> photoIds) throws JinxException {
+		JinxUtils.validateParams(photosetId, photoIds);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photosets.removePhotos");
+		params.put("photoset_id", photosetId);
+		params.put("photo_ids", JinxUtils.buildCommaDelimitedList(photoIds));
+		return jinx.flickrPost(params, Response.class);
+	}
+
+
+	/**
+	 * Reorder photos in an existing photoset.
+	 * This method requires authentication with 'write' permission.
+	 * Note: This method requires an HTTP POST request.
+	 *
+	 * @param photosetId id of the photoset to remove a photo from.
+	 * @param photoIds   ordered list of photo id's. Photos that are not in the list will keep their original order.
+	 * @return an empty success response if it completes without error.
+	 * @throws JinxException if any parameter is null or empty, or if there are other errors.
+	 */
+	public Response reorderPhotos(String photosetId, List<String> photoIds) throws JinxException {
+		JinxUtils.validateParams(photosetId, photoIds);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photosets.reorderPhotos");
+		params.put("photoset_id", photosetId);
+		params.put("photo_ids", JinxUtils.buildCommaDelimitedList(photoIds));
+		return jinx.flickrPost(params, Response.class);
+	}
+
+
+	/**
+	 * Set photoset primary photo.
+	 * <p/>
+	 * This method requires authentication with 'write' permission.
+	 * <p/>
+	 * Note: This method requires an HTTP POST request.
+	 * <p/>
+	 * If the photo is not already in the set, nothing will happen, and the method will report success.
+	 *
+	 * @param photosetId id of the photoset to set primary photo of.
+	 * @param photoId    id of the photo set set as primary.
+	 * @return an empty success response if it completes without error.
+	 * @throws JinxException if any parameter is null or empty, or if there are other errors.
+	 */
+	public Response setPrimaryPhoto(String photosetId, String photoId) throws JinxException {
+		JinxUtils.validateParams(photosetId, photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photosets.setPrimaryPhoto");
+		params.put("photoset_id", photosetId);
+		params.put("photo_id", photoId);
+		return jinx.flickrPost(params, Response.class);
+	}
 }
