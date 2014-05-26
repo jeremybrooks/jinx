@@ -2,10 +2,13 @@ package net.jeremybrooks.jinx.response.photosets;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * @author Jeremy Brooks
  */
-public class PrimaryPhotoExtras {
+public class PrimaryPhotoExtras implements Serializable {
+	private static final long serialVersionUID = -1915040017261347562L;
 	private Integer license;
 	@SerializedName("o_width")
 	private String oWidth;
