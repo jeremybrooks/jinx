@@ -2,6 +2,8 @@ package net.jeremybrooks.jinx.response.photosets;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Encapsulates data about a photoset.
  *
@@ -12,7 +14,8 @@ import com.google.gson.annotations.SerializedName;
  *
  * @author Jeremy Brooks
  */
-public class Photoset {
+public class Photoset implements Serializable {
+	private static final long serialVersionUID = -3849197843508752543L;
 	@SerializedName("id")
 	private String photosetId;
 	private String url;
