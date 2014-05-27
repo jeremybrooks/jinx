@@ -4,6 +4,7 @@ import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.OAuthAccessToken;
 import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.photos.AddTags;
+import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.Tag;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -89,5 +90,15 @@ public class PhotosApiTest {
 			assertEquals("ok", response.getStat());
 			assertEquals(0, response.getCode());
 		}
+	}
+
+	@Test
+	public void testGetAllContexts() throws Exception {
+		AllContexts contexts = photosApi.getAllContexts(photoId);
+		assertNotNull(contexts);
+		assertEquals("ok", contexts.getStat());
+		assertEquals(0, contexts.getCode());
+		assertNotNull(contexts.getSetList());
+		assertNotNull(contexts.getPoolList());
 	}
 }

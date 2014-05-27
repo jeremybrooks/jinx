@@ -64,7 +64,7 @@ Implement these API entry points:
   photos
 	  flickr.photos.addTags 				(done)
 	  flickr.photos.delete					(done)
-	  flickr.photos.getAllContexts
+	  flickr.photos.getAllContexts			(done)
 	  flickr.photos.getContactsPhotos
 	  flickr.photos.getContactsPublicPhotos
 	  flickr.photos.getContext

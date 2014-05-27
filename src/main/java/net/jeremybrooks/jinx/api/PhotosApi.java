@@ -5,6 +5,7 @@ import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.photos.AddTags;
+import net.jeremybrooks.jinx.response.photos.AllContexts;
 
 import java.util.List;
 import java.util.Map;
@@ -74,7 +75,22 @@ public class PhotosApi {
 	}
 
 
-//  flickr.photos.getAllContexts
+	/**
+	 Returns all visible sets and pools the photo belongs to.
+
+	 This method does not require authentication.
+
+	 * @param photoId photo id to find contexts for.
+	 * @return object with a list of all sets and pools the photo is in.
+	 * @throws JinxException if the photo id is null or empty, or if there are any errors.
+	 */
+	public AllContexts getAllContexts(String photoId) throws JinxException {
+		JinxUtils.validateParams(photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getAllContexts");
+		params.put("photo_id", photoId);
+		return jinx.flickrGet(params, AllContexts.class);
+	}
 
 
 //  flickr.photos.getContactsPhotos

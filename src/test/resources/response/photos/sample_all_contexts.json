@@ -1,0 +1,24 @@
+{ "set": [
+    {
+        "title": "Iceland",
+        "id": "72157644903065293",
+        "primary": "14090247837",
+        "secret": "a00c1c8c01",
+        "server": "3745",
+        "farm": 4,
+        "view_count": 2,
+        "comment_count": 1,
+        "count_photo": 17,
+        "count_video": 0
+    }
+], "pool": [
+    {
+        "title": "Private Jinx Test Group",
+        "url": "\/groups\/2638254@N20\/pool\/",
+        "id": "2638254@N20",
+        "iconserver": "2934",
+        "iconfarm": 0,
+        "members": 1,
+        "pool_count": 1
+    }
+], "stat": "ok" }
