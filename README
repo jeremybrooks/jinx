@@ -62,6 +62,33 @@ Implement these API entry points:
   panda
   people
   photos
+	  flickr.photos.addTags 				(done)
+	  flickr.photos.delete
+	  flickr.photos.getAllContexts
+	  flickr.photos.getContactsPhotos
+	  flickr.photos.getContactsPublicPhotos
+	  flickr.photos.getContext
+	  flickr.photos.getCounts
+	  flickr.photos.getExif
+	  flickr.photos.getFavorites
+	  flickr.photos.getInfo
+	  flickr.photos.getNotInSet
+	  flickr.photos.getPerms
+	  flickr.photos.getRecent
+	  flickr.photos.getSizes
+	  flickr.photos.getUntagged
+	  flickr.photos.getWithGeoData
+	  flickr.photos.getWithoutGeoData
+	  flickr.photos.recentlyUpdated
+	  flickr.photos.removeTag				(done)
+	  flickr.photos.search
+	  flickr.photos.setContentType
+	  flickr.photos.setDates
+	  flickr.photos.setMeta
+	  flickr.photos.setPerms
+	  flickr.photos.setSafetyLevel
+	  flickr.photos.setTags					(done)
+
   photos.comments
   photos.geo          (NOTE: Some of the methods in photos.geo do not work correctly.
                                They also do not work in the Flickr API Explorer,

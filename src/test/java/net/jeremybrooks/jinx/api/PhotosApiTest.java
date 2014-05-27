@@ -2,7 +2,9 @@ package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.OAuthAccessToken;
+import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.photos.AddTags;
+import net.jeremybrooks.jinx.response.photos.Tag;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -21,6 +23,7 @@ import static junit.framework.Assert.assertTrue;
  */
 public class PhotosApiTest {
 	private static PhotosApi photosApi;
+	private static List<Tag> tagList;
 	private static String photoId = "14276354684";
 
 	@BeforeClass
@@ -48,6 +51,32 @@ public class PhotosApiTest {
 		assertEquals("ok", tags.getStat());
 		assertEquals(0, tags.getCode());
 		assertNotNull(tags.getTagList());
-		assertEquals(2, tags.getTagList().size());
+		tagList = tags.getTagList();
+		assertEquals(2, tagList.size());
+	}
+
+	@Test
+	public void testRemoveTag() throws Exception {
+		Response response = photosApi.removeTag(tagList.get(0).getFullTagId());
+		assertNotNull(response);
+		assertEquals("ok", response.getStat());
+		assertEquals(0, response.getCode());
+	}
+
+	@Test
+	public void testSetTags() throws Exception {
+		List<String> tags = new ArrayList<String>();
+		tags.add("Tag Added by Jinx tests");
+		tags.add("jinxtest");
+		tags.add("jinx:type=test");
+		Response response = photosApi.setTags(photoId, null);
+		assertNotNull(response);
+		assertEquals("ok", response.getStat());
+		assertEquals(0, response.getCode());
+
+		response = photosApi.setTags(photoId, tags);
+		assertNotNull(response);
+		assertEquals("ok", response.getStat());
+		assertEquals(0, response.getCode());
 	}
 }

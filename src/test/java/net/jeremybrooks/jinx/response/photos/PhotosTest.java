@@ -31,4 +31,5 @@ public class PhotosTest {
 		assertEquals("124834485-14276354684-57115208", tag.getFullTagId());
 		assertEquals("57115208", tag.getTagId());
 	}
+
 }
