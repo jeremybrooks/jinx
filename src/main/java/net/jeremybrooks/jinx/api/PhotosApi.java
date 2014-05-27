@@ -56,7 +56,22 @@ public class PhotosApi {
 	}
 
 
-//  flickr.photos.delete
+	/**
+	 * Delete a photo from flickr.
+	 * <p/>
+	 * This method requires authentication with 'delete' permission.
+	 *
+	 * @param photoId id of the photo to delete.
+	 * @return response object with the results of the requested operation.
+	 * @throws JinxException if the parameter is null or empty, or if there are any errors.
+	 */
+	public Response delete(String photoId) throws JinxException {
+		JinxUtils.validateParams(photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.delete");
+		params.put("photo_id", photoId);
+		return jinx.flickrPost(params, Response.class);
+	}
 
 
 //  flickr.photos.getAllContexts
@@ -155,9 +170,9 @@ public class PhotosApi {
 	 * Each tag in the list will be treated as a single tag. This method will automatically add quotation marks as
 	 * needed so that multi-word tags will be treated correctly by Flickr. This method can also be used to add
 	 * machine tags.
-	 *
+	 * <p/>
 	 * This list of tags will replace the tags that currently exist on the photo.
-	 *
+	 * <p/>
 	 * If the tag list is null or empty, all tags will be removed from the photo.
 	 *
 	 * @param photoId id of the photo to set tags for.

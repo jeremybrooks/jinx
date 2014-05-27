@@ -25,6 +25,7 @@ public class PhotosApiTest {
 	private static PhotosApi photosApi;
 	private static List<Tag> tagList;
 	private static String photoId = "14276354684";
+	private static String deletePhotoId = null; // set this to run the delete photo test
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
@@ -78,5 +79,15 @@ public class PhotosApiTest {
 		assertNotNull(response);
 		assertEquals("ok", response.getStat());
 		assertEquals(0, response.getCode());
+	}
+
+	@Test
+	public void testDelete() throws Exception {
+		if (deletePhotoId != null) {
+			Response response = photosApi.delete(deletePhotoId);
+			assertNotNull(response);
+			assertEquals("ok", response.getStat());
+			assertEquals(0, response.getCode());
+		}
 	}
 }

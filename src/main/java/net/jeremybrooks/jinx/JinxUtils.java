@@ -200,6 +200,10 @@ public class JinxUtils {
 						throw new JinxException("Objects in list cannot be null.");
 					}
 				}
+			} else if (o instanceof String) {
+				if ( ((String)o).length() == 0) {
+					throw new JinxException("String cannot be empty.");
+				}
 			}
 		}
 	}
