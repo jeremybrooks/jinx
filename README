@@ -32,7 +32,7 @@ This list shows which API entry points have been implemented:
   * cameras
   * oauth
   * photosets (photo extras in getList is not working)
-
+  * photosets comments
 
 
 BUILDING
@@ -73,7 +73,6 @@ Implement these API entry points:
   photos.upload
 
 
-photosets.comments
 places
 prefs
 reflection
