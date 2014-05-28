@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
@@ -104,6 +105,17 @@ public class JinxUtils {
 			retString = JinxUtils.ymdFormatter.format(date);
 		}
 		return retString;
+	}
+
+	/**
+	 * Parse a string in the format yyyy-MM-dd to a Date object.
+	 *
+	 * @param dateString string to parse.
+	 * @return date string as a date object.
+	 * @throws ParseException if the date is not in the correct yyyy-MM-dd format.
+	 */
+	public static Date parseYMDToDate(String dateString) throws ParseException {
+		return ymdFormatter.parse(dateString);
 	}
 
 
@@ -221,7 +233,7 @@ public class JinxUtils {
 		}
 		StringBuilder sb = new StringBuilder();
 		for (Object o : collection) {
-			sb.append(o.toString()).append(',');
+			sb.append(o.toString().trim()).append(',');
 		}
 		sb.deleteCharAt(sb.length()-1);
 		return sb.toString();

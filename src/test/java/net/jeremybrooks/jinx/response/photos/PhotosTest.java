@@ -164,4 +164,19 @@ public class PhotosTest {
 
 		assertEquals("yewenyi", p.getPathAlias());
 	}
+
+	@Test
+	public void testGetPhotocounts() throws Exception {
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_get_counts.json"));
+		Photocounts photocounts = new Gson().fromJson(reader, Photocounts.class);
+		reader.close();
+		assertNotNull(photocounts);
+		assertEquals("ok", photocounts.getStat());
+		assertEquals(0, photocounts.getCode());
+		assertNotNull(photocounts.getPhotocountList());
+		Photocounts.Photocount photocount = photocounts.getPhotocountList().get(0);
+		assertEquals(10, (int)photocount.getCount());
+		assertEquals("1093566950", photocount.getFromDate());
+		assertEquals("1093567000", photocount.getToDate());
+	}
 }

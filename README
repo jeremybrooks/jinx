@@ -68,7 +68,7 @@ Implement these API entry points:
 	  flickr.photos.getContactsPhotos		(done)
 	  flickr.photos.getContactsPublicPhotos	(done)
 	  flickr.photos.getContext				(done)
-	  flickr.photos.getCounts
+	  flickr.photos.getCounts				(done)
 	  flickr.photos.getExif
 	  flickr.photos.getFavorites
 	  flickr.photos.getInfo

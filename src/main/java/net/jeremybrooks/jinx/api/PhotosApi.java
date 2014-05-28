@@ -8,8 +8,12 @@ import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
+import net.jeremybrooks.jinx.response.photos.Photocounts;
 import net.jeremybrooks.jinx.response.photos.PhotosResponse;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
@@ -192,7 +196,38 @@ public class PhotosApi {
 		return jinx.flickrGet(params, Context.class);
 	}
 
-//  flickr.photos.getCounts
+	/**
+	 * Gets a list of photo counts for the given date ranges for the calling user.
+	 * <p/>
+	 * This method requires authentication with 'read' permission.
+	 * <p/>
+	 * You must provide either dates or takenDates parameters. Flickr may not return correct results if you specify both.
+	 *
+	 * @param dates      a list of dates denoting the periods to return counts for. They should be specified smallest first.
+	 * @param takenDates a list of dates denoting the periods to return counts for. They should be specified smallest first.
+	 * @return object containing a list of counts for the specified dates.
+	 * @throws JinxException if there are any errors.
+	 */
+	public Photocounts getCounts(List<Date> dates, List<Date> takenDates) throws JinxException {
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getCounts");
+		if (!JinxUtils.isNullOrEmpty(dates)) {
+			Collections.sort(dates);
+			List<String> formattedDates = new ArrayList<String>();
+			for (Date date : dates) {
+				formattedDates.add(JinxUtils.formatDateAsUnixTimestamp(date));
+			}
+			params.put("dates", JinxUtils.buildCommaDelimitedList(formattedDates));
+		}
+		if (!JinxUtils.isNullOrEmpty(takenDates)) {
+			List<String> formattedDates = new ArrayList<String>();
+			for (Date date : takenDates) {
+				formattedDates.add(JinxUtils.formatDateAsMySqlTimestamp(date));
+			}
+			params.put("taken_dates", JinxUtils.buildCommaDelimitedList(formattedDates));
+		}
+		return jinx.flickrGet(params, Photocounts.class);
+	}
 
 
 //  flickr.photos.getExif

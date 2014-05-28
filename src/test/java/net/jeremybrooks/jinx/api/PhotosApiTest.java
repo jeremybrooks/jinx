@@ -2,12 +2,14 @@ package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxConstants;
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.OAuthAccessToken;
 import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.Photo;
+import net.jeremybrooks.jinx.response.photos.Photocounts;
 import net.jeremybrooks.jinx.response.photos.PhotosResponse;
 import net.jeremybrooks.jinx.response.photos.Tag;
 import org.junit.BeforeClass;
@@ -16,6 +18,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Properties;
@@ -157,5 +160,25 @@ public class PhotosApiTest {
 		assertEquals(0, context.getCode());
 		assertNotNull(context.getNextphoto());
 		assertNotNull(context.getPrevphoto());
+	}
+
+	@Test
+	public void testGetCounts() throws Exception {
+		List<Date> dates = new ArrayList<Date>();
+		dates.add(new Date());
+		dates.add(JinxUtils.parseYMDToDate("2013-01-01"));
+		dates.add(JinxUtils.parseYMDToDate("2012-01-01"));
+		dates.add(JinxUtils.parseYMDToDate("2014-01-01"));
+		Photocounts photocounts = photosApi.getCounts(dates, null);
+		assertEquals("ok", photocounts.getStat());
+		assertEquals(0, photocounts.getCode());
+		assertNotNull(photocounts.getPhotocountList());
+		assertEquals(3, photocounts.getPhotocountList().size());
+
+		photocounts = photosApi.getCounts(null, dates);
+		assertEquals("ok", photocounts.getStat());
+		assertEquals(0, photocounts.getCode());
+		assertNotNull(photocounts.getPhotocountList());
+		assertEquals(3, photocounts.getPhotocountList().size());
 	}
 }

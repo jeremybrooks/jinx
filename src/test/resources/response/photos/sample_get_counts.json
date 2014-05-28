@@ -1,0 +1,19 @@
+{ "photocounts": {
+    "photocount": [
+        {
+            "count": 10,
+            "fromdate": "1093566950",
+            "todate": "1093567000"
+        },
+        {
+            "count": 0,
+            "fromdate": "1093567000",
+            "todate": "1093568000"
+        },
+        {
+            "count": 0,
+            "fromdate": "1093568000",
+            "todate": "1093569000"
+        }
+    ]
+}, "stat": "ok" }
