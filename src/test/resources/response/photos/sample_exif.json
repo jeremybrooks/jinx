@@ -1,0 +1,51 @@
+{ "photo": {
+    "id": "14101229538",
+    "secret": "12fabee863",
+    "server": "5570",
+    "farm": 6,
+    "camera": "Canon EOS 5D Mark II",
+    "exif": [
+        {
+            "tagspace": "IFD0",
+            "tagspaceid": 0,
+            "tag": "Make",
+            "label": "Make",
+            "raw": {
+                "_content": "Canon"
+            }
+        },
+        {
+            "tagspace": "IFD0",
+            "tagspaceid": 0,
+            "tag": "Model",
+            "label": "Model",
+            "raw": {
+                "_content": "Canon EOS 5D Mark II"
+            }
+        },
+        {
+            "tagspace": "IFD0",
+            "tagspaceid": 0,
+            "tag": "XResolution",
+            "label": "X-Resolution",
+            "raw": {
+                "_content": 72
+            },
+            "clean": {
+                "_content": "72 dpi"
+            }
+        },
+        {
+            "tagspace": "IFD0",
+            "tagspaceid": 0,
+            "tag": "YResolution",
+            "label": "Y-Resolution",
+            "raw": {
+                "_content": 72
+            },
+            "clean": {
+                "_content": "72 dpi"
+            }
+        }
+    ]
+}, "stat": "ok" }

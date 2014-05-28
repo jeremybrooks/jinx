@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class PhotosTest {
 	@Test
-	public void testAddTags() throws Exception {
+	public void testParseAddTags() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_add_tags.json"));
 		AddTags tags = new Gson().fromJson(reader, AddTags.class);
 		reader.close();
@@ -35,7 +35,7 @@ public class PhotosTest {
 	}
 
 	@Test
-	public void testAllContexts() throws Exception {
+	public void testParseAllContexts() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_all_contexts.json"));
 		AllContexts contexts = new Gson().fromJson(reader, AllContexts.class);
 		reader.close();
@@ -67,7 +67,7 @@ public class PhotosTest {
 	}
 
 	@Test
-	public void testGetContactsPhotos() throws Exception {
+	public void testParseGetContactsPhotos() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_get_contacts_photos.json"));
 		Photos photosResponse = new Gson().fromJson(reader, Photos.class);
 		reader.close();
@@ -166,7 +166,7 @@ public class PhotosTest {
 	}
 
 	@Test
-	public void testGetPhotocounts() throws Exception {
+	public void testParseGetPhotocounts() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_get_counts.json"));
 		Photocounts photocounts = new Gson().fromJson(reader, Photocounts.class);
 		reader.close();
@@ -178,5 +178,31 @@ public class PhotosTest {
 		assertEquals(10, (int)photocount.getCount());
 		assertEquals("1093566950", photocount.getFromDate());
 		assertEquals("1093567000", photocount.getToDate());
+	}
+
+	@Test
+	public void testParseGetExif() throws Exception {
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_exif.json"));
+		ExifData exifData = new Gson().fromJson(reader, ExifData.class);
+		reader.close();
+		assertNotNull(exifData);
+		assertEquals("ok", exifData.getStat());
+		assertEquals(0, exifData.getCode());
+		assertEquals("14101229538", exifData.getPhotoId());
+		assertEquals("12fabee863", exifData.getSecret());
+		assertEquals("5570", exifData.getServer());
+		assertEquals(6, (int)exifData.getFarm());
+		assertEquals("Canon EOS 5D Mark II", exifData.getCamera());
+
+		List<ExifData.Exif> exifList = exifData.getExifList();
+		assertNotNull(exifList);
+		assertEquals(4, exifList.size());
+		ExifData.Exif exif = exifList.get(2);
+		assertEquals("IFD0", exif.getTagSpace());
+		assertEquals(0, (int)exif.getTagSpaceId());
+		assertEquals("XResolution", exif.getTag());
+		assertEquals("X-Resolution", exif.getLabel());
+		assertEquals("72", exif.getRaw());
+		assertEquals("72 dpi", exif.getClean());
 	}
 }

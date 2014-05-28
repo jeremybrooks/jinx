@@ -69,7 +69,7 @@ Implement these API entry points:
 	  flickr.photos.getContactsPublicPhotos	(done)
 	  flickr.photos.getContext				(done)
 	  flickr.photos.getCounts				(done)
-	  flickr.photos.getExif
+	  flickr.photos.getExif					(done)
 	  flickr.photos.getFavorites
 	  flickr.photos.getInfo
 	  flickr.photos.getNotInSet

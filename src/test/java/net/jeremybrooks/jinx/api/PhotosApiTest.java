@@ -8,6 +8,7 @@ import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
+import net.jeremybrooks.jinx.response.photos.ExifData;
 import net.jeremybrooks.jinx.response.photos.Photo;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
 import net.jeremybrooks.jinx.response.photos.Photos;
@@ -180,5 +181,17 @@ public class PhotosApiTest {
 		assertEquals(0, photocounts.getCode());
 		assertNotNull(photocounts.getPhotocountList());
 		assertEquals(3, photocounts.getPhotocountList().size());
+	}
+
+	@Test
+	public void testGetExif() throws Exception {
+		ExifData exifData = photosApi.getExif(photoId, null);
+		assertNotNull(exifData);
+		assertEquals("ok", exifData.getStat());
+		assertEquals(0, exifData.getCode());
+		assertEquals(photoId, exifData.getPhotoId());
+		List<ExifData.Exif> exifList = exifData.getExifList();
+		assertNotNull(exifList);
+		assertTrue(exifList.size() > 0);
 	}
 }

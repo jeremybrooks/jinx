@@ -8,6 +8,7 @@ import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
+import net.jeremybrooks.jinx.response.photos.ExifData;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
 import net.jeremybrooks.jinx.response.photos.Photos;
 
@@ -115,7 +116,7 @@ public class PhotosApi {
 	 * @throws JinxException if there are any errors.
 	 */
 	public Photos getContactsPhotos(int count, boolean justFriends, boolean singlePhoto, boolean includeSelf,
-											EnumSet<JinxConstants.PhotoExtras> extras) throws JinxException {
+									EnumSet<JinxConstants.PhotoExtras> extras) throws JinxException {
 		Map<String, String> params = new TreeMap<String, String>();
 		params.put("method", "flickr.photos.getContactsPhotos");
 		if (count > 0) {
@@ -154,8 +155,8 @@ public class PhotosApi {
 	 * @throws JinxException if there are any errors.
 	 */
 	public Photos getContactsPublicPhotos(String userId, int count, boolean justFriends,
-												  boolean singlePhoto, boolean includeSelf,
-												  EnumSet<JinxConstants.PhotoExtras> extras)
+										  boolean singlePhoto, boolean includeSelf,
+										  EnumSet<JinxConstants.PhotoExtras> extras)
 			throws JinxException {
 		JinxUtils.validateParams(userId);
 		Map<String, String> params = new TreeMap<String, String>();
@@ -230,8 +231,29 @@ public class PhotosApi {
 	}
 
 
-//  flickr.photos.getExif
-
+	/**
+	 * flickr.photos.getExif
+	 * <p/>
+	 * Retrieves a list of EXIF/TIFF/GPS tags for a given photo. The calling user must have permission to view the photo.
+	 * <p/>
+	 * This method does not require authentication.
+	 *
+	 * @param photoId Required. The id of the photo to fetch information for.
+	 * @param secret  Optional. The secret for the photo. If the correct secret is passed then permissions checking is skipped.
+	 *                This enables the 'sharing' of individual photos by passing around the id and secret.
+	 * @return object containing limited information about the photo, and a list of Exif data.
+	 * @throws JinxException
+	 */
+	public ExifData getExif(String photoId, String secret) throws JinxException {
+		JinxUtils.validateParams(photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getExif");
+		params.put("photo_id", photoId);
+		if (!JinxUtils.isNullOrEmpty(secret)) {
+			params.put("secret", secret);
+		}
+		return jinx.flickrGet(params, ExifData.class);
+	}
 
 //  flickr.photos.getFavorites
 
