@@ -46,7 +46,7 @@ public class Photo implements Serializable {
 	@SerializedName("ownername")
 	private String ownerName;
 	@SerializedName("iconserver")
-	private Integer iconServer;
+	private String iconServer;
 	@SerializedName("iconfarm")
 	private Integer iconFarm;
 	private Integer views;
@@ -186,15 +186,15 @@ public class Photo implements Serializable {
 	}
 
 	public boolean isPublic() {
-		return isPublic == 1;
+		return isPublic != null && isPublic == 1;
 	}
 
 	public boolean isFriend() {
-		return isFriend == 1;
+		return isFriend != null && isFriend == 1;
 	}
 
 	public boolean isFamily() {
-		return isFamily == 1;
+		return isFamily != null && isFamily == 1;
 	}
 
 	public Integer getLicense() {
@@ -233,7 +233,7 @@ public class Photo implements Serializable {
 		return ownerName;
 	}
 
-	public Integer getIconServer() {
+	public String getIconServer() {
 		return iconServer;
 	}
 
@@ -418,23 +418,23 @@ public class Photo implements Serializable {
 	}
 
 	public boolean isPrimary() {
-		return primary == 1;
+		return primary != null && primary == 1;
 	}
 
 	public boolean isGeoIsFamily() {
-		return geoIsFamily == 1;
+		return geoIsFamily != null && geoIsFamily == 1;
 	}
 
 	public boolean isGeoIsFriend() {
-		return geoIsFriend == 1;
+		return geoIsFriend != null && geoIsFriend == 1;
 	}
 
 	public boolean isGeoIsContact() {
-		return geoIsContact == 1;
+		return geoIsContact != null && geoIsContact == 1;
 	}
 
 	public boolean isGeoIsPublic() {
-		return geoIsPublic == 1;
+		return geoIsPublic != null && geoIsPublic == 1;
 	}
 
 	private class DescriptionClass {

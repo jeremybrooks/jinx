@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNotNull;
 public class PhotosetCommentsTest {
 
 	@Test
-	public void testAdd() throws Exception {
+	public void testParseAdd() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photosets/comments/sample_photosets_add_comment.json"));
 		CommentAdd comment = new Gson().fromJson(reader, CommentAdd.class);
 		reader.close();
@@ -26,7 +26,7 @@ public class PhotosetCommentsTest {
 	}
 
 	@Test
-	public void testCommentList() throws Exception {
+	public void testParseCommentList() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photosets/comments/sample_photoset_comment_list.json"));
 		CommentList comments = new Gson().fromJson(reader, CommentList.class);
 		reader.close();

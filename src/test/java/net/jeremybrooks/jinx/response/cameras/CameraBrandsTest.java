@@ -33,7 +33,7 @@ import static junit.framework.Assert.assertNotNull;
 public class CameraBrandsTest {
 
 	@Test
-	public void testGetBrands() throws Exception {
+	public void testParseGetBrands() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/cameras/sample_brands.json"));
 		CameraBrands brands = new Gson().fromJson(reader, CameraBrands.class);
 		reader.close();

@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
 public class PhotosetInfoTest {
 
 	@Test
-	public void testPhotosetCreate() throws Exception {
+	public void testParsePhotosetCreate() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photosets/sample_photoset_create.json"));
 		PhotosetInfo info = new Gson().fromJson(reader, PhotosetInfo.class);
 		reader.close();
@@ -31,7 +31,7 @@ public class PhotosetInfoTest {
 	}
 
 	@Test
-	public void testPhotosetInfo() throws Exception {
+	public void testParsePhotosetInfo() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photosets/sample_photoset_info.json"));
 		PhotosetInfo info = new Gson().fromJson(reader, PhotosetInfo.class);
 		reader.close();
@@ -62,7 +62,7 @@ public class PhotosetInfoTest {
 
 
 	@Test
-	public void testGetPhotosetList() throws Exception {
+	public void testParseGetPhotosetList() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photosets/sample_photoset_list.json"));
 		PhotosetList list = new Gson().fromJson(reader, PhotosetList.class);
 		reader.close();
@@ -152,7 +152,7 @@ public class PhotosetInfoTest {
 	}
 
 	@Test
-	public void testGetPhotos() throws Exception {
+	public void testParseGetPhotos() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photosets/sample_photosets_get_photos.json"));
 		PhotosetPhotos photosetPhotos = new Gson().fromJson(reader, PhotosetPhotos.class);
 		reader.close();
@@ -186,7 +186,7 @@ public class PhotosetInfoTest {
 		assertEquals("2010-08-27 12:17:49", photo.getDateTaken());
 		assertEquals(0, (int)photo.getDateTakenGranularity());
 		assertEquals("jinxlib", photo.getOwnerName());
-		assertEquals(0, (int)photo.getIconServer());
+		assertEquals("0", photo.getIconServer());
 		assertEquals(0, (int)photo.getIconFarm());
 		assertEquals(1, (int)photo.getViews());
 		assertEquals("sanfrancisco california usa bar vintage neon chinatown day arrow cocktails lipo sanfranciscocounty sign:type=neon", photo.getTags());

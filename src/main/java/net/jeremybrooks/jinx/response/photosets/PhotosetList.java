@@ -40,7 +40,7 @@ public class PhotosetList extends Response {
 		}
 
 		public boolean getIsCanCreate() {
-			return isCanCreate == 1;
+			return isCanCreate != null && isCanCreate == 1;
 		}
 
 		public Integer getPage() {

@@ -38,7 +38,7 @@ public class ActivityResponseTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void testUserPhotosFromJson() throws Exception {
+	public void testParseUserPhotosFromJson() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/activity/sample_user_photos.json"));
 		ActivityResponse response = new Gson().fromJson(reader, ActivityResponse.class);
 		reader.close();
@@ -99,7 +99,7 @@ public class ActivityResponseTest {
 	 * @throws Exception
 	 */
 	@Test
-		public void testUserCommentsFromJson() throws Exception {
+		public void testParseUserCommentsFromJson() throws Exception {
 			InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/activity/sample_user_comments.json"));
 			ActivityResponse response = new Gson().fromJson(reader, ActivityResponse.class);
 			reader.close();

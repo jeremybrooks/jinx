@@ -31,7 +31,7 @@ public class Tag implements Serializable {
 	}
 
 	public boolean isMachineTag() {
-		return machineTag == 1;
+		return machineTag != null && machineTag == 1;
 	}
 
 	public String getTag() {

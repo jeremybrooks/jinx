@@ -13,9 +13,9 @@ public class Photos extends Response {
 
 	private _Photos photos;
 
-	public String getTotal() { return photos == null ? null : photos.total; }
+	public Integer getTotal() { return photos == null ? null : photos.total; }
 	public Integer getPage() { return photos == null ? 0 : photos.page; }
-	public String getPages() { return photos == null ? null : photos.pages; }
+	public Integer getPages() { return photos == null ? null : photos.pages; }
 
 	/**
 	 * Get the number of photos per page.
@@ -53,9 +53,9 @@ public class Photos extends Response {
 	public List<Photo> getPhotoList() { return photos == null ? null : photos.photoList; }
 
 	private class _Photos {
-		private String total;
+		private Integer total;
 		private Integer page;
-		private String pages;
+		private Integer pages;
 		@SerializedName("per_page")
 		private Integer perPage;
 		@SerializedName("perpage")

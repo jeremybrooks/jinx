@@ -34,17 +34,8 @@ import static junit.framework.Assert.assertTrue;
  */
 public class BlogListTest {
 
-	/* sample data:
-
-		{ "blogs": {
-		    "blog": [
-		      { "id": "72157594526571385", "name": "Jeremy Brooks", "service": "MetaWeblogAPI", "needspassword": 1, "url": "http:\/\/www.whirljack.net\/jeremybrooks\/" },
-		      { "id": "72157624726446757", "name": "Twitter: Jeremy Brooks", "service": "Twitter", "needspassword": 0, "url": "http:\/\/twitter.com\/jeremybrooks" }
-		    ] }, "stat": "ok" }
-	*/
-
 	@Test
-	public void testBlogListFromJson() throws Exception {
+	public void testParseBlogListFromJson() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/blogs/sample_blog_list.json"));
 		BlogList list = new Gson().fromJson(reader, BlogList.class);
 		reader.close();

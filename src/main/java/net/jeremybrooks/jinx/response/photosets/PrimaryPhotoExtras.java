@@ -174,19 +174,19 @@ public class PrimaryPhotoExtras implements Serializable {
 	}
 
 	public boolean isGeoIsFamily() {
-		return isGeoIsFamily == 1;
+		return isGeoIsFamily != null && isGeoIsFamily == 1;
 	}
 
 	public boolean isGeoIsFriend() {
-		return isGeoIsFriend == 1;
+		return isGeoIsFriend != null && isGeoIsFriend == 1;
 	}
 
 	public boolean isGeoIsContact() {
-		return isGeoIsContact == 1;
+		return isGeoIsContact != null && isGeoIsContact == 1;
 	}
 
 	public boolean isGeoIsPublic() {
-		return isGeoIsPublic == 1;
+		return isGeoIsPublic != null && isGeoIsPublic == 1;
 	}
 
 	public String getMedia() {

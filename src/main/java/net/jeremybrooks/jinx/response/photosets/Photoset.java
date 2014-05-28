@@ -129,7 +129,7 @@ public class Photoset implements Serializable {
 	}
 
 	public boolean isCanComment() {
-		return isCanComment == 1;
+		return isCanComment != null && isCanComment == 1;
 	}
 
 	public String getDateCreate() {
@@ -162,7 +162,7 @@ public class Photoset implements Serializable {
 	 * @return value of the is_needs_interstitial data returned from Flickr.
 	 */
 	public boolean getIsNeedsInterstitial() {
-		return isNeedsInterstitial == 1;
+		return isNeedsInterstitial != null && isNeedsInterstitial == 1;
 	}
 
 	/**
@@ -170,7 +170,7 @@ public class Photoset implements Serializable {
 	 * @return value of the is_visibility_can_see_set data returned from Flickr.
 	 */
 	public boolean getIsVisibilityCanSeeSet() {
-		return isVisibilityCanSeeSet == 1;
+		return isVisibilityCanSeeSet != null && isVisibilityCanSeeSet == 1;
 	}
 
 	private class Title {

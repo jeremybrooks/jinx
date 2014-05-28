@@ -14,7 +14,7 @@ import static junit.framework.Assert.assertFalse;
  */
 public class ContextTest {
 	@Test
-	public void testContext() throws Exception {
+	public void testParseContext() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/common/sample_context.json"));
 		Context context = new Gson().fromJson(reader, Context.class);
 		reader.close();

@@ -34,21 +34,10 @@ import static junit.framework.Assert.fail;
 public class BlogServicesTest {
 
 	@Test
-	public void testBlogServicesFromJson() throws Exception {
+	public void testParseBlogServicesFromJson() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/blogs/sample_blog_services.json"));
 		BlogServices response = new Gson().fromJson(reader, BlogServices.class);
 		reader.close();
-
-		/* Sample data:
-		{ "services": {
-		    "service": [
-		      { "id": "beta.blogger.com", "_content": "Blogger" },
-		      { "id": "LiveJournal", "_content": "LiveJournal" },
-		      { "id": "MetaWeblogAPI", "_content": "Wordpress" },
-		      { "id": "BloggerAPI", "_content": "BloggerAPI" },
-		      { "id": "Twitter", "_content": "Twitter" }
-		    ] }, "stat": "ok" }
-		*/
 		assertNotNull(response);
 		assertEquals("ok", response.getStat());
 		assertEquals(5, response.getServiceList().size());

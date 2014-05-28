@@ -35,7 +35,7 @@ import static junit.framework.Assert.assertTrue;
 public class CameraModelsTest {
 
 	@Test
-	public void testModelsFromJson() throws Exception {
+	public void testParseModelsFromJson() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/cameras/sample_brand_models.json"));
 		CameraModels models = new Gson().fromJson(reader, CameraModels.class);
 		reader.close();

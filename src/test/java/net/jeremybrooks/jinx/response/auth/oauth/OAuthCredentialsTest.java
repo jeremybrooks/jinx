@@ -19,7 +19,6 @@
 package net.jeremybrooks.jinx.response.auth.oauth;
 
 import com.google.gson.Gson;
-import net.jeremybrooks.jinx.response.auth.oauth.OAuthCredentials;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
@@ -30,13 +29,12 @@ import static junit.framework.Assert.assertEquals;
 public class OAuthCredentialsTest {
 
 	@Test
-		public void testFromJson() throws Exception {
+		public void testParseFromJson() throws Exception {
 			Gson gson = new Gson();
 			String json = "{ \"oauth\": { \n" +
 					"\t    \"token\": { \"_content\": \"72157632940881881-6db7bec3c46b67b2\" }, \n" +
 					"\t    \"perms\": { \"_content\": \"delete\" }, \n" +
 					"\t    \"user\": { \"nsid\": \"85853333@N00\", \"username\": \"Jeremy Brooks\", \"fullname\": \"Jeremy Brooks\" } }, \"stat\": \"ok\" }";
-		System.out.println(json);
 			OAuthCredentials oAuthCredentials = gson.fromJson(json, OAuthCredentials.class);
 
 			assertEquals("ok", oAuthCredentials.getStat());

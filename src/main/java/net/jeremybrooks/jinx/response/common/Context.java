@@ -101,7 +101,7 @@ public class Context extends Response {
 		}
 
 		public boolean getIsFaved() {
-			return isFaved == 1 ? true : false;
+			return isFaved != null && isFaved == 1;
 		}
 
 		@Override
@@ -180,7 +180,7 @@ public class Context extends Response {
 		}
 
 		public boolean getIsFaved() {
-			return isFaved == 1 ? true : false;
+			return isFaved != null && isFaved == 1;
 		}
 
 		@Override
