@@ -4,6 +4,7 @@ import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.OAuthAccessToken;
 import net.jeremybrooks.jinx.response.Response;
+import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.Photo;
@@ -31,6 +32,7 @@ public class PhotosApiTest {
 	private static List<Tag> tagList;
 	private static String photoId = "14276354684";
 	private static String deletePhotoId = null; // set this to run the delete photo test
+	private static String userId = "85853333@N00";
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
@@ -110,16 +112,50 @@ public class PhotosApiTest {
 	public void testGetContactsPhotos() throws Exception {
 		PhotosResponse photosResponse = photosApi.getContactsPhotos(5, false, false, false, null);
 		assertNotNull(photosResponse);
+		assertEquals("ok", photosResponse.getStat());
+		assertEquals(0, photosResponse.getCode());
 		assertNotNull(photosResponse.getPhotoList());
 		assertEquals(5, photosResponse.getPhotoList().size());
 
 		photosResponse = photosApi.getContactsPhotos(5, false, false, false, EnumSet.of(JinxConstants.PhotoExtras.date_taken, JinxConstants.PhotoExtras.url_sq));
 		assertNotNull(photosResponse);
+		assertEquals("ok", photosResponse.getStat());
+		assertEquals(0, photosResponse.getCode());
 		assertNotNull(photosResponse.getPhotoList());
 		assertEquals(5, photosResponse.getPhotoList().size());
 		for (Photo p : photosResponse.getPhotoList()) {
 			assertNotNull(p.getDateTaken());
 			assertNotNull(p.getUrlSq());
 		}
+	}
+
+	@Test
+	public void testGetContactsPublicPhotos() throws Exception {
+		PhotosResponse photosResponse = photosApi.getContactsPublicPhotos(userId, 5, true, false, true, null);
+		assertNotNull(photosResponse);
+		assertEquals("ok", photosResponse.getStat());
+		assertEquals(0, photosResponse.getCode());
+		assertNotNull(photosResponse.getPhotoList());
+		assertEquals(5, photosResponse.getPhotoList().size());
+		photosResponse = photosApi.getContactsPublicPhotos(userId, 5, false, false, false, EnumSet.of(JinxConstants.PhotoExtras.date_taken, JinxConstants.PhotoExtras.url_sq));
+		assertNotNull(photosResponse);
+		assertEquals("ok", photosResponse.getStat());
+		assertEquals(0, photosResponse.getCode());
+		assertNotNull(photosResponse.getPhotoList());
+		assertEquals(5, photosResponse.getPhotoList().size());
+		for (Photo p : photosResponse.getPhotoList()) {
+			assertNotNull(p.getDateTaken());
+			assertNotNull(p.getUrlSq());
+		}
+	}
+
+	@Test
+	public void testGetContext() throws Exception {
+		Context context = photosApi.getContext(photoId);
+		assertNotNull(context);
+		assertEquals("ok", context.getStat());
+		assertEquals(0, context.getCode());
+		assertNotNull(context.getNextphoto());
+		assertNotNull(context.getPrevphoto());
 	}
 }

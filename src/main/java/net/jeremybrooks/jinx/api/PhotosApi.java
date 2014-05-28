@@ -5,6 +5,7 @@ import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
+import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.PhotosResponse;
@@ -101,7 +102,7 @@ public class PhotosApi {
 	 * <p/>
 	 * This method requires authentication with 'read' permission.
 	 *
-	 * @param count       Optional. Number of photos to return. Defaults to 10, maximum 50. This is only used if singlePhoto is not true.
+	 * @param count       Number of photos to return. If zero, defaults to 10, maximum 50. This is only used if singlePhoto is not true.
 	 * @param justFriends if true, only show photos from friends and family (excluding regular contacts).
 	 * @param singlePhoto if true, only fetch one photo (the latest) per contact, instead of all photos in chronological order.
 	 * @param includeSelf if true, include photos from the calling user.
@@ -132,11 +133,64 @@ public class PhotosApi {
 	}
 
 
-//  flickr.photos.getContactsPublicPhotos
+	/**
+	 * Fetch a list of recent public photos from a users' contacts.
+	 * <p/>
+	 * This method does not require authentication.
+	 * <p/>
+	 * Arguments
+	 *
+	 * @param userId      Required. The NSID of the user to fetch photos for.
+	 * @param count       Number of photos to return. If zero, defaults to 10, maximum 50. This is only used if singlePhoto is not true.
+	 * @param justFriends if true, only show photos from friends and family (excluding regular contacts).
+	 * @param singlePhoto if true, only fetch one photo (the latest) per contact, instead of all photos in chronological order.
+	 * @param includeSelf if true, include photos from the user specified by user_id.
+	 * @param extras      set of extra information to fetch for each returned record.
+	 * @return object containing data about the photos returned, and a list of photos.
+	 * @throws JinxException if there are any errors.
+	 */
+	public PhotosResponse getContactsPublicPhotos(String userId, int count, boolean justFriends,
+												  boolean singlePhoto, boolean includeSelf,
+												  EnumSet<JinxConstants.PhotoExtras> extras)
+			throws JinxException {
+		JinxUtils.validateParams(userId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getContactsPublicPhotos");
+		params.put("user_id", userId);
+		if (count > 0) {
+			params.put("count", Integer.toString(count));
+		}
+		if (justFriends) {
+			params.put("just_friends", "1");
+		}
+		if (singlePhoto) {
+			params.put("single_photo", "1");
+		}
+		if (includeSelf) {
+			params.put("include_self", "1");
+		}
+		if (!JinxUtils.isNullOrEmpty(extras)) {
+			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
+		}
+		return jinx.flickrGet(params, PhotosResponse.class);
+	}
 
-
-//  flickr.photos.getContext
-
+	/**
+	 * Returns next and previous photos for a photo in a photostream.
+	 * <p/>
+	 * This method does not require authentication.
+	 *
+	 * @param photoId Required. The id of the photo to fetch the context for.
+	 * @return object with the context of the photo.
+	 * @throws JinxException if the photo id is null or empty, or if there are any errors.
+	 */
+	public Context getContext(String photoId) throws JinxException {
+		JinxUtils.validateParams(photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getContext");
+		params.put("photo_id", photoId);
+		return jinx.flickrGet(params, Context.class);
+	}
 
 //  flickr.photos.getCounts
 
