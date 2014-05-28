@@ -1,12 +1,15 @@
 package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
+import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
+import net.jeremybrooks.jinx.response.photos.PhotosResponse;
 
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -76,10 +79,10 @@ public class PhotosApi {
 
 
 	/**
-	 Returns all visible sets and pools the photo belongs to.
-
-	 This method does not require authentication.
-
+	 * Returns all visible sets and pools the photo belongs to.
+	 * <p/>
+	 * This method does not require authentication.
+	 *
 	 * @param photoId photo id to find contexts for.
 	 * @return object with a list of all sets and pools the photo is in.
 	 * @throws JinxException if the photo id is null or empty, or if there are any errors.
@@ -93,7 +96,40 @@ public class PhotosApi {
 	}
 
 
-//  flickr.photos.getContactsPhotos
+	/**
+	 * Fetch a list of recent photos from the calling users' contacts.
+	 * <p/>
+	 * This method requires authentication with 'read' permission.
+	 *
+	 * @param count       Optional. Number of photos to return. Defaults to 10, maximum 50. This is only used if singlePhoto is not true.
+	 * @param justFriends if true, only show photos from friends and family (excluding regular contacts).
+	 * @param singlePhoto if true, only fetch one photo (the latest) per contact, instead of all photos in chronological order.
+	 * @param includeSelf if true, include photos from the calling user.
+	 * @param extras      set of extra information to fetch for each returned record.
+	 * @return object containing data about the photos returned, and a list of photos.
+	 * @throws JinxException if there are any errors.
+	 */
+	public PhotosResponse getContactsPhotos(int count, boolean justFriends, boolean singlePhoto, boolean includeSelf,
+											EnumSet<JinxConstants.PhotoExtras> extras) throws JinxException {
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getContactsPhotos");
+		if (count > 0) {
+			params.put("count", Integer.toString(count));
+		}
+		if (justFriends) {
+			params.put("just_friends", "1");
+		}
+		if (singlePhoto) {
+			params.put("single_photo", "1");
+		}
+		if (includeSelf) {
+			params.put("include_self", "1");
+		}
+		if (!JinxUtils.isNullOrEmpty(extras)) {
+			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
+		}
+		return jinx.flickrGet(params, PhotosResponse.class);
+	}
 
 
 //  flickr.photos.getContactsPublicPhotos

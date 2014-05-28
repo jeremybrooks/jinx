@@ -2,6 +2,7 @@ package net.jeremybrooks.jinx.response.photosets;
 
 import com.google.gson.Gson;
 import net.jeremybrooks.jinx.response.activity.ActivityResponseTest;
+import net.jeremybrooks.jinx.response.photos.Photo;
 import org.junit.Test;
 
 import java.io.InputStreamReader;
@@ -157,7 +158,7 @@ public class PhotosetInfoTest {
 		reader.close();
 		assertNotNull(photosetPhotos);
 		assertEquals("ok", photosetPhotos.getStat());
-		List<PhotosetPhoto> photoList = photosetPhotos.getPhotoList();
+		List<Photo> photoList = photosetPhotos.getPhotoList();
 		assertNotNull(photoList);
 		assertEquals( 6, photoList.size());
 
@@ -171,7 +172,7 @@ public class PhotosetInfoTest {
 		assertEquals(6, (int)photosetPhotos.getTotal());
 		assertEquals("Neon Signs", photosetPhotos.getTitle());
 
-		PhotosetPhoto photo = photosetPhotos.getPhotoList().get(0);
+		Photo photo = photosetPhotos.getPhotoList().get(0);
 		assertNotNull(photo);
 		assertEquals("14296772893", photo.getPhotoId());
 		assertEquals("270d516d2b", photo.getSecret());

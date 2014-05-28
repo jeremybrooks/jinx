@@ -1,25 +1,39 @@
-package net.jeremybrooks.jinx.response.photosets;
+package net.jeremybrooks.jinx.response.photos;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
 /**
- * Represents a photo in a photoset. This class will be part of the {@link PhotosetPhotos} class.
- *
  * @author Jeremy Brooks
  */
-public class PhotosetPhoto implements Serializable {
-	private static final long serialVersionUID = 4824419706739274090L;
+public class Photo implements Serializable {
+	private static final long serialVersionUID = -7437988440115270607L;
+
 	@SerializedName("id")
 	private String photoId;
 	private String secret;
 	private String server;
 	private Integer farm;
+	private String owner;
+	private String username;
 	private String title;
-	@SerializedName("isprimary")
-	private Integer primary;
+
+	@SerializedName("ispublic")
+	private Integer isPublic;
+	@SerializedName("isfriend")
+	private Integer isFriend;
+	@SerializedName("isfamily")
+	private Integer isFamily;
+
 	private Integer license;
+	private DescriptionClass description;
+
+	@SerializedName("o_width")
+	private String oWidth;
+	@SerializedName("o_height")
+	private String oHeight;
+
 	@SerializedName("dateupload")
 	private String dateUpload;
 	@SerializedName("lastupdate")
@@ -28,6 +42,7 @@ public class PhotosetPhoto implements Serializable {
 	private String dateTaken;
 	@SerializedName("datetakengranularity")
 	private Integer dateTakenGranularity;
+
 	@SerializedName("ownername")
 	private String ownerName;
 	@SerializedName("iconserver")
@@ -38,6 +53,7 @@ public class PhotosetPhoto implements Serializable {
 	private String tags;
 	@SerializedName("machine_tags")
 	private String machineTags;
+
 	@SerializedName("originalsecret")
 	private String originalSecret;
 	@SerializedName("originalformat")
@@ -50,18 +66,10 @@ public class PhotosetPhoto implements Serializable {
 	private String placeId;
 	@SerializedName("woeid")
 	private String woeId;
-	@SerializedName("geo_is_family")
-	private Integer geoIsFamily;
-	@SerializedName("geo_is_friend")
-	private Integer geoIsFriend;
-	@SerializedName("geo_is_contact")
-	private Integer geoIsContact;
-	@SerializedName("geo_is_public")
-	private Integer geoIsPublic;
+
 	private String media;
 	@SerializedName("media_status")
 	private String mediaStatus;
-
 
 	@SerializedName("url_sq")
 	private String urlSq;
@@ -84,12 +92,48 @@ public class PhotosetPhoto implements Serializable {
 	@SerializedName("width_s")
 	private Integer widthS;
 
+	@SerializedName("url_q")
+	private String urlQ;
+	@SerializedName("height_q")
+	private Integer heightQ;
+	@SerializedName("width_q")
+	private Integer widthQ;
+
+
 	@SerializedName("url_m")
 	private String urlM;
 	@SerializedName("height_m")
 	private Integer heightM;
 	@SerializedName("width_m")
 	private Integer widthM;
+
+	@SerializedName("url_n")
+	private String urlN;
+	@SerializedName("height_n")
+	private Integer heightN;
+	@SerializedName("width_n")
+	private Integer widthN;
+
+	@SerializedName("url_z")
+	private String urlZ;
+	@SerializedName("height_z")
+	private Integer heightZ;
+	@SerializedName("width_z")
+	private Integer widthZ;
+
+	@SerializedName("url_c")
+	private String urlC;
+	@SerializedName("height_c")
+	private Integer heightC;
+	@SerializedName("width_c")
+	private Integer widthC;
+
+	@SerializedName("url_l")
+	private String urlL;
+	@SerializedName("height_l")
+	private Integer heightL;
+	@SerializedName("width_l")
+	private Integer widthL;
 
 	@SerializedName("url_o")
 	private String urlO;
@@ -101,6 +145,17 @@ public class PhotosetPhoto implements Serializable {
 	@SerializedName("pathalias")
 	private String pathAlias;
 
+
+	@SerializedName("isprimary")
+	private Integer primary;
+	@SerializedName("geo_is_family")
+	private Integer geoIsFamily;
+	@SerializedName("geo_is_friend")
+	private Integer geoIsFriend;
+	@SerializedName("geo_is_contact")
+	private Integer geoIsContact;
+	@SerializedName("geo_is_public")
+	private Integer geoIsPublic;
 
 	public String getPhotoId() {
 		return photoId;
@@ -118,16 +173,44 @@ public class PhotosetPhoto implements Serializable {
 		return farm;
 	}
 
+	public String getOwner() {
+		return owner;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
 	public String getTitle() {
 		return title;
 	}
 
-	public boolean isPrimary() {
-		return primary == 1;
+	public boolean isPublic() {
+		return isPublic == 1;
+	}
+
+	public boolean isFriend() {
+		return isFriend == 1;
+	}
+
+	public boolean isFamily() {
+		return isFamily == 1;
 	}
 
 	public Integer getLicense() {
 		return license;
+	}
+
+	public String getDescription() {
+		return description.description;
+	}
+
+	public String getoWidth() {
+		return oWidth;
+	}
+
+	public String getoHeight() {
+		return oHeight;
 	}
 
 	public String getDateUpload() {
@@ -202,22 +285,6 @@ public class PhotosetPhoto implements Serializable {
 		return woeId;
 	}
 
-	public boolean isGeoIsFamily() {
-		return geoIsFamily == 1;
-	}
-
-	public boolean isGeoIsFriend() {
-		return geoIsFriend == 1;
-	}
-
-	public boolean isGeoIsContact() {
-		return geoIsContact == 1;
-	}
-
-	public boolean isGeoIsPublic() {
-		return geoIsPublic == 1;
-	}
-
 	public String getMedia() {
 		return media;
 	}
@@ -262,6 +329,18 @@ public class PhotosetPhoto implements Serializable {
 		return widthS;
 	}
 
+	public String getUrlQ() {
+		return urlQ;
+	}
+
+	public Integer getHeightQ() {
+		return heightQ;
+	}
+
+	public Integer getWidthQ() {
+		return widthQ;
+	}
+
 	public String getUrlM() {
 		return urlM;
 	}
@@ -272,6 +351,54 @@ public class PhotosetPhoto implements Serializable {
 
 	public Integer getWidthM() {
 		return widthM;
+	}
+
+	public String getUrlN() {
+		return urlN;
+	}
+
+	public Integer getHeightN() {
+		return heightN;
+	}
+
+	public Integer getWidthN() {
+		return widthN;
+	}
+
+	public String getUrlZ() {
+		return urlZ;
+	}
+
+	public Integer getHeightZ() {
+		return heightZ;
+	}
+
+	public Integer getWidthZ() {
+		return widthZ;
+	}
+
+	public String getUrlC() {
+		return urlC;
+	}
+
+	public Integer getHeightC() {
+		return heightC;
+	}
+
+	public Integer getWidthC() {
+		return widthC;
+	}
+
+	public String getUrlL() {
+		return urlL;
+	}
+
+	public Integer getHeightL() {
+		return heightL;
+	}
+
+	public Integer getWidthL() {
+		return widthL;
 	}
 
 	public String getUrlO() {
@@ -290,18 +417,50 @@ public class PhotosetPhoto implements Serializable {
 		return pathAlias;
 	}
 
+	public boolean isPrimary() {
+		return primary == 1;
+	}
+
+	public boolean isGeoIsFamily() {
+		return geoIsFamily == 1;
+	}
+
+	public boolean isGeoIsFriend() {
+		return geoIsFriend == 1;
+	}
+
+	public boolean isGeoIsContact() {
+		return geoIsContact == 1;
+	}
+
+	public boolean isGeoIsPublic() {
+		return geoIsPublic == 1;
+	}
+
+	private class DescriptionClass {
+		@SerializedName("_content")
+		private String description;
+	}
+
 
 	@Override
 	public String toString() {
 		final StringBuilder sb = new StringBuilder();
-		sb.append("net.jeremybrooks.jinx.response.photosets.PhotosetPhoto");
+		sb.append("net.jeremybrooks.jinx.response.photos.Photo");
 		sb.append("{photoId='").append(photoId).append('\'');
 		sb.append(" | secret='").append(secret).append('\'');
 		sb.append(" | server='").append(server).append('\'');
 		sb.append(" | farm=").append(farm);
+		sb.append(" | owner='").append(owner).append('\'');
+		sb.append(" | username='").append(username).append('\'');
 		sb.append(" | title='").append(title).append('\'');
-		sb.append(" | isPrimary=").append(isPrimary());
+		sb.append(" | isPublic=").append(isPublic);
+		sb.append(" | isFriend=").append(isFriend);
+		sb.append(" | isFamily=").append(isFamily);
 		sb.append(" | license=").append(license);
+		sb.append(" | description=").append(getDescription());
+		sb.append(" | oWidth='").append(oWidth).append('\'');
+		sb.append(" | oHeight='").append(oHeight).append('\'');
 		sb.append(" | dateUpload='").append(dateUpload).append('\'');
 		sb.append(" | lastUpdate='").append(lastUpdate).append('\'');
 		sb.append(" | dateTaken='").append(dateTaken).append('\'');
@@ -320,10 +479,6 @@ public class PhotosetPhoto implements Serializable {
 		sb.append(" | context=").append(context);
 		sb.append(" | placeId='").append(placeId).append('\'');
 		sb.append(" | woeId='").append(woeId).append('\'');
-		sb.append(" | isGeoIsFamily=").append(isGeoIsFamily());
-		sb.append(" | isGeoIsFriend=").append(isGeoIsFriend());
-		sb.append(" | isGeoIsContact=").append(isGeoIsContact());
-		sb.append(" | isGeoIsPublic=").append(isGeoIsPublic());
 		sb.append(" | media='").append(media).append('\'');
 		sb.append(" | mediaStatus='").append(mediaStatus).append('\'');
 		sb.append(" | urlSq='").append(urlSq).append('\'');
@@ -335,13 +490,33 @@ public class PhotosetPhoto implements Serializable {
 		sb.append(" | urlS='").append(urlS).append('\'');
 		sb.append(" | heightS=").append(heightS);
 		sb.append(" | widthS=").append(widthS);
+		sb.append(" | urlQ='").append(urlQ).append('\'');
+		sb.append(" | heightQ=").append(heightQ);
+		sb.append(" | widthQ=").append(widthQ);
 		sb.append(" | urlM='").append(urlM).append('\'');
 		sb.append(" | heightM=").append(heightM);
 		sb.append(" | widthM=").append(widthM);
+		sb.append(" | urlN='").append(urlN).append('\'');
+		sb.append(" | heightN=").append(heightN);
+		sb.append(" | widthN=").append(widthN);
+		sb.append(" | urlZ='").append(urlZ).append('\'');
+		sb.append(" | heightZ=").append(heightZ);
+		sb.append(" | widthZ=").append(widthZ);
+		sb.append(" | urlC='").append(urlC).append('\'');
+		sb.append(" | heightC=").append(heightC);
+		sb.append(" | widthC=").append(widthC);
+		sb.append(" | urlL='").append(urlL).append('\'');
+		sb.append(" | heightL=").append(heightL);
+		sb.append(" | widthL=").append(widthL);
 		sb.append(" | urlO='").append(urlO).append('\'');
 		sb.append(" | heightO=").append(heightO);
 		sb.append(" | widthO=").append(widthO);
 		sb.append(" | pathAlias='").append(pathAlias).append('\'');
+		sb.append(" | primary=").append(primary);
+		sb.append(" | geoIsFamily=").append(geoIsFamily);
+		sb.append(" | geoIsFriend=").append(geoIsFriend);
+		sb.append(" | geoIsContact=").append(geoIsContact);
+		sb.append(" | geoIsPublic=").append(geoIsPublic);
 		sb.append('}');
 		return sb.toString();
 	}

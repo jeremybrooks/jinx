@@ -31,8 +31,8 @@ This list shows which API entry points have been implemented:
   * blogs (have not really tested the postPhoto method, though)
   * cameras
   * oauth
-  * photosets (photo extras in getList is not working)
-  * photosets comments
+  * photosets
+  * photosets.comments
 
 
 BUILDING
@@ -65,7 +65,7 @@ Implement these API entry points:
 	  flickr.photos.addTags 				(done)
 	  flickr.photos.delete					(done)
 	  flickr.photos.getAllContexts			(done)
-	  flickr.photos.getContactsPhotos
+	  flickr.photos.getContactsPhotos		(done)
 	  flickr.photos.getContactsPublicPhotos
 	  flickr.photos.getContext
 	  flickr.photos.getCounts

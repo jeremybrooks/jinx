@@ -203,9 +203,7 @@ public class PhotosetsApi {
 	 * @param userId      Optional. The NSID of the user to get a photoset list for. If none is specified, the calling user is assumed.
 	 * @param page        Optional. The page of results to get. Currently, if this is omitted, all sets are returned, but this behaviour may change in future. A value of zero will cause the parameter to be ignored.
 	 * @param perPage     Optional. The number of sets to get per page. If paging is enabled, the maximum number of sets per page is 500. A value of zero will cause the parameter to be ignored.
-	 * @param photoExtras Optional. A list of extra information to fetch for the primary photo. Currently supported fields are:
-	 *                    license, date_upload, date_taken, owner_name, icon_server, original_format, last_update,
-	 *                    geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_m, url_o
+	 * @param photoExtras Optional. A list of extra information to fetch for the primary photo.
 	 * @return
 	 * @throws JinxException
 	 */
@@ -222,7 +220,7 @@ public class PhotosetsApi {
 			params.put("per_page", Integer.toString(perPage));
 		}
 		if (!JinxUtils.isNullOrEmpty(photoExtras)) {
-			params.put("photo_extras", JinxUtils.buildCommaDelimitedList(photoExtras));
+			params.put("primary_photo_extras", JinxUtils.buildCommaDelimitedList(photoExtras));
 		}
 		return jinx.flickrGet(params, PhotosetList.class);
 	}

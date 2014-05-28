@@ -2,13 +2,14 @@ package net.jeremybrooks.jinx.response.photosets;
 
 import com.google.gson.annotations.SerializedName;
 import net.jeremybrooks.jinx.response.Response;
+import net.jeremybrooks.jinx.response.photos.Photo;
 
 import java.util.List;
 
 /**
  * Contains the data returned by {@link net.jeremybrooks.jinx.api.PhotosetsApi#getPhotos(String, java.util.EnumSet, net.jeremybrooks.jinx.JinxConstants.PrivacyFilter, int, int, net.jeremybrooks.jinx.JinxConstants.MediaType)}
  *
- * The photo data is returned as a list of {@link PhotosetPhoto} objects.
+ * The photo data is returned as a list of {@link net.jeremybrooks.jinx.response.photos.Photo} objects.
  *
  * @author Jeremy Brooks
  */
@@ -45,7 +46,7 @@ public class PhotosetPhotos extends Response {
 		return photoset == null ? null : photoset.title;
 	}
 
-	public List<PhotosetPhoto> getPhotoList() { return photoset == null ? null : photoset.photoList; }
+	public List<Photo> getPhotoList() { return photoset == null ? null : photoset.photoList; }
 
 	private class PhotosetMetadata {
 		@SerializedName("id")
@@ -62,7 +63,7 @@ public class PhotosetPhotos extends Response {
 		private String title;
 
 		@SerializedName("photo")
-		private List<PhotosetPhoto> photoList;
+		private List<Photo> photoList;
 
 
 		@Override

@@ -1,10 +1,13 @@
 package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
+import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.OAuthAccessToken;
 import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
+import net.jeremybrooks.jinx.response.photos.Photo;
+import net.jeremybrooks.jinx.response.photos.PhotosResponse;
 import net.jeremybrooks.jinx.response.photos.Tag;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,6 +15,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Properties;
 
@@ -100,5 +104,22 @@ public class PhotosApiTest {
 		assertEquals(0, contexts.getCode());
 		assertNotNull(contexts.getSetList());
 		assertNotNull(contexts.getPoolList());
+	}
+
+	@Test
+	public void testGetContactsPhotos() throws Exception {
+		PhotosResponse photosResponse = photosApi.getContactsPhotos(5, false, false, false, null);
+		assertNotNull(photosResponse);
+		assertNotNull(photosResponse.getPhotoList());
+		assertEquals(5, photosResponse.getPhotoList().size());
+
+		photosResponse = photosApi.getContactsPhotos(5, false, false, false, EnumSet.of(JinxConstants.PhotoExtras.date_taken, JinxConstants.PhotoExtras.url_sq));
+		assertNotNull(photosResponse);
+		assertNotNull(photosResponse.getPhotoList());
+		assertEquals(5, photosResponse.getPhotoList().size());
+		for (Photo p : photosResponse.getPhotoList()) {
+			assertNotNull(p.getDateTaken());
+			assertNotNull(p.getUrlSq());
+		}
 	}
 }
