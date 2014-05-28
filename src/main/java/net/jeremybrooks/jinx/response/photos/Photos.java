@@ -8,10 +8,10 @@ import java.util.List;
 /**
  * @author Jeremy Brooks
  */
-public class PhotosResponse extends Response {
+public class Photos extends Response {
 	private static final long serialVersionUID = -5432339685020968718L;
 
-	private Photos photos;
+	private _Photos photos;
 
 	public String getTotal() { return photos == null ? null : photos.total; }
 	public Integer getPage() { return photos == null ? 0 : photos.page; }
@@ -52,7 +52,7 @@ public class PhotosResponse extends Response {
 
 	public List<Photo> getPhotoList() { return photos == null ? null : photos.photoList; }
 
-	private class Photos {
+	private class _Photos {
 		private String total;
 		private Integer page;
 		private String pages;

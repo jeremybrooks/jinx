@@ -69,7 +69,7 @@ public class PhotosTest {
 	@Test
 	public void testGetContactsPhotos() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_get_contacts_photos.json"));
-		PhotosResponse photosResponse = new Gson().fromJson(reader, PhotosResponse.class);
+		Photos photosResponse = new Gson().fromJson(reader, Photos.class);
 		reader.close();
 		assertNotNull(photosResponse);
 		assertEquals("ok", photosResponse.getStat());

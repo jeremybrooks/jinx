@@ -10,7 +10,7 @@ import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.Photo;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
-import net.jeremybrooks.jinx.response.photos.PhotosResponse;
+import net.jeremybrooks.jinx.response.photos.Photos;
 import net.jeremybrooks.jinx.response.photos.Tag;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -113,20 +113,20 @@ public class PhotosApiTest {
 
 	@Test
 	public void testGetContactsPhotos() throws Exception {
-		PhotosResponse photosResponse = photosApi.getContactsPhotos(5, false, false, false, null);
-		assertNotNull(photosResponse);
-		assertEquals("ok", photosResponse.getStat());
-		assertEquals(0, photosResponse.getCode());
-		assertNotNull(photosResponse.getPhotoList());
-		assertEquals(5, photosResponse.getPhotoList().size());
+		Photos photos = photosApi.getContactsPhotos(5, false, false, false, null);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+		assertEquals(5, photos.getPhotoList().size());
 
-		photosResponse = photosApi.getContactsPhotos(5, false, false, false, EnumSet.of(JinxConstants.PhotoExtras.date_taken, JinxConstants.PhotoExtras.url_sq));
-		assertNotNull(photosResponse);
-		assertEquals("ok", photosResponse.getStat());
-		assertEquals(0, photosResponse.getCode());
-		assertNotNull(photosResponse.getPhotoList());
-		assertEquals(5, photosResponse.getPhotoList().size());
-		for (Photo p : photosResponse.getPhotoList()) {
+		photos = photosApi.getContactsPhotos(5, false, false, false, EnumSet.of(JinxConstants.PhotoExtras.date_taken, JinxConstants.PhotoExtras.url_sq));
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+		assertEquals(5, photos.getPhotoList().size());
+		for (Photo p : photos.getPhotoList()) {
 			assertNotNull(p.getDateTaken());
 			assertNotNull(p.getUrlSq());
 		}
@@ -134,19 +134,19 @@ public class PhotosApiTest {
 
 	@Test
 	public void testGetContactsPublicPhotos() throws Exception {
-		PhotosResponse photosResponse = photosApi.getContactsPublicPhotos(userId, 5, true, false, true, null);
-		assertNotNull(photosResponse);
-		assertEquals("ok", photosResponse.getStat());
-		assertEquals(0, photosResponse.getCode());
-		assertNotNull(photosResponse.getPhotoList());
-		assertEquals(5, photosResponse.getPhotoList().size());
-		photosResponse = photosApi.getContactsPublicPhotos(userId, 5, false, false, false, EnumSet.of(JinxConstants.PhotoExtras.date_taken, JinxConstants.PhotoExtras.url_sq));
-		assertNotNull(photosResponse);
-		assertEquals("ok", photosResponse.getStat());
-		assertEquals(0, photosResponse.getCode());
-		assertNotNull(photosResponse.getPhotoList());
-		assertEquals(5, photosResponse.getPhotoList().size());
-		for (Photo p : photosResponse.getPhotoList()) {
+		Photos photos = photosApi.getContactsPublicPhotos(userId, 5, true, false, true, null);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+		assertEquals(5, photos.getPhotoList().size());
+		photos = photosApi.getContactsPublicPhotos(userId, 5, false, false, false, EnumSet.of(JinxConstants.PhotoExtras.date_taken, JinxConstants.PhotoExtras.url_sq));
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+		assertEquals(5, photos.getPhotoList().size());
+		for (Photo p : photos.getPhotoList()) {
 			assertNotNull(p.getDateTaken());
 			assertNotNull(p.getUrlSq());
 		}

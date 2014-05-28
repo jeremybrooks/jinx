@@ -23,7 +23,8 @@ public class JinxUtilsTest {
 		Exception exception1 = null;
 
 		try {
-			JinxUtils.validateParams(null);
+			Object o = null;
+			JinxUtils.validateParams("", o);
 			fail();
 		} catch (Exception e) {
 			exception = e;

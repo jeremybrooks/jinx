@@ -9,7 +9,7 @@ import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
-import net.jeremybrooks.jinx.response.photos.PhotosResponse;
+import net.jeremybrooks.jinx.response.photos.Photos;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -114,7 +114,7 @@ public class PhotosApi {
 	 * @return object containing data about the photos returned, and a list of photos.
 	 * @throws JinxException if there are any errors.
 	 */
-	public PhotosResponse getContactsPhotos(int count, boolean justFriends, boolean singlePhoto, boolean includeSelf,
+	public Photos getContactsPhotos(int count, boolean justFriends, boolean singlePhoto, boolean includeSelf,
 											EnumSet<JinxConstants.PhotoExtras> extras) throws JinxException {
 		Map<String, String> params = new TreeMap<String, String>();
 		params.put("method", "flickr.photos.getContactsPhotos");
@@ -133,7 +133,7 @@ public class PhotosApi {
 		if (!JinxUtils.isNullOrEmpty(extras)) {
 			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
 		}
-		return jinx.flickrGet(params, PhotosResponse.class);
+		return jinx.flickrGet(params, Photos.class);
 	}
 
 
@@ -153,7 +153,7 @@ public class PhotosApi {
 	 * @return object containing data about the photos returned, and a list of photos.
 	 * @throws JinxException if there are any errors.
 	 */
-	public PhotosResponse getContactsPublicPhotos(String userId, int count, boolean justFriends,
+	public Photos getContactsPublicPhotos(String userId, int count, boolean justFriends,
 												  boolean singlePhoto, boolean includeSelf,
 												  EnumSet<JinxConstants.PhotoExtras> extras)
 			throws JinxException {
@@ -176,7 +176,7 @@ public class PhotosApi {
 		if (!JinxUtils.isNullOrEmpty(extras)) {
 			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
 		}
-		return jinx.flickrGet(params, PhotosResponse.class);
+		return jinx.flickrGet(params, Photos.class);
 	}
 
 	/**
