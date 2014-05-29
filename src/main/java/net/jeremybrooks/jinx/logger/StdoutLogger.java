@@ -1,7 +1,5 @@
 /*
- * Jinx is Copyright 2010-2012 by Jeremy Brooks and Contributors
- *
- * This file is part of Jinx.
+ * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +13,8 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
+
 package net.jeremybrooks.jinx.logger;
 
 import java.io.PrintWriter;

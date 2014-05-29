@@ -1,3 +1,20 @@
+/*
+ * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.jeremybrooks.jinx.response.photos;
 
 import com.google.gson.Gson;
@@ -109,6 +126,37 @@ public class PhotosTest {
 		assertEquals("72 dpi", exif.getClean());
 	}
 
+	@Test
+	public void testParseGetFavorites() throws Exception {
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_get_favorites.json"));
+		Favorites favorites = new Gson().fromJson(reader, Favorites.class);
+		reader.close();
+		assertNotNull(favorites);
+		assertEquals("ok", favorites.getStat());
+		assertEquals(0, favorites.getCode());
+		assertEquals("14258801982", favorites.getPhotoId());
+		assertEquals("43d6f39123", favorites.getSecret());
+		assertEquals("3795", favorites.getServer());
+		assertEquals(4, (int)favorites.getFarm());
+		assertEquals(1, (int)favorites.getPage());
+		assertEquals(1, (int)favorites.getPages());
+		assertEquals(10, (int)favorites.getPerPage());
+		assertEquals(5, (int)favorites.getTotal());
+
+		List<Favorites.Person> list = favorites.getPersonList();
+		assertNotNull(list);
+		assertEquals(5, list.size());
+		Favorites.Person p = list.get(0);
+		assertEquals("28087751@N06", p.getNsid());
+		assertEquals("Freeze Time Digital", p.getUsername());
+		assertEquals("Jason Ogulnik", p.getRealName());
+		assertEquals("1401061945", p.getFaveDate());
+		assertEquals("5234", p.getIconServer());
+		assertEquals(6, (int)p.getIconFarm());
+		assertTrue(p.isContact());
+		assertFalse(p.isFriend());
+		assertFalse(p.isFamily());
+	}
 
 	@Test
 	public void testParseGetContactsPhotos() throws Exception {

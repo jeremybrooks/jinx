@@ -1,3 +1,20 @@
+/*
+ * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
@@ -9,6 +26,7 @@ import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.ExifData;
+import net.jeremybrooks.jinx.response.photos.Favorites;
 import net.jeremybrooks.jinx.response.photos.Photo;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
 import net.jeremybrooks.jinx.response.photos.Photos;
@@ -193,5 +211,16 @@ public class PhotosApiTest {
 		List<ExifData.Exif> exifList = exifData.getExifList();
 		assertNotNull(exifList);
 		assertTrue(exifList.size() > 0);
+	}
+
+	@Test
+	public void testGetFavorites() throws Exception {
+		Favorites favorites = photosApi.getFavorites(photoId, 0, 0);
+		assertNotNull(favorites);
+		assertEquals("ok", favorites.getStat());
+		assertEquals(0, favorites.getCode());
+		assertEquals(photoId, favorites.getPhotoId());
+		assertNotNull(favorites.getPersonList());
+		assertTrue(favorites.getPersonList().size() > 0);
 	}
 }

@@ -1,3 +1,20 @@
+/*
+ * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
@@ -9,6 +26,7 @@ import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.ExifData;
+import net.jeremybrooks.jinx.response.photos.Favorites;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
 import net.jeremybrooks.jinx.response.photos.Photos;
 
@@ -255,8 +273,31 @@ public class PhotosApi {
 		return jinx.flickrGet(params, ExifData.class);
 	}
 
-//  flickr.photos.getFavorites
 
+	/**
+	 * Returns the list of people who have favorited a given photo.
+	 * <p/>
+	 * This method does not require authentication.
+	 *
+	 * @param photoId Required. The id of the photo to fetch information for.
+	 * @param page    page of results to return. If this argument is zero, it defaults to 1.
+	 * @param perPage number of people to return per page. If this argument is zero, it defaults to 10. The maximum allowed value is 50.
+	 * @return object containing limited information about the photo, and a list of people who have favorited the photo.
+	 * @throws JinxException if required parameters are null or empty, or if there are errors.
+	 */
+	public Favorites getFavorites(String photoId, int page, int perPage) throws JinxException {
+		JinxUtils.validateParams(photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getFavorites");
+		params.put("photo_id", photoId);
+		if (page > 0) {
+			params.put("page", Integer.toString(page));
+		}
+		if (perPage > 0) {
+			params.put("per_page", Integer.toString(perPage));
+		}
+		return jinx.flickrGet(params, Favorites.class);
+	}
 
 //  flickr.photos.getInfo
 
