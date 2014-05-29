@@ -70,7 +70,7 @@ Implement these API entry points:
 	  flickr.photos.getContext				(done)
 	  flickr.photos.getCounts				(done)
 	  flickr.photos.getExif					(done)
-	  flickr.photos.getFavorites
+	  flickr.photos.getFavorites			(done)
 	  flickr.photos.getInfo
 	  flickr.photos.getNotInSet
 	  flickr.photos.getPerms
