@@ -27,6 +27,9 @@ import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.ExifData;
 import net.jeremybrooks.jinx.response.photos.Favorites;
+import net.jeremybrooks.jinx.response.photos.PermsSetResponse;
+import net.jeremybrooks.jinx.response.photos.PhotoPerms;
+import net.jeremybrooks.jinx.response.photos.PhotoSizes;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
 import net.jeremybrooks.jinx.response.photos.Photos;
 
@@ -299,31 +302,326 @@ public class PhotosApi {
 		return jinx.flickrGet(params, Favorites.class);
 	}
 
-//  flickr.photos.getInfo
+// TODO flickr.photos.getInfo
+
+	/**
+	 * Returns a list of your photos that are not part of any sets.
+	 * <p/>
+	 * This method requires authentication with 'read' permission.
+	 *
+	 * @param minUploadDate Optional. Minimum upload date. Photos with an upload date greater than or equal to this value will be returned.
+	 * @param maxUploadDate Optional. Maximum upload date. Photos with an upload date less than or equal to this value will be returned.
+	 * @param minTakenDate  Optional. Minimum taken date. Photos with an taken date greater than or equal to this value will be returned.
+	 * @param maxTakenDate  Optional. Maximum taken date. Photos with an taken date less than or equal to this value will be returned.
+	 * @param privacyFilter Optional. Return photos only matching a certain privacy level.
+	 * @param mediaType     Optional. Filter results by media type.
+	 * @param extras        Optional. Extra information to fetch for each returned record.
+	 * @param perPage       Optional. Number of photos to return per page. If this argument is zero, it defaults to 100. The maximum allowed value is 500.
+	 * @param page          Optional. The page of results to return. If this argument is zero, it defaults to 1.
+	 * @return photos object.
+	 * @throws JinxException if there are any errors.
+	 */
+	public Photos getNotInSet(Date minUploadDate, Date maxUploadDate, Date minTakenDate, Date maxTakenDate,
+							  JinxConstants.PrivacyFilter privacyFilter,
+							  JinxConstants.MediaType mediaType, EnumSet<JinxConstants.PhotoExtras> extras,
+							  int perPage, int page) throws JinxException {
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getNotInSet");
+		if (minUploadDate != null) {
+			params.put("min_upload_date", JinxUtils.formatDateAsUnixTimestamp(minUploadDate));
+		}
+		if (maxUploadDate != null) {
+			params.put("max_upload_date", JinxUtils.formatDateAsUnixTimestamp(maxUploadDate));
+		}
+		if (minTakenDate != null) {
+			params.put("min_taken_date", JinxUtils.formatDateAsUnixTimestamp(minTakenDate));
+		}
+		if (maxTakenDate != null) {
+			params.put("max_taken_date", JinxUtils.formatDateAsUnixTimestamp(maxTakenDate));
+		}
+		if (privacyFilter != null) {
+			params.put("privacy_filter", Integer.toString(JinxUtils.toFlickrPrivacy(privacyFilter)));
+		}
+		if (mediaType != null) {
+			params.put("media", mediaType.toString());
+		}
+		if (!JinxUtils.isNullOrEmpty(extras)) {
+			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
+		}
+		if (perPage > 0) {
+			params.put("per_page", Integer.toString(perPage));
+		}
+		if (page > 0) {
+			params.put("page", Integer.toString(page));
+		}
+		return jinx.flickrGet(params, Photos.class);
+	}
 
 
-//  flickr.photos.getNotInSet
+	/**
+	 * Get permissions for a photo.
+	 * <p/>
+	 * This method requires authentication with 'read' permission.
+	 *
+	 * @param photoId Required. The id of the photo to fetch permissions for.
+	 * @return object with permissions for the photo.
+	 * @throws JinxException if the photo id is null or empty, or if there are any errors.
+	 */
+	public PhotoPerms getPerms(String photoId) throws JinxException {
+		JinxUtils.validateParams(photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getPerms");
+		params.put("photo_id", photoId);
+		return jinx.flickrGet(params, PhotoPerms.class);
+	}
 
 
-//  flickr.photos.getPerms
+	/**
+	 * Returns a list of the latest public photos uploaded to flickr.
+	 * <p/>
+	 * This method does not require authentication.
+	 *
+	 * @param extras  Optional. Extra information to fetch for each returned record.
+	 * @param perPage Optional. Number of photos to return per page. If this argument is zero, it defaults to 100. The maximum allowed value is 500.
+	 * @param page    Optional. The page of results to return. If this argument is zero, it defaults to 1.
+	 * @return photos object.
+	 * @throws JinxException if there are any errors.
+	 */
+	public Photos getRecent(List<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getRecent");
+		if (!JinxUtils.isNullOrEmpty(extras)) {
+			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
+		}
+		if (perPage > 0) {
+			params.put("per_page", Integer.toString(perPage));
+		}
+		if (page > 0) {
+			params.put("page", Integer.toString(page));
+		}
+		return jinx.flickrGet(params, Photos.class);
+	}
 
 
-//  flickr.photos.getRecent
+	/**
+	 * Returns the available sizes for a photo. The calling user must have permission to view the photo.
+	 * <p/>
+	 * This method does not require authentication.
+	 *
+	 * @param photoId Required. The id of the photo to fetch permissions for.
+	 * @return object with available size information.
+	 * @throws JinxException if the photo id is null or empty, or if there are any errors.
+	 */
+	public PhotoSizes getSizes(String photoId) throws JinxException {
+		JinxUtils.validateParams(photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getSizes");
+		params.put("photo_id", photoId);
+		return jinx.flickrGet(params, PhotoSizes.class);
+	}
 
 
-//  flickr.photos.getSizes
+	/**
+	 * Returns a list of your photos with no tags.
+	 * <p/>
+	 * This method requires authentication with 'read' permission.
+	 *
+	 * @param minUploadDate Optional. Minimum upload date. Photos with an upload date greater than or equal to this value will be returned.
+	 * @param maxUploadDate Optional. Maximum upload date. Photos with an upload date less than or equal to this value will be returned.
+	 * @param minTakenDate  Optional. Minimum taken date. Photos with an taken date greater than or equal to this value will be returned.
+	 * @param maxTakenDate  Optional. Maximum taken date. Photos with an taken date less than or equal to this value will be returned.
+	 * @param privacyFilter Optional. Return photos only matching a certain privacy level.
+	 * @param mediaType     Optional. Filter results by media type.
+	 * @param extras        Optional. Extra information to fetch for each returned record.
+	 * @param perPage       Optional. Number of photos to return per page. If this argument is zero, it defaults to 100. The maximum allowed value is 500.
+	 * @param page          Optional. The page of results to return. If this argument is zero, it defaults to 1.
+	 * @return photos object.
+	 * @throws JinxException if there are any errors.
+	 */
+	public Photos getUntagged(Date minUploadDate, Date maxUploadDate, Date minTakenDate, Date maxTakenDate,
+							  JinxConstants.PrivacyFilter privacyFilter,
+							  JinxConstants.MediaType mediaType, EnumSet<JinxConstants.PhotoExtras> extras,
+							  int perPage, int page) throws JinxException {
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getUntagged");
+		if (minUploadDate != null) {
+			params.put("min_upload_date", JinxUtils.formatDateAsUnixTimestamp(minUploadDate));
+		}
+		if (maxUploadDate != null) {
+			params.put("max_upload_date", JinxUtils.formatDateAsUnixTimestamp(maxUploadDate));
+		}
+		if (minTakenDate != null) {
+			params.put("min_taken_date", JinxUtils.formatDateAsUnixTimestamp(minTakenDate));
+		}
+		if (maxTakenDate != null) {
+			params.put("max_taken_date", JinxUtils.formatDateAsUnixTimestamp(maxTakenDate));
+		}
+		if (privacyFilter != null) {
+			params.put("privacy_filter", Integer.toString(JinxUtils.toFlickrPrivacy(privacyFilter)));
+		}
+		if (mediaType != null) {
+			params.put("media", mediaType.toString());
+		}
+		if (!JinxUtils.isNullOrEmpty(extras)) {
+			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
+		}
+		if (perPage > 0) {
+			params.put("per_page", Integer.toString(perPage));
+		}
+		if (page > 0) {
+			params.put("page", Integer.toString(page));
+		}
+		return jinx.flickrGet(params, Photos.class);
+	}
 
 
-//  flickr.photos.getUntagged
+	/**
+	 * Returns a list of your geo-tagged photos.
+	 * <p/>
+	 * This method requires authentication with 'read' permission.
+	 *
+	 * @param minUploadDate Optional. Minimum upload date. Photos with an upload date greater than or equal to this value will be returned.
+	 * @param maxUploadDate Optional. Maximum upload date. Photos with an upload date less than or equal to this value will be returned.
+	 * @param minTakenDate  Optional. Minimum taken date. Photos with an taken date greater than or equal to this value will be returned.
+	 * @param maxTakenDate  Optional. Maximum taken date. Photos with an taken date less than or equal to this value will be returned.
+	 * @param privacyFilter Optional. Return photos only matching a certain privacy level.
+	 * @param sortOrder     Optional. The order in which to sort returned photos. If null, defaults to {@link net.jeremybrooks.jinx.JinxConstants.SortOrder#date_posted_desc}.
+	 * @param mediaType     Optional. Filter results by media type.
+	 * @param extras        Optional. Extra information to fetch for each returned record.
+	 * @param perPage       Optional. Number of photos to return per page. If this argument is zero, it defaults to 100. The maximum allowed value is 500.
+	 * @param page          Optional. The page of results to return. If this argument is zero, it defaults to 1.
+	 * @return photos object.
+	 * @throws JinxException if there are any errors.
+	 */
+	public Photos getWithGeoData(Date minUploadDate, Date maxUploadDate, Date minTakenDate, Date maxTakenDate,
+								 JinxConstants.PrivacyFilter privacyFilter, JinxConstants.SortOrder sortOrder,
+								 JinxConstants.MediaType mediaType, EnumSet<JinxConstants.PhotoExtras> extras,
+								 int perPage, int page) throws JinxException {
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getWithGeoData");
+		if (minUploadDate != null) {
+			params.put("min_upload_date", JinxUtils.formatDateAsUnixTimestamp(minUploadDate));
+		}
+		if (maxUploadDate != null) {
+			params.put("max_upload_date", JinxUtils.formatDateAsUnixTimestamp(maxUploadDate));
+		}
+		if (minTakenDate != null) {
+			params.put("min_taken_date", JinxUtils.formatDateAsUnixTimestamp(minTakenDate));
+		}
+		if (maxTakenDate != null) {
+			params.put("max_taken_date", JinxUtils.formatDateAsUnixTimestamp(maxTakenDate));
+		}
+		if (privacyFilter != null) {
+			params.put("privacy_filter", Integer.toString(JinxUtils.toFlickrPrivacy(privacyFilter)));
+		}
+		if (sortOrder != null) {
+			params.put("sort", JinxUtils.sortOrderToString(sortOrder));
+		}
+		if (mediaType != null) {
+			params.put("media", mediaType.toString());
+		}
+		if (!JinxUtils.isNullOrEmpty(extras)) {
+			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
+		}
+		if (perPage > 0) {
+			params.put("per_page", Integer.toString(perPage));
+		}
+		if (page > 0) {
+			params.put("page", Integer.toString(page));
+		}
+		return jinx.flickrGet(params, Photos.class);
+	}
+
+	/**
+	 * Returns a list of your photos which haven't been geo-tagged.
+	 * <p/>
+	 * This method requires authentication with 'read' permission.
+	 *
+	 * @param minUploadDate Optional. Minimum upload date. Photos with an upload date greater than or equal to this value will be returned.
+	 * @param maxUploadDate Optional. Maximum upload date. Photos with an upload date less than or equal to this value will be returned.
+	 * @param minTakenDate  Optional. Minimum taken date. Photos with an taken date greater than or equal to this value will be returned.
+	 * @param maxTakenDate  Optional. Maximum taken date. Photos with an taken date less than or equal to this value will be returned.
+	 * @param privacyFilter Optional. Return photos only matching a certain privacy level.
+	 * @param sortOrder     Optional. The order in which to sort returned photos. If null, defaults to {@link net.jeremybrooks.jinx.JinxConstants.SortOrder#date_posted_desc}.
+	 * @param mediaType     Optional. Filter results by media type.
+	 * @param extras        Optional. Extra information to fetch for each returned record.
+	 * @param perPage       Optional. Number of photos to return per page. If this argument is zero, it defaults to 100. The maximum allowed value is 500.
+	 * @param page          Optional. The page of results to return. If this argument is zero, it defaults to 1.
+	 * @return photos object.
+	 * @throws JinxException if there are any errors.
+	 */
+	public Photos getWithoutGeoData(Date minUploadDate, Date maxUploadDate, Date minTakenDate, Date maxTakenDate,
+									JinxConstants.PrivacyFilter privacyFilter, JinxConstants.SortOrder sortOrder,
+									JinxConstants.MediaType mediaType, EnumSet<JinxConstants.PhotoExtras> extras,
+									int perPage, int page) throws JinxException {
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getWithoutGeoData");
+		if (minUploadDate != null) {
+			params.put("min_upload_date", JinxUtils.formatDateAsUnixTimestamp(minUploadDate));
+		}
+		if (maxUploadDate != null) {
+			params.put("max_upload_date", JinxUtils.formatDateAsUnixTimestamp(maxUploadDate));
+		}
+		if (minTakenDate != null) {
+			params.put("min_taken_date", JinxUtils.formatDateAsUnixTimestamp(minTakenDate));
+		}
+		if (maxTakenDate != null) {
+			params.put("max_taken_date", JinxUtils.formatDateAsUnixTimestamp(maxTakenDate));
+		}
+		if (privacyFilter != null) {
+			params.put("privacy_filter", Integer.toString(JinxUtils.toFlickrPrivacy(privacyFilter)));
+		}
+		if (sortOrder != null) {
+			params.put("sort", JinxUtils.sortOrderToString(sortOrder));
+		}
+		if (mediaType != null) {
+			params.put("media", mediaType.toString());
+		}
+		if (!JinxUtils.isNullOrEmpty(extras)) {
+			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
+		}
+		if (perPage > 0) {
+			params.put("per_page", Integer.toString(perPage));
+		}
+		if (page > 0) {
+			params.put("page", Integer.toString(page));
+		}
+		return jinx.flickrGet(params, Photos.class);
+	}
 
 
-//  flickr.photos.getWithGeoData
-
-
-//  flickr.photos.getWithoutGeoData
-
-
-//  flickr.photos.recentlyUpdated
+	/**
+	 * Return a list of your photos that have been recently created or which have been recently modified.
+	 * <p/>
+	 * Recently modified may mean that the photo's metadata (title, description, tags) may have been changed or a comment has been added (or just modified somehow :-)
+	 * <p/>
+	 * This method requires authentication with 'read' permission.
+	 * <p/>
+	 * Photos are sorted by their date updated timestamp, in descending order.
+	 *
+	 * @param minDate Required. The date from which modifications should be compared.
+	 * @param extras  Optional. Extra information to fetch for each returned record.
+	 * @param perPage Optional. Number of photos to return per page. If this argument is zero, it defaults to 100. The maximum allowed value is 500.
+	 * @param page    Optional. The page of results to return. If this argument is zero, it defaults to 1.
+	 * @return photos object.
+	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+	 */
+	public Photos recentlyUpdated(Date minDate, List<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
+		JinxUtils.validateParams(minDate);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.recentlyUpdated");
+		params.put("min_date", JinxUtils.formatDateAsUnixTimestamp(minDate));
+		if (!JinxUtils.isNullOrEmpty(extras)) {
+			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
+		}
+		if (perPage > 0) {
+			params.put("per_page", Integer.toString(perPage));
+		}
+		if (page > 0) {
+			params.put("page", Integer.toString(page));
+		}
+		return jinx.flickrGet(params, Photos.class);
+	}
 
 
 	/**
@@ -348,23 +646,140 @@ public class PhotosApi {
 	}
 
 
-//  flickr.photos.search
+//  TODO flickr.photos.search
 
 
-//  flickr.photos.setContentType
+	/**
+	 * Set the content type of a photo.
+	 * <p/>
+	 * This method requires authentication with 'write' permission.
+	 *
+	 * @param photoId     Required. The id of the photo to set the content of.
+	 * @param contentType Required. Content type of the photo.
+	 * @return response object with the result of the requested operation.
+	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+	 */
+	public Response setContentType(String photoId, JinxConstants.ContentType contentType) throws JinxException {
+		JinxUtils.validateParams(photoId, contentType);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.setContentType");
+		params.put("photo_id", photoId);
+		params.put("content_type", Integer.toString(JinxUtils.contentTypeToFlickrContentTypeId(contentType)));
+		return jinx.flickrPost(params, Response.class);
+	}
 
+	/**
+	 * Set one or both of the dates for a photo.
+	 * <p/>
+	 * This method requires authentication with 'write' permission.
+	 * <p/>
+	 * One or both dates can be set. If no dates are set, nothing will happen.
+	 * <p/>
+	 * Taken dates also have a 'granularity' - the accuracy to which we know the date to be true.
+	 * At present, the following granularities are used:
+	 * <ul>
+	 * <li>0 Y-m-d H:i:s</li>
+	 * <li>4 Y-m</li>
+	 * <li>6 Y</li>
+	 * <li>8 Circa...</li>
+	 * </ul>
+	 *
+	 * @param photoId              Required. The id of the photo to change dates for.
+	 * @param datePosted           Optional. date the photo was uploaded to flickr
+	 * @param dateTaken            Optional. date the photo was taken.
+	 * @param dateTakenGranularity Optional. granularity of the date the photo was taken.
+	 * @return response object with the result of the requested operation.
+	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+	 */
+	public Response setDates(String photoId, Date datePosted, Date dateTaken, int dateTakenGranularity) throws JinxException {
+		JinxUtils.validateParams(photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.setDates");
+		params.put("photo_id", photoId);
+		if (datePosted != null) {
+			params.put("date_posted", JinxUtils.formatDateAsUnixTimestamp(datePosted));
+		}
+		if (dateTaken != null) {
+			params.put("date_taken", JinxUtils.formatDateAsMySqlTimestamp(dateTaken));
+		}
+		if (dateTakenGranularity == 0 || dateTakenGranularity == 4 || dateTakenGranularity == 6 || dateTakenGranularity == 8) {
+			params.put("date_taken_granularity", Integer.toString(dateTakenGranularity));
+		}
+		return jinx.flickrPost(params, Response.class);
+	}
 
-//  flickr.photos.setDates
+	/**
+	 * Set the meta information for a photo.
+	 * <p/>
+	 * This method requires authentication with 'write' permission.
+	 *
+	 * @param photoId     Required. The id of the photo to set metadata for.
+	 * @param title       Required. Title for the photo.
+	 * @param description Required. Description for the photo.
+	 * @return response object with the result of the requested operation.
+	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+	 */
+	public Response setMeta(String photoId, String title, String description) throws JinxException {
+		JinxUtils.validateParams(photoId, title, description);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.setMeta");
+		params.put("photo_id", photoId);
+		params.put("title", title);
+		params.put("description", description);
+		return jinx.flickrPost(params, Response.class);
+	}
 
+	/**
+	 * Set permissions for a photo.
+	 * <p/>
+	 * This method requires authentication with 'write' permission.
+	 *
+	 * @param photoId     Required. The id of the photo to set permissions for.
+	 * @param isPublic    Required. True to set the photo to public, false to set it to private.
+	 * @param isFriend    Required. True to make the photo visible to friends when private, false to not.
+	 * @param isFamily    Required. True to make the photo visible to family when private, false to not.
+	 * @param permComment Required. Who can add comments to the photo and it's notes.
+	 * @param permAddMeta Required. Who can add notes and tags to the photo.
+	 * @return object with the results.
+	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+	 */
+	public PermsSetResponse setPerms(String photoId, boolean isPublic, boolean isFriend, boolean isFamily,
+									 JinxConstants.Perms permComment, JinxConstants.Perms permAddMeta)
+			throws JinxException {
+		JinxUtils.validateParams(photoId, permComment, permAddMeta);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.setPerms");
+		params.put("photo_id", photoId);
+		params.put("is_public", isPublic ? "1" : "0");
+		params.put("is_friend", isFriend ? "1" : "0");
+		params.put("is_family", isFamily ? "1" : "0");
+		params.put("perm_comment", Integer.toString(JinxUtils.permsToFlickrPermsId(permComment)));
+		params.put("perm_addmeta", Integer.toString(JinxUtils.permsToFlickrPermsId(permAddMeta)));
+		return jinx.flickrPost(params, PermsSetResponse.class);
+	}
 
-//  flickr.photos.setMeta
-
-
-//  flickr.photos.setPerms
-
-
-//  flickr.photos.setSafetyLevel
-
+	/**
+	 * Set the safety level of a photo.
+	 * <p/>
+	 * This method requires authentication with 'write' permission.
+	 *
+	 * @param photoId     Required. The id of the photo to set the adultness of.
+	 * @param safetyLevel Optional. Safely level of the photo.
+	 * @param hidden      Whether or not to additionally hide the photo from public searches.
+	 * @return object with the result of the requested operation.
+	 * @throws JinxException if required parameters are null or empty, or if there are errors.
+	 */
+	public Response setSafetyLevel(String photoId, JinxConstants.SafetyLevel safetyLevel, boolean hidden) throws JinxException {
+		JinxUtils.validateParams(photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.setSafetyLevel");
+		params.put("photo_id", photoId);
+		if (safetyLevel != null) {
+			params.put("safety_level", Integer.toString(JinxUtils.safetyLevelToFlickrSafteyLevelId(safetyLevel)));
+		}
+		params.put("hidden", hidden ? "1" : "0");
+		return jinx.flickrPost(params, Response.class);
+	}
 
 	/**
 	 * Set the tags for a photo.

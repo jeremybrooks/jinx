@@ -72,21 +72,21 @@ Implement these API entry points:
 	  flickr.photos.getExif					(done)
 	  flickr.photos.getFavorites			(done)
 	  flickr.photos.getInfo
-	  flickr.photos.getNotInSet
-	  flickr.photos.getPerms
-	  flickr.photos.getRecent
-	  flickr.photos.getSizes
-	  flickr.photos.getUntagged
-	  flickr.photos.getWithGeoData
-	  flickr.photos.getWithoutGeoData
-	  flickr.photos.recentlyUpdated
+	  flickr.photos.getNotInSet				(done)
+	  flickr.photos.getPerms				(done)
+	  flickr.photos.getRecent				(done)
+	  flickr.photos.getSizes				(done)
+	  flickr.photos.getUntagged				(done)
+	  flickr.photos.getWithGeoData			(done)
+	  flickr.photos.getWithoutGeoData		(done)
+	  flickr.photos.recentlyUpdated			(done)
 	  flickr.photos.removeTag				(done)
 	  flickr.photos.search
-	  flickr.photos.setContentType
-	  flickr.photos.setDates
-	  flickr.photos.setMeta
-	  flickr.photos.setPerms
-	  flickr.photos.setSafetyLevel
+	  flickr.photos.setContentType			(done)
+	  flickr.photos.setDates				(done)
+	  flickr.photos.setMeta					(done)
+	  flickr.photos.setPerms				(done)
+	  flickr.photos.setSafetyLevel			(done)
 	  flickr.photos.setTags					(done)
 
   photos.comments

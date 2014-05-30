@@ -263,6 +263,151 @@ public class JinxUtils {
 		return level;
 	}
 
+		//TODO write test
+	public static JinxConstants.Perms flickrPermsIdToPerms(int id) {
+		JinxConstants.Perms perms = null;
+		switch(id) {
+			case 0:
+				perms = JinxConstants.Perms.nobody;
+				break;
+			case 1:
+				perms = JinxConstants.Perms.friendsAndFamily;
+				break;
+			case 2:
+				perms = JinxConstants.Perms.contacts;
+				break;
+			case 3:
+				perms = JinxConstants.Perms.everybody;
+				break;
+			default:
+				perms = null;
+				break;
+		}
+		return perms;
+	}
+
+
+	// TODO write test
+	public static int permsToFlickrPermsId(JinxConstants.Perms perms) {
+		int id = 0;
+		switch(perms) {
+			case nobody:
+				id = 0;
+				break;
+			case friendsAndFamily:
+				id = 1;
+				break;
+			case contacts:
+				id = 2;
+				break;
+			case everybody:
+				id = 3;
+				break;
+			default:
+				id = 0;
+				break;
+		}
+		return id;
+	}
+
+	//TODO write test
+	public static String sortOrderToString(JinxConstants.SortOrder sortOrder) {
+		return sortOrder.toString().replaceAll("_", "-");
+	}
+
+	//TODO write test
+	public static JinxConstants.SortOrder stringToSortOrder(String sortOrderString) {
+		JinxConstants.SortOrder retVal = null;
+		String s = sortOrderString.toLowerCase().trim().replaceAll("-", "_");
+		for (JinxConstants.SortOrder sortOrder : JinxConstants.SortOrder.values()) {
+			if (sortOrder.toString().equals(s)) {
+				retVal = sortOrder;
+				break;
+			}
+		}
+		return retVal;
+	}
+
+	// TODO write test
+	public static int contentTypeToFlickrContentTypeId(JinxConstants.ContentType contentType) {
+		int ret = 0;
+		switch (contentType) {
+			case photo:
+				ret = 1;
+				break;
+			case screenshot:
+				ret = 2;
+				break;
+			case other:
+				ret = 3;
+				break;
+			default:
+				ret = 0;
+				break;
+		}
+		return ret;
+	}
+	// TODO write test
+	public static JinxConstants.ContentType flickrContentTypeIdToContentType(int type) {
+		JinxConstants.ContentType ret = null;
+		switch(type) {
+			case 1:
+				ret = JinxConstants.ContentType.photo;
+				break;
+			case 2:
+				ret = JinxConstants.ContentType.screenshot;
+				break;
+			case 3:
+				ret = JinxConstants.ContentType.other;
+				break;
+			default:
+				ret = null;
+				break;
+		}
+		return ret;
+	}
+
+	// TODO write test
+	public static int safetyLevelToFlickrSafteyLevelId(JinxConstants.SafetyLevel safetyLevel) {
+		int ret = 0;
+		switch (safetyLevel) {
+			case safe:
+				ret = 1;
+				break;
+			case moderate:
+				ret = 2;
+				break;
+			case restricted:
+				ret = 3;
+				break;
+			default:
+				ret = 0;
+				break;
+		}
+		return ret;
+	}
+
+	// TODO write test
+	public JinxConstants.SafetyLevel flickrSafetyLevelIdToSafetyLevel(int level) {
+		JinxConstants.SafetyLevel ret = null;
+		switch (level) {
+			case 1:
+				ret = JinxConstants.SafetyLevel.safe;
+				break;
+			case 2:
+				ret = JinxConstants.SafetyLevel.moderate;
+				break;
+			case 3:
+				ret = JinxConstants.SafetyLevel.restricted;
+				break;
+			default:
+				ret = null;
+				break;
+		}
+		return  ret;
+	}
+
+
 	public static void close(InputStream in) {
 		if (in != null) {
 			try {

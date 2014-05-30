@@ -1,0 +1,103 @@
+{ "sizes": {
+    "canblog": 1,
+    "canprint": 1,
+    "candownload": 1,
+    "size": [
+        {
+            "label": "Square",
+            "width": 75,
+            "height": 75,
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_aa73bc9851_s.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/sq\/",
+            "media": "photo"
+        },
+        {
+            "label": "Large Square",
+            "width": "150",
+            "height": "150",
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_aa73bc9851_q.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/q\/",
+            "media": "photo"
+        },
+        {
+            "label": "Thumbnail",
+            "width": 100,
+            "height": 67,
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_aa73bc9851_t.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/t\/",
+            "media": "photo"
+        },
+        {
+            "label": "Small",
+            "width": "240",
+            "height": "160",
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_aa73bc9851_m.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/s\/",
+            "media": "photo"
+        },
+        {
+            "label": "Small 320",
+            "width": "320",
+            "height": "213",
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_aa73bc9851_n.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/n\/",
+            "media": "photo"
+        },
+        {
+            "label": "Medium",
+            "width": "500",
+            "height": "333",
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_aa73bc9851.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/m\/",
+            "media": "photo"
+        },
+        {
+            "label": "Medium 640",
+            "width": "640",
+            "height": "427",
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_aa73bc9851_z.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/z\/",
+            "media": "photo"
+        },
+        {
+            "label": "Medium 800",
+            "width": "800",
+            "height": "534",
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_aa73bc9851_c.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/c\/",
+            "media": "photo"
+        },
+        {
+            "label": "Large",
+            "width": "1024",
+            "height": "683",
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_aa73bc9851_b.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/l\/",
+            "media": "photo"
+        },
+        {
+            "label": "Large 1600",
+            "width": "1600",
+            "height": "1068",
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_d77b47d739_h.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/h\/",
+            "media": "photo"
+        },
+        {
+            "label": "Large 2048",
+            "width": "2048",
+            "height": "1367",
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_dee9460a53_k.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/k\/",
+            "media": "photo"
+        },
+        {
+            "label": "Original",
+            "width": "3776",
+            "height": "2520",
+            "source": "https:\/\/farm3.staticflickr.com\/2918\/14104674717_099249b64a_o.jpg",
+            "url": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14104674717\/sizes\/o\/",
+            "media": "photo"
+        }
+    ]
+}, "stat": "ok" }

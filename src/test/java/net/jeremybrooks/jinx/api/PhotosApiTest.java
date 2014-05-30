@@ -27,7 +27,10 @@ import net.jeremybrooks.jinx.response.photos.AddTags;
 import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.ExifData;
 import net.jeremybrooks.jinx.response.photos.Favorites;
+import net.jeremybrooks.jinx.response.photos.PermsSetResponse;
 import net.jeremybrooks.jinx.response.photos.Photo;
+import net.jeremybrooks.jinx.response.photos.PhotoPerms;
+import net.jeremybrooks.jinx.response.photos.PhotoSizes;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
 import net.jeremybrooks.jinx.response.photos.Photos;
 import net.jeremybrooks.jinx.response.photos.Tag;
@@ -222,5 +225,152 @@ public class PhotosApiTest {
 		assertEquals(photoId, favorites.getPhotoId());
 		assertNotNull(favorites.getPersonList());
 		assertTrue(favorites.getPersonList().size() > 0);
+	}
+
+	@Test
+	public void testGetInfo() throws Exception {
+		// TODO
+	}
+
+	@Test
+	public void testGetNotInSet() throws Exception {
+		Photos photos = photosApi.getNotInSet(null, null, null, null, null, null, null, 0, 0);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+	}
+
+	@Test
+	public void testGetPerms() throws Exception {
+		PhotoPerms perms = photosApi.getPerms(photoId);
+		assertNotNull(perms);
+		assertEquals("ok", perms.getStat());
+		assertEquals(0, perms.getCode());
+		assertEquals(photoId, perms.getPhotoId());
+		assertNotNull(perms.getPermAddMeta());
+		assertNotNull(perms.getPermComment());
+	}
+
+	@Test
+	public void testGetRecent() throws Exception {
+		Photos photos = photosApi.getRecent(null, 0, 0);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+	}
+
+	@Test
+	public void testGetSizes() throws Exception {
+		PhotoSizes sizes = photosApi.getSizes(photoId);
+		assertNotNull(sizes);
+		assertEquals("ok", sizes.getStat());
+		assertEquals(0, sizes.getCode());
+		assertNotNull(sizes.getSizeList());
+		assertTrue(sizes.getSizeList().size() > 0);
+	}
+
+	@Test
+	public void testGetUntagged() throws Exception {
+		Photos photos = photosApi.getUntagged(null, null, null, null, null, null, null, 0, 0);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+	}
+
+
+	@Test
+	public void testGetWithGeoData() throws Exception {
+		Photos photos = photosApi.getWithGeoData(null, null, null, null, null, null, null, null, 0, 0);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+	}
+
+	@Test
+	public void testGetWithoutGeoData() throws Exception {
+		Photos photos = photosApi.getWithoutGeoData(null, null, null, null, null, null, null, null, 0, 0);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+	}
+
+	@Test
+	public void testRecentlyUpdated() throws Exception {
+		Date date = new Date(System.currentTimeMillis() - 86400);
+		Photos photos = photosApi.recentlyUpdated(date, null, 0, 0);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+	}
+
+	@Test
+	public void testSearch() throws Exception {
+		// TODO
+	}
+
+	@Test
+	public void testSetContentType() throws Exception {
+		Response response = photosApi.setContentType(photoId, JinxConstants.ContentType.other);
+		assertNotNull(response);
+		assertEquals("ok", response.getStat());
+		assertEquals(0, response.getCode());
+		response = photosApi.setContentType(photoId, JinxConstants.ContentType.photo);
+		assertNotNull(response);
+		assertEquals("ok", response.getStat());
+		assertEquals(0, response.getCode());
+	}
+
+	@Test
+	public void testSetDates() throws Exception {
+		Response response = photosApi.setDates(photoId, new Date(), new Date(), 0);
+		assertNotNull(response);
+		assertEquals("ok", response.getStat());
+		assertEquals(0, response.getCode());
+	}
+
+	@Test
+	public void testSetMeta() throws Exception {
+		Response response = photosApi.setMeta(photoId, "Test New Title", "This is a test description.");
+		assertNotNull(response);
+		assertEquals("ok", response.getStat());
+		assertEquals(0, response.getCode());
+	}
+
+	@Test
+	public void testSetPerms() throws Exception {
+		PermsSetResponse psr = photosApi.setPerms(photoId, false, false, true, JinxConstants.Perms.contacts, JinxConstants.Perms.nobody);
+		assertNotNull(psr);
+		assertEquals("ok", psr.getStat());
+		assertEquals(0, psr.getCode());
+		psr = photosApi.setPerms(photoId, true, false, false, JinxConstants.Perms.everybody, JinxConstants.Perms.everybody);
+		assertNotNull(psr);
+		assertEquals("ok", psr.getStat());
+		assertEquals(0, psr.getCode());
+	}
+
+	@Test
+	public void testSetSafetyLevel() throws Exception {
+		Response response = photosApi.setSafetyLevel(photoId, null, false);
+		assertNotNull(response);
+		assertEquals("ok", response.getStat());
+		assertEquals(0, response.getCode());
+
+		response = photosApi.setSafetyLevel(photoId, JinxConstants.SafetyLevel.moderate, true);
+		assertNotNull(response);
+		assertEquals("ok", response.getStat());
+		assertEquals(0, response.getCode());
+
+		response = photosApi.setSafetyLevel(photoId, JinxConstants.SafetyLevel.safe, false);
+		assertNotNull(response);
+		assertEquals("ok", response.getStat());
+		assertEquals(0, response.getCode());
+
+
 	}
 }

@@ -18,6 +18,8 @@
 package net.jeremybrooks.jinx.response.photos;
 
 import com.google.gson.Gson;
+import net.jeremybrooks.jinx.JinxConstants;
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.activity.ActivityResponseTest;
 import org.junit.Test;
 
@@ -137,11 +139,11 @@ public class PhotosTest {
 		assertEquals("14258801982", favorites.getPhotoId());
 		assertEquals("43d6f39123", favorites.getSecret());
 		assertEquals("3795", favorites.getServer());
-		assertEquals(4, (int)favorites.getFarm());
-		assertEquals(1, (int)favorites.getPage());
-		assertEquals(1, (int)favorites.getPages());
-		assertEquals(10, (int)favorites.getPerPage());
-		assertEquals(5, (int)favorites.getTotal());
+		assertEquals(4, (int) favorites.getFarm());
+		assertEquals(1, (int) favorites.getPage());
+		assertEquals(1, (int) favorites.getPages());
+		assertEquals(10, (int) favorites.getPerPage());
+		assertEquals(5, (int) favorites.getTotal());
 
 		List<Favorites.Person> list = favorites.getPersonList();
 		assertNotNull(list);
@@ -152,12 +154,68 @@ public class PhotosTest {
 		assertEquals("Jason Ogulnik", p.getRealName());
 		assertEquals("1401061945", p.getFaveDate());
 		assertEquals("5234", p.getIconServer());
-		assertEquals(6, (int)p.getIconFarm());
+		assertEquals(6, (int) p.getIconFarm());
 		assertTrue(p.isContact());
 		assertFalse(p.isFriend());
 		assertFalse(p.isFamily());
 	}
 
+	@Test
+	public void testParseGetPerms() throws Exception {
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_get_perms.json"));
+		PhotoPerms perms = new Gson().fromJson(reader, PhotoPerms.class);
+		reader.close();
+		assertNotNull(perms);
+		assertEquals("ok", perms.getStat());
+		assertEquals(0, perms.getCode());
+		assertEquals("14264974026", perms.getPhotoId());
+		assertTrue(perms.isPublic());
+		assertFalse(perms.isFriend());
+		assertFalse(perms.isFamily());
+		assertEquals(3, JinxUtils.permsToFlickrPermsId(perms.getPermComment()));
+		assertEquals(2, JinxUtils.permsToFlickrPermsId(perms.getPermAddMeta()));
+		assertEquals(JinxConstants.Perms.everybody, perms.getPermComment());
+		assertEquals(JinxConstants.Perms.contacts, perms.getPermAddMeta());
+	}
+
+	@Test
+	public void testParseGetSizes() throws Exception {
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_photo_sizes.json"));
+		PhotoSizes sizes = new Gson().fromJson(reader, PhotoSizes.class);
+		reader.close();
+		assertNotNull(sizes);
+		assertEquals("ok", sizes.getStat());
+		assertEquals(0, sizes.getCode());
+		assertTrue(sizes.isCanBlog());
+		assertTrue(sizes.isCanDownload());
+		assertTrue(sizes.isCanPrint());
+		List<PhotoSizes.Size> sizeList = sizes.getSizeList();
+		assertNotNull(sizeList);
+		assertEquals(12, sizeList.size());
+		PhotoSizes.Size size = sizeList.get(2);
+		assertEquals("Thumbnail", size.getLabel());
+		assertEquals(100, (int) size.getWidth());
+		assertEquals(67, (int) size.getHeight());
+		assertEquals("https://farm3.staticflickr.com/2918/14104674717_aa73bc9851_t.jpg", size.getSource());
+		assertEquals("https://www.flickr.com/photos/jeremybrooks/14104674717/sizes/t/", size.getUrl());
+		assertEquals("photo", size.getMedia());
+	}
+
+	public void testParseSetPerms() throws Exception {
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_set_perms.json"));
+		PermsSetResponse psr = new Gson().fromJson(reader, PermsSetResponse.class);
+		reader.close();
+		assertNotNull(psr);
+		assertEquals("ok", psr.getStat());
+		assertEquals(0, psr.getCode());
+		assertEquals("14100868708", psr.getPhotoId());
+		assertEquals("3efe11f872", psr.getSecret());
+		assertEquals("dfsddf", psr.getOriginalSecret());
+	}
+
+	//
+	// the rest of this class tests responses that return Photos data - the tests are all very similar to each other
+	//
 	@Test
 	public void testParseGetContactsPhotos() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_get_contacts_photos.json"));

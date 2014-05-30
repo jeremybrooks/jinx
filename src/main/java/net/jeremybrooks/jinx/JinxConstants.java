@@ -52,6 +52,25 @@ public class JinxConstants {
 		all, photos, videos
 	}
 
+	public static enum Perms {
+		nobody,
+		friendsAndFamily,
+		contacts,
+		everybody
+	}
+
+	public static enum SortOrder {
+		date_posted_asc, date_posted_desc, date_taken_asc, date_taken_desc, interestingness_desc, interestingness_asc
+	}
+
+	public static enum ContentType {
+		photo, screenshot, other
+	}
+
+	public static enum SafetyLevel {
+		safe, moderate, restricted
+	}
+
 
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line
