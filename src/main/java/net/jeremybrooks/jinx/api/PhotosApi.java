@@ -28,6 +28,7 @@ import net.jeremybrooks.jinx.response.photos.AllContexts;
 import net.jeremybrooks.jinx.response.photos.ExifData;
 import net.jeremybrooks.jinx.response.photos.Favorites;
 import net.jeremybrooks.jinx.response.photos.PermsSetResponse;
+import net.jeremybrooks.jinx.response.photos.PhotoInfo;
 import net.jeremybrooks.jinx.response.photos.PhotoPerms;
 import net.jeremybrooks.jinx.response.photos.PhotoSizes;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
@@ -302,7 +303,29 @@ public class PhotosApi {
 		return jinx.flickrGet(params, Favorites.class);
 	}
 
-// TODO flickr.photos.getInfo
+
+	/**
+	 * Get information about a photo. The calling user must have permission to view the photo.
+	 * <p/>
+	 * This method does not require authentication.
+	 *
+	 * @param photoId Required. The id of the photo to get information for.
+	 * @param secret  Optional. The secret for the photo. If the correct secret is passed then permissions checking is skipped.
+	 *                This enables the 'sharing' of individual photos by passing around the id and secret.
+	 * @return object with available information for the photo.
+	 * @throws JinxException if required parameters are null or empty, or if there are errors.
+	 */
+	public PhotoInfo getInfo(String photoId, String secret) throws JinxException {
+		JinxUtils.validateParams(photoId);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.getInfo");
+		params.put("photo_id", photoId);
+		if (!JinxUtils.isNullOrEmpty(secret)) {
+			params.put("secret", secret);
+		}
+		return jinx.flickrGet(params, PhotoInfo.class);
+	}
+
 
 	/**
 	 * Returns a list of your photos that are not part of any sets.

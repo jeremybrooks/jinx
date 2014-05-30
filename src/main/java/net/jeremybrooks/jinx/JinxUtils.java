@@ -388,7 +388,7 @@ public class JinxUtils {
 	}
 
 	// TODO write test
-	public JinxConstants.SafetyLevel flickrSafetyLevelIdToSafetyLevel(int level) {
+	public static JinxConstants.SafetyLevel flickrSafetyLevelIdToSafetyLevel(int level) {
 		JinxConstants.SafetyLevel ret = null;
 		switch (level) {
 			case 1:

@@ -29,6 +29,7 @@ import net.jeremybrooks.jinx.response.photos.ExifData;
 import net.jeremybrooks.jinx.response.photos.Favorites;
 import net.jeremybrooks.jinx.response.photos.PermsSetResponse;
 import net.jeremybrooks.jinx.response.photos.Photo;
+import net.jeremybrooks.jinx.response.photos.PhotoInfo;
 import net.jeremybrooks.jinx.response.photos.PhotoPerms;
 import net.jeremybrooks.jinx.response.photos.PhotoSizes;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
@@ -229,7 +230,11 @@ public class PhotosApiTest {
 
 	@Test
 	public void testGetInfo() throws Exception {
-		// TODO
+		PhotoInfo photoInfo = photosApi.getInfo(photoId, null);
+		assertNotNull(photoInfo);
+		assertEquals("ok", photoInfo.getStat());
+		assertEquals(0, photoInfo.getCode());
+		assertEquals(photoId, photoInfo.getPhotoId());
 	}
 
 	@Test

@@ -60,7 +60,7 @@ public class JinxConstants {
 	}
 
 	public static enum SortOrder {
-		date_posted_asc, date_posted_desc, date_taken_asc, date_taken_desc, interestingness_desc, interestingness_asc
+		date_posted_asc, date_posted_desc, date_taken_asc, date_taken_desc, interestingness_desc, interestingness_asc, relevance
 	}
 
 	public static enum ContentType {

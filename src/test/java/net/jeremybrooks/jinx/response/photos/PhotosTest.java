@@ -213,6 +213,122 @@ public class PhotosTest {
 		assertEquals("dfsddf", psr.getOriginalSecret());
 	}
 
+	public void testParseGetInfo() throws Exception {
+		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_get_info.json"));
+		PhotoInfo photoInfo = new Gson().fromJson(reader, PhotoInfo.class);
+		reader.close();
+		assertNotNull(photoInfo);
+		assertEquals("ok", photoInfo.getStat());
+		assertEquals(0, photoInfo.getCode());
+		assertEquals("14118630850", photoInfo.getPhotoId());
+		assertEquals("02b4c5b056", photoInfo.getSecret());
+		assertEquals("5482", photoInfo.getServer());
+		assertEquals(6, (int)photoInfo.getFarm());
+		assertEquals("1401457031", photoInfo.getDateUploaded());
+		assertFalse(photoInfo.isFavorite());
+		assertEquals(2, (int)photoInfo.getLicense());
+		assertEquals(JinxConstants.SafetyLevel.safe, photoInfo.getSafetyLevel());
+		assertEquals(0, (int)photoInfo.getRotation());
+		assertEquals("24f8c12962", photoInfo.getOriginalSecret());
+		assertEquals("jpg", photoInfo.getOriginalFormat());
+		assertEquals("photo", photoInfo.getMedia());
+		assertEquals(47, (int)photoInfo.getViews());
+
+		assertEquals("85853333@N00", photoInfo.getOwnerNsid());
+		assertEquals("Jeremy Brooks", photoInfo.getOwnerUsername());
+		assertEquals("Jeremy Brooks", photoInfo.getOwnerRealName());
+		assertEquals("", photoInfo.getOwnerLocation());
+		assertEquals("5332", photoInfo.getOwnerIconServer());
+		assertEquals(6, (int)photoInfo.getOwnerIconFarm());
+		assertEquals("jeremybrooks", photoInfo.getOwnerPathAlias());
+
+		assertEquals("Transamerica View 20140530", photoInfo.getTitle());
+		assertEquals("During 2014, I will be shooting the view from the building I work in. One photo per day, each day I am in the office. \n\nAll the images in this series can be seen <a href=\"https://www.flickr.com/photos/jeremybrooks/sets/72157639332256903/\">here</a>.", photoInfo.getDescription());
+		assertTrue(photoInfo.isPublic());
+		assertFalse(photoInfo.isFriend());
+		assertFalse(photoInfo.isFamily());
+
+		assertEquals("1401457031", photoInfo.getDatePosted());
+		assertEquals("2014-05-30 06:31:07", photoInfo.getDateTaken());
+		assertEquals(0, (int)photoInfo.getDateTakenGranularity());
+		assertEquals("1401464981", photoInfo.getDateLastUpdate());
+
+		assertEquals(3, JinxUtils.permsToFlickrPermsId(photoInfo.getPermComment()));
+		assertEquals(2, JinxUtils.permsToFlickrPermsId(photoInfo.getPermAddMeta()));
+		assertEquals(JinxConstants.Perms.everybody, photoInfo.getPermComment());
+		assertEquals(JinxConstants.Perms.contacts, photoInfo.getPermAddMeta());
+
+		assertTrue(photoInfo.isCanComment());
+		assertTrue(photoInfo.isCanAddMeta());
+		assertTrue(photoInfo.isPublicCanComment());
+		assertFalse(photoInfo.isPublicCanAddMeta());
+		assertTrue(photoInfo.isCanDownload());
+		assertTrue(photoInfo.isCanBlog());
+		assertTrue(photoInfo.isCanPrint());
+		assertTrue(photoInfo.isCanShare());
+
+		assertEquals(1, (int)photoInfo.getComments());
+
+		assertNotNull(photoInfo.getNotes());
+		assertEquals(1, photoInfo.getNotes().size());
+		PhotoInfo.Note note = photoInfo.getNotes().get(0);
+		assertEquals("72157644968346143", note.getNoteId());
+		assertEquals("85853333@N00", note.getAuthor());
+		assertEquals("Jeremy Brooks", note.getAuthorName());
+		assertEquals(245, (int)note.getX());
+		assertEquals(78, (int)note.getY());
+		assertEquals(29, (int)note.getW());
+		assertEquals(95, (int)note.getH());
+		assertEquals("Pointy!", note.getNote());
+
+		assertTrue(photoInfo.isHasPeople());
+
+		assertNotNull(photoInfo.getTags());
+		assertEquals(9, photoInfo.getTags().size());
+		Tag tag = photoInfo.getTags().get(0);
+		assertEquals("4956757-14118630850-50", tag.getTagId());
+		assertEquals("85853333@N00", tag.getAuthor());
+		assertEquals("Jeremy Brooks", tag.getAuthorName());
+		assertEquals("California", tag.getRaw());
+		assertEquals("california", tag.getTag());
+		assertFalse(tag.isMachineTag());
+
+		assertEquals(37.789899, photoInfo.getLatitude());
+		assertEquals(-122.401921, photoInfo.getLongitude());
+		assertEquals(15, (int)photoInfo.getAccuracy());
+		assertEquals(0, (int)photoInfo.getContext());
+		assertEquals("GddgqTpTUb8LgT93hw", photoInfo.getPlaceId());
+		assertEquals("23512022", photoInfo.getWoeId());
+		assertEquals("Financial District", photoInfo.getNeighbourhoodName());
+		assertEquals("GddgqTpTUb8LgT93hw", photoInfo.getNeighbourhoodPlaceId());
+		assertEquals("23512022", photoInfo.getNeighbourhoodWoeId());
+		assertEquals("San Francisco", photoInfo.getLocalityName());
+		assertEquals("7.MJR8tTVrIO1EgB", photoInfo.getLocalityPlaceId());
+		assertEquals("2487956", photoInfo.getLocalityWoeId());
+		assertEquals("San Francisco", photoInfo.getCountyName());
+		assertEquals(".7sOmlRQUL9nK.kMzA", photoInfo.getCountyPlaceId());
+		assertEquals("12587707", photoInfo.getCountyWoeId());
+		assertEquals("California", photoInfo.getRegionName());
+		assertEquals("NsbUWfBTUb4mbyVu", photoInfo.getRegionPlaceId());
+		assertEquals("2347563", photoInfo.getRegionWoeId());
+		assertEquals("United States", photoInfo.getCountryName());
+		assertEquals("nz.gsghTUb4c2WAecA", photoInfo.getCountryPlaceId());
+		assertEquals("23424977", photoInfo.getCountryWoeId());
+
+		assertTrue(photoInfo.isGeoIsPublic());
+		assertFalse(photoInfo.isGeoIsContact());
+		assertFalse(photoInfo.isGeoIsFriend());
+		assertFalse(photoInfo.isGeoIsFamily());
+
+		assertNotNull(photoInfo.getUrls());
+		assertEquals(1, photoInfo.getUrls().size());
+		PhotoInfo.Url url = photoInfo.getUrls().get(0);
+		assertEquals("photopage", url.getType());
+		assertEquals("https://www.flickr.com/photos/jeremybrooks/14118630850/", url.getUrl());
+	}
+
+
+
 	//
 	// the rest of this class tests responses that return Photos data - the tests are all very similar to each other
 	//

@@ -1,0 +1,202 @@
+{ "photo": {
+    "id": "14118630850",
+    "secret": "02b4c5b056",
+    "server": "5482",
+    "farm": 6,
+    "dateuploaded": "1401457031",
+    "isfavorite": 0,
+    "license": 2,
+    "safety_level": 0,
+    "rotation": 0,
+    "originalsecret": "24f8c12962",
+    "originalformat": "jpg",
+    "owner": {
+        "nsid": "85853333@N00",
+        "username": "Jeremy Brooks",
+        "realname": "Jeremy Brooks",
+        "location": "",
+        "iconserver": "5332",
+        "iconfarm": 6,
+        "path_alias": "jeremybrooks"
+    },
+    "title": {
+        "_content": "Transamerica View 20140530"
+    },
+    "description": {
+        "_content": "During 2014, I will be shooting the view from the building I work in. One photo per day, each day I am in the office. \n\nAll the images in this series can be seen <a href=\"https:\/\/www.flickr.com\/photos\/jeremybrooks\/sets\/72157639332256903\/\">here<\/a>."
+    },
+    "visibility": {
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0
+    },
+    "dates": {
+        "posted": "1401457031",
+        "taken": "2014-05-30 06:31:07",
+        "takengranularity": 0,
+        "lastupdate": "1401464981"
+    },
+    "permissions": {
+        "permcomment": 3,
+        "permaddmeta": 2
+    },
+    "views": 47,
+    "editability": {
+        "cancomment": 1,
+        "canaddmeta": 1
+    },
+    "publiceditability": {
+        "cancomment": 1,
+        "canaddmeta": 0
+    },
+    "usage": {
+        "candownload": 1,
+        "canblog": 1,
+        "canprint": 1,
+        "canshare": 1
+    },
+    "comments": {
+        "_content": 1
+    },
+    "notes": {
+        "note": [
+            {
+                "id": "72157644968346143",
+                "author": "85853333@N00",
+                "authorname": "Jeremy Brooks",
+                "x": "245",
+                "y": 78,
+                "w": 29,
+                "h": 95,
+                "_content": "Pointy!"
+            }
+        ]
+    },
+    "people": {
+        "haspeople": 1
+    },
+    "tags": {
+        "tag": [
+            {
+                "id": "4956757-14118630850-50",
+                "author": "85853333@N00",
+                "authorname": "Jeremy Brooks",
+                "raw": "California",
+                "_content": "california",
+                "machine_tag": 0
+            },
+            {
+                "id": "4956757-14118630850-3643",
+                "author": "85853333@N00",
+                "authorname": "Jeremy Brooks",
+                "raw": "Cityscape",
+                "_content": "cityscape",
+                "machine_tag": 0
+            },
+            {
+                "id": "4956757-14118630850-487150",
+                "author": "85853333@N00",
+                "authorname": "Jeremy Brooks",
+                "raw": "Daily View",
+                "_content": "dailyview",
+                "machine_tag": 0
+            },
+            {
+                "id": "4956757-14118630850-46",
+                "author": "85853333@N00",
+                "authorname": "Jeremy Brooks",
+                "raw": "San Francisco",
+                "_content": "sanfrancisco",
+                "machine_tag": 0
+            },
+            {
+                "id": "4956757-14118630850-983245",
+                "author": "85853333@N00",
+                "authorname": "Jeremy Brooks",
+                "raw": "San Francisco County",
+                "_content": "sanfranciscocounty",
+                "machine_tag": 0
+            },
+            {
+                "id": "4956757-14118630850-25740",
+                "author": "85853333@N00",
+                "authorname": "Jeremy Brooks",
+                "raw": "Transamerica",
+                "_content": "transamerica",
+                "machine_tag": 0
+            },
+            {
+                "id": "4956757-14118630850-255274",
+                "author": "85853333@N00",
+                "authorname": "Jeremy Brooks",
+                "raw": "Transamerica Building",
+                "_content": "transamericabuilding",
+                "machine_tag": 0
+            },
+            {
+                "id": "4956757-14118630850-81608629",
+                "author": "85853333@N00",
+                "authorname": "Jeremy Brooks",
+                "raw": "Transamerica View Project",
+                "_content": "transamericaviewproject",
+                "machine_tag": 0
+            },
+            {
+                "id": "4956757-14118630850-351",
+                "author": "85853333@N00",
+                "authorname": "Jeremy Brooks",
+                "raw": "USA",
+                "_content": "usa",
+                "machine_tag": 0
+            }
+        ]
+    },
+    "location": {
+        "latitude": 37.789899,
+        "longitude": -122.401921,
+        "accuracy": 15,
+        "context": 0,
+        "neighbourhood": {
+            "_content": "Financial District",
+            "place_id": "GddgqTpTUb8LgT93hw",
+            "woeid": "23512022"
+        },
+        "locality": {
+            "_content": "San Francisco",
+            "place_id": "7.MJR8tTVrIO1EgB",
+            "woeid": "2487956"
+        },
+        "county": {
+            "_content": "San Francisco",
+            "place_id": ".7sOmlRQUL9nK.kMzA",
+            "woeid": "12587707"
+        },
+        "region": {
+            "_content": "California",
+            "place_id": "NsbUWfBTUb4mbyVu",
+            "woeid": "2347563"
+        },
+        "country": {
+            "_content": "United States",
+            "place_id": "nz.gsghTUb4c2WAecA",
+            "woeid": "23424977"
+        },
+        "place_id": "GddgqTpTUb8LgT93hw",
+        "woeid": "23512022"
+    },
+    "geoperms": {
+        "ispublic": 1,
+        "iscontact": 0,
+        "isfriend": 0,
+        "isfamily": 0
+    },
+    "urls": {
+        "url": [
+            {
+                "type": "photopage",
+                "_content": "https:\/\/www.flickr.com\/photos\/jeremybrooks\/14118630850\/"
+            }
+        ]
+    },
+    "media": "photo"
+}, "stat": "ok" }
