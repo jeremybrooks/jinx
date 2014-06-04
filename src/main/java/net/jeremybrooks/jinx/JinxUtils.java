@@ -23,6 +23,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -46,10 +47,7 @@ public class JinxUtils {
 	}
 
 
-	/* Dates look like this: 2004-11-29 16:01:26 */
 	private static SimpleDateFormat formatter;
-
-	/* Formatter for YYYY-MM-DD dates. */
 	private static SimpleDateFormat ymdFormatter;
 
 
@@ -212,7 +210,7 @@ public class JinxUtils {
 					}
 				}
 			} else if (o instanceof String) {
-				if ( ((String)o).length() == 0) {
+				if (((String) o).length() == 0) {
 					throw new JinxException("String cannot be empty.");
 				}
 			}
@@ -222,6 +220,7 @@ public class JinxUtils {
 	public static boolean isNullOrEmpty(String s) {
 		return s == null || s.trim().length() == 0;
 	}
+
 	public static boolean isNullOrEmpty(Collection collection) {
 		return collection == null || collection.size() == 0;
 	}
@@ -234,12 +233,33 @@ public class JinxUtils {
 		for (Object o : collection) {
 			sb.append(o.toString().trim()).append(',');
 		}
-		sb.deleteCharAt(sb.length()-1);
+		sb.deleteCharAt(sb.length() - 1);
 		return sb.toString();
 	}
 
-	public static int toFlickrPrivacy(JinxConstants.PrivacyFilter privacyFilter) {
-		int level = 0;
+	public static List<String> normalizeTags(List<String> list) {
+		if (isNullOrEmpty(list)) {
+			return null;
+		}
+		List<String> tmp = new ArrayList<String>();
+		for (String s : list) {
+			tmp.add(s.replaceAll("[!#$%&'()*+\\.,'; ]", "").toLowerCase());
+		}
+		return tmp;
+	}
+
+	/**
+	 * Convert a {@link net.jeremybrooks.jinx.JinxConstants.PrivacyFilter} enum into the corresponding Flickr
+	 * privacy filter id.
+	 *
+	 * @param privacyFilter privacy filter enum to convert.
+	 * @return Flickr privacy filter id, or 0 if argument is null.
+	 */
+	public static int privacyFilterToFlickrPrivacyFilterId(JinxConstants.PrivacyFilter privacyFilter) {
+		if (privacyFilter == null) {
+			return -1;
+		}
+		int level;
 		switch (privacyFilter) {
 			case privacyPublic:
 				level = 1;
@@ -257,16 +277,52 @@ public class JinxUtils {
 				level = 5;
 				break;
 			default:
-				level = 0;
+				level = -1;
 				break;
 		}
 		return level;
 	}
 
-		//TODO write test
+	/**
+	 * Convert a numeric Flickr privacy filter into the corresponding {@link net.jeremybrooks.jinx.JinxConstants.PrivacyFilter}
+	 *
+	 * @param privacyFilterId numeric Flickr privacy filter id.
+	 * @return corresponding PrivacyFilter enum, or null if the argument is not a valid privacy filter id.
+	 */
+	public static JinxConstants.PrivacyFilter flickrPrivacyFilterIdToPrivacyFilter(int privacyFilterId) {
+		JinxConstants.PrivacyFilter ret;
+		switch (privacyFilterId) {
+			case 1:
+				ret = JinxConstants.PrivacyFilter.privacyPublic;
+				break;
+			case 2:
+				ret = JinxConstants.PrivacyFilter.privacyFriends;
+				break;
+			case 3:
+				ret = JinxConstants.PrivacyFilter.privacyFamily;
+				break;
+			case 4:
+				ret = JinxConstants.PrivacyFilter.privacyFriendsAndFamily;
+				break;
+			case 5:
+				ret = JinxConstants.PrivacyFilter.privacyPrivate;
+				break;
+			default:
+				ret = null;
+				break;
+		}
+		return ret;
+	}
+
+	/**
+	 * Convert a numeric Flickr permission id to corresponding {@link net.jeremybrooks.jinx.JinxConstants.Perms} enum.
+	 *
+	 * @param id Flickr permission id.
+	 * @return corresponding Perms, or null if the parameter is not a valid Flickr perms id.
+	 */
 	public static JinxConstants.Perms flickrPermsIdToPerms(int id) {
-		JinxConstants.Perms perms = null;
-		switch(id) {
+		JinxConstants.Perms perms;
+		switch (id) {
 			case 0:
 				perms = JinxConstants.Perms.nobody;
 				break;
@@ -287,10 +343,18 @@ public class JinxUtils {
 	}
 
 
-	// TODO write test
+	/**
+	 * Convert a {@link net.jeremybrooks.jinx.JinxConstants.Perms} enum to the corresponding Flickr perms id.
+	 *
+	 * @param perms Perms enum to convert.
+	 * @return Flickr perms id, or -1 if the parameter is null.
+	 */
 	public static int permsToFlickrPermsId(JinxConstants.Perms perms) {
-		int id = 0;
-		switch(perms) {
+		if (perms == null) {
+			return -1;
+		}
+		int id;
+		switch (perms) {
 			case nobody:
 				id = 0;
 				break;
@@ -304,7 +368,7 @@ public class JinxUtils {
 				id = 3;
 				break;
 			default:
-				id = 0;
+				id = -1;
 				break;
 		}
 		return id;
@@ -312,11 +376,17 @@ public class JinxUtils {
 
 	//TODO write test
 	public static String sortOrderToString(JinxConstants.SortOrder sortOrder) {
+		if (sortOrder == null) {
+			return null;
+		}
 		return sortOrder.toString().replaceAll("_", "-");
 	}
 
 	//TODO write test
 	public static JinxConstants.SortOrder stringToSortOrder(String sortOrderString) {
+		if (JinxUtils.isNullOrEmpty(sortOrderString)) {
+			return null;
+		}
 		JinxConstants.SortOrder retVal = null;
 		String s = sortOrderString.toLowerCase().trim().replaceAll("-", "_");
 		for (JinxConstants.SortOrder sortOrder : JinxConstants.SortOrder.values()) {
@@ -330,7 +400,10 @@ public class JinxUtils {
 
 	// TODO write test
 	public static int contentTypeToFlickrContentTypeId(JinxConstants.ContentType contentType) {
-		int ret = 0;
+		if (contentType == null) {
+			return -1;
+		}
+		int ret;
 		switch (contentType) {
 			case photo:
 				ret = 1;
@@ -341,16 +414,29 @@ public class JinxUtils {
 			case other:
 				ret = 3;
 				break;
+			case photos_and_screenshots:
+				ret = 4;
+				break;
+			case screenshots_and_other:
+				ret = 5;
+				break;
+			case photos_and_other:
+				ret = 6;
+				break;
+			case all:
+				ret = 7;
+				break;
 			default:
-				ret = 0;
+				ret = -1;
 				break;
 		}
 		return ret;
 	}
+
 	// TODO write test
 	public static JinxConstants.ContentType flickrContentTypeIdToContentType(int type) {
 		JinxConstants.ContentType ret = null;
-		switch(type) {
+		switch (type) {
 			case 1:
 				ret = JinxConstants.ContentType.photo;
 				break;
@@ -359,6 +445,18 @@ public class JinxUtils {
 				break;
 			case 3:
 				ret = JinxConstants.ContentType.other;
+				break;
+			case 4:
+				ret = JinxConstants.ContentType.photos_and_screenshots;
+				break;
+			case 5:
+				ret = JinxConstants.ContentType.screenshots_and_other;
+				break;
+			case 6:
+				ret = JinxConstants.ContentType.photos_and_other;
+				break;
+			case 7:
+				ret = JinxConstants.ContentType.all;
 				break;
 			default:
 				ret = null;
@@ -369,7 +467,10 @@ public class JinxUtils {
 
 	// TODO write test
 	public static int safetyLevelToFlickrSafteyLevelId(JinxConstants.SafetyLevel safetyLevel) {
-		int ret = 0;
+		if (safetyLevel == null) {
+			return -1;
+		}
+		int ret;
 		switch (safetyLevel) {
 			case safe:
 				ret = 1;
@@ -381,7 +482,7 @@ public class JinxUtils {
 				ret = 3;
 				break;
 			default:
-				ret = 0;
+				ret = -1;
 				break;
 		}
 		return ret;
@@ -404,7 +505,50 @@ public class JinxUtils {
 				ret = null;
 				break;
 		}
-		return  ret;
+		return ret;
+	}
+
+	// TODO write test
+	public static int geoContextToFlickrContextId(JinxConstants.GeoContext geoContext) {
+		if (geoContext == null) {
+			return -1;
+		}
+		int ret;
+		switch (geoContext) {
+			case not_defined:
+				ret = 0;
+				break;
+			case indoors:
+				ret = 1;
+				break;
+			case outdoors:
+				ret = 2;
+				break;
+			default:
+				ret = -1;
+				break;
+		}
+		return ret;
+	}
+
+	// TODO write test
+	public static JinxConstants.GeoContext flickContextIdToGeoContext(int contextId) {
+		JinxConstants.GeoContext ret = JinxConstants.GeoContext.not_defined;
+		switch (contextId) {
+			case 0:
+				ret = JinxConstants.GeoContext.not_defined;
+				break;
+			case 1:
+				ret = JinxConstants.GeoContext.indoors;
+				break;
+			case 2:
+				ret = JinxConstants.GeoContext.outdoors;
+				break;
+			default:
+				ret = JinxConstants.GeoContext.not_defined;
+				break;
+		}
+		return ret;
 	}
 
 

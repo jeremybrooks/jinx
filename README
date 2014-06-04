@@ -24,13 +24,14 @@ Maven
 
 CURRENT STATUS
 ==============
-Version 0.6.0-SNAPSHOT is a major rewrite of Jinx. It will not be compatible with previous versions.
+Version 0.6.0-SNAPSHOT and higher are a major rewrite of Jinx. It will not be compatible with previous versions.
 
 This list shows which API entry points have been implemented:
   * activity
   * blogs (have not really tested the postPhoto method, though)
   * cameras
   * oauth
+  * photos
   * photosets
   * photosets.comments
 
@@ -61,34 +62,6 @@ Implement these API entry points:
   machinetags (partial)
   panda
   people
-  photos
-	  flickr.photos.addTags 				(done)
-	  flickr.photos.delete					(done)
-	  flickr.photos.getAllContexts			(done)
-	  flickr.photos.getContactsPhotos		(done)
-	  flickr.photos.getContactsPublicPhotos	(done)
-	  flickr.photos.getContext				(done)
-	  flickr.photos.getCounts				(done)
-	  flickr.photos.getExif					(done)
-	  flickr.photos.getFavorites			(done)
-	  flickr.photos.getInfo
-	  flickr.photos.getNotInSet				(done)
-	  flickr.photos.getPerms				(done)
-	  flickr.photos.getRecent				(done)
-	  flickr.photos.getSizes				(done)
-	  flickr.photos.getUntagged				(done)
-	  flickr.photos.getWithGeoData			(done)
-	  flickr.photos.getWithoutGeoData		(done)
-	  flickr.photos.recentlyUpdated			(done)
-	  flickr.photos.removeTag				(done)
-	  flickr.photos.search
-	  flickr.photos.setContentType			(done)
-	  flickr.photos.setDates				(done)
-	  flickr.photos.setMeta					(done)
-	  flickr.photos.setPerms				(done)
-	  flickr.photos.setSafetyLevel			(done)
-	  flickr.photos.setTags					(done)
-
   photos.comments
   photos.geo          (NOTE: Some of the methods in photos.geo do not work correctly.
                                They also do not work in the Flickr API Explorer,

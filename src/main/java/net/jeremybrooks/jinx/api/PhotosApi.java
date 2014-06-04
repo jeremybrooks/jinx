@@ -33,6 +33,7 @@ import net.jeremybrooks.jinx.response.photos.PhotoPerms;
 import net.jeremybrooks.jinx.response.photos.PhotoSizes;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
 import net.jeremybrooks.jinx.response.photos.Photos;
+import net.jeremybrooks.jinx.response.photos.SearchParameters;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -363,7 +364,7 @@ public class PhotosApi {
 			params.put("max_taken_date", JinxUtils.formatDateAsUnixTimestamp(maxTakenDate));
 		}
 		if (privacyFilter != null) {
-			params.put("privacy_filter", Integer.toString(JinxUtils.toFlickrPrivacy(privacyFilter)));
+			params.put("privacy_filter", Integer.toString(JinxUtils.privacyFilterToFlickrPrivacyFilterId(privacyFilter)));
 		}
 		if (mediaType != null) {
 			params.put("media", mediaType.toString());
@@ -480,7 +481,7 @@ public class PhotosApi {
 			params.put("max_taken_date", JinxUtils.formatDateAsUnixTimestamp(maxTakenDate));
 		}
 		if (privacyFilter != null) {
-			params.put("privacy_filter", Integer.toString(JinxUtils.toFlickrPrivacy(privacyFilter)));
+			params.put("privacy_filter", Integer.toString(JinxUtils.privacyFilterToFlickrPrivacyFilterId(privacyFilter)));
 		}
 		if (mediaType != null) {
 			params.put("media", mediaType.toString());
@@ -535,7 +536,7 @@ public class PhotosApi {
 			params.put("max_taken_date", JinxUtils.formatDateAsUnixTimestamp(maxTakenDate));
 		}
 		if (privacyFilter != null) {
-			params.put("privacy_filter", Integer.toString(JinxUtils.toFlickrPrivacy(privacyFilter)));
+			params.put("privacy_filter", Integer.toString(JinxUtils.privacyFilterToFlickrPrivacyFilterId(privacyFilter)));
 		}
 		if (sortOrder != null) {
 			params.put("sort", JinxUtils.sortOrderToString(sortOrder));
@@ -592,7 +593,7 @@ public class PhotosApi {
 			params.put("max_taken_date", JinxUtils.formatDateAsUnixTimestamp(maxTakenDate));
 		}
 		if (privacyFilter != null) {
-			params.put("privacy_filter", Integer.toString(JinxUtils.toFlickrPrivacy(privacyFilter)));
+			params.put("privacy_filter", Integer.toString(JinxUtils.privacyFilterToFlickrPrivacyFilterId(privacyFilter)));
 		}
 		if (sortOrder != null) {
 			params.put("sort", JinxUtils.sortOrderToString(sortOrder));
@@ -669,7 +670,162 @@ public class PhotosApi {
 	}
 
 
-//  TODO flickr.photos.search
+	/**
+	 * Return a list of photos matching some criteria.
+	 * <p/>
+	 * Only photos visible to the calling user will be returned. To return private or semi-private photos, the caller
+	 * must be authenticated with 'read' permissions, and have permission to view the photos.
+	 * Unauthenticated calls will only return public photos.
+	 * <p/>
+	 * This method does not require authentication.
+	 * <p/>
+	 * The search parameters are defined by an instance of {@link net.jeremybrooks.jinx.response.photos.SearchParameters}
+	 * For details on each parameter, see the documentation of the Search Parameters class, or the documentation on the
+	 * Flickr API site.
+	 * <p/>
+	 * Generally, if a value in the search parameters object is null or zero, it is ignored and is not passed on to the
+	 * Flickr API.
+	 *
+	 * @param searchParameters Required. Object defining the parameters for the search.
+	 * @return photos matching the search parameters.
+	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+	 */
+	public Photos search(SearchParameters searchParameters) throws JinxException {
+		JinxUtils.validateParams(searchParameters);
+		Map<String, String> params = new TreeMap<String, String>();
+		params.put("method", "flickr.photos.search");
+		if (!JinxUtils.isNullOrEmpty(searchParameters.getUserId())) {
+			params.put("user_id", searchParameters.getUserId());
+		}
+
+		if (!JinxUtils.isNullOrEmpty(searchParameters.getTags())) {
+			params.put("tags", JinxUtils.buildCommaDelimitedList(JinxUtils.normalizeTags(searchParameters.getTags())));
+			if (searchParameters.getTagMode() != null) {
+				params.put("tag_mode", searchParameters.getTagMode().toString());
+			}
+		}
+
+		if (!JinxUtils.isNullOrEmpty(searchParameters.getText())) {
+			params.put("text", searchParameters.getText());
+		}
+
+		if (searchParameters.getMinUploadDate() != null) {
+			params.put("min_upload_date", JinxUtils.formatDateAsUnixTimestamp(searchParameters.getMinUploadDate()));
+		}
+		if (searchParameters.getMaxUploadDate() != null) {
+			params.put("max_upload_date", JinxUtils.formatDateAsUnixTimestamp(searchParameters.getMaxUploadDate()));
+		}
+		if (searchParameters.getMinTakenDate() != null) {
+			params.put("min_taken_date", JinxUtils.formatDateAsUnixTimestamp(searchParameters.getMinTakenDate()));
+		}
+		if (searchParameters.getMaxTakenDate() != null) {
+			params.put("max_taken_date", JinxUtils.formatDateAsUnixTimestamp(searchParameters.getMaxTakenDate()));
+		}
+
+		if (!JinxUtils.isNullOrEmpty(searchParameters.getLicenses())) {
+			params.put("license", JinxUtils.buildCommaDelimitedList(searchParameters.getLicenses()));
+		}
+
+		if (searchParameters.getSort() != null) {
+			params.put("sort", JinxUtils.sortOrderToString(searchParameters.getSort()));
+		}
+
+		if (searchParameters.getPrivacyFilter() != null) {
+			params.put("privacy_filter", Integer.toString(JinxUtils.privacyFilterToFlickrPrivacyFilterId(searchParameters.getPrivacyFilter())));
+		}
+
+		if (searchParameters.getBoundingBox() != null) {
+			params.put("bbox", searchParameters.getBoundingBox().toParameterString());
+		}
+
+		if (searchParameters.getAccuracy() != null) {
+			params.put("accuracy", Integer.toString(searchParameters.getAccuracy()));
+		}
+
+		if (searchParameters.getSafetyLevel() != null) {
+			params.put("safe_search", Integer.toString(JinxUtils.safetyLevelToFlickrSafteyLevelId(searchParameters.getSafetyLevel())));
+		}
+
+		if (searchParameters.getContentType() != null) {
+			params.put("content_type", Integer.toString(JinxUtils.contentTypeToFlickrContentTypeId(searchParameters.getContentType())));
+		}
+
+		if (!JinxUtils.isNullOrEmpty(searchParameters.getMachineTags())) {
+			params.put("machine_tags", JinxUtils.buildCommaDelimitedList(JinxUtils.normalizeTags(searchParameters.getMachineTags())));
+			if (searchParameters.getMachineTagMode() != null) {
+				params.put("machine_tag_mode", searchParameters.getMachineTagMode().toString());
+			}
+		}
+
+		if (!JinxUtils.isNullOrEmpty(searchParameters.getGroupId())) {
+			params.put("group_id", searchParameters.getGroupId());
+		}
+
+		if (searchParameters.getContacts() != null) {
+			params.put("contacts", searchParameters.getContacts().toString());
+		}
+
+		if (!JinxUtils.isNullOrEmpty(searchParameters.getWoeId())) {
+			params.put("woe_id", searchParameters.getWoeId());
+		}
+
+		if (!JinxUtils.isNullOrEmpty(searchParameters.getPlaceId())) {
+			params.put("place_id", searchParameters.getPlaceId());
+		}
+		if (searchParameters.getMediaType() != null) {
+			params.put("media", searchParameters.getMediaType().toString());
+		}
+
+		if (searchParameters.isHasGeo() != null) {
+			params.put("has_geo", searchParameters.isHasGeo() ? "1" : "0");
+		}
+
+		if (searchParameters.getGeoContext() != null) {
+			params.put("geo_context", Integer.toString(JinxUtils.geoContextToFlickrContextId(searchParameters.getGeoContext())));
+		}
+
+		if (searchParameters.getLatitude() != null) {
+			params.put("lat", Float.toString(searchParameters.getLatitude()));
+		}
+
+		if (searchParameters.getLongitude() != null) {
+			params.put("lon", Float.toString(searchParameters.getLongitude()));
+		}
+
+		if (searchParameters.getRadius() != null) {
+			params.put("radius", Float.toString(searchParameters.getRadius()));
+		}
+
+		if (searchParameters.getRadiusUnits() != null) {
+			params.put("radius_units", searchParameters.getRadiusUnits().toString());
+		}
+
+		if (searchParameters.isCommons() != null) {
+			params.put("is_commons", searchParameters.isCommons() ? "1" : "0");
+		}
+
+		if (searchParameters.isInGallery() != null) {
+			params.put("in_gallery", searchParameters.isInGallery() ? "1" : "0");
+		}
+
+		if (searchParameters.isGetty() != null) {
+			params.put("is_getty", searchParameters.isGetty() ? "1" : "0");
+		}
+
+		if (!JinxUtils.isNullOrEmpty(searchParameters.getExtras())) {
+			params.put("extras", JinxUtils.buildCommaDelimitedList(searchParameters.getExtras()));
+		}
+
+		if (searchParameters.getPerPage() > 0) {
+			params.put("per_page", Integer.toString(searchParameters.getPerPage()));
+		}
+
+		if (searchParameters.getPage() > 0) {
+			params.put("page", Integer.toString(searchParameters.getPage()));
+		}
+
+		return jinx.flickrGet(params, Photos.class);
+	}
 
 
 	/**

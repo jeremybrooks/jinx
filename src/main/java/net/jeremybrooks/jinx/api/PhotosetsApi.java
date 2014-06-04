@@ -269,7 +269,7 @@ public class PhotosetsApi {
 			params.put("extras", JinxUtils.buildCommaDelimitedList(photoExtras));
 		}
 		if (privacyFilter != null) {
-			params.put("privacy_filter", Integer.toString(JinxUtils.toFlickrPrivacy(privacyFilter)));
+			params.put("privacy_filter", Integer.toString(JinxUtils.privacyFilterToFlickrPrivacyFilterId(privacyFilter)));
 		}
 		if (perPage > 0) {
 			params.put("per_page", Integer.toString(perPage));

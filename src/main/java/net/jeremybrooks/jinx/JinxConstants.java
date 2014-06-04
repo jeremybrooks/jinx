@@ -64,13 +64,29 @@ public class JinxConstants {
 	}
 
 	public static enum ContentType {
-		photo, screenshot, other
+		photo, screenshot, other, photos_and_screenshots,
+		screenshots_and_other, photos_and_other, all
 	}
 
 	public static enum SafetyLevel {
 		safe, moderate, restricted
 	}
 
+	public static enum TagMode {
+		any, all
+	}
+
+	public static enum Contacts {
+		all, ff
+	}
+
+	public static enum GeoContext {
+		not_defined, indoors, outdoors
+	}
+
+	public static enum RadiusUnits {
+		mi, km
+	}
 
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line

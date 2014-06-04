@@ -34,6 +34,7 @@ import net.jeremybrooks.jinx.response.photos.PhotoPerms;
 import net.jeremybrooks.jinx.response.photos.PhotoSizes;
 import net.jeremybrooks.jinx.response.photos.Photocounts;
 import net.jeremybrooks.jinx.response.photos.Photos;
+import net.jeremybrooks.jinx.response.photos.SearchParameters;
 import net.jeremybrooks.jinx.response.photos.Tag;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -316,7 +317,43 @@ public class PhotosApiTest {
 
 	@Test
 	public void testSearch() throws Exception {
-		// TODO
+		List<String> tags = new ArrayList<String>();
+		tags.add("Nature");
+		List<String> machineTags = new ArrayList<String>();
+		machineTags.add("sign:type=neon");
+
+		SearchParameters sp = new SearchParameters();
+		sp.setUserId(userId);
+		sp.setTags(tags);
+		Photos photos = photosApi.search(sp);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+		assertTrue(photos.getPhotoList().size() > 0);
+
+		sp.setMachineTags(machineTags);
+		sp.setTags(null);
+		photos = photosApi.search(sp);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+		assertTrue(photos.getPhotoList().size() > 0);
+
+		sp.setMachineTags(null);
+		sp.setTags(tags);
+		sp.setExtras(EnumSet.of(JinxConstants.PhotoExtras.date_taken, JinxConstants.PhotoExtras.url_sq));
+		photos = photosApi.search(sp);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+		assertTrue(photos.getPhotoList().size() > 0);
+		for (Photo p : photos.getPhotoList()) {
+			assertNotNull(p.getDateTaken());
+			assertNotNull(p.getUrlSq());
+		}
 	}
 
 	@Test
