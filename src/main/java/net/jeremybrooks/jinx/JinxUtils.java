@@ -163,18 +163,6 @@ public class JinxUtils {
 		return timestamp;
 	}
 
-
-	/**
-	 * Return the Flickr representation of the boolean value.
-	 *
-	 * @param value the boolean value.
-	 * @return "1" for true, "0" for false.
-	 */
-	public static String booleanToString(boolean value) {
-		return value ? "1" : "0";
-	}
-
-
 	static char[] hexChar = {
 			'0', '1', '2', '3',
 			'4', '5', '6', '7',
@@ -189,16 +177,30 @@ public class JinxUtils {
 	 */
 	public static String toHexString(byte[] b) {
 		StringBuilder sb = new StringBuilder(b.length * 2);
-		for (int i = 0; i < b.length; i++) {
+		for (byte aByte : b) {
 			// look up high nibble char
-			sb.append(hexChar[(b[i] & 0xf0) >>> 4]);
+			sb.append(hexChar[(aByte & 0xf0) >>> 4]);
 
 			// look up low nibble char
-			sb.append(hexChar[b[i] & 0x0f]);
+			sb.append(hexChar[aByte & 0x0f]);
 		}
 		return sb.toString();
 	}
 
+
+	/**
+	 * Validate parameters.
+	 *
+	 * Objects:
+	 * <ul>
+	 *     <li>Must not be null</li>
+	 *     <li>List objects must not contain null</li>
+	 *     <li>Strings cannot be empty</li>
+	 * </ul>
+	 *
+	 * @param params variable list of objects to check.
+	 * @throws JinxException if any parameter fails validation.
+	 */
 	public static void validateParams(Object... params) throws JinxException {
 		for (Object o : params) {
 			if (o == null) {
@@ -210,21 +212,43 @@ public class JinxUtils {
 					}
 				}
 			} else if (o instanceof String) {
-				if (((String) o).length() == 0) {
+				if (((String) o).trim().length() == 0) {
 					throw new JinxException("String cannot be empty.");
 				}
 			}
 		}
 	}
 
+
+	/**
+	 * Test a string for empty or null.
+	 *
+	 * @param s string to test.
+	 * @return true if the string is null or has a trimmed length of 0.
+	 */
 	public static boolean isNullOrEmpty(String s) {
 		return s == null || s.trim().length() == 0;
 	}
 
+	/**
+	 * Test a Collection for empty or null.
+	 *
+	 * @param collection collection object to test.
+	 * @return true if the collection is null or if the collection has no objects.
+	 */
 	public static boolean isNullOrEmpty(Collection collection) {
 		return collection == null || collection.size() == 0;
 	}
 
+	/**
+	 * Convert a collection into a comma delimited String.
+	 *
+	 * Each object in the collection will be converted to a trimmed String, and commas will be used to
+	 * separate each object.
+	 *
+	 * @param collection collection to convert.
+	 * @return comma delimited string, or null if the collection is null or empty.
+	 */
 	public static String buildCommaDelimitedList(Collection collection) {
 		if (isNullOrEmpty(collection)) {
 			return null;
@@ -237,6 +261,22 @@ public class JinxUtils {
 		return sb.toString();
 	}
 
+	/**
+	 * Normalize a List of Flickr tags.
+	 *
+	 * This method takes a list of tags and converts them to the normalized representation that Flickr uses (at least,
+	 * as close to the normalized version as could be figured out).
+	 *
+	 * Each String in the list will have the following characters removed: !#$%&'() *+.,';
+	 * The String is then converted to lowercase and added to a new List.
+	 *
+	 * Normalization is done primarily so that tags containing spaces do not have to be surrounded with double quotes
+	 * before sending to the Flickr API. It is easier to normalize than to surround everything with double quotes, and
+	 * this also results is slightly smaller (and more readable) calls to the Flickr API.
+	 *
+	 * @param list Flickr tags to normalize.
+	 * @return new List containing normalized tags.
+	 */
 	public static List<String> normalizeTags(List<String> list) {
 		if (isNullOrEmpty(list)) {
 			return null;
@@ -374,7 +414,12 @@ public class JinxUtils {
 		return id;
 	}
 
-	//TODO write test
+	/**
+	 * Convert a {@link net.jeremybrooks.jinx.JinxConstants.SortOrder} enum to the equivalent Flickr sort order string.
+	 *
+	 * @param sortOrder sort order to convert.
+	 * @return equivalent Flickr sort order string, or null if the parameter is null.
+	 */
 	public static String sortOrderToString(JinxConstants.SortOrder sortOrder) {
 		if (sortOrder == null) {
 			return null;
@@ -382,7 +427,12 @@ public class JinxUtils {
 		return sortOrder.toString().replaceAll("_", "-");
 	}
 
-	//TODO write test
+	/**
+	 * Convert a Flickr sort order string to the equivalent {@link net.jeremybrooks.jinx.JinxConstants.SortOrder} enum.
+	 *
+	 * @param sortOrderString Flickr sort order string.
+	 * @return SortOrder enum, or null if the parameter is null.
+	 */
 	public static JinxConstants.SortOrder stringToSortOrder(String sortOrderString) {
 		if (JinxUtils.isNullOrEmpty(sortOrderString)) {
 			return null;
@@ -398,7 +448,12 @@ public class JinxUtils {
 		return retVal;
 	}
 
-	// TODO write test
+	/**
+	 * Convert  {@link net.jeremybrooks.jinx.JinxConstants.ContentType} enum to the equivalent Flickr content type id.
+	 *
+	 * @param contentType ContentType enum to convert.
+	 * @return equivalent Flickr content type id, or -1 if the parameter is null.
+	 */
 	public static int contentTypeToFlickrContentTypeId(JinxConstants.ContentType contentType) {
 		if (contentType == null) {
 			return -1;
@@ -433,9 +488,14 @@ public class JinxUtils {
 		return ret;
 	}
 
-	// TODO write test
+	/**
+	 * Convert a Flickr content type id to the eqivalent {@link net.jeremybrooks.jinx.JinxConstants.ContentType} enum.
+	 *
+	 * @param type Flickr type id to convert.
+	 * @return equivalent ContentType enum, or null if the parameter is not a valid Flickr content type id.
+	 */
 	public static JinxConstants.ContentType flickrContentTypeIdToContentType(int type) {
-		JinxConstants.ContentType ret = null;
+		JinxConstants.ContentType ret;
 		switch (type) {
 			case 1:
 				ret = JinxConstants.ContentType.photo;
@@ -465,7 +525,12 @@ public class JinxUtils {
 		return ret;
 	}
 
-	// TODO write test
+	/**
+	 * Convert a {@link net.jeremybrooks.jinx.JinxConstants.SafetyLevel} enum to the corresponding Flickr safety level id.
+	 *
+	 * @param safetyLevel safety level to convert.
+	 * @return corresponding Flickr safety level id, or -1 if the parameter is null.
+	 */
 	public static int safetyLevelToFlickrSafteyLevelId(JinxConstants.SafetyLevel safetyLevel) {
 		if (safetyLevel == null) {
 			return -1;
@@ -488,9 +553,14 @@ public class JinxUtils {
 		return ret;
 	}
 
-	// TODO write test
+	/**
+	 * Convert a Flickr safety level id to the corresponding {@link net.jeremybrooks.jinx.JinxConstants.SafetyLevel} enum.
+	 *
+	 * @param level Flickr safety level id to convert.
+	 * @return corresponding SafetyLevel enum, or null if the parameter is not a valid Flickr safety level id.
+	 */
 	public static JinxConstants.SafetyLevel flickrSafetyLevelIdToSafetyLevel(int level) {
-		JinxConstants.SafetyLevel ret = null;
+		JinxConstants.SafetyLevel ret;
 		switch (level) {
 			case 1:
 				ret = JinxConstants.SafetyLevel.safe;
@@ -508,7 +578,12 @@ public class JinxUtils {
 		return ret;
 	}
 
-	// TODO write test
+	/**
+	 * Convert a {@link net.jeremybrooks.jinx.JinxConstants.GeoContext} to the corresponding Flickr geo context id.
+	 *
+	 * @param geoContext GeoContext enum to convert.
+	 * @return corresponding Flickr geo context id, or -1 if the parameter is null.
+	 */
 	public static int geoContextToFlickrContextId(JinxConstants.GeoContext geoContext) {
 		if (geoContext == null) {
 			return -1;
@@ -531,9 +606,14 @@ public class JinxUtils {
 		return ret;
 	}
 
-	// TODO write test
-	public static JinxConstants.GeoContext flickContextIdToGeoContext(int contextId) {
-		JinxConstants.GeoContext ret = JinxConstants.GeoContext.not_defined;
+	/**
+	 * Convert a Flickr geo context id to the corresponding {@link net.jeremybrooks.jinx.JinxConstants.GeoContext} enum.
+	 *
+	 * @param contextId Flickr geo context id to convert.
+	 * @return corresponding GeoContext enum, or null if the parameter is not a valid Flickr geo context id.
+	 */
+	public static JinxConstants.GeoContext flickrContextIdToGeoContext(int contextId) {
+		JinxConstants.GeoContext ret;
 		switch (contextId) {
 			case 0:
 				ret = JinxConstants.GeoContext.not_defined;
@@ -545,7 +625,7 @@ public class JinxUtils {
 				ret = JinxConstants.GeoContext.outdoors;
 				break;
 			default:
-				ret = JinxConstants.GeoContext.not_defined;
+				ret = null;
 				break;
 		}
 		return ret;

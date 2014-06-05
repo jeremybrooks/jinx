@@ -20,6 +20,9 @@ package net.jeremybrooks.jinx;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
@@ -83,8 +86,8 @@ public class JinxUtilsTest {
 	@Test
 	public void testNormalizeTags() throws Exception {
 		List<String> tags = new ArrayList<String>();
-				tags.add("California");
-				tags.add("San Francisco");
+		tags.add("California");
+		tags.add("San Francisco");
 		tags.add("neon");
 		tags.add("Joe's Crab Shack");
 		tags.add("Joe's Crab.Shack");
@@ -117,6 +120,7 @@ public class JinxUtilsTest {
 		assertEquals(5, JinxUtils.privacyFilterToFlickrPrivacyFilterId(JinxConstants.PrivacyFilter.privacyPrivate));
 		assertEquals(-1, JinxUtils.privacyFilterToFlickrPrivacyFilterId(null));
 	}
+
 	@Test
 	public void testFlickrPrivacyFilterIdToPrivacyFilter() throws Exception {
 		assertEquals(JinxConstants.PrivacyFilter.privacyPublic, JinxUtils.flickrPrivacyFilterIdToPrivacyFilter(1));
@@ -135,6 +139,7 @@ public class JinxUtilsTest {
 		assertEquals(JinxConstants.Perms.everybody, JinxUtils.flickrPermsIdToPerms(3));
 		assertNull(JinxUtils.flickrPermsIdToPerms(5));
 	}
+
 	@Test
 	public void testPermsToFlickrPermsId() throws Exception {
 		assertEquals(0, JinxUtils.permsToFlickrPermsId(JinxConstants.Perms.nobody));
@@ -142,5 +147,167 @@ public class JinxUtilsTest {
 		assertEquals(2, JinxUtils.permsToFlickrPermsId(JinxConstants.Perms.contacts));
 		assertEquals(3, JinxUtils.permsToFlickrPermsId(JinxConstants.Perms.everybody));
 		assertEquals(-1, JinxUtils.permsToFlickrPermsId(null));
+	}
+
+	@Test
+	public void testSortOrderToString() throws Exception {
+		assertEquals(null, JinxUtils.sortOrderToString(null));
+		assertEquals("date-posted-asc", JinxUtils.sortOrderToString(JinxConstants.SortOrder.date_posted_asc));
+		assertEquals("date-posted-desc", JinxUtils.sortOrderToString(JinxConstants.SortOrder.date_posted_desc));
+		assertEquals("date-taken-asc", JinxUtils.sortOrderToString(JinxConstants.SortOrder.date_taken_asc));
+		assertEquals("date-taken-desc", JinxUtils.sortOrderToString(JinxConstants.SortOrder.date_taken_desc));
+		assertEquals("interestingness-asc", JinxUtils.sortOrderToString(JinxConstants.SortOrder.interestingness_asc));
+		assertEquals("interestingness-desc", JinxUtils.sortOrderToString(JinxConstants.SortOrder.interestingness_desc));
+		assertEquals("relevance", JinxUtils.sortOrderToString(JinxConstants.SortOrder.relevance));
+	}
+
+	@Test
+	public void testStringToSortOrder() throws Exception {
+		assertEquals(null, JinxUtils.stringToSortOrder(null));
+		assertEquals(JinxConstants.SortOrder.date_posted_asc, JinxUtils.stringToSortOrder("date-posted-asc"));
+		assertEquals(JinxConstants.SortOrder.date_posted_desc, JinxUtils.stringToSortOrder("date-posted-desc"));
+		assertEquals(JinxConstants.SortOrder.date_taken_asc, JinxUtils.stringToSortOrder("date-taken-asc"));
+		assertEquals(JinxConstants.SortOrder.date_taken_desc, JinxUtils.stringToSortOrder("date-taken-desc"));
+		assertEquals(JinxConstants.SortOrder.interestingness_asc, JinxUtils.stringToSortOrder("interestingness-asc"));
+		assertEquals(JinxConstants.SortOrder.interestingness_desc, JinxUtils.stringToSortOrder("interestingness-desc"));
+		assertEquals(JinxConstants.SortOrder.relevance, JinxUtils.stringToSortOrder("relevance"));
+	}
+
+	/*
+	Content Type setting:
+	    1 for photos only.
+	    2 for screenshots only.
+	    3 for 'other' only.
+	    4 for photos and screenshots.
+	    5 for screenshots and 'other'.
+	    6 for photos and 'other'.
+	    7 for photos, screenshots, and 'other' (all).
+	*/
+	@Test
+	public void testContentTypeToFlickrContentTypeId() throws Exception {
+		assertEquals(1, JinxUtils.contentTypeToFlickrContentTypeId(JinxConstants.ContentType.photo));
+		assertEquals(2, JinxUtils.contentTypeToFlickrContentTypeId(JinxConstants.ContentType.screenshot));
+		assertEquals(3, JinxUtils.contentTypeToFlickrContentTypeId(JinxConstants.ContentType.other));
+		assertEquals(4, JinxUtils.contentTypeToFlickrContentTypeId(JinxConstants.ContentType.photos_and_screenshots));
+		assertEquals(5, JinxUtils.contentTypeToFlickrContentTypeId(JinxConstants.ContentType.screenshots_and_other));
+		assertEquals(6, JinxUtils.contentTypeToFlickrContentTypeId(JinxConstants.ContentType.photos_and_other));
+		assertEquals(7, JinxUtils.contentTypeToFlickrContentTypeId(JinxConstants.ContentType.all));
+		assertEquals(-1, JinxUtils.contentTypeToFlickrContentTypeId(null));
+	}
+
+	@Test
+	public void testFlickrContentTypeIdToContentType() throws Exception {
+		assertEquals(JinxConstants.ContentType.photo, JinxUtils.flickrContentTypeIdToContentType(1));
+		assertEquals(JinxConstants.ContentType.screenshot, JinxUtils.flickrContentTypeIdToContentType(2));
+		assertEquals(JinxConstants.ContentType.other, JinxUtils.flickrContentTypeIdToContentType(3));
+		assertEquals(JinxConstants.ContentType.photos_and_screenshots, JinxUtils.flickrContentTypeIdToContentType(4));
+		assertEquals(JinxConstants.ContentType.screenshots_and_other, JinxUtils.flickrContentTypeIdToContentType(5));
+		assertEquals(JinxConstants.ContentType.photos_and_other, JinxUtils.flickrContentTypeIdToContentType(6));
+		assertEquals(JinxConstants.ContentType.all, JinxUtils.flickrContentTypeIdToContentType(7));
+		assertNull(JinxUtils.flickrContentTypeIdToContentType(33));
+	}
+
+	/*
+	1 for safe.
+    2 for moderate.
+    3 for restricted.
+	 */
+	@Test
+	public void testSafetyLevelToFlickrSafteyLevelId() throws Exception {
+		assertEquals(1, JinxUtils.safetyLevelToFlickrSafteyLevelId(JinxConstants.SafetyLevel.safe));
+		assertEquals(2, JinxUtils.safetyLevelToFlickrSafteyLevelId(JinxConstants.SafetyLevel.moderate));
+		assertEquals(3, JinxUtils.safetyLevelToFlickrSafteyLevelId(JinxConstants.SafetyLevel.restricted));
+		assertEquals(-1, JinxUtils.safetyLevelToFlickrSafteyLevelId(null));
+	}
+
+	@Test
+	public void testFlickrSafetyLevelIdToSafetyLevel() throws Exception {
+		assertEquals(JinxConstants.SafetyLevel.safe, JinxUtils.flickrSafetyLevelIdToSafetyLevel(1));
+		assertEquals(JinxConstants.SafetyLevel.moderate, JinxUtils.flickrSafetyLevelIdToSafetyLevel(2));
+		assertEquals(JinxConstants.SafetyLevel.restricted, JinxUtils.flickrSafetyLevelIdToSafetyLevel(3));
+		assertNull(JinxUtils.flickrSafetyLevelIdToSafetyLevel(0));
+	}
+
+
+	/*
+    0, not defined.
+    1, indoors.
+    2, outdoors.
+	 */
+	@Test
+	public void testGeoContextToFlickrContextId() throws Exception {
+		assertEquals(0, JinxUtils.geoContextToFlickrContextId(JinxConstants.GeoContext.not_defined));
+		assertEquals(1, JinxUtils.geoContextToFlickrContextId(JinxConstants.GeoContext.indoors));
+		assertEquals(2, JinxUtils.geoContextToFlickrContextId(JinxConstants.GeoContext.outdoors));
+		assertEquals(-1, JinxUtils.geoContextToFlickrContextId(null));
+	}
+
+	@Test
+	public void testFlickContextIdToGeoContext() throws Exception {
+		assertEquals(JinxConstants.GeoContext.not_defined, JinxUtils.flickrContextIdToGeoContext(0));
+		assertEquals(JinxConstants.GeoContext.indoors, JinxUtils.flickrContextIdToGeoContext(1));
+		assertEquals(JinxConstants.GeoContext.outdoors, JinxUtils.flickrContextIdToGeoContext(2));
+		assertNull(JinxUtils.flickrContextIdToGeoContext(33));
+	}
+
+	@Test
+	public void testParseMySqlDatetimeToDate() throws Exception {
+		Date d = JinxUtils.parseMySqlDatetimeToDate("2004-11-29 16:01:26");
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(d);
+		assertEquals(2004, cal.get(Calendar.YEAR));
+		assertEquals(10, cal.get(Calendar.MONTH));    // Calendar.MONTH starts at 0; 10 is November
+		assertEquals(29, cal.get(Calendar.DAY_OF_MONTH));
+		assertEquals(16, cal.get(Calendar.HOUR_OF_DAY));
+		assertEquals(1, cal.get(Calendar.MINUTE));
+		assertEquals(26, cal.get(Calendar.SECOND));
+
+		assertNull(JinxUtils.parseMySqlDatetimeToDate(null));
+	}
+
+	@Test
+	public void testFormatDateAsYMD() throws Exception {
+		assertEquals("", JinxUtils.formatDateAsYMD(null));
+
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.set(Calendar.YEAR, 1999);
+		cal.set(Calendar.MONTH, 3);        // Calendar.MONTH starts at 0; 3 is April
+		cal.set(Calendar.DAY_OF_MONTH, 3);
+
+		assertEquals("1999-04-03", JinxUtils.formatDateAsYMD(cal.getTime()));
+	}
+
+	@Test
+	public void testFormatDateAsUnixTimestamp() throws Exception {
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.clear();
+		cal.set(Calendar.YEAR, 1999);
+		cal.set(Calendar.MONTH, 3);        // Calendar.MONTH starts at 0; 3 is April
+		cal.set(Calendar.DAY_OF_MONTH, 3);
+		cal.set(Calendar.HOUR_OF_DAY, 19);
+		cal.set(Calendar.MINUTE, 33);
+		cal.set(Calendar.SECOND, 44);
+
+		assertEquals("923196824", JinxUtils.formatDateAsUnixTimestamp(cal.getTime()));
+
+		assertEquals("", JinxUtils.formatDateAsUnixTimestamp(null));
+	}
+
+	@Test
+	public void testParseTimestampToDate() throws Exception {
+		String timestamp = "923196824";
+		Date d = JinxUtils.parseTimestampToDate(timestamp);
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(d);
+		assertEquals(1999, cal.get(Calendar.YEAR));
+		assertEquals(3, cal.get(Calendar.MONTH));        // Calendar.MONTH starts at 0; 3 is April
+		assertEquals(3, cal.get(Calendar.DAY_OF_MONTH));
+		assertEquals(19, cal.get(Calendar.HOUR_OF_DAY));
+		assertEquals(33, cal.get(Calendar.MINUTE));
+		assertEquals(44, cal.get(Calendar.SECOND));
+
+		assertNull(JinxUtils.parseTimestampToDate(null));
+		assertNull(JinxUtils.parseTimestampToDate("fjsadkfjka"));
+		assertNull(JinxUtils.parseTimestampToDate(""));
 	}
 }
