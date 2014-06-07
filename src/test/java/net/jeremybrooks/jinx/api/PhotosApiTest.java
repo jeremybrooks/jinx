@@ -56,7 +56,7 @@ import static junit.framework.Assert.assertTrue;
  */
 public class PhotosApiTest {
 	private static PhotosApi photosApi;
-	private static List<Tag> tagList;
+//	private static List<Tag> tagList;
 	private static String photoId = "14276354684";
 	private static String deletePhotoId = null; // set this to run the delete photo test
 	private static String userId = "85853333@N00";
@@ -76,8 +76,12 @@ public class PhotosApiTest {
 	}
 
 
+	/**
+	 * Tests for add and remove tags are in a single method to ensure the correct order of execution.
+	 * @throws Exception
+	 */
 	@Test
-	public void testAddTags() throws Exception {
+	public void testAddAndRemoveTags() throws Exception {
 		List<String> newTags = new ArrayList<String>();
 		newTags.add("tag" + System.currentTimeMillis());
 		newTags.add("multiword tag  " + System.currentTimeMillis());
@@ -86,12 +90,11 @@ public class PhotosApiTest {
 		assertEquals("ok", tags.getStat());
 		assertEquals(0, tags.getCode());
 		assertNotNull(tags.getTagList());
-		tagList = tags.getTagList();
+		List<Tag>tagList = tags.getTagList();
 		assertEquals(2, tagList.size());
-	}
 
-	@Test
-	public void testRemoveTag() throws Exception {
+
+		/* testRemoveTag() */
 		Response response = photosApi.removeTag(tagList.get(0).getFullTagId());
 		assertNotNull(response);
 		assertEquals("ok", response.getStat());
@@ -220,11 +223,11 @@ public class PhotosApiTest {
 
 	@Test
 	public void testGetFavorites() throws Exception {
-		Favorites favorites = photosApi.getFavorites(photoId, 0, 0);
+		Favorites favorites = photosApi.getFavorites("14253719326", 0, 0);
 		assertNotNull(favorites);
 		assertEquals("ok", favorites.getStat());
 		assertEquals(0, favorites.getCode());
-		assertEquals(photoId, favorites.getPhotoId());
+		assertEquals("14253719326", favorites.getPhotoId());
 		assertNotNull(favorites.getPersonList());
 		assertTrue(favorites.getPersonList().size() > 0);
 	}

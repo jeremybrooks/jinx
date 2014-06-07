@@ -68,19 +68,19 @@
        - mvn release:perform -P production
      -->
     <!--<profiles>-->
-        <!--<profile>-->
-        <!--<id>production</id>-->
-        <!--<properties>-->
-        <!--<maven.test.skip>true</maven.test.skip>-->
-        <!--</properties>-->
-        <!--</profile>-->
+    <!--<profile>-->
+    <!--<id>production</id>-->
+    <!--<properties>-->
+    <!--<maven.test.skip>true</maven.test.skip>-->
+    <!--</properties>-->
+    <!--</profile>-->
     <!--</profiles>-->
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>4.11</version>
             <type>jar</type>
             <scope>test</scope>
         </dependency>
@@ -170,7 +170,6 @@
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 </project>

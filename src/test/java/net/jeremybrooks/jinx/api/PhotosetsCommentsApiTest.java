@@ -40,7 +40,6 @@ public class PhotosetsCommentsApiTest {
 
 	private static PhotosetsCommentsApi photosetsCommentsApi;
 	private static String photosetId = "72157644903065293";
-	private static String commentId = null;
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
@@ -67,28 +66,32 @@ public class PhotosetsCommentsApiTest {
 		assertTrue(comments.getCommentList().size() > 0);
 	}
 
+
+	/**
+	 * Tests for add, edit, and delete comment are in a single method to ensure order of execution is correct.
+	 * @throws Exception
+	 */
 	@Test
-	public void testAddComment() throws Exception {
+	public void testAddEditDeleteComment() throws Exception {
+		String commentId;
 		CommentAdd add = photosetsCommentsApi.addComment(photosetId, "This is a new test comment from Jinx.");
 		assertNotNull(add);
 		assertEquals("ok", add.getStat());
 		assertNotNull(add.getCommentId());
 		commentId = add.getCommentId();
-	}
 
-	@Test
-	public void testEditComment() throws Exception {
-		Response response = photosetsCommentsApi.editComment(commentId, "This is an edited comment from Jinx.");
-		assertNotNull(response);
-		assertEquals("ok", response.getStat());
-		assertEquals(0, response.getCode());
-	}
 
-	@Test
-	public void testDeleteComment() throws Exception {
-		Response response = photosetsCommentsApi.deleteComment(commentId);
-		assertNotNull(response);
-		assertEquals("ok", response.getStat());
-		assertEquals(0, response.getCode());
+		/* testEditComment() */
+		Response editResponse = photosetsCommentsApi.editComment(commentId, "This is an edited comment from Jinx.");
+		assertNotNull(editResponse);
+		assertEquals("ok", editResponse.getStat());
+		assertEquals(0, editResponse.getCode());
+
+
+		/* testDeleteComment() */
+		Response deleteResponse = photosetsCommentsApi.deleteComment(commentId);
+		assertNotNull(deleteResponse);
+		assertEquals("ok", deleteResponse.getStat());
+		assertEquals(0, deleteResponse.getCode());
 	}
 }

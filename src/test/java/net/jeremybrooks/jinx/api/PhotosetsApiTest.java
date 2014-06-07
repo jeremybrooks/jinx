@@ -46,7 +46,6 @@ public class PhotosetsApiTest {
 
 	private static PhotosetsApi photosetsApi;
 	private static PhotosetInfo photosetResponse;
-	private static String createdPhotosetId;
 	private static String photo0 = "14089985200";
 	private static String photo1 = "14089938519";
 	private static String photo2 = "14296772893";
@@ -77,10 +76,18 @@ public class PhotosetsApiTest {
 		assertNotNull(oAuthAccessToken);
 
 		photosetsApi = new PhotosetsApi(new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken));
+
 	}
 
+	/**
+	 * This test case tests several parts of the Photosets API.
+	 * These tests all operate on a photoset created for the test, and deleted after the test.
+	 * These tests are in a single method to ensure the order of execution is correct.
+	 * @throws Exception
+	 */
 	@Test
-	public void testCreate() throws Exception {
+	public void testCreateAndModifyMethods() throws Exception {
+		String createdPhotosetId;
 		String title = "Test Photoest";
 		String description = "Created by jinx for testing.";
 		photosetResponse = photosetsApi.create(title, description, photo0);
@@ -90,28 +97,24 @@ public class PhotosetsApiTest {
 		assertNotNull(p.getPhotosetId());
 		createdPhotosetId = p.getPhotosetId();
 		assertNotNull(p.getUrl());
-	}
 
-	@Test
-	public void testAddPhoto() throws Exception {
+
+		/* testAddPhoto() */
 		Response response = photosetsApi.addPhoto(createdPhotosetId, photo1);
 		assertNotNull(response);
 		assertEquals(0, response.getCode());
 		assertEquals("ok", response.getStat());
-	}
 
 
-	@Test
-	public void testGetContext() throws Exception {
+		/* testGetContext() */
 		photosetsApi.addPhoto(createdPhotosetId, photo2);
 		photosetsApi.addPhoto(createdPhotosetId, photo3);
 		Context context = photosetsApi.getContext(photo1, createdPhotosetId);
 		assertEquals(photo0, context.getPrevphoto().getPhotoId());
 		assertEquals(photo2, context.getNextphoto().getPhotoId());
-	}
 
-	@Test
-	public void testEditPhotos() throws Exception {
+
+		/* testEditPhotos() */
 		List<String> photos = new ArrayList<String>();
 		photos.add(photo4);
 		photos.add(photo5);
@@ -121,113 +124,99 @@ public class PhotosetsApiTest {
 		photos.add(photo2);
 		photos.add(photo3);
 		photosetsApi.editPhotos(createdPhotosetId, photo5, photos);
-
-		Context context = photosetsApi.getContext(photo5, createdPhotosetId);
+		context = photosetsApi.getContext(photo5, createdPhotosetId);
 		assertEquals(photo4, context.getPrevphoto().getPhotoId());
 		assertEquals(photo6, context.getNextphoto().getPhotoId());
-	}
-
-	@Test
-	public void testReorderPhotos() throws Exception {
-		List<String> photos = new ArrayList<String>();
-		photos.add(photo5);
-		photos.add(photo3);
-		photos.add(photo1);
-		photos.add(photo6);
-		photos.add(photo0);
-		photos.add(photo4);
-		photos.add(photo2);
-
-		Response response = photosetsApi.reorderPhotos(createdPhotosetId, photos);
-		assertNotNull(response);
-		assertEquals(0, response.getCode());
-		assertEquals("ok", response.getStat());
-	}
 
 
-	@Test
-	public void testEditMeta() throws Exception {
-		Response response = photosetsApi.editMeta(createdPhotosetId, "New Title", "New Description");
-		assertNotNull(response);
-		assertEquals(0, response.getCode());
-		assertEquals("ok", response.getStat());
-	}
+		/* testReorderPhotos() */
+		List<String> reorderPhotos = new ArrayList<String>();
+		reorderPhotos.add(photo5);
+		reorderPhotos.add(photo3);
+		reorderPhotos.add(photo1);
+		reorderPhotos.add(photo6);
+		reorderPhotos.add(photo0);
+		reorderPhotos.add(photo4);
+		reorderPhotos.add(photo2);
+		Response reorderResponse = photosetsApi.reorderPhotos(createdPhotosetId, reorderPhotos);
+		assertNotNull(reorderResponse);
+		assertEquals(0, reorderResponse.getCode());
+		assertEquals("ok", reorderResponse.getStat());
 
 
-	@Test
-	public void testGetInfo() throws Exception {
+		/* testEditMeta() */
+		Response editMetaResponse = photosetsApi.editMeta(createdPhotosetId, "New Title", "New Description");
+		assertNotNull(editMetaResponse);
+		assertEquals(0, editMetaResponse.getCode());
+		assertEquals("ok", editMetaResponse.getStat());
+
+
+		/* testGetInfo */
 		PhotosetInfo info = photosetsApi.getInfo(createdPhotosetId);
 		assertNotNull(info);
-		Photoset p = info.getPhotoset();
-		assertNotNull(p);
-		assertEquals(createdPhotosetId, p.getPhotosetId());
-		assertEquals(photo5, p.getPrimary());
-		assertEquals("New Title", p.getTitle());
-	}
+		Photoset getInfoPhotoset = info.getPhotoset();
+		assertNotNull(getInfoPhotoset);
+		assertEquals(createdPhotosetId, getInfoPhotoset.getPhotosetId());
+		assertEquals(photo5, getInfoPhotoset.getPrimary());
+		assertEquals("New Title", getInfoPhotoset.getTitle());
 
-	@Test
-	public void testSetPrimaryPhoto() throws Exception {
-		Response response = photosetsApi.setPrimaryPhoto(createdPhotosetId, photo6);
-		assertNotNull(response);
-		assertEquals(0, response.getCode());
-		assertEquals("ok", response.getStat());
-		PhotosetInfo info = photosetsApi.getInfo(createdPhotosetId);
-		assertEquals(photo6, info.getPhotoset().getPrimary());
-	}
 
-	@Test
-	public void testGetPhotos() throws Exception {
+		/* testSetPrimaryPhoto() */
+		Response setPrimaryResponse = photosetsApi.setPrimaryPhoto(createdPhotosetId, photo6);
+		assertNotNull(setPrimaryResponse);
+		assertEquals(0, setPrimaryResponse.getCode());
+		assertEquals("ok", setPrimaryResponse.getStat());
+		PhotosetInfo spInfo = photosetsApi.getInfo(createdPhotosetId);
+		assertEquals(photo6, spInfo.getPhotoset().getPrimary());
+
+
+		/* testGetPhotos() */
 		PhotosetPhotos photosetPhotos = photosetsApi.getPhotos(createdPhotosetId, null, null, 0, 0, null);
 		assertNotNull(photosetPhotos);
-		List<Photo> photos = photosetPhotos.getPhotoList();
-		assertNotNull(photos);
-		assertEquals(7, photos.size());
-		for (Photo photo : photos) {
-		assertNotNull(photo);
+		List<Photo> getPhotosList = photosetPhotos.getPhotoList();
+		assertNotNull(getPhotosList);
+		assertEquals(7, getPhotosList.size());
+		for (Photo photo : getPhotosList) {
+			assertNotNull(photo);
 		}
-	}
 
-	@Test
-	public void testGetPhotosWithExtras() throws Exception {
+
+		/* testGetPhotosWithExtras() */
 		EnumSet<JinxConstants.PhotoExtras> extras = EnumSet.of(JinxConstants.PhotoExtras.date_upload, JinxConstants.PhotoExtras.owner_name);
-		PhotosetPhotos photosetPhotos = photosetsApi.getPhotos(createdPhotosetId, extras, JinxConstants.PrivacyFilter.privacyPublic, 0, 0, JinxConstants.MediaType.all);
-		assertNotNull(photosetPhotos);
-		List<Photo> photos = photosetPhotos.getPhotoList();
-		assertNotNull(photos);
-		assertEquals(7, photos.size());
-		for (Photo photo : photos) {
+		PhotosetPhotos extraPhotosetPhotos = photosetsApi.getPhotos(createdPhotosetId, extras, JinxConstants.PrivacyFilter.privacyPublic, 0, 0, JinxConstants.MediaType.all);
+		assertNotNull(extraPhotosetPhotos);
+		List<Photo> extrasPhotos = extraPhotosetPhotos.getPhotoList();
+		assertNotNull(extrasPhotos);
+		assertEquals(7, extrasPhotos.size());
+		for (Photo photo : extrasPhotos) {
 			assertNotNull(photo);
 			assertNotNull(photo.getDateUpload());
 			assertEquals("jinxlib", photo.getOwnerName());
 		}
-	}
 
-	@Test
-	public void testRemovePhoto() throws Exception {
-		Response response = photosetsApi.removePhoto(createdPhotosetId, photo6);
-		assertNotNull(response);
-		assertEquals(0, response.getCode());
-		assertEquals("ok", response.getStat());
-	}
 
-	@Test
-	public void testRemovePhotos() throws Exception {
+		/* testRemovePhoto() */
+		Response removeResponse = photosetsApi.removePhoto(createdPhotosetId, photo6);
+		assertNotNull(removeResponse);
+		assertEquals(0, removeResponse.getCode());
+		assertEquals("ok", removeResponse.getStat());
+
+
+		/* testRemovePhotos() */
 		List<String> list = new ArrayList<String>();
 		list.add(photo0);
 		list.add(photo1);
-		Response response = photosetsApi.removePhotos(createdPhotosetId, list);
-		assertNotNull(response);
-		assertEquals(0, response.getCode());
-		assertEquals("ok", response.getStat());
-	}
+		Response removePhotoResponse = photosetsApi.removePhotos(createdPhotosetId, list);
+		assertNotNull(removePhotoResponse);
+		assertEquals(0, removePhotoResponse.getCode());
+		assertEquals("ok", removePhotoResponse.getStat());
 
 
-	@Test
-	public void testDelete() throws Exception {
-		Response response = photosetsApi.delete(createdPhotosetId);
-		assertNotNull(response);
-		assertEquals(0, response.getCode());
-		assertEquals("ok", response.getStat());
+		/* testDelete() */
+		Response deleteResponse = photosetsApi.delete(createdPhotosetId);
+		assertNotNull(deleteResponse);
+		assertEquals(0, deleteResponse.getCode());
+		assertEquals("ok", deleteResponse.getStat());
 	}
 
 	@Test
