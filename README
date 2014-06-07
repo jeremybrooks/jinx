@@ -2,6 +2,8 @@ Jinx - Flickr API for Java
 
 Jinx is being rewritten to support the OAuth authentication scheme. Until this is done, you can use the old version, build 20110503, found here: http://jeremybrooks.net/jinx/
 
+Version 0.6.0 and higher are a major rewrite of Jinx. They will not be compatible with old builds available on jeremybrooks.net.
+
 Jinx is a Java interface to the Flickr API. The project goals are:
 
 1) Simple and straightforward to use
@@ -12,21 +14,19 @@ Jinx is a Java interface to the Flickr API. The project goals are:
 REQUIREMENTS
 ============
 To use the library:
-Gson 2.2.2+ -- deserializes json documents in to Java objects
-Signpost 1.2.1.2 -- provides OAuth services
-Java 1.6+
+  * Gson 2.2.2+ -- deserializes json documents in to Java objects
+  * Signpost 1.2.1.2 -- provides OAuth services
+  * Java 1.6+
 
 To build the library:
-Java JDK 1.6+
-Maven
+  * Java JDK 1.6+
+  * Maven
 
 
 
 CURRENT STATUS
 ==============
-Version 0.6.0-SNAPSHOT and higher are a major rewrite of Jinx. It will not be compatible with previous versions.
-
-This list shows which API entry points have been implemented:
+Version 0.6.0 supports the following API's:
   * activity
   * blogs (have not really tested the postPhoto method, though)
   * cameras
@@ -34,6 +34,44 @@ This list shows which API entry points have been implemented:
   * photos
   * photosets
   * photosets.comments
+
+
+KNOWN ISSUES
+============
+If a user has no blogs set up, calling the getBlogList() method will throw an Exception. This is due to different data structures returned by Flickr if a user has blogs or does not have blogs. This issue has been reported to Flickr.
+
+
+UNSUPPORTED API's
+=================
+These API's are not yet implemented, but will be implemented in the future:
+  * collections
+  * commons
+  * contacts
+  * favorites
+  * galleries
+  * groups
+  * groups.members
+  * groups.pools
+  * interestingness
+  * machinetags (partial)
+  * panda
+  * people
+  * photos.comments
+  * photos.geo          (NOTE: Some of the methods in photos.geo do not work correctly.
+                               They also do not work in the Flickr API Explorer,
+                               so there is likely little that can be done about it.)
+  * photos.licenses
+  * photos.notes
+  * photos.people
+  * photos.transform
+  * photos.upload
+  * places
+  * prefs
+  * reflection
+  * stats
+  * tags
+  * test
+  * urls
 
 
 BUILDING
@@ -45,42 +83,6 @@ mvn clean package
 If the tests are failing and you want to build the jar anyway, add -DskipTests:
 
 mvn clean package -DskipTests
-
-
-TODO:
-
-Implement these API entry points:
-  collections
-  commons
-  contacts
-  favorites
-  galleries
-  groups
-  groups.members
-  groups.pools
-  interestingness
-  machinetags (partial)
-  panda
-  people
-  photos.comments
-  photos.geo          (NOTE: Some of the methods in photos.geo do not work correctly.
-                               They also do not work in the Flickr API Explorer,
-                               so there is likely little that can be done about it.)
-  photos.licenses
-  photos.notes
-  photos.people
-  photos.transform
-  photos.upload
-
-
-places
-prefs
-reflection
-stats
-tags
-test
-urls
-
 
 
 DEVELOPERS READ THIS

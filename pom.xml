@@ -61,21 +61,6 @@
     </developers>
 
 
-    <!--
-       - The tests require some private data that is not in git.
-       - Therefore, when doing release:perform, run it with the production profile
-       - to skip the tests:
-       - mvn release:perform -P production
-     -->
-    <!--<profiles>-->
-    <!--<profile>-->
-    <!--<id>production</id>-->
-    <!--<properties>-->
-    <!--<maven.test.skip>true</maven.test.skip>-->
-    <!--</properties>-->
-    <!--</profile>-->
-    <!--</profiles>-->
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -109,7 +94,16 @@
 
     <profiles>
         <profile>
+            <!--
+               - The tests require some private data that is not in git.
+               - Therefore, when doing release:perform, run it with the production profile
+               - to skip the tests:
+               - mvn release:perform -P production
+             -->
             <id>release</id>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -168,6 +162,17 @@
                     <serverId>ossrh</serverId>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy</goals>
                 </configuration>
             </plugin>
         </plugins>
