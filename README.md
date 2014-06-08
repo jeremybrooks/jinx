@@ -1,4 +1,5 @@
 Jinx - Flickr API for Java
+==========================
 
 Jinx is being rewritten to support the OAuth authentication scheme. Until this is done, you can use the old version, build 20110503, found here: http://jeremybrooks.net/jinx/
 
@@ -6,9 +7,9 @@ Version 0.6.0 and higher are a major rewrite of Jinx. They will not be compatibl
 
 Jinx is a Java interface to the Flickr API. The project goals are:
 
-1) Simple and straightforward to use
-2) Complete coverage of the Flickr API
-3) Minimal library requirements
+ # Simple and straightforward to use
+ # Complete coverage of the Flickr API
+ # Minimal library requirements
 
 You can find an example of how to use the Jinx library here: https://github.com/jeremybrooks/jinxexamples
 
