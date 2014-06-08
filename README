@@ -10,17 +10,22 @@ Jinx is a Java interface to the Flickr API. The project goals are:
 2) Complete coverage of the Flickr API
 3) Minimal library requirements
 
+You can find an example of how to use the Jinx library here: https://github.com/jeremybrooks/jinxexamples
 
 REQUIREMENTS
 ============
-To use the library:
+You must be using Java 1.6 or higher.
+
+If you are using Maven, just include this in your pom.xml file:
+<dependency>
+    <groupId>net.jeremybrooks</groupId>
+    <artifactId>jinx</artifactId>
+    <version>0.6.0</version>
+</dependency>
+
+If you are not using Maven, you will need these libraries, and their dependencies:
   * Gson 2.2.2+ -- deserializes json documents in to Java objects
   * Signpost 1.2.1.2 -- provides OAuth services
-  * Java 1.6+
-
-To build the library:
-  * Java JDK 1.6+
-  * Maven
 
 
 
@@ -43,7 +48,7 @@ If a user has no blogs set up, calling the getBlogList() method will throw an Ex
 
 UNSUPPORTED API's
 =================
-These API's are not yet implemented, but will be implemented in the future:
+These API's are not yet implemented, but will be implemented in a future release:
   * collections
   * commons
   * contacts
@@ -74,8 +79,8 @@ These API's are not yet implemented, but will be implemented in the future:
   * urls
 
 
-BUILDING
-========
+BUILDING FROM SOURCE
+====================
 To build the project, use Maven. The jar file will end up in the "target" directory:
 
 mvn clean package
@@ -85,8 +90,8 @@ If the tests are failing and you want to build the jar anyway, add -DskipTests:
 mvn clean package -DskipTests
 
 
-DEVELOPERS READ THIS
-====================
+JINX DEVELOPERS READ THIS
+=========================
 Flickr apps need an API key to work properly. Jinx is no exception. To run the unit tests, you need to go to Flickr and apply for an API key. Once you have this key, you need to do the following:
   * Copy the file test/resources/flickr.properties to test/resources/secret.properties
   * Fill in the key, secret, and a valid full path where the oauth token will be saved

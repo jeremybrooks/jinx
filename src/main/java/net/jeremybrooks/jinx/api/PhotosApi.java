@@ -41,6 +41,7 @@ import java.util.Date;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -411,7 +412,7 @@ public class PhotosApi {
 	 * @return photos object.
 	 * @throws JinxException if there are any errors.
 	 */
-	public Photos getRecent(List<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
+	public Photos getRecent(EnumSet<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
 		Map<String, String> params = new TreeMap<String, String>();
 		params.put("method", "flickr.photos.getRecent");
 		if (!JinxUtils.isNullOrEmpty(extras)) {
@@ -630,7 +631,7 @@ public class PhotosApi {
 	 * @return photos object.
 	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
 	 */
-	public Photos recentlyUpdated(Date minDate, List<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
+	public Photos recentlyUpdated(Date minDate, Set<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
 		JinxUtils.validateParams(minDate);
 		Map<String, String> params = new TreeMap<String, String>();
 		params.put("method", "flickr.photos.recentlyUpdated");
