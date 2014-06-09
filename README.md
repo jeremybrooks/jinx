@@ -48,7 +48,7 @@ If a user has no blogs set up, calling the getBlogList() method will throw an Ex
 
 
 
-API's IMPLEMENTATION STATUS
+API IMPLEMENTATION STATUS
 ===========================
 
 Available In Latest Release
