@@ -1,0 +1,151 @@
+{ "collection": {
+    "id": "124834485-72157645054050881",
+    "title": {
+        "_content": "A Collection"
+    },
+    "description": {
+        "_content": "Just a collection for testing."
+    },
+    "child_count": 2,
+    "datecreate": "1402198715",
+    "iconlarge": "https:\/\/farm3.staticflickr.com\/2901\/cols\/72157645054050881_23068610a5_l.jpg",
+    "iconsmall": "https:\/\/farm3.staticflickr.com\/2901\/cols\/72157645054050881_23068610a5_s.jpg",
+    "iconphotos": {
+        "photo": [
+            {
+                "id": "14296965463",
+                "owner": "124857539@N03",
+                "secret": "683489a38a",
+                "server": "5575",
+                "farm": 6,
+                "title": "Might Not Happen Soon",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14090247837",
+                "owner": "124857539@N03",
+                "secret": "a00c1c8c01",
+                "server": "3745",
+                "farm": 4,
+                "title": "Constantly",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14274753072",
+                "owner": "124857539@N03",
+                "secret": "497d7ea7d3",
+                "server": "3797",
+                "farm": 4,
+                "title": "It's In The Details",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14273488301",
+                "owner": "124857539@N03",
+                "secret": "31b77c01b8",
+                "server": "5276",
+                "farm": 6,
+                "title": "Last Time That I Saw You",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14253719326",
+                "owner": "124857539@N03",
+                "secret": "bf8c631d54",
+                "server": "5537",
+                "farm": 6,
+                "title": "The Prophets",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14253711336",
+                "owner": "124857539@N03",
+                "secret": "772cec7714",
+                "server": "3714",
+                "farm": 4,
+                "title": "Spent All Day",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14276354684",
+                "owner": "124857539@N03",
+                "secret": "828bbebd6b",
+                "server": "3696",
+                "farm": 4,
+                "title": "Test New Title",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14276359614",
+                "owner": "124857539@N03",
+                "secret": "46b7a465ab",
+                "server": "2896",
+                "farm": 3,
+                "title": "Comrade",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14296991923",
+                "owner": "124857539@N03",
+                "secret": "e738558112",
+                "server": "5520",
+                "farm": 6,
+                "title": "For Us To Sing Along",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14276832885",
+                "owner": "124857539@N03",
+                "secret": "b2a8f1fd58",
+                "server": "3805",
+                "farm": 4,
+                "title": "SZ 43",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14276369654",
+                "owner": "124857539@N03",
+                "secret": "91218e7a58",
+                "server": "2933",
+                "farm": 3,
+                "title": "Kirsuberjatred",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "14253709936",
+                "owner": "124857539@N03",
+                "secret": "85a9b9dfc2",
+                "server": "3704",
+                "farm": 4,
+                "title": "Seven One Nine Seven",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            }
+        ]
+    },
+    "server": "2901",
+    "secret": "23068610a5"
+}, "stat": "ok" }

@@ -47,10 +47,26 @@ KNOWN ISSUES
 If a user has no blogs set up, calling the getBlogList() method will throw an Exception. This is due to different data structures returned by Flickr if a user has blogs or does not have blogs. This issue has been reported to Flickr.
 
 
-UNSUPPORTED API's
-=================
-These API's are not yet implemented, but will be implemented in a future release:
-  * collections
+
+API's IMPLEMENTATION STATUS
+===========================
+
+Available In Latest Release
+---------------------------
+  * activity
+  * blogs (have not really tested the postPhoto method, though)
+  * cameras
+  * oauth
+  * photos
+  * photosets
+  * photosets.comments
+
+Available In Latest Source
+--------------------------
+ * collections
+
+Not Yet Implemented
+-------------------
   * commons
   * contacts
   * favorites

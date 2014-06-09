@@ -1,0 +1,23 @@
+{ "collections": {
+    "collection": [
+        {
+            "id": "124834485-72157645054050881",
+            "title": "A Collection",
+            "description": "Just a collection for testing.",
+            "iconlarge": "https:\/\/farm3.staticflickr.com\/2901\/cols\/72157645054050881_23068610a5_l.jpg",
+            "iconsmall": "https:\/\/farm3.staticflickr.com\/2901\/cols\/72157645054050881_23068610a5_s.jpg",
+            "set": [
+                {
+                    "id": "72157644447148480",
+                    "title": "Istanbul",
+                    "description": "Photos from Istanbul, Turkey."
+                },
+                {
+                    "id": "72157644903065293",
+                    "title": "Iceland",
+                    "description": "Photos taken in Iceland."
+                }
+            ]
+        }
+    ]
+}, "stat": "ok" }
