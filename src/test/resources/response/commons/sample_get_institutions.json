@@ -1,0 +1,707 @@
+{ "institutions": {
+    "institution": [
+      { "nsid": "104959762@N04", "date_launch": "1402064583",
+        "name": { "_content": "CDHS" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.cloynepioneermuseum.ca" },
+            { "type": "license", "_content": "http:\/\/pioneer.mazinaw.on.ca\/flickr_statement.php" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/cdhs\/" }
+          ] } },
+      { "nsid": "124327652@N02", "date_launch": "1401802992",
+        "name": { "_content": "tyrrellhistoricallibrary" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.beaumontlibrary.org\/tyrrell_historical_library.htm" },
+            { "type": "license", "_content": "http:\/\/cdm16058.contentdm.oclc.org\/ui\/custom\/default\/collection\/default\/resources\/custompages\/policies\/FlickrCommons.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/124327652@N02\/" }
+          ] } },
+      { "nsid": "56434318@N05", "date_launch": "1401193014",
+        "name": { "_content": "Preus museum" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.preusmuseum.no" },
+            { "type": "license", "_content": "http:\/\/www.preusmuseum.no\/Discover-the-Collections\/Photographic-Collection\/Flickr-The-Commons" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/preusmuseum\/" }
+          ] } },
+      { "nsid": "76602844@N05", "date_launch": "1400586985",
+        "name": { "_content": "Hamilton Public Library, Ontario" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.hpl.ca" },
+            { "type": "license", "_content": "http:\/\/www.hpl.ca\/articles\/use-images" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/hamiltonpubliclibrary\/" }
+          ] } },
+      { "nsid": "108745105@N04", "date_launch": "1400007738",
+        "name": { "_content": "UBC Library Digitization Centre" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/diginit.library.ubc.ca\/" },
+            { "type": "license", "_content": "http:\/\/digitalcollections.library.ubc.ca\/cdm\/about" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/ubclibrary_digicentre\/" }
+          ] } },
+      { "nsid": "60147353@N07", "date_launch": "1399375726",
+        "name": { "_content": "SALTOnline" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/saltonline.org\/en\/anasayfa" },
+            { "type": "license", "_content": "http:\/\/saltonline.org\/en\/#!\/en\/798\/right-statement\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/saltonline\/" }
+          ] } },
+      { "nsid": "107895189@N03", "date_launch": "1397132793",
+        "name": { "_content": "Tasmanian Archive and Heritage Office Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.linc.tas.gov.au\/tasmaniasheritage" },
+            { "type": "license", "_content": "http:\/\/www.linc.tas.gov.au\/tasmaniasheritage\/browse\/pictorial\/flickr-commons" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/107895189@N03\/" }
+          ] } },
+      { "nsid": "108605878@N06", "date_launch": "1397131200",
+        "name": { "_content": "The Finnish Museum of Photography" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.valokuvataiteenmuseo.fi\/" },
+            { "type": "license", "_content": "http:\/\/www.valokuvataiteenmuseo.fi\/en\/information-en\/the-terms-of-use-of-the-images#images-on-flickr-commons" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/valokuvataiteenmuseo\/" }
+          ] } },
+      { "nsid": "26491575@N05", "date_launch": "1395348974",
+        "name": { "_content": "Library Company of Philadelphia" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.librarycompany.org\/" },
+            { "type": "license", "_content": "http:\/\/www.librarycompany.org\/collections\/rightsrepro\/rr_digitalresources.htm" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/library-company-of-philadelphia\/" }
+          ] } },
+      { "nsid": "95711690@N03", "date_launch": "1394537964",
+        "name": { "_content": "Provincial Archives of Alberta" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/culture.alberta.ca\/paa\/default.aspx" },
+            { "type": "license", "_content": "http:\/\/culture.alberta.ca\/paa\/about\/flickr.aspx" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/alberta_archives\/" }
+          ] } },
+      { "nsid": "31033598@N03", "date_launch": "1391520831",
+        "name": { "_content": "Miami U. Libraries - Digital Collections" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.lib.miamioh.edu" },
+            { "type": "license", "_content": "http:\/\/www.lib.miamioh.edu\/digital-collections-flickr-rights-statement" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/muohio_digital_collections\/" }
+          ] } },
+      { "nsid": "12403504@N02", "date_launch": "1386975388",
+        "name": { "_content": "The British Library" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.bl.uk" },
+            { "type": "license", "_content": "http:\/\/www.bl.uk\/aboutus\/terms\/copyright\/index.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/britishlibrary\/" }
+          ] } },
+      { "nsid": "109550159@N08", "date_launch": "1386709335",
+        "name": { "_content": "Costică Acsinte Archive" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/colectiacosticaacsinte.eu\/" },
+            { "type": "license", "_content": "http:\/\/colectiacosticaacsinte.eu\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/costicaacsinte\/" }
+          ] } },
+      { "nsid": "99915476@N04", "date_launch": "1383218514",
+        "name": { "_content": "Vancouver Public Library Historical Photographs" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.vpl.ca" },
+            { "type": "license", "_content": "https:\/\/www.vpl.ca\/find\/cat\/C393\/C393" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/99915476@N04\/" }
+          ] } },
+      { "nsid": "48220291@N04", "date_launch": "1381954880",
+        "name": { "_content": "National Library of Norway" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.nb.no" },
+            { "type": "license", "_content": "http:\/\/www.nb.no\/Kontakt\/Kontakt\/Sosiale-medier\/Flickr-Commons-No-known-copyright-restrictions" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/national_library_of_norway\/" }
+          ] } },
+      { "nsid": "69269002@N04", "date_launch": "1381528229",
+        "name": { "_content": "Royal Australian Historical Society" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.rahs.org.au\/" },
+            { "type": "license", "_content": "http:\/\/www.rahs.org.au\/about-rahs\/rahs-copyright-statement\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/royalaustralianhistoricalsociety\/" }
+          ] } },
+      { "nsid": "88669438@N03", "date_launch": "1378762017",
+        "name": { "_content": "DEXTRA Photo" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.tekniskmuseum.no \/ www.dextraphoto.no" },
+            { "type": "license", "_content": "http:\/\/dextraphoto.photodeck.com\/about" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/dextraphoto\/" }
+          ] } },
+      { "nsid": "99278405@N04", "date_launch": "1378761917",
+        "name": { "_content": "California Historical Society Digital Collection" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.californiahistoricalsociety.org\/" },
+            { "type": "license", "_content": "http:\/\/www.californiahistoricalsociety.org\/research\/flickr.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/chs_commons\/" }
+          ] } },
+      { "nsid": "99902797@N03", "date_launch": "1378760341",
+        "name": { "_content": "Schlesinger Library, RIAS, Harvard University" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.radcliffe.harvard.edu\/schlesinger-library" },
+            { "type": "license", "_content": "http:\/\/www.radcliffe.harvard.edu\/schlesinger-library\/permission-publish" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/schlesinger_library\/" }
+          ] } },
+      { "nsid": "95772747@N07", "date_launch": "1376330725",
+        "name": { "_content": "National Museum of Denmark" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/natmus.dk\/" },
+            { "type": "license", "_content": "http:\/\/natmus.dk\/en\/forsknings-og-formidlingsafdelingen\/center-for-strategi-kommunikation-og-administration\/rights-statement-the-commons-on-flickr\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/thenationalmuseumofdenmark\/" }
+          ] } },
+      { "nsid": "48641766@N05", "date_launch": "1372285018",
+        "name": { "_content": "Svenska litteratursällskapet i Finland" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.sls.fi" },
+            { "type": "license", "_content": "http:\/\/www.sls.fi\/doc.php?category=2&language=eng" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/slsarkiva\/" }
+          ] } },
+      { "nsid": "95520404@N07", "date_launch": "1372285012",
+        "name": { "_content": "National Library of Sweden" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.kb.se\/" },
+            { "type": "license", "_content": "http:\/\/www.kb.se\/english\/services\/reprographic\/Flickr-Commons\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/95520404@N07\/" }
+          ] } },
+      { "nsid": "94021017@N05", "date_launch": "1372285004",
+        "name": { "_content": "National Archives of Estonia" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.ra.ee\/" },
+            { "type": "license", "_content": "http:\/\/rahvusarhiiv.ra.ee\/en\/flickr-commons\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/national_archives_of_estonia\/" }
+          ] } },
+      { "nsid": "47154409@N06", "date_launch": "1371066890",
+        "name": { "_content": "Het Nieuwe Instituut - Architecture Collection" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.thenewinstitute.nl" },
+            { "type": "license", "_content": "http:\/\/www.hetnieuweinstituut.nl\/en\/page\/flickr-commons-rights-statement" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nai_collection\/" }
+          ] } },
+      { "nsid": "77015680@N05", "date_launch": "1371066889",
+        "name": { "_content": "Mississippi Department of Archives and History" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/mdah.state.ms.us" },
+            { "type": "license", "_content": "http:\/\/mdah.state.ms.us\/arrec\/copyright.php" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/mississippi-dept-of-archives-and-history\/" }
+          ] } },
+      { "nsid": "39758725@N03", "date_launch": "1371066882",
+        "name": { "_content": "Dundas Museum and Archives" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.dundasmuseum.ca" },
+            { "type": "license", "_content": "http:\/\/www.dundasmuseum.ca\/photographs.php" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/dundasmuseum\/" }
+          ] } },
+      { "nsid": "95717549@N07", "date_launch": "1371066881",
+        "name": { "_content": "UL Digital Library" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.ul.ie\/~library" },
+            { "type": "license", "_content": "http:\/\/www2.ul.ie\/web\/WWW\/Services\/Library\/Digital_Library" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/ul_digital_library\/" }
+          ] } },
+      { "nsid": "52529054@N06", "date_launch": "1371066880",
+        "name": { "_content": "Mennonite Church USA Archives" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.mennoniteusa.org\/executive-board\/archives\/" },
+            { "type": "license", "_content": "http:\/\/www.mennoniteusa.org\/executive-board\/archives\/archives-about\/archives-about-policies\/archives-about-policies-copyright\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/mennonitechurchusa-archives\/" }
+          ] } },
+      { "nsid": "38561291@N04", "date_launch": "1369941342",
+        "name": { "_content": "Law Society of Upper Canada Archives" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.lsuc.on.ca\/PDC\/Archives\/Overview-of-the-Archives\/" },
+            { "type": "license", "_content": "http:\/\/www.lsuc.on.ca\/PDC\/Archives\/Archives-Collection\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/lsuc_archives\/" }
+          ] } },
+      { "nsid": "27331537@N06", "date_launch": "1369941313",
+        "name": { "_content": "State Records NSW" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.records.nsw.gov.au\/" },
+            { "type": "license", "_content": "http:\/\/www.records.nsw.gov.au\/about-us\/rights-and-permissions" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/state-records-nsw\/" }
+          ] } },
+      { "nsid": "61232251@N05", "date_launch": "1369941300",
+        "name": { "_content": "Nova Scotia Archives" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "gov.ns.ca\/nsarm" },
+            { "type": "license", "_content": "http:\/\/gov.ns.ca\/nsarm\/useimages.asp" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nsarchives\/" }
+          ] } },
+      { "nsid": "54403180@N04", "date_launch": "1367877142",
+        "name": { "_content": "Public Record Office of Northern Ireland" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.proni.gov.uk" },
+            { "type": "license", "_content": "http:\/\/www.proni.gov.uk\/index\/search_the_archives\/pronionflickr.htm" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/proni\/" }
+          ] } },
+      { "nsid": "23121382@N07", "date_launch": "1367877137",
+        "name": { "_content": "Deseronto Archives" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/deserontoarchives.wordpress.com" },
+            { "type": "license", "_content": "http:\/\/deserontoarchives.wordpress.com\/collections\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/deserontoarchives\/" }
+          ] } },
+      { "nsid": "62173425@N02", "date_launch": "1318321610",
+        "name": { "_content": "Stockholm Transport Museum Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.sparvagsmuseet.sl.se" },
+            { "type": "license", "_content": "http:\/\/sparvagsmuseet.sl.se\/stockholms-transport-museum-om-flickr-commons\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/stockholmtransportmuseum_commons\/" }
+          ] } },
+      { "nsid": "67193564@N03", "date_launch": "1317052532",
+        "name": { "_content": "National Library of Australia Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.nla.gov.au" },
+            { "type": "license", "_content": "http:\/\/www.nla.gov.au\/flickr-commons-copyright" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/national_library_of_australia_commons\/" }
+          ] } },
+      { "nsid": "59811348@N05", "date_launch": "1316418893",
+        "name": { "_content": "Riksarkivet (National Archives of Norway)" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.arkivverket.no\/" },
+            { "type": "license", "_content": "http:\/\/www.arkivverket.no\/eng\/content\/view\/full\/9266" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/national_archives_of_norway\/" }
+          ] } },
+      { "nsid": "45270502@N06", "date_launch": "1309982163",
+        "name": { "_content": "The Royal Library, Denmark" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.kb.dk" },
+            { "type": "license", "_content": "http:\/\/www.kb.dk\/en\/kb\/copyright\/index.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/departmentofmapsprintsandphotographstheroyallibrarydenmark\/" }
+          ] } },
+      { "nsid": "61498590@N03", "date_launch": "1308358459",
+        "name": { "_content": "Museum of Photographic Arts Collections" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.mopa.org" },
+            { "type": "license", "_content": "http:\/\/www.mopa.org\/content\/museum-photographic-arts-flickr-commons" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/mopa1\/" }
+          ] } },
+      { "nsid": "47290943@N03", "date_launch": "1306964341",
+        "name": { "_content": "National Library of Ireland on The Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.nli.ie\/en\/homepage.aspx" },
+            { "type": "license", "_content": "http:\/\/www.nli.ie\/en\/flickr-commons.aspx" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nlireland\/" }
+          ] } },
+      { "nsid": "29295370@N07", "date_launch": "1305744280",
+        "name": { "_content": "Tyne & Wear Archives & Museums" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.twmuseums.org.uk\/" },
+            { "type": "license", "_content": "http:\/\/www.twmuseums.org.uk\/usingimagesfromflickr\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/twm_news\/" }
+          ] } },
+      { "nsid": "49487266@N07", "date_launch": "1304524824",
+        "name": { "_content": "San Diego Air & Space Museum Archives" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/sandiegoairandspace.org\/" },
+            { "type": "license", "_content": "http:\/\/sandiegoairandspace.org\/collections\/collection_index.php?id=3" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/sdasmarchives\/" }
+          ] } },
+      { "nsid": "47908901@N03", "date_launch": "1303334080",
+        "name": { "_content": "Museum of Hartlepool" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.destinationhartlepool.com" },
+            { "type": "license", "_content": "http:\/\/www.hartlepool.gov.uk\/info\/100009\/leisure_and_culture\/1533\/collections\/1" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/hartlepool_museum\/" }
+          ] } },
+      { "nsid": "41815917@N06", "date_launch": "1302113053",
+        "name": { "_content": "Woodrow Wilson Presidential Library Archives" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.woodrowwilson.org" },
+            { "type": "license", "_content": "http:\/\/woodrowwilson.org\/index.php\/library-a-archives\/research" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/wwplarchives\/" }
+          ] } },
+      { "nsid": "44494372@N05", "date_launch": "1283176250",
+        "name": { "_content": "NASA on The Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.nasa.gov\/" },
+            { "type": "license", "_content": "http:\/\/www.nasa.gov\/audience\/formedia\/features\/MP_Photo_Guidelines.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nasacommons\/" }
+          ] } },
+      { "nsid": "14456531@N07", "date_launch": "1277223438",
+        "name": { "_content": "National Library of Scotland" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.nls.uk\/" },
+            { "type": "license", "_content": "http:\/\/www.nls.uk\/copyright\/index.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nlscotland\/" }
+          ] } },
+      { "nsid": "9189488@N02", "date_launch": "1276472500",
+        "name": { "_content": "Ljósmyndasafn Reykjavíkur \/ Reykjavík Museum of" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.photomuseum.is" },
+            { "type": "license", "_content": "http:\/\/ljosmyndasafnreykjavikur.is\/english\/information.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/reykjavikmuseumofphotography\/" }
+          ] } },
+      { "nsid": "25960495@N06", "date_launch": "1276472325",
+        "name": { "_content": "Keene and Cheshire County (NH) Historical Photos" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.ci.keene.nh.us\/library\/   and  http:\/\/www.hsccnh.org\/" },
+            { "type": "license", "_content": "http:\/\/keenepubliclibrary.org\/library\/commons-rights-statement" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/keenepubliclibrary\/" }
+          ] } },
+      { "nsid": "37547255@N08", "date_launch": "1274822330",
+        "name": { "_content": "Fylkesarkivet i Sogn og Fjordane" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/fylkesarkiv.no" },
+            { "type": "license", "_content": "http:\/\/www.fylkesarkiv.no\/en\/side\/flickr-commons" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/fylkesarkiv\/" }
+          ] } },
+      { "nsid": "30515687@N05", "date_launch": "1274286646",
+        "name": { "_content": "Cornell University Library" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.library.cornell.edu\/" },
+            { "type": "license", "_content": "http:\/\/hdl.handle.net\/1813.001\/62pk" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/cornelluniversitylibrary\/" }
+          ] } },
+      { "nsid": "33147718@N05", "date_launch": "1273608526",
+        "name": { "_content": "Australian National Maritime Museum on The Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.anmm.gov.au\/" },
+            { "type": "license", "_content": "http:\/\/www.anmm.gov.au\/site\/page.cfm?u=1657" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/anmm_thecommons\/" }
+          ] } },
+      { "nsid": "41131493@N06", "date_launch": "1271294026",
+        "name": { "_content": "SMU Central University Libraries" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/smu.edu\/cul\/" },
+            { "type": "license", "_content": "http:\/\/digitalcollections.smu.edu\/all\/cul\/flickr\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/smu_cul_digitalcollections\/" }
+          ] } },
+      { "nsid": "47326604@N02", "date_launch": "1271293732",
+        "name": { "_content": "Texas State Archives" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.tsl.state.tx.us" },
+            { "type": "license", "_content": "http:\/\/www.tsl.state.tx.us\/exhibits\/ccc_flickr.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/texasstatearchives\/" }
+          ] } },
+      { "nsid": "36988361@N08", "date_launch": "1271026069",
+        "name": { "_content": "Center for Jewish History, NYC" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "www.cjh.org" },
+            { "type": "license", "_content": "http:\/\/www.cjh.org\/collections\/copyright.php" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/center_for_jewish_history\/" }
+          ] } },
+      { "nsid": "37784107@N08", "date_launch": "1270656024",
+        "name": { "_content": "UA Archives | Upper Arlington History" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.uaarchives.org" },
+            { "type": "license", "_content": "http:\/\/www.uaarchives.org\/commons.htm" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/uaarchives\/" }
+          ] } },
+      { "nsid": "48143042@N05", "date_launch": "1270600982",
+        "name": { "_content": "Jewish Historical Society of the Upper Midwest" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.jhsum.org\/" },
+            { "type": "license", "_content": "http:\/\/www.jhsum.org\/collections\/copyright\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/jhsum-commons\/" }
+          ] } },
+      { "nsid": "31575009@N05", "date_launch": "1269389812",
+        "name": { "_content": "The National Archives UK" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.nationalarchives.gov.uk\/" },
+            { "type": "license", "_content": "http:\/\/www.nationalarchives.gov.uk\/legal\/copyright.htm#flickr" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nationalarchives\/" }
+          ] } },
+      { "nsid": "8337233@N06", "date_launch": "1266878529",
+        "name": { "_content": "UW Digital Collections" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/content.lib.washington.edu\/index.html" },
+            { "type": "license", "_content": "http:\/\/content.lib.washington.edu\/FlickrCommons.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/uw_digital_images\/" }
+          ] } },
+      { "nsid": "35740357@N03", "date_launch": "1265050904",
+        "name": { "_content": "The U.S. National Archives" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.archives.gov\/" },
+            { "type": "license", "_content": "http:\/\/www.archives.gov\/social-media\/flickr-faqs.html#9" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/usnationalarchives\/" }
+          ] } },
+      { "nsid": "37381115@N04", "date_launch": "1260488220",
+        "name": { "_content": "Bergen Public Library" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/nettbiblioteket.no\/" },
+            { "type": "license", "_content": "http:\/\/nettbiblioteket.no\/biblioteksinformasjon\/flickr-commons.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/bergen_public_library\/" }
+          ] } },
+      { "nsid": "35128489@N07", "date_launch": "1256682119",
+        "name": { "_content": "LSE Library" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www2.lse.ac.uk\/library\/Home.aspx" },
+            { "type": "license", "_content": "http:\/\/www2.lse.ac.uk\/library\/archive\/flickr_rights_statement.aspx" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/lselibrary\/" }
+          ] } },
+      { "nsid": "36281769@N04", "date_launch": "1255562741",
+        "name": { "_content": "JWA Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/jwa.org\/" },
+            { "type": "license", "_content": "http:\/\/jwa.org\/exhibits\/ww2\/flickrcommons" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/jwacommons\/" }
+          ] } },
+      { "nsid": "23686862@N03", "date_launch": "1254441942",
+        "name": { "_content": "Galt Museum & Archives on The Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.galtmuseum.com\/" },
+            { "type": "license", "_content": "http:\/\/www.galtmuseum.com\/copyright.htm" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/galt-museum\/" }
+          ] } },
+      { "nsid": "35532303@N08", "date_launch": "1242345692",
+        "name": { "_content": "Getty Research Institute" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.getty.edu\/" },
+            { "type": "license", "_content": "http:\/\/www.getty.edu\/legal\/copyright.html#flickr" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/gettyresearchinstitute\/" }
+          ] } },
+      { "nsid": "37199428@N06", "date_launch": "1242082545",
+        "name": { "_content": "LlGC ~ NLW" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.llgc.org.uk\/" },
+            { "type": "license", "_content": "http:\/\/www.llgc.org.uk\/index.php?id=publicationrights#Flickr" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/llgc\/" }
+          ] } },
+      { "nsid": "35310696@N04", "date_launch": "1241052256",
+        "name": { "_content": "The Field Museum Library" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.fieldmuseum.org\/" },
+            { "type": "license", "_content": "http:\/\/www.fieldmuseum.org\/research_collections\/library\/library_sites\/photo_archives\/flickr.htm" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/field_museum_library\/" }
+          ] } },
+      { "nsid": "36038586@N04", "date_launch": "1239745638",
+        "name": { "_content": "DC Public Library Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.dclibrarylabs.org\/" },
+            { "type": "license", "_content": "http:\/\/dclibrarylabs.org\/projects\/flickr-commons\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/dcplcommons\/" }
+          ] } },
+      { "nsid": "34419668@N08", "date_launch": "1237325759",
+        "name": { "_content": "Swedish National Heritage Board" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.kms.raa.se\/cocoon\/bild\/public_search.html" },
+            { "type": "license", "_content": "http:\/\/www.kms.raa.se\/cocoon\/bild\/about.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/swedish_heritage_board\/" }
+          ] } },
+      { "nsid": "34101160@N07", "date_launch": "1236893050",
+        "name": { "_content": "nha.library" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.nha.org\/" },
+            { "type": "license", "_content": "http:\/\/www.nha.org\/library\/copyright-flickr.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nantuckethistoricalassociation\/" }
+          ] } },
+      { "nsid": "34586311@N05", "date_launch": "1234571524",
+        "name": { "_content": "OSU Special Collections & Archives : Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/osulibrary.oregonstate.edu\/archives\/" },
+            { "type": "license", "_content": "http:\/\/osulibrary.oregonstate.edu\/archives\/FlickrCommonsNoKnownCopyrightsRestrictions.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/osucommons\/" }
+          ] } },
+      { "nsid": "31846825@N04", "date_launch": "1234477028",
+        "name": { "_content": "State Library and Archives of Florida" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.floridamemory.com\/" },
+            { "type": "license", "_content": "http:\/\/floridamemory.com\/disclaimer\/disclaimer-flickr.php" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/floridamemory\/" }
+          ] } },
+      { "nsid": "32605636@N06", "date_launch": "1233008101",
+        "name": { "_content": "State Library of Queensland, Australia" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.slq.qld.gov.au" },
+            { "type": "license", "_content": "http:\/\/www.slq.qld.gov.au\/home\/copyright\/#flickr" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/statelibraryqueensland\/" }
+          ] } },
+      { "nsid": "30835311@N07", "date_launch": "1231971103",
+        "name": { "_content": "National Galleries of Scotland Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.nationalgalleries.org\/" },
+            { "type": "license", "_content": "http:\/\/www.nationalgalleries.org\/aboutus\/article\/1:4946\/295" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nationalgalleries\/" }
+          ] } },
+      { "nsid": "32951986@N05", "date_launch": "1229382367",
+        "name": { "_content": "New York Public Library" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/nypl.org" },
+            { "type": "license", "_content": "http:\/\/www.nypl.org\/legal\/flickr.cfm" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nypl\/" }
+          ] } },
+      { "nsid": "32741315@N06", "date_launch": "1227758262",
+        "name": { "_content": "National Library NZ on The Commons" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.natlib.govt.nz\/" },
+            { "type": "license", "_content": "http:\/\/www.natlib.govt.nz\/collections\/digital-collections\/flickr" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nationallibrarynz_commons\/" }
+          ] } },
+      { "nsid": "32300107@N06", "date_launch": "1226398620",
+        "name": { "_content": "IWM Collections" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.iwm.org.uk" },
+            { "type": "license", "_content": "http:\/\/www.iwm.org.uk\/corporate\/privacy-copyright\/licence" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/imperialwarmuseum\/" }
+          ] } },
+      { "nsid": "30115723@N02", "date_launch": "1226355399",
+        "name": { "_content": "Australian War Memorial collection" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.awm.gov.au\/" },
+            { "type": "license", "_content": "http:\/\/www.awm.gov.au\/about\/copyright\/index.asp" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/australian-war-memorial\/" }
+          ] } },
+      { "nsid": "29998366@N02", "date_launch": "1224571148",
+        "name": { "_content": "Nationaal Archief" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.nationaalarchief.nl\/" },
+            { "type": "license", "_content": "http:\/\/beeldbank.nationaalarchief.nl\/index.php?option=com_memorix&mrx_mod=content&mrx_item=auteursrechten" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nationaalarchief\/" }
+          ] } },
+      { "nsid": "25786829@N08", "date_launch": "1223937653",
+        "name": { "_content": "Musée McCord Museum" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.mccord-museum.qc.ca\/" },
+            { "type": "license", "_content": "http:\/\/www.mccord-museum.qc.ca\/en\/copyright.html#noknowncopyright" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/museemccordmuseum\/" }
+          ] } },
+      { "nsid": "30194653@N06", "date_launch": "1223306569",
+        "name": { "_content": "The Library of Virginia" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.lva.virginia.gov\/" },
+            { "type": "license", "_content": "http:\/\/www.lva.virginia.gov\/copyright.htm" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/library_of_virginia\/" }
+          ] } },
+      { "nsid": "29454428@N08", "date_launch": "1222730121",
+        "name": { "_content": "State Library of New South Wales collection" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.sl.nsw.gov.au\/" },
+            { "type": "license", "_content": "http:\/\/www.sl.nsw.gov.au\/about\/policies\/copyright.html" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/statelibraryofnsw\/" }
+          ] } },
+      { "nsid": "11334970@N05", "date_launch": "1221664704",
+        "name": { "_content": "National Maritime Museum" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.nmm.ac.uk\/" },
+            { "type": "license", "_content": "http:\/\/www.nmm.ac.uk\/copyright" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nationalmaritimemuseum\/" }
+          ] } },
+      { "nsid": "26808453@N03", "date_launch": "1219864305",
+        "name": { "_content": "National Media Museum" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.nmsi.ac.uk" },
+            { "type": "license", "_content": "http:\/\/www.nationalmediamuseum.org.uk\/Photography\/copyright.asp" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/nationalmediamuseum\/" }
+          ] } },
+      { "nsid": "26577438@N06", "date_launch": "1218756335",
+        "name": { "_content": "Biblioteca de Arte-Fundação Calouste Gulbenkian" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.biblarte.gulbenkian.pt\/" },
+            { "type": "license", "_content": "http:\/\/www.biblarte.gulbenkian.pt\/content.asp?cod=servico_leitura&menu=servicos&parent=servicos&lang=en" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/biblarte\/" }
+          ] } },
+      { "nsid": "7167652@N06", "date_launch": "1216330862",
+        "name": { "_content": "George Eastman House" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.eastmanhouse.org\/" },
+            { "type": "license", "_content": "http:\/\/www.eastmanhouse.org\/flickr\/statement.php" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/george_eastman_house\/" }
+          ] } },
+      { "nsid": "26134435@N05", "date_launch": "1214481989",
+        "name": { "_content": "bibliothequedetoulouse" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.bm-toulouse.fr\/" },
+            { "type": "license", "_content": "http:\/\/www.bibliothequedetoulouse.fr\/fr\/catalogues\/02-mentions_legales.jsp" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/bibliothequedetoulouse\/" }
+          ] } },
+      { "nsid": "25053835@N03", "date_launch": "1213633686",
+        "name": { "_content": "Smithsonian Institution" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.si.edu\/" },
+            { "type": "license", "_content": "http:\/\/www.si.edu\/copyright\/" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/smithsonian\/" }
+          ] } },
+      { "nsid": "24785917@N03", "date_launch": "1207551600",
+        "name": { "_content": "Powerhouse Museum Collection" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.powerhousemuseum.com\/" },
+            { "type": "license", "_content": "http:\/\/www.powerhousemuseum.com\/imageservices\/?page_id=157" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/powerhouse_museum\/" }
+          ] } },
+      { "nsid": "8623220@N02", "date_launch": "1200470400",
+        "name": { "_content": "The Library of Congress" },
+        "urls": {
+          "url": [
+            { "type": "site", "_content": "http:\/\/www.loc.gov\/" },
+            { "type": "license", "_content": "http:\/\/www.loc.gov\/rr\/print\/195_copr.html#noknown" },
+            { "type": "flickr", "_content": "http:\/\/flickr.com\/photos\/library_of_congress\/" }
+          ] } }
+    ] }, "stat": "ok" }

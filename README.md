@@ -64,10 +64,10 @@ Available In Latest Release
 Available In Latest Source
 --------------------------
  * collections
+ * commons
 
 Not Yet Implemented
 -------------------
-  * commons
   * contacts
   * favorites
   * galleries
