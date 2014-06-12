@@ -88,6 +88,15 @@ public class JinxConstants {
 		mi, km
 	}
 
+	public static enum ContactFilter {
+		friends, family, both, neither
+	}
+	public static enum ContactSort {
+		name, time
+	}
+
+
+
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line
 

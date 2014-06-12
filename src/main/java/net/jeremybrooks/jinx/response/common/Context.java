@@ -18,11 +18,14 @@
 package net.jeremybrooks.jinx.response.common;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
+
+import java.io.Serializable;
 
 /**
  * Context can be returned from several methods:
- *
+ * <p/>
  * flickr.favorites.getContext
  * flickr.groups.pools.getContext
  * flickr.photos.getContext
@@ -33,16 +36,18 @@ import net.jeremybrooks.jinx.response.Response;
 public class Context extends Response {
 	private static final long serialVersionUID = -938218649798494740L;
 	private Count count;
-	private Prevphoto prevphoto;
-	private Nextphoto nextphoto;
+	private PrevPhoto prevphoto;
+	private NextPhoto nextphoto;
 
 	public Integer getCount() {
 		return count.count;
 	}
-	public Prevphoto getPrevphoto() {
+
+	public PrevPhoto getPrevPhoto() {
 		return prevphoto;
 	}
-	public Nextphoto getNextphoto() {
+
+	public NextPhoto getNextPhoto() {
 		return nextphoto;
 	}
 
@@ -62,7 +67,8 @@ public class Context extends Response {
 	}
 
 
-	public class Prevphoto {
+	public class PrevPhoto implements Serializable {
+		private static final long serialVersionUID = 8291352009160659374L;
 		@SerializedName("id")
 		private String photoId;
 		private String owner;
@@ -117,8 +123,8 @@ public class Context extends Response {
 			return media;
 		}
 
-		public boolean getIsFaved() {
-			return isFaved != null && isFaved == 1;
+		public boolean isFaved() {
+			return JinxUtils.flickrBooleanToBoolean(isFaved);
 		}
 
 		@Override
@@ -141,7 +147,8 @@ public class Context extends Response {
 		}
 	}
 
-	public class Nextphoto {
+	public class NextPhoto implements Serializable {
+		private static final long serialVersionUID = 179339426853292258L;
 		@SerializedName("id")
 		private String photoId;
 		private String owner;
@@ -196,8 +203,8 @@ public class Context extends Response {
 			return media;
 		}
 
-		public boolean getIsFaved() {
-			return isFaved != null && isFaved == 1;
+		public boolean isFaved() {
+			return JinxUtils.flickrBooleanToBoolean(isFaved);
 		}
 
 		@Override

@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.photos;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 
 import java.io.Serializable;
 
@@ -75,6 +76,8 @@ public class Photo implements Serializable {
 	private String originalSecret;
 	@SerializedName("originalformat")
 	private String originalFormat;
+	@SerializedName("date_faved")
+	private String dateFaved;
 	private Double latitude;
 	private Double longitude;
 	private Integer accuracy;
@@ -203,15 +206,15 @@ public class Photo implements Serializable {
 	}
 
 	public boolean isPublic() {
-		return isPublic != null && isPublic == 1;
+		return JinxUtils.flickrBooleanToBoolean(isPublic);
 	}
 
 	public boolean isFriend() {
-		return isFriend != null && isFriend == 1;
+		return JinxUtils.flickrBooleanToBoolean(isFriend);
 	}
 
 	public boolean isFamily() {
-		return isFamily != null && isFamily == 1;
+		return JinxUtils.flickrBooleanToBoolean(isFamily);
 	}
 
 	public Integer getLicense() {
@@ -277,6 +280,8 @@ public class Photo implements Serializable {
 	public String getOriginalFormat() {
 		return originalFormat;
 	}
+
+	public String getDateFaved() { return dateFaved; };
 
 	public Double getLatitude() {
 		return latitude;
@@ -439,19 +444,19 @@ public class Photo implements Serializable {
 	}
 
 	public boolean isGeoIsFamily() {
-		return geoIsFamily != null && geoIsFamily == 1;
+		return JinxUtils.flickrBooleanToBoolean(geoIsFamily);
 	}
 
 	public boolean isGeoIsFriend() {
-		return geoIsFriend != null && geoIsFriend == 1;
+		return JinxUtils.flickrBooleanToBoolean(geoIsFriend);
 	}
 
 	public boolean isGeoIsContact() {
-		return geoIsContact != null && geoIsContact == 1;
+		return JinxUtils.flickrBooleanToBoolean(geoIsContact);
 	}
 
 	public boolean isGeoIsPublic() {
-		return geoIsPublic != null && geoIsPublic == 1;
+		return JinxUtils.flickrBooleanToBoolean(geoIsPublic);
 	}
 
 	private class DescriptionClass {
@@ -490,6 +495,7 @@ public class Photo implements Serializable {
 		sb.append(" | machineTags='").append(machineTags).append('\'');
 		sb.append(" | originalSecret='").append(originalSecret).append('\'');
 		sb.append(" | originalFormat='").append(originalFormat).append('\'');
+		sb.append(" | dateFaved='").append(dateFaved).append('\'');
 		sb.append(" | latitude=").append(latitude);
 		sb.append(" | longitude=").append(longitude);
 		sb.append(" | accuracy=").append(accuracy);

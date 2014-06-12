@@ -1,0 +1,89 @@
+{ "contacts": {
+    "page": 1,
+    "pages": "219",
+    "per_page": 10,
+    "perpage": 10,
+    "total": "2185",
+    "contact": [
+        {
+            "nsid": "34350870@N03",
+            "username": "- POD -",
+            "iconserver": "3706",
+            "iconfarm": 4,
+            "ignored": 0,
+            "rev_ignored": 0
+        },
+        {
+            "nsid": "10129869@N04",
+            "username": "- Shiphattey -",
+            "iconserver": "2869",
+            "iconfarm": 3,
+            "ignored": 0,
+            "rev_ignored": 0
+        },
+        {
+            "nsid": "27753684@N00",
+            "username": "_ Night Flier _",
+            "iconserver": "142",
+            "iconfarm": 1,
+            "ignored": 0,
+            "rev_ignored": 0
+        },
+        {
+            "nsid": "87709904@N00",
+            "username": "_Bonnie_",
+            "iconserver": "3800",
+            "iconfarm": 4,
+            "ignored": 0,
+            "rev_ignored": 0
+        },
+        {
+            "nsid": "37837114@N00",
+            "username": "_gem_",
+            "iconserver": "5499",
+            "iconfarm": 6,
+            "ignored": 0,
+            "rev_ignored": 0
+        },
+        {
+            "nsid": "68435162@N00",
+            "username": "_J0nI_",
+            "iconserver": "2364",
+            "iconfarm": 3,
+            "ignored": 0,
+            "rev_ignored": 0
+        },
+        {
+            "nsid": "91233404@N03",
+            "username": "_littledarling_",
+            "iconserver": "8482",
+            "iconfarm": 9,
+            "ignored": 0,
+            "rev_ignored": 0
+        },
+        {
+            "nsid": "60045418@N00",
+            "username": "_rebekka",
+            "iconserver": "2869",
+            "iconfarm": 3,
+            "ignored": 0,
+            "rev_ignored": 0
+        },
+        {
+            "nsid": "89523444@N00",
+            "username": "_squire_",
+            "iconserver": "128",
+            "iconfarm": 1,
+            "ignored": 0,
+            "rev_ignored": 0
+        },
+        {
+            "nsid": "60566888@N00",
+            "username": "KeithMokris",
+            "iconserver": "2859",
+            "iconfarm": 3,
+            "ignored": 0,
+            "rev_ignored": 0
+        }
+    ]
+}, "stat": "ok" }

@@ -1,0 +1,38 @@
+{ "contacts": {
+    "page": 1,
+    "pages": 1,
+    "perpage": 6,
+    "total": 3,
+    "contact": [
+        {
+            "nsid": "40962351@N00",
+            "username": "lomokev",
+            "iconserver": "8556",
+            "iconfarm": 9,
+            "realname": "Kevin Meredith",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "lomokev"
+        },
+        {
+            "nsid": "85853333@N00",
+            "username": "Jeremy Brooks",
+            "iconserver": "5332",
+            "iconfarm": 6,
+            "realname": "Jeremy Brooks",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "jeremybrooks"
+        },
+        {
+            "nsid": "124857539@N03",
+            "username": "jinxlib",
+            "iconserver": "5538",
+            "iconfarm": 6,
+            "realname": "Jinx Library",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "jinxlib"
+        }
+    ]
+}, "stat": "ok" }

@@ -185,8 +185,8 @@ public class PhotosApiTest {
 		assertNotNull(context);
 		assertEquals("ok", context.getStat());
 		assertEquals(0, context.getCode());
-		assertNotNull(context.getNextphoto());
-		assertNotNull(context.getPrevphoto());
+		assertNotNull(context.getNextPhoto());
+		assertNotNull(context.getPrevPhoto());
 	}
 
 	@Test

@@ -1,0 +1,61 @@
+{ "contacts": {
+    "page": 1,
+    "pages": 1,
+    "per_page": "1000",
+    "perpage": "1000",
+    "total": 4,
+    "contact": [
+        {
+            "nsid": "38039613@N08",
+            "username": "dovetaildw",
+            "iconserver": "3557",
+            "iconfarm": 4,
+            "ignored": 0,
+            "rev_ignored": 0,
+            "realname": "Dave Williams",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "",
+            "location": "Northborough, MA"
+        },
+        {
+            "nsid": "85853333@N00",
+            "username": "Jeremy Brooks",
+            "iconserver": "5332",
+            "iconfarm": 6,
+            "ignored": 0,
+            "rev_ignored": 0,
+            "realname": "Jeremy Brooks",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "jeremybrooks",
+            "location": ""
+        },
+        {
+            "nsid": "40962351@N00",
+            "username": "lomokev",
+            "iconserver": "8556",
+            "iconfarm": 9,
+            "ignored": 0,
+            "rev_ignored": 0,
+            "realname": "Kevin Meredith",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "lomokev",
+            "location": "Brighton, England"
+        },
+        {
+            "nsid": "42961457@N04",
+            "username": "Troy Holden",
+            "iconserver": "3833",
+            "iconfarm": 4,
+            "ignored": 0,
+            "rev_ignored": 0,
+            "realname": "Troy Holden",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "troyholden",
+            "location": "San Francisco"
+        }
+    ]
+}, "stat": "ok" }

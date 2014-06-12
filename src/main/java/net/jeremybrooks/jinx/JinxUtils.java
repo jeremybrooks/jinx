@@ -240,6 +240,19 @@ public class JinxUtils {
 		return collection == null || collection.size() == 0;
 	}
 
+
+	/**
+	 * Convert Flickr true/false to boolean.
+	 *
+	 * A value of "1" is true, anything else, including null, is false.
+	 *
+	 * @param value the true/false value from Flickr.
+	 * @return corresponding boolean value.
+	 */
+	public static boolean flickrBooleanToBoolean(Integer value) {
+		return value != null && value == 1;
+	}
+
 	/**
 	 * Convert a collection into a comma delimited String.
 	 *

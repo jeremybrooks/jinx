@@ -110,8 +110,8 @@ public class PhotosetsApiTest {
 		photosetsApi.addPhoto(createdPhotosetId, photo2);
 		photosetsApi.addPhoto(createdPhotosetId, photo3);
 		Context context = photosetsApi.getContext(photo1, createdPhotosetId);
-		assertEquals(photo0, context.getPrevphoto().getPhotoId());
-		assertEquals(photo2, context.getNextphoto().getPhotoId());
+		assertEquals(photo0, context.getPrevPhoto().getPhotoId());
+		assertEquals(photo2, context.getNextPhoto().getPhotoId());
 
 
 		/* testEditPhotos() */
@@ -125,8 +125,8 @@ public class PhotosetsApiTest {
 		photos.add(photo3);
 		photosetsApi.editPhotos(createdPhotosetId, photo5, photos);
 		context = photosetsApi.getContext(photo5, createdPhotosetId);
-		assertEquals(photo4, context.getPrevphoto().getPhotoId());
-		assertEquals(photo6, context.getNextphoto().getPhotoId());
+		assertEquals(photo4, context.getPrevPhoto().getPhotoId());
+		assertEquals(photo6, context.getNextPhoto().getPhotoId());
 
 
 		/* testReorderPhotos() */

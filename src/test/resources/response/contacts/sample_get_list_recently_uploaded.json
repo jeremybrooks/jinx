@@ -1,0 +1,181 @@
+{ "contacts": {
+    "total": 16,
+    "contact": [
+        {
+            "nsid": "51035555243@N01",
+            "username": "Thomas Hawk",
+            "iconserver": "7370",
+            "iconfarm": 8,
+            "realname": "Thomas Hawk",
+            "friend": 1,
+            "family": 0,
+            "path_alias": "thomashawk",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "42328548@N00",
+            "username": "SF EYES",
+            "iconserver": "113",
+            "iconfarm": 1,
+            "realname": "Robert  Ogilvie",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "robertogilvie",
+            "photos_uploaded": 4
+        },
+        {
+            "nsid": "13657920@N04",
+            "username": "just.julie",
+            "iconserver": "3759",
+            "iconfarm": 4,
+            "realname": "jj",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "julieharnagephotography",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "80081080@N00",
+            "username": "BenSpark",
+            "iconserver": 31,
+            "iconfarm": 1,
+            "realname": "Drew Bennett",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "abennett96",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "30265340@N00",
+            "username": "yewenyi",
+            "iconserver": 32,
+            "iconfarm": 1,
+            "realname": "Brian Yap (葉)",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "yewenyi",
+            "photos_uploaded": 2
+        },
+        {
+            "nsid": "75493411@N00",
+            "username": "smoothdude",
+            "iconserver": "5538",
+            "iconfarm": 6,
+            "realname": "Daniel Krieger",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "smoothdude",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "49014237@N00",
+            "username": "dsevilla",
+            "iconserver": "5198",
+            "iconfarm": 6,
+            "realname": "Diego Sevilla Ruiz",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "dsevilla",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "61932398@N00",
+            "username": "Bo47",
+            "iconserver": 38,
+            "iconfarm": 1,
+            "realname": "Bo Nielsen",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "bo47",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "33045002@N05",
+            "username": "Josh Haftel",
+            "iconserver": "7238",
+            "iconfarm": 8,
+            "realname": "Josh Haftel",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "joshhaftel",
+            "photos_uploaded": 2
+        },
+        {
+            "nsid": "38181284@N06",
+            "username": "vulture labs",
+            "iconserver": "2561",
+            "iconfarm": 3,
+            "realname": "Vulture Labs",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "49941487@N05",
+            "username": "skipmoore",
+            "iconserver": "2892",
+            "iconfarm": 3,
+            "realname": "Skip Moore",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "skipmoore",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "26832636@N00",
+            "username": "dineanddish",
+            "iconserver": "5488",
+            "iconfarm": 6,
+            "realname": "Kristen",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "dineanddish",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "12303751@N00",
+            "username": "m. wriston",
+            "iconserver": "5497",
+            "iconfarm": 6,
+            "realname": "M. Wriston",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "boyghost",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "7289381@N02",
+            "username": "Sir Cam",
+            "iconserver": "7308",
+            "iconfarm": 8,
+            "realname": "Sir Cam",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "camdiary",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "18343779@N00",
+            "username": "RevellRay",
+            "iconserver": "3679",
+            "iconfarm": 4,
+            "realname": "chuck revell",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "",
+            "photos_uploaded": 1
+        },
+        {
+            "nsid": "8170640@N05",
+            "username": "jnoriko",
+            "iconserver": "5512",
+            "iconfarm": 6,
+            "realname": "Jill",
+            "friend": 0,
+            "family": 0,
+            "path_alias": "jnoriko",
+            "photos_uploaded": 1
+        }
+    ]
+}, "stat": "ok" }
