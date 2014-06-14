@@ -57,6 +57,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.addTags.html">flickr.photos.addTags</a>
+	 *
 	 * Add tags to a photo.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -91,6 +93,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.delete.html">flickr.photos.delete</a>
+	 *
 	 * Delete a photo from flickr.
 	 * <p/>
 	 * This method requires authentication with 'delete' permission.
@@ -109,6 +113,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getAllContexts.html">flickr.photos.getAllContexts</a>
+	 *
 	 * Returns all visible sets and pools the photo belongs to.
 	 * <p/>
 	 * This method does not require authentication.
@@ -127,6 +133,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getContactsPhotos.html">flickr.photos.getContactsPhotos</a>
+	 *
 	 * Fetch a list of recent photos from the calling users' contacts.
 	 * <p/>
 	 * This method requires authentication with 'read' permission.
@@ -163,6 +171,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getContactsPublicPhotos.html">flickr.photos.getContactsPublicPhotos</a>
+	 *
 	 * Fetch a list of recent public photos from a users' contacts.
 	 * <p/>
 	 * This method does not require authentication.
@@ -205,6 +215,8 @@ public class PhotosApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getContext.html">flickr.photos.getContext</a>
+	 *
 	 * Returns next and previous photos for a photo in a photostream.
 	 * <p/>
 	 * This method does not require authentication.
@@ -222,6 +234,8 @@ public class PhotosApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getCounts.html">flickr.photos.getCounts</a>
+	 *
 	 * Gets a list of photo counts for the given date ranges for the calling user.
 	 * <p/>
 	 * This method requires authentication with 'read' permission.
@@ -256,7 +270,8 @@ public class PhotosApi {
 
 
 	/**
-	 * flickr.photos.getExif
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getExif.html>flickr.photos.getExif</a>
+	 *
 	 * <p/>
 	 * Retrieves a list of EXIF/TIFF/GPS tags for a given photo. The calling user must have permission to view the photo.
 	 * <p/>
@@ -281,6 +296,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getFavorites.html">flickr.photos.getFavorites</a>
+	 *
 	 * Returns the list of people who have favorited a given photo.
 	 * <p/>
 	 * This method does not require authentication.
@@ -307,6 +324,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getInfo.html">flickr.photos.getInfo</a>
+	 *
 	 * Get information about a photo. The calling user must have permission to view the photo.
 	 * <p/>
 	 * This method does not require authentication.
@@ -330,6 +349,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getNotInSet.html">flickr.photos.getNotInSet</a>
+	 *
 	 * Returns a list of your photos that are not part of any sets.
 	 * <p/>
 	 * This method requires authentication with 'read' permission.
@@ -384,6 +405,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getPerms.html">flickr.photos.getPerms</a>
+	 *
 	 * Get permissions for a photo.
 	 * <p/>
 	 * This method requires authentication with 'read' permission.
@@ -402,6 +425,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getRecent.html">flickr.photos.getRecent</a>
+	 *
 	 * Returns a list of the latest public photos uploaded to flickr.
 	 * <p/>
 	 * This method does not require authentication.
@@ -429,6 +454,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getSizes.html">flickr.photos.getSizes</a>
+	 *
 	 * Returns the available sizes for a photo. The calling user must have permission to view the photo.
 	 * <p/>
 	 * This method does not require authentication.
@@ -447,6 +474,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getUntagged.html">flickr.photos.getUntagged</a>
+	 *
 	 * Returns a list of your photos with no tags.
 	 * <p/>
 	 * This method requires authentication with 'read' permission.
@@ -501,6 +530,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getWithGeoData.html">flickr.photos.getWithGeoData</a>
+	 *
 	 * Returns a list of your geo-tagged photos.
 	 * <p/>
 	 * This method requires authentication with 'read' permission.
@@ -558,6 +589,8 @@ public class PhotosApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.getWithoutGeoData.html">flickr.photos.getWithoutGeoData</a>
+	 *
 	 * Returns a list of your photos which haven't been geo-tagged.
 	 * <p/>
 	 * This method requires authentication with 'read' permission.
@@ -616,6 +649,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.recentlyUpdated.html">flickr.photos.recentlyUpdated</a>
+	 *
 	 * Return a list of your photos that have been recently created or which have been recently modified.
 	 * <p/>
 	 * Recently modified may mean that the photo's metadata (title, description, tags) may have been changed or a comment has been added (or just modified somehow :-)
@@ -650,6 +685,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.removeTag.html">flickr.photos.removeTag</a>
+	 *
 	 * Remove a tag from a photo.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -672,6 +709,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.search.html">flickr.photos.search</a>
+	 *
 	 * Return a list of photos matching some criteria.
 	 * <p/>
 	 * Only photos visible to the calling user will be returned. To return private or semi-private photos, the caller
@@ -830,6 +869,8 @@ public class PhotosApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.setContentType.html">flickr.photos.setContentType</a>
+	 *
 	 * Set the content type of a photo.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -849,6 +890,8 @@ public class PhotosApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.setDates.html">flickr.photos.setDates</a>
+	 *
 	 * Set one or both of the dates for a photo.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -889,6 +932,8 @@ public class PhotosApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.setMeta.html">flickr.photos.setMeta</a>
+	 *
 	 * Set the meta information for a photo.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -910,6 +955,8 @@ public class PhotosApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.setPerms.html">flickr.photos.setPerms</a>
+	 *
 	 * Set permissions for a photo.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -939,6 +986,8 @@ public class PhotosApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.setSafetyLevel.html">flickr.photos.setSafetyLevel</a>
+	 *
 	 * Set the safety level of a photo.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -962,6 +1011,8 @@ public class PhotosApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photos.setTags.html">flickr.photos.setTags</a>
+	 *
 	 * Set the tags for a photo.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.

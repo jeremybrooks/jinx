@@ -95,8 +95,8 @@ public class PhotoInfo extends Response {
 
 	public List<Tag> getTags() {return (photo == null || photo.tags == null) ? null : photo.tags.tag;}
 
-	public Double getLatitude() {return (photo == null || photo.location == null) ? null : photo.location.latitude;}
-	public Double getLongitude() {return (photo == null || photo.location == null) ? null : photo.location.longitude;}
+	public Float getLatitude() {return (photo == null || photo.location == null) ? null : photo.location.latitude;}
+	public Float getLongitude() {return (photo == null || photo.location == null) ? null : photo.location.longitude;}
 	public Integer getAccuracy() {return (photo == null || photo.location == null) ? null : photo.location.accuracy;}
 	public Integer getContext() {return (photo == null || photo.location == null) ? null : photo.location.context;}
 	public String getPlaceId() {return (photo == null || photo.location == null) ? null : photo.location.place_id;}
@@ -316,8 +316,8 @@ public class PhotoInfo extends Response {
 	}
 
 	private class _Location implements Serializable {
-		private Double latitude;
-		private Double longitude;
+		private Float latitude;
+		private Float longitude;
 		private Integer accuracy;
 		private Integer context;
 		private String place_id;

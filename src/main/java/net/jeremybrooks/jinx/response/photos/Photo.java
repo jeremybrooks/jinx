@@ -45,7 +45,7 @@ public class Photo implements Serializable {
 	private Integer isFamily;
 
 	private Integer license;
-	private DescriptionClass description;
+	private _DescriptionClass description;
 
 	@SerializedName("o_width")
 	private String oWidth;
@@ -78,8 +78,8 @@ public class Photo implements Serializable {
 	private String originalFormat;
 	@SerializedName("date_faved")
 	private String dateFaved;
-	private Double latitude;
-	private Double longitude;
+	private Float latitude;
+	private Float longitude;
 	private Integer accuracy;
 	private Integer context;
 	@SerializedName("place_id")
@@ -205,15 +205,15 @@ public class Photo implements Serializable {
 		return title;
 	}
 
-	public boolean isPublic() {
+	public Boolean isPublic() {
 		return JinxUtils.flickrBooleanToBoolean(isPublic);
 	}
 
-	public boolean isFriend() {
+	public Boolean isFriend() {
 		return JinxUtils.flickrBooleanToBoolean(isFriend);
 	}
 
-	public boolean isFamily() {
+	public Boolean isFamily() {
 		return JinxUtils.flickrBooleanToBoolean(isFamily);
 	}
 
@@ -283,11 +283,11 @@ public class Photo implements Serializable {
 
 	public String getDateFaved() { return dateFaved; };
 
-	public Double getLatitude() {
+	public Float getLatitude() {
 		return latitude;
 	}
 
-	public Double getLongitude() {
+	public Float getLongitude() {
 		return longitude;
 	}
 
@@ -439,27 +439,28 @@ public class Photo implements Serializable {
 		return pathAlias;
 	}
 
-	public boolean isPrimary() {
-		return primary != null && primary == 1;
+	public Boolean isPrimary() {
+		return JinxUtils.flickrBooleanToBoolean(primary);
 	}
 
-	public boolean isGeoIsFamily() {
+	public Boolean isGeoIsFamily() {
 		return JinxUtils.flickrBooleanToBoolean(geoIsFamily);
 	}
 
-	public boolean isGeoIsFriend() {
+	public Boolean isGeoIsFriend() {
 		return JinxUtils.flickrBooleanToBoolean(geoIsFriend);
 	}
 
-	public boolean isGeoIsContact() {
+	public Boolean isGeoIsContact() {
 		return JinxUtils.flickrBooleanToBoolean(geoIsContact);
 	}
 
-	public boolean isGeoIsPublic() {
+	public Boolean isGeoIsPublic() {
 		return JinxUtils.flickrBooleanToBoolean(geoIsPublic);
 	}
 
-	private class DescriptionClass {
+	private class _DescriptionClass implements Serializable {
+		private static final long serialVersionUID = 8223398980226083052L;
 		@SerializedName("_content")
 		private String description;
 	}

@@ -10,6 +10,15 @@ You can find an example of how to use the Jinx library here: <https://github.com
 
 There is an older version of Jinx, build 20110503, found here: <http://jeremybrooks.net/jinx/>. Version 0.6.0 and higher are a major rewrite of Jinx. They will not be compatible with old builds available on jeremybrooks.net.
 
+## Notes About Jinx
+
+### Objects vs Primitives
+The Flickr API does not return all possible data for every API call. The returned values often depend on what parameters were passed in. In general, Jinx will return null to indicate that there 
+
+The Flickr API returns boolean values as 1 or 0. Jinx will translate these to the Java Boolean type. The object Boolean is used rather than the primitive boolean so that a value of "not returned" can be represented.
+For example, the Photos object can return information about who can see geotag data. However, this is considered extra data, and is not returned unless you specifically ask for it. If you did not ask for the data, Flickr will not return the data, and Jinx will return null when you call a method that returns the data.
+
+
 # REQUIREMENTS
 You must be using Java 1.6 or higher.
 
@@ -141,6 +150,18 @@ Rather than make the user remember which object the perms value is found in, the
 
 Generally, response objects are read only. They will have getters, but not setters. The Gson library is used to deserialize json documents into Java objects, and operates on the fields directly.
 
+## Coding Conventions
+
+This project attempts to follow the Sun (now Oracle) [Java coding conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html).
+
+Since this library uses Gson to deserialize JSON documents into Java classes, the Java classes contain a lot of inner classes. This can be confusing at first glance. The classes in the package net.jeremybrooks.jinx.response should follow these guidelines:
+
+ * All classes should implement java.io.Serializable, including inner classes
+ * Private inner classes should be named with a beginning underscore
+ * Objects should be returned as opposed to primitives; null should be returned when the data was not provided by Flickr
+ * Getter methods should be careful to avoid null pointers when returning values, especially when returning values from inner classes
+ * In general, these classes will have getters but not setters
+
 
 # LICENSE
 Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
@@ -159,8 +180,5 @@ You should have received a copy of the GNU General Public License
 along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
 
 # TODO
- * Return boolean instead of Boolean
- * Return float instead of Double?
- * Check that all classes in response package implement Serializable
- * Ensure that all api methods have a link to Flickr documentation
  * Enable/disable logging of requests and responses
+

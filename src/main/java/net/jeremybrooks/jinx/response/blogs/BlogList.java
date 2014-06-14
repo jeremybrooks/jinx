@@ -18,8 +18,10 @@
 package net.jeremybrooks.jinx.response.blogs;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -29,7 +31,7 @@ import java.util.List;
  */
 public class BlogList extends Response {
 	private static final long serialVersionUID = -3559245797002820510L;
-	private Blogs blogs;
+	private _Blogs blogs;
 
 	/**
 	 * Get the list of blogs.
@@ -56,11 +58,13 @@ public class BlogList extends Response {
 
 
 
-	private class Blogs {
+	private class _Blogs implements Serializable {
+		private static final long serialVersionUID = -7237564663251703852L;
 		private List<Blog> blog;
 	}
 
-	public class Blog {
+	public class Blog implements Serializable {
+		private static final long serialVersionUID = -898285969764745893L;
 		private String id;
 		private String name;
 		private String service;
@@ -108,8 +112,8 @@ public class BlogList extends Response {
 		 *
 		 * @return true if postPhoto requires a password to be sent, false if Flickr has a password stored.
 		 */
-		public boolean isNeedsPassword() {
-			return needsPassword == 1;
+		public Boolean isNeedsPassword() {
+			return JinxUtils.flickrBooleanToBoolean(needsPassword);
 		}
 
 		@Override

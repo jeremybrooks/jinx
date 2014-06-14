@@ -39,6 +39,8 @@ public class PhotosetsCommentsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.addComment.html">flickr.photosets.comments.addComment</a>
+	 *
 	 * Add a comment to a photoset.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -59,6 +61,8 @@ public class PhotosetsCommentsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.deleteComment.html">flickr.photosets.comments.deleteComment</a>
+	 *
 	 * Delete a photoset comment as the currently authenticated user.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -77,6 +81,8 @@ public class PhotosetsCommentsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.editComment.html">flickr.photosets.comments.editComment</a>
+	 *
 	 * Edit the text of a comment as the currently authenticated user.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -97,6 +103,8 @@ public class PhotosetsCommentsApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.getList.html">flickr.photosets.comments.getList</a>
+	 *
 	 * Returns the comments for a photoset.
 	 *
 	 * @param photosetId id of the photoset to fetch comments for.

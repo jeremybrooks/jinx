@@ -56,10 +56,9 @@ import static junit.framework.Assert.assertTrue;
  */
 public class PhotosApiTest {
 	private static PhotosApi photosApi;
-//	private static List<Tag> tagList;
 	private static String photoId = "14276354684";
 	private static String deletePhotoId = null; // set this to run the delete photo test
-	private static String userId = "85853333@N00";
+	private static String userId = "124857539@N03";
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {

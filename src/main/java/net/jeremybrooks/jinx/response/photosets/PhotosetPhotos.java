@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.photos.Photo;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ import java.util.List;
 public class PhotosetPhotos extends Response {
 
 	@SerializedName("photoset")
-	private PhotosetMetadata photoset;
+	private _PhotosetMetadata photoset;
 
 	public String getPhotosetId() {
 		return photoset == null ? null : photoset.photosetId;
@@ -65,7 +66,8 @@ public class PhotosetPhotos extends Response {
 
 	public List<Photo> getPhotoList() { return photoset == null ? null : photoset.photoList; }
 
-	private class PhotosetMetadata {
+	private class _PhotosetMetadata implements Serializable {
+		private static final long serialVersionUID = 3447953142745693617L;
 		@SerializedName("id")
 		private String photosetId;
 		private String primary;

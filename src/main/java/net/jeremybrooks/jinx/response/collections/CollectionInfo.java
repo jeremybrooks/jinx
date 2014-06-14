@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.collections;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
 
 import java.io.Serializable;
@@ -32,37 +33,47 @@ public class CollectionInfo extends Response {
 	private static final long serialVersionUID = 8604729523042617746L;
 
 	private _Collection collection;
-	public String getCollectionId() {
-				return collection == null ? null : collection.collectionId;
-			}
 
-			public String getTitle() {
-				return collection == null ? null : collection.getTitle();
-			}
-			public String getDescription() {
-				return collection == null ? null : collection.getDescription();
-			}
-			public Integer getChildCount() {
-				return collection == null ? null : collection.child_count;
-			}
-			public String getDateCreate() {
-				return collection == null ? null : collection.datecreate;
-			}
-			public String getIconLarge() {
-				return collection == null ? null : collection.iconlarge;
-			}
-			public String getIconSmall() {
-				return collection == null ? null : collection.iconsmall;
-			}
-			public String getServer() {
-				return collection == null ? null : collection.server;
-			}
-			public String getSecret() {
-				return collection == null ? null : collection.secret;
-			}
-			public List<IconPhoto> getIconPhotoList() {
-				return collection == null ? null : collection.getIconPhotoList();
-			}
+	public String getCollectionId() {
+		return collection == null ? null : collection.collectionId;
+	}
+
+	public String getTitle() {
+		return collection == null ? null : collection.getTitle();
+	}
+
+	public String getDescription() {
+		return collection == null ? null : collection.getDescription();
+	}
+
+	public Integer getChildCount() {
+		return collection == null ? null : collection.child_count;
+	}
+
+	public String getDateCreate() {
+		return collection == null ? null : collection.datecreate;
+	}
+
+	public String getIconLarge() {
+		return collection == null ? null : collection.iconlarge;
+	}
+
+	public String getIconSmall() {
+		return collection == null ? null : collection.iconsmall;
+	}
+
+	public String getServer() {
+		return collection == null ? null : collection.server;
+	}
+
+	public String getSecret() {
+		return collection == null ? null : collection.secret;
+	}
+
+	public List<IconPhoto> getIconPhotoList() {
+		return collection == null ? null : collection.getIconPhotoList();
+	}
+
 	private class _Collection implements Serializable {
 		private static final long serialVersionUID = -2561638069804054888L;
 		@SerializedName("id")
@@ -80,9 +91,11 @@ public class CollectionInfo extends Response {
 		String getTitle() {
 			return title == null ? null : title._content;
 		}
+
 		String getDescription() {
 			return description == null ? null : description._content;
 		}
+
 		List<IconPhoto> getIconPhotoList() {
 			return iconphotos == null ? null : iconphotos.iconPhotoList;
 		}
@@ -91,10 +104,12 @@ public class CollectionInfo extends Response {
 			private static final long serialVersionUID = 8146454087470891541L;
 			private String _content;
 		}
+
 		private class _Description implements Serializable {
 			private static final long serialVersionUID = 2992558754343600894L;
 			private String _content;
 		}
+
 		private class _IconPhotos implements Serializable {
 			private static final long serialVersionUID = 1188335218447290550L;
 			@SerializedName("photo")
@@ -102,6 +117,7 @@ public class CollectionInfo extends Response {
 		}
 
 	}
+
 	public class IconPhoto implements Serializable {
 		private static final long serialVersionUID = 1079649382389624280L;
 		@SerializedName("id")
@@ -140,15 +156,15 @@ public class CollectionInfo extends Response {
 		}
 
 		public Boolean isPublic() {
-			return ispublic == null ? null : ispublic == 1;
+			return JinxUtils.flickrBooleanToBoolean(ispublic);
 		}
 
 		public Boolean isFriend() {
-			return isfriend == null ? null : isfriend == 1;
+			return JinxUtils.flickrBooleanToBoolean(isfriend);
 		}
 
 		public Boolean isFamily() {
-			return isfamily == null ? null : isfamily == 1;
+			return JinxUtils.flickrBooleanToBoolean(isfamily);
 		}
 	}
 }

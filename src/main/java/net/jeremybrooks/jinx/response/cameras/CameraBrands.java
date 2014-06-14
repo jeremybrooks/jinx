@@ -20,6 +20,7 @@ package net.jeremybrooks.jinx.response.cameras;
 
 import net.jeremybrooks.jinx.response.Response;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ import java.util.List;
 public class CameraBrands extends Response {
 
 	private static final long serialVersionUID = 7434360333589257680L;
-	private Brands brands;
+	private _Brands brands;
 
 	/**
 	 * Get a list of all the brands of cameras that Flickr knows about.
@@ -55,14 +56,16 @@ public class CameraBrands extends Response {
 	}
 
 
-	private class Brands {
+	private class _Brands implements Serializable {
+		private static final long serialVersionUID = 4908547188546356637L;
 		private List<Brand> brand;
 	}
 
 	/**
 	 * Represents a brand of camera.
 	 */
-	public class Brand {
+	public class Brand implements Serializable {
+		private static final long serialVersionUID = -6969647627745634478L;
 		private String id;
 		private String name;
 

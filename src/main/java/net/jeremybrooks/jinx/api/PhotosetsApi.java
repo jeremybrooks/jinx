@@ -43,6 +43,8 @@ public class PhotosetsApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.addPhoto.html">flickr.photosets.addPhoto</a>
+	 *
 	 * Add a photo to the end of an existing photoset.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -65,6 +67,8 @@ public class PhotosetsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.create.html">flickr.photosets.create</a>
+	 *
 	 * Create a new photoset for the calling user.
 	 * Authentication
 	 * <p/>
@@ -95,6 +99,8 @@ public class PhotosetsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.delete.html">flickr.photosets.delete</a>
+	 *
 	 * Delete a photoset.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -114,6 +120,8 @@ public class PhotosetsApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.editMeta.html">flickr.photosets.editMeta</a>
+	 *
 	 * Modify the meta-data for a photoset.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -139,6 +147,8 @@ public class PhotosetsApi {
 	}
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.editPhotos.html">flickr.photosets.editPhotos</a>
+	 *
 	 * Modify the photos in a photoset. Use this method to add, remove and re-order photos.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -169,6 +179,8 @@ public class PhotosetsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.getContext.html">flickr.photosets.getContext</a>
+	 *
 	 * Returns next and previous photos for a photo in a set.
 	 * <p/>
 	 * This method does not require authentication.
@@ -194,6 +206,8 @@ public class PhotosetsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.getInfo.html">flickr.photosets.getInfo</a>
+	 *
 	 * Gets information about a photoset.
 	 * This method does not require authentication.
 	 *
@@ -211,7 +225,8 @@ public class PhotosetsApi {
 	}
 
 	/**
-	 * flickr.photosets.getList
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.getList.html">flickr.photosets.getList</a>
+	 *
 	 * <p/>
 	 * Returns the photosets belonging to the specified user.
 	 * <p/>
@@ -244,6 +259,8 @@ public class PhotosetsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.getPhotos.html">flickr.photosets.getPhotos</a>
+	 *
 	 * Get the list of photos in a set.
 	 * <p/>
 	 * This method does not require authentication.
@@ -286,6 +303,8 @@ public class PhotosetsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.orderSets.html">flickr.photosets.orderSets</a>
+	 *
 	 * Set the order of photosets for the calling user.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -307,6 +326,8 @@ public class PhotosetsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.removePhoto.html">flickr.photosets.removePhoto</a>
+	 *
 	 * Remove a photo from a photoset.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -329,6 +350,8 @@ public class PhotosetsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.removePhotos.html">flickr.photosets.removePhotos</a>
+	 *
 	 * Remove multiple photos from a photoset.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.
@@ -351,6 +374,8 @@ public class PhotosetsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.reorderPhotos.html">flickr.photosets.reorderPhotos</a>
+	 *
 	 * Reorder photos in an existing photoset.
 	 * This method requires authentication with 'write' permission.
 	 * Note: This method requires an HTTP POST request.
@@ -371,6 +396,8 @@ public class PhotosetsApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.photosets.setPrimaryPhoto.html">flickr.photosets.setPrimaryPhoto</a>
+	 *
 	 * Set photoset primary photo.
 	 * <p/>
 	 * This method requires authentication with 'write' permission.

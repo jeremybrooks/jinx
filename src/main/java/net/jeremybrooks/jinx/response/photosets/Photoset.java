@@ -52,8 +52,8 @@ public class Photoset implements Serializable {
 	private Integer countPhotos;
 	@SerializedName("count_videos")
 	private Integer countVideos;
-	private Title title;
-	private Description description;
+	private _Title title;
+	private _Description description;
 
 	@SerializedName("needs_interstitial")
 	private Integer isNeedsInterstitial;
@@ -190,7 +190,8 @@ public class Photoset implements Serializable {
 		return isVisibilityCanSeeSet != null && isVisibilityCanSeeSet == 1;
 	}
 
-	private class Title {
+	private class _Title implements Serializable {
+		private static final long serialVersionUID = 3730294693223306226L;
 		@SerializedName("_content")
 		private String title;
 
@@ -199,7 +200,8 @@ public class Photoset implements Serializable {
 		}
 	}
 
-	private class Description {
+	private class _Description implements Serializable {
+		private static final long serialVersionUID = 4357122723579074223L;
 		@SerializedName("_content")
 		private String description;
 

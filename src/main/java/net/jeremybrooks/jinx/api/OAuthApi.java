@@ -70,6 +70,8 @@ public class OAuthApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.auth.oauth.checkToken.html">flickr.auth.oauth.checkToken</a>
+	 *
 	 * Returns the credentials attached to an OAuth authentication token.
 	 *
 	 * @param oauthToken the oauth token.
@@ -88,6 +90,8 @@ public class OAuthApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.auth.oauth.getAccessToken.html">flickr.auth.oauth.getAccessToken</a>
+	 *
 	 * Exchange an auth token from the old Authentication API, to an OAuth access token.
 	 * Calling this method will delete the auth token used to make the request.
 	 * <p/>

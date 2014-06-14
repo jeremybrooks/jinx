@@ -39,7 +39,8 @@ public class CamerasApi {
 
 
 	/**
-	 * flickr.cameras.getBrands
+	 * <a href="https://www.flickr.com/services/api/flickr.cameras.getBrands.html">flickr.cameras.getBrands</a>
+	 *
 	 * <p/>
 	 * Returns all the brands of cameras that Flickr knows about.
 	 * Authentication
@@ -57,7 +58,8 @@ public class CamerasApi {
 
 
 	/**
-	 * flickr.cameras.getBrandModels
+	 * <a href="https://www.flickr.com/services/api/flickr.cameras.getBrandModels.html>flickr.cameras.getBrandModels</a>
+	 *
 	 * <p/>
 	 * Retrieve all the models for a given camera brand.
 	 * This method does not require authentication.

@@ -35,7 +35,7 @@ import java.io.Serializable;
  */
 public class Context extends Response {
 	private static final long serialVersionUID = -938218649798494740L;
-	private Count count;
+	private _Count count;
 	private PrevPhoto prevphoto;
 	private NextPhoto nextphoto;
 
@@ -52,7 +52,7 @@ public class Context extends Response {
 	}
 
 
-	private class Count {
+	private class _Count implements Serializable {
 		@SerializedName("_content")
 		private Integer count;
 
@@ -123,7 +123,7 @@ public class Context extends Response {
 			return media;
 		}
 
-		public boolean isFaved() {
+		public Boolean isFaved() {
 			return JinxUtils.flickrBooleanToBoolean(isFaved);
 		}
 
@@ -203,7 +203,7 @@ public class Context extends Response {
 			return media;
 		}
 
-		public boolean isFaved() {
+		public Boolean isFaved() {
 			return JinxUtils.flickrBooleanToBoolean(isFaved);
 		}
 

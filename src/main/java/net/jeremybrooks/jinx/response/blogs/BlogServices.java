@@ -20,6 +20,7 @@ package net.jeremybrooks.jinx.response.blogs;
 import com.google.gson.annotations.SerializedName;
 import net.jeremybrooks.jinx.response.Response;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ import java.util.List;
 public class BlogServices extends Response {
 	private static final long serialVersionUID = 5614928721323005674L;
 
-	private Services services;
+	private _Services services;
 
 
 	/**
@@ -56,7 +57,7 @@ public class BlogServices extends Response {
 	}
 
 
-	private class Services {
+	private class _Services implements Serializable {
 		private List<Service> service;
 	}
 
@@ -64,7 +65,7 @@ public class BlogServices extends Response {
 	 * Represents a blogging service.
 	 * Each service has an ID and a Name.
 	 */
-	public class Service {
+	public class Service implements Serializable {
 		private String id;
 		@SerializedName("_content")
 		private String name;

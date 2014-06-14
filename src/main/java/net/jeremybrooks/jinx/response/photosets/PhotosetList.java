@@ -20,6 +20,7 @@ package net.jeremybrooks.jinx.response.photosets;
 import com.google.gson.annotations.SerializedName;
 import net.jeremybrooks.jinx.response.Response;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -31,7 +32,8 @@ public class PhotosetList extends Response {
 	public Photosets getPhotosets() {return photosets; };
 
 
-	public class Photosets {
+	public class Photosets implements Serializable {
+		private static final long serialVersionUID = -3710302042846416278L;
 		@SerializedName("cancreate")
 		private Integer isCanCreate;
 		private Integer page;

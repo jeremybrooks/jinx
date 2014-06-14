@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.contacts;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
 
 import java.io.Serializable;
@@ -115,11 +116,11 @@ public class Contacts extends Response {
 		}
 
 		public Boolean isIgnored() {
-			return ignored == null ? null : ignored == 1;
+			return JinxUtils.flickrBooleanToBoolean(ignored);
 		}
 
 		public Boolean isRevIgnored() {
-			return revIgnored == null ? null : revIgnored == 1;
+			return JinxUtils.flickrBooleanToBoolean(revIgnored);
 		}
 
 		public String getRealName() {
@@ -127,11 +128,11 @@ public class Contacts extends Response {
 		}
 
 		public Boolean isFriend() {
-			return friend == null ? null : friend == 1;
+			return JinxUtils.flickrBooleanToBoolean(friend);
 		}
 
 		public Boolean isFamily() {
-			return family == null ? null : family == 1;
+			return JinxUtils.flickrBooleanToBoolean(family);
 		}
 
 		public String getPathAlias() {

@@ -242,15 +242,20 @@ public class JinxUtils {
 
 
 	/**
-	 * Convert Flickr true/false to boolean.
+	 * Convert Flickr true/false to Boolean.
 	 *
-	 * A value of "1" is true, anything else, including null, is false.
+	 * A null value will return null. Generally, this means the parameter was not present in the reply from Flickr.
+	 *
+	 * A value of "1" will return {@link java.lang.Boolean#TRUE}. Any other non-null value will return {@link java.lang.Boolean#FALSE}.
 	 *
 	 * @param value the true/false value from Flickr.
-	 * @return corresponding boolean value.
+	 * @return corresponding Boolean value, or null if value was null.
 	 */
-	public static boolean flickrBooleanToBoolean(Integer value) {
-		return value != null && value == 1;
+	public static Boolean flickrBooleanToBoolean(Integer value) {
+		if (value == null) {
+			return null;
+		}
+		return value == 1 ? Boolean.TRUE : Boolean.FALSE;
 	}
 
 	/**

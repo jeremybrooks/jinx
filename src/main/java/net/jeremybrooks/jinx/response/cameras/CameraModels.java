@@ -20,6 +20,7 @@ package net.jeremybrooks.jinx.response.cameras;
 import com.google.gson.annotations.SerializedName;
 import net.jeremybrooks.jinx.response.Response;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ import java.util.List;
  */
 public class CameraModels extends Response {
 	private static final long serialVersionUID = 5336235134861435473L;
-	private Cameras cameras;
+	private _Cameras cameras;
 
 	public String getBrand() {
 		return cameras == null ? null : cameras.brand;
@@ -51,16 +52,18 @@ public class CameraModels extends Response {
 		return sb.toString();
 	}
 
-	private class Cameras {
+	private class _Cameras implements Serializable {
+		private static final long serialVersionUID = 6110608884472691417L;
 		String brand;
 		List<Camera> camera;
 	}
 
-	public class Camera {
+	public class Camera implements Serializable {
+		private static final long serialVersionUID = 3370720188127822663L;
 		private String id;
-		private Name name;
-		private Details details;
-		private Images images;
+		private _Name name;
+		private _Details details;
+		private _Images images;
 
 		public String getId() {
 			return id;
@@ -105,17 +108,19 @@ public class CameraModels extends Response {
 		}
 	}
 
-	private class Name {
+	private class _Name implements Serializable {
+		private static final long serialVersionUID = -8395818191890522521L;
 		@SerializedName("_content")
 		private String content;
 	}
 
-	private class Details {
-		private Megapixels megapixels;
+	private class _Details implements Serializable {
+		private static final long serialVersionUID = -4375235958392485757L;
+		private _Megapixels megapixels;
 		@SerializedName("lcd_screen_size")
-		private LcdScreenSize lcdScreenSize;
+		private _LcdScreenSize lcdScreenSize;
 		@SerializedName("memory_type")
-		private MemoryType memoryType;
+		private _MemoryType memoryType;
 
 		private double getMegapixels() {
 			return megapixels == null ? 0.0 : megapixels.content;
@@ -130,9 +135,10 @@ public class CameraModels extends Response {
 		}
 	}
 
-	private class Images {
-		private Small small;
-		private Large large;
+	private class _Images implements Serializable {
+		private static final long serialVersionUID = -3487997356225262846L;
+		private _Small small;
+		private _Large large;
 
 		private String getSmall() {
 			return small == null ? null : small.content;
@@ -143,27 +149,32 @@ public class CameraModels extends Response {
 		}
 	}
 
-	private class Megapixels {
+	private class _Megapixels implements Serializable {
+		private static final long serialVersionUID = -5094835629273842630L;
 		@SerializedName("_content")
 		private double content;
 	}
 
-	private class LcdScreenSize {
+	private class _LcdScreenSize implements Serializable {
+		private static final long serialVersionUID = -2163124030788373598L;
 		@SerializedName("_content")
 		private double content;
 	}
 
-	private class MemoryType {
+	private class _MemoryType implements Serializable {
+		private static final long serialVersionUID = -6977235775115994046L;
 		@SerializedName("_content")
 		private String content;
 	}
 
-	private class Small {
+	private class _Small implements Serializable {
+		private static final long serialVersionUID = -951231015663898513L;
 		@SerializedName("_content")
 		String content;
 	}
 
-	private class Large {
+	private class _Large implements Serializable {
+		private static final long serialVersionUID = -6767373169949956301L;
 		@SerializedName("_content")
 		String content;
 	}

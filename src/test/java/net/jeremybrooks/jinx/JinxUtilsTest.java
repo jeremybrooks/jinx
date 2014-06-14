@@ -28,9 +28,7 @@ import java.util.List;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.fail;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 public class JinxUtilsTest {
 
@@ -312,17 +310,4 @@ public class JinxUtilsTest {
 		assertNull(JinxUtils.parseTimestampToDate("fjsadkfjka"));
 		assertNull(JinxUtils.parseTimestampToDate(""));
 	}
-
-
-	@Test
-	public void testFlickrBooleanToBoolean() throws Exception {
-		assertTrue(JinxUtils.flickrBooleanToBoolean(1));
-		assertTrue(JinxUtils.flickrBooleanToBoolean(new Integer(1)));
-		assertFalse(JinxUtils.flickrBooleanToBoolean(0));
-		assertFalse(JinxUtils.flickrBooleanToBoolean(12));
-		assertFalse(JinxUtils.flickrBooleanToBoolean(-39384));
-		assertFalse(JinxUtils.flickrBooleanToBoolean(new Integer(0)));
-		assertFalse(JinxUtils.flickrBooleanToBoolean(null));
-	}
-
 }

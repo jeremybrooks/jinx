@@ -20,6 +20,8 @@ package net.jeremybrooks.jinx.response.auth.oauth;
 import com.google.gson.annotations.SerializedName;
 import net.jeremybrooks.jinx.response.Response;
 
+import java.io.Serializable;
+
 /**
  * Used when exchanging a legacy Flickr access token for an OAuth access token.
  * Used internally; users of Jinx will likely not have to worry about this class.
@@ -59,11 +61,12 @@ public class OAuthExchangedToken extends Response {
 	}
 	*/
 
-	private Auth auth;
+	private _Auth auth;
 
-	private class Auth {
+	private class _Auth implements Serializable {
+		private static final long serialVersionUID = 606326088063059832L;
 		@SerializedName("access_token")
-		private AccessToken accessToken;
+		private _AccessToken accessToken;
 
 		String getoAuthToken() {
 			return accessToken == null ? null : accessToken.oauthToken;
@@ -74,7 +77,8 @@ public class OAuthExchangedToken extends Response {
 		}
 	}
 
-	private class AccessToken {
+	private class _AccessToken implements Serializable {
+		private static final long serialVersionUID = 2684080580105495752L;
 		@SerializedName("oauth_token")
 		String oauthToken;
 		@SerializedName("oauth_token_secret")

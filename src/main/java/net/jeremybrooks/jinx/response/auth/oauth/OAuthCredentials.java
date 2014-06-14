@@ -20,6 +20,8 @@ package net.jeremybrooks.jinx.response.auth.oauth;
 import com.google.gson.annotations.SerializedName;
 import net.jeremybrooks.jinx.response.Response;
 
+import java.io.Serializable;
+
 /**
  * Encapsulates OAuth credentials.
  * This is similar to, but not the same as, the OAuthAccessToken class. This class encapsulates returns from the
@@ -81,11 +83,12 @@ public class OAuthCredentials extends Response {
 	    "perms": { "_content": "delete" },
 	    "user": { "nsid": "85853333@N00", "username": "Jeremy Brooks", "fullname": "Jeremy Brooks" } }, "stat": "ok" }
 	 */
-	private OAuth oauth;
-	private class OAuth {
-		private Token token;
-		private Perms perms;
-		private User user;
+	private _OAuth oauth;
+	private class _OAuth implements Serializable {
+		private static final long serialVersionUID = 1376978482294375625L;
+		private _Token token;
+		private _Perms perms;
+		private _User user;
 		String getToken() {
 			return token == null ? null : token.content;
 		}
@@ -102,15 +105,18 @@ public class OAuthCredentials extends Response {
 			return user == null ? null : user.fullname;
 		}
 	}
-	private class Token {
+	private class _Token implements Serializable {
+		private static final long serialVersionUID = 8478737803801795056L;
 		@SerializedName("_content")
 		private String content;
 	}
-	private class Perms {
+	private class _Perms implements Serializable {
+		private static final long serialVersionUID = -4095344956437460683L;
 		@SerializedName("_content")
 		private String content;
 	}
-	private class User {
+	private class _User implements Serializable {
+		private static final long serialVersionUID = -8997502126482256093L;
 		private String nsid;
 		private String username;
 		private String fullname;

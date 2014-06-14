@@ -51,10 +51,10 @@ public class ExifData extends Response {
 
 
 	@SerializedName("photo")
-	private PhotoInfo photo;
+	private _PhotoInfo photo;
 
 
-	private class PhotoInfo implements Serializable {
+	private class _PhotoInfo implements Serializable {
 		private static final long serialVersionUID = -5107803922027598893L;
 		@SerializedName("id")
 		private String photoId;
@@ -65,11 +65,11 @@ public class ExifData extends Response {
 		@SerializedName("exif")
 		private List<Exif> exifList;
 	}
-	private class Raw implements Serializable {
+	private class _Raw implements Serializable {
 		private static final long serialVersionUID = 4863783717672653029L;
 		private String _content;
 	}
-	private class Clean implements Serializable {
+	private class _Clean implements Serializable {
 		private static final long serialVersionUID = -1572246827198673080L;
 		private String _content;
 	}
@@ -82,8 +82,8 @@ public class ExifData extends Response {
 		private Integer tagSpaceId;
 		private String tag;
 		private String label;
-		private Raw raw;
-		private Clean clean;
+		private _Raw raw;
+		private _Clean clean;
 
 		public String getTagSpace() {
 			return tagSpace;

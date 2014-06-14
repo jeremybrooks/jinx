@@ -53,8 +53,8 @@ public class PrimaryPhotoExtras implements Serializable {
 	private String originalSecret;
 	@SerializedName("originalformat")
 	private String originalFormat;
-	private Double latitude;
-	private Double longitude;
+	private Float latitude;
+	private Float longitude;
 	private Integer accuracy;
 	private Integer context;
 	@SerializedName("place_id")
@@ -166,11 +166,11 @@ public class PrimaryPhotoExtras implements Serializable {
 		return originalFormat;
 	}
 
-	public Double getLatitude() {
+	public Float getLatitude() {
 		return latitude;
 	}
 
-	public Double getLongitude() {
+	public Float getLongitude() {
 		return longitude;
 	}
 

@@ -20,6 +20,7 @@ package net.jeremybrooks.jinx.response.photos;
 import com.google.gson.annotations.SerializedName;
 import net.jeremybrooks.jinx.response.Response;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -27,13 +28,14 @@ import java.util.List;
  */
 public class AddTags extends Response {
 
-	private Tags tags;
+	private _Tags tags;
 
 	public List<Tag> getTagList() {
 		return tags==null ? null : tags.tagList;
 	}
 
-	private class Tags {
+	private class _Tags implements Serializable {
+		private static final long serialVersionUID = 3804445990185809390L;
 		@SerializedName("tag")
 		List<Tag> tagList;
 	}

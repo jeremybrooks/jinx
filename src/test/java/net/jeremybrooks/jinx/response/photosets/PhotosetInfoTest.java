@@ -135,8 +135,8 @@ public class PhotosetInfoTest {
 		assertEquals("sign:type=neon", ppe.getMachineTags());
 		assertEquals("e64cd9f5d9", ppe.getOriginalSecret());
 		assertEquals("jpg", ppe.getOriginalFormat());
-		assertEquals(41.248833, ppe.getLatitude());
-		assertEquals(-95.929666, ppe.getLongitude());
+		assertEquals(41.248833F, ppe.getLatitude());
+		assertEquals(-95.929666F, ppe.getLongitude());
 		assertEquals(16, (int) ppe.getAccuracy());
 		assertEquals(0, (int) ppe.getContext());
 		assertEquals("gNIcefxTWrgrNXMkFQ", ppe.getPlaceId());
@@ -210,8 +210,8 @@ public class PhotosetInfoTest {
 		assertEquals("sign:type=neon", photo.getMachineTags());
 		assertEquals("ae304bdb6c", photo.getOriginalSecret());
 		assertEquals("jpg", photo.getOriginalFormat());
-		assertEquals(37.795387, photo.getLatitude());
-		assertEquals(-122.406486, photo.getLongitude());
+		assertEquals(37.795387f, photo.getLatitude());
+		assertEquals(-122.406486f, photo.getLongitude());
 		assertEquals(16, (int)photo.getAccuracy());
 		assertEquals(0, (int)photo.getContext());
 		assertEquals("iIt1rq9TUb1LDiek", photo.getPlaceId());

@@ -37,6 +37,8 @@ public class ActivityApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.activity.userComments.html">flickr.activity.userComments</a>
+	 *
 	 * Returns a list of recent activity on photos commented on by the calling user.
 	 * Do not poll this method more than once an hour.
 	 * <p/>
@@ -76,6 +78,8 @@ public class ActivityApi {
 
 
 	/**
+	 * <a href=https://www.flickr.com/services/api/flickr.activity.userPhotos.html">flickr.activity.userPhotos</a>
+	 *
 	 * Returns a list of recent activity on photos belonging to the calling user.
 	 * Do not poll this method more than once an hour.
 	 * <p/>

@@ -41,6 +41,8 @@ public class BlogApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.blogs.getServices.html">flickr.blogs.getServices</a>
+	 *
 	 * Return a list of Flickr supported blogging services
 	 * <p/>
 	 * This method does not require authentication.
@@ -58,6 +60,8 @@ public class BlogApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.blogs.getList.html">flickr.blogs.getList</a>
+	 *
 	 * Get a list of configured blogs for the calling user.
 	 * <p/>
 	 * This method requires authentication with 'read' permission.
@@ -77,6 +81,8 @@ public class BlogApi {
 
 
 	/**
+	 * <a href="https://www.flickr.com/services/api/flickr.blogs.postPhoto.html">flickr.blogs.postPhoto</a>
+	 *
 	 * Post a photo to a blogging service.
 	 * <p/>
 	 * Authentication
