@@ -19,6 +19,7 @@ package net.jeremybrooks.jinx.response.photosets;
 
 import com.google.gson.Gson;
 import net.jeremybrooks.jinx.response.activity.ActivityResponseTest;
+import net.jeremybrooks.jinx.response.common.PrimaryPhotoExtras;
 import net.jeremybrooks.jinx.response.photos.Photo;
 import org.junit.Test;
 
@@ -130,7 +131,7 @@ public class PhotosetInfoTest {
 		assertEquals("Jeremy Brooks", ppe.getOwnerName());
 		assertEquals("5332", ppe.getIconServer());
 		assertEquals(6, (int) ppe.getIconFarm());
-		assertEquals("1084", ppe.getViews());
+		assertEquals(1084, (int)ppe.getViews());
 		assertEquals("food restaurant nebraska neon day unitedstates meat steak lucky omaha", ppe.getTags());
 		assertEquals("sign:type=neon", ppe.getMachineTags());
 		assertEquals("e64cd9f5d9", ppe.getOriginalSecret());

@@ -166,8 +166,11 @@ public class Photo implements Serializable {
 	private String pathAlias;
 
 
-	@SerializedName("isprimary")
+	@SerializedName("is_primary")
 	private Integer primary;
+	@SerializedName("isprimary")
+	private Integer primaryNoUnderscore;
+
 	@SerializedName("geo_is_family")
 	private Integer geoIsFamily;
 	@SerializedName("geo_is_friend")
@@ -176,6 +179,9 @@ public class Photo implements Serializable {
 	private Integer geoIsContact;
 	@SerializedName("geo_is_public")
 	private Integer geoIsPublic;
+
+	@SerializedName("has_comment")
+	private Integer hasComment;
 
 	public String getPhotoId() {
 		return photoId;
@@ -440,7 +446,14 @@ public class Photo implements Serializable {
 	}
 
 	public Boolean isPrimary() {
-		return JinxUtils.flickrBooleanToBoolean(primary);
+		// some methods return a photo object with "isprimary" and some "is_primary". Handle both.
+		if (primary == null && primaryNoUnderscore == null) {
+			return null;
+		} else if (primary != null) {
+			return JinxUtils.flickrBooleanToBoolean(primary);
+		} else {
+			return JinxUtils.flickrBooleanToBoolean(primaryNoUnderscore);
+		}
 	}
 
 	public Boolean isGeoIsFamily() {
@@ -458,6 +471,8 @@ public class Photo implements Serializable {
 	public Boolean isGeoIsPublic() {
 		return JinxUtils.flickrBooleanToBoolean(geoIsPublic);
 	}
+
+	public Boolean isHasComment() { return JinxUtils.flickrBooleanToBoolean(hasComment); }
 
 	private class _DescriptionClass implements Serializable {
 		private static final long serialVersionUID = 8223398980226083052L;
@@ -537,10 +552,11 @@ public class Photo implements Serializable {
 		sb.append(" | widthO=").append(widthO);
 		sb.append(" | pathAlias='").append(pathAlias).append('\'');
 		sb.append(" | primary=").append(primary);
-		sb.append(" | geoIsFamily=").append(geoIsFamily);
-		sb.append(" | geoIsFriend=").append(geoIsFriend);
-		sb.append(" | geoIsContact=").append(geoIsContact);
-		sb.append(" | geoIsPublic=").append(geoIsPublic);
+		sb.append(" | geoIsFamily=").append(isGeoIsFamily());
+		sb.append(" | geoIsFriend=").append(isGeoIsFriend());
+		sb.append(" | geoIsContact=").append(isGeoIsContact());
+		sb.append(" | geoIsPublic=").append(isGeoIsPublic());
+		sb.append(" | hasComment=").append(isHasComment());
 		sb.append('}');
 		return sb.toString();
 	}

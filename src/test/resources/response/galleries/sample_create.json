@@ -1,0 +1,21 @@
+{ "gallery": {
+    "id": "124834485-72157644749801090",
+    "url": "https:\/\/www.flickr.com\/photos\/jinxlib\/galleries\/72157644749801090",
+    "owner": "124857539@N03",
+    "username": "jinxlib",
+    "iconserver": "5538",
+    "iconfarm": 6,
+    "primary_photo_id": "",
+    "date_create": "1402704503",
+    "date_update": "1402704503",
+    "count_photos": 0,
+    "count_videos": 2,
+    "count_views": 3,
+    "count_comments": 4,
+    "title": {
+        "_content": "Test Gallery"
+    },
+    "description": {
+        "_content": "Just a test."
+    }
+}, "stat": "ok" }

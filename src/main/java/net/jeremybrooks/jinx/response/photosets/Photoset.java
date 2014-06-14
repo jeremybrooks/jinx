@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.photosets;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.response.common.PrimaryPhotoExtras;
 
 import java.io.Serializable;
 

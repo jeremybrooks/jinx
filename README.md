@@ -66,9 +66,9 @@ If a user has no blogs set up, calling the getBlogList() method will throw an Ex
  * commons
  * contacts
  * favorites
+ * galleries
 
 ## Not Yet Implemented
-  * galleries
   * groups
   * groups.members
   * groups.pools

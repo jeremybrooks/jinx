@@ -1,0 +1,93 @@
+{ "galleries": {
+    "total": 2,
+    "page": 1,
+    "pages": 1,
+    "per_page": 100,
+    "user_id": "124857539@N03",
+    "gallery": [
+        {
+            "id": "124834485-72157644749801090",
+            "url": "https:\/\/www.flickr.com\/photos\/jinxlib\/galleries\/72157644749801090",
+            "owner": "124857539@N03",
+            "username": "jinxlib",
+            "iconserver": "5538",
+            "iconfarm": 6,
+            "primary_photo_id": "",
+            "date_create": "1402704503",
+            "date_update": "1402704503",
+            "count_photos": 0,
+            "count_videos": 0,
+            "count_views": 0,
+            "count_comments": 0,
+            "title": {
+                "_content": "Test Gallery"
+            },
+            "description": {
+                "_content": "Just a test."
+            }
+        },
+        {
+            "id": "124834485-72157644721099547",
+            "url": "https:\/\/www.flickr.com\/photos\/jinxlib\/galleries\/72157644721099547",
+            "owner": "124857539@N03",
+            "username": "jinxlib",
+            "iconserver": "5538",
+            "iconfarm": 6,
+            "primary_photo_id": "8413449964",
+            "date_create": "1402548358",
+            "date_update": "1402548730",
+            "count_photos": 13,
+            "count_videos": 0,
+            "count_views": 1,
+            "count_comments": 0,
+            "title": {
+                "_content": "Vintage Chinese Restaurant Neon"
+            },
+            "description": {
+                "_content": "Vintage Chinese restaurant neon signs."
+            },
+            "primary_photo_server": "8473",
+            "primary_photo_farm": 9,
+            "primary_photo_secret": "edd91a1d17",
+            "primary_photo_extras": {
+                "license": 2,
+                "o_width": "5616",
+                "o_height": "3744",
+                "dateupload": "1359088926",
+                "lastupdate": "1401872481",
+                "datetaken": "2012-01-23 12:53:18",
+                "datetakengranularity": 0,
+                "ownername": "Jeremy Brooks",
+                "iconserver": "5332",
+                "iconfarm": 6,
+                "views": "197",
+                "tags": "california usa vintage restaurant neon chinese blogged sancarlos sanmateocounty",
+                "machine_tags": "",
+                "originalsecret": "c46dbb2782",
+                "originalformat": "jpg",
+                "latitude": 0,
+                "longitude": 0,
+                "accuracy": 0,
+                "context": 0,
+                "media": "photo",
+                "media_status": "ready",
+                "url_sq": "https:\/\/farm9.staticflickr.com\/8473\/8413449964_edd91a1d17_s.jpg",
+                "height_sq": 75,
+                "width_sq": 75,
+                "url_t": "https:\/\/farm9.staticflickr.com\/8473\/8413449964_edd91a1d17_t.jpg",
+                "height_t": 67,
+                "width_t": 100,
+                "url_s": "https:\/\/farm9.staticflickr.com\/8473\/8413449964_edd91a1d17_m.jpg",
+                "height_s": "160",
+                "width_s": "240",
+                "url_m": "https:\/\/farm9.staticflickr.com\/8473\/8413449964_edd91a1d17.jpg",
+                "height_m": "333",
+                "width_m": "500",
+                "url_o": "https:\/\/farm9.staticflickr.com\/8473\/8413449964_c46dbb2782_o.jpg",
+                "height_o": "3744",
+                "width_o": "5616",
+                "pathalias": "jeremybrooks"
+            }
+        }
+    ]
+}, "stat": "ok" }

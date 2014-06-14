@@ -15,7 +15,7 @@
  * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.jeremybrooks.jinx.response.photosets;
+package net.jeremybrooks.jinx.response.common;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -45,7 +45,7 @@ public class PrimaryPhotoExtras implements Serializable {
 	private String iconServer;
 	@SerializedName("iconfarm")
 	private Integer iconFarm;
-	private String views;
+	private Integer views;
 	private String tags;
 	@SerializedName("machine_tags")
 	private String machineTags;
@@ -146,7 +146,7 @@ public class PrimaryPhotoExtras implements Serializable {
 		return iconFarm;
 	}
 
-	public String getViews() {
+	public Integer getViews() {
 		return views;
 	}
 
