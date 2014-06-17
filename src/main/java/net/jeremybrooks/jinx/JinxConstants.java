@@ -96,6 +96,12 @@ public class JinxConstants {
 	}
 
 
+	public static enum PhotoSize {
+		SIZE_SMALL_SQUARE, SIZE_THUMBNAIL, SIZE_SMALL, SIZE_MEDIUM, SIZE_MEDIUM_640,
+		SIZE_LARGE, SIZE_ORIGINAL, SIZE_LARGE_SQUARE, SIZE_SMALL_320, SIZE_MEDIUM_800,
+		SIZE_LARGE_1600, SIZE_LARGE_2048
+	}
+
 
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line
