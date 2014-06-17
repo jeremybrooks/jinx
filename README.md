@@ -13,11 +13,13 @@ There is an older version of Jinx, build 20110503, found here: <http://jeremybro
 ## Notes About Jinx
 
 ### Objects vs Primitives
-The Flickr API does not return all possible data for every API call. The returned values often depend on what parameters were passed in. In general, Jinx will return null to indicate that there 
+The Flickr API does not return all possible data for every API call. The returned values often depend on what parameters were passed in. In general, Jinx will return null to indicate that there was no value returned by Flickr. This means your code needs to pay attention to return types like Integer and Boolean, since they can return null.
 
 The Flickr API returns boolean values as 1 or 0. Jinx will translate these to the Java Boolean type. The object Boolean is used rather than the primitive boolean so that a value of "not returned" can be represented.
 For example, the Photos object can return information about who can see geotag data. However, this is considered extra data, and is not returned unless you specifically ask for it. If you did not ask for the data, Flickr will not return the data, and Jinx will return null when you call a method that returns the data.
 
+### Errors
+--todo--
 
 # REQUIREMENTS
 You must be using Java 1.6 or higher.
