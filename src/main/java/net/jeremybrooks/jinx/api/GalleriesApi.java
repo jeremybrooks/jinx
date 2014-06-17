@@ -250,26 +250,23 @@ public class GalleriesApi {
 	 * <p/>
 	 * This method does not require authentication.
 	 * <p/>
+	 * Note: The Flickr documentation includes a per_page and page argument. However, galleries are limited to
+	 * 18 photos, and Flickr ignores the page and per_page parameters. Since they are not actually used, Jinx
+	 * does not support them.
+	 * <p/>
+	 *
 	 * @param galleryId Required. The ID of the gallery of photos to return.
 	 * @param extras    Optional. Extra information to fetch for the primary photo.
-	 * @param perPage   Optional. Number of galleries to return per page. If this argument is <= 0, it defaults to 100. The maximum allowed value is 500.
-	 * @param page      Optional. The page of results to return. If this argument is <= 0, it defaults to 1.
 	 * @return photos in the gallery.
 	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
 	 */
-	public Photos getPhotos(String galleryId, EnumSet<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
+	public Photos getPhotos(String galleryId, EnumSet<JinxConstants.PhotoExtras> extras) throws JinxException {
 		JinxUtils.validateParams(galleryId);
 		Map<String, String> params = new TreeMap<String, String>();
 		params.put("method", "flickr.galleries.getPhotos");
 		params.put("gallery_id", galleryId);
 		if (!JinxUtils.isNullOrEmpty(extras)) {
 			params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
-		}
-		if (perPage > 0) {
-			params.put("per_page", Integer.toString(perPage));
-		}
-		if (page > 0) {
-			params.put("page", Integer.toString(page));
 		}
 		return jinx.flickrGet(params, Photos.class);
 	}

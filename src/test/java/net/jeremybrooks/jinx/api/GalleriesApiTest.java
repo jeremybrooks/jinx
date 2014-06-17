@@ -185,7 +185,6 @@ public class GalleriesApiTest {
 		assertEquals(0, p.getCode());
 		assertNotNull(p.getPhotoList());
 		assertTrue(p.getPhotoList().size() > 0);
-//		assertEquals(10, p.getPhotoList().size()); // TODO: this is broken in the Flickr API. It has been reported. Test again when it's fixed.
 		for (Photo photo : p.getPhotoList()) {
 			assertNotNull(photo.getDateTaken());
 			assertNotNull(photo.getLicense());
