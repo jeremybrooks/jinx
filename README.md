@@ -45,7 +45,7 @@ If you are using Maven, just include this in your pom.xml file
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>0.6.5</version>
+		<version>0.6.8</version>
 	</dependency>
 
 If you are not using Maven, you will need these libraries, and their dependencies:
