@@ -21,7 +21,7 @@
     <groupId>net.jeremybrooks</groupId>
     <artifactId>jinx</artifactId>
     <packaging>jar</packaging>
-    <version>0.6.7</version>
+    <version>0.6.8-SNAPSHOT</version>
 
     <name>Jinx</name>
     <description>A Java library to access the Flickr API.</description>
@@ -44,7 +44,7 @@
         <connection>scm:git:git@github.com:jeremybrooks/jinx.git</connection>
         <developerConnection>scm:git:git@github.com:jeremybrooks/jinx.git</developerConnection>
         <url>git@github.com:jinx/jinx.git</url>
-      <tag>jinx-0.6.7</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <developers>
