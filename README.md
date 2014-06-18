@@ -52,7 +52,7 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 # VERSION HISTORY
 
-## Version 0.6.5 supports the following API's
+## Version 0.6.7 supports the following API's
   * activity
   * blogs (have not really tested the postPhoto method, though)
   * cameras
