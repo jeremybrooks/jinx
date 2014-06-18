@@ -18,6 +18,8 @@
 package net.jeremybrooks.jinx;
 
 import com.google.gson.Gson;
+import net.jeremybrooks.jinx.logger.JinxLogger;
+import net.jeremybrooks.jinx.response.Response;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthConsumer;
 
@@ -89,8 +91,25 @@ import static net.jeremybrooks.jinx.JinxConstants.Method;
  * Jinx jinx = new Jinx(API_KEY, API_SECRET, oAuthToken);
  * </code>
  * </p>
- *
- * @author jeremyb
+ * <p/>
+ * By default, Jinx will check the return code and throw a {@link net.jeremybrooks.jinx.JinxException} if it is non-zero.
+ * If you wish to disable exceptions on non-zero return codes, you can call this method:
+ * <code>
+ * jinx.setFlickrErrorThrowsException(false);
+ * </code>
+ * If you disable this feature, Jinx will still throw a JinxException for other errors, such as network problems or
+ * invalid parameters, but you will have to check returned objects to know if Flickr reported an error.
+ * <p/>
+ * If you wish to see the parameters, request URL's, and responses from Flickr, you can enable verbose logging and
+ * set a JinxLogger:
+ * <code>
+ * JinxLogger.setLogger(new StdoutLogger());
+ * jinx.setVerboseLogging(true);
+ * </code>
+ * The default logger will not do anything, so you must set a logger. You can use the {@link net.jeremybrooks.jinx.logger.StdoutLogger}
+ * to log to stdout, or you can implement your own logger. Loggers must implement the {@link net.jeremybrooks.jinx.logger.LogInterface}
+ * <p/>
+ * * @author jeremyb
  */
 public class Jinx {
 
@@ -110,6 +129,9 @@ public class Jinx {
 
 	private OAuthConsumer consumer;
 
+	private boolean flickrErrorThrowsException;
+
+	private boolean verboseLogging;
 
 	private Jinx() {
 		// Jinx must be created with a key and secret.
@@ -137,7 +159,8 @@ public class Jinx {
 		this.apiKey = apiKey;
 		this.apiSecret = apiSecret;
 		this.oAuthAccessToken = oAuthAccessToken;
-
+		this.flickrErrorThrowsException = true;
+		this.setVerboseLogging(false);
 		this.gson = new Gson();
 
 		this.consumer = new DefaultOAuthConsumer(apiKey, apiSecret);
@@ -272,15 +295,23 @@ public class Jinx {
 
 
 		StringBuilder sb = new StringBuilder();
+		if (verboseLogging) {
+			JinxLogger.getLogger().log("----------PARAMETERS----------");
+		}
 		for (String key : params.keySet()) {
 			try {
-				// TODO: LOGGING
+				if (verboseLogging) {
+					JinxLogger.getLogger().log(String.format("%s=%s", key, params.get(key)));
+				}
 				sb.append(URLEncoder.encode(key, "UTF-8")).append('=').append(URLEncoder.encode(params.get(key), "UTF-8")).append('&');
 			} catch (Exception e) {
 				throw new JinxException("Error encoding.", e);
 			}
 		}
 		sb.deleteCharAt(sb.lastIndexOf("&"));
+		if (verboseLogging) {
+			JinxLogger.getLogger().log("--------END PARAMETERS--------");
+		}
 
 		if (method == Method.POST) {
 //			Map<String, String> encodedParams = new HashMap<String, String>();
@@ -293,7 +324,6 @@ public class Jinx {
 //			}
 			json = this.doPost(JinxConstants.REST_ENDPOINT, sb.toString(), sign);
 		} else if (method == Method.GET) {
-			System.out.println(sb.toString());
 			json = this.doGet(JinxConstants.REST_ENDPOINT, sb.toString(), sign);
 		} else {
 			throw new JinxException("Unsupported method: " + method);
@@ -302,8 +332,16 @@ public class Jinx {
 		if (json == null) {
 			throw new JinxException("Null return from call to Flickr.");
 		}
-		System.out.println(json);
-		return gson.fromJson(json, tClass);
+		if (verboseLogging) {
+			JinxLogger.getLogger().log("RESPONSE is " + json);
+		}
+
+		T fromJson = gson.fromJson(json, tClass);
+		if (this.flickrErrorThrowsException && ((Response) fromJson).getCode() != 0) {
+			Response r = (Response) fromJson;
+			throw new JinxException("Flickr returned non-zero status.", null, r);
+		}
+		return fromJson;
 	}
 
 
@@ -316,8 +354,9 @@ public class Jinx {
 				if (requestParameters != null && requestParameters.length() > 0) {
 					urlStr += "?" + requestParameters;
 				}
-				System.out.println("sendGetRequest URL is " + urlStr);
-//				JinxLogger.getLogger().log("sendGetRequest URL is " + urlStr);
+				if (verboseLogging) {
+					JinxLogger.getLogger().log("GET URL is " + urlStr);
+				}
 
 				URL url = new URL(urlStr);
 				HttpURLConnection request = (HttpURLConnection) url.openConnection();
@@ -371,13 +410,15 @@ public class Jinx {
 ////			}
 
 			String urlStr = endpoint;
-							if (requestParameters != null && requestParameters.length() > 0) {
-								urlStr += "?" + requestParameters;
-							}
-			//					JinxLogger.getLogger().log("sendGetRequest URL is " + urlStr);
+			if (requestParameters != null && requestParameters.length() > 0) {
+				urlStr += "?" + requestParameters;
+			}
+			if (verboseLogging) {
+				JinxLogger.getLogger().log("POST URL is " + urlStr);
+			}
 
-							URL url = new URL(urlStr);
-							HttpURLConnection request = (HttpURLConnection) url.openConnection();
+			URL url = new URL(urlStr);
+			HttpURLConnection request = (HttpURLConnection) url.openConnection();
 
 
 			request.setDoInput(true);
@@ -411,5 +452,21 @@ public class Jinx {
 		}
 
 		return sb.toString();
+	}
+
+	public boolean isFlickrErrorThrowsException() {
+		return flickrErrorThrowsException;
+	}
+
+	public void setFlickrErrorThrowsException(boolean flickrErrorThrowsException) {
+		this.flickrErrorThrowsException = flickrErrorThrowsException;
+	}
+
+	public boolean isVerboseLogging() {
+		return verboseLogging;
+	}
+
+	public void setVerboseLogging(boolean verboseLogging) {
+		this.verboseLogging = verboseLogging;
 	}
 }

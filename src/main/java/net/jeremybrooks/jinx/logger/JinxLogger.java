@@ -30,7 +30,10 @@ public class JinxLogger {
      * @return the logger
      */
     public static LogInterface getLogger() {
-	return logger;
+		if (logger == null) {
+			logger = new DefaultLogger();
+		}
+		return logger;
     }
 
 

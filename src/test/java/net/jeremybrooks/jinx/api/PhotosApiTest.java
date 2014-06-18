@@ -58,7 +58,7 @@ public class PhotosApiTest {
 	private static PhotosApi photosApi;
 	private static String photoId = "14276354684";
 	private static String deletePhotoId = null; // set this to run the delete photo test
-	private static String userId = "124857539@N03";
+	private static String userId = "124857539@N03";    // jinxlib
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
@@ -77,6 +77,7 @@ public class PhotosApiTest {
 
 	/**
 	 * Tests for add and remove tags are in a single method to ensure the correct order of execution.
+	 *
 	 * @throws Exception
 	 */
 	@Test
@@ -89,7 +90,7 @@ public class PhotosApiTest {
 		assertEquals("ok", tags.getStat());
 		assertEquals(0, tags.getCode());
 		assertNotNull(tags.getTagList());
-		List<Tag>tagList = tags.getTagList();
+		List<Tag> tagList = tags.getTagList();
 		assertEquals(2, tagList.size());
 
 
@@ -356,6 +357,35 @@ public class PhotosApiTest {
 			assertNotNull(p.getDateTaken());
 			assertNotNull(p.getUrlSq());
 		}
+	}
+
+	@Test
+	public void testNegativeTagSearch() throws Exception {
+		List<String> tags = new ArrayList<String>();
+		tags.add("istanbul");
+		tags.add("soda");
+		SearchParameters sp = new SearchParameters();
+		sp.setUserId(userId);
+		sp.setTags(tags);
+		Photos photos = photosApi.search(sp);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+		assertTrue(photos.getPhotoList().size() > 0);
+		int size = photos.getPhotoList().size();
+
+		tags.clear();
+		tags.add("istanbul");
+		tags.add("-soda");
+		sp.setTags(tags);
+		photos = photosApi.search(sp);
+		assertNotNull(photos);
+		assertEquals("ok", photos.getStat());
+		assertEquals(0, photos.getCode());
+		assertNotNull(photos.getPhotoList());
+		assertTrue(photos.getPhotoList().size() > 0);
+		assertEquals(size - 2, photos.getPhotoList().size());
 	}
 
 	@Test

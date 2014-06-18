@@ -52,7 +52,6 @@ public class ActivityApiTest {
 		oAuthAccessToken.load(new FileInputStream(file));
 
 		assertNotNull(oAuthAccessToken);
-
 		activityApi = new ActivityApi(new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken));
 	}
 

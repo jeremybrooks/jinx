@@ -19,7 +19,20 @@ The Flickr API returns boolean values as 1 or 0. Jinx will translate these to th
 For example, the Photos object can return information about who can see geotag data. However, this is considered extra data, and is not returned unless you specifically ask for it. If you did not ask for the data, Flickr will not return the data, and Jinx will return null when you call a method that returns the data.
 
 ### Errors
---todo--
+By default, methods that call the Flickr API will throw an instance of JinxException when Flickr returns a non-zero response code. If you do not want non-zero response codes to cause JinxException to be thrown, you can disable this as follows:
+
+	jinx.setFlickrErrorThrowsException(false);
+
+If this is set to false, you will need to check the returned objects to know if Flickr reported an error. Instances of JinxException will still be thrown to indicate other errors, such as invalid parameters or networking errors.
+
+### Logging
+By default, Jinx will not log. If you wish to see logging, you must set a JinxLogger, and then enable verbose logging.
+
+	JinxLogger.setLogger(new StdoutLogger());
+	jinx.setVerboseLogging(true);
+
+The StdoutLogger is provided. You can write your own logger to log to log4j or another destination. Just implement the LogInterface.
+
 
 # REQUIREMENTS
 You must be using Java 1.6 or higher.
@@ -188,5 +201,4 @@ You should have received a copy of the GNU General Public License
 along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
 
 # TODO
- * Enable/disable logging of requests and responses
 

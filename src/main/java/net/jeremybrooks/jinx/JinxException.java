@@ -28,6 +28,9 @@ public class JinxException extends java.lang.Exception {
 
 	private static final long serialVersionUID = -8987959765204324519L;
 
+	private int flickrErrorCode;
+	private String flickrErrorMessage;
+
 	/**
 	 * Constructs an instance of <code>JinxException</code> with the specified detail message.
 	 *
@@ -49,6 +52,23 @@ public class JinxException extends java.lang.Exception {
 
 	public JinxException(String msg, Throwable cause, Response response) {
 		super(msg + " [" + response.getCode() + ": " + response.getMessage() + "]", cause);
+		this.setFlickrErrorCode(response.getCode());
+		this.setFlickrErrorMessage(response.getMessage());
 	}
 
+	public int getFlickrErrorCode() {
+		return flickrErrorCode;
+	}
+
+	public void setFlickrErrorCode(int flickrErrorCode) {
+		this.flickrErrorCode = flickrErrorCode;
+	}
+
+	public String getFlickrErrorMessage() {
+		return flickrErrorMessage;
+	}
+
+	public void setFlickrErrorMessage(String flickrErrorMessage) {
+		this.flickrErrorMessage = flickrErrorMessage;
+	}
 }
