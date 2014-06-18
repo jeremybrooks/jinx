@@ -55,7 +55,5 @@ public class BlogListTest {
 				assertEquals("Twitter: Jeremy Brooks", blog.getName());
 			}
 		}
-
-		System.out.println(list);
 	}
 }

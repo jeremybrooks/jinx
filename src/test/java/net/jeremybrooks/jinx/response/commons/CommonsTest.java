@@ -45,7 +45,6 @@ public class CommonsTest {
 		assertEquals("104959762@N04", i.getNsid());
 		assertEquals("1402064583", i.getDateLaunch());
 		assertEquals("CDHS", i.getName());
-		System.out.println(i.toString());
 		List<PhotoInfo.Url> urls = i.getUrlList();
 		assertNotNull(urls);
 		assertEquals(3, urls.size());

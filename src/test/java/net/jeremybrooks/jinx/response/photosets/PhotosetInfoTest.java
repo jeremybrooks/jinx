@@ -85,19 +85,18 @@ public class PhotosetInfoTest {
 		PhotosetList list = new Gson().fromJson(reader, PhotosetList.class);
 		reader.close();
 		assertNotNull(list);
+		assertEquals(0, list.getCode());
 		assertEquals("ok", list.getStat());
-		PhotosetList.Photosets photosets = list.getPhotosets();
-		assertNotNull(photosets);
-		assertTrue(photosets.getIsCanCreate());
-		assertEquals(1, (int) photosets.getPage());
-		assertEquals(45, (int) photosets.getPages());
-		assertEquals(10, (int) photosets.getPerPage());
-		assertEquals(447, (int) photosets.getTotal());
-		assertNotNull(photosets.getPhotosetList());
-		assertEquals(10, photosets.getPhotosetList().size());
+		assertTrue(list.isCanCreate());
+		assertEquals(1, (int)list.getPage());
+		assertEquals(45, (int) list.getPages());
+		assertEquals(10, (int) list.getPerPage());
+		assertEquals(447, (int) list.getTotal());
+		assertNotNull(list.getPhotosetList());
+		assertEquals(10, list.getPhotosetList().size());
 
 		// test the first photoset in the list
-		Photoset p = photosets.getPhotosetList().get(0);
+		Photoset p = list.getPhotosetList().get(0);
 		assertEquals("72157644326967779", p.getPhotosetId());
 		assertEquals("2472223927", p.getPrimary());
 		assertEquals("7081aec34e", p.getSecret());

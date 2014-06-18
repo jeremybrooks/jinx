@@ -72,7 +72,6 @@ public class TestParseCollections {
 		CollectionTree collections = new Gson().fromJson(reader, CollectionTree.class);
 		reader.close();
 		assertNotNull(collections);
-		System.out.println(collections.toString());
 		assertEquals("ok", collections.getStat());
 		assertEquals(0, collections.getCode());
 		assertNotNull(collections.getCollectionList());

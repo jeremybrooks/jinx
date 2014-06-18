@@ -200,7 +200,7 @@ public class Jinx {
 		return this.apiSecret;
 	}
 
-	public OAuthAccessToken oAuthAccessToken() {
+	public OAuthAccessToken getoAuthAccessToken() {
 		return this.oAuthAccessToken;
 	}
 

@@ -223,45 +223,45 @@ public class PhotosetsApiTest {
 	public void testGetList() throws Exception {
 		PhotosetList list = photosetsApi.getList(null, 0, 0, null);
 		assertNotNull(list);
-		assertNotNull(list.getPhotosets());
-		assertTrue(list.getPhotosets().getPhotosetList().size() > 0);
-		assertNull(list.getPhotosets().getPhotosetList().get(0).getPrimaryPhotoExtras());
+		assertNotNull(list.getPhotosetList());
+		assertTrue(list.getPhotosetList().size() > 0);
+		assertNull(list.getPhotosetList().get(0).getPrimaryPhotoExtras());
 	}
 
 	@Test
 	public void testGetListPaged() throws Exception {
 		PhotosetList list = photosetsApi.getList(null, 2, 5, null);
 		assertNotNull(list);
-		assertNotNull(list.getPhotosets());
-		assertEquals(5, list.getPhotosets().getPhotosetList().size());
-		assertNull(list.getPhotosets().getPhotosetList().get(0).getPrimaryPhotoExtras());
+		assertNotNull(list.getPhotosetList());
+		assertEquals(5, list.getPhotosetList().size());
+		assertNull(list.getPhotosetList().get(0).getPrimaryPhotoExtras());
 	}
 
 	@Test
 	public void testGetListWithAllExtras() throws Exception {
 		EnumSet<JinxConstants.PhotoExtras> extras = EnumSet.allOf(JinxConstants.PhotoExtras.class);
 		PhotosetList list = photosetsApi.getList(null, 2, 5, extras);
-		assertNotNull(list.getPhotosets());
-		assertEquals(5, list.getPhotosets().getPhotosetList().size());
-		assertNotNull(list.getPhotosets().getPhotosetList().get(0).getPrimaryPhotoExtras());
+		assertNotNull(list.getPhotosetList());
+		assertEquals(5, list.getPhotosetList().size());
+		assertNotNull(list.getPhotosetList().get(0).getPrimaryPhotoExtras());
 	}
 
 	@Test
 	public void testGetListWithSomeExtras() throws Exception {
 		EnumSet<JinxConstants.PhotoExtras> extras = EnumSet.of(JinxConstants.PhotoExtras.owner_name);
 		PhotosetList list = photosetsApi.getList(null, 2, 5, extras);
-		assertNotNull(list.getPhotosets());
-		assertEquals(5, list.getPhotosets().getPhotosetList().size());
-		assertNotNull(list.getPhotosets().getPhotosetList().get(0).getPrimaryPhotoExtras());
+		assertNotNull(list.getPhotosetList());
+		assertEquals(5, list.getPhotosetList().size());
+		assertNotNull(list.getPhotosetList().get(0).getPrimaryPhotoExtras());
 	}
 
 	@Test
 	public void testGetListFromUser() throws Exception {
 		PhotosetList list = photosetsApi.getList("51035555243@N01", 2, 5, null);
 		assertNotNull(list);
-		assertNotNull(list.getPhotosets());
-		assertEquals(5, list.getPhotosets().getPhotosetList().size());
-		assertNull(list.getPhotosets().getPhotosetList().get(0).getPrimaryPhotoExtras());
+		assertNotNull(list.getPhotosetList());
+		assertEquals(5, list.getPhotosetList().size());
+		assertNull(list.getPhotosetList().get(0).getPrimaryPhotoExtras());
 	}
 
 	@Test

@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.photosets;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
 
 import java.io.Serializable;
@@ -28,11 +29,34 @@ import java.util.List;
  */
 public class PhotosetList extends Response {
 	private static final long serialVersionUID = -2815200964947537180L;
-	private Photosets photosets;
-	public Photosets getPhotosets() {return photosets; };
+	private _Photosets photosets;
+
+	public Boolean isCanCreate() {
+		return photosets == null ? null : JinxUtils.flickrBooleanToBoolean(photosets.isCanCreate);
+	}
+
+	public Integer getPage() {
+		return photosets == null ? null : photosets.page;
+	}
+	public Integer getPages() {
+		return photosets == null ? null : photosets.pages;
+	}
+
+	public Integer getPerPage() {
+		return photosets == null ? null : photosets.perPage;
+	}
+
+	public Integer getTotal() {
+		return photosets == null ? null : photosets.total;
+	}
+
+	public List<Photoset> getPhotosetList() {
+		return photosets == null ? null : photosets.photosetList;
+	}
 
 
-	public class Photosets implements Serializable {
+
+	private class _Photosets implements Serializable {
 		private static final long serialVersionUID = -3710302042846416278L;
 		@SerializedName("cancreate")
 		private Integer isCanCreate;
@@ -43,12 +67,13 @@ public class PhotosetList extends Response {
 		private Integer total;
 		@SerializedName("photoset")
 		private List<Photoset> photosetList;
+	}
 
 		@Override
 		public String toString() {
 			final StringBuilder sb = new StringBuilder();
 			sb.append("net.jeremybrooks.jinx.response.photosets.PhotosetList");
-			sb.append("{isCanCreate=").append(getIsCanCreate());
+			sb.append("{isCanCreate=").append(isCanCreate());
 			sb.append(" | page=").append(getPage());
 			sb.append(" | pages=").append(getPages());
 			sb.append(" | perPage=").append(getPerPage());
@@ -56,40 +81,6 @@ public class PhotosetList extends Response {
 			sb.append(" | photosetList=[").append(getPhotosetList() == null ? "null" : getPhotosetList().size()).append(']');
 			sb.append('}');
 			return sb.toString();
-		}
-
-		public boolean getIsCanCreate() {
-			return isCanCreate != null && isCanCreate == 1;
-		}
-
-		public Integer getPage() {
-			return page;
-		}
-
-		public Integer getPages() {
-			return pages;
-		}
-
-		public Integer getPerPage() {
-			return perPage;
-		}
-
-		public Integer getTotal() {
-			return total;
-		}
-
-		public List<Photoset> getPhotosetList() {
-			return photosetList;
-		}
-	}
-
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("net.jeremybrooks.jinx.response.photosets.PhotosetList");
-		sb.append("{photosets=").append(photosets == null ? "null" : photosets);
-		sb.append('}');
-		return sb.toString();
 	}
 }
 

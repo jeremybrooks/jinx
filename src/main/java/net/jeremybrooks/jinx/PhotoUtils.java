@@ -30,6 +30,21 @@ import java.net.URL;
 public class PhotoUtils {
 
 	/**
+	 * Get the photo page URL for this photo.
+	 * <p/>
+	 * Photo URL's are in the format
+	 * http://www.flickr.com/photos/{user-id}/{photo-id}
+	 * <p/>
+	 *
+	 * @return the url
+	 */
+	public static String getUrl(PhotoInfo info) {
+		StringBuilder sb = new StringBuilder("http://www.flickr.com/photos/");
+		sb.append(info.getOwnerNsid()).append('/').append(info.getPhotoId());
+		return sb.toString();
+	}
+
+	/**
 	 * Get an image for a photo at a specific size.
 	 *
 	 * @param size  Required. The the desired size.
