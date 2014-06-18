@@ -29,7 +29,7 @@ If you are using Maven, just include this in your pom.xml file
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>0.6.0</version>
+		<version>0.6.5</version>
 	</dependency>
 
 If you are not using Maven, you will need these libraries, and their dependencies:
@@ -39,10 +39,15 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 # VERSION HISTORY
 
-## Version 0.6.0 supports the following API's
+## Version 0.6.5 supports the following API's
   * activity
   * blogs (have not really tested the postPhoto method, though)
   * cameras
+  * collections
+  * commons
+  * contacts
+  * favorites
+  * galleries
   * oauth
   * photos
   * photosets
@@ -58,17 +63,18 @@ If a user has no blogs set up, calling the getBlogList() method will throw an Ex
   * activity
   * blogs (have not really tested the postPhoto method, though)
   * cameras
+  * collections
+  * commons
+  * contacts
+  * favorites
+  * galleries
   * oauth
   * photos
   * photosets
   * photosets.comments
 
 ## Available In Latest Source
- * collections
- * commons
- * contacts
- * favorites
- * galleries
+ 
 
 ## Not Yet Implemented
   * groups
