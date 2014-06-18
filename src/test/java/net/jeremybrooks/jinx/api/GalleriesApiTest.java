@@ -39,9 +39,9 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Properties;
 
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Jeremy Brooks
@@ -172,14 +172,14 @@ public class GalleriesApiTest {
 
 	@Test
 	public void testGetPhotos() throws Exception {
-		Photos p = galleriesApi.getPhotos(TEST_CHINESE_NEON_GALLERY_ID, null, 0, 0);
+		Photos p = galleriesApi.getPhotos(TEST_CHINESE_NEON_GALLERY_ID, null);
 		assertNotNull(p);
 		assertEquals("ok", p.getStat());
 		assertEquals(0, p.getCode());
 		assertNotNull(p.getPhotoList());
 		assertTrue(p.getPhotoList().size() > 0);
 
-		p = galleriesApi.getPhotos(TEST_CHINESE_NEON_GALLERY_ID, EnumSet.of(JinxConstants.PhotoExtras.date_taken, JinxConstants.PhotoExtras.license), 10, 1);
+		p = galleriesApi.getPhotos(TEST_CHINESE_NEON_GALLERY_ID, EnumSet.of(JinxConstants.PhotoExtras.date_taken, JinxConstants.PhotoExtras.license));
 		assertNotNull(p);
 		assertEquals("ok", p.getStat());
 		assertEquals(0, p.getCode());

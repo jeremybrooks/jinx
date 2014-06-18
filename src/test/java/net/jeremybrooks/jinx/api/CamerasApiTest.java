@@ -28,9 +28,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 
 /**
  * @author Jeremy Brooks
@@ -38,24 +39,24 @@ import static junit.framework.Assert.assertTrue;
 public class CamerasApiTest {
 	private static CamerasApi camerasApi;
 
-		@BeforeClass
-		public static void beforeClass() throws Exception {
-			Properties p = new Properties();
-			p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
+	@BeforeClass
+	public static void beforeClass() throws Exception {
+		Properties p = new Properties();
+		p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
 
-			String filename = p.getProperty("path.to.oauth.token");
-			assertNotNull(filename);
+		String filename = p.getProperty("path.to.oauth.token");
+		assertNotNull(filename);
 
-			File file = new File(filename);
-			assertTrue(file.exists());
+		File file = new File(filename);
+		assertTrue(file.exists());
 
-			OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
-			oAuthAccessToken.load(new FileInputStream(file));
+		OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
+		oAuthAccessToken.load(new FileInputStream(file));
 
-			assertNotNull(oAuthAccessToken);
+		assertNotNull(oAuthAccessToken);
 
-			camerasApi = new CamerasApi(new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken));
-		}
+		camerasApi = new CamerasApi(new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken));
+	}
 
 	@Test
 	public void testGetBrands() throws Exception {
@@ -82,8 +83,8 @@ public class CamerasApiTest {
 		for (CameraModels.Camera camera : cameraModels.getCameraList()) {
 			if (camera.getId().equals("eos_5d_mark_ii")) {
 				assertEquals("Canon EOS 5D Mark II", camera.getName());
-				assertEquals(21.1, camera.getMegapixels());
-				assertEquals(3.0, camera.getLcdScreenSize());
+				assertEquals(new Float(21.1), camera.getMegapixels());
+				assertEquals(new Float(3.0), camera.getLcdScreenSize());
 				assertEquals("CompactFlash (CF) Card", camera.getMemoryType());
 			}
 		}

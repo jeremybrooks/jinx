@@ -24,7 +24,7 @@ import org.junit.Test;
 import java.io.InputStreamReader;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**

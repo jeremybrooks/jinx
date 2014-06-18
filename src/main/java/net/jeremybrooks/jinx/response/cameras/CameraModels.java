@@ -73,12 +73,12 @@ public class CameraModels extends Response {
 			return name == null ? null : name.content;
 		}
 
-		public double getMegapixels() {
-			return details == null ? 0.0 : details.getMegapixels();
+		public Float getMegapixels() {
+			return details == null ? null : details.getMegapixels();
 		}
 
-		public double getLcdScreenSize() {
-			return details == null ? 0.0 : details.getLcdScreenSize();
+		public Float getLcdScreenSize() {
+			return details == null ? null : details.getLcdScreenSize();
 		}
 
 		public String getMemoryType() {
@@ -122,12 +122,12 @@ public class CameraModels extends Response {
 		@SerializedName("memory_type")
 		private _MemoryType memoryType;
 
-		private double getMegapixels() {
-			return megapixels == null ? 0.0 : megapixels.content;
+		private Float getMegapixels() {
+			return megapixels == null ? null : megapixels.content;
 		}
 
-		private double getLcdScreenSize() {
-			return lcdScreenSize == null ? 0.0 : lcdScreenSize.content;
+		private Float getLcdScreenSize() {
+			return lcdScreenSize == null ? null : lcdScreenSize.content;
 		}
 
 		private String getMemoryType() {
@@ -152,13 +152,13 @@ public class CameraModels extends Response {
 	private class _Megapixels implements Serializable {
 		private static final long serialVersionUID = -5094835629273842630L;
 		@SerializedName("_content")
-		private double content;
+		private Float content;
 	}
 
 	private class _LcdScreenSize implements Serializable {
 		private static final long serialVersionUID = -2163124030788373598L;
 		@SerializedName("_content")
-		private double content;
+		private Float content;
 	}
 
 	private class _MemoryType implements Serializable {

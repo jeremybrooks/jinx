@@ -27,10 +27,10 @@ import org.junit.Test;
 import java.io.InputStreamReader;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 /**
  * @author Jeremy Brooks
@@ -111,8 +111,8 @@ public class GalleriesTest {
 		assertEquals("", ppe.getMachineTags());
 		assertEquals("c46dbb2782", ppe.getOriginalSecret());
 		assertEquals("jpg", ppe.getOriginalFormat());
-		assertEquals(0.0f, ppe.getLatitude());
-		assertEquals(0.0f, ppe.getLongitude());
+		assertEquals(new Float(0.0), ppe.getLatitude());
+		assertEquals(new Float(0.0), ppe.getLongitude());
 		assertEquals(0, (int) ppe.getAccuracy());
 		assertEquals(0, (int) ppe.getContext());
 		assertEquals("photo", ppe.getMedia());

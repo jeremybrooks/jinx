@@ -26,11 +26,11 @@ import org.junit.Test;
 import java.io.InputStreamReader;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNull;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 /**
  * @author Jeremy Brooks
@@ -293,8 +293,8 @@ public class PhotosTest {
 		assertEquals("california", tag.getTag());
 		assertFalse(tag.isMachineTag());
 
-		assertEquals(37.789899, photoInfo.getLatitude());
-		assertEquals(-122.401921, photoInfo.getLongitude());
+		assertEquals(new Float(37.789899), photoInfo.getLatitude());
+		assertEquals(new Float(-122.401921), photoInfo.getLongitude());
 		assertEquals(15, (int)photoInfo.getAccuracy());
 		assertEquals(0, (int)photoInfo.getContext());
 		assertEquals("GddgqTpTUb8LgT93hw", photoInfo.getPlaceId());
@@ -375,8 +375,8 @@ public class PhotosTest {
 		assertEquals("", p.getMachineTags());
 		assertEquals("9d4016832e", p.getOriginalSecret());
 		assertEquals("jpg", p.getOriginalFormat());
-		assertEquals(-37.909196f, p.getLatitude());
-		assertEquals(145.35505f, p.getLongitude());
+		assertEquals(new Float(-37.909196), p.getLatitude());
+		assertEquals(new Float(145.35505), p.getLongitude());
 		assertEquals(16, (int) p.getAccuracy());
 		assertEquals(0, (int) p.getContext());
 		assertEquals("W9QPztNQUrMj2JPq", p.getPlaceId());
@@ -473,8 +473,8 @@ public class PhotosTest {
 		assertEquals("", p.getMachineTags());
 		assertEquals("c9a3f76573", p.getOriginalSecret());
 		assertEquals("jpg", p.getOriginalFormat());
-		assertEquals(0.0f, p.getLatitude());
-		assertEquals(0.0f, p.getLongitude());
+		assertEquals(new Float(0.0), p.getLatitude());
+		assertEquals(new Float(0.0), p.getLongitude());
 		assertEquals(0, (int) p.getAccuracy());
 		assertEquals(0, (int) p.getContext());
 		assertNull(p.getPlaceId());
@@ -561,8 +561,8 @@ public class PhotosTest {
 		assertEquals("", p.getMachineTags());
 		assertEquals("72f2fd3ff2", p.getOriginalSecret());
 		assertEquals("jpg", p.getOriginalFormat());
-		assertEquals(0.0f, p.getLatitude());
-		assertEquals(0.0f, p.getLongitude());
+		assertEquals(new Float(0.0), p.getLatitude());
+		assertEquals(new Float(0.0), p.getLongitude());
 		assertEquals(0, (int) p.getAccuracy());
 		assertEquals(0, (int) p.getContext());
 		assertNull(p.getPlaceId());
@@ -660,8 +660,8 @@ public class PhotosTest {
 		assertEquals("", p.getMachineTags());
 		assertEquals("2e05eb741c", p.getOriginalSecret());
 		assertEquals("jpg", p.getOriginalFormat());
-		assertEquals(0.0f, p.getLatitude());
-		assertEquals(0.0f, p.getLongitude());
+		assertEquals(new Float(0.0), p.getLatitude());
+		assertEquals(new Float(0.0), p.getLongitude());
 		assertEquals(0, (int) p.getAccuracy());
 		assertEquals(0, (int) p.getContext());
 		assertNull(p.getPlaceId());
@@ -758,8 +758,8 @@ public class PhotosTest {
 		assertEquals("", p.getMachineTags());
 		assertEquals("720b85cdbe", p.getOriginalSecret());
 		assertEquals("jpg", p.getOriginalFormat());
-		assertEquals(0.0f, p.getLatitude());
-		assertEquals(0.0f, p.getLongitude());
+		assertEquals(new Float(0.0), p.getLatitude());
+		assertEquals(new Float(0.0), p.getLongitude());
 		assertEquals(0, (int) p.getAccuracy());
 		assertEquals(0, (int) p.getContext());
 		assertNull(p.getPlaceId());
@@ -857,8 +857,8 @@ public class PhotosTest {
 		assertEquals("", p.getMachineTags());
 		assertEquals("c57e4fb02e", p.getOriginalSecret());
 		assertEquals("jpg", p.getOriginalFormat());
-		assertEquals(0.0f, p.getLatitude());
-		assertEquals(0.0f, p.getLongitude());
+		assertEquals(new Float(0.0), p.getLatitude());
+		assertEquals(new Float(0.0), p.getLongitude());
 		assertEquals(0, (int) p.getAccuracy());
 		assertEquals(0, (int) p.getContext());
 		assertNull(p.getPlaceId());
@@ -956,8 +956,8 @@ public class PhotosTest {
 		assertEquals("", p.getMachineTags());
 		assertEquals("f985684cf1", p.getOriginalSecret());
 		assertEquals("jpg", p.getOriginalFormat());
-		assertEquals(0.0f, p.getLatitude());
-		assertEquals(0.0f, p.getLongitude());
+		assertEquals(new Float(0.0), p.getLatitude());
+		assertEquals(new Float(0.0), p.getLongitude());
 		assertEquals(0, (int) p.getAccuracy());
 		assertEquals(0, (int) p.getContext());
 		assertNull(p.getPlaceId());
@@ -1054,8 +1054,8 @@ public class PhotosTest {
 		assertEquals("", p.getMachineTags());
 		assertEquals("568a3f2614", p.getOriginalSecret());
 		assertEquals("jpg", p.getOriginalFormat());
-		assertEquals(37.765819f, p.getLatitude());
-		assertEquals(-122.242912f, p.getLongitude());
+		assertEquals(new Float(37.765819), p.getLatitude());
+		assertEquals(new Float(-122.242912), p.getLongitude());
 		assertEquals(16, (int) p.getAccuracy());
 		assertEquals(0, (int) p.getContext());
 		assertEquals("FmOEZR5UV7P7KfBdxg", p.getPlaceId());
@@ -1152,8 +1152,8 @@ public class PhotosTest {
 		assertEquals("", p.getMachineTags());
 		assertEquals("80846b32e2", p.getOriginalSecret());
 		assertEquals("jpg", p.getOriginalFormat());
-		assertEquals(0.0f, p.getLatitude());
-		assertEquals(0.0f, p.getLongitude());
+		assertEquals(new Float(0.0), p.getLatitude());
+		assertEquals(new Float(0.0), p.getLongitude());
 		assertEquals(0, (int) p.getAccuracy());
 		assertEquals(0, (int) p.getContext());
 		assertNull(p.getPlaceId());

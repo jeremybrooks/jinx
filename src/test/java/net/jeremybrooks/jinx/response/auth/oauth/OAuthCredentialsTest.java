@@ -20,7 +20,7 @@ package net.jeremybrooks.jinx.response.auth.oauth;
 import com.google.gson.Gson;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Jeremy Brooks

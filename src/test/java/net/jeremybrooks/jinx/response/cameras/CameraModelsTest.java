@@ -23,9 +23,9 @@ import org.junit.Test;
 
 import java.io.InputStreamReader;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Jeremy Brooks
@@ -51,28 +51,28 @@ public class CameraModelsTest {
 			assertNotNull(camera.getSmallImageUrl());
 			assertNotNull(camera.getLargeImageUrl());
 			if (camera.getName().equals("Canon EOS 5D Mark II")) {
-				assertEquals(3.0, camera.getLcdScreenSize());
-				assertEquals(21.1, camera.getMegapixels());
+				assertEquals(new Float(3.0), camera.getLcdScreenSize());
+				assertEquals(new Float(21.1), camera.getMegapixels());
 			}
 			if (camera.getName().equals("Canon EOS 7D")) {
-				assertEquals(3.0, camera.getLcdScreenSize());
-				assertEquals(18.0, camera.getMegapixels());
+				assertEquals(new Float(3.0), camera.getLcdScreenSize());
+				assertEquals(new Float(18.0), camera.getMegapixels());
 			}
 			if (camera.getName().equals("Canon EOS REBEL T2i")) {
-				assertEquals(3.0, camera.getLcdScreenSize());
-				assertEquals(18.0, camera.getMegapixels());
+				assertEquals(new Float(3.0), camera.getLcdScreenSize());
+				assertEquals(new Float(18.0), camera.getMegapixels());
 			}
 			if (camera.getName().equals("Canon EOS REBEL T3i")) {
-				assertEquals(3.0, camera.getLcdScreenSize());
-				assertEquals(18.0, camera.getMegapixels());
+				assertEquals(new Float(3.0), camera.getLcdScreenSize());
+				assertEquals(new Float(18.0), camera.getMegapixels());
 			}
 			if (camera.getName().equals("Canon EOS 60D")) {
-				assertEquals(3.0, camera.getLcdScreenSize());
-				assertEquals(18.0, camera.getMegapixels());
+				assertEquals(new Float(3.0), camera.getLcdScreenSize());
+				assertEquals(new Float(18.0), camera.getMegapixels());
 			}
 			if (camera.getName().equals("Canon EOS 5D Mark III")) {
-				assertEquals(3.2, camera.getLcdScreenSize());
-				assertEquals(22.3, camera.getMegapixels());
+				assertEquals(new Float(3.2), camera.getLcdScreenSize());
+				assertEquals(new Float(22.3), camera.getMegapixels());
 			}
 		}
 	}
