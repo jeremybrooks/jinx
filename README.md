@@ -10,6 +10,9 @@ You can find an example of how to use the Jinx library here: <https://github.com
 
 There is an older version of Jinx, build 20110503, found here: <http://jeremybrooks.net/jinx/>. Version 0.6.0 and higher are a major rewrite of Jinx. They will not be compatible with old builds available on jeremybrooks.net.
 
+## WARNING
+Versions prior to 1.0 are in a state of flux and subject to change. There is no guarantee that releases before 1.0 will remain compatible with each other.
+
 ## Notes About Jinx
 
 ### Objects vs Primitives
@@ -52,7 +55,7 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 # VERSION HISTORY
 
-## Version 0.6.7 supports the following API's
+## Version 0.6.8 supports the following API's
   * activity
   * blogs (have not really tested the postPhoto method, though)
   * cameras
