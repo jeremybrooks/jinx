@@ -345,6 +345,8 @@ public class Jinx {
 	}
 
 
+
+
 	protected String doGet(String endpoint, String requestParameters, boolean sign) throws JinxException {
 		String result = null;
 		BufferedReader reader = null;
@@ -469,4 +471,86 @@ public class Jinx {
 	public void setVerboseLogging(boolean verboseLogging) {
 		this.verboseLogging = verboseLogging;
 	}
+
+
+
+    /* WARNING -- UGLY HACK! */
+
+    /**
+     * This is a duplicate of the callFlickr method that returns JSON, rather than a class.
+     *
+     * The main reason this is here is to allow API classes to massage bad data that comes back from Flickr
+     * before trying to parse it with Gson.
+     *
+     * Typically, this method will be called, data will be massaged, and then jsonToClass will be called.
+     *
+     * @param params parameters to pass to Flickr.
+     * @param method the method to use: {@link Method#GET} or {@link Method#POST}
+     * @param sign indicates if the call should be signed.
+     * @return json from the call to Flickr.
+     * @throws JinxException if there are any errors.
+     */
+    public String callFlickr(Map<String, String> params, Method method, boolean sign) throws JinxException {
+        if (this.oAuthAccessToken == null) {
+            throw new JinxException("Jinx has not been configured with an OAuth Access Token.");
+        }
+        String json;
+        params.put("format", "json");
+        params.put("nojsoncallback", "1");
+        params.put("api_key", getApiKey());
+
+
+        StringBuilder sb = new StringBuilder();
+        if (verboseLogging) {
+            JinxLogger.getLogger().log("----------PARAMETERS----------");
+        }
+        for (String key : params.keySet()) {
+            try {
+                if (verboseLogging) {
+                    JinxLogger.getLogger().log(String.format("%s=%s", key, params.get(key)));
+                }
+                sb.append(URLEncoder.encode(key, "UTF-8")).append('=').append(URLEncoder.encode(params.get(key), "UTF-8")).append('&');
+            } catch (Exception e) {
+                throw new JinxException("Error encoding.", e);
+            }
+        }
+        sb.deleteCharAt(sb.lastIndexOf("&"));
+        if (verboseLogging) {
+            JinxLogger.getLogger().log("--------END PARAMETERS--------");
+        }
+
+        if (method == Method.POST) {
+            json = this.doPost(JinxConstants.REST_ENDPOINT, sb.toString(), sign);
+        } else if (method == Method.GET) {
+            json = this.doGet(JinxConstants.REST_ENDPOINT, sb.toString(), sign);
+        } else {
+            throw new JinxException("Unsupported method: " + method);
+        }
+
+        if (json == null) {
+            throw new JinxException("Null return from call to Flickr.");
+        }
+        if (verboseLogging) {
+            JinxLogger.getLogger().log("RESPONSE is " + json);
+        }
+
+        return json;
+    }
+
+    /**
+     * Parse json into the specified class.
+     *
+     * @param json the json to parse.
+     * @param tClass type of class to create from the json.
+     * @return class created from the json.
+     * @throws JinxException if there are any errors.
+     */
+    public <T> T jsonToClass(String json, Class<T> tClass) throws JinxException {
+        T fromJson = gson.fromJson(json, tClass);
+        if (this.flickrErrorThrowsException && ((Response) fromJson).getCode() != 0) {
+            Response r = (Response) fromJson;
+            throw new JinxException("Flickr returned non-zero status.", null, r);
+        }
+        return fromJson;
+    }
 }

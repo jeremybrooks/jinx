@@ -23,14 +23,16 @@ import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.activity.ActivityResponseTest;
 import org.junit.Test;
 
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 
 /**
  * @author Jeremy Brooks
@@ -212,6 +214,31 @@ public class PhotosTest {
 		assertEquals("3efe11f872", psr.getSecret());
 		assertEquals("dfsddf", psr.getOriginalSecret());
 	}
+
+    /*
+     * Read sample that comes back with bad data.
+     * Then fix the data and try again.
+     */
+    public void testParseGetInfoError() throws Exception {
+        InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_get_info_error.json"));
+        BufferedReader br = new BufferedReader(reader);
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line).append('\n');
+        }
+        reader.close();
+        String json = sb.toString();
+        try {
+            PhotoInfo photoInfo = new Gson().fromJson(json, PhotoInfo.class);
+            fail();
+        } catch (Exception e) {
+            json = json.replace(":false", ":0");
+            PhotoInfo photoInfo = new Gson().fromJson(json, PhotoInfo.class);
+            assertNotNull(photoInfo);
+        }
+    }
+
 
 	public void testParseGetInfo() throws Exception {
 		InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/sample_get_info.json"));

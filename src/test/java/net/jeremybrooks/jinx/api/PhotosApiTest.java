@@ -71,7 +71,10 @@ public class PhotosApiTest {
 		OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
 		oAuthAccessToken.load(new FileInputStream(file));
 		assertNotNull(oAuthAccessToken);
-		photosApi = new PhotosApi(new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken));
+        Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
+//        JinxLogger.setLogger(new StdoutLogger());
+//        jinx.setVerboseLogging(true);
+		photosApi = new PhotosApi(jinx);
 	}
 
 
