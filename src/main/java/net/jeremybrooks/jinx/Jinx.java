@@ -433,6 +433,9 @@ public class Jinx {
             OAuthRequest request = new OAuthRequest(Verb.GET, JinxConstants.REST_ENDPOINT);
             for (String key : params.keySet()) {
                 request.addQuerystringParameter(key, params.get(key));
+                if (verboseLogging) {
+                    JinxLogger.getLogger().log(String.format("Added query parameter %s=%s", key, params.get(key)));
+                }
             }
             if (sign) {
                 this.oAuthService.signRequest(this.accessToken, request);
@@ -442,6 +445,9 @@ public class Jinx {
             OAuthRequest request = new OAuthRequest(Verb.POST, JinxConstants.REST_ENDPOINT);
             for (String key : params.keySet()) {
                 request.addBodyParameter(key, params.get(key));
+                if (verboseLogging) {
+                    JinxLogger.getLogger().log(String.format("Added body parameter %s=%s", key, params.get(key)));
+                }
             }
             if (sign) {
                 this.oAuthService.signRequest(this.accessToken, request);
