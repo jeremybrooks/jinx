@@ -352,7 +352,11 @@ public class PhotosTest {
 		PhotoInfo.Url url = photoInfo.getUrls().get(0);
 		assertEquals("photopage", url.getType());
 		assertEquals("https://www.flickr.com/photos/jeremybrooks/14118630850/", url.getUrl());
-	}
+
+        // test case where true/false is returned rather than 1/0
+        tag = photoInfo.getTags().get(1);
+        assertFalse(tag.isMachineTag());
+    }
 
 
 

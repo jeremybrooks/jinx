@@ -344,12 +344,13 @@ public class PhotosApi {
 		if (!JinxUtils.isNullOrEmpty(secret)) {
 			params.put("secret", secret);
 		}
+        return jinx.flickrGet(params, PhotoInfo.class);
         // sometimes Flickr sends back responses with "machine_tag":false rather than "machine_tag":0
         // so we need to work around this by fixing up the response
         // if the response is not fixed up, Gson cannot parse it
-        String json = jinx.callFlickr(params, JinxConstants.Method.GET, true);
-        json = json.replace(":false", ":0");
-        return jinx.jsonToClass(json, PhotoInfo.class);
+//        String json = jinx.callFlickr(params, JinxConstants.Method.GET, true);
+//        json = json.replace(":false", ":0");
+//        return jinx.jsonToClass(json, PhotoInfo.class);
 	}
 
 

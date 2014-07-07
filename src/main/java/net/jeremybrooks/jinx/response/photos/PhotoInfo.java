@@ -46,7 +46,7 @@ public class PhotoInfo extends Response {
 	public String getDateUploaded() {
 		return photo == null ? null : photo.dateuploaded;
 	}
-	public boolean isFavorite() {return photo != null && photo.isfavorite == 1;}
+	public Boolean isFavorite() {return photo == null ? null : JinxUtils.flickrBooleanToBoolean(photo.isfavorite);}
 	public JinxConstants.SafetyLevel getSafetyLevel() {return photo == null ? null : JinxUtils.flickrSafetyLevelIdToSafetyLevel(photo.safety_level);}
 	public Integer getRotation() {return photo == null ? null : photo.rotation;}
 	public String getOriginalSecret() {return photo == null ? null : photo.originalsecret;}
@@ -63,9 +63,9 @@ public class PhotoInfo extends Response {
 	public String getTitle() {return photo.title == null ? null : photo.title._content;}
 	public String getDescription() {return photo.description == null ? null : photo.description._content;}
 
-	public boolean isPublic() {return photo != null && photo.visibility != null && photo.visibility.ispublic == 1;}
-	public boolean isFriend() {return photo != null && photo.visibility != null && photo.visibility.isfriend == 1;}
-	public boolean isFamily() {return photo != null && photo.visibility != null && photo.visibility.isfamily == 1;}
+    public Boolean isPublic() {return (photo == null || photo.visibility == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.visibility.ispublic);}
+    public Boolean isFriend() {return (photo == null || photo.visibility == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.visibility.isfriend);}
+    public Boolean isFamily() {return (photo == null || photo.visibility == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.visibility.isfamily);}
 
 	public String getDatePosted() {return (photo == null || photo.dates == null) ? null : photo.dates.posted;}
 	public String getDateTaken() {return (photo == null || photo.dates == null) ? null : photo.dates.taken;}
@@ -91,7 +91,7 @@ public class PhotoInfo extends Response {
 
 	public List<Note> getNotes() {return (photo == null || photo.notes == null) ? null : photo.notes.note;}
 
-	public boolean isHasPeople() {return (photo == null || photo.people == null) ? false : photo.people.haspeople == 1;}
+	public Boolean isHasPeople() {return (photo == null || photo.people == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.people.haspeople);}
 
 	public List<Tag> getTags() {return (photo == null || photo.tags == null) ? null : photo.tags.tag;}
 
@@ -121,10 +121,10 @@ public class PhotoInfo extends Response {
 	public String getCountryPlaceId() {return (photo == null || photo.location == null || photo.location.country == null) ? null : photo.location.country.place_id;}
 	public String getCountryWoeId() {return (photo == null || photo.location == null || photo.location.country == null) ? null : photo.location.country.woeid;}
 
-	public boolean isGeoIsPublic() {return photo != null && photo.geoperms != null && photo.geoperms.ispublic == 1;}
-	public boolean isGeoIsFriend() {return photo != null && photo.geoperms != null && photo.geoperms.isfriend == 1;}
-	public boolean isGeoIsFamily() {return photo != null && photo.geoperms != null && photo.geoperms.isfamily == 1;}
-	public boolean isGeoIsContact() {return photo != null && photo.geoperms != null && photo.geoperms.iscontact == 1;}
+    public Boolean isGeoIsPublic() {return (photo == null || photo.geoperms == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.geoperms.ispublic);}
+    public Boolean isGeoIsFriend() {return (photo == null || photo.geoperms == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.geoperms.isfriend);}
+    public Boolean isGeoIsFamily() {return (photo == null || photo.geoperms == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.geoperms.isfamily);}
+    public Boolean isGeoIsContact() {return (photo == null || photo.geoperms == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.geoperms.iscontact);}
 
 	public List<Url> getUrls() {return (photo == null || photo.urls == null) ? null : photo.urls.url;}
 
@@ -207,7 +207,7 @@ public class PhotoInfo extends Response {
 		private String server;
 		private Integer farm;
 		private String dateuploaded;
-		private Integer isfavorite;
+		private String isfavorite;  // return as Boolean
 		private Integer license;
 		private Integer safety_level;
 		private Integer rotation;
@@ -256,9 +256,9 @@ public class PhotoInfo extends Response {
 
 	private class _Visibility implements Serializable {
 		private static final long serialVersionUID = 1916660155513194928L;
-		private Integer ispublic;
-		private Integer isfriend;
-		private Integer isfamily;
+		private String ispublic;    // return as Boolean
+		private String isfriend;    // return as Boolean
+		private String isfamily;    // return as Boolean
 	}
 
 	private class _Dates implements Serializable {
@@ -307,7 +307,7 @@ public class PhotoInfo extends Response {
 
 	private class _People implements Serializable {
 		private static final long serialVersionUID = 218573278396709989L;
-		private Integer haspeople;
+		private String haspeople;   // return as Boolean
 	}
 
 	private class _Tags implements Serializable {
@@ -366,10 +366,10 @@ public class PhotoInfo extends Response {
 
 	private class _Geoperms implements Serializable {
 		private static final long serialVersionUID = -6287218745851143224L;
-		private Integer ispublic;
-		private Integer iscontact;
-		private Integer isfriend;
-		private Integer isfamily;
+		private String ispublic;    // return as Boolean
+		private String iscontact;   // return as Boolean
+		private String isfriend;    // return as Boolean
+		private String isfamily;    // return as Boolean
 	}
 
 	private class _Urls implements Serializable {
