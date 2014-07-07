@@ -455,7 +455,7 @@ public class Jinx {
             throw new JinxException("Null return from call to Flickr.");
         }
         if (verboseLogging) {
-            JinxLogger.getLogger().log("RESPONSE is " + flickrResponse);
+            JinxLogger.getLogger().log("RESPONSE is " + flickrResponse.getBody());
         }
 
         T fromJson = gson.fromJson(flickrResponse.getBody(), tClass);

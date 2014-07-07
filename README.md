@@ -18,7 +18,7 @@ Versions prior to 1.0 are in a state of flux and subject to change. There is no 
 ### Objects vs Primitives
 The Flickr API does not return all possible data for every API call. The returned values often depend on what parameters were passed in. In general, Jinx will return null to indicate that there was no value returned by Flickr. This means your code needs to pay attention to return types like Integer and Boolean, since they can return null.
 
-The Flickr API returns boolean values as 1 or 0. Jinx will translate these to the Java Boolean type. The object Boolean is used rather than the primitive boolean so that a value of "not returned" can be represented.
+The Flickr API returns boolean values as 1 or 0 (or sometimes true or false). Jinx will translate these to the Java Boolean type. The object Boolean is used rather than the primitive boolean so that a value of "not returned" can be represented as null.
 For example, the Photos object can return information about who can see geotag data. However, this is considered extra data, and is not returned unless you specifically ask for it. If you did not ask for the data, Flickr will not return the data, and Jinx will return null when you call a method that returns the data.
 
 ### Errors
@@ -51,7 +51,9 @@ If you are using Maven, just include this in your pom.xml file
 If you are not using Maven, you will need these libraries, and their dependencies:
   
   * Gson 2.2.2+ -- deserializes json documents in to Java objects
-  * Signpost 1.2.1.2 -- provides OAuth services
+  * Scribe 1.3.7+ -- provides OAuth services
+  
+  NOTE: At this time, Scribe 1.3.7 is the development version; you will need to build Scribe from source until they release again.
 
 # VERSION HISTORY
 
@@ -131,10 +133,10 @@ If the tests are failing and you want to build the jar anyway, add -DskipTests:
 # JINX PROJECT CONTRIBUTORS - READ THIS
 Flickr apps need an API key to work properly. Jinx is no exception. To run the unit tests, you need to go to Flickr and apply for an API key. Once you have this key, you need to do the following:
 
-  * Copy the file test/resources/flickr.properties to test/resources/secret.properties
+  * Copy the file test/resources/flickr.properties to test/resources/response/auth/secret.properties
   * Fill in the key, secret, and a valid full path where the oauth token will be saved
-  * Uncomment the call to testGetOauthAccessToken() in OAuthApiTest
-  * Run OAuthApiTest
+  * Uncomment the call to testOauthAccessWorkflow() in JinxTest
+  * Run JinxTest
   * Authorize the application
   * Enter the verification code and allow the test to complete
 

@@ -21,9 +21,12 @@ import net.jeremybrooks.jinx.api.OAuthApiTest;
 import net.jeremybrooks.jinx.api.PhotosApi;
 import net.jeremybrooks.jinx.response.photos.PhotoInfo;
 import org.junit.Test;
+import org.scribe.model.Token;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.net.URLDecoder;
 import java.util.Properties;
 import java.util.StringTokenizer;
@@ -144,5 +147,40 @@ public class JinxTest {
                 assertEquals("Jeremy Brooks", value);
             }
         }
+    }
+
+    @Test
+    public void testOauthAccessWorkflow() throws Exception {
+//        testGetOauthAccessToken();
+    }
+
+    /*
+     * Test the oAuth workflow
+     */
+    private void testGetOauthAccessToken() throws Exception {
+        Properties p = new Properties();
+        p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
+
+        String filename = p.getProperty("path.to.oauth.token");
+
+        Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"));
+
+        // step 1
+        Token requestToken = jinx.getRequestToken();
+        assertNotNull(requestToken);
+
+        // step 2
+        String url = jinx.getAuthorizationUrl(requestToken, JinxConstants.OAuthPermissions.delete);
+        assertNotNull(url);
+
+        System.out.println(url);
+        String verificationCode = JOptionPane.showInputDialog("Authorize at \n " + url + "\nand then enter the validation code.");
+        assertNotNull(verificationCode);
+
+        // step 3
+        OAuthAccessToken accessToken = jinx.getAccessToken(requestToken, verificationCode);
+        assertNotNull(accessToken);
+
+        accessToken.store(new FileOutputStream(new File(filename)));
     }
 }
