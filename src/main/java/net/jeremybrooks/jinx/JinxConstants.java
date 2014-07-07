@@ -33,9 +33,15 @@ public class JinxConstants {
 	public static final String OAUTH_REQUEST_TOKEN_ENDPOINT_URL = "https://www.flickr.com/services/oauth/request_token";
 	public static final String OAUTH_ACCESS_TOKEN_ENDPOINT_URL = "https://www.flickr.com/services/oauth/access_token";
 	public static final String OAUTH_AUTHORIZE_WEBSITE_URL = "https://www.flickr.com/services/oauth/authorize";
+    public static final String FLICKR_PHOTO_URL = "https://www.flickr.com/photos/";
+
 
 
 	public static final String UTF8 = "UTF-8";
+
+    public static enum OAuthPermissions {
+        read, write, delete
+    }
 
 	public static enum PhotoExtras {
 		description, license, date_upload, date_taken, owner_name,

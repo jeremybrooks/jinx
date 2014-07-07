@@ -25,9 +25,6 @@ import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.OAuthAccessToken;
 import net.jeremybrooks.jinx.response.auth.oauth.OAuthCredentials;
 import net.jeremybrooks.jinx.response.auth.oauth.OAuthExchangedToken;
-import oauth.signpost.OAuth;
-import oauth.signpost.commonshttp.CommonsHttpOAuthProvider;
-import oauth.signpost.http.HttpParameters;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -37,7 +34,6 @@ import java.net.URL;
 import java.security.MessageDigest;
 import java.util.Map;
 import java.util.Properties;
-import java.util.SortedSet;
 import java.util.TreeMap;
 
 /**
@@ -53,8 +49,6 @@ import java.util.TreeMap;
 public class OAuthApi {
 
 	private Jinx jinx;
-
-	private CommonsHttpOAuthProvider provider;
 
 	/**
 	 * Create a new instance of OAuthApi.
@@ -153,93 +147,6 @@ public class OAuthApi {
 		return oAuthAccessToken;
 	}
 
-
-	/**
-	 * Obtain an OAuth request token.
-	 * <p>
-	 * This method is not, strictly speaking, part of the Flickr API. However, it is part of the process to
-	 * obtain an OAuth token, so it is included in the OAuthApi class.
-	 * </p>
-	 * <p/>
-	 * This will create a new OAuth provider object and use it to obtain a request token. The user should be directed
-	 * to the returned URL so they can authorized your application. If this is a desktop application, or if there is
-	 * no callback URL for Flickr to send the user to after they authorize your application, pass "null". The user
-	 * will then get a message that they need to enter a validation code. Your application must prompt them for the
-	 * validation code, which you will pass to the getAccessToken method to obtain your access token.
-	 * <p/>
-	 * Before attempting to get a request token, you must have called init with a valid api key and secret.
-	 *
-	 * @param callbackUrl the callback URL that the user should be directed to after authorizing the application.
-	 * @return URL that the user should be directed to in order to authorize the application.
-	 * @throws JinxException if init has not been called, or if there are any errors.
-	 */
-	public String getOAuthRequestToken(String callbackUrl) throws JinxException {
-		String url;
-		this.provider = new CommonsHttpOAuthProvider(
-				JinxConstants.OAUTH_REQUEST_TOKEN_ENDPOINT_URL,
-				JinxConstants.OAUTH_ACCESS_TOKEN_ENDPOINT_URL,
-				JinxConstants.OAUTH_AUTHORIZE_WEBSITE_URL);
-
-		if (callbackUrl == null) {
-			callbackUrl = OAuth.OUT_OF_BAND;
-		}
-
-		try {
-			url = provider.retrieveRequestToken(this.jinx.getConsumer(), callbackUrl);
-		} catch (Exception e) {
-			throw new JinxException("Unable to get request token from Flickr.", e);
-		}
-
-		return url;
-	}
-
-	/**
-	 * Get an OAuth access token.
-	 * <p>
-	 * This method is not, strictly speaking, part of the Flickr API. However, it is part of the process to
-	 * obtain an OAuth token, so it is included in the OAuthApi class.
-	 * </p>
-	 * <p>
-	 * Once you have this access token, it can be saved and used along with your application API Key and API Secret
-	 * in the future to initialize Jinx. The OAuth access token will be set in the Jinx instance associated with
-	 * this object instance. You do not have to set it after calling this method.
-	 * </p>
-	 * <p>
-	 * You must call getOAuthRequestToken prior to calling this method.
-	 * </p>
-	 *
-	 * @param verificationCode the verification code that Flickr presented after the user authorized the application.
-	 * @return access token containing the OAuth token and token secret.
-	 * @throws JinxException if the getOAuthRequestToken method has not been called, or if there are any errors.
-	 */
-	public OAuthAccessToken getOAuthAccessToken(String verificationCode) throws JinxException {
-		if (this.provider == null) {
-			throw new JinxException("You cannot request the access token until you have called getOAuthRequestToken.");
-		}
-		OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
-		try {
-			this.provider.retrieveAccessToken(this.jinx.getConsumer(), verificationCode);
-			HttpParameters parameters = this.provider.getResponseParameters();
-
-			oAuthAccessToken.setOauthToken(this.jinx.getConsumer().getToken());
-			oAuthAccessToken.setOauthTokenSecret(this.jinx.getConsumer().getTokenSecret());
-			for (Map.Entry<String, SortedSet<String>> entry : parameters.entrySet()) {
-				if (entry.getKey().equals("fullname")) {
-					oAuthAccessToken.setFullname(entry.getValue().first());
-				} else if (entry.getKey().equals("user_nsid")) {
-					oAuthAccessToken.setNsid(entry.getValue().first());
-				} else if (entry.getKey().equals("username")) {
-					oAuthAccessToken.setUsername(entry.getValue().first());
-				}
-			}
-
-		} catch (Exception e) {
-			throw new JinxException("Unable to get access token from Flickr.", e);
-		}
-
-		this.jinx.setoAuthAccessToken(oAuthAccessToken);
-		return oAuthAccessToken;
-	}
 
 	/*
 	 * Compute the signature for the API call.

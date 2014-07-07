@@ -24,11 +24,15 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.URLDecoder;
 import java.util.Properties;
+import java.util.StringTokenizer;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
 /**
@@ -40,58 +44,105 @@ import static org.junit.Assert.fail;
 public class JinxTest {
 
 
-	@Test
-	public void testFlickrErrorTrue() throws Exception {
-		Properties p = new Properties();
-		p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
+    @Test
+    public void testFlickrErrorTrue() throws Exception {
+        Properties p = new Properties();
+        p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
 
-		String filename = p.getProperty("path.to.oauth.token");
-		assertNotNull(filename);
+        String filename = p.getProperty("path.to.oauth.token");
+        assertNotNull(filename);
 
-		File file = new File(filename);
-		assertTrue(file.exists());
+        File file = new File(filename);
+        assertTrue(file.exists());
 
-		OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
-		oAuthAccessToken.load(new FileInputStream(file));
+        OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
+        oAuthAccessToken.load(new FileInputStream(file));
 
-		assertNotNull(oAuthAccessToken);
+        assertNotNull(oAuthAccessToken);
 
-		Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
-		PhotosApi photosApi = new PhotosApi(jinx);
+        Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
+        PhotosApi photosApi = new PhotosApi(jinx);
 
-		try {
-			PhotoInfo info = photosApi.getInfo("nosuchphoto", null);
-			// if we get here, there was no exception, so fail
-			fail();
-		} catch (JinxException je) {
-			System.out.println(je);
-			assertNotNull(je);
-			assertNotEquals(0, je.getFlickrErrorCode());
-			assertNotNull(je.getFlickrErrorMessage());
-		}
-	}
+        try {
+            PhotoInfo info = photosApi.getInfo("nosuchphoto", null);
+            // if we get here, there was no exception, so fail
+            fail();
+        } catch (JinxException je) {
+            System.out.println(je);
+            assertNotNull(je);
+            assertNotEquals(0, je.getFlickrErrorCode());
+            assertNotNull(je.getFlickrErrorMessage());
+        }
+    }
 
-	@Test
-		public void testFlickrErrorFalse() throws Exception {
-		Properties p = new Properties();
-		p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
+    @Test
+    public void testFlickrErrorFalse() throws Exception {
+        Properties p = new Properties();
+        p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
 
-		String filename = p.getProperty("path.to.oauth.token");
-		assertNotNull(filename);
+        String filename = p.getProperty("path.to.oauth.token");
+        assertNotNull(filename);
 
-		File file = new File(filename);
-		assertTrue(file.exists());
+        File file = new File(filename);
+        assertTrue(file.exists());
 
-		OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
-		oAuthAccessToken.load(new FileInputStream(file));
+        OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
+        oAuthAccessToken.load(new FileInputStream(file));
 
-		assertNotNull(oAuthAccessToken);
+        assertNotNull(oAuthAccessToken);
 
-		Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
-		jinx.setFlickrErrorThrowsException(false);
-		PhotosApi photosApi = new PhotosApi(jinx);
+        Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
+        jinx.setFlickrErrorThrowsException(false);
+        PhotosApi photosApi = new PhotosApi(jinx);
 
-		PhotoInfo info = photosApi.getInfo("nosuchphoto", null);
-		assertNotEquals(0, info.getCode());
-	}
+        PhotoInfo info = photosApi.getInfo("nosuchphoto", null);
+        assertNotEquals(0, info.getCode());
+    }
+
+
+    @Test
+    public void testSetProxy() throws Exception {
+        Properties p = new Properties();
+        p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
+
+        String filename = p.getProperty("path.to.oauth.token");
+        assertNotNull(filename);
+
+        File file = new File(filename);
+        assertTrue(file.exists());
+
+        OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
+        oAuthAccessToken.load(new FileInputStream(file));
+
+        assertNotNull(oAuthAccessToken);
+
+        Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
+        assertFalse(jinx.isUseProxy());
+        jinx.setProxy(new JinxProxy("fake.com", 1234, "proxyuser", "proxypass".toCharArray()));
+        assertTrue(jinx.isUseProxy());
+        jinx.setProxy(null);
+        assertFalse(jinx.isUseProxy());
+    }
+
+    @Test
+    public void testParseOauthResponse() throws Exception {
+        String response = "fullname=Jeremy%20Brooks&oauth_token=72157632924311715-b9b1f0bf94982fba&oauth_token_secret=d25a16fa2e923649&user_nsid=85853333%40N00&username=Jeremy%20Brooks\n";
+        StringTokenizer tok = new StringTokenizer(response, "&");
+        while (tok.hasMoreTokens()) {
+            String token = tok.nextToken();
+                /*
+                fullname=Jeremy%20Brooks&oauth_token=72157632924811715-b9b1f0bf94982fba&oauth_token_secret=d25a168a2e923649&user_nsid=85853333%40N00&username=Jeremy%20Brooks)
+                 */
+            int index = token.indexOf("=");
+            String key = token.substring(0, index);
+            String value = URLDecoder.decode(token.substring(index + 1), "UTF-8").trim();
+            if (key.equals("fullname")) {
+                assertEquals("Jeremy Brooks", value);
+            } else if (key.equals("user_nsid")) {
+                assertEquals("85853333@N00", value);
+            } else if (key.equals("username")) {
+                assertEquals("Jeremy Brooks", value);
+            }
+        }
+    }
 }

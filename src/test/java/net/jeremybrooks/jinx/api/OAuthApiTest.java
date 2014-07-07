@@ -18,9 +18,11 @@
 package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
+import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.OAuthAccessToken;
 import net.jeremybrooks.jinx.response.auth.oauth.OAuthCredentials;
 import org.junit.Test;
+import org.scribe.model.Token;
 
 import javax.swing.JOptionPane;
 import java.io.File;
@@ -43,7 +45,7 @@ public class OAuthApiTest {
 	 * Run this test manually to get an OAuth token. It requires user input to complete, so should not be run
 	 * as part of the test suite.
 	 * <p/>
-	 * To run this test, you must have a "secret.properties" file in the test/java/resources directory.
+	 * To run this test, you must have a "secret.properties" file in the test/java/resources/response/auth directory.
 	 * This file must contain:
 	 *
 	 * path.to.oauth.token=[full path to save the oauth token data]
@@ -61,9 +63,17 @@ public class OAuthApiTest {
 	 */
 	@Test
 	public void testOauth() throws Exception {
-//		testGetOauthAccessToken();
+		// test the oauth workflow
+        // this can be used to obtain an oauth access token
+//        testGetOauthAccessToken();
+
+
+        // test an existing oauth access token
 //		testCheckToken();
-		//testGetAccessToken();	// This will cause the legacy token to be removed from Flickr in 24 hours
+
+        // convert a legacy access token to an oauth access token.
+        // This will cause the legacy token to be removed from Flickr in 24 hours
+		//testGetAccessToken();
 	}
 
 
@@ -74,21 +84,30 @@ public class OAuthApiTest {
 		String filename = p.getProperty("path.to.oauth.token");
 
 		Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"));
-		OAuthApi oAuthApi = new OAuthApi(jinx);
 
-		String url = oAuthApi.getOAuthRequestToken(null);
-		assertNotNull(url);
+        // step 1
+        Token requestToken = jinx.getRequestToken();
+        assertNotNull(requestToken);
 
-		System.out.println(url);
-		String verificationCode = JOptionPane.showInputDialog("Authorize at \n " + url + "\nand then enter the validation code.");
+        // step 2
+        String url = jinx.getAuthorizationUrl(requestToken, JinxConstants.OAuthPermissions.write);
+        assertNotNull(url);
 
-		OAuthAccessToken token = oAuthApi.getOAuthAccessToken(verificationCode);
-		assertNotNull(token);
+        System.out.println(url);
+        String verificationCode = JOptionPane.showInputDialog("Authorize at \n " + url + "\nand then enter the validation code.");
+        assertNotNull(verificationCode);
 
-		token.store(new FileOutputStream(new File(filename)));
+        // step 3
+        OAuthAccessToken accessToken = jinx.getAccessToken(requestToken, verificationCode);
+        assertNotNull(accessToken);
+
+        accessToken.store(new FileOutputStream(new File(filename)));
 	}
 
 
+    /*
+     * Test Flickr API method flickr.auth.oauth.checkToken
+     */
 	private void testCheckToken() throws Exception {
 		Properties p = new Properties();
 		p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
@@ -118,6 +137,9 @@ public class OAuthApiTest {
 	}
 
 
+    /*
+     * Test converting a legacy access token to an oauth access token.
+     */
 	private void testGetAccessToken() throws Exception {
 		Properties p = new Properties();
 		p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));

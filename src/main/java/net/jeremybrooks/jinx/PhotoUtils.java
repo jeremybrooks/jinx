@@ -33,13 +33,13 @@ public class PhotoUtils {
 	 * Get the photo page URL for this photo.
 	 * <p/>
 	 * Photo URL's are in the format
-	 * http://www.flickr.com/photos/{user-id}/{photo-id}
+	 * https://www.flickr.com/photos/{user-id}/{photo-id}
 	 * <p/>
 	 *
 	 * @return the url
 	 */
 	public static String getUrl(PhotoInfo info) {
-		StringBuilder sb = new StringBuilder("http://www.flickr.com/photos/");
+		StringBuilder sb = new StringBuilder(JinxConstants.FLICKR_PHOTO_URL);
 		sb.append(info.getOwnerNsid()).append('/').append(info.getPhotoId());
 		return sb.toString();
 	}
@@ -145,7 +145,7 @@ public class PhotoUtils {
 			JinxUtils.validateParams(secret);
 		}
 
-		StringBuilder sb = new StringBuilder("http://farm");
+		StringBuilder sb = new StringBuilder("https://farm");
 		sb.append(farm);
 		sb.append(".static.flickr.com/");
 		sb.append(server).append("/");
