@@ -77,15 +77,15 @@ public class PhotoInfo extends Response {
 
 	public Integer getViews() {return photo == null ? null : photo.views;}
 
-	public boolean isCanComment() {return (photo == null || photo.editability == null) ? false : photo.editability.cancomment == 1;}
-	public boolean isCanAddMeta() {return (photo == null || photo.editability == null) ? false : photo.editability.canaddmeta == 1;}
-	public boolean isPublicCanComment() {return (photo == null || photo.publiceditability == null) ? false : photo.publiceditability.cancomment == 1;}
-	public boolean isPublicCanAddMeta() {return (photo == null || photo.publiceditability == null) ? false : photo.publiceditability.canaddmeta == 1;}
+	public Boolean isCanComment() {return (photo == null || photo.editability == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.editability.cancomment);}
+	public Boolean isCanAddMeta() {return (photo == null || photo.editability == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.editability.canaddmeta);}
+	public Boolean isPublicCanComment() {return (photo == null || photo.publiceditability == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.publiceditability.cancomment);}
+	public Boolean isPublicCanAddMeta() {return (photo == null || photo.publiceditability == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.publiceditability.canaddmeta);}
 
-	public boolean isCanDownload() {return (photo == null || photo.usage == null) ? null : photo.usage.candownload == 1;}
-	public boolean isCanBlog() {return (photo == null || photo.usage == null) ? null : photo.usage.canblog == 1;}
-	public boolean isCanPrint() {return (photo == null || photo.usage == null) ? null : photo.usage.canprint == 1;}
-	public boolean isCanShare() {return (photo == null || photo.usage == null) ? null : photo.usage.canshare == 1;}
+	public Boolean isCanDownload() {return (photo == null || photo.usage == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.usage.candownload);}
+	public Boolean isCanBlog() {return (photo == null || photo.usage == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.usage.canblog);}
+	public Boolean isCanPrint() {return (photo == null || photo.usage == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.usage.canprint);}
+	public Boolean isCanShare() {return (photo == null || photo.usage == null) ? null : JinxUtils.flickrBooleanToBoolean(photo.usage.canshare);}
 
 	public Integer getComments() {return (photo == null || photo.comments == null) ? 0 : photo.comments._content;}
 
@@ -277,22 +277,22 @@ public class PhotoInfo extends Response {
 
 	private class _Editability implements Serializable {
 		private static final long serialVersionUID = -2484601450795158560L;
-		private Integer cancomment;
-		private Integer canaddmeta;
+		private String cancomment;  // return as Boolean
+		private String canaddmeta;  // return as Boolean
 	}
 
 	private class _PublicEditability implements Serializable {
 		private static final long serialVersionUID = -6529885893051609809L;
-		private Integer cancomment;
-		private Integer canaddmeta;
+		private String cancomment;  // return as Boolean
+		private String canaddmeta;  // return as Boolean
 	}
 
 	private class _Usage implements Serializable {
 		private static final long serialVersionUID = 3931928919540862693L;
-		private Integer candownload;
-		private Integer canblog;
-		private Integer canprint;
-		private Integer canshare;
+		private String candownload; // return as Boolean
+		private String canblog;     // return as Boolean
+		private String canprint;    // return as Boolean
+		private String canshare;    // return as Boolean
 	}
 
 	private class _Comments implements Serializable {

@@ -59,7 +59,7 @@ public class PhotosetList extends Response {
 	private class _Photosets implements Serializable {
 		private static final long serialVersionUID = -3710302042846416278L;
 		@SerializedName("cancreate")
-		private Integer isCanCreate;
+		private String isCanCreate; // return as Boolean
 		private Integer page;
 		private Integer pages;
 		@SerializedName("perpage")

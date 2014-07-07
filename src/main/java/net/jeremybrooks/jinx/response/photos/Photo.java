@@ -38,11 +38,11 @@ public class Photo implements Serializable {
 	private String title;
 
 	@SerializedName("ispublic")
-	private Integer isPublic;
+	private String isPublic;        // return as Boolean
 	@SerializedName("isfriend")
-	private Integer isFriend;
+	private String isFriend;        // return as Boolean
 	@SerializedName("isfamily")
-	private Integer isFamily;
+	private String isFamily;        // return as Boolean
 
 	private Integer license;
 	private _DescriptionClass description;
@@ -167,21 +167,21 @@ public class Photo implements Serializable {
 
 
 	@SerializedName("is_primary")
-	private Integer primary;
+	private String primary;     // return as Boolean
 	@SerializedName("isprimary")
-	private Integer primaryNoUnderscore;
+	private String primaryNoUnderscore; // return as Boolean
 
 	@SerializedName("geo_is_family")
-	private Integer geoIsFamily;
+	private String geoIsFamily;     // return as Boolean
 	@SerializedName("geo_is_friend")
-	private Integer geoIsFriend;
+	private String geoIsFriend;     // return as Boolean
 	@SerializedName("geo_is_contact")
-	private Integer geoIsContact;
+	private String geoIsContact;    // return as Boolean
 	@SerializedName("geo_is_public")
-	private Integer geoIsPublic;
+	private String geoIsPublic;     // return as Boolean
 
 	@SerializedName("has_comment")
-	private Integer hasComment;
+	private String hasComment;      // return as Boolean
 
 	public String getPhotoId() {
 		return photoId;

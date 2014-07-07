@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.common;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 
 import java.io.Serializable;
 
@@ -62,13 +63,13 @@ public class PrimaryPhotoExtras implements Serializable {
 	@SerializedName("woeid")
 	private String woeId;
 	@SerializedName("geo_is_family")
-	private Integer isGeoIsFamily;
+	private String isGeoIsFamily;       // return as Boolean
 	@SerializedName("geo_is_friend")
-	private Integer isGeoIsFriend;
+	private String isGeoIsFriend;       // return as Boolean
 	@SerializedName("geo_is_contact")
-	private Integer isGeoIsContact;
+	private String isGeoIsContact;      // return as Boolean
 	@SerializedName("geo_is_public")
-	private Integer isGeoIsPublic;
+	private String isGeoIsPublic;       // return as Boolean
 	private String media;
 	@SerializedName("media_status")
 	private String mediaStatus;
@@ -190,20 +191,19 @@ public class PrimaryPhotoExtras implements Serializable {
 		return woeId;
 	}
 
-	public boolean isGeoIsFamily() {
-		return isGeoIsFamily != null && isGeoIsFamily == 1;
+	public Boolean isGeoIsFamily() {
+		return JinxUtils.flickrBooleanToBoolean(isGeoIsFamily);
 	}
 
-	public boolean isGeoIsFriend() {
-		return isGeoIsFriend != null && isGeoIsFriend == 1;
+	public Boolean isGeoIsFriend() { return JinxUtils.flickrBooleanToBoolean(isGeoIsFriend);
 	}
 
-	public boolean isGeoIsContact() {
-		return isGeoIsContact != null && isGeoIsContact == 1;
+	public Boolean isGeoIsContact() {
+		return JinxUtils.flickrBooleanToBoolean(isGeoIsContact);
 	}
 
-	public boolean isGeoIsPublic() {
-		return isGeoIsPublic != null && isGeoIsPublic == 1;
+	public Boolean isGeoIsPublic() {
+		return JinxUtils.flickrBooleanToBoolean(isGeoIsPublic);
 	}
 
 	public String getMedia() {

@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.photos;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
 
 import java.io.Serializable;
@@ -80,9 +81,9 @@ public class Favorites extends Response {
 		private String iconServer;
 		@SerializedName("iconfarm")
 		private Integer iconFarm;
-		private Integer contact;
-		private Integer friend;
-		private Integer family;
+		private String contact;     // return as Boolean
+		private String friend;      // return as Boolean
+		private String family;      // return as Boolean
 
 		public String getNsid() {
 			return nsid;
@@ -109,15 +110,15 @@ public class Favorites extends Response {
 		}
 
 		public boolean isContact() {
-			return contact != null && contact == 1;
+			return JinxUtils.flickrBooleanToBoolean(contact);
 		}
 
 		public boolean isFriend() {
-			return friend != null && friend == 1;
+			return JinxUtils.flickrBooleanToBoolean(friend);
 		}
 
 		public boolean isFamily() {
-			return family != null && family == 1;
+			return JinxUtils.flickrBooleanToBoolean(family);
 		}
 
 

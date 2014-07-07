@@ -35,14 +35,14 @@ public class PhotoPerms extends Response {
 	public String getPhotoId() {
 		return perms == null ? null : perms.id;
 	}
-	public boolean isPublic() {
-		return perms != null && perms.ispublic == 1;
+	public Boolean isPublic() {
+		return perms == null ? null : JinxUtils.flickrBooleanToBoolean(perms.ispublic);
 	}
-	public boolean isFriend() {
-		return perms != null && perms.isfriend == 1;
+	public Boolean isFriend() {
+		return perms == null ? null : JinxUtils.flickrBooleanToBoolean(perms.isfriend);
 	}
-	public boolean isFamily() {
-		return perms != null && perms.isfamily == 1;
+	public Boolean isFamily() {
+		return perms == null ? null : JinxUtils.flickrBooleanToBoolean(perms.isfamily);
 	}
 	public JinxConstants.Perms getPermComment() {
 		return perms == null ? null : JinxUtils.flickrPermsIdToPerms(perms.permcomment);
@@ -69,9 +69,9 @@ public class PhotoPerms extends Response {
 	private class _Perms implements Serializable {
 		private static final long serialVersionUID = 4488359344270008184L;
 		private String id;
-		private Integer ispublic;
-		private Integer isfriend;
-		private Integer isfamily;
+		private String ispublic;    // return as Boolean
+		private String isfriend;    // return as Boolean
+		private String isfamily;    // return as Boolean
 		private Integer permcomment;
 		private Integer permaddmeta;
 	}

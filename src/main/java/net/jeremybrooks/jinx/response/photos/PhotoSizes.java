@@ -17,6 +17,7 @@
 
 package net.jeremybrooks.jinx.response.photos;
 
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
 
 import java.io.Serializable;
@@ -30,16 +31,16 @@ public class PhotoSizes extends Response {
 
 	private _Sizes sizes;
 
-	public boolean isCanBlog() {
-		return sizes != null && sizes.canblog == 1;
+	public Boolean isCanBlog() {
+		return sizes == null ? null : JinxUtils.flickrBooleanToBoolean(sizes.canblog);
 	}
 
-	public boolean isCanPrint() {
-		return sizes != null && sizes.canprint == 1;
+	public Boolean isCanPrint() {
+		return sizes == null ? null : JinxUtils.flickrBooleanToBoolean(sizes.canprint);
 	}
 
-	public boolean isCanDownload() {
-		return sizes != null && sizes.candownload == 1;
+	public Boolean isCanDownload() {
+		return sizes == null ? null : JinxUtils.flickrBooleanToBoolean(sizes.candownload);
 	}
 
 	public List<Size> getSizeList() {
@@ -96,9 +97,9 @@ public class PhotoSizes extends Response {
 
 	private class _Sizes implements Serializable {
 		private static final long serialVersionUID = -5462995391373686811L;
-		private Integer canblog;
-		private Integer canprint;
-		private Integer candownload;
+		private String canblog;     // return as Boolean
+		private String canprint;    // return as Boolean
+		private String candownload; // return as Boolean
 		private List<Size> size;
 	}
 

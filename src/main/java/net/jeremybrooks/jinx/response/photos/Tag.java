@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.photos;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 
 import java.io.Serializable;
 
@@ -29,7 +30,7 @@ public class Tag implements Serializable {
 	private String author;
 	private String raw;
 	@SerializedName("machine_tag")
-	private Integer machineTag;
+	private String machineTag;  // return as Boolean
 	@SerializedName("_content")
 	private String tag;
 	@SerializedName("authorname")
@@ -47,8 +48,8 @@ public class Tag implements Serializable {
 		return raw;
 	}
 
-	public boolean isMachineTag() {
-		return machineTag != null && machineTag == 1;
+	public Boolean isMachineTag() {
+		return JinxUtils.flickrBooleanToBoolean(machineTag);
 	}
 
 	public String getTag() {
@@ -74,7 +75,7 @@ public class Tag implements Serializable {
 		sb.append("net.jeremybrooks.jinx.response.photos.Tag");
 		sb.append("{author='").append(author).append('\'');
 		sb.append(" | raw='").append(raw).append('\'');
-		sb.append(" | isMachineTag=").append(machineTag == 1);
+		sb.append(" | isMachineTag=").append(isMachineTag());
 		sb.append(" | tag='").append(tag).append('\'');
 		sb.append(" | authorName='").append(authorName).append('\'');
 		sb.append(" | fullTagId='").append(fullTagId).append('\'');

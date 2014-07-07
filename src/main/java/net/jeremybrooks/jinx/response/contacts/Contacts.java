@@ -85,13 +85,13 @@ public class Contacts extends Response {
 		private String iconServer;
 		@SerializedName("iconfarm")
 		private Integer iconFarm;
-		private Integer ignored;
+		private String ignored;      // return as Boolean
 		@SerializedName("rev_ignored")
-		private Integer revIgnored;
+		private String revIgnored;   // return as Boolean
 		@SerializedName("realname")
 		private String realName;
-		private Integer friend;
-		private Integer family;
+		private String friend;       // return as Boolean
+		private String family;       // return as Boolean
 		@SerializedName("path_alias")
 		private String pathAlias;
 		private String location;

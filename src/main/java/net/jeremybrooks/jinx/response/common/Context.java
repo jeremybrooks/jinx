@@ -81,7 +81,7 @@ public class Context extends Response {
 		private Integer license;
 		private String media;
 		@SerializedName("is_faved")
-		private Integer isFaved;
+		private String isFaved;    // return as Boolean
 
 		public String getPhotoId() {
 			return photoId;
@@ -161,7 +161,7 @@ public class Context extends Response {
 		private Integer license;
 		private String media;
 		@SerializedName("is_faved")
-		private Integer isFaved;
+		private String isFaved;    // return as Boolean
 
 		public String getPhotoId() {
 			return photoId;

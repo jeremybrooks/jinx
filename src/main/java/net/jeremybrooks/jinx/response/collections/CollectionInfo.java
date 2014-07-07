@@ -127,9 +127,9 @@ public class CollectionInfo extends Response {
 		private String server;
 		private Integer farm;
 		private String title;
-		private Integer ispublic;
-		private Integer isfriend;
-		private Integer isfamily;
+		private String ispublic;    // return as Boolean
+		private String isfriend;    // return as Boolean
+		private String isfamily;    // return as Boolean
 
 		public String getPhotoId() {
 			return photoId;

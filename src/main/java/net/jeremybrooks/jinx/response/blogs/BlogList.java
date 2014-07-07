@@ -69,7 +69,7 @@ public class BlogList extends Response {
 		private String name;
 		private String service;
 		@SerializedName("needspassword")
-		private int needsPassword;
+		private String needsPassword;   // return as Boolean
 		private String url;
 
 		/**

@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.photosets;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.common.PrimaryPhotoExtras;
 
 import java.io.Serializable;
@@ -57,12 +58,12 @@ public class Photoset implements Serializable {
 	private _Description description;
 
 	@SerializedName("needs_interstitial")
-	private Integer isNeedsInterstitial;
+	private String isNeedsInterstitial;     // return as Boolean
 	@SerializedName("visibility_can_see_set")
-	private Integer isVisibilityCanSeeSet;
+	private String isVisibilityCanSeeSet;   // return as Boolean
 
 	@SerializedName("can_comment")
-	private Integer isCanComment;
+	private String isCanComment;    // return as Boolean
 	@SerializedName("date_create")
 	private String dateCreate;
 	@SerializedName("date_update")
@@ -146,8 +147,8 @@ public class Photoset implements Serializable {
 		return description.getDescription();
 	}
 
-	public boolean isCanComment() {
-		return isCanComment != null && isCanComment == 1;
+	public Boolean isCanComment() {
+		return JinxUtils.flickrBooleanToBoolean(isCanComment);
 	}
 
 	public String getDateCreate() {
@@ -179,16 +180,16 @@ public class Photoset implements Serializable {
 	 * This data is only returned from the getList method.
 	 * @return value of the is_needs_interstitial data returned from Flickr.
 	 */
-	public boolean getIsNeedsInterstitial() {
-		return isNeedsInterstitial != null && isNeedsInterstitial == 1;
+	public Boolean getIsNeedsInterstitial() {
+		return JinxUtils.flickrBooleanToBoolean(isNeedsInterstitial);
 	}
 
 	/**
 	 * This data is only returned from the getList method.
 	 * @return value of the is_visibility_can_see_set data returned from Flickr.
 	 */
-	public boolean getIsVisibilityCanSeeSet() {
-		return isVisibilityCanSeeSet != null && isVisibilityCanSeeSet == 1;
+	public Boolean getIsVisibilityCanSeeSet() {
+		return JinxUtils.flickrBooleanToBoolean(isVisibilityCanSeeSet);
 	}
 
 	private class _Title implements Serializable {
