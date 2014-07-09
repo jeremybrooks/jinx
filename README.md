@@ -45,7 +45,7 @@ If you are using Maven, just include this in your pom.xml file
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>0.6.8</version>
+		<version>0.6.9</version>
 	</dependency>
 
 If you are not using Maven, you will need these libraries, and their dependencies:
@@ -57,7 +57,7 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 # VERSION HISTORY
 
-## Version 0.6.8 supports the following API's
+## Version 0.6.9 supports the following API's
   * activity
   * blogs (have not really tested the postPhoto method, though)
   * cameras
