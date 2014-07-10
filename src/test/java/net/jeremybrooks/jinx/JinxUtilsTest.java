@@ -340,4 +340,22 @@ public class JinxUtilsTest {
         assertFalse(JinxUtils.flickrBooleanToBoolean("1123"));
     }
 
+    @Test
+    public void testFlickrMemberTypeIdToEnum() {
+        assertEquals(JinxConstants.MemberType.narwhal, JinxUtils.typeIdToMemberType(1));
+        assertEquals(JinxConstants.MemberType.member, JinxUtils.typeIdToMemberType(2));
+        assertEquals(JinxConstants.MemberType.moderator, JinxUtils.typeIdToMemberType(3));
+        assertEquals(JinxConstants.MemberType.admin, JinxUtils.typeIdToMemberType(4));
+        assertNull(JinxUtils.typeIdToMemberType(0));
+        assertNull(JinxUtils.typeIdToMemberType(null));
+    }
+
+    @Test
+    public void testMemberTypeEnumToId() {
+        assertEquals(new Integer(1), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.narwhal));
+        assertEquals(new Integer(2), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.member));
+        assertEquals(new Integer(3), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.moderator));
+        assertEquals(new Integer(4), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.admin));
+        assertNull(JinxUtils.memberTypeToMemberTypeId(null));
+    }
 }

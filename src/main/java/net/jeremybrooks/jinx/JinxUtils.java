@@ -670,6 +670,68 @@ public class JinxUtils {
         return ret;
     }
 
+    /**
+     * Convert a MemberType enum to the numeric Flickr member type id.
+     *
+     * @param memberType the enum type to convert to a numeric id.
+     * @return numeric id corresponding to the enum value, or null if the member type parameter is invalid.
+     */
+    public static Integer memberTypeToMemberTypeId(JinxConstants.MemberType memberType) {
+        if (memberType == null) {
+            return null;
+        }
+        Integer type;
+        switch (memberType) {
+            case narwhal:
+                type = 1;
+                break;
+            case member:
+                type = 2;
+                break;
+            case moderator:
+                type = 3;
+                break;
+            case admin:
+                type = 4;
+                break;
+            default:
+                type = null;
+                break;
+        }
+        return type;
+    }
+
+    /**
+     * Convert a numeric Flickr member type id to a MemberType enum value.
+     *
+     * @param typeId the numeric member type id to convert.
+     * @return MemberType enum value corresponding to the id, or null if the typeId is not a valid Flickr member type.
+     */
+    public static JinxConstants.MemberType typeIdToMemberType(Integer typeId) {
+        if (typeId == null) {
+            return null;
+        }
+        JinxConstants.MemberType memberType;
+        switch (typeId) {
+            case 1:
+                memberType = JinxConstants.MemberType.narwhal;
+                break;
+            case 2:
+                memberType = JinxConstants.MemberType.member;
+                break;
+            case 3:
+                memberType = JinxConstants.MemberType.moderator;
+                break;
+            case 4:
+                memberType = JinxConstants.MemberType.admin;
+                break;
+            default:
+                memberType = null;
+                break;
+        }
+        return memberType;
+    }
+
 
     public static void close(InputStream in) {
         if (in != null) {

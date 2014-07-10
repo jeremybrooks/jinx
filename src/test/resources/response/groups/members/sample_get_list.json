@@ -1,0 +1,88 @@
+{ "members": {
+    "page": 1,
+    "pages": "12655",
+    "perpage": 10,
+    "total": "126546",
+    "member": [
+        {
+            "nsid": "117607063@N05",
+            "username": "Sebastain Trif",
+            "iconserver": 0,
+            "iconfarm": 0,
+            "membertype": 2,
+            "realname": "Sebastian Trif"
+        },
+        {
+            "nsid": "12232201@N08",
+            "username": "ahmed4u70",
+            "iconserver": "1327",
+            "iconfarm": 2,
+            "membertype": 2,
+            "realname": "ahmed al bather"
+        },
+        {
+            "nsid": "125328752@N08",
+            "username": "martinmoore7",
+            "iconserver": "3863",
+            "iconfarm": 4,
+            "membertype": 2,
+            "realname": "martin moore"
+        },
+        {
+            "nsid": "58222313@N04",
+            "username": "Lucas M. Trabachini",
+            "iconserver": "5212",
+            "iconfarm": 6,
+            "membertype": 2,
+            "realname": "Lucas M Trabachini"
+        },
+        {
+            "nsid": "116630227@N08",
+            "username": "mallik_786",
+            "iconserver": 0,
+            "iconfarm": 0,
+            "membertype": 2,
+            "realname": ""
+        },
+        {
+            "nsid": "126016504@N05",
+            "username": "venorin1",
+            "iconserver": "5568",
+            "iconfarm": 6,
+            "membertype": 2,
+            "realname": "Venorin Venorin"
+        },
+        {
+            "nsid": "125399843@N05",
+            "username": "susan_petyko",
+            "iconserver": "2896",
+            "iconfarm": 3,
+            "membertype": 2,
+            "realname": "susan petyko"
+        },
+        {
+            "nsid": "113822107@N08",
+            "username": "hyzack.xavier_7",
+            "iconserver": "3840",
+            "iconfarm": 4,
+            "membertype": 2,
+            "realname": "Hyzack Xavier"
+        },
+        {
+            "nsid": "125990981@N05",
+            "username": "lrksr",
+            "iconserver": 0,
+            "iconfarm": 0,
+            "membertype": 2,
+            "realname": "Laura Keiser"
+        },
+        {
+            "nsid": "103064193@N07",
+            "username": "alicja_nu",
+            "iconserver": "7318",
+            "iconfarm": 8,
+            "membertype": 2,
+            "realname": "Alicja Nu"
+        }
+    ]
+}, "stat": "ok" }

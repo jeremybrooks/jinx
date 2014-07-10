@@ -1,0 +1,58 @@
+{ "group": {
+    "id": "67877485@N00",
+    "path_alias": "sfbas",
+    "iconserver": 52,
+    "iconfarm": 1,
+    "name": {
+        "_content": "SF Bay Area Shooters (sfbas)"
+    },
+    "description": {
+        "_content": "Share tips, photo locations, and organize photoshoots with San Francisco Bay Area photographers!\n\nCheck out our official SFBAS Shoot pictures:\n<a href=\"http:\/\/flickr.com\/photos\/tags\/sfbas\/clusters\/\">flickr.com\/photos\/tags\/sfbas\/clusters\/<\/a>\n\nCheck out our SFBAS Group Pictures:\n<a href=\"http:\/\/www.flickr.com\/groups\/sfbas\/discuss\/72157602621370134\/\">www.flickr.com\/groups\/sfbas\/discuss\/72157602621370134\/<\/a>\n\nAnd please visit our master shoot location list for upcoming photo shoots!\n<a href=\"http:\/\/flickr.com\/groups\/sfbas\/discuss\/72157594179606707\/\">flickr.com\/groups\/sfbas\/discuss\/72157594179606707\/<\/a>\n\n<a href=\"http:\/\/www.flickr.com\/groups\/sfbas\/discuss\/72157594501754869\/\">Thank your for using caution when using the SFBAS tag<\/a>\n\n"
+    },
+    "rules": {
+        "_content": ""
+    },
+    "members": {
+        "_content": "4409"
+    },
+    "pool_count": {
+        "_content": "145199"
+    },
+    "topic_count": {
+        "_content": "848"
+    },
+    "privacy": {
+        "_content": 3
+    },
+    "lang": "",
+    "ispoolmoderated": 0,
+    "roles": {
+        "member": "Member",
+        "moderator": "Moderator",
+        "admin": "Administrator"
+    },
+    "is_member": 1,
+    "is_moderator": 0,
+    "is_admin": 0,
+    "blast": {
+        "_content": "We are now also on Google+! <a href=\"https:\/\/plus.google.com\/u\/0\/105043012447601369073\/posts\" rel=\"nofollow\">Click here<\/a> | Upcoming SFBAS Events: <a href=\"http:\/\/www.flickr.com\/groups\/sfbas\/discuss\/72157629107751111\/\">SF Venue Shoot - February 25th, 2012<\/a> | <a href=\"http:\/\/flickr.com\/groups\/sfbas\/discuss\/72157605474119242\/\">SFBAS Charity Gallery Event<\/a> | <a href=\"http:\/\/www.flickr.com\/groups\/sfbas\/discuss\/72157594179606707\/\"><b>See all shoots<\/b><\/a>",
+        "date_blast_added": "1327974979",
+        "user_id": "642072"
+    },
+    "throttle": {
+        "count": 5,
+        "mode": "day",
+        "remaining": 4
+    },
+    "restrictions": {
+        "photos_ok": 1,
+        "videos_ok": 1,
+        "images_ok": 1,
+        "screens_ok": 1,
+        "art_ok": 1,
+        "safe_ok": 1,
+        "moderate_ok": 1,
+        "restricted_ok": 0,
+        "has_geo": 0
+    }
+}, "stat": "ok" }

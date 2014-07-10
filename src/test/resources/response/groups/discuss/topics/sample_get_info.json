@@ -1,0 +1,22 @@
+{ "topic": {
+    "id": "72157645141651797",
+    "subject": "flickr4java - unable to obtain DELETE permission",
+    "message": {
+        "_content": "I'm using flickr4java v2.8 in my application that downloads photos.\r\n\r\nI can authenticate successfully, and get lists of my photo albums etc., but am getting:\r\n\r\ncom.flickr4java.flickr.FlickrException: 99: Insufficient permissions. Method requires read privileges; none granted.\r\n\r\nwhen attempting to download photos. I have set \r\n\r\nauthInterface.getAuthorizationUrl(rtoken, Permission.DELETE);\r\n\r\n(I need access to delete photos as well as download them) which I assumed also allows read and write access, as well as delete.\r\n\r\nShould I instead by ORing all Permissions I need together?\r\n\r\nThanks for any advice!"
+    },
+    "author": "10385775@N00",
+    "authorname": "snigfargle",
+    "is_pro": 0,
+    "role": "member",
+    "iconserver": "7344",
+    "iconfarm": 8,
+    "count_replies": 1,
+    "can_edit": 0,
+    "can_delete": 0,
+    "can_reply": 0,
+    "is_sticky": 0,
+    "is_locked": 0,
+    "datecreate": "1404713682",
+    "datelastpost": "1404762423",
+    "last_reply": "72157645513187066"
+}, "stat": "ok" }

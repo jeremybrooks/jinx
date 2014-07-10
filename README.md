@@ -73,7 +73,37 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 
 # KNOWN ISSUES
-If a user has no blogs set up, calling the getBlogList() method will throw an Exception. This is due to different data structures returned by Flickr if a user has blogs or does not have blogs. This issue has been reported to Flickr.
+
+ * If a user has no blogs set up, calling the getBlogList() method will throw an Exception. This is due to different data structures returned by Flickr if a user has blogs or does not have blogs. This issue has been reported to Flickr.
+
+ * PhotoUtils methods that use ImageIO do not use configured proxy:
+
+
+    WARN net.jeremybrooks.suprsetr.flickr.PhotoHelper [SwingWorker-pool-2-thread-6] 2014-07-09 06:41:55,774 - ERROR GETTING ICON FOR PHOTO 3097549845
+    net.jeremybrooks.jinx.JinxException: Unable to get image for size SIZE_SMALL_SQUARE
+        at net.jeremybrooks.jinx.PhotoUtils.getImageForSize(PhotoUtils.java:88)
+        at net.jeremybrooks.suprsetr.flickr.PhotoHelper.getIconForPhoto(PhotoHelper.java:229)
+        at net.jeremybrooks.suprsetr.workers.LoadImagesWorker.doInBackground(LoadImagesWorker.java:128)
+        at net.jeremybrooks.suprsetr.workers.LoadImagesWorker.doInBackground(LoadImagesWorker.java:48)
+        at javax.swing.SwingWorker$1.call(SwingWorker.java:296)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at javax.swing.SwingWorker.run(SwingWorker.java:335)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+    Caused by: javax.imageio.IIOException: Can't get input stream from URL!
+        at javax.imageio.ImageIO.read(ImageIO.java:1395)
+        at net.jeremybrooks.jinx.PhotoUtils.getImageForSize(PhotoUtils.java:84)
+        ... 9 more
+    Caused by: java.io.IOException: Unable to tunnel through proxy. Proxy returns "HTTP/1.0 407 Proxy Authentication Required"
+        at sun.net.www.protocol.http.HttpURLConnection.doTunneling(HttpURLConnection.java:1873)
+        at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:183)
+        at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1300)
+        at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+        at java.net.URL.openStream(URL.java:1037)
+        at javax.imageio.ImageIO.read(ImageIO.java:1393)
+
+
 
 # API IMPLEMENTATION STATUS
 
@@ -92,11 +122,13 @@ If a user has no blogs set up, calling the getBlogList() method will throw an Ex
   * photosets.comments
 
 ## Available In Latest Source
- 
+   * groups
+   * groups.discuss.replies
+   * groups.discuss.topics
+   * groups.members
 
 ## Not Yet Implemented
-  * groups
-  * groups.members
+
   * groups.pools
   * interestingness
   * machinetags (partial)

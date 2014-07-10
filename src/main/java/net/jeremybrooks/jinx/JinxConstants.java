@@ -108,18 +108,12 @@ public class JinxConstants {
 		SIZE_LARGE_1600, SIZE_LARGE_2048
 	}
 
+    public static enum MemberType {
+        narwhal, member, moderator, admin
+    }
 
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line
-
-	public static final String PERMS_READ = "read";
-	public static final String PERMS_WRITE = "write";
-
-
-	public static final String PERMS_DELETE = "delete";
-
-
-	public static final String AUTH_ENDPOINT = "http://flickr.com/services/auth/";
 
 
 	/**

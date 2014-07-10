@@ -1,0 +1,108 @@
+{ "groups": {
+    "page": 1,
+    "pages": "500",
+    "perpage": 10,
+    "total": "4998",
+    "group": [
+        {
+            "nsid": "1026413@N24",
+            "name": "Neon Arrows",
+            "eighteenplus": 0,
+            "iconserver": "3455",
+            "iconfarm": 4,
+            "members": 68,
+            "pool_count": "733",
+            "topic_count": 1
+        },
+        {
+            "nsid": "627122@N23",
+            "name": "Neon Si_ns",
+            "eighteenplus": 0,
+            "iconserver": "2096",
+            "iconfarm": 3,
+            "members": "224",
+            "pool_count": "1274",
+            "topic_count": 0
+        },
+        {
+            "nsid": "82838546@N00",
+            "name": "Neon Signs",
+            "eighteenplus": 0,
+            "iconserver": 1,
+            "iconfarm": 1,
+            "members": "7931",
+            "pool_count": "106083",
+            "topic_count": 62
+        },
+        {
+            "nsid": "854642@N23",
+            "name": "Neon Gods - Ecclesiastical (Religious) Neon Signs",
+            "eighteenplus": 0,
+            "iconserver": "3127",
+            "iconfarm": 4,
+            "members": "275",
+            "pool_count": "275",
+            "topic_count": 2
+        },
+        {
+            "nsid": "1301847@N24",
+            "name": "Neon Puddles",
+            "eighteenplus": 0,
+            "iconserver": "4046",
+            "iconfarm": 5,
+            "members": 47,
+            "pool_count": 54,
+            "topic_count": 0
+        },
+        {
+            "nsid": "673365@N24",
+            "name": "Neon Texas",
+            "eighteenplus": 0,
+            "iconserver": "3055",
+            "iconfarm": 4,
+            "members": "368",
+            "pool_count": "4126",
+            "topic_count": 5
+        },
+        {
+            "nsid": "31273766@N00",
+            "name": "Neon & Dayglow",
+            "eighteenplus": 0,
+            "iconserver": "175",
+            "iconfarm": 1,
+            "members": "142",
+            "pool_count": "630",
+            "topic_count": 0
+        },
+        {
+            "nsid": "578872@N22",
+            "name": "Neon Houston",
+            "eighteenplus": 0,
+            "iconserver": "2030",
+            "iconfarm": 3,
+            "members": "216",
+            "pool_count": "2093",
+            "topic_count": 9
+        },
+        {
+            "nsid": "751471@N22",
+            "name": "Neon Boneyard",
+            "eighteenplus": 0,
+            "iconserver": "2382",
+            "iconfarm": 3,
+            "members": "441",
+            "pool_count": "2140",
+            "topic_count": 6
+        },
+        {
+            "nsid": "56631098@N00",
+            "name": "Neon Lights",
+            "eighteenplus": 0,
+            "iconserver": 62,
+            "iconfarm": 1,
+            "members": "676",
+            "pool_count": "8918",
+            "topic_count": 4
+        }
+    ]
+}, "stat": "ok" }

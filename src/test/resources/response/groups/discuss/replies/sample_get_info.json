@@ -1,0 +1,16 @@
+{ "reply": {
+    "id": "72157645513187066",
+    "message": {
+        "_content": "Update - the application started working correctly: I guess I must have had an older auth token stored that I was inadvertently using."
+    },
+    "author": "10385775@N00",
+    "authorname": "snigfargle",
+    "is_pro": 0,
+    "role": "member",
+    "iconserver": "7344",
+    "iconfarm": 8,
+    "can_edit": 0,
+    "can_delete": 0,
+    "datecreate": "1404762423",
+    "lastedit": 0
+}, "stat": "ok" }
