@@ -183,7 +183,10 @@ public class Photo implements Serializable {
 	@SerializedName("has_comment")
 	private String hasComment;      // return as Boolean
 
-	public String getPhotoId() {
+    @SerializedName("dateadded")
+    private String dateAdded;
+
+    public String getPhotoId() {
 		return photoId;
 	}
 
@@ -474,6 +477,12 @@ public class Photo implements Serializable {
 
 	public Boolean isHasComment() { return JinxUtils.flickrBooleanToBoolean(hasComment); }
 
+    /**
+     * Part of the return from flickr.groups.pools.getPhotos
+     * @return date the photo was added to the pool.
+     */
+    public String getDateAdded() {return dateAdded;}
+
 	private class _DescriptionClass implements Serializable {
 		private static final long serialVersionUID = 8223398980226083052L;
 		@SerializedName("_content")
@@ -503,7 +512,8 @@ public class Photo implements Serializable {
 		sb.append(" | lastUpdate='").append(lastUpdate).append('\'');
 		sb.append(" | dateTaken='").append(dateTaken).append('\'');
 		sb.append(" | dateTakenGranularity=").append(dateTakenGranularity);
-		sb.append(" | ownerName='").append(ownerName).append('\'');
+        sb.append(" | dateAdded='").append(dateAdded).append('\'');
+        sb.append(" | ownerName='").append(ownerName).append('\'');
 		sb.append(" | iconServer=").append(iconServer);
 		sb.append(" | iconFarm=").append(iconFarm);
 		sb.append(" | views=").append(views);

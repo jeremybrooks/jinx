@@ -732,6 +732,61 @@ public class JinxUtils {
         return memberType;
     }
 
+    /**
+     * Convert a GroupPrivacy enum value to the corresponding Flickr numeric identifier.
+     *
+     * @param privacy group privacy enum to convert.
+     * @return corresponding Flickr number id for the group privacy, or null if the parameter is invalid.
+     */
+    public static Integer groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy privacy) {
+        if (privacy == null) {
+            return null;
+        }
+        Integer id;
+        switch (privacy) {
+            case group_private:
+                id = 1;
+                break;
+            case group_invite_only_public:
+                id = 2;
+                break;
+            case group_open_public:
+                id = 3;
+                break;
+            default:
+                id = null;
+                break;
+        }
+        return id;
+    }
+
+    /**
+     * Convert a Flickr group privacy numeric identifier to the corresponding GroupPrivacy enum value.
+     *
+     * @param id Flickr group privacy id.
+     * @return corresponding GroupPrivacy enum value, or null if the parameter is invalid.
+     */
+    public static JinxConstants.GroupPrivacy privacyIdToGroupPrivacyEnum(Integer id) {
+        if (id == null) {
+            return null;
+        }
+        JinxConstants.GroupPrivacy privacy;
+        switch (id) {
+            case 1:
+                privacy = JinxConstants.GroupPrivacy.group_private;
+                break;
+            case 2:
+                privacy = JinxConstants.GroupPrivacy.group_invite_only_public;
+                break;
+            case 3:
+                privacy = JinxConstants.GroupPrivacy.group_open_public;
+                break;
+            default:
+                privacy = null;
+                break;
+        }
+        return privacy;
+    }
 
     public static void close(InputStream in) {
         if (in != null) {

@@ -112,6 +112,12 @@ public class JinxConstants {
         narwhal, member, moderator, admin
     }
 
+    public static enum GroupPrivacy {
+        group_private,
+        group_invite_only_public,
+        group_open_public
+    }
+
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line
 

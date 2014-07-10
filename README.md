@@ -109,6 +109,7 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 ## Available In Latest Release
   * activity
+  * auth.oauth
   * blogs (have not really tested the postPhoto method, though)
   * cameras
   * collections
@@ -116,7 +117,6 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * contacts
   * favorites
   * galleries
-  * oauth
   * photos
   * photosets
   * photosets.comments
@@ -126,10 +126,10 @@ If you are not using Maven, you will need these libraries, and their dependencie
    * groups.discuss.replies
    * groups.discuss.topics
    * groups.members
+   * groups.pools
 
 ## Not Yet Implemented
 
-  * groups.pools
   * interestingness
   * machinetags (partial)
   * panda
@@ -141,10 +141,12 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * photos.licenses
   * photos.notes
   * photos.people
+  * photos.suggestions
   * photos.transform
   * photos.upload
   * places
   * prefs
+  * push
   * reflection
   * stats
   * tags

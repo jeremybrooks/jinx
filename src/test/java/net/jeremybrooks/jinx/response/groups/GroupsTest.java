@@ -100,7 +100,7 @@ public class GroupsTest {
         assertFalse(g.isEighteenPlus());
         assertEquals("3455", g.getIconServer());
         assertEquals("4", g.getIconFarm());
-        assertEquals(new Integer(68), g.getMembers());
+        assertEquals(new Integer(68), g.getMemberCount());
         assertEquals(new Integer(733), g.getPoolCount());
         assertEquals(new Integer(1), g.getTopicCount());
     }

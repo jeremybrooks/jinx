@@ -1,0 +1,38 @@
+{ "groups": {
+    "page": 1,
+    "pages": 1,
+    "per_page": "400",
+    "total": 2,
+    "group": [
+        {
+            "nsid": "2638254@N20",
+            "id": "2638254@N20",
+            "name": "Private Jinx Test Group",
+            "member": 1,
+            "moderator": 0,
+            "admin": "1",
+            "privacy": 1,
+            "photos": 1,
+            "iconserver": "2934",
+            "iconfarm": 3,
+            "member_count": 1,
+            "topic_count": 7,
+            "pool_count": 1
+        },
+        {
+            "nsid": "2723340@N22",
+            "id": "2723340@N22",
+            "name": "Public Jinx Test Group",
+            "member": 1,
+            "moderator": 0,
+            "admin": "1",
+            "privacy": 3,
+            "photos": 5,
+            "iconserver": "3910",
+            "iconfarm": 4,
+            "member_count": 1,
+            "topic_count": 2,
+            "pool_count": 5
+        }
+    ]
+}, "stat": "ok" }

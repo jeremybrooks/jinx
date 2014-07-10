@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.groups;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
 
@@ -33,7 +34,16 @@ public class GroupSearch extends Response {
 
     public Integer getPage() { return groups == null ? null : groups.page; }
     public Integer getPages() { return groups == null ? null : groups.pages; }
-    public Integer getPerPage() { return groups == null ? null : groups.perPage; }
+    public Integer getPerPage() {
+        // groups.search and groups.pools.getGroups return per page in different ways. handle both.
+        if (groups == null) {
+            return null;
+        }
+        if (groups.perPage == null) {
+            return groups.per_page;
+        }
+        return groups.perPage;
+    }
     public Integer getTotal() { return groups == null ? null : groups.total; }
     public List<Group> getGroupList() { return groups == null ? null : groups.groupList; }
 
@@ -43,6 +53,7 @@ public class GroupSearch extends Response {
         private Integer pages;
         @SerializedName("perpage")
         private Integer perPage;
+        private Integer per_page;   // returned by groups.pools.getGroups
         private Integer total;
         @SerializedName("group")
         private List<Group> groupList;
@@ -59,11 +70,17 @@ public class GroupSearch extends Response {
         private String iconServer;
         @SerializedName("iconfarm")
         private String iconFarm;
-        private Integer members;
+        private Integer members;        // from groups.search
+        private Integer member_count;   // from groups.pools.getGroups
         @SerializedName("pool_count")
         private Integer poolCount;
         @SerializedName("topic_count")
         private Integer topicCount;
+        private String member;      // return as Boolean
+        private String moderator;   // return as Boolean
+        private String admin;       // return as Boolean
+        private Integer photos;
+        private Integer privacy;    // return as JinxConstants.GroupPrivacy
 
         public String getGroupId() {
             return groupId;
@@ -76,6 +93,15 @@ public class GroupSearch extends Response {
         public Boolean isEighteenPlus() {
             return JinxUtils.flickrBooleanToBoolean(eighteenPlus);
         }
+        public Boolean isMember() {
+            return JinxUtils.flickrBooleanToBoolean(member);
+        }
+        public Boolean isModerator() {
+            return JinxUtils.flickrBooleanToBoolean(moderator);
+        }
+        public Boolean isAdmin() {
+            return JinxUtils.flickrBooleanToBoolean(admin);
+        }
 
         public String getIconServer() {
             return iconServer;
@@ -85,8 +111,12 @@ public class GroupSearch extends Response {
             return iconFarm;
         }
 
-        public Integer getMembers() {
-            return members;
+        public Integer getMemberCount() {
+            if (members == null) {
+                return member_count;
+            } else {
+                return members;
+            }
         }
 
         public Integer getPoolCount() {
@@ -97,17 +127,27 @@ public class GroupSearch extends Response {
             return topicCount;
         }
 
+        public Integer getPhotos() { return photos; }
+
+        public JinxConstants.GroupPrivacy getPrivacy() {
+            return JinxUtils.privacyIdToGroupPrivacyEnum(privacy);
+        }
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder("Group{");
             sb.append("groupId='").append(groupId).append('\'');
             sb.append(", name='").append(name).append('\'');
-            sb.append(", eighteenPlus='").append(isEighteenPlus()).append('\'');
+            sb.append(", isEighteenPlus='").append(isEighteenPlus()).append('\'');
+            sb.append(", isMember='").append(isMember()).append('\'');
+            sb.append(", isModerator='").append(isModerator()).append('\'');
+            sb.append(", isAdmin='").append(isAdmin()).append('\'');
             sb.append(", iconServer='").append(iconServer).append('\'');
             sb.append(", iconFarm='").append(iconFarm).append('\'');
-            sb.append(", members=").append(members);
+            sb.append(", memberCount=").append(getMemberCount());
             sb.append(", poolCount=").append(poolCount);
             sb.append(", topicCount=").append(topicCount);
+            sb.append(", photos=").append(photos);
+            sb.append(", privacy=").append(getPrivacy().toString());
             sb.append('}');
             return sb.toString();
         }

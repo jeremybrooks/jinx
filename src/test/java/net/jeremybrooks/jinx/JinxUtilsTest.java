@@ -358,4 +358,21 @@ public class JinxUtilsTest {
         assertEquals(new Integer(4), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.admin));
         assertNull(JinxUtils.memberTypeToMemberTypeId(null));
     }
+
+    @Test
+    public void testFlickrGroupPrivacyIdToEnum() {
+        assertEquals(JinxConstants.GroupPrivacy.group_private, JinxUtils.privacyIdToGroupPrivacyEnum(1));
+        assertEquals(JinxConstants.GroupPrivacy.group_invite_only_public, JinxUtils.privacyIdToGroupPrivacyEnum(2));
+        assertEquals(JinxConstants.GroupPrivacy.group_open_public, JinxUtils.privacyIdToGroupPrivacyEnum(3));
+        assertNull(JinxUtils.privacyIdToGroupPrivacyEnum(5));
+        assertNull(JinxUtils.privacyIdToGroupPrivacyEnum(null));
+    }
+
+    @Test
+    public void testGroupPrivacyEnumToId() {
+        assertEquals(new Integer(1), JinxUtils.groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy.group_private));
+        assertEquals(new Integer(2), JinxUtils.groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy.group_invite_only_public));
+        assertEquals(new Integer(3), JinxUtils.groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy.group_open_public));
+        assertNull(JinxUtils.groupPrivacyEnumToPrivacyId(null));
+    }
 }
