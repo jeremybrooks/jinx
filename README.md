@@ -127,11 +127,11 @@ If you are not using Maven, you will need these libraries, and their dependencie
    * groups.discuss.topics
    * groups.members
    * groups.pools
+   * interestingness
 
 ## Not Yet Implemented
 
-  * interestingness
-  * machinetags (partial)
+  * machinetags
   * panda
   * people
   * photos.comments
