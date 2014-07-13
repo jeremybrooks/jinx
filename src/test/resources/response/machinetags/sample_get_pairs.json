@@ -1,0 +1,68 @@
+{ "pairs": {
+    "pair": [
+        {
+            "_content": "accessceramics:width",
+            "namespace": "accessceramics",
+            "predicate": "width",
+            "usage": "1961"
+        },
+        {
+            "_content": "acitve:event",
+            "namespace": "acitve",
+            "predicate": "event",
+            "usage": 8
+        },
+        {
+            "_content": "acive:event",
+            "namespace": "acive",
+            "predicate": "event",
+            "usage": 1
+        },
+        {
+            "_content": "ackurapr:articleid",
+            "namespace": "ackurapr",
+            "predicate": "articleid",
+            "usage": "148"
+        },
+        {
+            "_content": "acopen:project",
+            "namespace": "acopen",
+            "predicate": "project",
+            "usage": 1
+        },
+        {
+            "_content": "acousticlastfm:event",
+            "namespace": "acousticlastfm",
+            "predicate": "event",
+            "usage": 1
+        },
+        {
+            "_content": "acs:camera",
+            "namespace": "acs",
+            "predicate": "camera",
+            "usage": "152"
+        },
+        {
+            "_content": "acs:editor",
+            "namespace": "acs",
+            "predicate": "editor",
+            "usage": 10
+        },
+        {
+            "_content": "acs:filename",
+            "namespace": "acs",
+            "predicate": "filename",
+            "usage": "152"
+        },
+        {
+            "_content": "actice:event",
+            "namespace": "actice",
+            "predicate": "event",
+            "usage": 2
+        }
+    ],
+    "page": 10,
+    "total": "13912",
+    "perpage": 10,
+    "pages": "1392"
+}, "stat": "ok" }

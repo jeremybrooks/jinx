@@ -1,0 +1,66 @@
+{ "values": {
+    "namespace": "car",
+    "predicate": "make",
+    "value": [
+        {
+            "_content": "mazda",
+            "usage": 8,
+            "namespace": "car",
+            "predicate": "make",
+            "first_added": "1279193548",
+            "last_added": "1279193549"
+        },
+        {
+            "_content": "volvo",
+            "usage": 1,
+            "namespace": "car",
+            "predicate": "make",
+            "first_added": "1279193493",
+            "last_added": "1279193493"
+        },
+        {
+            "_content": "kia",
+            "usage": 1,
+            "namespace": "car",
+            "predicate": "make",
+            "first_added": "1244030668",
+            "last_added": "1244030668"
+        },
+        {
+            "_content": "holden",
+            "usage": 4,
+            "namespace": "car",
+            "predicate": "make",
+            "first_added": "1244030095",
+            "last_added": "1244030621"
+        },
+        {
+            "_content": "volkswagon",
+            "usage": 2,
+            "namespace": "car",
+            "predicate": "make",
+            "first_added": "1244030064",
+            "last_added": "1244030600"
+        },
+        {
+            "_content": "maserati",
+            "usage": 1,
+            "namespace": "car",
+            "predicate": "make",
+            "first_added": "1234691064",
+            "last_added": "1234691064"
+        },
+        {
+            "_content": "volkswagen",
+            "usage": 4,
+            "namespace": "car",
+            "predicate": "make",
+            "first_added": "1227125696",
+            "last_added": "1227125696"
+        }
+    ],
+    "page": 1,
+    "total": 7,
+    "perpage": "500",
+    "pages": 1
+}, "stat": "ok" }

@@ -1,0 +1,58 @@
+{ "namespaces": {
+    "namespace": [
+        {
+            "_content": "aircraft",
+            "usage": 93,
+            "predicates": 6
+        },
+        {
+            "_content": "airline",
+            "usage": "183",
+            "predicates": 3
+        },
+        {
+            "_content": "airlinebaggagerestrictions",
+            "usage": 21,
+            "predicates": 1
+        },
+        {
+            "_content": "airpor",
+            "usage": 1,
+            "predicates": 1
+        },
+        {
+            "_content": "airport",
+            "usage": "955",
+            "predicates": 6
+        },
+        {
+            "_content": "aitaxonogeo",
+            "usage": 1,
+            "predicates": 1
+        },
+        {
+            "_content": "ajaxallhartsberg",
+            "usage": 41,
+            "predicates": 1
+        },
+        {
+            "_content": "aks",
+            "usage": 16,
+            "predicates": 1
+        },
+        {
+            "_content": "albofasciatataxonomy",
+            "usage": 1,
+            "predicates": 1
+        },
+        {
+            "_content": "album",
+            "usage": 7,
+            "predicates": 3
+        }
+    ],
+    "page": 10,
+    "total": "4033",
+    "perpage": 10,
+    "pages": "404"
+}, "stat": "ok" }

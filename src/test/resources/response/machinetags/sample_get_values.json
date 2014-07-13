@@ -1,0 +1,38 @@
+{ "values": {
+    "namespace": "car",
+    "predicate": "make",
+    "value": [
+        {
+            "_content": "holden",
+            "usage": 4
+        },
+        {
+            "_content": "kia",
+            "usage": 1
+        },
+        {
+            "_content": "maserati",
+            "usage": 1
+        },
+        {
+            "_content": "mazda",
+            "usage": 8
+        },
+        {
+            "_content": "volkswagen",
+            "usage": 4
+        },
+        {
+            "_content": "volkswagon",
+            "usage": 2
+        },
+        {
+            "_content": "volvo",
+            "usage": 1
+        }
+    ],
+    "page": 1,
+    "total": 7,
+    "perpage": "500",
+    "pages": 1
+}, "stat": "ok" }

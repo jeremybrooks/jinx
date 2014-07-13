@@ -1,0 +1,58 @@
+{ "predicates": {
+    "predicate": [
+        {
+            "_content": "admin_level",
+            "usage": 2,
+            "namespaces": 1
+        },
+        {
+            "_content": "adobe",
+            "usage": "286",
+            "namespaces": 1
+        },
+        {
+            "_content": "adoxaceae",
+            "usage": 5,
+            "namespaces": 1
+        },
+        {
+            "_content": "adshakessca",
+            "usage": 1,
+            "namespaces": 1
+        },
+        {
+            "_content": "advancedscenemode",
+            "usage": 2,
+            "namespaces": 1
+        },
+        {
+            "_content": "adventure",
+            "usage": 6,
+            "namespaces": 1
+        },
+        {
+            "_content": "aechmea",
+            "usage": 1,
+            "namespaces": 1
+        },
+        {
+            "_content": "aeonium",
+            "usage": 5,
+            "namespaces": 1
+        },
+        {
+            "_content": "aesculus",
+            "usage": 1,
+            "namespaces": 1
+        },
+        {
+            "_content": "aeshnidae",
+            "usage": 5,
+            "namespaces": 1
+        }
+    ],
+    "page": 10,
+    "total": "7039",
+    "perpage": 10,
+    "pages": "704"
+}, "stat": "ok" }

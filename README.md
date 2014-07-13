@@ -128,10 +128,10 @@ If you are not using Maven, you will need these libraries, and their dependencie
    * groups.members
    * groups.pools
    * interestingness
+   * machinetags
 
 ## Not Yet Implemented
 
-  * machinetags
   * panda
   * people
   * photos.comments
