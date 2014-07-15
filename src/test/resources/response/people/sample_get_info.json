@@ -1,0 +1,52 @@
+{ "person": {
+    "id": "124857539@N03",
+    "nsid": "124857539@N03",
+    "ispro": 0,
+    "iconserver": "5538",
+    "iconfarm": 6,
+    "path_alias": "jinxlib",
+    "gender": "X",
+    "ignored": 0,
+    "contact": 0,
+    "friend": 0,
+    "family": 0,
+    "revcontact": 1,
+    "revfriend": 0,
+    "revfamily": 0,
+    "username": {
+        "_content": "jinxlib"
+    },
+    "realname": {
+        "_content": "Jinx Library"
+    },
+    "location": {
+        "_content": ""
+    },
+    "timezone": {
+        "label": "Pacific Time (US & Canada); Tijuana",
+        "offset": "-08:00"
+    },
+    "description": {
+        "_content": "This is the test account for the Jinx library. \n\nJinx is a Java library for the Flickr API. It is written and maintained by <a href=\"https:\/\/www.flickr.com\/photos\/jeremybrooks\/\">Jeremy Brooks<\/a>. Photos on this account are by Jeremy Brooks.\n\nThis library is used by <a href=\"http:\/\/jeremybrooks.net\/suprsetr\/\" rel=\"nofollow\">SuprSetr<\/a>, a program that makes managing your Flickr albums easy."
+    },
+    "photosurl": {
+        "_content": "https:\/\/www.flickr.com\/photos\/jinxlib\/"
+    },
+    "profileurl": {
+        "_content": "https:\/\/www.flickr.com\/people\/jinxlib\/"
+    },
+    "mobileurl": {
+        "_content": "https:\/\/m.flickr.com\/photostream.gne?id=124834485"
+    },
+    "photos": {
+        "firstdatetaken": {
+            "_content": "2008-07-08 16:48:54"
+        },
+        "firstdate": {
+            "_content": "1400909358"
+        },
+        "count": {
+            "_content": 45
+        }
+    }
+}, "stat": "ok" }
