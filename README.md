@@ -129,10 +129,10 @@ If you are not using Maven, you will need these libraries, and their dependencie
    * groups.pools
    * interestingness
    * machinetags
+   * panda
 
 ## Not Yet Implemented
 
-  * panda
   * people
   * photos.comments
   * photos.geo          (NOTE: Some of the methods in photos.geo do not work correctly.
