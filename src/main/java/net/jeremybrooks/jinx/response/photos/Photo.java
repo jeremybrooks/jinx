@@ -60,6 +60,8 @@ public class Photo implements Serializable {
 	private String dateTaken;
 	@SerializedName("datetakengranularity")
 	private Integer dateTakenGranularity;
+    @SerializedName("datepersonadded")
+    private String datePersonAdded;
 
 	@SerializedName("ownername")
 	private String ownerName;
@@ -253,6 +255,8 @@ public class Photo implements Serializable {
 	public String getDateTaken() {
 		return dateTaken;
 	}
+
+    public String getDatePersonAdded() { return datePersonAdded; }
 
 	public Integer getDateTakenGranularity() {
 		return dateTakenGranularity;
@@ -511,6 +515,7 @@ public class Photo implements Serializable {
 		sb.append(" | dateUpload='").append(dateUpload).append('\'');
 		sb.append(" | lastUpdate='").append(lastUpdate).append('\'');
 		sb.append(" | dateTaken='").append(dateTaken).append('\'');
+        sb.append(" | datePersonAdded='").append(datePersonAdded).append('\'');
 		sb.append(" | dateTakenGranularity=").append(dateTakenGranularity);
         sb.append(" | dateAdded='").append(dateAdded).append('\'');
         sb.append(" | ownerName='").append(ownerName).append('\'');

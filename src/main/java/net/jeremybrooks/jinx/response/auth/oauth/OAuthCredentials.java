@@ -50,11 +50,11 @@ public class OAuthCredentials extends Response {
 	}
 
 	/**
-	 * Get the NSID associated with the token.
-	 * @return nsid of the user assocaited with the token, or null if not found.
+	 * Get the user id (NSID) associated with the token.
+	 * @return user id of the user assocaited with the token, or null if not found.
 	 */
-	public String getNsid() {
-		return oauth == null ? null : oauth.getNsid();
+	public String getUserId() {
+		return oauth == null ? null : oauth.getUserId();
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class OAuthCredentials extends Response {
 		String getPerms() {
 			return perms == null ? null : perms.content;
 		}
-		String getNsid() {
+		String getUserId() {
 			return user == null ? null : user.nsid;
 		}
 		String getUsername() {
@@ -128,7 +128,7 @@ public class OAuthCredentials extends Response {
 		sb.append("classname=").append(this.getClass().getName());
 		sb.append(",oauthToken=").append(getOauthToken());
 		sb.append(",perms=").append(getPerms());
-		sb.append(",nsid=").append(getNsid());
+		sb.append(",userId=").append(getUserId());
 		sb.append(",username=").append(getUsername());
 		sb.append(",fullname=").append(getFullname());
 

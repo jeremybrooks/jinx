@@ -118,6 +118,12 @@ public class JinxConstants {
         group_open_public
     }
 
+    public static enum GroupExtras {
+        privacy,
+        throttle,
+        restrictions
+    }
+
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line
 

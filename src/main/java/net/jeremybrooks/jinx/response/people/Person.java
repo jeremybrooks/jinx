@@ -24,11 +24,23 @@ import net.jeremybrooks.jinx.response.Response;
 import java.io.Serializable;
 
 /**
+ * Represents data returned by some of the methods in {@link net.jeremybrooks.jinx.api.PeopleApi}
+ *
+ * The userId and username should always be available, but other fields may be null depending on which method was
+ * called, the permissions the call was signed with, and the relationship between the caller and the user that is
+ * returned.
+ *
  * Created by jeremyb on 7/14/14.
  */
 public class Person extends Response {
 
-    public String getNsid() { return person == null ? null : person.nsid; }
+    public String getUserId() {
+        if (person == null) {
+            return user == null ? null : user.userId;
+        } else {
+            return person.userId;
+        }
+    }
     public Boolean isPro() { return person == null ? null : JinxUtils.flickrBooleanToBoolean(person.isPro); }
     public String getIconServer() { return person == null ? null : person.iconServer; }
     public String getIconFarm() { return person == null ? null : person.iconFarm; }
@@ -42,7 +54,13 @@ public class Person extends Response {
     public Boolean isRevFriend() { return person == null ? null : JinxUtils.flickrBooleanToBoolean(person.revFriend); }
     public Boolean isRevFamily() { return person == null ? null : JinxUtils.flickrBooleanToBoolean(person.revFamily); }
 
-    public String getUsername() { return (person == null || person.username == null) ? null : person.username._content; }
+    public String getUsername() {
+        if (person == null) {
+            return (user == null || user.username == null) ? null : user.username._content;
+        } else {
+            return person.username == null ? null : person.username._content;
+        }
+    }
     public String getRealname() { return (person == null || person.realname == null) ? null : person.realname._content; }
     public String getLocation() { return (person == null || person.location == null) ? null : person.location._content; }
 
@@ -54,15 +72,30 @@ public class Person extends Response {
     public String getProfileUrl() { return (person == null || person.profileUrl == null) ? null : person.profileUrl._content; }
     public String getMobileUrl() { return (person == null || person.mobileUrl == null) ? null : person.mobileUrl._content; }
 
+    /**
+     * Get the mysql datetime of the first photo taken by the user.
+     *
+     * You can use {@link JinxUtils#parseMySqlDatetimeToDate(String)} to convert this value to a Date object.
+     *
+     * @return mysql datetime of the first photo taken by the user, or null if the value was not returned.
+     */
     public String getPhotosFirstDateTaken() { return (person == null || person.photos == null || person.photos.firstDateTaken == null) ? null: person.photos.firstDateTaken._content; }
-    public String getPhotosFirstDate() { return (person == null || person.photos == null || person.photos.firstDate == null) ? null: person.photos.firstDate._content; }
-    public Integer getPhotosCount() { return (person == null || person.photos == null || person.photos.count == null) ? null: person.photos.count._content; }
 
+    /**
+     * Get the unix timestamp of the first photo uploaded by the user.
+     *
+     * You can use {@link JinxUtils#parseTimestampToDate(String)} to convert this value to a Date object.
+     *
+     * @return unix timestamp of the first photo uploaded by the user, or null if the value was not returned.
+     */
+    public String getPhotosFirstDate() { return (person == null || person.photos == null || person.photos.firstDate == null) ? null: person.photos.firstDate._content; }
+
+    public Integer getPhotosCount() { return (person == null || person.photos == null || person.photos.count == null) ? null: person.photos.count._content; }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("_Person{");
-        sb.append("nsid='").append(getNsid()).append('\'');
+        sb.append("userId='").append(getUserId()).append('\'');
         sb.append(", isPro=").append(isPro());
         sb.append(", iconServer='").append(getIconServer()).append('\'');
         sb.append(", iconFarm='").append(getIconFarm()).append('\'');
@@ -93,10 +126,12 @@ public class Person extends Response {
 
 
     private _Person person;
+    private _User user;
 
     private class _Person implements Serializable {
         private static final long serialVersionUID = 4519415882694261818L;
-        private String nsid;
+        @SerializedName("nsid")
+        private String userId;
         @SerializedName("ispro")
         private String isPro;   // return as Boolean
         @SerializedName("iconserver")
@@ -181,6 +216,21 @@ public class Person extends Response {
         private class _Count implements Serializable {
             private static final long serialVersionUID = 1944679771042594428L;
             private Integer _content;
+        }
+    }
+
+    /*
+    This class represents the data returned by flickr.people.findByEmail and flickr.people.findByUsername
+    The getters will check both _User and _Person fields and return data from the right place.
+     */
+    private class _User implements Serializable {
+        private static final long serialVersionUID = -8474396492357767556L;
+        @SerializedName("nsid")
+        private String userId;
+        private _Username username;
+        private class _Username implements Serializable {
+            private static final long serialVersionUID = -3183545620148652619L;
+            private String _content;
         }
     }
 }

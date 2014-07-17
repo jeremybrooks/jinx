@@ -48,7 +48,7 @@ public class GroupsMembersTest {
         assertNotNull(list);
         assertEquals(10, list.size());
         Members.Member m = list.get(0);
-        assertEquals("117607063@N05", m.getNsid());
+        assertEquals("117607063@N05", m.getUserId());
         assertEquals("Sebastain Trif", m.getUserName());
         assertEquals("0", m.getIconServer());
         assertEquals("0", m.getIconFarm());

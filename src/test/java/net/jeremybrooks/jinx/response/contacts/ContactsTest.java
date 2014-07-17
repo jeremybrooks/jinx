@@ -52,7 +52,7 @@ public class ContactsTest {
 		assertEquals(4, contactList.size());
 		Contacts.Contact c = contactList.get(0);
 		assertNotNull(c);
-		assertEquals("38039613@N08", c.getNsid());
+		assertEquals("38039613@N08", c.getUserId());
 		assertEquals("dovetaildw", c.getUsername());
 		assertEquals("3557", c.getIconServer());
 		assertEquals(4, (int) c.getIconFarm());
@@ -83,7 +83,7 @@ public class ContactsTest {
 		assertEquals(10, contactList.size());
 		Contacts.Contact c = contactList.get(0);
 		assertNotNull(c);
-		assertEquals("34350870@N03", c.getNsid());
+		assertEquals("34350870@N03", c.getUserId());
 		assertEquals("- POD -", c.getUsername());
 		assertEquals("3706", c.getIconServer());
 		assertEquals(4, (int) c.getIconFarm());
@@ -114,7 +114,7 @@ public class ContactsTest {
 		assertEquals(3, contactList.size());
 		Contacts.Contact c = contactList.get(0);
 		assertNotNull(c);
-		assertEquals("40962351@N00", c.getNsid());
+		assertEquals("40962351@N00", c.getUserId());
 		assertEquals("lomokev", c.getUsername());
 		assertEquals("8556", c.getIconServer());
 		assertEquals(9, (int) c.getIconFarm());
@@ -146,7 +146,7 @@ public class ContactsTest {
 		Contacts.Contact c = contactList.get(0);
 		assertNotNull(c);
 
-		assertEquals("51035555243@N01", c.getNsid());
+		assertEquals("51035555243@N01", c.getUserId());
 		assertEquals("Thomas Hawk", c.getUsername());
 		assertEquals("7370", c.getIconServer());
 		assertEquals(8, (int) c.getIconFarm());

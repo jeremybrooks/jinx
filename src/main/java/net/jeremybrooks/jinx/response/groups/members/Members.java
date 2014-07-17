@@ -64,7 +64,7 @@ public class Members extends Response {
         @SerializedName("realname")
         private String realName;
 
-        public String getNsid() {
+        public String getUserId() {
             return nsid;
         }
 
@@ -91,7 +91,7 @@ public class Members extends Response {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder("Member{");
-            sb.append("nsid='").append(nsid).append('\'');
+            sb.append("userId='").append(nsid).append('\'');
             sb.append(", userName='").append(userName).append('\'');
             sb.append(", iconServer='").append(iconServer).append('\'');
             sb.append(", iconFarm='").append(iconFarm).append('\'');

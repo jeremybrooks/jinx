@@ -1,0 +1,59 @@
+{ "groups": {
+    "group": [
+        {
+            "nsid": "11947580@N00",
+            "name": "Night Images",
+            "iconfarm": 6,
+            "iconserver": "5491",
+            "admin": "",
+            "eighteenplus": 0,
+            "invitation_only": 0,
+            "members": "126776",
+            "pool_count": "1031480"
+        },
+        {
+            "nsid": "16316141@N00",
+            "name": "Graves, Tombs And Cemeteries",
+            "iconfarm": 8,
+            "iconserver": "7301",
+            "admin": "",
+            "eighteenplus": 0,
+            "invitation_only": 0,
+            "members": "37710",
+            "pool_count": "270476"
+        },
+        {
+            "nsid": "29263292@N00",
+            "name": "Arrow Signs",
+            "iconfarm": 4,
+            "iconserver": "3808",
+            "admin": "",
+            "eighteenplus": 0,
+            "invitation_only": 0,
+            "members": "548",
+            "pool_count": "9747"
+        },
+        {
+            "nsid": "2689011@N23",
+            "name": "99% Invisible - Now You See It",
+            "iconfarm": 3,
+            "iconserver": "2900",
+            "admin": "",
+            "eighteenplus": 0,
+            "invitation_only": 0,
+            "members": 42,
+            "pool_count": 40
+        },
+        {
+            "nsid": "2658788@N24",
+            "name": "Jinx Test Group - Invitation Only",
+            "iconfarm": 4,
+            "iconserver": "3916",
+            "admin": "1",
+            "eighteenplus": 0,
+            "invitation_only": 1,
+            "members": 1,
+            "pool_count": 0
+        }
+    ]
+}, "stat": "ok" }

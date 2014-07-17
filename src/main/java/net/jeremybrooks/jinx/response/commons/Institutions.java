@@ -47,15 +47,16 @@ public class Institutions extends Response {
 
 	public class Institution implements Serializable {
 		private static final long serialVersionUID = 5918710496801933243L;
-		private String nsid;
+        @SerializedName("nsid")
+		private String institutionId;
 		@SerializedName("date_launch")
 		private String dateLaunch;
 		private _Name name;
 		private _Urls urls;
 
 
-		public String getNsid() {
-			return nsid;
+		public String getInstitutionId() {
+			return institutionId;
 		}
 		public String getDateLaunch() {
 			return dateLaunch;
@@ -82,7 +83,7 @@ public class Institutions extends Response {
 		public String toString() {
 			final StringBuilder sb = new StringBuilder();
 			sb.append("net.jeremybrooks.jinx.response.commons.Institutions.Institution");
-			sb.append("{nsid='").append(nsid).append('\'');
+			sb.append("{institutionId='").append(institutionId).append('\'');
 			sb.append(" | dateLaunch='").append(dateLaunch).append('\'');
 			sb.append(" | name=").append(name);
 			sb.append(" | urlList=").append(getUrlList() == null ? "null" : getUrlList().size() + " elements");

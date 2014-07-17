@@ -39,7 +39,7 @@ public class OAuthCredentialsTest {
 			assertEquals("ok", oAuthCredentials.getStat());
 			assertEquals("72157632940881881-6db7bec3c46b67b2", oAuthCredentials.getOauthToken());
 			assertEquals("delete", oAuthCredentials.getPerms());
-			assertEquals("85853333@N00", oAuthCredentials.getNsid());
+			assertEquals("85853333@N00", oAuthCredentials.getUserId());
 			assertEquals("Jeremy Brooks", oAuthCredentials.getUsername());
 			assertEquals("Jeremy Brooks", oAuthCredentials.getFullname());
 		}

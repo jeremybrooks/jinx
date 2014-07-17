@@ -85,7 +85,7 @@ public class Favorites extends Response {
 		private String friend;      // return as Boolean
 		private String family;      // return as Boolean
 
-		public String getNsid() {
+		public String getUserId() {
 			return nsid;
 		}
 
@@ -126,7 +126,7 @@ public class Favorites extends Response {
 		public String toString() {
 			final StringBuilder sb = new StringBuilder();
 			sb.append("net.jeremybrooks.jinx.response.photos.Favorites.Person");
-			sb.append("{nsid='").append(nsid).append('\'');
+			sb.append("{userId='").append(nsid).append('\'');
 			sb.append(" | username='").append(username).append('\'');
 			sb.append(" | realName='").append(realName).append('\'');
 			sb.append(" | faveDate='").append(faveDate).append('\'');

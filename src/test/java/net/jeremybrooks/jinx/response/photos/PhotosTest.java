@@ -151,7 +151,7 @@ public class PhotosTest {
 		assertNotNull(list);
 		assertEquals(5, list.size());
 		Favorites.Person p = list.get(0);
-		assertEquals("28087751@N06", p.getNsid());
+		assertEquals("28087751@N06", p.getUserId());
 		assertEquals("Freeze Time Digital", p.getUsername());
 		assertEquals("Jason Ogulnik", p.getRealName());
 		assertEquals("1401061945", p.getFaveDate());
@@ -261,7 +261,7 @@ public class PhotosTest {
 		assertEquals("photo", photoInfo.getMedia());
 		assertEquals(47, (int)photoInfo.getViews());
 
-		assertEquals("85853333@N00", photoInfo.getOwnerNsid());
+		assertEquals("85853333@N00", photoInfo.getOwnerUserId());
 		assertEquals("Jeremy Brooks", photoInfo.getOwnerUsername());
 		assertEquals("Jeremy Brooks", photoInfo.getOwnerRealName());
 		assertEquals("", photoInfo.getOwnerLocation());

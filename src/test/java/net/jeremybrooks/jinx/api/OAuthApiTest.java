@@ -97,7 +97,7 @@ public class OAuthApiTest {
 		assertNotNull(credentials);
 		assertEquals(oAuthAccessToken.getOauthToken(), credentials.getOauthToken());
 		assertEquals(oAuthAccessToken.getUsername(), credentials.getUsername());
-		assertEquals(oAuthAccessToken.getNsid(), credentials.getNsid());
+		assertEquals(oAuthAccessToken.getNsid(), credentials.getUserId());
 		assertEquals(oAuthAccessToken.getFullname(), credentials.getFullname());
 		assertNotNull(credentials.getPerms());
 	}

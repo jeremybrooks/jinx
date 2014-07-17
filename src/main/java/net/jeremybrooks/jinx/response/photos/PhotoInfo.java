@@ -52,7 +52,7 @@ public class PhotoInfo extends Response {
 	public String getOriginalSecret() {return photo == null ? null : photo.originalsecret;}
 	public String getOriginalFormat() {return photo == null ? null : photo.originalformat;}
 
-	public String getOwnerNsid() {return (photo == null || photo.owner == null) ? null : photo.owner.nsid;}
+	public String getOwnerUserId() {return (photo == null || photo.owner == null) ? null : photo.owner.nsid;}
 	public String getOwnerUsername() {return (photo == null || photo.owner == null) ? null : photo.owner.username;}
 	public String getOwnerRealName() {return (photo == null || photo.owner == null) ? null : photo.owner.realname;}
 	public String getOwnerLocation() {return (photo == null || photo.owner == null) ? null : photo.owner.location;}

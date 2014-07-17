@@ -331,12 +331,12 @@ public class JinxUtilsTest {
         assertTrue(JinxUtils.flickrBooleanToBoolean("trUe"));
         assertTrue(JinxUtils.flickrBooleanToBoolean(" trUe "));
         assertTrue(JinxUtils.flickrBooleanToBoolean("trUe "));
-        assertFalse(JinxUtils.flickrBooleanToBoolean(""));
+        assertNull(JinxUtils.flickrBooleanToBoolean(""));
         assertFalse(JinxUtils.flickrBooleanToBoolean("false"));
         assertFalse(JinxUtils.flickrBooleanToBoolean("0"));
         assertFalse(JinxUtils.flickrBooleanToBoolean("FALSE"));
         assertFalse(JinxUtils.flickrBooleanToBoolean("xxxx"));
-        assertFalse(JinxUtils.flickrBooleanToBoolean("   "));
+        assertNull(JinxUtils.flickrBooleanToBoolean("   "));
         assertFalse(JinxUtils.flickrBooleanToBoolean("1123"));
     }
 

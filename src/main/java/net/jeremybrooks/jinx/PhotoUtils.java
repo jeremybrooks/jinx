@@ -40,7 +40,7 @@ public class PhotoUtils {
 	 */
 	public static String getUrl(PhotoInfo info) {
 		StringBuilder sb = new StringBuilder(JinxConstants.FLICKR_PHOTO_URL);
-		sb.append(info.getOwnerNsid()).append('/').append(info.getPhotoId());
+		sb.append(info.getOwnerUserId()).append('/').append(info.getPhotoId());
 		return sb.toString();
 	}
 

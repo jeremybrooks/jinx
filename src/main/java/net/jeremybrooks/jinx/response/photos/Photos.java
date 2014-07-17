@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.response.photos;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.Response;
 
 import java.util.List;
@@ -33,6 +34,13 @@ public class Photos extends Response {
 	public Integer getTotal() { return photos == null ? null : photos.total; }
 	public Integer getPage() { return photos == null ? 0 : photos.page; }
 	public Integer getPages() { return photos == null ? null : photos.pages; }
+
+    /**
+     * This value is not returned in most of the Photo data structures.
+     *
+     * @return value of has_next_page as a Boolean; null if the value was not returned by Flickr.
+     */
+    public Boolean isHasNextPage() { return photos == null ? null : JinxUtils.flickrBooleanToBoolean(photos.hasNextPage); }
 
 	/**
 	 * Get the number of photos per page.
@@ -79,6 +87,8 @@ public class Photos extends Response {
 		private Integer perpage;
 		@SerializedName("photo")
 		private List<Photo> photoList;
+        @SerializedName("has_next_page")
+        private String hasNextPage;     // return as Boolean
 	}
 
 
@@ -90,6 +100,7 @@ public class Photos extends Response {
 		sb.append(" | total='").append(getTotal()).append('\'');
 		sb.append(" | perPage=").append(getPerPage()).append('\'');
 		sb.append(" | pages='").append(getPages()).append('\'');
+        sb.append(" | hasNextPage=").append(isHasNextPage());
 		sb.append(" | photoList='").append(getPhotoList() == null ? "null" : getPhotoList().size()).append('\'');
 		sb.append('}');
 		return sb.toString();

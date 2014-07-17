@@ -66,20 +66,20 @@ public class SearchParameters implements Serializable {
 	private int page;
 
 	/**
-	 * Get the NSID of the user who's photo to search.
+	 * Get the user id of the user who's photo to search.
 	 *
-	 * @return NSID of the user who's photo to search.
+	 * @return user id of the user who's photo to search.
 	 */
 	public String getUserId() {
 		return userId;
 	}
 
 	/**
-	 * Set the NSID of the user who's photo to search.
+	 * Set the user id of the user who's photo to search.
 	 * If this parameter isn't set then everybody's public photos will be searched. A value of "me" will search
 	 * against the calling user's photos for authenticated calls.
 	 *
-	 * @param userId NSID of the user who's photo to search.
+	 * @param userId user id of the user who's photo to search.
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;

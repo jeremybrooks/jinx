@@ -99,7 +99,7 @@ public class Contacts extends Response {
 		private Integer photosUploaded;
 
 
-		public String getNsid() {
+		public String getUserId() {
 			return nsid;
 		}
 
@@ -151,7 +151,7 @@ public class Contacts extends Response {
 		public String toString() {
 			final StringBuilder sb = new StringBuilder();
 			sb.append("net.jeremybrooks.jinx.response.contacts.Contacts.Contact");
-			sb.append("{nsid='").append(nsid).append('\'');
+			sb.append("{userId='").append(nsid).append('\'');
 			sb.append(" | username='").append(username).append('\'');
 			sb.append(" | iconServer='").append(iconServer).append('\'');
 			sb.append(" | iconFarm=").append(iconFarm);

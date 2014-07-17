@@ -1,0 +1,146 @@
+{ "groups": {
+    "group": [
+        {
+            "nsid": "11947580@N00",
+            "name": "Night Images",
+            "iconfarm": 6,
+            "iconserver": "5491",
+            "admin": 0,
+            "eighteenplus": 0,
+            "invitation_only": 0,
+            "members": "126776",
+            "pool_count": "965541",
+            "privacy": {
+                "_content": 3
+            },
+            "throttle": {
+                "count": 1,
+                "mode": "day"
+            },
+            "restrictions": {
+                "photos_ok": 1,
+                "videos_ok": 1,
+                "images_ok": 1,
+                "screens_ok": 0,
+                "art_ok": 0,
+                "safe_ok": 1,
+                "moderate_ok": 0,
+                "restricted_ok": 0,
+                "has_geo": 0
+            }
+        },
+        {
+            "nsid": "16316141@N00",
+            "name": "Graves, Tombs And Cemeteries",
+            "iconfarm": 8,
+            "iconserver": "7301",
+            "admin": 0,
+            "eighteenplus": 0,
+            "invitation_only": 0,
+            "members": "37710",
+            "pool_count": "253770",
+            "privacy": {
+                "_content": 3
+            },
+            "throttle": {
+                "count": 3,
+                "mode": "day"
+            },
+            "restrictions": {
+                "photos_ok": 1,
+                "videos_ok": 0,
+                "images_ok": 1,
+                "screens_ok": 0,
+                "art_ok": 0,
+                "safe_ok": 1,
+                "moderate_ok": 0,
+                "restricted_ok": 0,
+                "has_geo": 0
+            }
+        },
+        {
+            "nsid": "29263292@N00",
+            "name": "Arrow Signs",
+            "iconfarm": 4,
+            "iconserver": "3808",
+            "admin": 0,
+            "eighteenplus": 0,
+            "invitation_only": 0,
+            "members": "548",
+            "pool_count": "8766",
+            "privacy": {
+                "_content": 3
+            },
+            "throttle": {
+                "mode": "none"
+            },
+            "restrictions": {
+                "photos_ok": 1,
+                "videos_ok": 1,
+                "images_ok": 1,
+                "screens_ok": 1,
+                "art_ok": 1,
+                "safe_ok": 1,
+                "moderate_ok": 0,
+                "restricted_ok": 0,
+                "has_geo": 0
+            }
+        },
+        {
+            "nsid": "35468133433@N01",
+            "name": "Reykjavik",
+            "iconfarm": 1,
+            "iconserver": 1,
+            "admin": 0,
+            "eighteenplus": 0,
+            "invitation_only": 0,
+            "members": "1310",
+            "pool_count": "15154",
+            "privacy": {
+                "_content": 3
+            },
+            "throttle": {
+                "mode": "none"
+            },
+            "restrictions": {
+                "photos_ok": 1,
+                "videos_ok": 1,
+                "images_ok": 1,
+                "screens_ok": 1,
+                "art_ok": 1,
+                "safe_ok": 1,
+                "moderate_ok": 0,
+                "restricted_ok": 0,
+                "has_geo": 0
+            }
+        },
+        {
+            "nsid": "2658788@N24",
+            "name": "Jinx Test Group - Invitation Only",
+            "iconfarm": 4,
+            "iconserver": "3916",
+            "admin": 1,
+            "eighteenplus": 0,
+            "invitation_only": 1,
+            "members": 1,
+            "pool_count": 0,
+            "privacy": {
+                "_content": 2
+            },
+            "throttle": {
+                "mode": "none"
+            },
+            "restrictions": {
+                "photos_ok": 1,
+                "videos_ok": 1,
+                "images_ok": 1,
+                "screens_ok": 1,
+                "art_ok": 1,
+                "safe_ok": 1,
+                "moderate_ok": 0,
+                "restricted_ok": 0,
+                "has_geo": 0
+            }
+        }
+    ]
+}, "stat": "ok" }

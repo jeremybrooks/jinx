@@ -1,0 +1,37 @@
+{ "user": {
+    "id": "124857539@N03",
+    "ispro": 0,
+    "username": {
+        "_content": "jinxlib"
+    },
+    "bandwidth": {
+        "max": "2147483648",
+        "used": 0,
+        "maxbytes": "214748364800",
+        "usedbytes": 0,
+        "remainingbytes": "214748364800",
+        "maxkb": "214748364",
+        "usedkb": 0,
+        "remainingkb": "214748364",
+        "unlimited": 1
+    },
+    "filesize": {
+        "max": "209715200",
+        "maxbytes": "209715200",
+        "maxkb": "204800",
+        "maxmb": "200"
+    },
+    "sets": {
+        "created": 18,
+        "remaining": "lots"
+    },
+    "videosize": {
+        "maxbytes": "1073741824",
+        "maxkb": "1048576",
+        "maxmb": "1024"
+    },
+    "videos": {
+        "uploaded": 0,
+        "remaining": "lots"
+    }
+}, "stat": "ok" }

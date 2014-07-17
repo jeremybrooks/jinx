@@ -1,0 +1,11 @@
+{ "person": {
+    "nsid": "124857539@N03",
+    "photos": {
+        "maxdisplaypx": "1024",
+        "maxupload": "209715200"
+    },
+    "videos": {
+        "maxduration": "180",
+        "maxupload": "1073741824"
+    }
+}, "stat": "ok" }

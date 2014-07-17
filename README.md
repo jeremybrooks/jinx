@@ -15,6 +15,9 @@ Versions prior to 1.0 are in a state of flux and subject to change. There is no 
 
 ## Notes About Jinx
 
+### ID's (NSID)
+Flickr objects (users, institutions, groups, etc.) have unique identifiers named "nsid". Jinx will translate the nsid into a more specific identifier. For example, for users the nsid will be called userId; for groups, groupId. It is the same value, just named more specifically to make it easier to see what you are referring to.
+
 ### Objects vs Primitives
 The Flickr API does not return all possible data for every API call. The returned values often depend on what parameters were passed in. In general, Jinx will return null to indicate that there was no value returned by Flickr. This means your code needs to pay attention to return types like Integer and Boolean, since they can return null.
 
@@ -130,11 +133,11 @@ If you are not using Maven, you will need these libraries, and their dependencie
    * interestingness
    * machinetags
    * panda
+   * people
+   * photos.comments
 
 ## Not Yet Implemented
 
-  * people
-  * photos.comments
   * photos.geo          (NOTE: Some of the methods in photos.geo do not work correctly.
                                They also do not work in the Flickr API Explorer,
                                so there is likely little that can be done about it.)

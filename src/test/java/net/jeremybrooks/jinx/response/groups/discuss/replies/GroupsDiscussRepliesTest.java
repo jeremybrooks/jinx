@@ -28,6 +28,7 @@ import java.util.List;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
 
 /**
  * Created by jeremyb on 7/9/14.
@@ -84,7 +85,7 @@ public class GroupsDiscussRepliesTest {
         assertFalse(t.isCanDelete());
         assertFalse(t.isCanReply());
         assertFalse(t.isSticky());
-        assertFalse(t.isLocked());
+        assertNull(t.isLocked());
         assertEquals("1404713682", t.getDateCreate());
         assertEquals("1404762423", t.getDateLastPost());
         assertEquals(new Integer(1), t.getTotal());

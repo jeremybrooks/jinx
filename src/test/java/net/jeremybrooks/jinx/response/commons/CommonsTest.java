@@ -42,7 +42,7 @@ public class CommonsTest {
 		assertNotNull(iList);
 		assertEquals(88, iList.size());
 		Institutions.Institution i = iList.get(0);
-		assertEquals("104959762@N04", i.getNsid());
+		assertEquals("104959762@N04", i.getInstitutionId());
 		assertEquals("1402064583", i.getDateLaunch());
 		assertEquals("CDHS", i.getName());
 		List<PhotoInfo.Url> urls = i.getUrlList();

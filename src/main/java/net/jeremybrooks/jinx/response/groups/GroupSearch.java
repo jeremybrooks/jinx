@@ -70,7 +70,7 @@ public class GroupSearch extends Response {
         private String iconServer;
         @SerializedName("iconfarm")
         private String iconFarm;
-        private Integer members;        // from groups.search
+        private Integer members;        // from groups.search and flickr.people.getGroups
         private Integer member_count;   // from groups.pools.getGroups
         @SerializedName("pool_count")
         private Integer poolCount;
@@ -80,6 +80,7 @@ public class GroupSearch extends Response {
         private String moderator;   // return as Boolean
         private String admin;       // return as Boolean
         private Integer photos;
+
         private Integer privacy;    // return as JinxConstants.GroupPrivacy
 
         public String getGroupId() {
@@ -128,6 +129,7 @@ public class GroupSearch extends Response {
         }
 
         public Integer getPhotos() { return photos; }
+
 
         public JinxConstants.GroupPrivacy getPrivacy() {
             return JinxUtils.privacyIdToGroupPrivacyEnum(privacy);
