@@ -43,7 +43,7 @@ public class Photoset implements Serializable {
 	private String primary;
 	private String secret;
 	private String server;
-	private Integer farm;
+	private String farm;
 	private Integer photos;
 	private Integer videos;
 	@SerializedName("count_views")
@@ -115,7 +115,7 @@ public class Photoset implements Serializable {
 		return server;
 	}
 
-	public Integer getFarm() {
+	public String getFarm() {
 		return farm;
 	}
 

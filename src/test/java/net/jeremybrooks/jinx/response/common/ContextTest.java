@@ -41,7 +41,7 @@ public class ContextTest {
 		assertEquals("85853333@N00", context.getPrevPhoto().getOwner());
 		assertEquals("aa7bea723c", context.getPrevPhoto().getSecret());
 		assertEquals("2940", context.getPrevPhoto().getServer());
-		assertEquals(3, (int) context.getPrevPhoto().getFarm());
+		assertEquals("3", context.getPrevPhoto().getFarm());
 		assertEquals("World's Largest", context.getPrevPhoto().getTitle());
 		assertEquals("/photos/jeremybrooks/13939981289/in/set-72157644142099469/", context.getPrevPhoto().getUrl());
 		assertEquals("https://farm3.staticflickr.com/2940/13939981289_aa7bea723c_s.jpg", context.getPrevPhoto().getThumb());
@@ -53,7 +53,7 @@ public class ContextTest {
 		assertEquals("85853333@N00", context.getNextPhoto().getOwner());
 		assertEquals("626f6406b1", context.getNextPhoto().getSecret());
 		assertEquals("3560", context.getNextPhoto().getServer());
-		assertEquals(4, (int) context.getNextPhoto().getFarm());
+		assertEquals("4", context.getNextPhoto().getFarm());
 		assertEquals("Vienna Beef Hot Dogs", context.getNextPhoto().getTitle());
 		assertEquals("/photos/jeremybrooks/3369155489/in/set-72157644142099469/", context.getNextPhoto().getUrl());
 		assertEquals("https://farm4.staticflickr.com/3560/3369155489_626f6406b1_s.jpg", context.getNextPhoto().getThumb());

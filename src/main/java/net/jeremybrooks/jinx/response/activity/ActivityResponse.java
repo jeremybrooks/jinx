@@ -71,45 +71,46 @@ public class ActivityResponse extends Response {
 	private class Items implements Serializable {
 		private static final long serialVersionUID = 4190734066952184327L;
 		@SerializedName("perpage")
-		private int perPage;
-		private int page;
-		private int pages;
-		private int total;
+		private Integer perPage;
+		private Integer page;
+		private Integer pages;
+		private Integer total;
 		private List<Item> item;
 	}
 
 	public class Item implements Serializable {
 		private static final long serialVersionUID = 4768439875856231541L;
 		private String type;
-		private long id;
-		private String owner;
+		private String id;
+        @SerializedName("owner")
+		private String ownerId;
 		@SerializedName("ownername")
 		private String ownerName;
 		@SerializedName("iconserver")
 		private String iconServer;
 		@SerializedName("iconfarm")
-		private int iconFarm;
+		private String iconFarm;
 		private String secret;
 		private String server;
-		private int farm;
-		private Title title;
+		private String farm;
+		private _Title title;
 		private String media;
-		private int comments;
-		private int notes;
-		private int views;
-		private int faves;
-		private Activity activity;
+		private Integer comments;
+		private Integer notes;
+		private Integer views;
+		private Integer faves;
+		private _Activity activity;
 
 		public String getType() {
 			return type;
 		}
 
-		public long getId() {
+		public String getId() {
 			return id;
 		}
 
-		public String getOwner() {
-			return owner;
+		public String getOwnerId() {
+			return ownerId;
 		}
 
 		public String getOwnerName() {
@@ -120,7 +121,7 @@ public class ActivityResponse extends Response {
 			return iconServer;
 		}
 
-		public int getIconFarm() {
+		public String getIconFarm() {
 			return iconFarm;
 		}
 
@@ -132,7 +133,7 @@ public class ActivityResponse extends Response {
 			return server;
 		}
 
-		public int getFarm() {
+		public String getFarm() {
 			return farm;
 		}
 
@@ -144,19 +145,19 @@ public class ActivityResponse extends Response {
 			return media;
 		}
 
-		public int getComments() {
+		public Integer getComments() {
 			return comments;
 		}
 
-		public int getNotes() {
+		public Integer getNotes() {
 			return notes;
 		}
 
-		public int getViews() {
+		public Integer getViews() {
 			return views;
 		}
 
-		public int getFaves() {
+		public Integer getFaves() {
 			return faves;
 		}
 
@@ -170,7 +171,7 @@ public class ActivityResponse extends Response {
 			sb.append('{');
 			sb.append("type=\"").append(type).append('\"');
 			sb.append(",id=").append(id);
-			sb.append(",owner=\"").append(owner).append('\"');
+			sb.append(",ownerId=\"").append(ownerId).append('\"');
 			sb.append(",ownerName=\"").append(ownerName).append('\"');
 			sb.append(",iconServer=").append(iconServer);
 			sb.append(",iconFarm=").append(iconFarm);
@@ -195,13 +196,13 @@ public class ActivityResponse extends Response {
 		}
 	}
 
-	private class Title implements Serializable {
+	private class _Title implements Serializable {
 		private static final long serialVersionUID = -6877387037227982736L;
 		@SerializedName("_content")
 		private String title;
 	}
 
-	private class Activity implements Serializable {
+	private class _Activity implements Serializable {
 		private static final long serialVersionUID = 3206360896813303863L;
 		List<Event> event;
 	}
@@ -209,16 +210,17 @@ public class ActivityResponse extends Response {
 	public class Event implements Serializable {
 		private static final long serialVersionUID = 3460353318629060L;
 		private String type;
-		private String user;
+        @SerializedName("user")
+		private String userId;
 		private String username;
 		@SerializedName("iconserver")
 		private String iconServer;
 		@SerializedName("iconfarm")
-		private int iconFarm;
+		private String iconFarm;
 		@SerializedName("dateadded")
-		private long dateAdded;
+		private String dateAdded;
 		@SerializedName("commentid")
-		private long commentId;
+		private String commentId;
 		@SerializedName("_content")
 		private String content;
 
@@ -226,8 +228,8 @@ public class ActivityResponse extends Response {
 			return type;
 		}
 
-		public String getUser() {
-			return user;
+		public String getUserId() {
+			return userId;
 		}
 
 		public String getUsername() {
@@ -238,15 +240,15 @@ public class ActivityResponse extends Response {
 			return iconServer;
 		}
 
-		public int getIconFarm() {
+		public String getIconFarm() {
 			return iconFarm;
 		}
 
-		public long getDateAdded() {
+		public String getDateAdded() {
 			return dateAdded;
 		}
 
-		public long getCommentId() {
+		public String getCommentId() {
 			return commentId;
 		}
 
@@ -259,7 +261,7 @@ public class ActivityResponse extends Response {
 			final StringBuilder sb = new StringBuilder();
 			sb.append('{');
 			sb.append("type=\"").append(type).append('\"');
-			sb.append(",user=\"").append(user).append('\"');
+			sb.append(",userId=\"").append(userId).append('\"');
 			sb.append(",username=\"").append(username).append('\"');
 			sb.append(",iconServer=").append(iconServer);
 			sb.append(",iconFarm=").append(iconFarm);

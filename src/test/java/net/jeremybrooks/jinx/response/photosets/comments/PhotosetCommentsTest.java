@@ -57,7 +57,7 @@ public class PhotosetCommentsTest {
 		assertEquals("124834485-72157644903065293-72157644452484869", c.getCommentId());
 		assertEquals("85853333@N00", c.getAuthor());
 		assertEquals("5332", c.getIconServer());
-		assertEquals(6, (int)c.getIconFarm());
+		assertEquals("6", c.getIconFarm());
 		assertEquals("Jeremy Brooks", c.getAuthorName());
 		assertEquals("1401154465", c.getDateCreate());
 		assertEquals("https://www.flickr.com/photos/jinxlib/sets/72157644903065293/comments#comment72157644452484869", c.getPermalink());

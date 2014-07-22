@@ -63,7 +63,7 @@ public class PhotosetInfoTest {
 		assertEquals("2472223927", p.getPrimary());
 		assertEquals("7081aec34e", p.getSecret());
 		assertEquals("2026", p.getServer());
-		assertEquals(3, (int) p.getFarm());
+		assertEquals("3", p.getFarm());
 		assertEquals(87, (int) p.getPhotos());
 		assertEquals(10, (int) p.getCountViews());
 		assertEquals(20, (int) p.getCountComments());
@@ -101,7 +101,7 @@ public class PhotosetInfoTest {
 		assertEquals("2472223927", p.getPrimary());
 		assertEquals("7081aec34e", p.getSecret());
 		assertEquals("2026", p.getServer());
-		assertEquals(3, (int) p.getFarm());
+		assertEquals("3", p.getFarm());
 		assertEquals(87, (int) p.getPhotos());
 		assertEquals(0, (int) p.getVideos());
 
@@ -129,7 +129,7 @@ public class PhotosetInfoTest {
 		assertEquals(1, (int) ppe.getDateTakenGranularity());
 		assertEquals("Jeremy Brooks", ppe.getOwnerName());
 		assertEquals("5332", ppe.getIconServer());
-		assertEquals(6, (int) ppe.getIconFarm());
+		assertEquals("6", ppe.getIconFarm());
 		assertEquals(1084, (int)ppe.getViews());
 		assertEquals("food restaurant nebraska neon day unitedstates meat steak lucky omaha", ppe.getTags());
 		assertEquals("sign:type=neon", ppe.getMachineTags());
@@ -194,7 +194,7 @@ public class PhotosetInfoTest {
 		assertEquals("14296772893", photo.getPhotoId());
 		assertEquals("270d516d2b", photo.getSecret());
 		assertEquals("3688", photo.getServer());
-		assertEquals(4, (int)photo.getFarm());
+		assertEquals("4", photo.getFarm());
 		assertEquals("Right Outside", photo.getTitle());
 		assertTrue(photo.isPrimary());
 		assertEquals(0, (int)photo.getLicense());
@@ -204,7 +204,7 @@ public class PhotosetInfoTest {
 		assertEquals(0, (int)photo.getDateTakenGranularity());
 		assertEquals("jinxlib", photo.getOwnerName());
 		assertEquals("0", photo.getIconServer());
-		assertEquals(0, (int)photo.getIconFarm());
+		assertEquals("0", photo.getIconFarm());
 		assertEquals(1, (int)photo.getViews());
 		assertEquals("sanfrancisco california usa bar vintage neon chinatown day arrow cocktails lipo sanfranciscocounty sign:type=neon", photo.getTags());
 		assertEquals("sign:type=neon", photo.getMachineTags());

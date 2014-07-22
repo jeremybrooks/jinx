@@ -230,6 +230,7 @@ public class JinxUtils {
         return s == null || s.trim().length() == 0;
     }
 
+
     /**
      * Test a Collection for empty or null.
      *

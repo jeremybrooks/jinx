@@ -44,7 +44,7 @@ public class Favorites extends Response {
 		return photo == null ? null : photo.server;
 	}
 
-	public Integer getFarm() {
+	public String getFarm() {
 		return photo == null ? null : photo.farm;
 	}
 
@@ -80,7 +80,7 @@ public class Favorites extends Response {
 		@SerializedName("iconserver")
 		private String iconServer;
 		@SerializedName("iconfarm")
-		private Integer iconFarm;
+		private String iconFarm;
 		private String contact;     // return as Boolean
 		private String friend;      // return as Boolean
 		private String family;      // return as Boolean
@@ -105,7 +105,7 @@ public class Favorites extends Response {
 			return iconServer;
 		}
 
-		public Integer getIconFarm() {
+		public String getIconFarm() {
 			return iconFarm;
 		}
 
@@ -146,7 +146,7 @@ public class Favorites extends Response {
 		private String photoId;
 		private String secret;
 		private String server;
-		private Integer farm;
+		private String farm;
 		private Integer page;
 		private Integer pages;
 		@SerializedName("perpage")

@@ -72,7 +72,7 @@ public class PhotosTest {
 		assertEquals("14090247837", set.getPrimary());
 		assertEquals("a00c1c8c01", set.getSecret());
 		assertEquals("3745", set.getServer());
-		assertEquals(4, (int) set.getFarm());
+		assertEquals("4", set.getFarm());
 		assertEquals(2, (int) set.getViewCount());
 		assertEquals(1, (int) set.getCommentCount());
 		assertEquals(17, (int) set.getCountPhoto());
@@ -83,7 +83,7 @@ public class PhotosTest {
 		assertEquals("/groups/2638254@N20/pool/", pool.getUrl());
 		assertEquals("2638254@N20", pool.getPoolId());
 		assertEquals("2934", pool.getIconServer());
-		assertEquals(0, (int) pool.getIconFarm());
+		assertEquals("0", pool.getIconFarm());
 		assertEquals(1, (int) pool.getMembers());
 		assertEquals(1, (int) pool.getPoolCount());
 	}
@@ -115,7 +115,7 @@ public class PhotosTest {
 		assertEquals("14101229538", exifData.getPhotoId());
 		assertEquals("12fabee863", exifData.getSecret());
 		assertEquals("5570", exifData.getServer());
-		assertEquals(6, (int) exifData.getFarm());
+		assertEquals("6", exifData.getFarm());
 		assertEquals("Canon EOS 5D Mark II", exifData.getCamera());
 
 		List<ExifData.Exif> exifList = exifData.getExifList();
@@ -141,7 +141,7 @@ public class PhotosTest {
 		assertEquals("14258801982", favorites.getPhotoId());
 		assertEquals("43d6f39123", favorites.getSecret());
 		assertEquals("3795", favorites.getServer());
-		assertEquals(4, (int) favorites.getFarm());
+		assertEquals("4", favorites.getFarm());
 		assertEquals(1, (int) favorites.getPage());
 		assertEquals(1, (int) favorites.getPages());
 		assertEquals(10, (int) favorites.getPerPage());
@@ -156,7 +156,7 @@ public class PhotosTest {
 		assertEquals("Jason Ogulnik", p.getRealName());
 		assertEquals("1401061945", p.getFaveDate());
 		assertEquals("5234", p.getIconServer());
-		assertEquals(6, (int) p.getIconFarm());
+		assertEquals("6", p.getIconFarm());
 		assertTrue(p.isContact());
 		assertFalse(p.isFriend());
 		assertFalse(p.isFamily());
@@ -250,7 +250,7 @@ public class PhotosTest {
 		assertEquals("14118630850", photoInfo.getPhotoId());
 		assertEquals("02b4c5b056", photoInfo.getSecret());
 		assertEquals("5482", photoInfo.getServer());
-		assertEquals(6, (int)photoInfo.getFarm());
+		assertEquals("6", photoInfo.getFarm());
 		assertEquals("1401457031", photoInfo.getDateUploaded());
 		assertFalse(photoInfo.isFavorite());
 		assertEquals(2, (int)photoInfo.getLicense());
@@ -266,7 +266,7 @@ public class PhotosTest {
 		assertEquals("Jeremy Brooks", photoInfo.getOwnerRealName());
 		assertEquals("", photoInfo.getOwnerLocation());
 		assertEquals("5332", photoInfo.getOwnerIconServer());
-		assertEquals(6, (int)photoInfo.getOwnerIconFarm());
+		assertEquals("6", photoInfo.getOwnerIconFarm());
 		assertEquals("jeremybrooks", photoInfo.getOwnerPathAlias());
 
 		assertEquals("Transamerica View 20140530", photoInfo.getTitle());
@@ -383,7 +383,7 @@ public class PhotosTest {
 		assertEquals("14284071805", p.getPhotoId());
 		assertEquals("fcebcdf5c1", p.getSecret());
 		assertEquals("3716", p.getServer());
-		assertEquals(4, (int) p.getFarm());
+		assertEquals("4", p.getFarm());
 		assertEquals("30265340@N00", p.getOwner());
 		assertEquals("yewenyi", p.getUsername());
 		assertEquals("Public Telephone", p.getTitle());
@@ -400,7 +400,7 @@ public class PhotosTest {
 		assertEquals(0, (int) p.getDateTakenGranularity());
 		assertEquals("yewenyi", p.getOwnerName());
 		assertEquals("32", p.getIconServer());
-		assertEquals(1, (int) p.getIconFarm());
+		assertEquals("1", p.getIconFarm());
 		assertEquals(0, (int) p.getViews());
 		assertEquals("station belgrave", p.getTags());
 		assertEquals("", p.getMachineTags());
@@ -481,7 +481,7 @@ public class PhotosTest {
 		assertEquals("14097029867", p.getPhotoId());
 		assertEquals("d31e42a8fa", p.getSecret());
 		assertEquals("5232", p.getServer());
-		assertEquals(6, (int) p.getFarm());
+		assertEquals("6", p.getFarm());
 		assertEquals("65609008@N00", p.getOwner());
 		assertEquals("the waving cat", p.getUsername());
 		assertEquals("Muir Woods", p.getTitle());
@@ -498,7 +498,7 @@ public class PhotosTest {
 		assertEquals(0, (int) p.getDateTakenGranularity());
 		assertEquals("the waving cat", p.getOwnerName());
 		assertEquals("26", p.getIconServer());
-		assertEquals(1, (int) p.getIconFarm());
+		assertEquals("1", p.getIconFarm());
 		assertEquals(2, (int) p.getViews());
 		assertEquals("sanfrancisco travel usa muirwoods", p.getTags());
 		assertEquals("", p.getMachineTags());
@@ -570,7 +570,7 @@ public class PhotosTest {
 		assertEquals("85853333@N00", p.getOwner());
 		assertEquals("d46dd50329", p.getSecret());
 		assertEquals("5273", p.getServer());
-		assertEquals(6, (int) p.getFarm());
+		assertEquals("6", p.getFarm());
 		assertEquals("Hotel Ambassador", p.getTitle());
 		assertNull(p.getUsername());
 		assertTrue(p.isPublic());
@@ -586,7 +586,7 @@ public class PhotosTest {
 		assertEquals(0, (int) p.getDateTakenGranularity());
 		assertEquals("Jeremy Brooks", p.getOwnerName());
 		assertEquals("5332", p.getIconServer());
-		assertEquals(6, (int) p.getIconFarm());
+		assertEquals("6", p.getIconFarm());
 		assertEquals(70, (int) p.getViews());
 		assertEquals("sanfrancisco california blackandwhite bw usa hotel blackwhite neon sanfranciscocounty", p.getTags());
 		assertEquals("", p.getMachineTags());
@@ -669,7 +669,7 @@ public class PhotosTest {
 		assertEquals("100065775@N04", p.getOwner());
 		assertEquals("df2b332d3c", p.getSecret());
 		assertEquals("2930", p.getServer());
-		assertEquals(3, (int) p.getFarm());
+		assertEquals("3", p.getFarm());
 		assertEquals("Sea of Galilee", p.getTitle());
 		assertNull(p.getUsername());
 		assertTrue(p.isPublic());
@@ -685,7 +685,7 @@ public class PhotosTest {
 		assertEquals(0, (int) p.getDateTakenGranularity());
 		assertEquals("Sojourner 212", p.getOwnerName());
 		assertEquals("3272", p.getIconServer());
-		assertEquals(4, (int) p.getIconFarm());
+		assertEquals("4", p.getIconFarm());
 		assertEquals(0, (int) p.getViews());
 		assertEquals("", p.getTags());
 		assertEquals("", p.getMachineTags());
@@ -767,7 +767,7 @@ public class PhotosTest {
 		assertEquals("85853333@N00", p.getOwner());
 		assertEquals("f76a4e122e", p.getSecret());
 		assertEquals("2855", p.getServer());
-		assertEquals(3, (int) p.getFarm());
+		assertEquals("3", p.getFarm());
 		assertEquals("Testing sharing from new version of Interlacer", p.getTitle());
 		assertNull(p.getUsername());
 		assertTrue(p.isPublic());
@@ -783,7 +783,7 @@ public class PhotosTest {
 		assertEquals(0, (int) p.getDateTakenGranularity());
 		assertEquals("Jeremy Brooks", p.getOwnerName());
 		assertEquals("5332", p.getIconServer());
-		assertEquals(6, (int) p.getIconFarm());
+		assertEquals("6", p.getIconFarm());
 		assertEquals(383, (int) p.getViews());
 		assertEquals("", p.getTags());
 		assertEquals("", p.getMachineTags());
@@ -866,7 +866,7 @@ public class PhotosTest {
 		assertEquals("85853333@N00", p.getOwner());
 		assertEquals("27b86fe896", p.getSecret());
 		assertEquals("3730", p.getServer());
-		assertEquals(4, (int) p.getFarm());
+		assertEquals("4", p.getFarm());
 		assertEquals("550 540", p.getTitle());
 		assertNull(p.getUsername());
 		assertTrue(p.isPublic());
@@ -882,7 +882,7 @@ public class PhotosTest {
 		assertEquals(0, (int) p.getDateTakenGranularity());
 		assertEquals("Jeremy Brooks", p.getOwnerName());
 		assertEquals("5332", p.getIconServer());
-		assertEquals(6, (int) p.getIconFarm());
+		assertEquals("6", p.getIconFarm());
 		assertEquals(32, (int) p.getViews());
 		assertEquals("sanfrancisco california street door usa storefront address iphone sanfranciscocounty", p.getTags());
 		assertEquals("", p.getMachineTags());
@@ -965,7 +965,7 @@ public class PhotosTest {
 		assertEquals("21945957@N00", p.getOwner());
 		assertEquals("2b00fa5537", p.getSecret());
 		assertEquals("3744", p.getServer());
-		assertEquals(4, (int) p.getFarm());
+		assertEquals("4", p.getFarm());
 		assertEquals("San Francisco Spirit", p.getTitle());
 		assertNull(p.getUsername());
 		assertTrue(p.isPublic());
@@ -981,7 +981,7 @@ public class PhotosTest {
 		assertEquals(0, (int) p.getDateTakenGranularity());
 		assertEquals("a.k.a. Flash", p.getOwnerName());
 		assertEquals("8555", p.getIconServer());
-		assertEquals(9, (int) p.getIconFarm());
+		assertEquals("9", p.getIconFarm());
 		assertEquals(49, (int) p.getViews());
 		assertEquals("bw film polaroid 600 impossible 2014 roidweek2014", p.getTags());
 		assertEquals("", p.getMachineTags());
@@ -1063,7 +1063,7 @@ public class PhotosTest {
 		assertEquals("85853333@N00", p.getOwner());
 		assertEquals("57a1a211dc", p.getSecret());
 		assertEquals("3823", p.getServer());
-		assertEquals(4, (int) p.getFarm());
+		assertEquals("4", p.getFarm());
 		assertEquals("Computer Repair Fax Center", p.getTitle());
 		assertNull(p.getUsername());
 		assertTrue(p.isPublic());
@@ -1079,7 +1079,7 @@ public class PhotosTest {
 		assertEquals(0, (int) p.getDateTakenGranularity());
 		assertEquals("Jeremy Brooks", p.getOwnerName());
 		assertEquals("5332", p.getIconServer());
-		assertEquals(6, (int) p.getIconFarm());
+		assertEquals("6", p.getIconFarm());
 		assertEquals(604, (int) p.getViews());
 		assertEquals("california ca usa computer mouse neon unitedstates alameda alamedacounty fax vision:text=0652 vision:sky=0706 vision:outdoor=064 vision:dark=08", p.getTags());
 		assertEquals("", p.getMachineTags());
@@ -1161,7 +1161,7 @@ public class PhotosTest {
 		assertEquals("85853333@N00", p.getOwner());
 		assertEquals("590f6b72ae", p.getSecret());
 		assertEquals("3722", p.getServer());
-		assertEquals(4, (int) p.getFarm());
+		assertEquals("4", p.getFarm());
 		assertEquals("Sleeping With Eyes Open", p.getTitle());
 		assertNull(p.getUsername());
 		assertTrue(p.isPublic());
@@ -1177,7 +1177,7 @@ public class PhotosTest {
 		assertEquals(0, (int) p.getDateTakenGranularity());
 		assertEquals("Jeremy Brooks", p.getOwnerName());
 		assertEquals("5332", p.getIconServer());
-		assertEquals(6, (int) p.getIconFarm());
+		assertEquals("6", p.getIconFarm());
 		assertEquals(189, (int) p.getViews());
 		assertEquals("california sky usa water landscape bay richmond minimalism photochallenge contracostacounty 2014challenge", p.getTags());
 		assertEquals("", p.getMachineTags());

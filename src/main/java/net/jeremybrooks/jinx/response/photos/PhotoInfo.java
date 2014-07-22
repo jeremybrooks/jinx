@@ -40,7 +40,7 @@ public class PhotoInfo extends Response {
 	public String getServer() {
 		return photo == null ? null : photo.server;
 	}
-	public Integer getFarm() {
+	public String getFarm() {
 		return photo == null ? null : photo.farm;
 	}
 	public String getDateUploaded() {
@@ -57,7 +57,7 @@ public class PhotoInfo extends Response {
 	public String getOwnerRealName() {return (photo == null || photo.owner == null) ? null : photo.owner.realname;}
 	public String getOwnerLocation() {return (photo == null || photo.owner == null) ? null : photo.owner.location;}
 	public String getOwnerIconServer() {return (photo == null || photo.owner == null) ? null : photo.owner.iconserver;}
-	public Integer getOwnerIconFarm() {return (photo == null || photo.owner == null) ? null : photo.owner.iconfarm;}
+	public String getOwnerIconFarm() {return (photo == null || photo.owner == null) ? null : photo.owner.iconfarm;}
 	public String getOwnerPathAlias() {return (photo == null || photo.owner == null) ? null : photo.owner.path_alias;}
 
 	public String getTitle() {return photo.title == null ? null : photo.title._content;}
@@ -205,7 +205,7 @@ public class PhotoInfo extends Response {
 		private String id;
 		private String secret;
 		private String server;
-		private Integer farm;
+		private String farm;
 		private String dateuploaded;
 		private String isfavorite;  // return as Boolean
 		private Integer license;
@@ -240,7 +240,7 @@ public class PhotoInfo extends Response {
 		private String realname;
 		private String location;
 		private String iconserver;
-		private Integer iconfarm;
+		private String iconfarm;
 		private String path_alias;
 	}
 

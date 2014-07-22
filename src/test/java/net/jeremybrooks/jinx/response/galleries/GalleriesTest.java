@@ -51,7 +51,7 @@ public class GalleriesTest {
 		assertEquals("124857539@N03", g.getOwner());
 		assertEquals("jinxlib", g.getUsername());
 		assertEquals("5538", g.getIconServer());
-		assertEquals(6, (int) g.getIconFarm());
+		assertEquals("6", g.getIconFarm());
 		assertEquals("", g.getPrimaryPhotoId());
 		assertEquals("1402704503", g.getDateCreate());
 		assertEquals("1402704503", g.getDateUpdate());
@@ -81,7 +81,7 @@ public class GalleriesTest {
 		assertEquals("124857539@N03", g.getOwner());
 		assertEquals("jinxlib", g.getUsername());
 		assertEquals("5538", g.getIconServer());
-		assertEquals(6, (int) g.getIconFarm());
+		assertEquals("6", g.getIconFarm());
 		assertEquals("8413449964", g.getPrimaryPhotoId());
 		assertEquals("1402548358", g.getDateCreate());
 		assertEquals("1402548730", g.getDateUpdate());
@@ -105,7 +105,7 @@ public class GalleriesTest {
 		assertEquals(0, (int) ppe.getDateTakenGranularity());
 		assertEquals("Jeremy Brooks", ppe.getOwnerName());
 		assertEquals("5332", ppe.getIconServer());
-		assertEquals(6, (int) ppe.getIconFarm());
+		assertEquals("6", ppe.getIconFarm());
 		assertEquals(197, (int) ppe.getViews());
 		assertEquals("california usa vintage restaurant neon chinese blogged sancarlos sanmateocounty", ppe.getTags());
 		assertEquals("", ppe.getMachineTags());
@@ -154,7 +154,7 @@ public class GalleriesTest {
 		assertEquals("85853333@N00", p.getOwner());
 		assertEquals("edd91a1d17", p.getSecret());
 		assertEquals("8473", p.getServer());
-		assertEquals(9, (int) p.getFarm());
+		assertEquals("9", p.getFarm());
 		assertEquals("China Chef", p.getTitle());
 		assertTrue(p.isPublic());
 		assertFalse(p.isFriend());

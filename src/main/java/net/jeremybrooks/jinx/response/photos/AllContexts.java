@@ -47,7 +47,7 @@ public class AllContexts extends Response {
 		private String primary;
 		private String secret;
 		private String server;
-				private Integer farm;
+				private String farm;
 		@SerializedName("view_count")
 		private Integer viewCount;
 		@SerializedName("comment_count")
@@ -77,7 +77,7 @@ public class AllContexts extends Response {
 			return server;
 		}
 
-		public Integer getFarm() {
+		public String getFarm() {
 			return farm;
 		}
 
@@ -107,7 +107,7 @@ public class AllContexts extends Response {
 		@SerializedName("iconserver")
 		private String iconServer;
 		@SerializedName("iconfarm")
-		private Integer iconFarm;
+		private String iconFarm;
 		private Integer members;
 		@SerializedName("pool_count")
 		private Integer poolCount;
@@ -128,7 +128,7 @@ public class AllContexts extends Response {
 			return iconServer;
 		}
 
-		public Integer getIconFarm() {
+		public String getIconFarm() {
 			return iconFarm;
 		}
 

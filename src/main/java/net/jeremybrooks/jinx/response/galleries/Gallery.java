@@ -35,7 +35,7 @@ public class Gallery implements Serializable {
 	@SerializedName("iconserver")
 	private String iconServer;
 	@SerializedName("iconfarm")
-	private Integer iconFarm;
+	private String iconFarm;
 	@SerializedName("primary_photo_id")
 	private String primaryPhotoId;
 	@SerializedName("date_create")
@@ -81,7 +81,7 @@ public class Gallery implements Serializable {
 		return iconServer;
 	}
 
-	public Integer getIconFarm() {
+	public String getIconFarm() {
 		return iconFarm;
 	}
 

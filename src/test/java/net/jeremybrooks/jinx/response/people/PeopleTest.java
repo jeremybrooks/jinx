@@ -170,7 +170,7 @@ public class PeopleTest {
         assertEquals("124857539@N03", p.getOwner());
         assertEquals("bf06719947", p.getSecret());
         assertEquals("3797", p.getServer());
-        assertEquals(new Integer(4), p.getFarm());
+        assertEquals("4", p.getFarm());
         assertEquals("La Sombra Rotoporky", p.getTitle());
         assertTrue(p.isPublic());
         assertFalse(p.isFriend());
@@ -183,7 +183,7 @@ public class PeopleTest {
         assertEquals(new Integer(0), p.getDateTakenGranularity());
         assertEquals("jinxlib", p.getOwnerName());
         assertEquals("5538", p.getIconServer());
-        assertEquals(new Integer(6), p.getIconFarm());
+        assertEquals("6", p.getIconFarm());
         assertEquals(new Integer(14), p.getViews());
         assertEquals("blackandwhite bw poster blackwhite iceland interior room reykjavik luchadores", p.getTags());
         assertEquals("2e60b8888e", p.getOriginalSecret());
@@ -247,7 +247,7 @@ public class PeopleTest {
         assertEquals("63849524@N02", p.getOwner());
         assertEquals("4dcc2cb357", p.getSecret());
         assertEquals("7448", p.getServer());
-        assertEquals(new Integer(8), p.getFarm());
+        assertEquals("8", p.getFarm());
         assertEquals("Happy Moment", p.getTitle());
         assertTrue(p.isPublic());
         assertFalse(p.isFriend());
@@ -261,7 +261,7 @@ public class PeopleTest {
         assertEquals("1367983810", p.getDatePersonAdded());
         assertEquals("Ahmed Eather", p.getOwnerName());
         assertEquals("8270", p.getIconServer());
-        assertEquals(new Integer(9), p.getIconFarm());
+        assertEquals("9", p.getIconFarm());
         assertEquals(new Integer(134), p.getViews());
 
         assertEquals("", p.getTags());
@@ -347,7 +347,7 @@ public class PeopleTest {
         assertEquals("51035555243@N01", p.getOwner());
         assertEquals("11dfac3eb8", p.getSecret());
         assertEquals("3862", p.getServer());
-        assertEquals(new Integer(4), p.getFarm());
+        assertEquals("4", p.getFarm());
         assertEquals("Eddie Gaia", p.getTitle());
         assertTrue(p.isPublic());
         assertFalse(p.isFriend());
@@ -362,7 +362,7 @@ public class PeopleTest {
         assertEquals(new Integer(0), p.getDateTakenGranularity());
         assertEquals("Thomas Hawk", p.getOwnerName());
         assertEquals("7370", p.getIconServer());
-        assertEquals(new Integer(8), p.getIconFarm());
+        assertEquals("8", p.getIconFarm());
         assertEquals(new Integer(245), p.getViews());
         assertEquals("sanfrancisco california usa graffiti unitedstates unitedstatesofamerica eddie gaia tenderloin tenderloindistrict eddiecola", p.getTags());
         assertEquals("", p.getMachineTags());

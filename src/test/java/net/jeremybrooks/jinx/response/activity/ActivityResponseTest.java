@@ -53,12 +53,12 @@ public class ActivityResponseTest {
 			assertEquals("photo", item.getType());
 			assertNotNull(item.getId());
 			assertEquals("Jeremy Brooks", item.getOwnerName());
-			assertEquals("85853333@N00", item.getOwner());
+			assertEquals("85853333@N00", item.getOwnerId());
 			assertNotNull(item.getIconServer());
-			assertEquals(1, item.getIconFarm());
+			assertEquals("1", item.getIconFarm());
 			assertNotNull(item.getSecret());
 			assertNotNull(item.getServer());
-			assertEquals(9, item.getFarm());
+			assertEquals("9", item.getFarm());
 			assertNotNull(item.getTitle());
 			assertEquals("photo", item.getMedia());
 			assertTrue(item.getComments() > 0);
@@ -72,16 +72,16 @@ public class ActivityResponseTest {
 			for (ActivityResponse.Event event : item.getActivityEventList()) {
 				assertNotNull(event.getType());
 				if (event.getType().equals("fave")) {
-					assertNotNull(event.getUser());
+					assertNotNull(event.getUserId());
 					assertNotNull(event.getUsername());
 					assertNotNull(event.getIconServer());
-					assertTrue(event.getIconFarm() > 0);
+                    assertNotNull(event.getIconFarm());
 					assertNotNull(event.getDateAdded());
 				} else if (event.getType().equals("comment")) {
-					assertNotNull(event.getUser());
+					assertNotNull(event.getUserId());
 					assertNotNull(event.getUsername());
 					assertNotNull(event.getIconServer());
-					assertTrue(event.getIconFarm() > 0);
+                    assertNotNull(event.getIconFarm());
 					assertNotNull(event.getDateAdded());
 					assertNotNull(event.getCommentId());
 					assertNotNull(event.getContent());
@@ -113,13 +113,13 @@ public class ActivityResponseTest {
 		for (ActivityResponse.Item item : response.getItemList()) {
 			assertEquals("photo", item.getType());
 			assertNotNull(item.getId());
-			assertNotNull(item.getOwner());
+			assertNotNull(item.getOwnerId());
 			assertNotNull(item.getOwnerName());
 			assertNotNull(item.getIconServer());
-			assertTrue(item.getIconFarm() > 0);
+            assertNotNull(item.getIconFarm());
 			assertNotNull(item.getSecret());
 			assertNotNull(item.getServer());
-			assertTrue(item.getFarm() > 0);
+			assertNotNull(item.getFarm());
 			assertNotNull(item.getTitle());
 			assertEquals("photo", item.getMedia());
 			assertTrue(item.getComments() > 0);
@@ -132,10 +132,10 @@ public class ActivityResponseTest {
 
 			for (ActivityResponse.Event event : item.getActivityEventList()) {
 				assertNotNull(event.getType());
-				assertNotNull(event.getUser());
+				assertNotNull(event.getUserId());
 				assertNotNull(event.getUsername());
 				assertNotNull(event.getIconServer());
-				assertTrue(event.getIconFarm() > 0);
+                assertNotNull(event.getIconFarm());
 				assertNotNull(event.getDateAdded());
 				assertNotNull(event.getCommentId());
 				assertNotNull(event.getContent());

@@ -50,7 +50,7 @@ public class FavoritesTest {
 		assertEquals("51035555243@N01", prevPhoto.getOwner());
 		assertEquals("a927c370e0", prevPhoto.getSecret());
 		assertEquals("3881", prevPhoto.getServer());
-		assertEquals(4, (int) prevPhoto.getFarm());
+		assertEquals("4", prevPhoto.getFarm());
 		assertEquals("A New Type of Jesus", prevPhoto.getTitle());
 		assertEquals("/photos/thomashawk/14389333104/in/faves-jinxlib/", prevPhoto.getUrl());
 		assertEquals("https://farm4.staticflickr.com/3881/14389333104_a927c370e0_s.jpg", prevPhoto.getThumb());
@@ -63,7 +63,7 @@ public class FavoritesTest {
 		assertEquals("42961457@N04", nextPhoto.getOwner());
 		assertEquals("3df684a505", nextPhoto.getSecret());
 		assertEquals("2940", nextPhoto.getServer());
-		assertEquals(3, (int) nextPhoto.getFarm());
+		assertEquals("3", nextPhoto.getFarm());
 		assertEquals("", nextPhoto.getTitle());
 		assertEquals("/photos/troyholden/14335914741/in/faves-jinxlib/", nextPhoto.getUrl());
 		assertEquals("https://farm3.staticflickr.com/2940/14335914741_3df684a505_s.jpg", nextPhoto.getThumb());
@@ -93,7 +93,7 @@ public class FavoritesTest {
 		assertEquals("42961457@N04", p.getOwner());
 		assertEquals("33a8769e2e", p.getSecret());
 		assertEquals("7297", p.getServer());
-		assertEquals(8, (int) p.getFarm());
+		assertEquals("8", p.getFarm());
 		assertEquals("", p.getTitle());
 		assertTrue(p.isPublic());
 		assertFalse(p.isFriend());
@@ -108,7 +108,7 @@ public class FavoritesTest {
 		assertEquals(0, (int) p.getDateTakenGranularity());
 		assertEquals("Troy Holden", p.getOwnerName());
 		assertEquals("3833", p.getIconServer());
-		assertEquals(4, (int) p.getIconFarm());
+		assertEquals("4", p.getIconFarm());
 		assertEquals(12405, (int) p.getViews());
 		assertEquals("sanfrancisco civiccenter sfist oldmint vision:text=0867 vision:outdoor=0944 oldmint1 sidewalkszine", p.getTags());
 		assertEquals("c86887e911", p.getOriginalSecret());
@@ -174,7 +174,7 @@ public class FavoritesTest {
 			assertEquals("42961457@N04", p.getOwner());
 			assertEquals("33a8769e2e", p.getSecret());
 			assertEquals("7297", p.getServer());
-			assertEquals(8, (int) p.getFarm());
+			assertEquals("8", p.getFarm());
 			assertEquals("", p.getTitle());
 			assertTrue(p.isPublic());
 			assertFalse(p.isFriend());
@@ -189,7 +189,7 @@ public class FavoritesTest {
 			assertEquals(0, (int) p.getDateTakenGranularity());
 			assertEquals("Troy Holden", p.getOwnerName());
 			assertEquals("3833", p.getIconServer());
-			assertEquals(4, (int) p.getIconFarm());
+			assertEquals("4", p.getIconFarm());
 			assertEquals(12407, (int) p.getViews());
 			assertEquals("sanfrancisco civiccenter sfist oldmint vision:text=0867 vision:outdoor=0944 oldmint1 sidewalkszine", p.getTags());
 			assertEquals("c86887e911", p.getOriginalSecret());

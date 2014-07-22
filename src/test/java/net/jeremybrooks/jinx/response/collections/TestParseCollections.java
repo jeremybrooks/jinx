@@ -59,7 +59,7 @@ public class TestParseCollections {
 		assertEquals("124857539@N03", p.getOwner());
 		assertEquals("683489a38a", p.getSecret());
 		assertEquals("5575", p.getServer());
-		assertEquals(6, (int)p.getFarm());
+		assertEquals("6", p.getFarm());
 		assertEquals("Might Not Happen Soon", p.getTitle());
 		assertTrue(p.isPublic());
 		assertFalse(p.isFriend());

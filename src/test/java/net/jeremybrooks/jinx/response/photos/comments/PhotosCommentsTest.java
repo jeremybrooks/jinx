@@ -96,7 +96,7 @@ public class PhotosCommentsTest {
         assertEquals("51035555243@N01", p.getOwner());
         assertEquals("2819225731", p.getSecret());
         assertEquals("3885", p.getServer());
-        assertEquals(new Integer(4), p.getFarm());
+        assertEquals("4", p.getFarm());
         assertEquals("The lines of San Francisco. #sf #sanfrancisco #bw #architecture #mission", p.getTitle());
         assertTrue(p.isPublic());
         assertFalse(p.isFriend());
@@ -111,7 +111,7 @@ public class PhotosCommentsTest {
         assertEquals(new Integer(0), p.getDateTakenGranularity());
         assertEquals("Thomas Hawk", p.getOwnerName());
         assertEquals("7370", p.getIconServer());
-        assertEquals(new Integer(8), p.getIconFarm());
+        assertEquals("8", p.getIconFarm());
         assertEquals(new Integer(746), p.getViews());
         assertEquals("square squareformat iphoneography instagramapp uploaded:by=instagram", p.getTags());
         assertEquals("uploaded:by=instagram", p.getMachineTags());

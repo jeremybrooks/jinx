@@ -101,7 +101,7 @@ public class PhotoUtils {
 	 * @return buffered image data from Flickr.
 	 * @throws JinxException if any required parameter is null, or if there are any errors.
 	 */
-	public static BufferedImage getImageForSize(JinxConstants.PhotoSize size, String photoId, String secret, Integer farm, String server, String originalFormat, String originalSecret) throws JinxException {
+	public static BufferedImage getImageForSize(JinxConstants.PhotoSize size, String photoId, String secret, String farm, String server, String originalFormat, String originalSecret) throws JinxException {
 		BufferedImage image;
 		try {
 			image = ImageIO.read(getUrlForSize(size, photoId, secret, farm, server, originalFormat, originalSecret));
@@ -137,7 +137,7 @@ public class PhotoUtils {
 	 * @throws JinxException if required parameters are missing, or if the URL cannot be created.
 	 */
 	public static URL getUrlForSize(
-			JinxConstants.PhotoSize size, String photoId, String secret, Integer farm, String server, String originalFormat, String originalSecret) throws JinxException {
+			JinxConstants.PhotoSize size, String photoId, String secret, String farm, String server, String originalFormat, String originalSecret) throws JinxException {
 		JinxUtils.validateParams(photoId, size, farm, server);
 		if (size == JinxConstants.PhotoSize.SIZE_ORIGINAL) {
 			JinxUtils.validateParams(originalFormat, originalSecret);

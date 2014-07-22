@@ -74,7 +74,7 @@ public class Context extends Response {
 		private String owner;
 		private String secret;
 		private String server;
-		private Integer farm;
+		private String farm;
 		private String title;
 		private String url;
 		private String thumb;
@@ -99,7 +99,7 @@ public class Context extends Response {
 			return server;
 		}
 
-		public Integer getFarm() {
+		public String getFarm() {
 			return farm;
 		}
 
@@ -154,7 +154,7 @@ public class Context extends Response {
 		private String owner;
 		private String secret;
 		private String server;
-		private Integer farm;
+		private String farm;
 		private String title;
 		private String url;
 		private String thumb;
@@ -179,7 +179,7 @@ public class Context extends Response {
 			return server;
 		}
 
-		public Integer getFarm() {
+		public String getFarm() {
 			return farm;
 		}
 

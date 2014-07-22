@@ -79,12 +79,13 @@ public class Contacts extends Response {
 
 	public class Contact implements Serializable {
 		private static final long serialVersionUID = 4048260869881726082L;
-		private String nsid;
+        @SerializedName("nsid")
+		private String userId;
 		private String username;
 		@SerializedName("iconserver")
 		private String iconServer;
 		@SerializedName("iconfarm")
-		private Integer iconFarm;
+		private String iconFarm;
 		private String ignored;      // return as Boolean
 		@SerializedName("rev_ignored")
 		private String revIgnored;   // return as Boolean
@@ -100,7 +101,7 @@ public class Contacts extends Response {
 
 
 		public String getUserId() {
-			return nsid;
+			return userId;
 		}
 
 		public String getUsername() {
@@ -111,7 +112,7 @@ public class Contacts extends Response {
 			return iconServer;
 		}
 
-		public Integer getIconFarm() {
+		public String getIconFarm() {
 			return iconFarm;
 		}
 
@@ -151,7 +152,7 @@ public class Contacts extends Response {
 		public String toString() {
 			final StringBuilder sb = new StringBuilder();
 			sb.append("net.jeremybrooks.jinx.response.contacts.Contacts.Contact");
-			sb.append("{userId='").append(nsid).append('\'');
+			sb.append("{userId='").append(userId).append('\'');
 			sb.append(" | username='").append(username).append('\'');
 			sb.append(" | iconServer='").append(iconServer).append('\'');
 			sb.append(" | iconFarm=").append(iconFarm);

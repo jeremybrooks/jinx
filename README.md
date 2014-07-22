@@ -135,12 +135,10 @@ If you are not using Maven, you will need these libraries, and their dependencie
    * panda
    * people
    * photos.comments
+   * photos.geo
 
 ## Not Yet Implemented
 
-  * photos.geo          (NOTE: Some of the methods in photos.geo do not work correctly.
-                               They also do not work in the Flickr API Explorer,
-                               so there is likely little that can be done about it.)
   * photos.licenses
   * photos.notes
   * photos.people

@@ -53,7 +53,7 @@ public class GroupsPoolsTest {
         assertEquals("124857539@N03", prev.getOwner());
         assertEquals("a00c1c8c01", prev.getSecret());
         assertEquals("3745", prev.getServer());
-        assertEquals(new Integer(4), prev.getFarm());
+        assertEquals("4", prev.getFarm());
         assertEquals("Constantly", prev.getTitle());
         assertEquals("/photos/jinxlib/14090247837/in/pool-2723340@N22/", prev.getUrl());
         assertEquals("https://farm4.staticflickr.com/3745/14090247837_a00c1c8c01_s.jpg", prev.getThumb());
@@ -67,7 +67,7 @@ public class GroupsPoolsTest {
         assertEquals("124857539@N03", next.getOwner());
         assertEquals("62bbd1113a", next.getSecret());
         assertEquals("3777", next.getServer());
-        assertEquals(new Integer(4), next.getFarm());
+        assertEquals("4", next.getFarm());
         assertEquals("Hallgrímskirkja", next.getTitle());
         assertEquals("/photos/jinxlib/14253693206/in/pool-2723340@N22/", next.getUrl());
         assertEquals("https://farm4.staticflickr.com/3777/14253693206_62bbd1113a_s.jpg", next.getThumb());
@@ -124,7 +124,7 @@ public class GroupsPoolsTest {
         assertEquals("124857539@N03", p.getOwner());
         assertEquals("772cec7714", p.getSecret());
         assertEquals("3714", p.getServer());
-        assertEquals(new Integer(4), p.getFarm());
+        assertEquals("4", p.getFarm());
         assertEquals("Spent All Day", p.getTitle());
         assertTrue(p.isPublic());
         assertFalse(p.isFriend());

@@ -45,7 +45,7 @@ public class PrimaryPhotoExtras implements Serializable {
 	@SerializedName("iconserver")
 	private String iconServer;
 	@SerializedName("iconfarm")
-	private Integer iconFarm;
+	private String iconFarm;
 	private Integer views;
 	private String tags;
 	@SerializedName("machine_tags")
@@ -143,7 +143,7 @@ public class PrimaryPhotoExtras implements Serializable {
 		return iconServer;
 	}
 
-	public Integer getIconFarm() {
+	public String getIconFarm() {
 		return iconFarm;
 	}
 

@@ -33,7 +33,7 @@ public class Comment implements Serializable {
 	@SerializedName("iconserver")
 	private String iconServer;
 	@SerializedName("iconfarm")
-	private Integer iconFarm;
+	private String iconFarm;
 	@SerializedName("authorname")
 	private String authorName;
 	@SerializedName("datecreate")
@@ -54,7 +54,7 @@ public class Comment implements Serializable {
 		return iconServer;
 	}
 
-	public Integer getIconFarm() {
+	public String getIconFarm() {
 		return iconFarm;
 	}
 

@@ -38,7 +38,7 @@ public class ExifData extends Response {
 	public String getServer() {
 		return photo == null ? null : photo.server;
 	}
-	public Integer getFarm() {
+	public String getFarm() {
 		return photo == null ? null : photo.farm;
 	}
 	public String getCamera() {
@@ -60,7 +60,7 @@ public class ExifData extends Response {
 		private String photoId;
 		private String secret;
 		private String server;
-		private Integer farm;
+		private String farm;
 		private String camera;
 		@SerializedName("exif")
 		private List<Exif> exifList;

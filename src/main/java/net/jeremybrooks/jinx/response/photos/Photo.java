@@ -32,7 +32,7 @@ public class Photo implements Serializable {
 	private String photoId;
 	private String secret;
 	private String server;
-	private Integer farm;
+	private String farm;
 	private String owner;
 	private String username;
 	private String title;
@@ -68,7 +68,7 @@ public class Photo implements Serializable {
 	@SerializedName("iconserver")
 	private String iconServer;
 	@SerializedName("iconfarm")
-	private Integer iconFarm;
+	private String iconFarm;
 	private Integer views;
 	private String tags;
 	@SerializedName("machine_tags")
@@ -200,7 +200,7 @@ public class Photo implements Serializable {
 		return server;
 	}
 
-	public Integer getFarm() {
+	public String getFarm() {
 		return farm;
 	}
 
@@ -270,7 +270,7 @@ public class Photo implements Serializable {
 		return iconServer;
 	}
 
-	public Integer getIconFarm() {
+	public String getIconFarm() {
 		return iconFarm;
 	}
 

@@ -125,7 +125,7 @@ public class CollectionInfo extends Response {
 		private String owner;
 		private String secret;
 		private String server;
-		private Integer farm;
+		private String farm;
 		private String title;
 		private String ispublic;    // return as Boolean
 		private String isfriend;    // return as Boolean
@@ -147,7 +147,7 @@ public class CollectionInfo extends Response {
 			return server;
 		}
 
-		public Integer getFarm() {
+		public String getFarm() {
 			return farm;
 		}
 

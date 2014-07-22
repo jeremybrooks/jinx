@@ -55,7 +55,7 @@ public class ContactsTest {
 		assertEquals("38039613@N08", c.getUserId());
 		assertEquals("dovetaildw", c.getUsername());
 		assertEquals("3557", c.getIconServer());
-		assertEquals(4, (int) c.getIconFarm());
+		assertEquals("4", c.getIconFarm());
 		assertFalse(c.isIgnored());
 		assertFalse(c.isRevIgnored());
 		assertEquals("Dave Williams", c.getRealName());
@@ -86,7 +86,7 @@ public class ContactsTest {
 		assertEquals("34350870@N03", c.getUserId());
 		assertEquals("- POD -", c.getUsername());
 		assertEquals("3706", c.getIconServer());
-		assertEquals(4, (int) c.getIconFarm());
+		assertEquals("4", c.getIconFarm());
 		assertFalse(c.isIgnored());
 		assertFalse(c.isRevIgnored());
 		assertNull(c.getRealName());
@@ -117,7 +117,7 @@ public class ContactsTest {
 		assertEquals("40962351@N00", c.getUserId());
 		assertEquals("lomokev", c.getUsername());
 		assertEquals("8556", c.getIconServer());
-		assertEquals(9, (int) c.getIconFarm());
+		assertEquals("9", c.getIconFarm());
 		assertNull(c.isIgnored());
 		assertNull(c.isRevIgnored());
 		assertEquals("Kevin Meredith", c.getRealName());
@@ -149,7 +149,7 @@ public class ContactsTest {
 		assertEquals("51035555243@N01", c.getUserId());
 		assertEquals("Thomas Hawk", c.getUsername());
 		assertEquals("7370", c.getIconServer());
-		assertEquals(8, (int) c.getIconFarm());
+		assertEquals("8", c.getIconFarm());
 		assertNull(c.isIgnored());
 		assertNull(c.isRevIgnored());
 		assertEquals("Thomas Hawk", c.getRealName());
