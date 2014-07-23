@@ -79,6 +79,7 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
  * If a user has no blogs set up, calling the getBlogList() method will throw an Exception. This is due to different data structures returned by Flickr if a user has blogs or does not have blogs. This issue has been reported to Flickr.
  * rejectSuggestions method in PhotosSuggestionsApi throws a JinxException with code 999, even though the operation succeeds. This has been reported to Flickr.
+ * Pandas are not returning photos. This seems to be an issue on Flickr's side.
  * PhotoUtils methods that use ImageIO do not use configured proxy:
 
 

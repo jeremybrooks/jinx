@@ -71,7 +71,6 @@ public class JinxTest {
             // if we get here, there was no exception, so fail
             fail();
         } catch (JinxException je) {
-            System.out.println(je);
             assertNotNull(je);
             assertNotEquals(0, je.getFlickrErrorCode());
             assertNotNull(je.getFlickrErrorMessage());
