@@ -23,7 +23,7 @@
   -
   - Typical release cycle is:
   - mvn test
-  - mvn release:prepare
+  - mvn -Darguments="-DskipTests" release:prepare
   - mvn release:perform
   - mvn release:clean
   -
