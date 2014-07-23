@@ -60,31 +60,31 @@ public class Location extends Response {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Location{");
         sb.append("photoId='").append(getPhotoId()).append('\'');
-        sb.append("longitude=").append(getLongitude());
-        sb.append("latitude=").append(getLatitude());
-        sb.append("accuracy=").append(getAccuracy());
-        sb.append("context=").append(getContext());
-        sb.append("placeId='").append(getPlaceId()).append('\'');
-        sb.append("woeId='").append(getWoeId()).append('\'');
-        sb.append("neighbourhoodName='").append(getNeighbourhoodName()).append('\'');
-        sb.append("neighbourhoodPlaceId='").append(getNeighbourhoodPlaceId()).append('\'');
-        sb.append("neighbourhoodWoeId='").append(getNeighbourhoodWoeId()).append('\'');
+        sb.append(", longitude=").append(getLongitude());
+        sb.append(", latitude=").append(getLatitude());
+        sb.append(", accuracy=").append(getAccuracy());
+        sb.append(", context=").append(getContext());
+        sb.append(", placeId='").append(getPlaceId()).append('\'');
+        sb.append(", woeId='").append(getWoeId()).append('\'');
+        sb.append(", neighbourhoodName='").append(getNeighbourhoodName()).append('\'');
+        sb.append(", neighbourhoodPlaceId='").append(getNeighbourhoodPlaceId()).append('\'');
+        sb.append(", neighbourhoodWoeId='").append(getNeighbourhoodWoeId()).append('\'');
 
-        sb.append("localityName='").append(getLocalityName()).append('\'');
-        sb.append("localityPlaceId='").append(getLocalityPlaceId()).append('\'');
-        sb.append("localityWoeId='").append(getLocalityWoeId()).append('\'');
+        sb.append(", localityName='").append(getLocalityName()).append('\'');
+        sb.append(", localityPlaceId='").append(getLocalityPlaceId()).append('\'');
+        sb.append(", localityWoeId='").append(getLocalityWoeId()).append('\'');
 
-        sb.append("countyName='").append(getCountyName()).append('\'');
-        sb.append("countyPlaceId='").append(getCountyPlaceId()).append('\'');
-        sb.append("countyWoeId='").append(getCountyWoeId()).append('\'');
+        sb.append(", countyName='").append(getCountyName()).append('\'');
+        sb.append(", countyPlaceId='").append(getCountyPlaceId()).append('\'');
+        sb.append(", countyWoeId='").append(getCountyWoeId()).append('\'');
 
-        sb.append("regionName='").append(getRegionName()).append('\'');
-        sb.append("regionPlaceId='").append(getRegionPlaceId()).append('\'');
-        sb.append("regionWoeId='").append(getRegionWoeId()).append('\'');
+        sb.append(", regionName='").append(getRegionName()).append('\'');
+        sb.append(", regionPlaceId='").append(getRegionPlaceId()).append('\'');
+        sb.append(", regionWoeId='").append(getRegionWoeId()).append('\'');
 
-        sb.append("countryName='").append(getCountryName()).append('\'');
-        sb.append("countryPlaceId='").append(getCountryPlaceId()).append('\'');
-        sb.append("countryWoeId='").append(getCountryWoeId()).append('\'');
+        sb.append(", countryName='").append(getCountryName()).append('\'');
+        sb.append(", countryPlaceId='").append(getCountryPlaceId()).append('\'');
+        sb.append(", countryWoeId='").append(getCountryWoeId()).append('\'');
         sb.append('}');
         return sb.toString();
     }
