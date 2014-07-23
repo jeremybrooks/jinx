@@ -19,8 +19,6 @@ package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.OAuthAccessToken;
-import net.jeremybrooks.jinx.logger.JinxLogger;
-import net.jeremybrooks.jinx.logger.StdoutLogger;
 import net.jeremybrooks.jinx.response.panda.Pandas;
 import net.jeremybrooks.jinx.response.photos.Photos;
 import org.junit.BeforeClass;
@@ -56,8 +54,8 @@ public class PandaApiTest {
 
         assertNotNull(oAuthAccessToken);
         Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
-        jinx.setVerboseLogging(true);
-        JinxLogger.setLogger(new StdoutLogger());
+//        jinx.setVerboseLogging(true);
+//        JinxLogger.setLogger(new StdoutLogger());
         pandasApi = new PandaApi(jinx);
     }
 

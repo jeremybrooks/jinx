@@ -105,12 +105,6 @@
 
     <profiles>
         <profile>
-            <!--
-               - The tests require some private data that is not in git.
-               - Therefore, when doing release:perform, run it with the production profile
-               - to skip the tests:
-               - mvn release:perform -P production
-             -->
             <id>release</id>
             <properties>
                 <maven.test.skip>true</maven.test.skip>
