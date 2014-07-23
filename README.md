@@ -139,10 +139,10 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * photos.licenses
   * photos.notes
   * photos.people
+  * photos.suggestions
 
 ## Not Yet Implemented
 
-  * photos.suggestions
   * photos.transform
   * photos.upload
   * places

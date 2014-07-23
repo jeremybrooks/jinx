@@ -788,6 +788,62 @@ public class JinxUtils {
         return privacy;
     }
 
+    /**
+     * Convert a suggestion status to the corresponding Flickr suggestion status id.
+     *
+     * @param status the suggestion status.
+     * @return corresponding Flickr id.
+     */
+    public static Integer suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus status) {
+        if (status == null) {
+            return null;
+        }
+        Integer id;
+        switch (status) {
+            case pending:
+                id = 0;
+                break;
+            case approved:
+                id = 1;
+                break;
+            case rejected:
+                id = 2;
+                break;
+            default:
+                id = null;
+                break;
+        }
+        return id;
+    }
+
+    /**
+     * Convert a Flickr suggestion status id to the corresponding SuggestionStatus value.
+     *
+     * @param id the Flickr suggestion status id.
+     * @return corresponding SuggestionStatus value.
+     */
+    public static JinxConstants.SuggestionStatus suggestionStatusIdToSuggestionStatusEnum(Integer id) {
+        if (id == null) {
+            return null;
+        }
+        JinxConstants.SuggestionStatus status;
+        switch (id) {
+            case 0:
+                status = JinxConstants.SuggestionStatus.pending;
+                break;
+            case 1:
+                status = JinxConstants.SuggestionStatus.approved;
+                break;
+            case 2:
+                status = JinxConstants.SuggestionStatus.rejected;
+                break;
+            default:
+                status = null;
+                break;
+        }
+        return status;
+    }
+
     public static void close(InputStream in) {
         if (in != null) {
             try {

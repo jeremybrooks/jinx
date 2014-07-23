@@ -124,6 +124,12 @@ public class JinxConstants {
         restrictions
     }
 
+    public static enum SuggestionStatus {
+        pending,
+        approved,
+        rejected
+    }
+
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line
 

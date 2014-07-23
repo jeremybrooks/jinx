@@ -375,4 +375,21 @@ public class JinxUtilsTest {
         assertEquals(new Integer(3), JinxUtils.groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy.group_open_public));
         assertNull(JinxUtils.groupPrivacyEnumToPrivacyId(null));
     }
+
+    @Test
+    public void testFlickrSuggestionStatusIdToEnum() {
+        assertEquals(JinxConstants.SuggestionStatus.pending, JinxUtils.suggestionStatusIdToSuggestionStatusEnum(0));
+        assertEquals(JinxConstants.SuggestionStatus.approved, JinxUtils.suggestionStatusIdToSuggestionStatusEnum(1));
+        assertEquals(JinxConstants.SuggestionStatus.rejected, JinxUtils.suggestionStatusIdToSuggestionStatusEnum(2));
+        assertNull(JinxUtils.suggestionStatusIdToSuggestionStatusEnum(4));
+        assertNull(JinxUtils.suggestionStatusIdToSuggestionStatusEnum(null));
+    }
+
+    @Test
+    public void testSuggestionStatusToFlickrId() {
+        assertEquals(new Integer(0), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.pending));
+        assertEquals(new Integer(1), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.approved));
+        assertEquals(new Integer(2), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.rejected));
+        assertNull(JinxUtils.suggestionStatusToFlickrSuggestionStatusId(null));
+    }
 }
