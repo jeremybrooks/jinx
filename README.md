@@ -48,7 +48,7 @@ If you are using Maven, just include this in your pom.xml file
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>0.6.10</version>
+		<version>0.7.0</version>
 	</dependency>
 
 If you are not using Maven, you will need these libraries, and their dependencies:
@@ -59,6 +59,36 @@ If you are not using Maven, you will need these libraries, and their dependencie
   NOTE: At this time, Scribe 1.3.7 is the development version; you will need to build Scribe from source until they release again.
 
 # VERSION HISTORY
+
+## Version 0.7.0 supports the following API's
+  * activity
+  * auth.oauth
+  * blogs (have not really tested the postPhoto method, though)
+  * cameras
+  * collections
+  * commons
+  * contacts
+  * favorites
+  * galleries
+  * groups
+  * groups.discuss.replies
+  * groups.discuss.topics
+  * groups.members
+  * groups.pools
+  * interestingness
+  * machinetags
+  * panda
+  * people
+  * photos
+  * photos.comments
+  * photos.geo
+  * photos.licenses
+  * photos.notes
+  * photos.people
+  * photos.suggestions
+  * photos.transform  
+  * photosets
+  * photosets.comments
 
 ## Version 0.6.10 supports the following API's
   * activity
@@ -121,11 +151,6 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * contacts
   * favorites
   * galleries
-  * photos
-  * photosets
-  * photosets.comments
-
-## Available In Latest Source
   * groups
   * groups.discuss.replies
   * groups.discuss.topics
@@ -135,14 +160,20 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * machinetags
   * panda
   * people
+  * photos
   * photos.comments
   * photos.geo
   * photos.licenses
   * photos.notes
   * photos.people
   * photos.suggestions
-  * photos.transform
+  * photos.transform  
+  * photosets
+  * photosets.comments
 
+## Additional API's Available In Latest Source
+
+  
 ## Not Yet Implemented
 
   * photos.upload
