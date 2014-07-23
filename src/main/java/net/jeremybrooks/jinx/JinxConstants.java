@@ -130,6 +130,12 @@ public class JinxConstants {
         rejected
     }
 
+    public static enum RotateDegrees {
+        _90,
+        _180,
+        _270
+    }
+
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line
 
