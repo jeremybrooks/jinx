@@ -1,0 +1,16 @@
+{ "people": {
+    "total": 1,
+    "person": [
+        {
+            "nsid": "124857539@N03",
+            "username": "jinxlib",
+            "iconserver": "5538",
+            "iconfarm": 6,
+            "realname": "Jinx Library",
+            "path_alias": "jinxlib",
+            "added_by": "124857539@N03"
+        }
+    ],
+    "photo_width": "333",
+    "photo_height": "500"
+}, "stat": "ok" }

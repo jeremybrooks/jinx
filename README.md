@@ -125,23 +125,23 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * photosets.comments
 
 ## Available In Latest Source
-   * groups
-   * groups.discuss.replies
-   * groups.discuss.topics
-   * groups.members
-   * groups.pools
-   * interestingness
-   * machinetags
-   * panda
-   * people
-   * photos.comments
-   * photos.geo
-   * photos.licenses
-   * photos.notes
+  * groups
+  * groups.discuss.replies
+  * groups.discuss.topics
+  * groups.members
+  * groups.pools
+  * interestingness
+  * machinetags
+  * panda
+  * people
+  * photos.comments
+  * photos.geo
+  * photos.licenses
+  * photos.notes
+  * photos.people
 
 ## Not Yet Implemented
 
-  * photos.people
   * photos.suggestions
   * photos.transform
   * photos.upload
