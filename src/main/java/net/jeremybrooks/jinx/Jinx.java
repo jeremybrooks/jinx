@@ -199,10 +199,14 @@ public class Jinx {
      */
     public void setProxy(final JinxProxy proxyConfig) {
         if (proxyConfig == null) {
+            System.clearProperty("http.proxyHost");
+            System.clearProperty("http.proxyPort");
             System.clearProperty("https.proxyHost");
             System.clearProperty("https.proxyPort");
             this.proxy = Proxy.NO_PROXY;
         } else if (! JinxUtils.isNullOrEmpty(proxyConfig.getProxyHost())) {
+            System.setProperty("http.proxyHost", proxyConfig.getProxyHost());
+            System.setProperty("http.proxyPort", Integer.toString(proxyConfig.getProxyPort()));
             System.setProperty("https.proxyHost", proxyConfig.getProxyHost());
             System.setProperty("https.proxyPort", Integer.toString(proxyConfig.getProxyPort()));
             this.proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyConfig.getProxyHost(), proxyConfig.getProxyPort()));

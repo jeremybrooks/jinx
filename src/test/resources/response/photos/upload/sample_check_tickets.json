@@ -1,0 +1,21 @@
+{ "uploader": {
+    "ticket": [
+        {
+            "id": 123,
+            "invalid": 1
+        },
+        {
+            "id": 234,
+            "complete": 1,
+            "photoid": "1234565"
+        },
+        {
+            "id": 1123,
+            "complete": 0
+        },
+        {
+            "id": 2334,
+            "complete": 2
+        }
+    ]
+}, "stat": "ok" }

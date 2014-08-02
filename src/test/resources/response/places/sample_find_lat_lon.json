@@ -1,0 +1,20 @@
+{ "places": {
+    "place": [
+        {
+            "place_id": "HMGdMeJTUb_Sf_5E2g",
+            "woeid": "23512048",
+            "latitude": 37.764,
+            "longitude": -122.425,
+            "place_url": "\/United+States\/California\/San+Francisco\/Mission+Dolores",
+            "place_type": "neighbourhood",
+            "place_type_id": 22,
+            "timezone": "America\/Los_Angeles",
+            "name": "Mission Dolores, San Francisco, CA, US, United States",
+            "woe_name": "Mission Dolores"
+        }
+    ],
+    "latitude": 37.76513627957266,
+    "longitude": -122.42020770907402,
+    "accuracy": 16,
+    "total": 1
+}, "stat": "ok" }

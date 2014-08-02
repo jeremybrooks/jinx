@@ -1,0 +1,77 @@
+{ "places": {
+    "place": [
+        {
+            "place_id": "Ka1owT5TUb5H6wqX",
+            "woeid": "2347571",
+            "latitude": 45.494,
+            "longitude": -114.143,
+            "place_url": "\/United+States\/Idaho",
+            "place_type": "region",
+            "place_type_id": 8,
+            "_content": "Idaho, United States",
+            "woe_name": "Idaho"
+        },
+        {
+            "place_id": "V_wWyv5TVrhbvEkn",
+            "woeid": "2426432",
+            "latitude": 39.086,
+            "longitude": -83.140,
+            "place_url": "\/United+States\/Ohio\/Idaho",
+            "place_type": "locality",
+            "place_type_id": 7,
+            "timezone": "America\/New_York",
+            "_content": "Idaho, Ohio, United States",
+            "woe_name": "Idaho"
+        },
+        {
+            "place_id": "IyQKSR5TVrhFFjjy",
+            "woeid": "2426435",
+            "latitude": 42.880,
+            "longitude": -77.611,
+            "place_url": "\/United+States\/New+York\/Lima\/Idaho",
+            "place_type": "neighbourhood",
+            "place_type_id": 22,
+            "timezone": "America\/New_York",
+            "_content": "Idaho, Lima, NY, United States",
+            "woe_name": "Idaho"
+        },
+        {
+            "place_id": "q3lUeNVTVrjHuQhz",
+            "woeid": "2426434",
+            "latitude": 35.093,
+            "longitude": -87.290,
+            "place_url": "\/United+States\/Tennessee\/Idaho",
+            "place_type": "locality",
+            "place_type_id": 7,
+            "timezone": "America\/Chicago",
+            "_content": "Idaho, Tennessee, United States",
+            "woe_name": "Idaho"
+        },
+        {
+            "place_id": "isRFZMtTWrlbjJ8tqg",
+            "woeid": "28337636",
+            "latitude": 33.322,
+            "longitude": -85.958,
+            "place_url": "\/United+States\/Alabama\/Idaho",
+            "place_type": "locality",
+            "place_type_id": 7,
+            "timezone": "America\/Chicago",
+            "_content": "Idaho, Alabama, United States",
+            "woe_name": "Idaho"
+        },
+        {
+            "place_id": "ufF8KzlTVrieuUqs",
+            "woeid": "2426433",
+            "latitude": 40.646,
+            "longitude": -79.338,
+            "place_url": "\/United+States\/Pennsylvania\/South+Bend\/Idaho",
+            "place_type": "neighbourhood",
+            "place_type_id": 22,
+            "timezone": "America\/New_York",
+            "_content": "Idaho, Shelocta, PA, United States",
+            "woe_name": "Idaho"
+        }
+    ],
+    "query": "Idaho",
+    "total": 6
+}, "stat": "ok" }

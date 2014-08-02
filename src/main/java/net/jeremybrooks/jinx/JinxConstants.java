@@ -136,6 +136,14 @@ public class JinxConstants {
         _270
     }
 
+    public static enum TicketStatus {
+        not_completed,
+        completed,
+        failed,
+        invalid,
+        undefined
+    }
+
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line
 

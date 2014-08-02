@@ -172,11 +172,10 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * photosets.comments
 
 ## Additional API's Available In Latest Source
-
+  * photos.upload (This is only the checkTickets method; uploading of images will be next)
   
 ## Not Yet Implemented
 
-  * photos.upload
   * places
   * prefs
   * push
