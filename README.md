@@ -39,6 +39,7 @@ By default, Jinx will not log. If you wish to see logging, you must set a JinxLo
 
 The StdoutLogger is provided. You can write your own logger to log to log4j or another destination. Just implement the LogInterface.
 
+If you need to log the body of a photo upload request, you must set verbose logging to true, and set the system property jinx.log.multipart to true.
 
 # REQUIREMENTS
 You must be using Java 1.6 or higher.
@@ -172,7 +173,8 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * photosets.comments
 
 ## Additional API's Available In Latest Source
-  * photos.upload (This is only the checkTickets method; uploading of images will be next)
+  * photos.upload (this is the photos.upload endpoint, which allows you to check tickets)
+  * synchronous upload of photos (see PhotosUploadApi.upload method)
   
 ## Not Yet Implemented
 

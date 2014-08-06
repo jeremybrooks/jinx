@@ -28,6 +28,8 @@ import org.scribe.model.Verb;
 import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.net.Authenticator;
 import java.net.InetSocketAddress;
 import java.net.PasswordAuthentication;
@@ -36,6 +38,7 @@ import java.net.URLDecoder;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import static net.jeremybrooks.jinx.JinxConstants.FLICKR_PHOTO_UPLOAD_URL;
 import static net.jeremybrooks.jinx.JinxConstants.Method;
 
 /**
@@ -477,6 +480,98 @@ public class Jinx {
         return fromJson;
     }
 
+    public <T> T flickrUpload(Map<String, String> params, byte[] photoData, Class<T> tClass) throws JinxException {
+        if (this.oAuthAccessToken == null) {
+            throw new JinxException("Jinx has not been configured with an OAuth Access Token.");
+        }
+        params.put("api_key", getApiKey());
+
+        OAuthRequest request = new OAuthRequest(Verb.POST, FLICKR_PHOTO_UPLOAD_URL);
+
+        String boundary = JinxUtils.generateBoundary();
+        request.addHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            String key = entry.getKey();
+            if (!key.equals("photo") && !key.equals("filename") &&  !key.equals("filemimetype")) {
+                request.addQuerystringParameter(key, String.valueOf(entry.getValue()));
+            }
+        }
+
+        this.oAuthService.signRequest(this.accessToken, request);
+
+        // add all parameters to payload
+        params.putAll(request.getOauthParameters());
+        request.addPayload(buildMultipartBody(params, photoData, boundary));
+
+        org.scribe.model.Response flickrResponse = request.send();
+
+        if (flickrResponse == null || flickrResponse.getBody() == null) {
+            throw new JinxException("Null return from call to Flickr.");
+        }
+        if (verboseLogging) {
+            JinxLogger.getLogger().log("RESPONSE is " + flickrResponse.getBody());
+        }
+
+        // upload returns XML, so convert to json
+        String json = JinxUtils.xml2json(flickrResponse.getBody());
+
+        T fromJson = gson.fromJson(json, tClass);
+
+        if (this.flickrErrorThrowsException && ((Response) fromJson).getCode() != 0) {
+            Response r = (Response) fromJson;
+            throw new JinxException("Flickr returned non-zero status.", null, r);
+        }
+        return fromJson;
+    }
+
+    private byte[] buildMultipartBody(Map<String, String> params, byte[] photoData, String boundary) throws JinxException {
+
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        try {
+            String filename = params.get("filename");
+            if (JinxUtils.isNullOrEmpty(filename)) {
+                filename = "image.jpg";
+            }
+
+            String fileMimeType = params.get("filemimetype");
+            if (JinxUtils.isNullOrEmpty(fileMimeType)) {
+                fileMimeType = "image/jpeg";
+            }
+
+            buffer.write(("--" + boundary + "\r\n").getBytes("UTF-8"));
+            for (Map.Entry<String, String> entry : params.entrySet()) {
+                String key = entry.getKey();
+                if (!key.equals("filename") && !key.equals("filemimetype")) {
+                    writeParam(key, entry.getValue(), buffer, boundary, filename, fileMimeType);
+                }
+            }
+            writeParam("photo", photoData, buffer, boundary, filename, fileMimeType);
+        } catch (Exception e) {
+            throw new JinxException("Unable to build multipart body.", e);
+        }
+
+        if (this.isVerboseLogging()) {
+            String logMpBody = System.getProperty(JinxConstants.JINX_LOG_MULTIPART);
+            if (!JinxUtils.isNullOrEmpty(logMpBody) && logMpBody.equals("true")) {
+                JinxLogger.getLogger().log("Multipart body: " + buffer.toString());
+            }
+        }
+
+        return buffer.toByteArray();
+    }
+
+    private void writeParam(String name, Object value, ByteArrayOutputStream buffer, String boundary, String filename, String fileMimeType) throws IOException {
+        if (value instanceof byte[]) {
+            buffer.write(("Content-Disposition: form-data; name=\"" + name + "\"; filename=\"" + filename + "\";\r\n").getBytes("UTF-8"));
+            buffer.write(("Content-Type: " + fileMimeType + "\r\n\r\n").getBytes("UTF-8"));
+            buffer.write((byte[]) value);
+            buffer.write(("\r\n" + "--" + boundary + "\r\n").getBytes("UTF-8"));
+        } else {
+            buffer.write(("Content-Disposition: form-data; name=\"" + name + "\"\r\n\r\n").getBytes("UTF-8"));
+            buffer.write(((String) value).getBytes("UTF-8"));
+            buffer.write(("\r\n" + "--" + boundary + "\r\n").getBytes("UTF-8"));
+        }
+    }
 
     public boolean isFlickrErrorThrowsException() {
         return flickrErrorThrowsException;

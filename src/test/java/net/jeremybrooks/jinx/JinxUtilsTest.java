@@ -85,7 +85,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testNormalizeTags() throws Exception {
+    public void testNormalizeTagsForSearch() throws Exception {
         List<String> tags = new ArrayList<String>();
         tags.add("California");
         tags.add("San Francisco");
@@ -95,7 +95,7 @@ public class JinxUtilsTest {
         tags.add("Joe's Cra...b.Sh''''ack");
         tags.add("special !#$;%&'()*+ chars");
 
-        List<String> result = JinxUtils.normalizeTags(tags);
+        List<String> result = JinxUtils.normalizeTagsForSearch(tags);
         assertEquals("california", result.get(0));
         assertEquals("sanfrancisco", result.get(1));
         assertEquals("neon", result.get(2));
@@ -103,6 +103,27 @@ public class JinxUtilsTest {
         assertEquals("joescrabshack", result.get(4));
         assertEquals("joescrabshack", result.get(5));
         assertEquals("specialchars", result.get(6));
+    }
+
+    @Test
+    public void testNormalizeTagsForUpload() throws Exception {
+        List<String> tags = new ArrayList<String>();
+        tags.add("California");
+        tags.add("San Francisco");
+        tags.add("neon");
+        tags.add("Joe's Crab Shack");
+        tags.add("Joe's Crab.Shack");
+        tags.add("Joe's Cra...b.Sh''''ack");
+        tags.add("special !#$;%&'()*+ chars");
+
+        List<String> result = JinxUtils.normalizeTagsForUpload(tags);
+        assertEquals("California", result.get(0));
+        assertEquals("\"San Francisco\"", result.get(1));
+        assertEquals("neon", result.get(2));
+        assertEquals("\"Joe's Crab Shack\"", result.get(3));
+        assertEquals("\"Joe's Crab.Shack\"", result.get(4));
+        assertEquals("\"Joe's Cra...b.Sh''''ack\"", result.get(5));
+        assertEquals("\"special !#$;%&'()*+ chars\"", result.get(6));
     }
 
     /*
@@ -391,5 +412,25 @@ public class JinxUtilsTest {
         assertEquals(new Integer(1), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.approved));
         assertEquals(new Integer(2), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.rejected));
         assertNull(JinxUtils.suggestionStatusToFlickrSuggestionStatusId(null));
+    }
+
+    @Test
+    public void testGenerateBoundary() {
+        String boundary = JinxUtils.generateBoundary();
+        assertNotNull(boundary);
+        assertTrue(boundary.length() >= 30);
+        assertTrue(boundary.length() <= 40);
+        System.out.println(boundary);
+    }
+
+    @Test
+    public void testXml2Json() throws Exception {
+        String xml = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" +
+                "<rsp stat=\"ok\">\n" +
+                "<photoid>14837291641</photoid>\n" +
+                "</rsp>";
+        String json = JinxUtils.xml2json(xml);
+        System.out.println(json);
+        assertEquals("{\"rsp\" : {\"stat\" : \"ok\", \"photoid\" : \"14837291641\"}}", json);
     }
 }

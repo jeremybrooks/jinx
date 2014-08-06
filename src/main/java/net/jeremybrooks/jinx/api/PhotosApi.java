@@ -745,7 +745,7 @@ public class PhotosApi {
 		}
 
 		if (!JinxUtils.isNullOrEmpty(searchParameters.getTags())) {
-			params.put("tags", JinxUtils.buildCommaDelimitedList(JinxUtils.normalizeTags(searchParameters.getTags())));
+			params.put("tags", JinxUtils.buildCommaDelimitedList(JinxUtils.normalizeTagsForSearch(searchParameters.getTags())));
 			if (searchParameters.getTagMode() != null) {
 				params.put("tag_mode", searchParameters.getTagMode().toString());
 			}
@@ -797,7 +797,7 @@ public class PhotosApi {
 		}
 
 		if (!JinxUtils.isNullOrEmpty(searchParameters.getMachineTags())) {
-			params.put("machine_tags", JinxUtils.buildCommaDelimitedList(JinxUtils.normalizeTags(searchParameters.getMachineTags())));
+			params.put("machine_tags", JinxUtils.buildCommaDelimitedList(JinxUtils.normalizeTagsForSearch(searchParameters.getMachineTags())));
 			if (searchParameters.getMachineTagMode() != null) {
 				params.put("machine_tag_mode", searchParameters.getMachineTagMode().toString());
 			}

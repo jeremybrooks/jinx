@@ -18,10 +18,14 @@
 package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
+import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.photos.upload.CheckTicketsResponse;
+import net.jeremybrooks.jinx.response.photos.upload.UploadResponse;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -56,5 +60,84 @@ public class PhotosUploadApi {
         params.put("method", "flickr.photos.upload.checkTickets");
         params.put("tickets", JinxUtils.buildCommaDelimitedList(tickets));
         return jinx.flickrGet(params, CheckTicketsResponse.class, false);
+    }
+
+    public UploadResponse upload(File photo, String title, String description, List<String> tags, Boolean isPublic,
+                           Boolean isFriend, Boolean isFamily, JinxConstants.SafetyLevel safetyLevel,
+                           JinxConstants.ContentType contentType, Boolean hidden) throws JinxException {
+        JinxUtils.validateParams(photo);
+        byte[] photoData = new byte[(int)photo.length()];
+        FileInputStream in = null;
+        try {
+            in = new FileInputStream(photo);
+            in.read(photoData);
+
+            if (JinxUtils.isNullOrEmpty(title)) {
+                int index = photo.getName().indexOf('.');
+                if (index > 0) {
+                    title = photo.getName().substring(0, index);
+                } else {
+                    title = photo.getName();
+                }
+            }
+        } catch (Exception e) {
+            throw new JinxException("Unable to load data from photo " + photo.getAbsolutePath(), e);
+        } finally {
+            JinxUtils.close(in);
+        }
+        return upload(photoData, title, description, tags, isPublic, isFriend, isFamily, safetyLevel, contentType, hidden);
+    }
+
+    /**
+     * This method requires authentication with 'write' permission.
+     *
+     * @param photoData (Required) the photo data to upload.
+     * @param title (Optional) the title of the photo.
+     * @param description (Optional) the description of the photo.
+     * @param tags (Optional) list of tags to apply to the photo.
+     * @param isPublic (Optional) is photo visible to everyone. This is the default if none of isPublic, isFriends, or
+     *                 isFamily is specified.
+     * @param isFriend (Optional) is photo visible only to friends.
+     * @param isFamily (Optional) is photo visible only to family.
+     * @param safetyLevel (Optional) safety level of the photo.
+     * @param contentType (Optional) content type of the upload.
+     * @param hidden (Optional) if true, photo will be hidden from public searches.
+     *               If false or null, it will be included in public searches.
+     * @throws JinxException if required parameters are missing, or if there are any errors.
+     */
+    public UploadResponse upload(byte[] photoData, String title, String description, List<String> tags, Boolean isPublic,
+                       Boolean isFriend, Boolean isFamily, JinxConstants.SafetyLevel safetyLevel,
+                       JinxConstants.ContentType contentType, Boolean hidden) throws JinxException {
+        JinxUtils.validateParams(photoData);
+        Map<String, String> params = new TreeMap<String, String>();
+        if (!JinxUtils.isNullOrEmpty(title)) {
+            params.put("title", title);
+        }
+        if (!JinxUtils.isNullOrEmpty(description)) {
+            params.put("description", description);
+        }
+        if (!JinxUtils.isNullOrEmpty(tags)) {
+            List<String> tagList = JinxUtils.normalizeTagsForUpload(tags);
+            params.put("tags", JinxUtils.buildCommaDelimitedList(tagList));
+        }
+        if (isPublic != null) {
+            params.put("is_public", isPublic ? "1" : "0");
+        }
+        if (isFriend != null) {
+            params.put("is_friend", isFriend ? "1" : "0");
+        }
+        if (isFamily != null) {
+            params.put("is_family", isFamily ? "1" : "0");
+        }
+        if (safetyLevel != null) {
+            params.put("safety_level", Integer.toString(JinxUtils.safetyLevelToFlickrSafteyLevelId(safetyLevel)));
+        }
+        if (contentType != null) {
+            params.put("content_type", Integer.toString(JinxUtils.contentTypeToFlickrContentTypeId(contentType)));
+        }
+        if (hidden != null) {
+            params.put("hidden", hidden ? "1" : "0");
+        }
+        return jinx.flickrUpload(params, photoData, UploadResponse.class);
     }
 }

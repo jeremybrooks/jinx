@@ -17,6 +17,13 @@
 
 package net.jeremybrooks.jinx;
 
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
@@ -27,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -49,6 +57,7 @@ public class JinxUtils {
 
     private static SimpleDateFormat formatter;
     private static SimpleDateFormat ymdFormatter;
+    private static TransformerFactory transformerFactory;
 
 
     /**
@@ -301,7 +310,7 @@ public class JinxUtils {
     }
 
     /**
-     * Normalize a List of Flickr tags.
+     * Normalize a List of Flickr tags for search calls.
      * <p/>
      * This method takes a list of tags and converts them to the normalized representation that Flickr uses (at least,
      * as close to the normalized version as could be figured out).
@@ -316,13 +325,36 @@ public class JinxUtils {
      * @param list Flickr tags to normalize.
      * @return new List containing normalized tags.
      */
-    public static List<String> normalizeTags(List<String> list) {
+    public static List<String> normalizeTagsForSearch(List<String> list) {
         if (isNullOrEmpty(list)) {
             return null;
         }
         List<String> tmp = new ArrayList<String>();
         for (String s : list) {
             tmp.add(s.replaceAll("[!#$%&'()*+\\.,'; ]", "").toLowerCase());
+        }
+        return tmp;
+    }
+
+    /**
+     * Normalize tags for uploads.
+     *
+     * This will put quotation marks around tags that contain spaces.
+     *
+     * @param list list of tags.
+     * @return new list containing normalized tags.
+     */
+    public static List<String> normalizeTagsForUpload(List<String> list) {
+        if (isNullOrEmpty(list)) {
+            return null;
+        }
+        List<String> tmp = new ArrayList<String>();
+        for (String s : list) {
+            if (s.contains(" ")) {
+                tmp.add("\"" + s + "\"");
+            } else {
+                tmp.add(s);
+            }
         }
         return tmp;
     }
@@ -844,6 +876,24 @@ public class JinxUtils {
         return status;
     }
 
+
+    /**
+     * Generate a random multipart boundary.
+     *
+     * @return multipart boundary.
+     */
+    public static String generateBoundary() {
+        StringBuilder buffer = new StringBuilder();
+        Random rand = new Random();
+        int count = rand.nextInt(11) + 30; // a random size from 30 to 40
+        for (int i = 0; i < count; i++) {
+            buffer.append(JinxConstants.MULTIPART_CHARS[rand.nextInt(JinxConstants.MULTIPART_CHARS.length)]);
+        }
+        return buffer.toString();
+    }
+
+
+
     public static void close(InputStream in) {
         if (in != null) {
             try {
@@ -882,5 +932,28 @@ public class JinxUtils {
                 // ignore
             }
         }
+    }
+
+    public static String xml2json(String xml) throws JinxException {
+        if (JinxUtils.isNullOrEmpty(xml)) {
+            return null;
+        }
+        if (transformerFactory == null) {
+            transformerFactory = TransformerFactory.newInstance();
+        }
+        String json;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        InputStream in = JinxUtils.class.getResourceAsStream("/xml2json.xsl");
+        Source xslt = new StreamSource(in);
+        Transformer transformer;
+        try {
+            transformer = transformerFactory.newTransformer(xslt);
+            Source text = new StreamSource(new ByteArrayInputStream(xml.getBytes(JinxConstants.UTF8)));
+            transformer.transform(text, new StreamResult(baos));
+            json = baos.toString(JinxConstants.UTF8);
+        } catch (Exception e) {
+            throw new JinxException("Unable to apply xml2json XSLT.", e);
+        }
+        return json;
     }
 }

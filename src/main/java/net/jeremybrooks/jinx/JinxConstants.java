@@ -23,6 +23,7 @@ package net.jeremybrooks.jinx;
  */
 public class JinxConstants {
 
+    public static final String JINX_LOG_MULTIPART = "jinx.log.multipart";
 
 	public static enum Method {
 		POST,
@@ -34,7 +35,7 @@ public class JinxConstants {
 	public static final String OAUTH_ACCESS_TOKEN_ENDPOINT_URL = "https://www.flickr.com/services/oauth/access_token";
 	public static final String OAUTH_AUTHORIZE_WEBSITE_URL = "https://www.flickr.com/services/oauth/authorize";
     public static final String FLICKR_PHOTO_URL = "https://www.flickr.com/photos/";
-
+    public static final String FLICKR_PHOTO_UPLOAD_URL = "https://up.flickr.com/services/upload/";
 
 
 	public static final String UTF8 = "UTF-8";
@@ -143,6 +144,13 @@ public class JinxConstants {
         invalid,
         undefined
     }
+
+    public final static char[] MULTIPART_CHARS =
+            "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    .toCharArray();
+
+
+
 
 	// ----------------------------------------------
 	// move constants needed by new jinx above this line

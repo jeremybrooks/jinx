@@ -60,4 +60,15 @@ public class PhotosUploadTest {
         assertEquals("2334", ticket.getTicketId());
         assertEquals(JinxConstants.TicketStatus.failed, ticket.getTicketStatus());
     }
+
+    @Test
+    public void testParseUploadResponse() throws Exception {
+        InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/upload/sample_upload.json"));
+        UploadResponse response = new Gson().fromJson(reader, UploadResponse.class);
+        reader.close();
+        assertNotNull(response);
+        assertEquals("ok", response.getStat());
+        assertEquals(0, response.getCode());
+        assertEquals("14837291641", response.getPhotoId());
+    }
 }

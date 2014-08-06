@@ -20,7 +20,10 @@ package net.jeremybrooks.jinx.api;
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.OAuthAccessToken;
+import net.jeremybrooks.jinx.logger.JinxLogger;
+import net.jeremybrooks.jinx.logger.StdoutLogger;
 import net.jeremybrooks.jinx.response.photos.upload.CheckTicketsResponse;
+import net.jeremybrooks.jinx.response.photos.upload.UploadResponse;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -52,8 +55,8 @@ public class PhotosUploadApiTest {
         oAuthAccessToken.load(new FileInputStream(file));
         assertNotNull(oAuthAccessToken);
         Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
-//        jinx.setVerboseLogging(true);
-//        JinxLogger.setLogger(new StdoutLogger());
+        jinx.setVerboseLogging(true);
+        JinxLogger.setLogger(new StdoutLogger());
         photosUploadApi = new PhotosUploadApi(jinx);
     }
 
@@ -70,5 +73,27 @@ public class PhotosUploadApiTest {
         CheckTicketsResponse.Ticket ticket = response.getTicketList().get(0);
         assertEquals("123", ticket.getTicketId());
         assertEquals(JinxConstants.TicketStatus.invalid, ticket.getTicketStatus());
+    }
+
+    @Test
+    public void testUploadPhoto() throws Exception {
+        // To run this test, point the photo variable to a photo on your hard drive
+        String photo = null;
+        photo = "/Users/jeremyb/Desktop/A Reason Why You Refuse.jpg";
+        System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");
+        if (photo != null) {
+            String description = "Street scene in Istanbul";
+            List<String> tags = new ArrayList<String>();
+            tags.add("Turkey");
+            tags.add("Istanbul");
+            tags.add("Hipstamatic");
+            tags.add("Black and White");
+
+            UploadResponse response = photosUploadApi.upload(new File(photo), null, description, tags, null, null, null, null, null, null);
+            assertNotNull(response);
+            assertEquals("ok", response.getStat());
+            assertEquals(0, response.getCode());
+            assertNotNull(response.getPhotoId());
+        }
     }
 }
