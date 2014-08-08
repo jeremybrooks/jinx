@@ -48,6 +48,7 @@ public class CheckTicketsResponse extends Response {
         private String photoId;
         private String invalid;
         private String complete;
+        private String imported;
 
         public String getTicketId() { return ticketId; }
         public String getPhotoId() { return photoId; }
@@ -68,12 +69,14 @@ public class CheckTicketsResponse extends Response {
                 return JinxConstants.TicketStatus.undefined;
             }
         }
+        public String getImported() { return imported; }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder("Ticket{");
             sb.append("ticketId='").append(ticketId).append('\'');
             sb.append(", photoId='").append(photoId).append('\'');
+            sb.append(", imported='").append(imported).append('\'');
             sb.append(", ticketStatus='").append(getTicketStatus().toString()).append('\'');
             sb.append(", complete='").append(complete).append('\'');
             sb.append('}');

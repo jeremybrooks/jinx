@@ -44,12 +44,16 @@ public class UploadResponse extends Response {
         return rsp == null ? null : rsp.photoid;
     }
 
+    public String getTicketId() { return rsp == null ? null : rsp.ticketid; }
+
+
     private _Rsp rsp;
 
     private class _Rsp implements Serializable {
         private static final long serialVersionUID = -6437383739022068623L;
         private String stat;
         private String photoid;
+        private String ticketid;
         private String message;
         private int code;
     }
@@ -58,7 +62,8 @@ public class UploadResponse extends Response {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Rsp{");
         sb.append("stat='").append(getStat()).append('\'');
-        sb.append(", photoid='").append(getPhotoId()).append('\'');
+        sb.append(", photoId='").append(getPhotoId()).append('\'');
+        sb.append(", ticketId='").append(getTicketId()).append('\'');
         sb.append(", message='").append(getMessage()).append('\'');
         sb.append(", code=").append(getCode());
         sb.append('}');

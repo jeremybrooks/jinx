@@ -27,6 +27,8 @@ import net.jeremybrooks.jinx.response.photos.upload.UploadResponse;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -56,6 +58,7 @@ public class PhotosUploadApiTest {
         assertNotNull(oAuthAccessToken);
         Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
         jinx.setVerboseLogging(true);
+        System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");
         JinxLogger.setLogger(new StdoutLogger());
         photosUploadApi = new PhotosUploadApi(jinx);
     }
@@ -63,7 +66,7 @@ public class PhotosUploadApiTest {
     @Test
     public void testCheckTickets() throws Exception {
         List<String> list = new ArrayList<String>();
-        list.add("123");
+        list.add("124834485-72157645804301208");
         CheckTicketsResponse response = photosUploadApi.checkTickets(list);
         assertNotNull(response);
         assertEquals("ok", response.getStat());
@@ -71,29 +74,86 @@ public class PhotosUploadApiTest {
         assertNotNull(response.getTicketList());
         assertEquals(1, response.getTicketList().size());
         CheckTicketsResponse.Ticket ticket = response.getTicketList().get(0);
-        assertEquals("123", ticket.getTicketId());
-        assertEquals(JinxConstants.TicketStatus.invalid, ticket.getTicketStatus());
+        assertEquals("124834485-72157645804301208", ticket.getTicketId());
+        assertEquals("1407299391", ticket.getImported());
+        assertEquals(JinxConstants.TicketStatus.completed, ticket.getTicketStatus());
     }
 
     @Test
     public void testUploadPhoto() throws Exception {
-        // To run this test, point the photo variable to a photo on your hard drive
-        String photo = null;
-        photo = "/Users/jeremyb/Desktop/A Reason Why You Refuse.jpg";
-        System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");
-        if (photo != null) {
-            String description = "Street scene in Istanbul";
-            List<String> tags = new ArrayList<String>();
-            tags.add("Turkey");
-            tags.add("Istanbul");
-            tags.add("Hipstamatic");
-            tags.add("Black and White");
-
-            UploadResponse response = photosUploadApi.upload(new File(photo), null, description, tags, null, null, null, null, null, null);
-            assertNotNull(response);
-            assertEquals("ok", response.getStat());
-            assertEquals(0, response.getCode());
-            assertNotNull(response.getPhotoId());
+        BufferedInputStream in = new BufferedInputStream(new FileInputStream(new File("/Users/jeremyb/Desktop/IMG_4757.MOV")));
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] buf = new byte[1024];
+        for (int readNum; (readNum = in.read(buf)) != -1;) {
+            baos.write(buf, 0, readNum);
         }
+        byte[] photoData = baos.toByteArray();
+
+        String description = "Reflections on the streets of San Francisco.";
+        List<String> tags = new ArrayList<String>();
+        tags.add("Jinx Upload Test");
+
+        UploadResponse response = photosUploadApi.upload(photoData, "Clear Implications", description, tags, null, null, null, null, null, null);
+        assertNotNull(response);
+        assertEquals("ok", response.getStat());
+        assertEquals(0, response.getCode());
+        assertNotNull(response.getPhotoId());
+    }
+
+    /**
+     * To test uploading a file, uncomment and provide the full path to a photo.
+     * @throws Exception
+     */
+    @Test
+    public void testUploadPhotoFile() throws Exception {
+//        File file = new File("/path/to/photo");
+//        String description = "";
+//        List<String> tags = new ArrayList<String>();
+//        tags.add("Jinx Upload Test");
+//
+//        UploadResponse response = photosUploadApi.upload(file, null, description, tags, null, null, null, null, null, null);
+//        assertNotNull(response);
+//        assertEquals("ok", response.getStat());
+//        assertEquals(0, response.getCode());
+//        assertNotNull(response.getPhotoId());
+    }
+
+    @Test
+    public void testAsyncUploadPhoto() throws Exception {
+        BufferedInputStream in = new BufferedInputStream(PhotosUploadApiTest.class.getResourceAsStream("/Clear Implications.jpg"));
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] buf = new byte[1024];
+        for (int readNum; (readNum = in.read(buf)) != -1;) {
+            baos.write(buf, 0, readNum);
+        }
+        byte[] photoData = baos.toByteArray();
+
+        String description = "Reflections on the streets of San Francisco.";
+        List<String> tags = new ArrayList<String>();
+        tags.add("Jinx Upload Test");
+
+        UploadResponse response = photosUploadApi.uploadAsync(photoData, "Clear Implications", description, tags, null, null, null, null, null, null);
+        assertNotNull(response);
+        assertEquals("ok", response.getStat());
+        assertEquals(0, response.getCode());
+        assertNotNull(response.getTicketId());
+    }
+
+    /**
+     * To test async uploading a file, uncomment and provide the full path to a photo.
+     * @throws Exception
+     */
+    @Test
+    public void testAsyncUploadPhotoFile() throws Exception {
+//        File file = new File("/path/to/photo");
+//        String description = "";
+//        List<String> tags = new ArrayList<String>();
+//        tags.add("Jinx Upload Test");
+//
+//        UploadResponse response = photosUploadApi.uploadAsync(file, null, description, tags, null, null, null, null, null, null);
+//        assertNotNull(response);
+//        assertEquals("ok", response.getStat());
+//        assertEquals(0, response.getCode());
+//        assertNotNull(response.getPhotoId());
     }
 }

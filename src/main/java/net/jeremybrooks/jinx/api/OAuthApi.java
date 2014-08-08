@@ -172,7 +172,7 @@ public class OAuthApi {
 		try {
 			MessageDigest m = MessageDigest.getInstance("MD5");
 			m.reset();
-			m.update(authSb.toString().getBytes("UTF-8"));
+			m.update(authSb.toString().getBytes(JinxConstants.UTF8));
 			byte[] digest = m.digest();
 			apiSig = JinxUtils.toHexString(digest);
 		} catch (Exception e) {

@@ -29,7 +29,6 @@ import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.net.Authenticator;
 import java.net.InetSocketAddress;
 import java.net.PasswordAuthentication;
@@ -73,7 +72,7 @@ import static net.jeremybrooks.jinx.JinxConstants.Method;
  * This example shows how a desktop app would get an access token. Notice that the user is prompted for
  * the access code, since desktop apps do not have callback URL's:
  * <code>
- * // initialize Jinx
+ * // initialize Jinx with your API key and secret
  * Jinx jinx = new Jinx(API_KEY, API_SECRET);
  * <p/>
  * // get a request token, direct the user to the URL, and prompt them for the validation code
@@ -81,7 +80,7 @@ import static net.jeremybrooks.jinx.JinxConstants.Method;
  * String url = jinx.getAuthorizationUrl(requestToken, JinxConstants.OAuthPermissions.write);
  * String verificationCode = JOptionPane.showInputDialog("Authorize at \n " + url + "\nand then enter the validation code.");
  * <p/>
- * // exchange the validation code for an access token
+ * // after the user enters the verification code, exchange for an access token
  * OAuthAccessToken accessToken = oAuthApi.getAccessToken(requestToken, verificationCode);
  * <p/>
  * // save it somewhere for next time
@@ -117,6 +116,13 @@ import static net.jeremybrooks.jinx.JinxConstants.Method;
  * The default logger will not do anything, so you must set a logger. You can use the {@link net.jeremybrooks.jinx.logger.StdoutLogger}
  * to log to stdout, or you can implement your own logger. Loggers must implement the {@link net.jeremybrooks.jinx.logger.LogInterface}
  * <p/>
+ * <p>If you are trying to troubleshoot photo upload problems and need to see the content of the multipart request that is used
+ * for photo uploads, you must set a JinxLogger, enable verbose logging, and set a special property to tell Jinx to log
+ * the multipart body:
+ * <code>
+ *     System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");
+ * </code>
+ * </p>
  * * @author jeremyb
  */
 public class Jinx {
@@ -480,6 +486,16 @@ public class Jinx {
         return fromJson;
     }
 
+
+    /**
+     *
+     * @param params
+     * @param photoData
+     * @param tClass
+     * @param <T>
+     * @return
+     * @throws JinxException
+     */
     public <T> T flickrUpload(Map<String, String> params, byte[] photoData, Class<T> tClass) throws JinxException {
         if (this.oAuthAccessToken == null) {
             throw new JinxException("Jinx has not been configured with an OAuth Access Token.");
@@ -532,20 +548,26 @@ public class Jinx {
             if (JinxUtils.isNullOrEmpty(filename)) {
                 filename = "image.jpg";
             }
-
             String fileMimeType = params.get("filemimetype");
             if (JinxUtils.isNullOrEmpty(fileMimeType)) {
                 fileMimeType = "image/jpeg";
             }
 
-            buffer.write(("--" + boundary + "\r\n").getBytes("UTF-8"));
+            buffer.write(("--" + boundary + "\r\n").getBytes(JinxConstants.UTF8));
             for (Map.Entry<String, String> entry : params.entrySet()) {
                 String key = entry.getKey();
                 if (!key.equals("filename") && !key.equals("filemimetype")) {
-                    writeParam(key, entry.getValue(), buffer, boundary, filename, fileMimeType);
+
+                    buffer.write(("Content-Disposition: form-data; name=\"" + key + "\"\r\n\r\n").getBytes(JinxConstants.UTF8));
+                    buffer.write((entry.getValue()).getBytes(JinxConstants.UTF8));
+                    buffer.write(("\r\n" + "--" + boundary + "\r\n").getBytes(JinxConstants.UTF8));
                 }
             }
-            writeParam("photo", photoData, buffer, boundary, filename, fileMimeType);
+            buffer.write(("Content-Disposition: form-data; name=\"photo\"; filename=\"" + filename + "\";\r\n").getBytes(JinxConstants.UTF8));
+            buffer.write(("Content-Type: " + fileMimeType + "\r\n\r\n").getBytes(JinxConstants.UTF8));
+            buffer.write(photoData);
+            buffer.write(("\r\n" + "--" + boundary + "--\r\n").getBytes(JinxConstants.UTF8));   // NOTE: last boundary has -- suffix
+
         } catch (Exception e) {
             throw new JinxException("Unable to build multipart body.", e);
         }
@@ -558,19 +580,6 @@ public class Jinx {
         }
 
         return buffer.toByteArray();
-    }
-
-    private void writeParam(String name, Object value, ByteArrayOutputStream buffer, String boundary, String filename, String fileMimeType) throws IOException {
-        if (value instanceof byte[]) {
-            buffer.write(("Content-Disposition: form-data; name=\"" + name + "\"; filename=\"" + filename + "\";\r\n").getBytes("UTF-8"));
-            buffer.write(("Content-Type: " + fileMimeType + "\r\n\r\n").getBytes("UTF-8"));
-            buffer.write((byte[]) value);
-            buffer.write(("\r\n" + "--" + boundary + "\r\n").getBytes("UTF-8"));
-        } else {
-            buffer.write(("Content-Disposition: form-data; name=\"" + name + "\"\r\n\r\n").getBytes("UTF-8"));
-            buffer.write(((String) value).getBytes("UTF-8"));
-            buffer.write(("\r\n" + "--" + boundary + "\r\n").getBytes("UTF-8"));
-        }
     }
 
     public boolean isFlickrErrorThrowsException() {
