@@ -49,7 +49,7 @@ If you are using Maven, just include this in your pom.xml file
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>0.7.0</version>
+		<version>0.8.0</version>
 	</dependency>
 
 If you are not using Maven, you will need these libraries, and their dependencies:
@@ -61,6 +61,37 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 # VERSION HISTORY
 
+## Version 0.8.0 supports the following API's
+  * activity
+  * auth.oauth
+  * blogs (have not really tested the postPhoto method, though)
+  * cameras
+  * collections
+  * commons
+  * contacts
+  * favorites
+  * galleries
+  * groups
+  * groups.discuss.replies
+  * groups.discuss.topics
+  * groups.members
+  * groups.pools
+  * interestingness
+  * machinetags
+  * panda
+  * people
+  * photos
+  * photos.comments
+  * photos.geo
+  * photos.licenses
+  * photos.notes
+  * photos.people
+  * photos.suggestions
+  * photos.transform  
+  * photos.upload (including photo/video upload and replace)
+  * photosets
+  * photosets.comments
+  
 ## Version 0.7.0 supports the following API's
   * activity
   * auth.oauth
@@ -107,7 +138,8 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 
 # KNOWN ISSUES
-
+ 
+ * Machine tag search may or may not work reliably. This is an ongoing issue with the Flickr API; sign up for the Flickr API Yahoo group to follow the discussion.
  * If a user has no blogs set up, calling the getBlogList() method will throw an Exception. This is due to different data structures returned by Flickr if a user has blogs or does not have blogs. This issue has been reported to Flickr.
  * rejectSuggestions method in PhotosSuggestionsApi throws a JinxException with code 999, even though the operation succeeds. This has been reported to Flickr.
  * Pandas are not returning photos. This seems to be an issue on Flickr's side.
@@ -169,11 +201,11 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * photos.people
   * photos.suggestions
   * photos.transform  
+  * photos.upload (including photo/video upload and replace)
   * photosets
   * photosets.comments
 
 ## Additional API's Available In Latest Source
-  * photos.upload (including photo/video upload and replace)
   
 ## Not Yet Implemented
 
