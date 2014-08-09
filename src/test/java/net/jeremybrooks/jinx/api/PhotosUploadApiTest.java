@@ -18,8 +18,6 @@
 package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
-import net.jeremybrooks.jinx.JinxConstants;
-import net.jeremybrooks.jinx.JinxProxy;
 import net.jeremybrooks.jinx.OAuthAccessToken;
 import net.jeremybrooks.jinx.logger.JinxLogger;
 import net.jeremybrooks.jinx.logger.StdoutLogger;
@@ -59,28 +57,13 @@ public class PhotosUploadApiTest {
         oAuthAccessToken.load(new FileInputStream(file));
         assertNotNull(oAuthAccessToken);
         Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
-        jinx.setVerboseLogging(true);
-        System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");
-        jinx.setProxy(new JinxProxy("sfwebproxy1.businesswire.com", 3128, "jbrooks", "asdfgHJKL:)3".toCharArray()));
+//        jinx.setVerboseLogging(true);
+//        System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");
+//        jinx.setProxy(new JinxProxy("sfwebproxy1.businesswire.com", 3128, "jbrooks", "asdfgHJKL:)3".toCharArray()));
         JinxLogger.setLogger(new StdoutLogger());
         photosUploadApi = new PhotosUploadApi(jinx);
     }
 
-    @Test
-    public void testCheckTickets() throws Exception {
-        List<String> list = new ArrayList<String>();
-        list.add("124834485-72157645804301208");
-        CheckTicketsResponse response = photosUploadApi.checkTickets(list);
-        assertNotNull(response);
-        assertEquals("ok", response.getStat());
-        assertEquals(0, response.getCode());
-        assertNotNull(response.getTicketList());
-        assertEquals(1, response.getTicketList().size());
-        CheckTicketsResponse.Ticket ticket = response.getTicketList().get(0);
-        assertEquals("124834485-72157645804301208", ticket.getTicketId());
-        assertEquals("1407299391", ticket.getImported());
-        assertEquals(JinxConstants.TicketStatus.completed, ticket.getTicketStatus());
-    }
 
     @Test
     public void testUploadPhoto() throws Exception {
@@ -184,6 +167,25 @@ public class PhotosUploadApiTest {
         assertEquals("ok", response.getStat());
         assertEquals(0, response.getCode());
         assertNotNull(response.getTicketId());
+
+        testCheckTickets(response.getTicketId());
+    }
+
+    /*
+     * Called by the async upload test
+     */
+    private void testCheckTickets(String ticketId) throws Exception {
+        List<String> list = new ArrayList<String>();
+        list.add(ticketId);
+        CheckTicketsResponse response = photosUploadApi.checkTickets(list);
+        assertNotNull(response);
+        assertEquals("ok", response.getStat());
+        assertEquals(0, response.getCode());
+        assertNotNull(response.getTicketList());
+        assertEquals(1, response.getTicketList().size());
+        CheckTicketsResponse.Ticket ticket = response.getTicketList().get(0);
+        assertEquals(ticketId, ticket.getTicketId());
+        assertNotNull(ticket.getTicketStatus());
     }
 
     /**
