@@ -430,7 +430,19 @@ public class JinxUtilsTest {
                 "<photoid>14837291641</photoid>\n" +
                 "</rsp>";
         String json = JinxUtils.xml2json(xml);
-        System.out.println(json);
         assertEquals("{\"rsp\" : {\"stat\" : \"ok\", \"photoid\" : \"14837291641\"}}", json);
+
+        String replaceXML = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" +
+                "<rsp stat=\"ok\">\n" +
+                "<photoid secret=\"320935a61d\" originalsecret=\"829e925e23\">14859730194</photoid>\n" +
+                "</rsp>";
+        json = JinxUtils.xml2json(replaceXML);
+        assertEquals("{\"rsp\" : {\"stat\" : \"ok\", \"photoid\" : {\"secret\" : \"320935a61d\",\"originalsecret\" : \"829e925e23\", \"text\" : \"14859730194\"}}}", json);
+
+        String replaceAsyncXML = "<rsp stat=\"ok\">\n" +
+                "<ticketid>124834485-72157646287534644</ticketid>\n" +
+                "</rsp>";
+        json = JinxUtils.xml2json(replaceAsyncXML);
+        System.out.println(json);
     }
 }

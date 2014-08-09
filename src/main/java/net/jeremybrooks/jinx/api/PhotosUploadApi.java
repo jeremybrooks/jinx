@@ -22,6 +22,7 @@ import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.JinxException;
 import net.jeremybrooks.jinx.JinxUtils;
 import net.jeremybrooks.jinx.response.photos.upload.CheckTicketsResponse;
+import net.jeremybrooks.jinx.response.photos.upload.ReplaceResponse;
 import net.jeremybrooks.jinx.response.photos.upload.UploadResponse;
 
 import java.io.File;
@@ -31,7 +32,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- *
  * Created by jeremyb on 8/1/14.
  */
 public class PhotosUploadApi {
@@ -65,33 +65,35 @@ public class PhotosUploadApi {
 
 
     /**
-     * Upload a photo to Flickr using the synchronous upload API.
-     *
+     * Upload a photo or video to Flickr.
+     * <p/>
      * This method requires authentication with 'write' permission.
-     *
+     * <p/>
      * If the title parameter is null, the filename will be used as the title.
-     *
+     * <p/>
      * For more details, see the <a href="https://www.flickr.com/services/api/upload.api.html">Flickr photo upload</a>
      * documentation.
      *
-     * @param photo (Required) the photo file to upload.
-     * @param title       (Optional) the title of the photo.
-     * @param description (Optional) the description of the photo.
-     * @param tags        (Optional) list of tags to apply to the photo.
-     * @param isPublic    (Optional) is photo visible to everyone. This is the default if none of isPublic, isFriends, or
+     * @param photo       (Required) the photo or video file to upload.
+     * @param title       (Optional) the title of the photo or video.
+     * @param description (Optional) the description of the photo or video.
+     * @param tags        (Optional) list of tags to apply to the photo or video.
+     * @param isPublic    (Optional) is photo/video visible to everyone. This is the default if none of isPublic, isFriends, or
      *                    isFamily is specified.
-     * @param isFriend    (Optional) is photo visible only to friends.
-     * @param isFamily    (Optional) is photo visible only to family.
-     * @param safetyLevel (Optional) safety level of the photo.
+     * @param isFriend    (Optional) is photo/video visible only to friends.
+     * @param isFamily    (Optional) is photo/video visible only to family.
+     * @param safetyLevel (Optional) safety level of the photo or video.
      * @param contentType (Optional) content type of the upload.
-     * @param hidden      (Optional) if true, photo will be hidden from public searches.
+     * @param hidden      (Optional) if true, photo/video will be hidden from public searches.
      *                    If false or null, it will be included in public searches.
-     * @return object with the results of the upload. If successful, the photo id will be included.
+     * @param async       if true, the photo/video will be uploaded using the Flickr async API.
+     * @return object with the results of the upload. Successful synchronous uploads will contain a photo id; successful
+     * asynchronous uploads will include a ticket id.
      * @throws JinxException if required parameters are missing, or if there are any errors.
      */
     public UploadResponse upload(File photo, String title, String description, List<String> tags, Boolean isPublic,
                                  Boolean isFriend, Boolean isFamily, JinxConstants.SafetyLevel safetyLevel,
-                                 JinxConstants.ContentType contentType, Boolean hidden) throws JinxException {
+                                 JinxConstants.ContentType contentType, Boolean hidden, Boolean async) throws JinxException {
         JinxUtils.validateParams(photo);
         byte[] photoData = new byte[(int) photo.length()];
         FileInputStream in = null;
@@ -112,14 +114,14 @@ public class PhotosUploadApi {
         } finally {
             JinxUtils.close(in);
         }
-        return upload(photoData, title, description, tags, isPublic, isFriend, isFamily, safetyLevel, contentType, hidden);
+        return upload(photoData, title, description, tags, isPublic, isFriend, isFamily, safetyLevel, contentType, hidden, async);
     }
 
     /**
-     * Upload a photo to Flickr using the synchronous upload API.
-     *
+     * Upload a photo to Flickr.
+     * <p/>
      * This method requires authentication with 'write' permission.
-     *
+     * <p/>
      * For more details, see the <a href="https://www.flickr.com/services/api/upload.api.html">Flickr photo upload</a>
      * documentation.
      *
@@ -135,14 +137,19 @@ public class PhotosUploadApi {
      * @param contentType (Optional) content type of the upload.
      * @param hidden      (Optional) if true, photo will be hidden from public searches.
      *                    If false or null, it will be included in public searches.
-     * @return object with the results of the upload. If successful, the photo id will be included.
+     * @param async       if true, the photo will be uploaded using the Flickr async API.
+     * @return object with the results of the upload. Successful synchronous uploads will contain a photo id; successful
+     * asynchronous uploads will include a ticket id.
      * @throws JinxException if required parameters are missing, or if there are any errors.
      */
     public UploadResponse upload(byte[] photoData, String title, String description, List<String> tags, Boolean isPublic,
                                  Boolean isFriend, Boolean isFamily, JinxConstants.SafetyLevel safetyLevel,
-                                 JinxConstants.ContentType contentType, Boolean hidden) throws JinxException {
+                                 JinxConstants.ContentType contentType, Boolean hidden, Boolean async) throws JinxException {
         JinxUtils.validateParams(photoData);
         Map<String, String> params = new TreeMap<String, String>();
+        if (async != null && async) {
+            params.put("async", "1");
+        }
         if (!JinxUtils.isNullOrEmpty(title)) {
             params.put("title", title);
         }
@@ -176,108 +183,58 @@ public class PhotosUploadApi {
 
 
     /**
-     * Upload a photo to Flickr using the asynchronous upload API.
-     *
+     * Replace a photo on Flickr.
+     * <p/>
      * This method requires authentication with 'write' permission.
-     *
-     * For more information, see the <a href="https://www.flickr.com/services/api/upload.async.html">Flickr async upload</a>
+     * <p/>
+     * For more details, see the <a href="https://www.flickr.com/services/api/replace.api.html">Flickr photo replace</a>
      * documentation.
      *
-     * @param photo
-     * @param title
-     * @param description
-     * @param tags
-     * @param isPublic
-     * @param isFriend
-     * @param isFamily
-     * @param safetyLevel
-     * @param contentType
-     * @param hidden
-     * @return
-     * @throws JinxException
+     * @param photo   (Required) the photo or video file to replace existing content.
+     * @param photoId (Required) the id of the existing photo or video to be replaced.
+     * @param async   if true, the photo will be uploaded using the Flickr async API.
+     * @return object with the results of the upload. Successful synchronous uploads will contain a photo id; successful
+     * asynchronous uploads will include a ticket id.
+     * @throws JinxException if required parameters are missing, or if there are any errors.
      */
-    public UploadResponse uploadAsync(File photo, String title, String description, List<String> tags, Boolean isPublic,
-                                 Boolean isFriend, Boolean isFamily, JinxConstants.SafetyLevel safetyLevel,
-                                 JinxConstants.ContentType contentType, Boolean hidden) throws JinxException {
-        JinxUtils.validateParams(photo);
+    public ReplaceResponse replace(File photo, String photoId, Boolean async) throws JinxException {
+        JinxUtils.validateParams(photo, photoId);
         byte[] photoData = new byte[(int) photo.length()];
         FileInputStream in = null;
         try {
             in = new FileInputStream(photo);
             in.read(photoData);
-
-            if (JinxUtils.isNullOrEmpty(title)) {
-                int index = photo.getName().indexOf('.');
-                if (index > 0) {
-                    title = photo.getName().substring(0, index);
-                } else {
-                    title = photo.getName();
-                }
-            }
         } catch (Exception e) {
             throw new JinxException("Unable to load data from photo " + photo.getAbsolutePath(), e);
         } finally {
             JinxUtils.close(in);
         }
-        return uploadAsync(photoData, title, description, tags, isPublic, isFriend, isFamily, safetyLevel, contentType, hidden);
+        return replace(photoData, photoId, async);
     }
 
 
     /**
-     * Upload a photo to Flickr using the asynchronous upload API.
-     *
+     * Replace a photo on Flickr.
+     * <p/>
      * This method requires authentication with 'write' permission.
-     *
-     * For more information, see the <a href="https://www.flickr.com/services/api/upload.async.html">Flickr async upload</a>
+     * <p/>
+     * For more details, see the <a href="https://www.flickr.com/services/api/replace.api.html">Flickr photo replace</a>
      * documentation.
      *
-     * @param photoData
-     * @param title
-     * @param description
-     * @param tags
-     * @param isPublic
-     * @param isFriend
-     * @param isFamily
-     * @param safetyLevel
-     * @param contentType
-     * @param hidden
-     * @return
-     * @throws JinxException
+     * @param photoData (Required) the photo or video data to replace existing content.
+     * @param photoId   (Required) the id of the existing photo or video to be replaced.
+     * @param async     if true, the photo will be uploaded using the Flickr async API.
+     * @return object with the results of the upload. Successful synchronous uploads will contain a photo id; successful
+     * asynchronous uploads will include a ticket id.
+     * @throws JinxException if required parameters are missing, or if there are any errors.
      */
-    public UploadResponse uploadAsync(byte[] photoData, String title, String description, List<String> tags, Boolean isPublic,
-                                 Boolean isFriend, Boolean isFamily, JinxConstants.SafetyLevel safetyLevel,
-                                 JinxConstants.ContentType contentType, Boolean hidden) throws JinxException {
-        JinxUtils.validateParams(photoData);
+    public ReplaceResponse replace(byte[] photoData, String photoId, Boolean async) throws JinxException {
+        JinxUtils.validateParams(photoData, photoId);
         Map<String, String> params = new TreeMap<String, String>();
-        params.put("async", "1");
-        if (!JinxUtils.isNullOrEmpty(title)) {
-            params.put("title", title);
+        params.put("photo_id", photoId);
+        if (async != null && async) {
+            params.put("async", "1");
         }
-        if (!JinxUtils.isNullOrEmpty(description)) {
-            params.put("description", description);
-        }
-        if (!JinxUtils.isNullOrEmpty(tags)) {
-            List<String> tagList = JinxUtils.normalizeTagsForUpload(tags);
-            params.put("tags", JinxUtils.buildCommaDelimitedList(tagList));
-        }
-        if (isPublic != null) {
-            params.put("is_public", isPublic ? "1" : "0");
-        }
-        if (isFriend != null) {
-            params.put("is_friend", isFriend ? "1" : "0");
-        }
-        if (isFamily != null) {
-            params.put("is_family", isFamily ? "1" : "0");
-        }
-        if (safetyLevel != null) {
-            params.put("safety_level", Integer.toString(JinxUtils.safetyLevelToFlickrSafteyLevelId(safetyLevel)));
-        }
-        if (contentType != null) {
-            params.put("content_type", Integer.toString(JinxUtils.contentTypeToFlickrContentTypeId(contentType)));
-        }
-        if (hidden != null) {
-            params.put("hidden", hidden ? "1" : "0");
-        }
-        return jinx.flickrUpload(params, photoData, UploadResponse.class);
+        return jinx.flickrReplace(params, photoData, ReplaceResponse.class);
     }
 }

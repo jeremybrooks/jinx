@@ -173,8 +173,7 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * photosets.comments
 
 ## Additional API's Available In Latest Source
-  * photos.upload (this is the photos.upload endpoint, which allows you to check tickets)
-  * synchronous upload of photos (see PhotosUploadApi.upload method)
+  * photos.upload (including photo/video upload and replace)
   
 ## Not Yet Implemented
 

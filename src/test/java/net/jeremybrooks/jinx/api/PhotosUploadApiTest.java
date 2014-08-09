@@ -19,10 +19,12 @@ package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxConstants;
+import net.jeremybrooks.jinx.JinxProxy;
 import net.jeremybrooks.jinx.OAuthAccessToken;
 import net.jeremybrooks.jinx.logger.JinxLogger;
 import net.jeremybrooks.jinx.logger.StdoutLogger;
 import net.jeremybrooks.jinx.response.photos.upload.CheckTicketsResponse;
+import net.jeremybrooks.jinx.response.photos.upload.ReplaceResponse;
 import net.jeremybrooks.jinx.response.photos.upload.UploadResponse;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -59,6 +61,7 @@ public class PhotosUploadApiTest {
         Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
         jinx.setVerboseLogging(true);
         System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");
+        jinx.setProxy(new JinxProxy("sfwebproxy1.businesswire.com", 3128, "jbrooks", "asdfgHJKL:)3".toCharArray()));
         JinxLogger.setLogger(new StdoutLogger());
         photosUploadApi = new PhotosUploadApi(jinx);
     }
@@ -81,7 +84,7 @@ public class PhotosUploadApiTest {
 
     @Test
     public void testUploadPhoto() throws Exception {
-        BufferedInputStream in = new BufferedInputStream(new FileInputStream(new File("/Users/jeremyb/Desktop/IMG_4757.MOV")));
+        BufferedInputStream in = new BufferedInputStream(PhotosUploadApiTest.class.getResourceAsStream("/Clear Implications.jpg"));
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[] buf = new byte[1024];
         for (int readNum; (readNum = in.read(buf)) != -1;) {
@@ -89,15 +92,34 @@ public class PhotosUploadApiTest {
         }
         byte[] photoData = baos.toByteArray();
 
+        String title = "Clear Implications";
         String description = "Reflections on the streets of San Francisco.";
         List<String> tags = new ArrayList<String>();
         tags.add("Jinx Upload Test");
 
-        UploadResponse response = photosUploadApi.upload(photoData, "Clear Implications", description, tags, null, null, null, null, null, null);
+        UploadResponse response = photosUploadApi.upload(
+                photoData,
+                title,
+                description,
+                tags,
+                null,   // isPublic
+                null,   // isFriend
+                null,   // isFamily
+                null,   // safetyLevel
+                null,   // contentType
+                null,   // hidden
+                false   // async
+                );
         assertNotNull(response);
         assertEquals("ok", response.getStat());
         assertEquals(0, response.getCode());
         assertNotNull(response.getPhotoId());
+
+        // uncomment to test replacing the uploaded photo
+//        testReplacePhoto(response.getPhotoId());
+
+        // uncomment to test async replace of uploaded photo
+//        testReplacePhotoAsync(response.getPhotoId());
     }
 
     /**
@@ -106,12 +128,24 @@ public class PhotosUploadApiTest {
      */
     @Test
     public void testUploadPhotoFile() throws Exception {
-//        File file = new File("/path/to/photo");
+//        File file = new File("/Users/jeremyb/Desktop/photo.JPG");
 //        String description = "";
 //        List<String> tags = new ArrayList<String>();
 //        tags.add("Jinx Upload Test");
 //
-//        UploadResponse response = photosUploadApi.upload(file, null, description, tags, null, null, null, null, null, null);
+//        UploadResponse response = photosUploadApi.upload(
+//                file,
+//                null,   // title
+//                description,
+//                tags,
+//                null,   // isPublic
+//                null,   // isFriend
+//                null,   // isFamily
+//                null,   // safetyLevel
+//                null,   // contentType
+//                null,   // hidden
+//                false   // async
+//        );
 //        assertNotNull(response);
 //        assertEquals("ok", response.getStat());
 //        assertEquals(0, response.getCode());
@@ -128,11 +162,24 @@ public class PhotosUploadApiTest {
         }
         byte[] photoData = baos.toByteArray();
 
+        String title = "Clear Implications";
         String description = "Reflections on the streets of San Francisco.";
         List<String> tags = new ArrayList<String>();
         tags.add("Jinx Upload Test");
 
-        UploadResponse response = photosUploadApi.uploadAsync(photoData, "Clear Implications", description, tags, null, null, null, null, null, null);
+        UploadResponse response = photosUploadApi.upload(
+                photoData,
+                title,
+                description,
+                tags,
+                null,   // isPublic
+                null,   // isFriend
+                null,   // isFamily
+                null,   // safetyLevel
+                null,   // contentType
+                null,   // hidden
+                true   // async
+        );
         assertNotNull(response);
         assertEquals("ok", response.getStat());
         assertEquals(0, response.getCode());
@@ -145,15 +192,68 @@ public class PhotosUploadApiTest {
      */
     @Test
     public void testAsyncUploadPhotoFile() throws Exception {
-//        File file = new File("/path/to/photo");
+//        File file = new File("/Users/jeremyb/Desktop/photo.JPG");
 //        String description = "";
 //        List<String> tags = new ArrayList<String>();
 //        tags.add("Jinx Upload Test");
 //
-//        UploadResponse response = photosUploadApi.uploadAsync(file, null, description, tags, null, null, null, null, null, null);
+//        UploadResponse response = photosUploadApi.upload(
+//                file,
+//                null,   // title
+//                description,
+//                tags,
+//                null,   // isPublic
+//                null,   // isFriend
+//                null,   // isFamily
+//                null,   // safetyLevel
+//                null,   // contentType
+//                null,   // hidden
+//                true   // async
+//        );
 //        assertNotNull(response);
 //        assertEquals("ok", response.getStat());
 //        assertEquals(0, response.getCode());
-//        assertNotNull(response.getPhotoId());
+//        assertNotNull(response.getTicketId());
+    }
+
+
+    /*
+     * Called after the upload test passes
+     */
+    private void testReplacePhoto(String photoId) throws Exception {
+        BufferedInputStream in = new BufferedInputStream(PhotosUploadApiTest.class.getResourceAsStream("/Realistic.jpg"));
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] buf = new byte[1024];
+        for (int readNum; (readNum = in.read(buf)) != -1;) {
+            baos.write(buf, 0, readNum);
+        }
+        byte[] photoData = baos.toByteArray();
+
+        ReplaceResponse response = photosUploadApi.replace(photoData, photoId, false);
+        assertNotNull(response);
+        assertEquals("ok", response.getStat());
+        assertEquals(0, response.getCode());
+        assertEquals(photoId, response.getPhotoId());
+        assertNotNull(response.getSecret());
+        assertNotNull(response.getOriginalSecret());
+    }
+
+    /*
+     * Called after the upload test passes
+     */
+    private void testReplacePhotoAsync(String photoId) throws Exception {
+        BufferedInputStream in = new BufferedInputStream(PhotosUploadApiTest.class.getResourceAsStream("/Realistic.jpg"));
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] buf = new byte[1024];
+        for (int readNum; (readNum = in.read(buf)) != -1;) {
+            baos.write(buf, 0, readNum);
+        }
+        byte[] photoData = baos.toByteArray();
+
+        ReplaceResponse response = photosUploadApi.replace(photoData, photoId, true);
+        assertNotNull(response);
+        assertEquals("ok", response.getStat());
+        assertEquals(0, response.getCode());
+        assertNotNull(response.getTicketId());
     }
 }

@@ -37,6 +37,7 @@ import java.net.URLDecoder;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import static net.jeremybrooks.jinx.JinxConstants.FLICKR_PHOTO_REPLACE_URL;
 import static net.jeremybrooks.jinx.JinxConstants.FLICKR_PHOTO_UPLOAD_URL;
 import static net.jeremybrooks.jinx.JinxConstants.Method;
 
@@ -120,7 +121,7 @@ import static net.jeremybrooks.jinx.JinxConstants.Method;
  * for photo uploads, you must set a JinxLogger, enable verbose logging, and set a special property to tell Jinx to log
  * the multipart body:
  * <code>
- *     System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");
+ * System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");
  * </code>
  * </p>
  * * @author jeremyb
@@ -169,13 +170,13 @@ public class Jinx {
 
     /**
      * Create an instance of Jinx with an API key, secret, and access token.
-     *
+     * <p/>
      * This method is used when you already have an access token. This is the
      * method you will use when you have previously saved an access token, and
      * do not need to walk the user through authorization again.
      *
-     * @param apiKey the API key to use.
-     * @param apiSecret the API secret to use.
+     * @param apiKey           the API key to use.
+     * @param apiSecret        the API secret to use.
      * @param oAuthAccessToken the oauth access token.
      */
     public Jinx(String apiKey, String apiSecret, OAuthAccessToken oAuthAccessToken) {
@@ -198,9 +199,9 @@ public class Jinx {
 
     /**
      * Set the proxy configuration for Jinx.
-     *
+     * <p/>
      * By default, Jinx will not use a proxy.
-     *
+     * <p/>
      * If there is a proxy configuration set, Jinx will use the proxy for all network operations. If the proxy
      * configuration is null, Jinx will not attempt to use a proxy.
      *
@@ -213,7 +214,7 @@ public class Jinx {
             System.clearProperty("https.proxyHost");
             System.clearProperty("https.proxyPort");
             this.proxy = Proxy.NO_PROXY;
-        } else if (! JinxUtils.isNullOrEmpty(proxyConfig.getProxyHost())) {
+        } else if (!JinxUtils.isNullOrEmpty(proxyConfig.getProxyHost())) {
             System.setProperty("http.proxyHost", proxyConfig.getProxyHost());
             System.setProperty("http.proxyPort", Integer.toString(proxyConfig.getProxyPort()));
             System.setProperty("https.proxyHost", proxyConfig.getProxyHost());
@@ -246,7 +247,7 @@ public class Jinx {
 
     /**
      * OAuth workflow, step one: Get a request token.
-     *
+     * <p/>
      * Once a request token is retrieved, you can get the authorization URL
      * by passing the request token to the {@link #getAuthorizationUrl(org.scribe.model.Token, net.jeremybrooks.jinx.JinxConstants.OAuthPermissions)} method.
      *
@@ -258,7 +259,7 @@ public class Jinx {
 
     /**
      * OAuth workflow, step two: Get an authorization URL.
-     *
+     * <p/>
      * Once you have a request token pass it to this method to get the authorization URL.
      * The user should be directed to the returned URL, where they can authorize your
      * application. Once they have authorized your application, they will receive a
@@ -266,7 +267,7 @@ public class Jinx {
      * {@link #getAccessToken(org.scribe.model.Token, String)} method.
      *
      * @param requestToken the request token.
-     * @param permissions the permissions your application is requesting.
+     * @param permissions  the permissions your application is requesting.
      * @return authorization URL that the user should be directed to.
      * @throws JinxException if any parameter is null.
      */
@@ -278,11 +279,11 @@ public class Jinx {
 
     /**
      * OAuth workflow, step three: Exchange request token for an access token.
-     *
+     * <p/>
      * After getting the verification code from the user, call this method to exchange the request token for
      * an access token. The returned access token can be saved and used until the user revokes access.
      *
-     * @param requestToken request token to exchange for access token.
+     * @param requestToken     request token to exchange for access token.
      * @param verificationCode the verification code.
      * @return access token.
      * @throws JinxException if any parameter is null, or if there are any errors.
@@ -305,7 +306,7 @@ public class Jinx {
                     String token = tok.nextToken();
                     int index = token.indexOf("=");
                     String key = token.substring(0, index);
-                    String value = URLDecoder.decode(token.substring(index+1), "UTF-8").trim();
+                    String value = URLDecoder.decode(token.substring(index + 1), "UTF-8").trim();
                     if (key.equals("fullname")) {
                         this.oAuthAccessToken.setFullname(value);
                     } else if (key.equals("user_nsid")) {
@@ -347,13 +348,71 @@ public class Jinx {
         return this.apiSecret;
     }
 
+    /**
+     * Get the oauth access token.
+     *
+     * @return oauth access token.
+     */
     public OAuthAccessToken getoAuthAccessToken() {
         return this.oAuthAccessToken;
     }
 
+    /**
+     * Set the oauth access token.
+     *
+     * @param oAuthAccessToken the oauth access token.
+     */
     public void setoAuthAccessToken(OAuthAccessToken oAuthAccessToken) {
         this.oAuthAccessToken = oAuthAccessToken;
         this.accessToken = new Token(oAuthAccessToken.getOauthToken(), oAuthAccessToken.getOauthTokenSecret());
+    }
+
+    /**
+     * Indicates if Flickr API errors will cause a JinxException to be thrown.
+     * <p/>
+     * This is true by default, since you will almost always want to know when Flickr thinks something went wrong.
+     *
+     * @return true if Flickr API errors will cause a JinxException.
+     */
+    public boolean isFlickrErrorThrowsException() {
+        return flickrErrorThrowsException;
+    }
+
+    /**
+     * Set the Jinx behavior when there are Flickr API errors.
+     *
+     * @param flickrErrorThrowsException if true, a Flickr API error will cause a JinxException to be thrown.
+     */
+    public void setFlickrErrorThrowsException(boolean flickrErrorThrowsException) {
+        this.flickrErrorThrowsException = flickrErrorThrowsException;
+    }
+
+    /**
+     * Indicates if verbose logging is enabled.
+     * <p/>
+     * By default this is false. If you want verbose logging, you need to set this to true and set a
+     * {@link net.jeremybrooks.jinx.logger.JinxLogger} that is used to do the logging.
+     * <p/>
+     * Verbose logging will cause the GET and POST parameters to be logged, as well as the response from Flickr.
+     * If you want to see the multipart POST body (used when uploading and replacing photos), you should also set a
+     * special system property:
+     * <p/>
+     * <code>System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");</code>
+     *
+     * @return true if verbose logging is enabled.
+     */
+    public boolean isVerboseLogging() {
+        return verboseLogging;
+    }
+
+
+    /**
+     * Set the verbose logging flag.
+     *
+     * @param verboseLogging true to enable verbose logging.
+     */
+    public void setVerboseLogging(boolean verboseLogging) {
+        this.verboseLogging = verboseLogging;
     }
 
 
@@ -362,11 +421,12 @@ public class Jinx {
      * <p/>
      * This will make a signed call to Flickr using http GET.
      *
-     * @param params
-     * @param tClass
-     * @param <T>
-     * @return
-     * @throws JinxException
+     * Do not call this method directly. The classes in the net.jeremybrooks.jinx.api package will call this.
+     *
+     * @param params request parameters.
+     * @param tClass the class that will be returned.
+     * @return an instance of the specified class containing data from Flickr.
+     * @throws JinxException if there are any errors.
      */
     public <T> T flickrGet(Map<String, String> params, Class<T> tClass) throws JinxException {
         return callFlickr(params, Method.GET, tClass, true);
@@ -377,12 +437,13 @@ public class Jinx {
      * <p/>
      * This will make a call to Flickr using http GET. The caller can specify if the request should be signed.
      *
-     * @param params
-     * @param tClass
-     * @param sign
-     * @param <T>
-     * @return
-     * @throws JinxException
+     * Do not call this method directly. The classes in the net.jeremybrooks.jinx.api package will call this.
+     *
+     * @param params request parameters.
+     * @param tClass the class that will be returned.
+     * @param sign   if true the request will be signed.
+     * @return an instance of the specified class containing data from Flickr.
+     * @throws JinxException if there are any errors.
      */
     public <T> T flickrGet(Map<String, String> params, Class<T> tClass, boolean sign) throws JinxException {
         return callFlickr(params, Method.GET, tClass, sign);
@@ -394,11 +455,12 @@ public class Jinx {
      * <p/>
      * This will make a signed call to Flickr using http POST.
      *
-     * @param params
-     * @param tClass
-     * @param <T>
-     * @return
-     * @throws JinxException
+     * Do not call this method directly. The classes in the net.jeremybrooks.jinx.api package will call this.
+     *
+     * @param params request parameters.
+     * @param tClass the class that will be returned.
+     * @return an instance of the specified class containing data from Flickr.
+     * @throws JinxException if there are any errors.
      */
     public <T> T flickrPost(Map<String, String> params, Class<T> tClass) throws JinxException {
         return callFlickr(params, Method.POST, tClass, true);
@@ -408,14 +470,15 @@ public class Jinx {
     /**
      * Call Flickr, returning the specified class deserialized from the Flickr response.
      * <p/>
-     * This will make a call to Flickr using http GET. The caller can specify if the request should be signed.
+     * This will make a call to Flickr using http POST. The caller can specify if the request should be signed.
      *
-     * @param params
-     * @param tClass
-     * @param sign
-     * @param <T>
-     * @return
-     * @throws JinxException
+     * Do not call this method directly. The classes in the net.jeremybrooks.jinx.api package will call this.
+     *
+     * @param params request parameters.
+     * @param tClass the class that will be returned.
+     * @param sign   if true the request will be signed.
+     * @return an instance of the specified class containing data from Flickr.
+     * @throws JinxException if there are any errors.
      */
     public <T> T flickrPost(Map<String, String> params, Class<T> tClass, boolean sign) throws JinxException {
         return callFlickr(params, Method.POST, tClass, sign);
@@ -423,13 +486,16 @@ public class Jinx {
 
 
     /**
-     * @param params
-     * @param method
-     * @param tClass
-     * @param sign
-     * @param <T>
-     * @return
-     * @throws JinxException
+     * Do the actual GET or POST request.
+     * <p/>
+     * flickrGet and flickrPost methods delegate work to this method.
+     *
+     * @param params request parameters.
+     * @param method http method to use. Method.GET and Method.POST are the only valid choices.
+     * @param tClass the class that will be returned.
+     * @param sign   if true the request will be signed.
+     * @return an instance of the specified class containing data from Flickr.
+     * @throws JinxException if there are any errors.
      */
     protected <T> T callFlickr(Map<String, String> params, Method method, Class<T> tClass, boolean sign) throws JinxException {
         if (this.oAuthAccessToken == null) {
@@ -438,7 +504,6 @@ public class Jinx {
         params.put("format", "json");
         params.put("nojsoncallback", "1");
         params.put("api_key", getApiKey());
-
 
         org.scribe.model.Response flickrResponse;
 
@@ -488,27 +553,64 @@ public class Jinx {
 
 
     /**
+     * Upload a photo or video to Flickr.
+     * <p/>
+     * Do not call this directly. Use the {@link net.jeremybrooks.jinx.api.PhotosUploadApi} class.
      *
-     * @param params
-     * @param photoData
-     * @param tClass
-     * @param <T>
-     * @return
-     * @throws JinxException
+     * @param params    request parameters.
+     * @param photoData photo or video data to upload.
+     * @param tClass    the class that will be returned.
+     * @return an instance of the specified class containing data from Flickr.
+     * @throws JinxException if there are any errors.
      */
     public <T> T flickrUpload(Map<String, String> params, byte[] photoData, Class<T> tClass) throws JinxException {
         if (this.oAuthAccessToken == null) {
             throw new JinxException("Jinx has not been configured with an OAuth Access Token.");
         }
         params.put("api_key", getApiKey());
+        return uploadOrReplace(params, photoData, tClass, new OAuthRequest(Verb.POST, FLICKR_PHOTO_UPLOAD_URL));
+    }
 
-        OAuthRequest request = new OAuthRequest(Verb.POST, FLICKR_PHOTO_UPLOAD_URL);
+    /**
+     * Replace a photo or video on Flickr.
+     * <p/>
+     * Do not call this directly. Use the {@link net.jeremybrooks.jinx.api.PhotosUploadApi} class.
+     *
+     * @param params    request parameters.
+     * @param photoData photo or video data to replace existing data.
+     * @param tClass    the class that will be returned.
+     * @return an instance of the specified class containing data from Flickr.
+     * @throws JinxException if there are any errors.
+     */
+    public <T> T flickrReplace(Map<String, String> params, byte[] photoData, Class<T> tClass) throws JinxException {
+        if (this.oAuthAccessToken == null) {
+            throw new JinxException("Jinx has not been configured with an OAuth Access Token.");
+        }
+        params.put("api_key", getApiKey());
+        return uploadOrReplace(params, photoData, tClass, new OAuthRequest(Verb.POST, FLICKR_PHOTO_REPLACE_URL));
+    }
 
+
+    /**
+     * Handle Flickr upload and replace API calls.
+     * <p/>
+     * The action taken will depend on the OAuth request object that is passed in. The upload and replace methods
+     * delegate to this method. This method does the work to ensure that the OAuth signature is generated correctly
+     * according to Flickr's requirements for uploads.
+     *
+     * @param params    request parameters.
+     * @param photoData the data to send to Flickr.
+     * @param tClass    the class that will be returned.
+     * @param request   the OAuthRequest object to use.
+     * @return an instance of the specified class containing data from Flickr.
+     * @throws JinxException if there are any errors.
+     */
+    protected <T> T uploadOrReplace(Map<String, String> params, byte[] photoData, Class<T> tClass, OAuthRequest request) throws JinxException {
         String boundary = JinxUtils.generateBoundary();
         request.addHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
         for (Map.Entry<String, String> entry : params.entrySet()) {
             String key = entry.getKey();
-            if (!key.equals("photo") && !key.equals("filename") &&  !key.equals("filemimetype")) {
+            if (!key.equals("photo") && !key.equals("filename") && !key.equals("filemimetype")) {
                 request.addQuerystringParameter(key, String.valueOf(entry.getValue()));
             }
         }
@@ -540,6 +642,9 @@ public class Jinx {
         return fromJson;
     }
 
+    /*
+     * Build a multipart body request.
+     */
     private byte[] buildMultipartBody(Map<String, String> params, byte[] photoData, String boundary) throws JinxException {
 
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
@@ -580,21 +685,5 @@ public class Jinx {
         }
 
         return buffer.toByteArray();
-    }
-
-    public boolean isFlickrErrorThrowsException() {
-        return flickrErrorThrowsException;
-    }
-
-    public void setFlickrErrorThrowsException(boolean flickrErrorThrowsException) {
-        this.flickrErrorThrowsException = flickrErrorThrowsException;
-    }
-
-    public boolean isVerboseLogging() {
-        return verboseLogging;
-    }
-
-    public void setVerboseLogging(boolean verboseLogging) {
-        this.verboseLogging = verboseLogging;
     }
 }

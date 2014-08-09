@@ -71,4 +71,30 @@ public class PhotosUploadTest {
         assertEquals(0, response.getCode());
         assertEquals("14837291641", response.getPhotoId());
     }
+
+    @Test
+    public void testParseReplaceResponse() throws Exception {
+        InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/upload/sample_replace.json"));
+        ReplaceResponse response = new Gson().fromJson(reader, ReplaceResponse.class);
+        reader.close();
+        assertNotNull(response);
+        assertEquals("ok", response.getStat());
+        assertEquals(0, response.getCode());
+
+        assertEquals("320935a61d", response.getSecret());
+        assertEquals("829e925e23", response.getOriginalSecret());
+        assertEquals("14859730194", response.getPhotoId());
+    }
+
+    @Test
+    public void testParseReplaceAsyncResponse() throws Exception {
+        InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/photos/upload/sample_replace_async.json"));
+        ReplaceResponse response = new Gson().fromJson(reader, ReplaceResponse.class);
+        reader.close();
+        assertNotNull(response);
+        assertEquals("ok", response.getStat());
+        assertEquals(0, response.getCode());
+
+        assertEquals("124834485-72157646287534644", response.getTicketId());
+    }
 }
