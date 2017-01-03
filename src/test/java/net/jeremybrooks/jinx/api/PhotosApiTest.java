@@ -56,7 +56,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class PhotosApiTest {
 	private static PhotosApi photosApi;
-	private static String photoId = "14276354684";
+	private static String photoId = "14276832885";
 	private static String deletePhotoId = null; // set this to run the delete photo test
 	private static String userId = "124857539@N03";    // jinxlib
 
@@ -138,7 +138,6 @@ public class PhotosApiTest {
 		assertEquals("ok", contexts.getStat());
 		assertEquals(0, contexts.getCode());
 		assertNotNull(contexts.getSetList());
-		assertNotNull(contexts.getPoolList());
 	}
 
 	@Test
@@ -414,6 +413,7 @@ public class PhotosApiTest {
 		tags.clear();
 		tags.add("istanbul");
 		tags.add("-soda");
+		sp.setTagMode(JinxConstants.TagMode.all);
 		sp.setTags(tags);
 		photos = photosApi.search(sp);
 		assertNotNull(photos);

@@ -44,7 +44,7 @@ public class FavoritesApiTest {
 	private static FavoritesApi favoritesApi;
 
 	private static String photoId = "14192441117";
-	private static String photoIdIsFavorite = "14335914741";
+	private static String photoIdIsFavorite = "31681278290";
 	private static String userId = "124857539@N03";
 
 	@BeforeClass
