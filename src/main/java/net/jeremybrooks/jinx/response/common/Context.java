@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ import java.io.Serializable;
 
 /**
  * Context can be returned from several methods:
- * <p/>
+ * <br>
  * flickr.favorites.getContext
  * flickr.groups.pools.getContext
  * flickr.photos.getContext

@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,11 +40,11 @@ public class PandaApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.panda.getList.html">flickr.panda.getList</a>
-     * <p/>
+     * <br>
      * Return a list of Flickr pandas, from whom you can request photos using the {@link #getPhotos(String, java.util.EnumSet, int, int, boolean)} API method.
-     * <p/>
+     * <br>
      * This method does not require authentication.
-     * <p/>
+     * <br>
      * More information about the pandas can be found on the
      * <a href="http://code.flickr.com/blog/2009/03/03/panda-tuesday-the-history-of-the-panda-new-apis-explore-and-you/">dev blog</a>.
      *
@@ -60,14 +60,14 @@ public class PandaApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.panda.getPhotos.html">flickr.panda.getPhotos</a>
-     * <p/>
+     * <br>
      * Ask the Flickr Pandas for a list of recent public (and "safe") photos.
-     * <p/>
+     * <br>
      * More information about the pandas can be found on the
      * <a href="http://code.flickr.com/blog/2009/03/03/panda-tuesday-the-history-of-the-panda-new-apis-explore-and-you/">dev blog</a>.     Authentication
-     * <p/>
+     * <br>
      * This method does not require authentication.
-     * <p/>
+     * <br>
      * You can fetch a list of all the current pandas using the {@link #getList()} API method.
      *
      * @param pandaName (Required) The name of the panda to ask for photos from.

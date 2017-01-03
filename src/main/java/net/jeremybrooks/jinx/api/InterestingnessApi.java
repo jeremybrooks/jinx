@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,9 +29,9 @@ import java.util.TreeMap;
 
 /**
  * Provides access to the flickr.interestingness API.
- * <p/>
+ * <br>
  * See <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
- * <p/>
+ * <br>
  * Created by jeremyb on 7/9/14.
  */
 public class InterestingnessApi {
@@ -44,10 +44,10 @@ public class InterestingnessApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.interestingness.getList.html">flickr.interestingness.getList</a>
-     * <p/>
-     * <p/>
+     * <br>
+     * <br>
      * Returns the list of interesting photos for the most recent day or a user-specified date.
-     * <p/>
+     * <br>
      * This method does not require authentication.
      *
      * @param date    (Optional) A specific date, formatted as YYYY-MM-DD, to return interesting photos for.

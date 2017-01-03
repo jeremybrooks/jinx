@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,9 +40,9 @@ public class PhotosNotesApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.notes.add.html">flickr.photos.notes.add</a>
-     * <p/>
+     * <br>
      * Add a note to a photo. Coordinates and sizes are in pixels, based on the 500px image size shown on individual photo pages.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId    (Required) The id of the photo to add a note to.
@@ -69,9 +69,9 @@ public class PhotosNotesApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.notes.edit.html">flickr.photos.notes.edit</a>
-     * <p/>
+     * <br>
      * Edit a note on a photo. Coordinates and sizes are in pixels, based on the 500px image size shown on individual photo pages.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param noteId     (Required) The id of the note to edit.
@@ -98,9 +98,9 @@ public class PhotosNotesApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.notes.delete.html">flickr.photos.notes.delete</a>
-     * <p/>
+     * <br>
      * Delete a note from a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param noteId (Required) The id of the note to delete.

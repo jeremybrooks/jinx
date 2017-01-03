@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ public class PhotosetsCommentsApi {
 	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.addComment.html">flickr.photosets.comments.addComment</a>
 	 *
 	 * Add a comment to a photoset.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'write' permission.
 	 *
 	 * @param photosetId id of the photoset to add a comment to.
@@ -64,7 +64,7 @@ public class PhotosetsCommentsApi {
 	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.deleteComment.html">flickr.photosets.comments.deleteComment</a>
 	 *
 	 * Delete a photoset comment as the currently authenticated user.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'write' permission.
 	 *
 	 * @param commentId id of the comment to delete from a photoset.
@@ -84,7 +84,7 @@ public class PhotosetsCommentsApi {
 	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.editComment.html">flickr.photosets.comments.editComment</a>
 	 *
 	 * Edit the text of a comment as the currently authenticated user.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'write' permission.
 	 *
 	 * @param commentId id of the comment to edit.

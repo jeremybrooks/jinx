@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,9 +42,9 @@ public class PhotosTransformApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.transform.rotate.html">flickr.photos.transform.rotate</a>
-     * <p/>
+     * <br>
      * Rotate a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId (Required) The id of the photo to rotate.

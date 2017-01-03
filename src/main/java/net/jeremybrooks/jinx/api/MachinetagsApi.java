@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,9 +40,9 @@ public class MachinetagsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.machinetags.getNamespaces.html">flickr.machinetags.getNamespaces</a>
-     * <p/>
+     * <br>
      * Return a list of unique namespaces, optionally limited by a given predicate, in alphabetical order.
-     * <p/>
+     * <br>
      * This method does not require authentication.
      *
      * @param predicate (Optional) Limit the list of namespaces returned to those that have this predicate.
@@ -69,9 +69,9 @@ public class MachinetagsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.machinetags.getPairs.html">flickr.machinetags.getPairs</a>
-     * <p/>
+     * <br>
      * Return a list of unique namespace and predicate pairs, optionally limited by predicate or namespace, in alphabetical order.
-     * <p/>
+     * <br>
      * This method does not require authentication.
      *
      * @param namespace (Optional) Limit the list of pairs returned to those that have this namespace.
@@ -102,12 +102,12 @@ public class MachinetagsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.machinetags.getPredicates.html">flickr.machinetags.getPredicates</a>
-     * <p/>
+     * <br>
      * Return a list of unique predicates, optionally limited by a given namespace.
-     * <p/>
+     * <br>
      * This method does not require authentication.
      * namespace (Optional)
-     * <p/>
+     * <br>
      * per_page (Optional)
      * Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
      * page (Optional)
@@ -137,9 +137,9 @@ public class MachinetagsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.machinetags.getRecentValues.html">flickr.machinetags.getRecentValues</a>
-     * <p/>
+     * <br>
      * Fetch recently used (or created) machine tags values.
-     * <p/>
+     * <br>
      * This method does not require authentication.
      *
      * @param namespace  (Optional) A namespace that all values should be restricted to.
@@ -172,9 +172,9 @@ public class MachinetagsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.machinetags.getValues.html">flickr.machinetags.getValues</a>
-     * <p/>
+     * <br>
      * Return a list of unique values for a namespace and predicate.
-     * <p/>
+     * <br>
      * This method does not require authentication.
      *
      * @param namespace (Required) The namespace that all values should be restricted to.

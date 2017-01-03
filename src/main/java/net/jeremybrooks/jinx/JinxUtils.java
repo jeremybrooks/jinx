@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ import java.util.Random;
 /**
  * This class contains public static methods that perform common functionality
  * for other parts of Jinx.
- * <p/>
+ * <br>
  * Document objects are created here, and there are methods for common XML
  * parsing operations here as well.
  *
@@ -62,7 +62,7 @@ public class JinxUtils {
 
     /**
      * Format a date in MySQL format.
-     * <p/>
+     * <br>
      * If the date is null, this method will return an empty string.
      *
      * @param date the date to format.
@@ -79,7 +79,7 @@ public class JinxUtils {
 
     /**
      * Convert a MySql datetime to a Java date.
-     * <p/>
+     * <br>
      * The MySql datetime should look something like this: 2004-11-29 16:01:26
      *
      * @param datetime the datetime to convert to a Java date object.
@@ -99,7 +99,7 @@ public class JinxUtils {
 
     /**
      * Format a date in YYYY-MM-DD format.
-     * <p/>
+     * <br>
      * If the date is null, this method will return an empty string.
      *
      * @param date the date to format.
@@ -127,11 +127,11 @@ public class JinxUtils {
 
     /**
      * Create a Date object from a Unix timestamp.
-     * <p/>
+     * <br>
      * A Unix timestamp is is the number of seconds that have elapsed since
      * January 1, 1970. This value is converted into milliseconds, then used
      * to create a Date object.
-     * <p/>
+     * <br>
      * If the timestamp is not a valid long, this method will return null.
      *
      * @param timestamp Unix timestamp to convert to a Date.
@@ -153,7 +153,7 @@ public class JinxUtils {
 
     /**
      * Convert a Date to a Unix timestamp.
-     * <p/>
+     * <br>
      * If the date object is null or invalid, this method will return an empty
      * String.
      *
@@ -199,7 +199,7 @@ public class JinxUtils {
 
     /**
      * Validate parameters.
-     * <p/>
+     * <br>
      * Objects:
      * <ul>
      * <li>Must not be null</li>
@@ -252,9 +252,9 @@ public class JinxUtils {
 
     /**
      * Convert Flickr true/false to Boolean.
-     * <p/>
+     * <br>
      * A null value will return null. Generally, this means the parameter was not present in the reply from Flickr.
-     * <p/>
+     * <br>
      * A value of "1" will return {@link java.lang.Boolean#TRUE}. Any other non-null value will return {@link java.lang.Boolean#FALSE}.
      *
      * @param value the true/false value from Flickr.
@@ -290,7 +290,7 @@ public class JinxUtils {
 
     /**
      * Convert a collection into a comma delimited String.
-     * <p/>
+     * <br>
      * Each object in the collection will be converted to a trimmed String, and commas will be used to
      * separate each object.
      *
@@ -311,13 +311,13 @@ public class JinxUtils {
 
     /**
      * Normalize a List of Flickr tags for search calls.
-     * <p/>
+     * <br>
      * This method takes a list of tags and converts them to the normalized representation that Flickr uses (at least,
      * as close to the normalized version as could be figured out).
-     * <p/>
-     * Each String in the list will have the following characters removed: !#$%&'() *+.,';
+     * <br>
+     * Each String in the list will have the following characters removed: !#$%&amp;'() *+.,';
      * The String is then converted to lowercase and added to a new List.
-     * <p/>
+     * <br>
      * Normalization is done primarily so that tags containing spaces do not have to be surrounded with double quotes
      * before sending to the Flickr API. It is easier to normalize than to surround everything with double quotes, and
      * this also results is slightly smaller (and more readable) calls to the Flickr API.
@@ -338,17 +338,17 @@ public class JinxUtils {
 
   /**
    * Normalize a List of Flickr machine tags for search calls.
-   * <p/>
+   * <br>
    * This method takes a list of tags and converts them to the normalized representation that Flickr uses (at least,
    * as close to the normalized version as could be figured out).
-   * <p/>
-   * Each String in the list will have the following characters removed: !#$%&'()*+.,';
+   * <br>
+   * Each String in the list will have the following characters removed: !#$%&amp;'()*+.,';
    * The String is then converted to lowercase and added to a new List.
-   * <p/>
+   * <br>
    * Normalization is done primarily so that tags containing spaces do not have to be surrounded with double quotes
    * before sending to the Flickr API. It is easier to normalize than to surround everything with double quotes, and
    * this also results is slightly smaller (and more readable) calls to the Flickr API.
-   * <p/>
+   * <br>
    * The difference between this method and the normalization method for regular tags is that this method will
    * NOT remove spaces, and it will add quotation marks around tags that contain spaces. It seems that Flickr
    * takes spaces into account for machine tags, so this step is necessary.

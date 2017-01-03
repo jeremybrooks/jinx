@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,9 +36,9 @@ public class CommonsApi {
 
 	/**
 	 * <a href="https://www.flickr.com/services/api/flickr.commons.getInstitutions.html">flickr.commons.getInstitutions</a>
-	 * <p/>
+	 * <br>
 	 * Retrieves a list of the current Commons institutions.
-	 * <p/>
+	 * <br>
 	 * This method does not require authentication.
 	 *
 	 * @return list of the current Commons institutions.

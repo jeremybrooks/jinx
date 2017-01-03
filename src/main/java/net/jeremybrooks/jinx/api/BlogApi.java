@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ public class BlogApi {
 	 * <a href="https://www.flickr.com/services/api/flickr.blogs.getServices.html">flickr.blogs.getServices</a>
 	 *
 	 * Return a list of Flickr supported blogging services
-	 * <p/>
+	 * <br>
 	 * This method does not require authentication.
 	 *
 	 * @return object representing the supported blog services.
@@ -63,7 +63,7 @@ public class BlogApi {
 	 * <a href="https://www.flickr.com/services/api/flickr.blogs.getList.html">flickr.blogs.getList</a>
 	 *
 	 * Get a list of configured blogs for the calling user.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'read' permission.
 	 *
 	 * @param service (Optional) only return blogs for a given service id. You can get a list of from {@link net.jeremybrooks.jinx.api.BlogApi#getServices()}
@@ -84,14 +84,14 @@ public class BlogApi {
 	 * <a href="https://www.flickr.com/services/api/flickr.blogs.postPhoto.html">flickr.blogs.postPhoto</a>
 	 *
 	 * Post a photo to a blogging service.
-	 * <p/>
+	 * <br>
 	 * Authentication
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'write' permission.
-	 * <p/>
+	 * <br>
 	 * Note: This method requires an HTTP POST request.
-	 * <p/>
-	 * <p/>
+	 * <br>
+	 * <br>
 	 * This method has no specific response - It returns an empty success response if it completes without error.
 	 * <p>
 	 * The blogId and serviceId are marked optional, but you must provide one of them so that Flickr knows

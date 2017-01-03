@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,10 +39,10 @@ public class GroupsMembersApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.groups.members.getList.html">flickr.groups.members.getList</a>
-     * <p/>
+     * <br>
      * Get a list of the members of a group. The call must be signed on behalf of a Flickr member,
      * and the ability to see the group membership will be determined by the Flickr member's group privileges.
-     * <p/>
+     * <br>
      * This method requires authentication with 'read' permission.
      *
      * @param groupId     (Required) Return a list of members for this group. The group must be viewable by the Flickr member on whose behalf the API call is made.

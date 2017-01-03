@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,15 +25,15 @@ import java.io.Serializable;
 
 /**
  * Represents data returned by {@link net.jeremybrooks.jinx.api.PeopleApi#getUploadStatus()}
- * <p/>
+ * <br>
  * Bandwidth and filesize numbers are provided in bytes and kilobytes.
- * <p/>
+ * <br>
  * Bandwidth is specified in bytes/kb per month.
- * <p/>
+ * <br>
  * All accounts display "lots" for the number of remaining sets, but remains in the response for backwards compatibility.
- * <p/>
+ * <br>
  * Pro accounts display "lots" for the number of remaining videos, while free users will display 0, 1, or 2.
- * <p/>
+ * <br>
  * Created by jeremyb on 7/15/14.
  */
 public class UploadStatus extends Response {

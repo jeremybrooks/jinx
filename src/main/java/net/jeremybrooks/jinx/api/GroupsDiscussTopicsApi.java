@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,82 +31,80 @@ import java.util.TreeMap;
  * Created by jeremyb on 7/8/14.
  */
 public class GroupsDiscussTopicsApi {
-    private Jinx jinx;
+  private Jinx jinx;
 
-    public GroupsDiscussTopicsApi(Jinx jinx) {
-        this.jinx = jinx;
+  public GroupsDiscussTopicsApi(Jinx jinx) {
+    this.jinx = jinx;
+  }
+
+
+  /**
+   * Post a new discussion topic to a group.
+   * <br>
+   * This method requires authentication with 'write' permission.
+   *
+   * @param groupId (Required) The NSID of the group to add a topic to.
+   * @param subject (Required) The topic subject.
+   * @param message (Required) The topic message.
+   * @return object with response from Flickr indicating ok or fail.
+   * @throws JinxException if required parameters are missing, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.groups.discuss.topics.add.html">flickr.groups.discuss.topics.add</a>
+   */
+  public Response add(String groupId, String subject, String message) throws JinxException {
+    JinxUtils.validateParams(groupId, subject, message);
+    Map<String, String> params = new TreeMap<String, String>();
+    params.put("method", "flickr.groups.discuss.topics.add");
+    params.put("group_id", groupId);
+    params.put("subject", subject);
+    params.put("message", message);
+    return jinx.flickrPost(params, Response.class);
+  }
+
+  /**
+   * Get information about a group discussion topic.
+   * <br>
+   * This method does not require authentication. Unsigned requests can only see public topics.
+   *
+   * @param topicId (Required) The ID for the topic to get info for.
+   * @param sign    if true, the request will be signed.
+   * @return information about the topic.
+   * @throws JinxException if required parameters are missing, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.groups.discuss.topics.getInfo.html">flickr.groups.discuss.topics.getInfo</a>
+   */
+  public TopicInfo getInfo(String topicId, boolean sign) throws JinxException {
+    JinxUtils.validateParams(topicId);
+    Map<String, String> params = new TreeMap<String, String>();
+    params.put("method", "flickr.groups.discuss.topics.getInfo");
+    params.put("topic_id", topicId);
+    return jinx.flickrGet(params, TopicInfo.class, sign);
+  }
+
+
+  /**
+   * Get a list of discussion topics in a group.
+   * <br>
+   * This method does not require authentication. Unsigned requests can only see public topics.
+   *
+   * @param groupId (Required) The NSID of the group to fetch information for.
+   * @param perPage Number of photos to return per page. If this argument is less than 1, it defaults to 100.
+   *                The maximum allowed value is 500.
+   * @param page    The page of results to return. If this argument is less than 1, it defaults to 1.
+   * @param sign    if true, the request will be signed.
+   * @return object with topic metadata and a list of topics.
+   * @throws JinxException if required parameters are missing, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.groups.discuss.topics.getList.html">flickr.groups.discuss.topics.getList</a>
+   */
+  public Topics getList(String groupId, int perPage, int page, boolean sign) throws JinxException {
+    JinxUtils.validateParams(groupId);
+    Map<String, String> params = new TreeMap<String, String>();
+    params.put("method", "flickr.groups.discuss.topics.getList");
+    params.put("group_id", groupId);
+    if (perPage > 0) {
+      params.put("per_page", Integer.toString(perPage));
     }
-
-
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.groups.discuss.topics.add.html">flickr.groups.discuss.topics.add</a>
-     * <p/>
-     * Post a new discussion topic to a group.
-     * <p/>
-     * This method requires authentication with 'write' permission.
-     *
-     * @param groupId (Required) The NSID of the group to add a topic to.
-     * @param subject (Required) The topic subject.
-     * @param message (Required) The topic message.
-     * @return object with response from Flickr indicating ok or fail.
-     * @throws JinxException if required parameters are missing, or if there are any errors.
-     */
-    public Response add(String groupId, String subject, String message) throws JinxException {
-        JinxUtils.validateParams(groupId, subject, message);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.groups.discuss.topics.add");
-        params.put("group_id", groupId);
-        params.put("subject", subject);
-        params.put("message", message);
-        return jinx.flickrPost(params, Response.class);
+    if (page > 0) {
+      params.put("page", Integer.toString(page));
     }
-
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.groups.discuss.topics.getInfo.html">flickr.groups.discuss.topics.getInfo</a>
-     * <p/>
-     * Get information about a group discussion topic.
-     * <p/>
-     * This method does not require authentication. Unsigned requests can only see public topics.
-     *
-     * @param topicId (Required) The ID for the topic to get info for.
-     * @return information about the topic.
-     * @throws JinxException if required parameters are missing, or if there are any errors.
-     */
-    public TopicInfo getInfo(String topicId, boolean sign) throws JinxException {
-        JinxUtils.validateParams(topicId);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.groups.discuss.topics.getInfo");
-        params.put("topic_id", topicId);
-        return jinx.flickrGet(params, TopicInfo.class, sign);
-    }
-
-
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.groups.discuss.topics.getList.html">flickr.groups.discuss.topics.getList</a>
-     * <p/>
-     * Get a list of discussion topics in a group.
-     * <p/>
-     * This method does not require authentication. Unsigned requests can only see public topics.
-     *
-     * @param groupId (Required) The NSID of the group to fetch information for.
-     * @param perPage Number of photos to return per page. If this argument is less than 1, it defaults to 100.
-     *                The maximum allowed value is 500.
-     * @param page    The page of results to return. If this argument is less than 1, it defaults to 1.
-     * @param sign    if true, the request will be signed.
-     * @return object with topic metadata and a list of topics.
-     * @throws JinxException if required parameters are missing, or if there are any errors.
-     */
-    public Topics getList(String groupId, int perPage, int page, boolean sign) throws JinxException {
-        JinxUtils.validateParams(groupId);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.groups.discuss.topics.getList");
-        params.put("group_id", groupId);
-        if (perPage > 0) {
-            params.put("per_page", Integer.toString(perPage));
-        }
-        if (page > 0) {
-            params.put("page", Integer.toString(page));
-        }
-        return jinx.flickrGet(params, Topics.class, sign);
-    }
+    return jinx.flickrGet(params, Topics.class, sign);
+  }
 }

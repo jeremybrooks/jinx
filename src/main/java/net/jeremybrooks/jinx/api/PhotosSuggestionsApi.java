@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,9 +43,9 @@ public class PhotosSuggestionsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.suggestions.approveSuggestion.html">flickr.photos.suggestions.approveSuggestion</a>
-     * <p/>
+     * <br>
      * Approve a suggestion for a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param suggestionId (Required) The unique ID for the location suggestion to approve.
@@ -62,9 +62,9 @@ public class PhotosSuggestionsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.suggestions.getList.html">flickr.photos.suggestions.getList</a>
-     * <p/>
+     * <br>
      * Return a list of suggestions for a user that are pending approval.
-     * <p/>
+     * <br>
      * This method requires authentication with 'read' permission.
      *
      * @param photoId (Optional) Only show suggestions for this photo.
@@ -87,9 +87,9 @@ public class PhotosSuggestionsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.suggestions.rejectSuggestion.html">flickr.photos.suggestions.rejectSuggestion</a>
-     * <p/>
+     * <br>
      * Reject a suggestion for a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param suggestionId (Required) The unique ID of the suggestion to reject.
@@ -107,9 +107,9 @@ public class PhotosSuggestionsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.suggestions.removeSuggestion.html">flickr.photos.suggestions.removeSuggestion</a>
-     * <p/>
+     * <br>
      * Remove a suggestion, made by the calling user, from a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param suggestionId (Required) The unique ID for the location suggestion to approve.
@@ -126,9 +126,9 @@ public class PhotosSuggestionsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.suggestions.suggestLocation.html">flickr.photos.suggestions.suggestLocation</a>
-     * <p/>
+     * <br>
      * Suggest a geotagged location for a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * The returned {@link net.jeremybrooks.jinx.response.photos.suggestions.Suggestions} object has only one

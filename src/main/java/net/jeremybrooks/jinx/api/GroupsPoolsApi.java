@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,9 +47,9 @@ public class GroupsPoolsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.groups.pools.add.html">flickr.groups.pools.add</a>
-     * <p/>
+     * <br>
      * Add a photo to a group's pool.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId (Required) The id of the photo to add to the group pool. The photo must belong to the calling user.
@@ -68,9 +68,9 @@ public class GroupsPoolsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.groups.pools.getContext.html">flickr.groups.pools.getContext</a>
-     * <p/>
+     * <br>
      * Returns next and previous photos for a photo in a group pool.
-     * <p/>
+     * <br>
      * This method does not require authentication. Unsigned requests may not be able to see photos in some groups.
      *
      * @param photoId (Required) The id of the photo to fetch the context for.
@@ -90,9 +90,9 @@ public class GroupsPoolsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.groups.pools.getGroups.html">flickr.groups.pools.getGroups</a>
-     * <p/>
+     * <br>
      * Returns a list of groups to which you can add photos.
-     * <p/>
+     * <br>
      * This method requires authentication with 'read' permission.
      *
      * @param page    The page of results to return. If this argument is less than 1, it defaults to 1.
@@ -114,9 +114,9 @@ public class GroupsPoolsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.groups.pools.getPhotos.html">flickr.groups.pools.getPhotos</a>
-     * <p/>
+     * <br>
      * Returns a list of pool photos for a given group, based on the permissions of the group and the user logged in (if any).
-     * <p/>
+     * <br>
      * This method does not require authentication. Unsigned requests may not be able to retrieve photos from some groups.
      *
      * @param groupId (Required) The id of the group who's pool you which to get the photo list for.
@@ -154,9 +154,9 @@ public class GroupsPoolsApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.groups.pools.remove.html">flickr.groups.pools.remove</a>
-     * <p/>
+     * <br>
      * Remove a photo from a group pool.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId (Required) The id of the photo to remove from the group pool. The photo must either be owned by the calling user of the calling user must be an administrator of the group.

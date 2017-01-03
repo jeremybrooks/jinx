@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Created by jeremyb on 7/8/14.
+ * @author Jeremy Brooks
  */
 public class GroupsDiscussRepliesApi {
     private Jinx jinx;
@@ -38,16 +38,15 @@ public class GroupsDiscussRepliesApi {
     }
 
     /**
-     * <a href="https://www.flickr.com/services/api/flickr.groups.discuss.replies.add.html">flickr.groups.discuss.replies.add</a>
-     * <p/>
      * Post a new reply to a group discussion topic.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param topicId (Required) The ID of the topic to post a comment to.
      * @param message (Required) The message to post to the topic.
      * @return object with response from Flickr indicating ok or fail.
      * @throws JinxException if required parameters are missing, or if there are any errors.
+     * @see <a href="https://www.flickr.com/services/api/flickr.groups.discuss.replies.add.html">flickr.groups.discuss.replies.add</a>
      */
     public Response add(String topicId, String message) throws JinxException {
         JinxUtils.validateParams(topicId, message);
@@ -59,16 +58,15 @@ public class GroupsDiscussRepliesApi {
     }
 
     /**
-     * <a href="https://www.flickr.com/services/api/flickr.groups.discuss.replies.delete.html">flickr.groups.discuss.replies.delete</a>
-     * <p/>
      * Delete a reply from a group topic.
-     * <p/>
+     * <br>
      * This method requires authentication with 'delete' permission.
      *
      * @param topicId (Required) The ID of the topic the post is in.
      * @param replyId (Required) The ID of the reply to delete.
      * @return object with response from Flickr indicating ok or fail.
      * @throws JinxException if required parameters are missing, or if there are any errors.
+     * @see <a href="https://www.flickr.com/services/api/flickr.groups.discuss.replies.delete.html">flickr.groups.discuss.replies.delete</a>
      */
     public Response delete(String topicId, String replyId) throws JinxException {
         JinxUtils.validateParams(topicId, replyId);
@@ -80,10 +78,8 @@ public class GroupsDiscussRepliesApi {
     }
 
     /**
-     * <a href="https://www.flickr.com/services/api/flickr.groups.discuss.replies.edit.html">flickr.groups.discuss.replies.edit</a>
-     * <p/>
      * Edit a topic reply.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param topicId (Required) The ID of the topic the post is in.
@@ -91,6 +87,7 @@ public class GroupsDiscussRepliesApi {
      * @param message (Required) The message to edit the post with.
      * @return object with response from Flickr indicating ok or fail.
      * @throws JinxException if required parameters are missing, or if there are any errors.
+     * @see <a href="https://www.flickr.com/services/api/flickr.groups.discuss.replies.edit.html">flickr.groups.discuss.replies.edit</a>
      */
     public Response edit(String topicId, String replyId, String message) throws JinxException {
         JinxUtils.validateParams(topicId, replyId, message);
@@ -103,16 +100,14 @@ public class GroupsDiscussRepliesApi {
     }
 
     /**
-     * <a href="https://www.flickr.com/services/api/flickr.groups.discuss.replies.getInfo.html">flickr.groups.discuss.replies.getInfo</a>
-     * <p/>
      * Get information on a group topic reply.
-     * <p/>
+     * <br>
      *
      * @param topicId (Required) The ID of the topic the post is in.
      * @param replyId (Required) The ID of the reply to fetch.
-     * @param sign    if true, the request will be signed.
      * @return reply information.
      * @throws JinxException if required parameters are missing, or if there are any errors.
+     * @see <a href="https://www.flickr.com/services/api/flickr.groups.discuss.replies.getInfo.html">flickr.groups.discuss.replies.getInfo</a>
      */
     public ReplyInfo getInfo(String topicId, String replyId) throws JinxException {
         JinxUtils.validateParams(topicId, replyId);
@@ -125,10 +120,8 @@ public class GroupsDiscussRepliesApi {
 
 
     /**
-     * <a href="https://www.flickr.com/services/api/flickr.groups.discuss.replies.getList.html">flickr.groups.discuss.replies.getList</a>
-     * <p/>
      * Get a list of replies from a group discussion topic.
-     * <p/>
+     * <br>
      * This method does not require authentication. Unsigned requests can only get public replies.
      *
      * @param topicId (Required) The ID of the topic to fetch replies for.
@@ -138,6 +131,7 @@ public class GroupsDiscussRepliesApi {
      * @param sign    if true, the request will be signed.
      * @return object with the topic information and a list of replies.
      * @throws JinxException if required parameters are missing, or if there are any errors.
+     * @see <a href="https://www.flickr.com/services/api/flickr.groups.discuss.replies.getList.html">flickr.groups.discuss.replies.getList</a>
      */
     public Replies getList(String topicId, int perPage, int page, boolean sign) throws JinxException {
         JinxUtils.validateParams(topicId);

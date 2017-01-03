@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,15 +39,14 @@ public class CamerasApi {
 
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.cameras.getBrands.html">flickr.cameras.getBrands</a>
-	 *
-	 * <p/>
 	 * Returns all the brands of cameras that Flickr knows about.
 	 * Authentication
-	 * <p/>
+	 * <br>
 	 * This method does not require authentication.
 	 *
-	 * @return
+	 * @return all camera brands Flickr knows about.
+   * @throws JinxException if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.cameras.getBrands.html">flickr.cameras.getBrands</a>
 	 */
 	public CameraBrands getBrands() throws JinxException {
 		Map<String, String> params = new TreeMap<String, String>();
@@ -58,15 +57,13 @@ public class CamerasApi {
 
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.cameras.getBrandModels.html>flickr.cameras.getBrandModels</a>
-	 *
-	 * <p/>
 	 * Retrieve all the models for a given camera brand.
 	 * This method does not require authentication.
 	 *
 	 * @param brandId (Required) the ID of the requested brand (as returned from {@link net.jeremybrooks.jinx.api.CamerasApi#getBrands()}).
-	 * @return
-	 * @throws JinxException
+	 * @return All camera models for a given camera brand.
+	 * @throws JinxException if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.cameras.getBrandModels.html">flickr.cameras.getBrandModels</a>
 	 */
 	public CameraModels getBrandModels(String brandId) throws JinxException {
 		JinxUtils.validateParams(brandId);

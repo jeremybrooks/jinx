@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,9 +42,9 @@ public class PhotosPeopleApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.people.add.html">flickr.photos.people.add</a>
-     * <p/>
+     * <br>
      * Add a person to a photo. Coordinates and sizes of boxes are optional; they are measured in pixels, based on the 500px image size shown on individual photo pages.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId (Required) The id of the photo to add a person to.
@@ -79,11 +79,11 @@ public class PhotosPeopleApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.people.delete.html">flickr.photos.people.delete</a>
-     * <p/>
+     * <br>
      * Remove a person from a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
-     * <p/>
+     * <br>
      * The NSID of the person to remove from the photo.
      *
      * @param photoId (Required) The id of the photo to remove a person from.
@@ -103,9 +103,9 @@ public class PhotosPeopleApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.people.deleteCoords.html">flickr.photos.people.deleteCoords</a>
-     * <p/>
+     * <br>
      * Remove the bounding box from a person in a photo
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId (Required) The id of the photo to edit a person in.
@@ -124,9 +124,9 @@ public class PhotosPeopleApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.people.editCoords.html">flickr.photos.people.editCoords</a>
-     * <p/>
+     * <br>
      * Edit the bounding box of an existing person on a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId (Required) The id of the photo to edit a person in.
@@ -153,11 +153,11 @@ public class PhotosPeopleApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.people.getList.html">flickr.photos.people.getList</a>
-     * <p/>
+     * <br>
      * Get a list of people in a given photo.
-     * <p/>
+     * <br>
      * This method does not require authentication.
-     * <p/>
+     * <br>
      *
      * @param photoId (Required) The id of the photo to get a list of people for.
      * @return list of people in the photo.

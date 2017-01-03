@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -96,7 +96,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the list of tags to match.
-	 * <p/>
+	 * <br>
 	 * Photos with one or more of the tags listed will be returned. You can exclude results that match a term by
 	 * prepending it with a - character. Tags may contain spaces; jinx will normalize the tags before passing
 	 * them along to Flickr.
@@ -119,7 +119,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the tag mode.
-	 * <p/>
+	 * <br>
 	 * Either 'any' for an OR combination of tags, or 'all' for an AND combination. Defaults to 'any' if not specified.
 	 *
 	 * @param tagMode tag mode for searches.
@@ -139,7 +139,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set text for free text search.
-	 * <p/>
+	 * <br>
 	 * A free text search. Photos who's title, description or tags contain the text will be returned.
 	 * You can exclude results that match a term by prepending it with a - character.
 	 *
@@ -161,7 +161,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the minimum upload date for search.
-	 * <p/>
+	 * <br>
 	 * Photos with an upload date greater than or equal to this value will be returned.
 	 *
 	 * @param minUploadDate minimum upload date for search.
@@ -181,7 +181,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the maximum upload date for search.
-	 * <p/>
+	 * <br>
 	 * Photos with an upload date less than or equal to this value will be returned.
 	 *
 	 * @param maxUploadDate maximum upload date for search.
@@ -202,7 +202,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the minimum taken date for search.
-	 * <p/>
+	 * <br>
 	 * Photos with an taken date greater than or equal to this value will be returned.
 	 *
 	 * @param minTakenDate minimum taken date for search.
@@ -222,7 +222,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the maximum taken date for search.
-	 * <p/>
+	 * <br>
 	 * Photos with an taken date less than or equal to this value will be returned.
 	 *
 	 * @param maxTakenDate maximum taken date for search.
@@ -243,7 +243,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the license id(s) for photos to search for.
-	 * <p/>
+	 * <br>
 	 * For possible values see the flickr.photos.licenses.getInfo method.
 	 *
 	 * @param licenses license id(s) for photos.
@@ -264,7 +264,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the sort order for returned photos.
-	 * <p/>
+	 * <br>
 	 * Defaults to date-posted-desc (unless you are doing a radial geo query, in which case the default sorting is
 	 * by ascending distance from the point specified).
 	 *
@@ -286,7 +286,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set privacy filter for search.
-	 * <p/>
+	 * <br>
 	 * Return photos only matching a certain privacy level. This only applies when making an authenticated call to
 	 * view photos you own.
 	 *
@@ -307,7 +307,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the bounding box for geo searches.
-	 * <p/>
+	 * <br>
 	 * The 4 values in the bounding box object represent the bottom-left corner of the box and the top-right corner:
 	 * <ul>
 	 * <li>minimum longitude</li>
@@ -315,14 +315,14 @@ public class SearchParameters implements Serializable {
 	 * <li>maximum longitude</li>
 	 * <li>maximum latitude</li>
 	 * </ul>
-	 * <p/>
+	 * <br>
 	 * Longitude has a range of -180 to 180 , latitude of -90 to 90.
-	 * <p/>
+	 * <br>
 	 * Unlike standard photo queries, geo (or bounding box) queries will only return 250 results per page.
-	 * <p/>
+	 * <br>
 	 * Geo queries require some sort of limiting agent in order to prevent the database from crying.
 	 * This is basically like the check against "parameterless searches" for queries without a geo component.
-	 * <p/>
+	 * <br>
 	 * A tag, for instance, is considered a limiting agent as are user defined minTakenDate and minUploadDate parameters.
 	 * If no limiting factor is passed the Flickr API will return only photos added in the last 12 hours
 	 * (though they may extend the limit in the future).
@@ -344,7 +344,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set accuracy level of the location information.
-	 * <p/>
+	 * <br>
 	 * Current range is 1-16:
 	 * <ul>
 	 * <li>World level is 1</li>
@@ -353,7 +353,7 @@ public class SearchParameters implements Serializable {
 	 * <li>City is ~11</li>
 	 * <li>Street is ~16</li>
 	 * </ul>
-	 * <p/>
+	 * <br>
 	 * If this value is null, it will not be passed to the Flickr API, and Flickr will default to the maximum value.
 	 *
 	 * @param accuracy accuracy level of the location information.
@@ -374,7 +374,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set safety level for search
-	 * <p/>
+	 * <br>
 	 * Please note: Un-authed calls can only see Safe content.
 	 *
 	 * @param safetyLevel safety level for the search.
@@ -413,19 +413,19 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set machine tags to search for.
-	 * <p/>
+	 * <br>
 	 * Aside from passing in a fully formed machine tag, there is a special syntax for searching on specific properties :
-	 * <p/> // TODO clarify the special formats listed below
+	 * <br> // TODO clarify the special formats listed below
 	 * <ul>
-	 * <li>Find photos using the 'dc' namespace : "machine_tags" => "dc:"</li>
-	 * <li>Find photos with a title in the 'dc' namespace : "machine_tags" => "dc:title="</li>
-	 * <li>Find photos titled "mr. camera" in the 'dc' namespace : "machine_tags" => "dc:title=\"mr. camera\"</li>
-	 * <li>Find photos whose value is "mr. camera" : "machine_tags" => "*:*=\"mr. camera\""</li>
-	 * <li>Find photos that have a title, in any namespace : "machine_tags" => "*:title="</li>
-	 * <li>Find photos that have a title, in any namespace, whose value is "mr. camera" : "machine_tags" => "*:title=\"mr. camera\""</li>
-	 * <li>Find photos, in the 'dc' namespace whose value is "mr. camera" : "machine_tags" => "dc:*=\"mr. camera\""</li>
+	 * <li>Find photos using the 'dc' namespace : "machine_tags" =&gt; "dc:"</li>
+	 * <li>Find photos with a title in the 'dc' namespace : "machine_tags" =&gt; "dc:title="</li>
+	 * <li>Find photos titled "mr. camera" in the 'dc' namespace : "machine_tags" =&gt; "dc:title=\"mr. camera\"</li>
+	 * <li>Find photos whose value is "mr. camera" : "machine_tags" =&gt; "*:*=\"mr. camera\""</li>
+	 * <li>Find photos that have a title, in any namespace : "machine_tags" =&gt; "*:title="</li>
+	 * <li>Find photos that have a title, in any namespace, whose value is "mr. camera" : "machine_tags" =&gt; "*:title=\"mr. camera\""</li>
+	 * <li>Find photos, in the 'dc' namespace whose value is "mr. camera" : "machine_tags" =&gt; "dc:*=\"mr. camera\""</li>
 	 * </ul>
-	 * <p/>
+	 * <br>
 	 * Multiple machine tags may be queried by passing a list. The number of machine tags you can pass in a single
 	 * query depends on the tag mode (AND or OR) that you are querying with. "AND" queries are limited to 16 machine tags.
 	 * "OR" queries are limited to 8.
@@ -448,7 +448,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set machine tag search mode.
-	 * <p/>
+	 * <br>
 	 * Either {@link net.jeremybrooks.jinx.JinxConstants.TagMode#any} for an OR combination of tags,
 	 * or {@link net.jeremybrooks.jinx.JinxConstants.TagMode#all} for an AND combination.
 	 * Defaults to {@link net.jeremybrooks.jinx.JinxConstants.TagMode#all} if not specified.
@@ -471,7 +471,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set group id to search for photos in.
-	 * <p/>
+	 * <br>
 	 * If specified, only matching photos posted to the group's pool will be returned.
 	 *
 	 * @param groupId group id to search for photos in.
@@ -512,10 +512,10 @@ public class SearchParameters implements Serializable {
 	/**
 	 * Set woe id.
 	 * A 32-bit identifier that uniquely represents spatial entities. Not used if BoundingBox is specified.
-	 * <p/>
+	 * <br>
 	 * Geo queries require some sort of limiting agent in order to prevent the database from crying.
 	 * This is basically like the check against "parameterless searches" for queries without a geo component.
-	 * <p/>
+	 * <br>
 	 * A tag, for instance, is considered a limiting agent as are user defined minTakenDate and minUploadDate parameters
 	 * If no limiting factor is passed Flickr returns only photos added in the last 12 hours
 	 * (though Flickr may extend the limit in the future).
@@ -537,12 +537,12 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set Flickr place id.
-	 * <p/>
+	 * <br>
 	 * Not used if BoundingBox is specified.
-	 * <p/>
+	 * <br>
 	 * Geo queries require some sort of limiting agent in order to prevent the database from crying.
 	 * This is basically like the check against "parameterless searches" for queries without a geo component.
-	 * <p/>
+	 * <br>
 	 * A tag, for instance, is considered a limiting agent as are user defined minTakenDate and minUploadDate parameters.
 	 * If no limiting factor is passed Flickr returns only photos added in the last 12 hours
 	 * (though Flickr may extend the limit in the future).
@@ -564,7 +564,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set media type to filter results by.
-	 * <p/>
+	 * <br>
 	 * Defaults to all if not specified.
 	 *
 	 * @param mediaType media type to filter results by.
@@ -584,15 +584,15 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set geotagged photo search.
-	 * <p/>
+	 * <br>
 	 * If true, will search for photos that have been geotagged, if false will search for photos
 	 * that have not been geotagged.
-	 * <p/>
+	 * <br>
 	 * By default, this is null and is ignored.
-	 * <p/>
+	 * <br>
 	 * Geo queries require some sort of limiting agent in order to prevent the database from crying.
 	 * This is basically like the check against "parameterless searches" for queries without a geo component.
-	 * <p/>
+	 * <br>
 	 * A tag, for instance, is considered a limiting agent as are user defined minTakenDate and minUploadDate parameters.
 	 * If no limiting factor is passed Flickr returns only photos added in the last 12 hours
 	 * (though Flickr may extend the limit in the future).
@@ -615,13 +615,13 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the geo context to search in.
-	 * <p/>
+	 * <br>
 	 * Geo context represents the photo's geotagginess beyond latitude and longitude. For example, you may wish
 	 * to search for photos that were taken indoors or outdoors.
-	 * <p/>
+	 * <br>
 	 * Geo queries require some sort of limiting agent in order to prevent the database from crying.
 	 * This is basically like the check against "parameterless searches" for queries without a geo component.
-	 * <p/>
+	 * <br>
 	 * A tag, for instance, is considered a limiting agent as are user defined minTakenDate and minUploadDate parameters.
 	 * If no limiting factor is passed Flickr returns only photos added in the last 12 hours
 	 * (though Flickr may extend the limit in the future).
@@ -643,13 +643,13 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set latitude for radio geo queries.
-	 * <p/>
+	 * <br>
 	 * A valid latitude, in decimal format, for doing radial geo queries.
-	 * <p/>
-	 * <p/>
+	 * <br>
+	 * <br>
 	 * Geo queries require some sort of limiting agent in order to prevent the database from crying.
 	 * This is basically like the check against "parameterless searches" for queries without a geo component.
-	 * <p/>
+	 * <br>
 	 * A tag, for instance, is considered a limiting agent as are user defined minTakenDate and minUploadDate parameters.
 	 * If no limiting factor is passed Flickr returns only photos added in the last 12 hours
 	 * (though Flickr may extend the limit in the future).
@@ -671,13 +671,13 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set longitude for radio geo queries.
-	 * <p/>
+	 * <br>
 	 * A valid longitude, in decimal format, for doing radial geo queries.
-	 * <p/>
-	 * <p/>
+	 * <br>
+	 * <br>
 	 * Geo queries require some sort of limiting agent in order to prevent the database from crying.
 	 * This is basically like the check against "parameterless searches" for queries without a geo component.
-	 * <p/>
+	 * <br>
 	 * A tag, for instance, is considered a limiting agent as are user defined minTakenDate and minUploadDate parameters.
 	 * If no limiting factor is passed Flickr returns only photos added in the last 12 hours
 	 * (though Flickr may extend the limit in the future).
@@ -700,7 +700,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set radius used for geo queries.
-	 * <p/>
+	 * <br>
 	 * A valid radius used for geo queries, greater than zero and less than 20 miles (or 32 kilometers),
 	 * for use with point-based geo queries. The default value is 5 (km).
 	 *
@@ -721,7 +721,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set the unit of measurement when doing radial geo queries.
-	 * <p/>
+	 * <br>
 	 * Valid options are {@link net.jeremybrooks.jinx.JinxConstants.RadiusUnits#mi} (miles)
 	 * and {@link net.jeremybrooks.jinx.JinxConstants.RadiusUnits#km} (kilometers).
 	 * The default is {@link net.jeremybrooks.jinx.JinxConstants.RadiusUnits#km}.
@@ -743,7 +743,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set flag indicating if the search is limited to photos that are part of the Flickr Commons project.
-	 * <p/>
+	 * <br>
 	 * If true, search results will be limited to photos that are part of the Flickr Commons project.
 	 * If false, search results will not be limited to photos that are part of the Flickr Commons project.
 	 * If null, the parameter is ignored and not passed to the Flickr API.
@@ -765,7 +765,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set flag indicating if the search is limited to photos that are in a gallery.
-	 * <p/>
+	 * <br>
 	 * If true, search results will be limited to photos that are in a gallery.
 	 * If false, search results will not be limited to photos that are in a gallery.
 	 * If null, the parameter is ignored and not passed to the Flickr API.
@@ -787,7 +787,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set flag indicating if the search is limited to photos that are for sale on Getty.
-	 * <p/>
+	 * <br>
 	 * If true, search results will be limited to photos that are for sale on Getty.
 	 * If false, search results will not be limited to photos that are for sale on Getty.
 	 * If null, the parameter is ignored and not passed to the Flickr API.
@@ -828,7 +828,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set number of photos to return per page.
-	 * <p/>
+	 * <br>
 	 * If this argument is zero, it will not be passed to the Flickr API, and Flickr will default to 100.
 	 * The maximum allowed value is 500.
 	 *
@@ -849,7 +849,7 @@ public class SearchParameters implements Serializable {
 
 	/**
 	 * Set page of results to return.
-	 * <p/>
+	 * <br>
 	 * If this argument is zero, it will not be passed to the Flickr API, and Flickr will default to 1.
 	 *
 	 * @param page page of results to return.
@@ -956,7 +956,7 @@ public class SearchParameters implements Serializable {
 		/**
 		 * Return the bounding box as a comma separated list of values representing the bottom-left corner
 		 * of the box and the top-right corner: minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude.
-		 * <p/>
+		 * <br>
 		 * This string is in the format expected by the Flickr API.
 		 *
 		 * @return comma separated list defining the bounding box.

@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,10 +43,8 @@ public class GalleriesApi {
 
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.galleries.addPhoto.html">flickr.galleries.addPhoto</a>
-	 * <p/>
 	 * Add a photo to a gallery.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'write' permission.
 	 *
 	 * @param galleryId Required. The ID of the gallery to add a photo to. Note: this is the compound ID returned in methods like flickr.galleries.getList, and flickr.galleries.getListForPhoto.
@@ -54,6 +52,7 @@ public class GalleriesApi {
 	 * @param comment   Optional. A short comment or story to accompany the photo.
 	 * @return object with response from Flickr indicating ok or fail.
 	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.galleries.addPhoto.html">flickr.galleries.addPhoto</a>
 	 */
 	public Response addPhoto(String galleryId, String photoId, String comment) throws JinxException {
 		JinxUtils.validateParams(galleryId, photoId);
@@ -68,11 +67,8 @@ public class GalleriesApi {
 	}
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.galleries.create.html">flickr.galleries.create</a>
-	 * <p/>
-	 * <p/>
 	 * Create a new gallery for the calling user.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'write' permission.
 	 *
 	 * @param title          Required. The name of the gallery.
@@ -81,6 +77,7 @@ public class GalleriesApi {
 	 * @param fullResult     Get the result in the same format as galleries.getList
 	 * @return information about the created gallery.
 	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.galleries.create.html">flickr.galleries.create</a>
 	 */
 	public GalleryInfo create(String title, String description, String primaryPhotoId, boolean fullResult) throws JinxException {
 		JinxUtils.validateParams(title, description);
@@ -98,10 +95,8 @@ public class GalleriesApi {
 	}
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.galleries.editMeta.html">flickr.galleries.editMeta</a>
-	 * <p/>
 	 * Modify the meta-data for a gallery.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'write' permission.
 	 *
 	 * @param galleryId   Required. The gallery ID to update.
@@ -109,6 +104,7 @@ public class GalleriesApi {
 	 * @param description Optional. The new description for the gallery.
 	 * @return object with response from Flickr indicating ok or fail.
 	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.galleries.editMeta.html">flickr.galleries.editMeta</a>
 	 */
 	public Response editMeta(String galleryId, String title, String description) throws JinxException {
 		JinxUtils.validateParams(galleryId, title);
@@ -123,10 +119,8 @@ public class GalleriesApi {
 	}
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.galleries.editPhoto.html">flickr.galleries.editPhoto</a>
-	 * <p/>
 	 * Edit the comment for a gallery photo.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'write' permission.
 	 *
 	 * @param galleryId Required. The ID of the gallery containing the photo. Note: this is the compound ID returned in methods like flickr.galleries.getList, and flickr.galleries.getListForPhoto.
@@ -134,6 +128,7 @@ public class GalleriesApi {
 	 * @param comment   Required. The updated comment for the photo.
 	 * @return object with response from Flickr indicating ok or fail.
 	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.galleries.editPhoto.html">flickr.galleries.editPhoto</a>
 	 */
 	public Response editPhoto(String galleryId, String photoId, String comment) throws JinxException {
 		JinxUtils.validateParams(galleryId, photoId, comment);
@@ -147,9 +142,9 @@ public class GalleriesApi {
 
 	/**
 	 * <a href="https://www.flickr.com/services/api/flickr.galleries.editPhotos.html">flickr.galleries.editPhotos</a>
-	 * <p/>
+	 * <br>
 	 * Modify the photos in a gallery. Use this method to add, remove and re-order photos.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'write' permission.
 	 *
 	 * @param galleryId      Required. The id of the gallery to modify. The gallery must belong to the calling user.
@@ -169,13 +164,12 @@ public class GalleriesApi {
 	}
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.galleries.getInfo.html">flickr.galleries.getInfo</a>
-	 * <p/>
 	 * This method does not require authentication.
 	 *
 	 * @param galleryId Required. The gallery ID you are requesting information for.
 	 * @return information about the gallery.
 	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.galleries.getInfo.html">flickr.galleries.getInfo</a>
 	 */
 	public GalleryInfo galleryInfo(String galleryId) throws JinxException {
 		JinxUtils.validateParams(galleryId);
@@ -186,18 +180,17 @@ public class GalleriesApi {
 	}
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.galleries.getList.html">flickr.galleries.getList</a>
-	 * <p/>
 	 * Return the list of galleries created by a user. Sorted from newest to oldest.
-	 * <p/>
+	 * <br>
 	 * This method does not require authentication.
 	 *
 	 * @param userId  Required. The NSID of the user to get a galleries list for. If none is specified, the calling user is assumed.
-	 * @param perPage Optional. Number of galleries to return per page. If this argument is <= 0, it defaults to 100. The maximum allowed value is 500.
-	 * @param page    Optional. The page of results to return. If this argument is <= 0, it defaults to 1.
+	 * @param perPage Optional. Number of galleries to return per page. If this argument is &le;= 0, it defaults to 100. The maximum allowed value is 500.
+	 * @param page    Optional. The page of results to return. If this argument is &le;= 0, it defaults to 1.
 	 * @param extras  Optional. Extra information to fetch for the primary photo.
 	 * @return list of galleries for the user.
 	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.galleries.getList.html">flickr.galleries.getList</a>
 	 */
 	public GalleryList getList(String userId, int perPage, int page, EnumSet<JinxConstants.PhotoExtras> extras) throws JinxException {
 		JinxUtils.validateParams(userId);
@@ -217,17 +210,16 @@ public class GalleriesApi {
 	}
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.galleries.getListForPhoto.html">flickr.galleries.getListForPhoto</a>
-	 * <p/>
 	 * Return the list of galleries to which a photo has been added. Galleries are returned sorted by date which the photo was added to the gallery.
-	 * <p/>
+	 * <br>
 	 * This method does not require authentication.
 	 *
 	 * @param photoId Required. The ID of the photo to fetch a list of galleries for.
-	 * @param perPage Optional. Number of galleries to return per page. If this argument is <= 0, it defaults to 100. The maximum allowed value is 500.
-	 * @param page    Optional. The page of results to return. If this argument is <= 0, it defaults to 1.
+	 * @param perPage Optional. Number of galleries to return per page. If this argument is &le;= 0, it defaults to 100. The maximum allowed value is 500.
+	 * @param page    Optional. The page of results to return. If this argument is &le;= 0, it defaults to 1.
 	 * @return list of galleries to which a photo has been added.
 	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.galleries.getListForPhoto.html">flickr.galleries.getListForPhoto</a>
 	 */
 	public GalleryList getListForPhoto(String photoId, int perPage, int page) throws JinxException {
 		JinxUtils.validateParams(photoId);
@@ -244,21 +236,20 @@ public class GalleriesApi {
 	}
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.galleries.getPhotos.html">flickr.galleries.getPhotos</a>
-	 * <p/>
 	 * Return the list of photos for a gallery
-	 * <p/>
+	 * <br>
 	 * This method does not require authentication.
-	 * <p/>
+	 * <br>
 	 * Note: The Flickr documentation includes a per_page and page argument. However, galleries are limited to
 	 * 18 photos, and Flickr ignores the page and per_page parameters. Since they are not actually used, Jinx
 	 * does not support them.
-	 * <p/>
+	 * <br>
 	 *
 	 * @param galleryId Required. The ID of the gallery of photos to return.
 	 * @param extras    Optional. Extra information to fetch for the primary photo.
 	 * @return photos in the gallery.
 	 * @throws JinxException if required parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.galleries.getPhotos.html">flickr.galleries.getPhotos</a>
 	 */
 	public Photos getPhotos(String galleryId, EnumSet<JinxConstants.PhotoExtras> extras) throws JinxException {
 		JinxUtils.validateParams(galleryId);

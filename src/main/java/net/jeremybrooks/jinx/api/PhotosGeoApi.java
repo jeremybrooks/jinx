@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,13 +42,13 @@ public class PhotosGeoApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.geo.batchCorrectLocation.html">flickr.photos.geo.batchCorrectLocation</a>
-     * <p/>
+     * <br>
      * Correct the places hierarchy for all the photos for a user at a given latitude, longitude and accuracy.
-     * <p/>
+     * <br>
      * Batch corrections are processed in a delayed queue so it may take a few minutes before the changes are reflected in a user's photos.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
-     * <p/>
+     * <br>
      * Note: This method requires an HTTP POST request.
      *
      * @param lat      (Required) The latitude of the photos to be update whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
@@ -80,8 +80,8 @@ public class PhotosGeoApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.geo.correctLocation.html">flickr.photos.geo.correctLocation</a>
-     * <p/>
-     * <p/>
+     * <br>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId      (Required) The ID of the photo whose WOE location is being corrected.
@@ -114,9 +114,9 @@ public class PhotosGeoApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.geo.getLocation.html">flickr.photos.geo.getLocation</a>
-     * <p/>
+     * <br>
      * Get the geo data (latitude and longitude and the accuracy level) for a photo.
-     * <p/>
+     * <br>
      * This method does not require authentication.
      *
      * @param photoId (Required) The id of the photo you want to retrieve location data for.
@@ -135,9 +135,9 @@ public class PhotosGeoApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.geo.getPerms.html">flickr.photos.geo.getPerms</a>
-     * <p/>
+     * <br>
      * Get permissions for who may view geo data for a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'read' permission.
      *
      * @param photoId (Required) The id of the photo to get permissions for.
@@ -155,7 +155,7 @@ public class PhotosGeoApi {
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.geo.photosForLocation.html">flickr.photos.geo.photosForLocation</a>
      * Return a list of photos for the calling user at a specific latitude, longitude and accuracy
-     * <p/>
+     * <br>
      * This method requires authentication with 'read' permission.
      *
      * @param lat      (Required) The latitude whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
@@ -190,9 +190,9 @@ public class PhotosGeoApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.geo.removeLocation.html">flickr.photos.geo.removeLocation</a>
-     * <p/>
+     * <br>
      * Removes the geo data associated with a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId (Required) The id of the photo you want to remove location data from.
@@ -210,11 +210,11 @@ public class PhotosGeoApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.geo.setContext.html">flickr.photos.geo.setContext</a>
-     * <p/>
+     * <br>
      * Indicate the state of a photo's geotagginess beyond latitude and longitude.
-     * <p/>
+     * <br>
      * Note : photos passed to this method must already be geotagged.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId (Required) The id of the photo to set context data for.
@@ -234,15 +234,15 @@ public class PhotosGeoApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.geo.setLocation.html">flickr.photos.geo.setLocation</a>
-     * <p/>
+     * <br>
      * Sets the geo data (latitude and longitude and, optionally, the accuracy level) for a photo.
      * Before users may assign location data to a photo they must define who, by default, may view that information.
      * Users can edit this preference at http://www.flickr.com/account/geo/privacy/. If a user has not set this preference,
      * the API method will return an error.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
-     * <p/>
-     * <p/>
+     * <br>
+     * <br>
      * The default context for geotagged photos is 0, or "not defined"
      *
      * @param photoId  (Required) The id of the photo to set location data for.
@@ -271,9 +271,9 @@ public class PhotosGeoApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.geo.setPerms.html">flickr.photos.geo.setPerms</a>
-     * <p/>
+     * <br>
      * Set the permission for who may view the geo data associated with a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId   (Required) The id of the photo to set permissions for.

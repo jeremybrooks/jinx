@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,9 +40,9 @@ public class PhotosLicensesApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html">flickr.photos.licenses.getInfo</a>
-     * <p/>
+     * <br>
      * Fetches a list of available photo licenses for Flickr.
-     * <p/>
+     * <br>
      * This method does not require authentication.
      *
      * @return object containing a list of currently available licenses.
@@ -57,9 +57,9 @@ public class PhotosLicensesApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.licenses.setLicense.html">flickr.photos.licenses.setLicense</a>
-     * <p/>
+     * <br>
      * Sets the license for a photo.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
      *
      * @param photoId   (Required) The photo to update the license for.

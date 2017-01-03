@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -88,7 +88,7 @@ public class OAuthApi {
 	 *
 	 * Exchange an auth token from the old Authentication API, to an OAuth access token.
 	 * Calling this method will delete the auth token used to make the request.
-	 * <p/>
+	 * <br>
 	 * This method should be called when upgrading your app to use OAuth. Call this method prior to initializing
 	 * Jinx, and then use the OAuthExchangedToken to initialize Jinx.
 	 *
@@ -150,10 +150,10 @@ public class OAuthApi {
 
 	/*
 	 * Compute the signature for the API call.
-	 * <p/>
+	 * <br>
 	 * This computes a signature for the legacy Flickr auth API. The only time we should need to call this
 	 * is when converting a legacy access token to an OAuth access token.
-	 * <p/>
+	 * <br>
 	 * Legacy auth spec: http://secure.flickr.com/services/api/auth.spec.html
 	 *
 	 * @param params    key/value map of parameters. Must be in alphabetic order to

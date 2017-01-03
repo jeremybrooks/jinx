@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,54 +21,61 @@ package net.jeremybrooks.jinx;
 import net.jeremybrooks.jinx.response.Response;
 
 /**
- * @author jeremyb
+ * @author Jeremy Brooks
  */
 public class JinxException extends java.lang.Exception {
 
 
-	private static final long serialVersionUID = -8987959765204324519L;
+  private static final long serialVersionUID = -8987959765204324519L;
 
-	private int flickrErrorCode;
-	private String flickrErrorMessage;
+  private int flickrErrorCode;
+  private String flickrErrorMessage;
 
-	/**
-	 * Constructs an instance of <code>JinxException</code> with the specified detail message.
-	 *
-	 * @param msg the detail message.
-	 */
-	public JinxException(String msg) {
-		super(msg);
-	}
+  /**
+   * Constructs an instance of {@code JinxException} with the specified detail message.
+   *
+   * @param msg the detail message.
+   */
+  public JinxException(String msg) {
+    super(msg);
+  }
 
 
-	/**
-	 * Constructs an instance of <code>JinxException</code> with the specified detail message.
-	 *
-	 * @param msg the detail message.
-	 */
-	public JinxException(String msg, Throwable cause) {
-		super(msg, cause);
-	}
+  /**
+   * Constructs an instance of {@code JinxException} with the specified detail message and cause..
+   *
+   * @param msg   the detail message.
+   * @param cause the cause of the error.
+   */
+  public JinxException(String msg, Throwable cause) {
+    super(msg, cause);
+  }
 
-	public JinxException(String msg, Throwable cause, Response response) {
-		super(msg + " [" + response.getCode() + ": " + response.getMessage() + "]", cause);
-		this.setFlickrErrorCode(response.getCode());
-		this.setFlickrErrorMessage(response.getMessage());
-	}
+  /**
+   * Constructs an instance of {@code JinxException} with the specified detail message, cause, and response from Flickr.
+   * @param msg the detail message.
+   * @param cause the cause of the error.
+   * @param response the response from Flickr with the code and error message.
+   */
+  public JinxException(String msg, Throwable cause, Response response) {
+    super(msg + " [" + response.getCode() + ": " + response.getMessage() + "]", cause);
+    this.setFlickrErrorCode(response.getCode());
+    this.setFlickrErrorMessage(response.getMessage());
+  }
 
-	public int getFlickrErrorCode() {
-		return flickrErrorCode;
-	}
+  public int getFlickrErrorCode() {
+    return flickrErrorCode;
+  }
 
-	public void setFlickrErrorCode(int flickrErrorCode) {
-		this.flickrErrorCode = flickrErrorCode;
-	}
+  public void setFlickrErrorCode(int flickrErrorCode) {
+    this.flickrErrorCode = flickrErrorCode;
+  }
 
-	public String getFlickrErrorMessage() {
-		return flickrErrorMessage;
-	}
+  public String getFlickrErrorMessage() {
+    return flickrErrorMessage;
+  }
 
-	public void setFlickrErrorMessage(String flickrErrorMessage) {
-		this.flickrErrorMessage = flickrErrorMessage;
-	}
+  public void setFlickrErrorMessage(String flickrErrorMessage) {
+    this.flickrErrorMessage = flickrErrorMessage;
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,11 +37,9 @@ public class ActivityApi {
 
 
 	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.activity.userComments.html">flickr.activity.userComments</a>
-	 *
 	 * Returns a list of recent activity on photos commented on by the calling user.
 	 * Do not poll this method more than once an hour.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'read' permission.
 	 *
 	 * @param perPage (Optional) Number of items to return per page. If this argument is null or less than 1, it defaults to 10.
@@ -78,11 +76,9 @@ public class ActivityApi {
 
 
 	/**
-	 * <a href=https://www.flickr.com/services/api/flickr.activity.userPhotos.html">flickr.activity.userPhotos</a>
-	 *
 	 * Returns a list of recent activity on photos belonging to the calling user.
 	 * Do not poll this method more than once an hour.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'read' permission.
 	 *
 	 * @param timeframe (Optional) The timeframe in which to return updates for.

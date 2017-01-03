@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,17 +31,16 @@ public class PhotoUtils {
 
 	/**
 	 * Get the photo page URL for this photo.
-	 * <p/>
+	 * <br>
 	 * Photo URL's are in the format
 	 * https://www.flickr.com/photos/{user-id}/{photo-id}
-	 * <p/>
+	 * <br>
 	 *
+   * @param info identifies the photo to get the URL for.
 	 * @return the url
 	 */
 	public static String getUrl(PhotoInfo info) {
-		StringBuilder sb = new StringBuilder(JinxConstants.FLICKR_PHOTO_URL);
-		sb.append(info.getOwnerUserId()).append('/').append(info.getPhotoId());
-		return sb.toString();
+    return JinxConstants.FLICKR_PHOTO_URL + info.getOwnerUserId() + '/' + info.getPhotoId();
 	}
 
 	/**

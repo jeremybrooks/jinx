@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,9 +46,9 @@ public class PhotosUploadApi {
 
     /**
      * <a href="https://www.flickr.com/services/api/flickr.photos.upload.checkTickets.html">flickr.photos.upload.checkTickets</a>
-     * <p/>
+     * <br>
      * Checks the status of one or more asynchronous photo upload tickets.
-     * <p/>
+     * <br>
      * This method does not require authentication.
      *
      * @param tickets (Required) list of ticket id's.
@@ -66,11 +66,11 @@ public class PhotosUploadApi {
 
     /**
      * Upload a photo or video to Flickr.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
-     * <p/>
+     * <br>
      * If the title parameter is null, the filename will be used as the title.
-     * <p/>
+     * <br>
      * For more details, see the <a href="https://www.flickr.com/services/api/upload.api.html">Flickr photo upload</a>
      * documentation.
      *
@@ -119,9 +119,9 @@ public class PhotosUploadApi {
 
     /**
      * Upload a photo to Flickr.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
-     * <p/>
+     * <br>
      * For more details, see the <a href="https://www.flickr.com/services/api/upload.api.html">Flickr photo upload</a>
      * documentation.
      *
@@ -184,9 +184,9 @@ public class PhotosUploadApi {
 
     /**
      * Replace a photo on Flickr.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
-     * <p/>
+     * <br>
      * For more details, see the <a href="https://www.flickr.com/services/api/replace.api.html">Flickr photo replace</a>
      * documentation.
      *
@@ -215,9 +215,9 @@ public class PhotosUploadApi {
 
     /**
      * Replace a photo on Flickr.
-     * <p/>
+     * <br>
      * This method requires authentication with 'write' permission.
-     * <p/>
+     * <br>
      * For more details, see the <a href="https://www.flickr.com/services/api/replace.api.html">Flickr photo replace</a>
      * documentation.
      *

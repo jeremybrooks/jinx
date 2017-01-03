@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,9 +43,9 @@ public class CollectionsApi {
 
 	/**
 	 * <a href="https://www.flickr.com/services/api/flickr.collections.getInfo.html">flickr.collections.getInfo</a>
-	 * <p/>
+	 * <br>
 	 * Returns information for a single collection. Currently can only be called by the collection owner, this may change.
-	 * <p/>
+	 * <br>
 	 * This method requires authentication with 'read' permission.
 	 *
 	 * @param collectionId Required. The id of the collection to fetch information for.
@@ -63,9 +63,9 @@ public class CollectionsApi {
 
 	/**
 	 * <a href="https://www.flickr.com/services/api/flickr.collections.getTree.html">flickr.collections.getTree</a>
-	 * <p/>
+	 * <br>
 	 * Returns a tree (or sub tree) of collections belonging to a given user.
-	 * <p/>
+	 * <br>
 	 * This method does not require authentication.
 	 *
 	 * @param collectionId Optional. The ID of the collection to fetch a tree for, or zero to fetch the root collection. Defaults to zero.
