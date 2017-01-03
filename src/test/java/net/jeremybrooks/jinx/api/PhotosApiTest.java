@@ -322,6 +322,39 @@ public class PhotosApiTest {
 	}
 
 	@Test
+  public void testMachineTagWithSpaceSearch() throws Exception {
+	  List<String> machineTags = new ArrayList<String>();
+	  machineTags.add("camera:model=5d 2");
+    SearchParameters sp = new SearchParameters();
+    sp.setUserId(userId);
+    sp.setMachineTags(machineTags);
+	  Photos photos = photosApi.search(sp);
+	  assertNotNull(photos);
+	  assertEquals("ok", photos.getStat());
+	  assertEquals(0, photos.getCode());
+	  assertNotNull(photos.getPhotoList());
+	  assertTrue(photos.getPhotoList().size() == 1);
+	  assertEquals("14276194043", photos.getPhotoList().get(0).getPhotoId());
+  }
+
+  @Test
+  public void testMultipleMachineTagsSearch() throws Exception {
+    List<String> machineTags = new ArrayList<String>();
+    machineTags.add("camera:model=5d 2");
+    machineTags.add("camera:model=5d2");
+    SearchParameters sp = new SearchParameters();
+    sp.setUserId(userId);
+    sp.setMachineTags(machineTags);
+    sp.setMachineTagMode(JinxConstants.TagMode.any);
+    Photos photos = photosApi.search(sp);
+    assertNotNull(photos);
+    assertEquals("ok", photos.getStat());
+    assertEquals(0, photos.getCode());
+    assertNotNull(photos.getPhotoList());
+    assertTrue(photos.getPhotoList().size() == 2);
+  }
+
+	@Test
 	public void testSearch() throws Exception {
 		List<String> tags = new ArrayList<String>();
 		tags.add("Nature");

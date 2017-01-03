@@ -336,6 +336,41 @@ public class JinxUtils {
         return tmp;
     }
 
+  /**
+   * Normalize a List of Flickr machine tags for search calls.
+   * <p/>
+   * This method takes a list of tags and converts them to the normalized representation that Flickr uses (at least,
+   * as close to the normalized version as could be figured out).
+   * <p/>
+   * Each String in the list will have the following characters removed: !#$%&'()*+.,';
+   * The String is then converted to lowercase and added to a new List.
+   * <p/>
+   * Normalization is done primarily so that tags containing spaces do not have to be surrounded with double quotes
+   * before sending to the Flickr API. It is easier to normalize than to surround everything with double quotes, and
+   * this also results is slightly smaller (and more readable) calls to the Flickr API.
+   * <p/>
+   * The difference between this method and the normalization method for regular tags is that this method will
+   * NOT remove spaces, and it will add quotation marks around tags that contain spaces. It seems that Flickr
+   * takes spaces into account for machine tags, so this step is necessary.
+   *
+   * @param list Flickr machine tags to normalize.
+   * @return new List containing normalized machine tags.
+   */
+    public static List<String> normalizeMachineTagsForSearch(List<String> list) {
+      if (isNullOrEmpty(list)) {
+        return null;
+      }
+      List<String> tmp = new ArrayList<String>();
+      for (String s : list) {
+        String newString = s.replaceAll("[!#$%&'()*+\\.,';]", "").toLowerCase();
+        if (newString.contains(" ")) {
+          newString = "\"" + newString + "\"";
+        }
+        tmp.add(newString);
+      }
+      return tmp;
+    }
+
     /**
      * Normalize tags for uploads.
      *

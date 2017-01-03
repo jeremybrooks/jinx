@@ -797,7 +797,7 @@ public class PhotosApi {
 		}
 
 		if (!JinxUtils.isNullOrEmpty(searchParameters.getMachineTags())) {
-			params.put("machine_tags", JinxUtils.buildCommaDelimitedList(JinxUtils.normalizeTagsForSearch(searchParameters.getMachineTags())));
+			params.put("machine_tags", JinxUtils.buildCommaDelimitedList(JinxUtils.normalizeMachineTagsForSearch(searchParameters.getMachineTags())));
 			if (searchParameters.getMachineTagMode() != null) {
 				params.put("machine_tag_mode", searchParameters.getMachineTagMode().toString());
 			}
