@@ -13,3 +13,4 @@ db/*.sqlite3
 test_token.xml
 test_oauth_token.xml
 *.iml
+*.idea
