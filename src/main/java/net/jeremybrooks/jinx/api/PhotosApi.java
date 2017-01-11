@@ -850,6 +850,21 @@ public class PhotosApi {
       params.put("page", Integer.toString(searchParameters.getPage()));
     }
 
+    if (!JinxUtils.isNullOrEmpty(searchParameters.getColorCodes())) {
+      params.put("color_codes", JinxUtils.buildCommaDelimitedList(searchParameters.getColorCodes()));
+    }
+
+    if (!JinxUtils.isNullOrEmpty(searchParameters.getOrientations())) {
+      // if there are four parameters, do nothing; that is the same as selecting all four
+      if (searchParameters.getOrientations().size() != 4) {
+        params.put("orientation", JinxUtils.buildCommaDelimitedList(searchParameters.getOrientations()));
+      }
+    }
+
+    if (!JinxUtils.isNullOrEmpty(searchParameters.getPictureStyles())) {
+      params.put("styles", JinxUtils.buildCommaDelimitedList(searchParameters.getPictureStyles()));
+    }
+
     return jinx.flickrGet(params, Photos.class);
   }
 

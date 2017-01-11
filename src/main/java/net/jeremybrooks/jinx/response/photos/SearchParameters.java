@@ -64,6 +64,9 @@ public class SearchParameters implements Serializable {
 	private Set<JinxConstants.PhotoExtras> extras;
 	private int perPage;
 	private int page;
+  private Set<JinxConstants.Orientation> orientations;
+  private Set<JinxConstants.ColorCode> colorCodes;
+  private Set<JinxConstants.PictureStyle> pictureStyles;
 
 	/**
 	 * Get the user id of the user who's photo to search.
@@ -858,8 +861,74 @@ public class SearchParameters implements Serializable {
 		this.page = page;
 	}
 
+  /**
+   * Get the desired orientations.
+   *
+   * <p>This parameter is not included in the official API documentation. It should be considered experimental.</p>
+   *
+   * @return orientation of photos.
+   */
+  public Set<JinxConstants.Orientation> getOrientations() {
+    return orientations;
+  }
 
-	public class BoundingBox implements Serializable {
+  /**
+   * Set the orientation of photos.
+   *
+   * <p>This parameter is not included in the official API documentation. It should be considered experimental.</p>
+   *
+   * @param orientations the desired orientations.
+   */
+  public void setOrientations(Set<JinxConstants.Orientation> orientations) {
+    this.orientations = orientations;
+  }
+
+  /**
+   * Get the color codes.
+   *
+   * <p>This parameter is not included in the official API documentation. It should be considered experimental.</p>
+   *
+   * @return the colors of the returned photos.
+   */
+  public Set<JinxConstants.ColorCode> getColorCodes() {
+    return colorCodes;
+  }
+
+  /**
+   * Set the color codes.
+   *
+   * <p>This parameter is not included in the official API documentation. It should be considered experimental.</p>
+   *
+   * @param colorCodes the desired colors of returned photos.
+   */
+  public void setColorCodes(Set<JinxConstants.ColorCode> colorCodes) {
+    this.colorCodes = colorCodes;
+  }
+
+  /**
+   * Get the picture styles.
+   *
+   * <p>This parameter is not included in the official API documentation. It should be considered experimental.</p>
+   *
+   * @return the picture style of returned photos.
+   */
+  public Set<JinxConstants.PictureStyle> getPictureStyles() {
+    return pictureStyles;
+  }
+
+  /**
+   * Set the picture styles.
+   *
+   * <p>This parameter is not included in the official API documentation. It should be considered experimental.</p>
+   *
+   * @param pictureStyles the desired styles of the returned photos.
+   */
+  public void setPictureStyles(Set<JinxConstants.PictureStyle> pictureStyles) {
+    this.pictureStyles = pictureStyles;
+  }
+
+
+  public class BoundingBox implements Serializable {
 		private static final long serialVersionUID = 5097597630955255868L;
 		private double minimumLongitude;
 		private double minimumLatitude;
