@@ -49,7 +49,7 @@ If you are using Maven, just include this in your pom.xml file
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>0.8.0</version>
+		<version>0.8.2</version>
 	</dependency>
 
 If you are not using Maven, you will need these libraries, and their dependencies:
@@ -61,6 +61,11 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 # VERSION HISTORY
 
+## Version 0.8.2 adds support for experimental search options
+  * orientation
+  * color code
+  * picture style
+  
 ## Version 0.8.0 supports the following API's
   * activity
   * auth.oauth
