@@ -36,7 +36,10 @@ public class PlacesApi {
   /**
    * Return a list of place IDs for a query string.
    * <p>
-   * The flickr.places.find method is not a geocoder. It will round up to the nearest place type to which place IDs apply. For example, if you pass it a street level address it will return the city that contains the address rather than the street, or building, itself.
+   * The flickr.places.find method is not a geocoder. It will round up to the nearest place type to which place
+   * IDs apply. For example, if you pass it a street level address it will return the city that contains the
+   * address rather than the street, or building, itself.
+   *
    * Authentication
    * <p>
    * This method does not require authentication.

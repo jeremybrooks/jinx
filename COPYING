@@ -273,10 +273,10 @@ in one of these ways:
     with subsection 6b.
 
     d) Convey the object code by offering access from a designated
-    place (gratis or for a charge), and offer equivalent access to the
-    Corresponding Source in the same way through the same place at no
+    placeInfo (gratis or for a charge), and offer equivalent access to the
+    Corresponding Source in the same way through the same placeInfo at no
     further charge.  You need not require recipients to copy the
-    Corresponding Source along with the object code.  If the place to
+    Corresponding Source along with the object code.  If the placeInfo to
     copy the object code is a network server, the Corresponding Source
     may be on a different server (operated by you or a third party)
     that supports equivalent copying facilities, provided you maintain
@@ -354,7 +354,7 @@ this License without regard to the additional permissions.
   When you convey a copy of a covered work, you may at your option
 remove any additional permissions from that copy, or from any part of
 it.  (Additional permissions may be written to require their own
-removal in certain cases when you modify the work.)  You may place
+removal in certain cases when you modify the work.)  You may placeInfo
 additional permissions on material, added by you to a covered work,
 for which you have or can give appropriate copyright permission.
 
@@ -396,7 +396,7 @@ of that license document, provided that the further restriction does
 not survive such relicensing or conveying.
 
   If you add terms to a covered work in accord with this section, you
-must place, in the relevant source files, a statement of the
+must placeInfo, in the relevant source files, a statement of the
 additional terms that apply to those files, or a notice indicating
 where to find the applicable terms.
 
