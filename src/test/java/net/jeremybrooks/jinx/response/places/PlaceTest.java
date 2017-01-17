@@ -81,7 +81,7 @@ public class PlaceTest {
     assertEquals("/United+States", country.getPlaceUrl());
 
 
-    Place.ShapeData shapeData = place.getShapeData();
+    Shape shapeData = place.getShape();
     assertNotNull(shapeData);
     assertEquals(new Long(1292570642), shapeData.getCreated());
     assertEquals(new Float(0.1220703125), shapeData.getAlpha());
@@ -157,16 +157,16 @@ public class PlaceTest {
 
     assertTrue(place.isHasShapeData());
 
-    Place.ShapeData shapeData = place.getShapeData();
-    assertNotNull(shapeData);
-    assertEquals(new Long(1292565208), shapeData.getCreated());
-    assertEquals(new Float(0.00823974609375), shapeData.getAlpha());
-    assertEquals(new Integer(82688), shapeData.getCountPoints());
-    assertEquals(new Integer(46), shapeData.getCountEdges());
-    assertEquals(polylines.getProperty("test.getInfoByUrl"), shapeData.getPolylines().get(0).getContent());
-    assertTrue(shapeData.isHasDonuthole());
-    assertFalse(shapeData.isDonuthole());
-    assertEquals(shapeData.getShapefileUrl(), "http://farm6.static.flickr.com/5008/shapefiles/3534_20101217_1869920287.tar.gz");
+    Shape shape = place.getShape();
+    assertNotNull(shape);
+    assertEquals(new Long(1292565208), shape.getCreated());
+    assertEquals(new Float(0.00823974609375), shape.getAlpha());
+    assertEquals(new Integer(82688), shape.getCountPoints());
+    assertEquals(new Integer(46), shape.getCountEdges());
+    assertEquals(polylines.getProperty("test.getInfoByUrl"), shape.getPolylines().get(0).getContent());
+    assertTrue(shape.isHasDonuthole());
+    assertFalse(shape.isDonuthole());
+    assertEquals(shape.getShapefileUrl(), "http://farm6.static.flickr.com/5008/shapefiles/3534_20101217_1869920287.tar.gz");
   }
 
   @Test
@@ -248,5 +248,27 @@ public class PlaceTest {
     PlaceTypes.PlaceType type =list.get(3);
     assertEquals(new Integer(8), type.getPlaceTypeId());
     assertEquals("region", type.getTypeName());
+  }
+
+  @Test
+  public void testGetShapeHistory() throws Exception {
+    InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/places/sample_get_shape_history.json"));
+    ShapeHistory shapeHistory = new Gson().fromJson(reader, ShapeHistory.class);
+    assertNotNull(shapeHistory);
+    assertEquals(new Integer(6), shapeHistory.getTotal());
+    assertEquals("23512048", shapeHistory.getWoeId());
+    assertEquals("HMGdMeJTUb_Sf_5E2g", shapeHistory.getPlaceId());
+    assertEquals("neighbourhood", shapeHistory.getPlaceType());
+    assertEquals(new Integer(22), shapeHistory.getPlaceTypeId());
+    List<Shape> shapeList = shapeHistory.getShapeList();
+    assertNotNull(shapeList);
+    Shape shape = shapeList.get(0);
+    assertEquals(new Long(1292367866), shape.getCreated());
+    assertEquals(new Float(0.00001), shape.getAlpha());
+    assertEquals(new Integer(6762), shape.getCountPoints());
+    assertEquals(new Integer(37), shape.getCountEdges());
+    assertEquals(polylines.getProperty("test.getShapeHistory"), shape.getPolylines().get(0).getContent());
+    assertFalse(shape.isDonuthole());
+    assertEquals("http://farm6.static.flickr.com/5241/shapefiles/23512048_20101214_4480f6f8e1.tar.gz", shape.getShapefileUrl());
   }
 }
