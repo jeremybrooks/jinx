@@ -1,0 +1,9 @@
+{ "place_types": {
+  "place_type": [
+    { "id": 22, "_content": "neighbourhood" },
+    { "id": 7, "_content": "locality" },
+    { "id": 9, "_content": "county" },
+    { "id": 8, "_content": "region" },
+    { "id": 12, "_content": "country" },
+    { "id": 29, "_content": "continent" }
+  ] }, "stat": "ok" }

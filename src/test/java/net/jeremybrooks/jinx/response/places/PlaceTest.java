@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Properties;
 
 import static junit.framework.TestCase.assertTrue;
@@ -234,5 +235,18 @@ public class PlaceTest {
     assertEquals("Financial District, San Francisco, CA, US, United States", place.getContent());
     assertEquals("Financial District", place.getWoeName());
     assertEquals(new Integer(130215), place.getPhotoCount());
+  }
+
+  @Test
+  public void testGetPlaceTypes() throws Exception {
+    InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/places/sample_get_place_types.json"));
+    PlaceTypes placeTypes = new Gson().fromJson(reader, PlaceTypes.class);
+    assertNotNull(placeTypes);
+    List<PlaceTypes.PlaceType> list = placeTypes.getPlaceTypes();
+    assertNotNull(list);
+    assertEquals(6, list.size());
+    PlaceTypes.PlaceType type =list.get(3);
+    assertEquals(new Integer(8), type.getPlaceTypeId());
+    assertEquals("region", type.getTypeName());
   }
 }
