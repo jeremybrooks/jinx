@@ -24,6 +24,10 @@ public class Places extends Response {
     private Float latitude;
     private Float longitude;
     private Integer accuracy;
+    @SerializedName("date_start")
+    private Long dateStart;
+    @SerializedName("date_stop")
+    private Long dateStop;
   }
 
   public List<Place> getPlaces() {
@@ -48,5 +52,13 @@ public class Places extends Response {
 
   public Integer getAccuracy() {
     return places == null ? null : places.accuracy;
+  }
+
+  public Long getDateStart() {
+    return places == null ? null : places.dateStart;
+  }
+
+  public Long getDateStop() {
+    return places == null ? null : places.dateStop;
   }
 }

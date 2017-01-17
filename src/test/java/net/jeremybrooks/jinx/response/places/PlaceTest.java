@@ -271,4 +271,26 @@ public class PlaceTest {
     assertFalse(shape.isDonuthole());
     assertEquals("http://farm6.static.flickr.com/5241/shapefiles/23512048_20101214_4480f6f8e1.tar.gz", shape.getShapefileUrl());
   }
+
+  @Test
+  public void testGetTopPlacesList() throws Exception {
+    InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/places/sample_get_top_places_list.json"));
+    Places places = new Gson().fromJson(reader, Places.class);
+    assertNotNull(places);
+    assertEquals(new Integer(100), places.getTotal());
+    assertEquals(new Long(1484524800), places.getDateStart());
+    assertEquals(new Long(1484611199), places.getDateStop());
+    Place place = places.getPlaces().get(0);
+    assertEquals("2eIY2QFTVr_DwWZNLg", place.getPlaceId());
+    assertEquals("24554868", place.getWoeId());
+    assertEquals(new Float(52.883), place.getLatitude());
+    assertEquals(new Float(-1.974), place.getLongitude());
+    assertEquals("/United+Kingdom/England", place.getPlaceUrl());
+    assertEquals("region", place.getPlaceType());
+    assertEquals(new Integer(8), place.getPlaceTypeId());
+    assertEquals("Europe/London", place.getTimezone());
+    assertEquals("England, GB, United Kingdom", place.getContent());
+    assertEquals("England", place.getWoeName());
+    assertEquals(new Integer(3406), place.getPhotoCount());
+  }
 }
