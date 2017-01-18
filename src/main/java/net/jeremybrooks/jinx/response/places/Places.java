@@ -28,6 +28,12 @@ public class Places extends Response {
     private Long dateStart;
     @SerializedName("date_stop")
     private Long dateStop;
+    @SerializedName("place_type")
+    private String placeType;
+    private Integer pages;
+    private Integer page;
+    @SerializedName("bbox")
+    private String boundingBox;
   }
 
   public List<Place> getPlaces() {
@@ -60,5 +66,21 @@ public class Places extends Response {
 
   public Long getDateStop() {
     return places == null ? null : places.dateStop;
+  }
+
+  public String getPlaceType() {
+    return places == null ? null : places.placeType;
+  }
+
+  public Integer getPages() {
+    return places == null ? null : places.pages;
+  }
+
+  public Integer getPage() {
+    return places == null ? null : places.page;
+  }
+
+  public String getBoundingBox() {
+    return places == null ? null : places.boundingBox;
   }
 }

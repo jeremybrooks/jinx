@@ -1,0 +1,24 @@
+{
+  "places": {
+    "place_type": "region",
+    "total": 1,
+    "pages": 1,
+    "page": 1,
+    "bbox": "-122.42307100000001,37.773779,-122.381071,37.815779",
+    "place": [
+      {
+        "place_id": "NsbUWfBTUb4mbyVu",
+        "woeid": "2347563",
+        "latitude": 37.271,
+        "longitude": -119.270,
+        "place_url": "\/United+States\/California",
+        "place_type": "region",
+        "place_type_id": 8,
+        "timezone": "America\/Los_Angeles",
+        "_content": "California, US, United States",
+        "woe_name": "California"
+      }
+    ]
+  },
+  "stat": "ok"
+}

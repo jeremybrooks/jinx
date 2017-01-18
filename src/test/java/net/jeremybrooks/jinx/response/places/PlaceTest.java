@@ -293,4 +293,27 @@ public class PlaceTest {
     assertEquals("England", place.getWoeName());
     assertEquals(new Integer(3406), place.getPhotoCount());
   }
+
+  @Test
+  public void testGetPlacesForBoundingBox() throws Exception {
+    InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/places/sample_get_places_for_bounding_box.json"));
+    Places places = new Gson().fromJson(reader, Places.class);
+    assertNotNull(places);
+    assertEquals("region", places.getPlaceType());
+    assertEquals(new Integer(1), places.getTotal());
+    assertEquals(new Integer(1), places.getPages());
+    assertEquals(new Integer(1), places.getPage());
+    assertEquals("-122.42307100000001,37.773779,-122.381071,37.815779", places.getBoundingBox());
+    Place place = places.getPlaces().get(0);
+    assertEquals( "NsbUWfBTUb4mbyVu", place.getPlaceId());
+    assertEquals( "2347563", place.getWoeId());
+    assertEquals(new Float(37.271), place.getLatitude());
+    assertEquals(new Float(-119.270), place.getLongitude());
+    assertEquals("/United+States/California", place.getPlaceUrl());
+    assertEquals("region", place.getPlaceType());
+    assertEquals(new Integer(8), place.getPlaceTypeId());
+    assertEquals( "America/Los_Angeles", place.getTimezone());
+    assertEquals("California, US, United States", place.getContent());
+    assertEquals("California", place.getWoeName());
+  }
 }
