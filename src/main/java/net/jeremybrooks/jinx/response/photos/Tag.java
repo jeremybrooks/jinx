@@ -39,6 +39,7 @@ public class Tag implements Serializable {
 	private String fullTagId;
 	@SerializedName("id")
 	private String tagId;
+	private Integer count;
 
 	public String getAuthor() {
 		return author;
@@ -68,6 +69,7 @@ public class Tag implements Serializable {
 		return tagId;
 	}
 
+	public Integer getCount() { return count; }
 
 	@Override
 	public String toString() {
@@ -80,6 +82,7 @@ public class Tag implements Serializable {
 		sb.append(" | authorName='").append(authorName).append('\'');
 		sb.append(" | fullTagId='").append(fullTagId).append('\'');
 		sb.append(" | tagId='").append(tagId).append('\'');
+    sb.append(" | count=").append(count);
 		sb.append('}');
 		return sb.toString();
 	}

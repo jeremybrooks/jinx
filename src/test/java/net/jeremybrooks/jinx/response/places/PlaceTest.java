@@ -2,6 +2,8 @@ package net.jeremybrooks.jinx.response.places;
 
 import com.google.gson.Gson;
 import net.jeremybrooks.jinx.response.activity.ActivityResponseTest;
+import net.jeremybrooks.jinx.response.photos.Tag;
+import net.jeremybrooks.jinx.response.tags.Tags;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -315,5 +317,76 @@ public class PlaceTest {
     assertEquals( "America/Los_Angeles", place.getTimezone());
     assertEquals("California, US, United States", place.getContent());
     assertEquals("California", place.getWoeName());
+  }
+
+  @Test
+  public void testPlacesForContacts() throws Exception {
+    InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/places/sample_places_for_contacts.json"));
+    Places places = new Gson().fromJson(reader, Places.class);
+    assertNotNull(places);
+    assertEquals(new Integer(51), places.getTotal());
+    Place place = places.getPlaces().get(0);
+    assertEquals("NsbUWfBTUb4mbyVu", place.getPlaceId());
+    assertEquals( "2347563", place.getWoeId());
+    assertEquals(new Float(37.271), place.getLatitude());
+    assertEquals(new Float(-119.270), place.getLongitude());
+    assertEquals("/United+States/California", place.getPlaceUrl());
+    assertEquals("region", place.getPlaceType());
+    assertEquals(new Integer(8), place.getPlaceTypeId());
+    assertEquals("America/Los_Angeles", place.getTimezone());
+    assertEquals("California, US, United States", place.getContent());
+    assertEquals("California", place.getWoeName());
+    assertEquals(new Integer(306211), place.getPhotoCount());
+  }
+
+  @Test
+  public void testPlacesForTags() throws Exception {
+    InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/places/sample_places_for_tags.json"));
+    Places places = new Gson().fromJson(reader, Places.class);
+    assertNotNull(places);
+    assertEquals(new Integer(75), places.getTotal());
+    Place place = places.getPlaces().get(0);
+    assertEquals("byMt1GpTWrhtqOpahg", place.getPlaceId());
+    assertEquals( "28288823", place.getWoeId());
+    assertEquals(new Float(40.760), place.getLatitude());
+    assertEquals(new Float(-73.983), place.getLongitude());
+    assertEquals("/United+States/New+York/New+York/Theater+District", place.getPlaceUrl());
+    assertEquals("neighbourhood", place.getPlaceType());
+    assertEquals(new Integer(22), place.getPlaceTypeId());
+    assertEquals("America/New_York", place.getTimezone());
+    assertEquals("Theater District, New York, NY, US, United States", place.getContent());
+    assertEquals("Theater District", place.getWoeName());
+    assertEquals(new Integer(2670), place.getPhotoCount());
+  }
+
+  @Test
+  public void testPlacesForUser() throws Exception {
+    InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/places/sample_places_for_user.json"));
+    Places places = new Gson().fromJson(reader, Places.class);
+    assertNotNull(places);
+    assertEquals(new Integer(70), places.getTotal());
+    Place place = places.getPlaces().get(0);
+    assertEquals("KomQdIRUV7IFfyO5Xw", place.getPlaceId());
+    assertEquals( "55861471", place.getWoeId());
+    assertEquals(new Float(37.909), place.getLatitude());
+    assertEquals(new Float(-122.311), place.getLongitude());
+    assertEquals("/United+States/California/Richmond/Richmond+Annex", place.getPlaceUrl());
+    assertEquals("neighbourhood", place.getPlaceType());
+    assertEquals(new Integer(22), place.getPlaceTypeId());
+    assertEquals("America/Los_Angeles", place.getTimezone());
+    assertEquals("Richmond Annex, Richmond, CA, US, United States", place.getContent());
+    assertEquals("Richmond Annex", place.getWoeName());
+    assertEquals(new Integer(66), place.getPhotoCount());
+  }
+
+  @Test
+  public void testTagsForPlace() throws Exception {
+    InputStreamReader reader = new InputStreamReader(ActivityResponseTest.class.getResourceAsStream("/response/places/sample_tags_for_place.json"));
+    Tags tags = new Gson().fromJson(reader, Tags.class);
+    assertNotNull(tags);
+    assertEquals(new Integer(100), tags.getTotal());
+    Tag tag = tags.getTagList().get(0);
+    assertEquals("portrait", tag.getTag());
+    assertEquals(new Integer(8809), tag.getCount());
   }
 }
