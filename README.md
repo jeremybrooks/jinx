@@ -214,11 +214,11 @@ If you are not using Maven, you will need these libraries, and their dependencie
  
   * places
   * prefs
+  * reflection
   
 ## Not Yet Implemented
 
   * push
-  * reflection
   * stats
   * tags
   * test
