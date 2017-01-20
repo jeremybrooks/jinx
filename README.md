@@ -213,10 +213,10 @@ If you are not using Maven, you will need these libraries, and their dependencie
 ## Additional API's Available In Latest Source
  
   * places
+  * prefs
   
 ## Not Yet Implemented
 
-  * prefs
   * push
   * reflection
   * stats
