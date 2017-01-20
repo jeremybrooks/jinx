@@ -38,5 +38,13 @@ public class PlaceTypes extends Response {
     public String getTypeName() {
       return typeName;
     }
+
+    @Override
+    public String toString() {
+      return "net.jeremybrooks.jinx.response.places.PlaceTypes.PlaceType{" +
+          "placeTypeId=" + placeTypeId +
+          ", typeName='" + typeName + '\'' +
+          '}';
+    }
   }
 }

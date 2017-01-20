@@ -83,4 +83,22 @@ public class Places extends Response {
   public String getBoundingBox() {
     return places == null ? null : places.boundingBox;
   }
+
+  @Override
+  public String toString() {
+    return "net.jeremybrooks.jinx.response.places.Places._Places{" +
+        "places=[" + getPlaces().size() + ']' +
+        ", query='" + getQuery() + '\'' +
+        ", total=" + getTotal() +
+        ", latitude=" + getLatitude() +
+        ", longitude=" + getLongitude() +
+        ", accuracy=" + getAccuracy() +
+        ", dateStart=" + getDateStart() +
+        ", dateStop=" + getDateStop() +
+        ", placeType='" + getPlaceType() + '\'' +
+        ", pages=" + getPages() +
+        ", page=" + getPage() +
+        ", boundingBox='" + getBoundingBox() + '\'' +
+        '}';
+  }
 }

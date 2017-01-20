@@ -13,4 +13,10 @@ public class PlaceInfo extends Response {
     return place;
   }
 
+  @Override
+  public String toString() {
+    return "net.jeremybrooks.jinx.response.places.PlaceInfo{" +
+        "place=" + place +
+        '}';
+  }
 }

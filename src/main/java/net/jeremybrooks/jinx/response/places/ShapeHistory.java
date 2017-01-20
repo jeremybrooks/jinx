@@ -51,4 +51,16 @@ public class ShapeHistory extends Response {
     @SerializedName("shape")
     private List<Shape> shapeList;
   }
+
+  @Override
+  public String toString() {
+    return "net.jeremybrooks.jinx.response.places.ShapeHistory.Shapes{" +
+        "total=" + getTotal() +
+        ", woeId='" + getWoeId() + '\'' +
+        ", placeId='" + getPlaceId() + '\'' +
+        ", placeType='" + getPlaceType() + '\'' +
+        ", placeTypeId=" + getPlaceTypeId() +
+        ", shapeList=" + getShapeList() +
+        '}';
+  }
 }

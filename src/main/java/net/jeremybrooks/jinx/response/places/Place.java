@@ -151,6 +151,18 @@ public class Place {
     public String getPlaceUrl() {
       return placeUrl;
     }
+
+    @Override
+    public String toString() {
+      return "net.jeremybrooks.jinx.response.places.Place.Locality{" +
+          "content='" + content + '\'' +
+          ", placeId='" + placeId + '\'' +
+          ", woeId='" + woeId + '\'' +
+          ", latitude=" + latitude +
+          ", longitude=" + longitude +
+          ", placeUrl='" + placeUrl + '\'' +
+          '}';
+    }
   }
 
   public class County implements Serializable {
@@ -188,6 +200,18 @@ public class Place {
 
     public String getPlaceUrl() {
       return placeUrl;
+    }
+
+    @Override
+    public String toString() {
+      return "net.jeremybrooks.jinx.response.places.Place.County{" +
+          "content='" + content + '\'' +
+          ", placeId='" + placeId + '\'' +
+          ", woeId='" + woeId + '\'' +
+          ", latitude=" + latitude +
+          ", longitude=" + longitude +
+          ", placeUrl='" + placeUrl + '\'' +
+          '}';
     }
   }
 
@@ -227,6 +251,18 @@ public class Place {
     public String getPlaceUrl() {
       return placeUrl;
     }
+
+    @Override
+    public String toString() {
+      return "net.jeremybrooks.jinx.response.places.Place.Region{" +
+          "content='" + content + '\'' +
+          ", placeId='" + placeId + '\'' +
+          ", woeId='" + woeId + '\'' +
+          ", latitude=" + latitude +
+          ", longitude=" + longitude +
+          ", placeUrl='" + placeUrl + '\'' +
+          '}';
+    }
   }
 
   public class Country implements Serializable {
@@ -263,5 +299,41 @@ public class Place {
     public String getPlaceUrl() {
       return placeUrl;
     }
+
+    @Override
+    public String toString() {
+      return "net.jeremybrooks.jinx.response.places.Place.Country{" +
+          "content='" + content + '\'' +
+          ", placeId='" + placeId + '\'' +
+          ", woeId='" + woeId + '\'' +
+          ", latitude=" + latitude +
+          ", longitude=" + longitude +
+          ", placeUrl='" + placeUrl + '\'' +
+          '}';
+    }
+  }
+
+  @Override
+  public String toString() {
+    return "net.jeremybrooks.jinx.response.places.Place{" +
+        "placeId='" + placeId + '\'' +
+        ", woeId='" + woeId + '\'' +
+        ", latitude=" + latitude +
+        ", longitude=" + longitude +
+        ", placeUrl='" + placeUrl + '\'' +
+        ", placeType='" + placeType + '\'' +
+        ", placeTypeId=" + placeTypeId +
+        ", timezone='" + timezone + '\'' +
+        ", name='" + name + '\'' +
+        ", woeName='" + woeName + '\'' +
+        ", hasShapeData=" + hasShapeData +
+        ", region=" + region +
+        ", locality=" + locality +
+        ", county=" + county +
+        ", country=" + country +
+        ", shape=" + shape +
+        ", content='" + content + '\'' +
+        ", photoCount=" + photoCount +
+        '}';
   }
 }

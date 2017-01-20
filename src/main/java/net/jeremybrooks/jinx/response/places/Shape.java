@@ -112,4 +112,18 @@ public class Shape implements Serializable {
           '}';
     }
   }
+
+  @Override
+  public String toString() {
+    return "net.jeremybrooks.jinx.response.places.Shape{" +
+        "created=" + created +
+        ", alpha=" + alpha +
+        ", countPoints=" + countPoints +
+        ", countEdges=" + countEdges +
+        ", hasDonuthole=" + hasDonuthole +
+        ", isDonuthole=" + isDonuthole +
+        ", polylines=" + polylines +
+        ", urls=" + urls +
+        '}';
+  }
 }
