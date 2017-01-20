@@ -212,6 +212,19 @@ public class JinxConstants {
   public final static char[] MULTIPART_CHARS =
       "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
+  public enum PlaceTypeId {
+    neighbourhood(22),
+    locality(7),
+    region(8),
+    country(12),
+    continent(29);
+    private Integer typeId;
+    private PlaceTypeId(Integer typeId) {
+      this.typeId = typeId;
+    }
+    public Integer getTypeId() { return this.typeId; }
+  }
+
   public enum Orientation {
     landscape,
     portrait,
