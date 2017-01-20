@@ -25,7 +25,7 @@ import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by jeremyb on 1/11/17.
+ * @author Jeremy Brooks
  */
 public class PlacesApiTest {
 
