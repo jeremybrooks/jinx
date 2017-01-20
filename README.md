@@ -60,7 +60,7 @@ If you are not using Maven, you will need these libraries, and their dependencie
   NOTE: At this time, Scribe 1.3.7 is the development version; you will need to build Scribe from source until they release again.
 
 # VERSION HISTORY
-
+  
 ## Version 0.8.2 adds support for experimental search options
   * orientation
   * color code
@@ -211,10 +211,11 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * photosets.comments
 
 ## Additional API's Available In Latest Source
+ 
+  * places
   
 ## Not Yet Implemented
 
-  * places
   * prefs
   * push
   * reflection
