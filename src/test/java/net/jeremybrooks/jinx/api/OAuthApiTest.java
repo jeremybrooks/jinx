@@ -38,22 +38,18 @@ public class OAuthApiTest {
 
 
 	/**
-	 * Run this test manually to get an OAuth token. It requires user input to complete, so should not be run
-	 * as part of the test suite.
-	 * <p/>
 	 * To run this test, you must have a "secret.properties" file in the test/java/resources/response/auth directory.
 	 * This file must contain:
 	 *
-	 * path.to.oauth.token=[full path to save the oauth token data]
+	 * path.to.oauth.token=[full path to the oauth token data]
 	 * flickr.key=[your test app key]
 	 * flickr.secret=[your test app secret]
 	 *
 	 * If you are testing "testGetAccessToken" to convert a legacy token, the file must also contain:
 	 *
 	 * path.to.token=[full path to the saved legacy token data]
-	 *
-	 * <p/>
-	 * Calling this will overwrite any existing file at path.to.auth.token, so be careful.
+   *
+   * If you are wanting to get a new OAuth token for testing, see {@link net.jeremybrooks.jinx.JinxTest}.
 	 *
 	 * @throws Exception
 	 */
