@@ -1,0 +1,19 @@
+{
+  "domains": {
+    "page": 1,
+    "perpage": 25,
+    "pages": 1,
+    "total": 2,
+    "domain": [
+      {
+        "name": "t.co",
+        "views": 3
+      },
+      {
+        "name": "flickr.com",
+        "views": 2
+      }
+    ]
+  },
+  "stat": "ok"
+}

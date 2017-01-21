@@ -312,5 +312,10 @@ public class JinxConstants {
     public String getStyleName() {
       return this.styleName;
     }
+
+  }
+
+  public enum PopularPhotoSort {
+    views, comments, favorites
   }
 }

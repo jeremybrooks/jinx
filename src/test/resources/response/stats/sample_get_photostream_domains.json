@@ -1,0 +1,23 @@
+{
+  "domains": {
+    "page": 1,
+    "perpage": 25,
+    "pages": 1,
+    "total": 3,
+    "domain": [
+      {
+        "name": "pinterest.com",
+        "views": 1
+      },
+      {
+        "name": "flickr.com",
+        "views": 1
+      },
+      {
+        "name": "angryangmo.com",
+        "views": 1
+      }
+    ]
+  },
+  "stat": "ok"
+}

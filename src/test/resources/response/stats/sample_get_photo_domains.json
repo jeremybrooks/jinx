@@ -1,0 +1,39 @@
+{
+  "domains": {
+    "page": 1,
+    "perpage": 25,
+    "pages": 1,
+    "total": 7,
+    "domain": [
+      {
+        "name": "flickr.com",
+        "views": "3486"
+      },
+      {
+        "name": "safe.txmblr.com",
+        "views": 2
+      },
+      {
+        "name": "pixelpeeper.com",
+        "views": 2
+      },
+      {
+        "name": "michalpasterski.pl",
+        "views": 1
+      },
+      {
+        "name": "edwes.de",
+        "views": 1
+      },
+      {
+        "name": "10lunes.com",
+        "views": 1
+      },
+      {
+        "name": "berkeleyside.com",
+        "views": 1
+      }
+    ]
+  },
+  "stat": "ok"
+}
