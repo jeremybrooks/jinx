@@ -149,7 +149,7 @@ public class TagsApi {
   public TagsForUser getListUser(String userId) throws JinxException {
     Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.tags.getListUser");
-    if (userId != null) {
+    if (! JinxUtils.isNullOrEmpty(userId)) {
       params.put("user_id", userId);
     }
     return jinx.flickrGet(params, TagsForUser.class);
@@ -170,7 +170,7 @@ public class TagsApi {
   public TagsForUser getListUserPopular(String userId, Integer count) throws JinxException {
     Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.tags.getListUserPopular");
-    if (userId != null) {
+    if (! JinxUtils.isNullOrEmpty(userId)) {
       params.put("user_id", userId);
     }
     if (count != null) {

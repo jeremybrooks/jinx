@@ -1,0 +1,27 @@
+{
+  "gallery": {
+    "id": "124834485-72157644721099547",
+    "url": "https:\/\/www.flickr.com\/photos\/jinxlib\/galleries\/72157644721099547",
+    "owner": "124857539@N03",
+    "username": "jinxlib",
+    "iconserver": "5538",
+    "iconfarm": 6,
+    "primary_photo_id": "8413449964",
+    "date_create": "1402548358",
+    "date_update": "1484094962",
+    "count_photos": 13,
+    "count_videos": 0,
+    "count_views": 6,
+    "count_comments": 0,
+    "title": {
+      "_content": "Vintage Chinese Neon Signs (1484094961)"
+    },
+    "description": {
+      "_content": "A jinx test gallery. Test last run: 2017-01-10 16:36:01"
+    },
+    "primary_photo_server": "8473",
+    "primary_photo_farm": 9,
+    "primary_photo_secret": "edd91a1d17"
+  },
+  "stat": "ok"
+}

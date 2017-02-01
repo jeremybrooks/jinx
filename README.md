@@ -218,11 +218,11 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * stats
   * tags
   * test
+  * urls
   
 ## Not Yet Implemented
 
   * push
-  * urls
 
 
 # BUILDING FROM SOURCE
