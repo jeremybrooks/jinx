@@ -1,0 +1,21 @@
+{
+  "method": {
+    "_content": "flickr.test.echo"
+  },
+  "api_key": {
+    "_content": "5f33b2ecea05f95495fe5d584a621496"
+  },
+  "format": {
+    "_content": "json"
+  },
+  "nojsoncallback": {
+    "_content": 1
+  },
+  "auth_token": {
+    "_content": "72157677991872651-690be8504e985bb0"
+  },
+  "api_sig": {
+    "_content": "65c031c322b42fb7803c8ed68cbbcd23"
+  },
+  "stat": "ok"
+}
