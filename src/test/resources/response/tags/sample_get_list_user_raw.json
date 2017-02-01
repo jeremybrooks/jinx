@@ -1,0 +1,10 @@
+{ "who": { "id": "85853333@N00", 
+    "tags": { 
+      "tag": [
+        { "clean": "blackandwhite", 
+          "raw": [
+            { "_content": "blackandwhite" },
+            { "_content": "Black And White" },
+            { "_content": "Black and White" }
+          ] }
+      ] } }, "stat": "ok" }

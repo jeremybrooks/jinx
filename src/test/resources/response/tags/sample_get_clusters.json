@@ -1,0 +1,221 @@
+{
+  "clusters": {
+    "source": "neon",
+    "total": 4,
+    "cluster": [
+      {
+        "total": 52,
+        "tag": [
+          {
+            "_content": "sign"
+          },
+          {
+            "_content": "night"
+          },
+          {
+            "_content": "light"
+          },
+          {
+            "_content": "lights"
+          },
+          {
+            "_content": "blue"
+          },
+          {
+            "_content": "red"
+          },
+          {
+            "_content": "street"
+          },
+          {
+            "_content": "city"
+          },
+          {
+            "_content": "green"
+          },
+          {
+            "_content": "urban"
+          },
+          {
+            "_content": "signs"
+          },
+          {
+            "_content": "color"
+          },
+          {
+            "_content": "yellow"
+          },
+          {
+            "_content": "pink"
+          },
+          {
+            "_content": "dark"
+          },
+          {
+            "_content": "restaurant"
+          },
+          {
+            "_content": "black"
+          },
+          {
+            "_content": "nikon"
+          },
+          {
+            "_content": "bar"
+          },
+          {
+            "_content": "reflection"
+          },
+          {
+            "_content": "downtown"
+          },
+          {
+            "_content": "hotel"
+          },
+          {
+            "_content": "california"
+          },
+          {
+            "_content": "building"
+          },
+          {
+            "_content": "orange"
+          },
+          {
+            "_content": "glow"
+          },
+          {
+            "_content": "canon"
+          },
+          {
+            "_content": "motel"
+          },
+          {
+            "_content": "usa"
+          },
+          {
+            "_content": "neonsign"
+          },
+          {
+            "_content": "vintage"
+          },
+          {
+            "_content": "sky"
+          },
+          {
+            "_content": "old"
+          },
+          {
+            "_content": "longexposure"
+          },
+          {
+            "_content": "window"
+          },
+          {
+            "_content": "cafe"
+          },
+          {
+            "_content": "store"
+          },
+          {
+            "_content": "art"
+          },
+          {
+            "_content": "food"
+          },
+          {
+            "_content": "diner"
+          },
+          {
+            "_content": "signage"
+          },
+          {
+            "_content": "seattle"
+          },
+          {
+            "_content": "people"
+          },
+          {
+            "_content": "theater"
+          },
+          {
+            "_content": "beer"
+          },
+          {
+            "_content": "architecture"
+          },
+          {
+            "_content": "shop"
+          },
+          {
+            "_content": "colors"
+          },
+          {
+            "_content": "sanfrancisco"
+          },
+          {
+            "_content": "texas"
+          },
+          {
+            "_content": "car"
+          },
+          {
+            "_content": "open"
+          }
+        ]
+      },
+      {
+        "total": 6,
+        "tag": [
+          {
+            "_content": "newyork"
+          },
+          {
+            "_content": "nyc"
+          },
+          {
+            "_content": "newyorkcity"
+          },
+          {
+            "_content": "manhattan"
+          },
+          {
+            "_content": "timessquare"
+          },
+          {
+            "_content": "ny"
+          }
+        ]
+      },
+      {
+        "total": 3,
+        "tag": [
+          {
+            "_content": "tokyo"
+          },
+          {
+            "_content": "japan"
+          },
+          {
+            "_content": "shinjuku"
+          }
+        ]
+      },
+      {
+        "total": 3,
+        "tag": [
+          {
+            "_content": "lasvegas"
+          },
+          {
+            "_content": "nevada"
+          },
+          {
+            "_content": "casino"
+          }
+        ]
+      }
+    ]
+  },
+  "stat": "ok"
+}

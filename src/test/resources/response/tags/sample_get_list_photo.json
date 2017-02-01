@@ -1,0 +1,90 @@
+{
+  "photo": {
+    "id": "32084267640",
+    "tags": {
+      "tag": [
+        {
+          "id": "4956757-32084267640-11082",
+          "author": "85853333@N00",
+          "authorname": "Jeremy Brooks",
+          "raw": "Bus Stop",
+          "_content": "busstop",
+          "machine_tag": 0
+        },
+        {
+          "id": "4956757-32084267640-50",
+          "author": "85853333@N00",
+          "authorname": "Jeremy Brooks",
+          "raw": "California",
+          "_content": "california",
+          "machine_tag": 0
+        },
+        {
+          "id": "4956757-32084267640-290",
+          "author": "85853333@N00",
+          "authorname": "Jeremy Brooks",
+          "raw": "People",
+          "_content": "people",
+          "machine_tag": 0
+        },
+        {
+          "id": "4956757-32084267640-46",
+          "author": "85853333@N00",
+          "authorname": "Jeremy Brooks",
+          "raw": "San Francisco",
+          "_content": "sanfrancisco",
+          "machine_tag": 0
+        },
+        {
+          "id": "4956757-32084267640-983245",
+          "author": "85853333@N00",
+          "authorname": "Jeremy Brooks",
+          "raw": "San Francisco County",
+          "_content": "sanfranciscocounty",
+          "machine_tag": 0
+        },
+        {
+          "id": "4956757-32084267640-85",
+          "author": "85853333@N00",
+          "authorname": "Jeremy Brooks",
+          "raw": "Street",
+          "_content": "street",
+          "machine_tag": 0
+        },
+        {
+          "id": "4956757-32084267640-351",
+          "author": "85853333@N00",
+          "authorname": "Jeremy Brooks",
+          "raw": "USA",
+          "_content": "usa",
+          "machine_tag": 0
+        },
+        {
+          "id": "4956757-32084267640-31352577",
+          "author": "85853333@N00",
+          "authorname": "Jeremy Brooks",
+          "raw": "camera:make=Fuji",
+          "_content": "camera:make=fuji",
+          "machine_tag": 1
+        },
+        {
+          "id": "4956757-32084267640-13980823",
+          "author": "85853333@N00",
+          "authorname": "Jeremy Brooks",
+          "raw": "camera:make=FujiFilm",
+          "_content": "camera:make=fujifilm",
+          "machine_tag": 1
+        },
+        {
+          "id": "4956757-32084267640-103587590",
+          "author": "85853333@N00",
+          "authorname": "Jeremy Brooks",
+          "raw": "camera:model=X-Pro1",
+          "_content": "camera:model=xpro1",
+          "machine_tag": 1
+        }
+      ]
+    }
+  },
+  "stat": "ok"
+}

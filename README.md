@@ -216,11 +216,11 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * prefs
   * reflection
   * stats
+  * tags
   
 ## Not Yet Implemented
 
   * push
-  * tags
   * test
   * urls
 

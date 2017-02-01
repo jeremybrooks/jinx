@@ -292,6 +292,15 @@ public class JinxConstants {
     }
   }
 
+  /**
+   * Represents a fixed period of time.
+   * Used by {@link net.jeremybrooks.jinx.api.TagsApi#getHotList(Period, Integer)}
+   */
+  public enum Period {
+    day,
+    week
+  }
+
   public enum PictureStyle {
     blackandwhite("Black and White"),
     depthoffield("Depth of Field"),

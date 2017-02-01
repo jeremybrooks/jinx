@@ -40,6 +40,8 @@ public class Tag implements Serializable {
 	@SerializedName("id")
 	private String tagId;
 	private Integer count;
+	private Integer score;
+
 
 	public String getAuthor() {
 		return author;
@@ -71,6 +73,8 @@ public class Tag implements Serializable {
 
 	public Integer getCount() { return count; }
 
+	public Integer getScore() { return score; }
+
 	@Override
 	public String toString() {
 		final StringBuilder sb = new StringBuilder();
@@ -83,6 +87,7 @@ public class Tag implements Serializable {
 		sb.append(" | fullTagId='").append(fullTagId).append('\'');
 		sb.append(" | tagId='").append(tagId).append('\'');
     sb.append(" | count=").append(count);
+    sb.append(" | score=").append(score);
 		sb.append('}');
 		return sb.toString();
 	}
