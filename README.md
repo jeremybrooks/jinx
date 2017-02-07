@@ -8,9 +8,6 @@ Jinx is a Java interface to the Flickr API. The project goals are:
 
 You can find an example of how to use the Jinx library here: <https://github.com/jeremybrooks/jinxexamples>
 
-## WARNING
-Versions prior to 1.0 are in a state of flux and subject to change. There is no guarantee that releases before 1.0 will remain compatible with each other.
-
 ## Notes About Jinx
 
 ### ID's (NSID)
@@ -60,6 +57,49 @@ If you are not using Maven, you will need these libraries, and their dependencie
   * Scribe 1.3.7 -- provides OAuth services
   
 # VERSION HISTORY
+  
+## Version 1.0.0 supports the following API's
+  * activity
+  * auth.oauth
+  * blogs (have not really tested the postPhoto method, though)
+  * cameras
+  * collections
+  * commons
+  * contacts
+  * favorites
+  * galleries
+  * groups
+  * groups.discuss.replies
+  * groups.discuss.topics
+  * groups.members
+  * groups.pools
+  * interestingness
+  * machinetags
+  * panda
+  * people
+  * photos
+  * photos.comments
+  * photos.geo
+  * photos.licenses
+  * photos.notes
+  * photos.people
+  * photos.suggestions
+  * photos.transform  
+  * photos.upload (including photo/video upload and replace)
+  * photosets
+  * photosets.comments
+  * places
+  * prefs
+  * push
+  * reflection
+  * stats
+  * tags
+  * test
+  * urls
+  
+  * Logging of multipart requests is now controlled by a flag, rather than a system property.
+  * Updated dependencies to newer versions where applicable.
+  * Dependencies all come from Maven Central.
   
 ## Version 0.8.2 adds support for experimental search options
   * orientation
@@ -178,49 +218,7 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 
 # API IMPLEMENTATION STATUS
-
-## Available In Latest Release
-  * activity
-  * auth.oauth
-  * blogs (have not really tested the postPhoto method, though)
-  * cameras
-  * collections
-  * commons
-  * contacts
-  * favorites
-  * galleries
-  * groups
-  * groups.discuss.replies
-  * groups.discuss.topics
-  * groups.members
-  * groups.pools
-  * interestingness
-  * machinetags
-  * panda
-  * people
-  * photos
-  * photos.comments
-  * photos.geo
-  * photos.licenses
-  * photos.notes
-  * photos.people
-  * photos.suggestions
-  * photos.transform  
-  * photos.upload (including photo/video upload and replace)
-  * photosets
-  * photosets.comments
-
-## Additional API's Available In Latest Source
- 
-  * places
-  * prefs
-  * push
-  * reflection
-  * stats
-  * tags
-  * test
-  * urls
-  
+As of February 6, 2017, Jinx support all methods of the Flickr API, with the exception of the deprecated auth methods.  
 
 # BUILDING FROM SOURCE
 To build the project, use Maven. The jar file will end up in the "target" directory:
