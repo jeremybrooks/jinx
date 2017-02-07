@@ -218,7 +218,7 @@ If you are not using Maven, you will need these libraries, and their dependencie
 
 
 # API IMPLEMENTATION STATUS
-As of February 6, 2017, Jinx support all methods of the Flickr API, with the exception of the deprecated auth methods.  
+As of February 6, 2017, Jinx supports all methods of the Flickr API, with the exception of the deprecated auth methods.  
 
 # BUILDING FROM SOURCE
 To build the project, use Maven. The jar file will end up in the "target" directory:
