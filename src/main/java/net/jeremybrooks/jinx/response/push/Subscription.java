@@ -1,6 +1,7 @@
 package net.jeremybrooks.jinx.response.push;
 
 import com.google.gson.annotations.SerializedName;
+import net.jeremybrooks.jinx.JinxUtils;
 
 import java.io.Serializable;
 
@@ -30,7 +31,7 @@ public class Subscription implements Serializable {
   }
 
   public Boolean getPending() {
-    return pending != 0;
+    return JinxUtils.flickrBooleanToBoolean(pending);
   }
 
   public Long getDateCreate() {
