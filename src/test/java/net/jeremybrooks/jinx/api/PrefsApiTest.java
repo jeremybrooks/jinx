@@ -27,7 +27,7 @@ public class PrefsApiTest {
   @BeforeClass
   public static void beforeClass() throws Exception {
     Properties p = new Properties();
-    p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
+    p.load(PrefsApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
     String filename = p.getProperty("path.to.oauth.token");
     assertNotNull(filename);
     File file = new File(filename);

@@ -1,0 +1,15 @@
+{
+  "subscriptions": {
+    "subscription": [
+      {
+        "topic": "contacts_photos",
+        "callback": "https://evening-wildwood-37988.herokuapp.com/streams.php",
+        "pending": 1,
+        "date_create": "1486432778",
+        "expiry": 0,
+        "verify_attempts": 1
+      }
+    ]
+  },
+  "stat": "ok"
+}

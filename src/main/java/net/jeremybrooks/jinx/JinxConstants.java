@@ -301,6 +301,15 @@ public class JinxConstants {
     week
   }
 
+  /**
+   * Represents the verification mode.
+   * Used by {@link net.jeremybrooks.jinx.api.PushApi}
+   */
+  public enum VerificationMode {
+    sync,
+    async
+  }
+
   public enum PictureStyle {
     blackandwhite("Black and White"),
     depthoffield("Depth of Field"),

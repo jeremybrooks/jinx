@@ -214,16 +214,13 @@ If you are not using Maven, you will need these libraries, and their dependencie
  
   * places
   * prefs
+  * push
   * reflection
   * stats
   * tags
   * test
   * urls
   
-## Not Yet Implemented
-
-  * push
-
 
 # BUILDING FROM SOURCE
 To build the project, use Maven. The jar file will end up in the "target" directory:
