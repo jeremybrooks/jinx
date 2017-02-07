@@ -75,17 +75,6 @@
         </developer>
     </developers>
 
-    <!--<repositories>-->
-        <!--<repository>-->
-            <!--<id>scribe-java-mvn-repo</id>-->
-            <!--<url>https://raw.github.com/fernandezpablo85/scribe-java/mvn-repo/</url>-->
-            <!--<snapshots>-->
-                <!--<enabled>true</enabled>-->
-                <!--<updatePolicy>always</updatePolicy>-->
-            <!--</snapshots>-->
-        <!--</repository>-->
-    <!--</repositories>-->
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -99,11 +88,6 @@
             <artifactId>scribe</artifactId>
             <version>1.3.7</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.github.scribejava</groupId>-->
-            <!--<artifactId>scribejava-apis</artifactId>-->
-            <!--<version>3.4.1</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>

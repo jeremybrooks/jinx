@@ -139,7 +139,7 @@ public class Jinx {
 
   private boolean verboseLogging;
 
-  private boolean logMultipart;
+  private boolean multipartLogging;
 
   private Proxy proxy;
 
@@ -177,7 +177,7 @@ public class Jinx {
     this.oAuthAccessToken = oAuthAccessToken;
     this.flickrErrorThrowsException = true;
     this.setVerboseLogging(false);
-    this.setLogMultipart(false);
+    this.setMultipartLogging(false);
     this.gson = new Gson();
 
     this.oAuthService = new ServiceBuilder().provider(FlickrApi.class).apiKey(apiKey).apiSecret(apiSecret).build();
@@ -411,8 +411,8 @@ public class Jinx {
    *
    * @return true if verbose logging is enabled.
    */
-  public boolean isLogMultipart() {
-    return this.logMultipart;
+  public boolean isMultipartLogging() {
+    return this.multipartLogging;
   }
 
   /**
@@ -431,10 +431,10 @@ public class Jinx {
    *
    * You must set a {@link JinxLogger} before setting this flag to {@code true};
    *
-   * @param logMultipart true to enable multipart body logging.
+   * @param multipartLogging true to enable multipart body logging.
    */
-  public void setLogMultipart(boolean logMultipart) {
-    this.logMultipart = logMultipart;
+  public void setMultipartLogging(boolean multipartLogging) {
+    this.multipartLogging = multipartLogging;
   }
 
   /**
@@ -706,7 +706,7 @@ public class Jinx {
       throw new JinxException("Unable to build multipart body.", e);
     }
 
-    if (this.isVerboseLogging() && this.isLogMultipart()) {
+    if (this.isVerboseLogging() && this.isMultipartLogging()) {
       JinxLogger.getLogger().log("Multipart body: " + buffer.toString());
     }
 

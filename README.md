@@ -8,8 +8,6 @@ Jinx is a Java interface to the Flickr API. The project goals are:
 
 You can find an example of how to use the Jinx library here: <https://github.com/jeremybrooks/jinxexamples>
 
-There is an older version of Jinx, build 20110503, found here: <http://jeremybrooks.net/jinx/>. Version 0.6.0 and higher are a major rewrite of Jinx. They will not be compatible with old builds available on jeremybrooks.net.
-
 ## WARNING
 Versions prior to 1.0 are in a state of flux and subject to change. There is no guarantee that releases before 1.0 will remain compatible with each other.
 
@@ -39,10 +37,14 @@ By default, Jinx will not log. If you wish to see logging, you must set a JinxLo
 
 The StdoutLogger is provided. You can write your own logger to log to log4j or another destination. Just implement the LogInterface.
 
-If you need to log the body of a photo upload request, you must set verbose logging to true, and set the system property jinx.log.multipart to true.
+If you need to log the body of a photo upload request, you must set a JinxLogger, enable verbose logging, and enable multipart logging.
+
+	JinxLogger.setLogger(new StdoutLogger());
+	jinx.setVerboseLogging(true);
+	jinx.setMultpartLogging(true);
 
 # REQUIREMENTS
-You must be using Java 1.6 or higher.
+You must be using Java 1.7 or higher.
 
 If you are using Maven, just include this in your pom.xml file
 
@@ -54,11 +56,9 @@ If you are using Maven, just include this in your pom.xml file
 
 If you are not using Maven, you will need these libraries, and their dependencies:
   
-  * Gson 2.2.2+ -- deserializes json documents in to Java objects
-  * Scribe 1.3.7+ -- provides OAuth services
+  * Gson 2.8.0+ -- deserializes json documents in to Java objects
+  * Scribe 1.3.7 -- provides OAuth services
   
-  NOTE: At this time, Scribe 1.3.7 is the development version; you will need to build Scribe from source until they release again.
-
 # VERSION HISTORY
   
 ## Version 0.8.2 adds support for experimental search options
@@ -280,7 +280,7 @@ Generally, response objects are read only. They will have getters, but not sette
 
 ## Coding Conventions
 
-This project attempts to follow the Sun (now Oracle) [Java coding conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html).
+This project attempts to follow the Oracle [Java coding conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html).
 
 Since this library uses Gson to deserialize JSON documents into Java classes, the Java classes contain a lot of inner classes. This can be confusing at first glance. The classes in the package net.jeremybrooks.jinx.response should follow these guidelines:
 
@@ -292,7 +292,7 @@ Since this library uses Gson to deserialize JSON documents into Java classes, th
 
 
 # LICENSE
-Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
 
 Jinx is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
