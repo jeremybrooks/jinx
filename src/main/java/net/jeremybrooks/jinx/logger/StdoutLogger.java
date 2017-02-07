@@ -26,7 +26,7 @@ import java.io.StringWriter;
  * By default, Jinx will not log anything. If you want to see Jinx log output
  * on stdout, call <code>JinxLogger.setLogger(new StdoutLogger());</code>.
  * 
- * @author jeremyb
+ * @author Jeremy Brooks
  */
 public class StdoutLogger implements LogInterface {
 

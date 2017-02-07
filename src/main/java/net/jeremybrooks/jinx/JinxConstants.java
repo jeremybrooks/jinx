@@ -19,14 +19,9 @@ package net.jeremybrooks.jinx;
 
 
 /**
- * @author jeremyb
+ * @author Jeremy Brooks
  */
 public class JinxConstants {
-
-  /**
-   * Constant for a boolean system property that can be set to make Jinx log the multipart body requests.
-   */
-  public static final String JINX_LOG_MULTIPART = "jinx.log.multipart";
 
   public static enum Method {
     POST,

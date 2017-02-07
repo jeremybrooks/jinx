@@ -24,7 +24,7 @@ package net.jeremybrooks.jinx.logger;
  * you can implement this class and then tell Jinx what class to use for logging
  * by calling <code>JinxLogger.setLogger(your class instance)</code>.
  * 
- * @author jeremyb
+ * @author Jeremy Brooks
  */
 public interface LogInterface {
 

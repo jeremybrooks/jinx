@@ -113,13 +113,8 @@ import static net.jeremybrooks.jinx.JinxConstants.Method;
  * to log to stdout, or you can implement your own logger. Loggers must implement the {@link net.jeremybrooks.jinx.logger.LogInterface}
  * <br>
  * <p>If you are trying to troubleshoot photo upload problems and need to see the content of the multipart request that is used
- * for photo uploads, you must set a JinxLogger, enable verbose logging, and set a special property to tell Jinx to log
- * the multipart body:
- * {@code
- * System.setProperty(JinxConstants.JINX_LOG_MULTIPART, "true");
- * }
- * </p>
- * * @author jeremyb
+ * for photo uploads, you must set a JinxLogger, enable verbose logging, and enable multipart logging.</p>
+ * * @author Jeremy Brooks
  */
 public class Jinx {
 
@@ -143,6 +138,8 @@ public class Jinx {
   private boolean flickrErrorThrowsException;
 
   private boolean verboseLogging;
+
+  private boolean logMultipart;
 
   private Proxy proxy;
 
@@ -180,6 +177,7 @@ public class Jinx {
     this.oAuthAccessToken = oAuthAccessToken;
     this.flickrErrorThrowsException = true;
     this.setVerboseLogging(false);
+    this.setLogMultipart(false);
     this.gson = new Gson();
 
     this.oAuthService = new ServiceBuilder().provider(FlickrApi.class).apiKey(apiKey).apiSecret(apiSecret).build();
@@ -402,9 +400,25 @@ public class Jinx {
     return verboseLogging;
   }
 
+  /**
+   * Indicates if multipart logging is enabled.
+   * <br>
+   * By default this is false. If you want to see multipart body content logging, you need to set this
+   * to true and set a {@link net.jeremybrooks.jinx.logger.JinxLogger} that is used to do the logging.
+   * <br>
+   * Multipart logging will cause the multipart POST body to be logged. You must also set verbose logging
+   * to true.
+   *
+   * @return true if verbose logging is enabled.
+   */
+  public boolean isLogMultipart() {
+    return this.logMultipart;
+  }
 
   /**
    * Set the verbose logging flag.
+   *
+   * You must set a {@link JinxLogger} before setting this flag to {@code true};
    *
    * @param verboseLogging true to enable verbose logging.
    */
@@ -412,6 +426,16 @@ public class Jinx {
     this.verboseLogging = verboseLogging;
   }
 
+  /**
+   * Set the multipart body logging flag.
+   *
+   * You must set a {@link JinxLogger} before setting this flag to {@code true};
+   *
+   * @param logMultipart true to enable multipart body logging.
+   */
+  public void setLogMultipart(boolean logMultipart) {
+    this.logMultipart = logMultipart;
+  }
 
   /**
    * Call Flickr, returning the specified class deserialized from the Flickr response.
@@ -682,11 +706,8 @@ public class Jinx {
       throw new JinxException("Unable to build multipart body.", e);
     }
 
-    if (this.isVerboseLogging()) {
-      String logMpBody = System.getProperty(JinxConstants.JINX_LOG_MULTIPART);
-      if (!JinxUtils.isNullOrEmpty(logMpBody) && logMpBody.equals("true")) {
-        JinxLogger.getLogger().log("Multipart body: " + buffer.toString());
-      }
+    if (this.isVerboseLogging() && this.isLogMultipart()) {
+      JinxLogger.getLogger().log("Multipart body: " + buffer.toString());
     }
 
     return buffer.toByteArray();

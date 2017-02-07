@@ -19,7 +19,7 @@ package net.jeremybrooks.jinx.logger;
 
 /**
  *
- * @author jeremyb
+ * @author Jeremy Brooks
  */
 public class JinxLogger {
 

@@ -20,7 +20,7 @@ package net.jeremybrooks.jinx.logger;
 /**
  * This is the default logger used by Jinx. It does nothing.
  *
- * @author jeremyb
+ * @author Jeremy Brooks
  */
 public class DefaultLogger implements LogInterface {
 

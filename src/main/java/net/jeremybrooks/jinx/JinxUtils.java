@@ -44,7 +44,7 @@ import java.util.Random;
  * Document objects are created here, and there are methods for common XML
  * parsing operations here as well.
  *
- * @author jeremyb
+ * @author Jeremy Brooks
  */
 public class JinxUtils {
 

@@ -25,7 +25,7 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 
 /**
- * @author jeremyb
+ * @author Jeremy Brooks
  */
 public class PhotoUtils {
 
