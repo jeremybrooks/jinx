@@ -10,9 +10,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the Flickr test API.
+ * Provides access to the flickr.test API methods.
  *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class TestApi {
   private Jinx jinx;

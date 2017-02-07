@@ -33,7 +33,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * Provides access to the flickr.photosets API methods.
+ *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PhotosetsApi {
   private Jinx jinx;
@@ -57,7 +60,7 @@ public class PhotosetsApi {
    */
   public Response addPhoto(String photosetId, String photoId) throws JinxException {
     JinxUtils.validateParams(photosetId, photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.addPhoto");
     params.put("photoset_id", photosetId);
     params.put("photo_id", photoId);
@@ -84,7 +87,7 @@ public class PhotosetsApi {
    */
   public PhotosetInfo create(String title, String description, String primaryPhotoId) throws JinxException {
     JinxUtils.validateParams(title, primaryPhotoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.create");
     params.put("title", title);
     params.put("primary_photo_id", primaryPhotoId);
@@ -110,7 +113,7 @@ public class PhotosetsApi {
    */
   public Response delete(String photosetId) throws JinxException {
     JinxUtils.validateParams(photosetId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.delete");
     params.put("photoset_id", photosetId);
     return jinx.flickrPost(params, Response.class);
@@ -132,7 +135,7 @@ public class PhotosetsApi {
    */
   public Response editMeta(String photosetId, String title, String description) throws JinxException {
     JinxUtils.validateParams(photosetId, title);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.editMeta");
     params.put("photoset_id", photosetId);
     params.put("title", title);
@@ -158,7 +161,7 @@ public class PhotosetsApi {
    */
   public Response editPhotos(String photosetId, String primaryPhotoId, List<String> photoIds) throws JinxException {
     JinxUtils.validateParams(photosetId, primaryPhotoId, photoIds);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.editPhotos");
     params.put("photoset_id", photosetId);
     params.put("primary_photo_id", primaryPhotoId);
@@ -191,7 +194,7 @@ public class PhotosetsApi {
    */
   public Context getContext(String photoId, String photosetId) throws JinxException {
     JinxUtils.validateParams(photoId, photosetId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.getContext");
     params.put("photo_id", photoId);
     params.put("photoset_id", photosetId);
@@ -211,7 +214,7 @@ public class PhotosetsApi {
    */
   public PhotosetInfo getInfo(String photosetId) throws JinxException {
     JinxUtils.validateParams(photosetId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.getInfo");
     params.put("photoset_id", photosetId);
     return jinx.flickrGet(params, PhotosetInfo.class);
@@ -231,7 +234,7 @@ public class PhotosetsApi {
    * @see <a href="https://www.flickr.com/services/api/flickr.photosets.getList.html">flickr.photosets.getList</a>
    */
   public PhotosetList getList(String userId, int page, int perPage, EnumSet<JinxConstants.PhotoExtras> photoExtras) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.getList");
     if (!JinxUtils.isNullOrEmpty(userId)) {
       params.put("user_id", userId);
@@ -269,7 +272,7 @@ public class PhotosetsApi {
   public PhotosetPhotos getPhotos(String photosetId, EnumSet<JinxConstants.PhotoExtras> photoExtras, JinxConstants.PrivacyFilter privacyFilter,
                                   int perPage, int page, JinxConstants.MediaType mediaType) throws JinxException {
     JinxUtils.validateParams(photosetId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.getPhotos");
     params.put("photoset_id", photosetId);
     if (!JinxUtils.isNullOrEmpty(photoExtras)) {
@@ -307,7 +310,7 @@ public class PhotosetsApi {
    */
   public Response orderSets(List<String> photosetIds) throws JinxException {
     JinxUtils.validateParams(photosetIds);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.orderSets");
     params.put("photoset_ids", JinxUtils.buildCommaDelimitedList(photosetIds));
     return jinx.flickrPost(params, Response.class);
@@ -329,7 +332,7 @@ public class PhotosetsApi {
    */
   public Response removePhoto(String photosetId, String photoId) throws JinxException {
     JinxUtils.validateParams(photosetId, photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.removePhoto");
     params.put("photoset_id", photosetId);
     params.put("photo_id", photoId);
@@ -352,7 +355,7 @@ public class PhotosetsApi {
    */
   public Response removePhotos(String photosetId, List<String> photoIds) throws JinxException {
     JinxUtils.validateParams(photosetId, photoIds);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.removePhotos");
     params.put("photoset_id", photosetId);
     params.put("photo_ids", JinxUtils.buildCommaDelimitedList(photoIds));
@@ -373,7 +376,7 @@ public class PhotosetsApi {
    */
   public Response reorderPhotos(String photosetId, List<String> photoIds) throws JinxException {
     JinxUtils.validateParams(photosetId, photoIds);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.reorderPhotos");
     params.put("photoset_id", photosetId);
     params.put("photo_ids", JinxUtils.buildCommaDelimitedList(photoIds));
@@ -398,7 +401,7 @@ public class PhotosetsApi {
    */
   public Response setPrimaryPhoto(String photosetId, String photoId) throws JinxException {
     JinxUtils.validateParams(photosetId, photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photosets.setPrimaryPhoto");
     params.put("photoset_id", photosetId);
     params.put("photo_id", photoId);

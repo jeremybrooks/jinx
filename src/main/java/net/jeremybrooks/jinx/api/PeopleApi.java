@@ -32,7 +32,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * Provides access to the flickr.people API methods.
+ *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PeopleApi {
   private Jinx jinx;
@@ -55,7 +58,7 @@ public class PeopleApi {
    */
   public Person findByEmail(String email) throws JinxException {
     JinxUtils.validateParams(email);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.people.findByEmail");
     params.put("find_email", email);
     return jinx.flickrGet(params, Person.class, false);
@@ -75,7 +78,7 @@ public class PeopleApi {
    */
   public Person findByUsername(String username) throws JinxException {
     JinxUtils.validateParams(username);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.people.findByUsername");
     params.put("username", username);
     return jinx.flickrGet(params, Person.class, false);
@@ -98,7 +101,7 @@ public class PeopleApi {
    */
   public Groups getGroups(String userId, EnumSet<JinxConstants.GroupExtras> extras) throws JinxException {
     JinxUtils.validateParams(userId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.people.getGroups");
     params.put("user_id", userId);
     if (!JinxUtils.isNullOrEmpty(extras)) {
@@ -121,7 +124,7 @@ public class PeopleApi {
    */
   public Person getInfo(String userId, boolean sign) throws JinxException {
     JinxUtils.validateParams(userId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.people.getInfo");
     params.put("user_id", userId);
     return jinx.flickrGet(params, Person.class, sign);
@@ -137,7 +140,7 @@ public class PeopleApi {
    * @see <a href="https://www.flickr.com/services/api/flickr.people.getLimits.html">flickr.people.getLimits</a>
    */
   public Limits getLimits() throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.people.getLimits");
     return jinx.flickrGet(params, Limits.class);
   }
@@ -168,7 +171,7 @@ public class PeopleApi {
                           JinxConstants.PrivacyFilter privacyFilter, EnumSet<JinxConstants.PhotoExtras> extras,
                           int perPage, int page, boolean sign) throws JinxException {
     JinxUtils.validateParams(userId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.people.getPhotos");
     params.put("user_id", userId);
     if (safetyLevel != null) {
@@ -223,7 +226,7 @@ public class PeopleApi {
   public Photos getPhotosOf(String userId, String ownerId, EnumSet<JinxConstants.PhotoExtras> extras,
                             int perPage, int page, boolean sign) throws JinxException {
     JinxUtils.validateParams(userId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.people.getPhotosOf");
     params.put("user_id", userId);
     if (!JinxUtils.isNullOrEmpty(ownerId)) {
@@ -256,7 +259,7 @@ public class PeopleApi {
    */
   public Groups getPublicGroups(String userId, Boolean invitationOnly, boolean sign) throws JinxException {
     JinxUtils.validateParams(userId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.people.getPublicGroups");
     params.put("user_id", userId);
     if (invitationOnly != null) {
@@ -283,7 +286,7 @@ public class PeopleApi {
   public Photos getPublicPhotos(String userId, JinxConstants.SafetyLevel safetyLevel, EnumSet<JinxConstants.PhotoExtras> extras,
                                 int perPage, int page, boolean sign) throws JinxException {
     JinxUtils.validateParams(userId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.people.getPublicPhotos");
     params.put("user_id", userId);
     if (safetyLevel != null) {
@@ -311,7 +314,7 @@ public class PeopleApi {
    * @see <a href="https://www.flickr.com/services/api/flickr.people.getUploadStatus.html">flickr.people.getUploadStatus</a>
    */
   public UploadStatus getUploadStatus() throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.people.getUploadStatus");
     return jinx.flickrGet(params, UploadStatus.class);
   }

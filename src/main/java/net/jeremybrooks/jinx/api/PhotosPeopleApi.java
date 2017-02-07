@@ -27,147 +27,145 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Created by jeremyb on 7/22/14.
+ * Provides access to the flickr.photos.people API methods.
+ *
+ * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PhotosPeopleApi {
-    private Jinx jinx;
+  private Jinx jinx;
 
-    private PhotosPeopleApi() {
+  private PhotosPeopleApi() {
+  }
+
+  public PhotosPeopleApi(Jinx jinx) {
+    this.jinx = jinx;
+  }
+
+
+  /**
+   * Add a person to a photo. Coordinates and sizes of boxes are optional; they are measured in pixels, based on the 500px image size shown on individual photo pages.
+   * <br>
+   * This method requires authentication with 'write' permission.
+   *
+   * @param photoId (Required) The id of the photo to add a person to.
+   * @param userId  (Required) The id of the user to add to the photo.
+   * @param x       (Optional) The left-most pixel co-ordinate of the box around the person.
+   * @param y       (Optional) The top-most pixel co-ordinate of the box around the person.
+   * @param width   (Optional) The width (in pixels) of the box around the person.
+   * @param height  (Optional) The height (in pixels) of the box around the person.
+   * @return object with the status of the requested operation.
+   * @throws JinxException if any required parameters are missing, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photos.people.add.html">flickr.photos.people.add</a>
+   */
+  public Response add(String photoId, String userId, Integer x, Integer y, Integer width, Integer height) throws JinxException {
+    JinxUtils.validateParams(photoId, userId);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photos.people.add");
+    params.put("photo_id", photoId);
+    params.put("user_id", userId);
+    if (x != null) {
+      params.put("person_x", x.toString());
     }
-
-    public PhotosPeopleApi(Jinx jinx) {
-        this.jinx = jinx;
+    if (y != null) {
+      params.put("person_y", y.toString());
     }
-
-
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.photos.people.add.html">flickr.photos.people.add</a>
-     * <br>
-     * Add a person to a photo. Coordinates and sizes of boxes are optional; they are measured in pixels, based on the 500px image size shown on individual photo pages.
-     * <br>
-     * This method requires authentication with 'write' permission.
-     *
-     * @param photoId (Required) The id of the photo to add a person to.
-     * @param userId  (Required) The id of the user to add to the photo.
-     * @param x       (Optional) The left-most pixel co-ordinate of the box around the person.
-     * @param y       (Optional) The top-most pixel co-ordinate of the box around the person.
-     * @param width   (Optional) The width (in pixels) of the box around the person.
-     * @param height  (Optional) The height (in pixels) of the box around the person.
-     * @return object with the status of the requested operation.
-     * @throws JinxException if any required parameters are missing, or if there are any errors.
-     */
-    public Response add(String photoId, String userId, Integer x, Integer y, Integer width, Integer height) throws JinxException {
-        JinxUtils.validateParams(photoId, userId);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.photos.people.add");
-        params.put("photo_id", photoId);
-        params.put("user_id", userId);
-        if (x != null) {
-            params.put("person_x", x.toString());
-        }
-        if (y != null) {
-            params.put("person_y", y.toString());
-        }
-        if (width != null) {
-            params.put("person_w", width.toString());
-        }
-        if (height != null) {
-            params.put("person_h", height.toString());
-        }
-        return jinx.flickrPost(params, Response.class);
+    if (width != null) {
+      params.put("person_w", width.toString());
     }
-
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.photos.people.delete.html">flickr.photos.people.delete</a>
-     * <br>
-     * Remove a person from a photo.
-     * <br>
-     * This method requires authentication with 'write' permission.
-     * <br>
-     * The NSID of the person to remove from the photo.
-     *
-     * @param photoId (Required) The id of the photo to remove a person from.
-     * @param userId  (Required) The user id of the person to remove from the photo.
-     * @return object with the status of the requested operation.
-     * @throws JinxException if any required parameters are missing, or if there are any errors.
-     */
-    public Response delete(String photoId, String userId) throws JinxException {
-        JinxUtils.validateParams(photoId, userId);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.photos.people.delete");
-        params.put("photo_id", photoId);
-        params.put("user_id", userId);
-        return jinx.flickrPost(params, Response.class);
+    if (height != null) {
+      params.put("person_h", height.toString());
     }
+    return jinx.flickrPost(params, Response.class);
+  }
+
+  /**
+   * Remove a person from a photo.
+   * <br>
+   * This method requires authentication with 'write' permission.
+   * <br>
+   * The NSID of the person to remove from the photo.
+   *
+   * @param photoId (Required) The id of the photo to remove a person from.
+   * @param userId  (Required) The user id of the person to remove from the photo.
+   * @return object with the status of the requested operation.
+   * @throws JinxException if any required parameters are missing, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photos.people.delete.html">flickr.photos.people.delete</a>
+   */
+  public Response delete(String photoId, String userId) throws JinxException {
+    JinxUtils.validateParams(photoId, userId);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photos.people.delete");
+    params.put("photo_id", photoId);
+    params.put("user_id", userId);
+    return jinx.flickrPost(params, Response.class);
+  }
 
 
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.photos.people.deleteCoords.html">flickr.photos.people.deleteCoords</a>
-     * <br>
-     * Remove the bounding box from a person in a photo
-     * <br>
-     * This method requires authentication with 'write' permission.
-     *
-     * @param photoId (Required) The id of the photo to edit a person in.
-     * @param userId  (Required) The user id of the person whose bounding box you want to remove.
-     * @return object with the status of the requested operation.
-     * @throws JinxException if any required parameters are missing, or if there are any errors.
-     */
-    public Response deleteCoords(String photoId, String userId) throws JinxException {
-        JinxUtils.validateParams(photoId, userId);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.photos.people.deleteCoords");
-        params.put("photo_id", photoId);
-        params.put("user_id", userId);
-        return jinx.flickrPost(params, Response.class);
-    }
+  /**
+   * Remove the bounding box from a person in a photo
+   * <br>
+   * This method requires authentication with 'write' permission.
+   *
+   * @param photoId (Required) The id of the photo to edit a person in.
+   * @param userId  (Required) The user id of the person whose bounding box you want to remove.
+   * @return object with the status of the requested operation.
+   * @throws JinxException if any required parameters are missing, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photos.people.deleteCoords.html">flickr.photos.people.deleteCoords</a>
+   */
+  public Response deleteCoords(String photoId, String userId) throws JinxException {
+    JinxUtils.validateParams(photoId, userId);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photos.people.deleteCoords");
+    params.put("photo_id", photoId);
+    params.put("user_id", userId);
+    return jinx.flickrPost(params, Response.class);
+  }
 
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.photos.people.editCoords.html">flickr.photos.people.editCoords</a>
-     * <br>
-     * Edit the bounding box of an existing person on a photo.
-     * <br>
-     * This method requires authentication with 'write' permission.
-     *
-     * @param photoId (Required) The id of the photo to edit a person in.
-     * @param userId  (Required) The user id of the person to edit in a photo.
-     * @param x       (Required) The left-most pixel co-ordinate of the box around the person.
-     * @param y       (Required) The top-most pixel co-ordinate of the box around the person.
-     * @param width   (Required) The width (in pixels) of the box around the person.
-     * @param height  (Required) The height (in pixels) of the box around the person.
-     * @return object with the status of the requested operation.
-     * @throws JinxException if any required parameters are missing, or if there are any errors.
-     */
-    public Response editCoords(String photoId, String userId, Integer x, Integer y, Integer width, Integer height) throws JinxException {
-        JinxUtils.validateParams(photoId, userId, x, y, width, height);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.photos.people.editCoords");
-        params.put("photo_id", photoId);
-        params.put("user_id", userId);
-        params.put("person_x", x.toString());
-        params.put("person_y", y.toString());
-        params.put("person_w", width.toString());
-        params.put("person_h", height.toString());
-        return jinx.flickrPost(params, Response.class);
-    }
+  /**
+   * Edit the bounding box of an existing person on a photo.
+   * <br>
+   * This method requires authentication with 'write' permission.
+   *
+   * @param photoId (Required) The id of the photo to edit a person in.
+   * @param userId  (Required) The user id of the person to edit in a photo.
+   * @param x       (Required) The left-most pixel co-ordinate of the box around the person.
+   * @param y       (Required) The top-most pixel co-ordinate of the box around the person.
+   * @param width   (Required) The width (in pixels) of the box around the person.
+   * @param height  (Required) The height (in pixels) of the box around the person.
+   * @return object with the status of the requested operation.
+   * @throws JinxException if any required parameters are missing, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photos.people.editCoords.html">flickr.photos.people.editCoords</a>
+   */
+  public Response editCoords(String photoId, String userId, Integer x, Integer y, Integer width, Integer height) throws JinxException {
+    JinxUtils.validateParams(photoId, userId, x, y, width, height);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photos.people.editCoords");
+    params.put("photo_id", photoId);
+    params.put("user_id", userId);
+    params.put("person_x", x.toString());
+    params.put("person_y", y.toString());
+    params.put("person_w", width.toString());
+    params.put("person_h", height.toString());
+    return jinx.flickrPost(params, Response.class);
+  }
 
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.photos.people.getList.html">flickr.photos.people.getList</a>
-     * <br>
-     * Get a list of people in a given photo.
-     * <br>
-     * This method does not require authentication.
-     * <br>
-     *
-     * @param photoId (Required) The id of the photo to get a list of people for.
-     * @return list of people in the photo.
-     * @throws JinxException if any required parameters are missing, or if there are any errors.
-     */
-    public People getList(String photoId) throws JinxException {
-        JinxUtils.validateParams(photoId);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.photos.people.getList");
-        params.put("photo_id", photoId);
-        return jinx.flickrGet(params, People.class, false);
-    }
+  /**
+   * Get a list of people in a given photo.
+   * <br>
+   * This method does not require authentication.
+   * <br>
+   *
+   * @param photoId (Required) The id of the photo to get a list of people for.
+   * @return list of people in the photo.
+   * @throws JinxException if any required parameters are missing, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photos.people.getList.html">flickr.photos.people.getList</a>
+   */
+  public People getList(String photoId) throws JinxException {
+    JinxUtils.validateParams(photoId);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photos.people.getList");
+    params.put("photo_id", photoId);
+    return jinx.flickrGet(params, People.class, false);
+  }
 }

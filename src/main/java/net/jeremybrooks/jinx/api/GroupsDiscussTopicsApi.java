@@ -28,7 +28,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Created by jeremyb on 7/8/14.
+ * Provides access to the flickr.groups.discuss.topics API methods.
+ *
+ * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class GroupsDiscussTopicsApi {
   private Jinx jinx;
@@ -52,7 +55,7 @@ public class GroupsDiscussTopicsApi {
    */
   public Response add(String groupId, String subject, String message) throws JinxException {
     JinxUtils.validateParams(groupId, subject, message);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.groups.discuss.topics.add");
     params.put("group_id", groupId);
     params.put("subject", subject);
@@ -73,7 +76,7 @@ public class GroupsDiscussTopicsApi {
    */
   public TopicInfo getInfo(String topicId, boolean sign) throws JinxException {
     JinxUtils.validateParams(topicId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.groups.discuss.topics.getInfo");
     params.put("topic_id", topicId);
     return jinx.flickrGet(params, TopicInfo.class, sign);
@@ -96,7 +99,7 @@ public class GroupsDiscussTopicsApi {
    */
   public Topics getList(String groupId, int perPage, int page, boolean sign) throws JinxException {
     JinxUtils.validateParams(groupId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.groups.discuss.topics.getList");
     params.put("group_id", groupId);
     if (perPage > 0) {

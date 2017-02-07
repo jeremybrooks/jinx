@@ -32,7 +32,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * Provides access to the flickr.photos.comments API methods.
+ *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PhotosCommentsApi {
   private Jinx jinx;
@@ -54,7 +57,7 @@ public class PhotosCommentsApi {
    */
   public Comment addComment(String photoId, String commentText) throws JinxException {
     JinxUtils.validateParams(photoId, commentText);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.comments.addComment");
     params.put("photo_id", photoId);
     params.put("comment_text", commentText);
@@ -73,7 +76,7 @@ public class PhotosCommentsApi {
    */
   public Response deleteComment(String commentId) throws JinxException {
     JinxUtils.validateParams(commentId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.comments.deleteComment");
     params.put("comment_id", commentId);
     return jinx.flickrPost(params, Response.class);
@@ -92,7 +95,7 @@ public class PhotosCommentsApi {
    */
   public Response editComment(String commentId, String commentText) throws JinxException {
     JinxUtils.validateParams(commentId, commentText);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.comments.editComment");
     params.put("comment_id", commentId);
     params.put("comment_text", commentText);
@@ -117,7 +120,7 @@ public class PhotosCommentsApi {
    */
   public Comments getList(String photoId, String minCommentDate, String maxCommentDate, boolean sign) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.comments.getList");
     params.put("photo_id", photoId);
     if (!JinxUtils.isNullOrEmpty(minCommentDate)) {
@@ -146,7 +149,7 @@ public class PhotosCommentsApi {
    * @see <a href="https://www.flickr.com/services/api/flickr.photos.comments.getRecentForContacts.html">flickr.photos.comments.getRecentForContacts</a>
    */
   public Photos getRecentForContacts(String dateLastComment, List<String> contactsFilter, EnumSet<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.comments.getRecentForContacts");
     if (!JinxUtils.isNullOrEmpty(dateLastComment)) {
       params.put("date_lastcomment", dateLastComment);

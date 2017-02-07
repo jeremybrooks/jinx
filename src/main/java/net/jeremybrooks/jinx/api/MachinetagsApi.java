@@ -29,178 +29,176 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Created by jeremyb on 7/10/14.
+ * Provides access to the flickr.machinetags API methods.
+ *
+ * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class MachinetagsApi {
-    private Jinx jinx;
+  private Jinx jinx;
 
-    public MachinetagsApi(Jinx jinx) {
-        this.jinx = jinx;
+  public MachinetagsApi(Jinx jinx) {
+    this.jinx = jinx;
+  }
+
+  /**
+   * Return a list of unique namespaces, optionally limited by a given predicate, in alphabetical order.
+   * <br>
+   * This method does not require authentication.
+   *
+   * @param predicate (Optional) Limit the list of namespaces returned to those that have this predicate.
+   * @param perPage   Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.
+   * @param page      The page of results to return. If this argument is less than 1, it defaults to 1.
+   * @param sign      if true, the request will be signed.
+   * @return object containing a list of unique namespaces.
+   * @throws JinxException if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.machinetags.getNamespaces.html">flickr.machinetags.getNamespaces</a>
+   */
+  public Namespaces getNamespaces(String predicate, int perPage, int page, boolean sign) throws JinxException {
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.machinetags.getNamespaces");
+    if (!JinxUtils.isNullOrEmpty(predicate)) {
+      params.put("predicate", predicate);
     }
-
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.machinetags.getNamespaces.html">flickr.machinetags.getNamespaces</a>
-     * <br>
-     * Return a list of unique namespaces, optionally limited by a given predicate, in alphabetical order.
-     * <br>
-     * This method does not require authentication.
-     *
-     * @param predicate (Optional) Limit the list of namespaces returned to those that have this predicate.
-     * @param perPage   Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.
-     * @param page      The page of results to return. If this argument is less than 1, it defaults to 1.
-     * @param sign      if true, the request will be signed.
-     * @return object containing a list of unique namespaces.
-     * @throws JinxException if there are any errors.
-     */
-    public Namespaces getNamespaces(String predicate, int perPage, int page, boolean sign) throws JinxException {
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.machinetags.getNamespaces");
-        if (!JinxUtils.isNullOrEmpty(predicate)) {
-            params.put("predicate", predicate);
-        }
-        if (perPage > 0) {
-            params.put("per_page", Integer.toString(perPage));
-        }
-        if (page > 0) {
-            params.put("page", Integer.toString(page));
-        }
-        return jinx.flickrGet(params, Namespaces.class, sign);
+    if (perPage > 0) {
+      params.put("per_page", Integer.toString(perPage));
     }
-
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.machinetags.getPairs.html">flickr.machinetags.getPairs</a>
-     * <br>
-     * Return a list of unique namespace and predicate pairs, optionally limited by predicate or namespace, in alphabetical order.
-     * <br>
-     * This method does not require authentication.
-     *
-     * @param namespace (Optional) Limit the list of pairs returned to those that have this namespace.
-     * @param predicate (Optional) Limit the list of pairs returned to those that have this predicate.
-     * @param perPage   Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.
-     * @param page      The page of results to return. If this argument is less than 1, it defaults to 1.
-     * @param sign      if true, the request will be signed.
-     * @return object containing a list of unique namespace and predicate parts.
-     * @throws JinxException if there are any errors.
-     */
-    public Pairs getPairs(String namespace, String predicate, int perPage, int page, boolean sign) throws JinxException {
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.machinetags.getPairs");
-        if (!JinxUtils.isNullOrEmpty(namespace)) {
-            params.put("namespace", namespace);
-        }
-        if (!JinxUtils.isNullOrEmpty(predicate)) {
-            params.put("predicate", predicate);
-        }
-        if (perPage > 0) {
-            params.put("per_page", Integer.toString(perPage));
-        }
-        if (page > 0) {
-            params.put("page", Integer.toString(page));
-        }
-        return jinx.flickrGet(params, Pairs.class, sign);
+    if (page > 0) {
+      params.put("page", Integer.toString(page));
     }
+    return jinx.flickrGet(params, Namespaces.class, sign);
+  }
 
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.machinetags.getPredicates.html">flickr.machinetags.getPredicates</a>
-     * <br>
-     * Return a list of unique predicates, optionally limited by a given namespace.
-     * <br>
-     * This method does not require authentication.
-     * namespace (Optional)
-     * <br>
-     * per_page (Optional)
-     * Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
-     * page (Optional)
-     * The page of results to return. If this argument is omitted, it defaults to 1.
-     *
-     * @param namespace (Optional) Limit the list of predicates returned to those that have this namespace.
-     * @param perPage   Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.
-     * @param page      The page of results to return. If this argument is less than 1, it defaults to 1.
-     * @param sign      if true, the request will be signed.
-     * @return object containing a list of unique predicates.
-     * @throws JinxException if there are any errors.
-     */
-    public Predicates getPredicates(String namespace, int perPage, int page, boolean sign) throws JinxException {
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.machinetags.getPredicates");
-        if (!JinxUtils.isNullOrEmpty(namespace)) {
-            params.put("namespace", namespace);
-        }
-        if (perPage > 0) {
-            params.put("per_page", Integer.toString(perPage));
-        }
-        if (page > 0) {
-            params.put("page", Integer.toString(page));
-        }
-        return jinx.flickrGet(params, Predicates.class, sign);
+  /**
+   * Return a list of unique namespace and predicate pairs, optionally limited by predicate or namespace, in alphabetical order.
+   * <br>
+   * This method does not require authentication.
+   *
+   * @param namespace (Optional) Limit the list of pairs returned to those that have this namespace.
+   * @param predicate (Optional) Limit the list of pairs returned to those that have this predicate.
+   * @param perPage   Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.
+   * @param page      The page of results to return. If this argument is less than 1, it defaults to 1.
+   * @param sign      if true, the request will be signed.
+   * @return object containing a list of unique namespace and predicate parts.
+   * @throws JinxException if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.machinetags.getPairs.html">flickr.machinetags.getPairs</a>
+   */
+  public Pairs getPairs(String namespace, String predicate, int perPage, int page, boolean sign) throws JinxException {
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.machinetags.getPairs");
+    if (!JinxUtils.isNullOrEmpty(namespace)) {
+      params.put("namespace", namespace);
     }
+    if (!JinxUtils.isNullOrEmpty(predicate)) {
+      params.put("predicate", predicate);
+    }
+    if (perPage > 0) {
+      params.put("per_page", Integer.toString(perPage));
+    }
+    if (page > 0) {
+      params.put("page", Integer.toString(page));
+    }
+    return jinx.flickrGet(params, Pairs.class, sign);
+  }
 
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.machinetags.getRecentValues.html">flickr.machinetags.getRecentValues</a>
-     * <br>
-     * Fetch recently used (or created) machine tags values.
-     * <br>
-     * This method does not require authentication.
-     *
-     * @param namespace  (Optional) A namespace that all values should be restricted to.
-     * @param predicate  (Optional) A predicate that all values should be restricted to.
-     * @param addedSince (Optional) Only return machine tags values that have been added since this timestamp, in epoch seconds.
-     * @param sign       if true, the request will be signed.
-     * @return object containing a list of recently used or created machine tags values.
-     * @throws JinxException if there are any errors.
-     */
-    public Values getRecentValues(String namespace, String predicate, String addedSince, boolean sign) throws JinxException {
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.machinetags.getRecentValues");
-        if (!JinxUtils.isNullOrEmpty(namespace)) {
-            params.put("namespace", namespace);
-        }
-        if (!JinxUtils.isNullOrEmpty(predicate)) {
-            params.put("predicate", predicate);
-        }
-        if (!JinxUtils.isNullOrEmpty(addedSince)) {
-            params.put("added_since", addedSince);
-        }
+  /**
+   * Return a list of unique predicates, optionally limited by a given namespace.
+   * <br>
+   * This method does not require authentication.
+   * namespace (Optional)
+   * <br>
+   * per_page (Optional)
+   * Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
+   * page (Optional)
+   * The page of results to return. If this argument is omitted, it defaults to 1.
+   *
+   * @param namespace (Optional) Limit the list of predicates returned to those that have this namespace.
+   * @param perPage   Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.
+   * @param page      The page of results to return. If this argument is less than 1, it defaults to 1.
+   * @param sign      if true, the request will be signed.
+   * @return object containing a list of unique predicates.
+   * @throws JinxException if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.machinetags.getPredicates.html">flickr.machinetags.getPredicates</a>
+   */
+  public Predicates getPredicates(String namespace, int perPage, int page, boolean sign) throws JinxException {
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.machinetags.getPredicates");
+    if (!JinxUtils.isNullOrEmpty(namespace)) {
+      params.put("namespace", namespace);
+    }
+    if (perPage > 0) {
+      params.put("per_page", Integer.toString(perPage));
+    }
+    if (page > 0) {
+      params.put("page", Integer.toString(page));
+    }
+    return jinx.flickrGet(params, Predicates.class, sign);
+  }
+
+  /**
+   * Fetch recently used (or created) machine tags values.
+   * <br>
+   * This method does not require authentication.
+   *
+   * @param namespace  (Optional) A namespace that all values should be restricted to.
+   * @param predicate  (Optional) A predicate that all values should be restricted to.
+   * @param addedSince (Optional) Only return machine tags values that have been added since this timestamp, in epoch seconds.
+   * @param sign       if true, the request will be signed.
+   * @return object containing a list of recently used or created machine tags values.
+   * @throws JinxException if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.machinetags.getRecentValues.html">flickr.machinetags.getRecentValues</a>
+   */
+  public Values getRecentValues(String namespace, String predicate, String addedSince, boolean sign) throws JinxException {
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.machinetags.getRecentValues");
+    if (!JinxUtils.isNullOrEmpty(namespace)) {
+      params.put("namespace", namespace);
+    }
+    if (!JinxUtils.isNullOrEmpty(predicate)) {
+      params.put("predicate", predicate);
+    }
+    if (!JinxUtils.isNullOrEmpty(addedSince)) {
+      params.put("added_since", addedSince);
+    }
 //        if (perPage > 0) {
 //            params.put("per_page", Integer.toString(perPage));
 //        }
 //        if (page > 0) {
 //            params.put("page", Integer.toString(page));
 //        }
-        return jinx.flickrGet(params, Values.class, sign);
-    }
+    return jinx.flickrGet(params, Values.class, sign);
+  }
 
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.machinetags.getValues.html">flickr.machinetags.getValues</a>
-     * <br>
-     * Return a list of unique values for a namespace and predicate.
-     * <br>
-     * This method does not require authentication.
-     *
-     * @param namespace (Required) The namespace that all values should be restricted to.
-     * @param predicate (Required) The predicate that all values should be restricted to.
-     * @param perPage   Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.
-     * @param page      The page of results to return. If this argument is less than 1, it defaults to 1.
-     * @param sign      if true, the request will be signed.
-     * @return object containing a list of unique values for a namespace and predicate.
-     * @throws JinxException if required parameters are missing or if there are any errors.
-     */
-    public Values getValues(String namespace, String predicate, int perPage, int page, boolean sign) throws JinxException {
-        JinxUtils.validateParams(namespace, predicate);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.machinetags.getValues");
-        if (!JinxUtils.isNullOrEmpty(namespace)) {
-            params.put("namespace", namespace);
-        }
-        if (!JinxUtils.isNullOrEmpty(predicate)) {
-            params.put("predicate", predicate);
-        }
-        if (perPage > 0) {
-            params.put("per_page", Integer.toString(perPage));
-        }
-        if (page > 0) {
-            params.put("page", Integer.toString(page));
-        }
-        return jinx.flickrGet(params, Values.class, sign);
+  /**
+   * Return a list of unique values for a namespace and predicate.
+   * <br>
+   * This method does not require authentication.
+   *
+   * @param namespace (Required) The namespace that all values should be restricted to.
+   * @param predicate (Required) The predicate that all values should be restricted to.
+   * @param perPage   Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.
+   * @param page      The page of results to return. If this argument is less than 1, it defaults to 1.
+   * @param sign      if true, the request will be signed.
+   * @return object containing a list of unique values for a namespace and predicate.
+   * @throws JinxException if required parameters are missing or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.machinetags.getValues.html">flickr.machinetags.getValues</a>
+   */
+  public Values getValues(String namespace, String predicate, int perPage, int page, boolean sign) throws JinxException {
+    JinxUtils.validateParams(namespace, predicate);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.machinetags.getValues");
+    if (!JinxUtils.isNullOrEmpty(namespace)) {
+      params.put("namespace", namespace);
     }
+    if (!JinxUtils.isNullOrEmpty(predicate)) {
+      params.put("predicate", predicate);
+    }
+    if (perPage > 0) {
+      params.put("per_page", Integer.toString(perPage));
+    }
+    if (page > 0) {
+      params.put("page", Integer.toString(page));
+    }
+    return jinx.flickrGet(params, Values.class, sign);
+  }
 }

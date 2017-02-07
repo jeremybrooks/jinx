@@ -8,12 +8,13 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the Flickr prefs API methods.
+ * Provides access to the flickr.prefs API methods.
  *
  * The methods in this class return a {@link Person} object, but only the {@link Person#getUserId()} and
  * the preference getters will have values set.
  *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PrefsApi {
   private Jinx jinx;

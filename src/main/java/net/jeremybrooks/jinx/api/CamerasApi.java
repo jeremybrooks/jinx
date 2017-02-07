@@ -27,7 +27,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * Provides access to the flickr.cameras API methods.
+ *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class CamerasApi {
 
@@ -40,7 +43,6 @@ public class CamerasApi {
 
 	/**
 	 * Returns all the brands of cameras that Flickr knows about.
-	 * Authentication
 	 * <br>
 	 * This method does not require authentication.
 	 *
@@ -49,7 +51,7 @@ public class CamerasApi {
    * @see <a href="https://www.flickr.com/services/api/flickr.cameras.getBrands.html">flickr.cameras.getBrands</a>
 	 */
 	public CameraBrands getBrands() throws JinxException {
-		Map<String, String> params = new TreeMap<String, String>();
+		Map<String, String> params = new TreeMap<>();
 		params.put("method", "flickr.cameras.getBrands");
 
 		return jinx.flickrGet(params, CameraBrands.class, false);
@@ -67,7 +69,7 @@ public class CamerasApi {
 	 */
 	public CameraModels getBrandModels(String brandId) throws JinxException {
 		JinxUtils.validateParams(brandId);
-		Map<String, String> params = new TreeMap<String, String>();
+		Map<String, String> params = new TreeMap<>();
 		params.put("method", "flickr.cameras.getBrandModels");
 		params.put("brand", brandId);
 

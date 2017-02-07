@@ -15,7 +15,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * Provides access to the flickr.stats API methods.
+ *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class StatsApi {
   private Jinx jinx;

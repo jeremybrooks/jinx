@@ -25,28 +25,30 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * Provides access to the flickr.commons API methods.
+ *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class CommonsApi {
-	private Jinx jinx;
+  private Jinx jinx;
 
-	public CommonsApi(Jinx jinx) {
-		this.jinx = jinx;
-	}
+  public CommonsApi(Jinx jinx) {
+    this.jinx = jinx;
+  }
 
-	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.commons.getInstitutions.html">flickr.commons.getInstitutions</a>
-	 * <br>
-	 * Retrieves a list of the current Commons institutions.
-	 * <br>
-	 * This method does not require authentication.
-	 *
-	 * @return list of the current Commons institutions.
-	 * @throws JinxException if there are any errors.
-	 */
-	public Institutions getInstitutions() throws JinxException {
-		Map<String, String> params = new TreeMap<String, String>();
-		params.put("method", "flickr.commons.getInstitutions");
-		return jinx.flickrGet(params, Institutions.class);
-	}
+  /**
+   * Retrieves a list of the current Commons institutions.
+   * <br>
+   * This method does not require authentication.
+   *
+   * @return list of the current Commons institutions.
+   * @throws JinxException if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.commons.getInstitutions.html">flickr.commons.getInstitutions</a>
+   */
+  public Institutions getInstitutions() throws JinxException {
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.commons.getInstitutions");
+    return jinx.flickrGet(params, Institutions.class);
+  }
 }

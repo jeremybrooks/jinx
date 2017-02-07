@@ -13,11 +13,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the Flickr push API.
+ * Provides access to the flickr.push API methods.
  *
  * <p>This API is experimental. Check the Flickr documentation before using.</p>
  *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PushApi {
   private Jinx jinx;

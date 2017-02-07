@@ -28,51 +28,48 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.interestingness API.
- * <br>
- * See <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
- * <br>
- * Created by jeremyb on 7/9/14.
+ * Provides access to the flickr.interestingness API methods.
+ *
+ * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class InterestingnessApi {
-    private Jinx jinx;
+  private Jinx jinx;
 
-    public InterestingnessApi(Jinx jinx) {
-        this.jinx = jinx;
+  public InterestingnessApi(Jinx jinx) {
+    this.jinx = jinx;
+  }
+
+
+  /**
+   * Returns the list of interesting photos for the most recent day or a user-specified date.
+   * <br>
+   * This method does not require authentication.
+   *
+   * @param date    (Optional) A specific date, formatted as YYYY-MM-DD, to return interesting photos for.
+   * @param extras  (Optional) extra information to fetch for each returned record.
+   * @param perPage Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.
+   * @param page    The page of results to return. If this argument is less than 1, it defaults to 1.
+   * @param sign    if true, the request will be signed.
+   * @return photos object with the requested photos.
+   * @throws JinxException if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.interestingness.getList.html">flickr.interestingness.getList</a>
+   */
+  public Photos getList(String date, EnumSet<JinxConstants.PhotoExtras> extras, int perPage, int page, boolean sign) throws JinxException {
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.interestingness.getList");
+    if (!JinxUtils.isNullOrEmpty(date)) {
+      params.put("date", date);
     }
-
-
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.interestingness.getList.html">flickr.interestingness.getList</a>
-     * <br>
-     * <br>
-     * Returns the list of interesting photos for the most recent day or a user-specified date.
-     * <br>
-     * This method does not require authentication.
-     *
-     * @param date    (Optional) A specific date, formatted as YYYY-MM-DD, to return interesting photos for.
-     * @param extras  (Optional) extra information to fetch for each returned record.
-     * @param perPage Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.
-     * @param page    The page of results to return. If this argument is less than 1, it defaults to 1.
-     * @param sign    if true, the request will be signed.
-     * @return photos object with the requested photos.
-     * @throws JinxException if there are any errors.
-     */
-    public Photos getList(String date, EnumSet<JinxConstants.PhotoExtras> extras, int perPage, int page, boolean sign) throws JinxException {
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.interestingness.getList");
-        if (!JinxUtils.isNullOrEmpty(date)) {
-            params.put("date", date);
-        }
-        if (!JinxUtils.isNullOrEmpty(extras)) {
-            params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
-        }
-        if (page > 0) {
-            params.put("page", Integer.toString(page));
-        }
-        if (perPage > 0) {
-            params.put("per_page", Integer.toString(perPage));
-        }
-        return jinx.flickrGet(params, Photos.class, sign);
+    if (!JinxUtils.isNullOrEmpty(extras)) {
+      params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
     }
+    if (page > 0) {
+      params.put("page", Integer.toString(page));
+    }
+    if (perPage > 0) {
+      params.put("per_page", Integer.toString(perPage));
+    }
+    return jinx.flickrGet(params, Photos.class, sign);
+  }
 }

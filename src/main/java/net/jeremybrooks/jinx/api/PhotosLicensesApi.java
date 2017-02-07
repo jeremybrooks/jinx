@@ -27,53 +27,53 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * Provides access to the flickr.photos.licenses API methods.
  *
- * Created by jeremyb on 7/21/14.
+ * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PhotosLicensesApi {
-    private Jinx jinx;
+  private Jinx jinx;
 
-    public PhotosLicensesApi(Jinx jinx) {
-        this.jinx = jinx;
-    }
-
-
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html">flickr.photos.licenses.getInfo</a>
-     * <br>
-     * Fetches a list of available photo licenses for Flickr.
-     * <br>
-     * This method does not require authentication.
-     *
-     * @return object containing a list of currently available licenses.
-     * @throws JinxException if there are any errors.
-     */
-    public Licenses getInfo() throws JinxException {
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.photos.licenses.getInfo");
-        return jinx.flickrGet(params, Licenses.class, false);
-    }
+  public PhotosLicensesApi(Jinx jinx) {
+    this.jinx = jinx;
+  }
 
 
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.photos.licenses.setLicense.html">flickr.photos.licenses.setLicense</a>
-     * <br>
-     * Sets the license for a photo.
-     * <br>
-     * This method requires authentication with 'write' permission.
-     *
-     * @param photoId   (Required) The photo to update the license for.
-     * @param licenseId (Required) The license to apply, or 0 (zero) to remove the current license.
-     *                  Note: as of this writing the "no known copyright restrictions" license (7) is not a valid argument.
-     * @return object with the status of the requested operation.
-     * @throws JinxException if required parameters are missing, or if there are any errors.
-     */
-    public Response setLicense(String photoId, Integer licenseId) throws JinxException {
-        JinxUtils.validateParams(photoId, licenseId);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.photos.licenses.setLicense");
-        params.put("photo_id", photoId);
-        params.put("license_id", licenseId.toString());
-        return jinx.flickrPost(params, Response.class);
-    }
+  /**
+   * Fetches a list of available photo licenses for Flickr.
+   * <br>
+   * This method does not require authentication.
+   *
+   * @return object containing a list of currently available licenses.
+   * @throws JinxException if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html">flickr.photos.licenses.getInfo</a>
+   */
+  public Licenses getInfo() throws JinxException {
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photos.licenses.getInfo");
+    return jinx.flickrGet(params, Licenses.class, false);
+  }
+
+
+  /**
+   * Sets the license for a photo.
+   * <br>
+   * This method requires authentication with 'write' permission.
+   *
+   * @param photoId   (Required) The photo to update the license for.
+   * @param licenseId (Required) The license to apply, or 0 (zero) to remove the current license.
+   *                  Note: as of this writing the "no known copyright restrictions" license (7) is not a valid argument.
+   * @return object with the status of the requested operation.
+   * @throws JinxException if required parameters are missing, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photos.licenses.setLicense.html">flickr.photos.licenses.setLicense</a>
+   */
+  public Response setLicense(String photoId, Integer licenseId) throws JinxException {
+    JinxUtils.validateParams(photoId, licenseId);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photos.licenses.setLicense");
+    params.put("photo_id", photoId);
+    params.put("license_id", licenseId.toString());
+    return jinx.flickrPost(params, Response.class);
+  }
 }

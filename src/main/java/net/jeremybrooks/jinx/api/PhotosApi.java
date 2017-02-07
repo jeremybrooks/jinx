@@ -45,7 +45,10 @@ import java.util.Set;
 import java.util.TreeMap;
 
 /**
+ * Provides access to the flickr.photos API methods.
+ *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PhotosApi {
 
@@ -73,7 +76,7 @@ public class PhotosApi {
    */
   public AddTags addTags(String photoId, List<String> tags) throws JinxException {
     JinxUtils.validateParams(photoId, tags);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.addTags");
     params.put("photo_id", photoId);
     StringBuilder sb = new StringBuilder();
@@ -103,7 +106,7 @@ public class PhotosApi {
    */
   public Response delete(String photoId) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.delete");
     params.put("photo_id", photoId);
     return jinx.flickrPost(params, Response.class);
@@ -122,7 +125,7 @@ public class PhotosApi {
    */
   public AllContexts getAllContexts(String photoId) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getAllContexts");
     params.put("photo_id", photoId);
     return jinx.flickrGet(params, AllContexts.class);
@@ -145,7 +148,7 @@ public class PhotosApi {
    */
   public Photos getContactsPhotos(int count, boolean justFriends, boolean singlePhoto, boolean includeSelf,
                                   EnumSet<JinxConstants.PhotoExtras> extras) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getContactsPhotos");
     if (count > 0) {
       params.put("count", Integer.toString(count));
@@ -188,7 +191,7 @@ public class PhotosApi {
                                         EnumSet<JinxConstants.PhotoExtras> extras)
       throws JinxException {
     JinxUtils.validateParams(userId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getContactsPublicPhotos");
     params.put("user_id", userId);
     if (count > 0) {
@@ -221,7 +224,7 @@ public class PhotosApi {
    */
   public Context getContext(String photoId) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getContext");
     params.put("photo_id", photoId);
     return jinx.flickrGet(params, Context.class);
@@ -241,7 +244,7 @@ public class PhotosApi {
    * @see <a href="https://www.flickr.com/services/api/flickr.photos.getCounts.html">flickr.photos.getCounts</a>
    */
   public Photocounts getCounts(List<Date> dates, List<Date> takenDates) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getCounts");
     if (!JinxUtils.isNullOrEmpty(dates)) {
       Collections.sort(dates);
@@ -277,7 +280,7 @@ public class PhotosApi {
    */
   public ExifData getExif(String photoId, String secret) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getExif");
     params.put("photo_id", photoId);
     if (!JinxUtils.isNullOrEmpty(secret)) {
@@ -301,7 +304,7 @@ public class PhotosApi {
    */
   public Favorites getFavorites(String photoId, int page, int perPage) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getFavorites");
     params.put("photo_id", photoId);
     if (page > 0) {
@@ -328,7 +331,7 @@ public class PhotosApi {
    */
   public PhotoInfo getInfo(String photoId, String secret) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getInfo");
     params.put("photo_id", photoId);
     if (!JinxUtils.isNullOrEmpty(secret)) {
@@ -366,7 +369,7 @@ public class PhotosApi {
                             JinxConstants.PrivacyFilter privacyFilter,
                             JinxConstants.MediaType mediaType, EnumSet<JinxConstants.PhotoExtras> extras,
                             int perPage, int page) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getNotInSet");
     if (minUploadDate != null) {
       params.put("min_upload_date", JinxUtils.formatDateAsUnixTimestamp(minUploadDate));
@@ -411,7 +414,7 @@ public class PhotosApi {
    */
   public PhotoPerms getPerms(String photoId) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getPerms");
     params.put("photo_id", photoId);
     return jinx.flickrGet(params, PhotoPerms.class);
@@ -431,7 +434,7 @@ public class PhotosApi {
    * @see <a href="https://www.flickr.com/services/api/flickr.photos.getRecent.html">flickr.photos.getRecent</a>
    */
   public Photos getRecent(EnumSet<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getRecent");
     if (!JinxUtils.isNullOrEmpty(extras)) {
       params.put("extras", JinxUtils.buildCommaDelimitedList(extras));
@@ -458,7 +461,7 @@ public class PhotosApi {
    */
   public PhotoSizes getSizes(String photoId) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getSizes");
     params.put("photo_id", photoId);
     return jinx.flickrGet(params, PhotoSizes.class);
@@ -487,7 +490,7 @@ public class PhotosApi {
                             JinxConstants.PrivacyFilter privacyFilter,
                             JinxConstants.MediaType mediaType, EnumSet<JinxConstants.PhotoExtras> extras,
                             int perPage, int page) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getUntagged");
     if (minUploadDate != null) {
       params.put("min_upload_date", JinxUtils.formatDateAsUnixTimestamp(minUploadDate));
@@ -543,7 +546,7 @@ public class PhotosApi {
                                JinxConstants.PrivacyFilter privacyFilter, JinxConstants.SortOrder sortOrder,
                                JinxConstants.MediaType mediaType, EnumSet<JinxConstants.PhotoExtras> extras,
                                int perPage, int page) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getWithGeoData");
     if (minUploadDate != null) {
       params.put("min_upload_date", JinxUtils.formatDateAsUnixTimestamp(minUploadDate));
@@ -601,7 +604,7 @@ public class PhotosApi {
                                   JinxConstants.PrivacyFilter privacyFilter, JinxConstants.SortOrder sortOrder,
                                   JinxConstants.MediaType mediaType, EnumSet<JinxConstants.PhotoExtras> extras,
                                   int perPage, int page) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.getWithoutGeoData");
     if (minUploadDate != null) {
       params.put("min_upload_date", JinxUtils.formatDateAsUnixTimestamp(minUploadDate));
@@ -656,7 +659,7 @@ public class PhotosApi {
    */
   public Photos recentlyUpdated(Date minDate, Set<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
     JinxUtils.validateParams(minDate);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.recentlyUpdated");
     params.put("min_date", JinxUtils.formatDateAsUnixTimestamp(minDate));
     if (!JinxUtils.isNullOrEmpty(extras)) {
@@ -688,7 +691,7 @@ public class PhotosApi {
    */
   public Response removeTag(String tagId) throws JinxException {
     JinxUtils.validateParams(tagId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.removeTag");
     params.put("tag_id", tagId);
     return jinx.flickrPost(params, Response.class);
@@ -718,7 +721,7 @@ public class PhotosApi {
    */
   public Photos search(SearchParameters searchParameters) throws JinxException {
     JinxUtils.validateParams(searchParameters);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.search");
     if (!JinxUtils.isNullOrEmpty(searchParameters.getUserId())) {
       params.put("user_id", searchParameters.getUserId());
@@ -882,7 +885,7 @@ public class PhotosApi {
    */
   public Response setContentType(String photoId, JinxConstants.ContentType contentType) throws JinxException {
     JinxUtils.validateParams(photoId, contentType);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.setContentType");
     params.put("photo_id", photoId);
     params.put("content_type", Integer.toString(JinxUtils.contentTypeToFlickrContentTypeId(contentType)));
@@ -915,7 +918,7 @@ public class PhotosApi {
    */
   public Response setDates(String photoId, Date datePosted, Date dateTaken, int dateTakenGranularity) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.setDates");
     params.put("photo_id", photoId);
     if (datePosted != null) {
@@ -944,7 +947,7 @@ public class PhotosApi {
    */
   public Response setMeta(String photoId, String title, String description) throws JinxException {
     JinxUtils.validateParams(photoId, title, description);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.setMeta");
     params.put("photo_id", photoId);
     params.put("title", title);
@@ -971,7 +974,7 @@ public class PhotosApi {
                                    JinxConstants.Perms permComment, JinxConstants.Perms permAddMeta)
       throws JinxException {
     JinxUtils.validateParams(photoId, permComment, permAddMeta);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.setPerms");
     params.put("photo_id", photoId);
     params.put("is_public", isPublic ? "1" : "0");
@@ -996,7 +999,7 @@ public class PhotosApi {
    */
   public Response setSafetyLevel(String photoId, JinxConstants.SafetyLevel safetyLevel, boolean hidden) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.setSafetyLevel");
     params.put("photo_id", photoId);
     if (safetyLevel != null) {
@@ -1028,7 +1031,7 @@ public class PhotosApi {
    */
   public Response setTags(String photoId, List<String> tags) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.setTags");
     params.put("photo_id", photoId);
     if (tags == null || tags.size() == 0) {

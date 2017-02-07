@@ -17,9 +17,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the Flickr tags API.
+ * Provides access to the flickr.tags API methods.
  *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class TagsApi {
   private Jinx jinx;
@@ -149,7 +150,7 @@ public class TagsApi {
   public TagsForUser getListUser(String userId) throws JinxException {
     Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.tags.getListUser");
-    if (! JinxUtils.isNullOrEmpty(userId)) {
+    if (!JinxUtils.isNullOrEmpty(userId)) {
       params.put("user_id", userId);
     }
     return jinx.flickrGet(params, TagsForUser.class);
@@ -170,7 +171,7 @@ public class TagsApi {
   public TagsForUser getListUserPopular(String userId, Integer count) throws JinxException {
     Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.tags.getListUserPopular");
-    if (! JinxUtils.isNullOrEmpty(userId)) {
+    if (!JinxUtils.isNullOrEmpty(userId)) {
       params.put("user_id", userId);
     }
     if (count != null) {

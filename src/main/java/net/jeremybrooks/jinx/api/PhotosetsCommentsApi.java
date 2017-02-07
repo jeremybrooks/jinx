@@ -28,94 +28,92 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * Provides access to the flickr.photosets.comments API methods.
+ *
  * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PhotosetsCommentsApi {
-	private Jinx jinx;
+  private Jinx jinx;
 
-	public PhotosetsCommentsApi(Jinx jinx) {
-		this.jinx = jinx;
-	}
-
-
-	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.addComment.html">flickr.photosets.comments.addComment</a>
-	 *
-	 * Add a comment to a photoset.
-	 * <br>
-	 * This method requires authentication with 'write' permission.
-	 *
-	 * @param photosetId id of the photoset to add a comment to.
-	 * @param comment    text of the comment.
-	 * @return object with the newly created comment's ID.
-	 * @throws JinxException if parameters are null or empty, or if there are any errors.
-	 */
-	public CommentAdd addComment(String photosetId, String comment) throws JinxException {
-		JinxUtils.validateParams(photosetId, comment);
-		Map<String, String> params = new TreeMap<String, String>();
-		params.put("method", "flickr.photosets.comments.addComment");
-		params.put("photoset_id", photosetId);
-		params.put("comment_text", comment);
-		return jinx.flickrPost(params, CommentAdd.class);
-	}
+  public PhotosetsCommentsApi(Jinx jinx) {
+    this.jinx = jinx;
+  }
 
 
-	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.deleteComment.html">flickr.photosets.comments.deleteComment</a>
-	 *
-	 * Delete a photoset comment as the currently authenticated user.
-	 * <br>
-	 * This method requires authentication with 'write' permission.
-	 *
-	 * @param commentId id of the comment to delete from a photoset.
-	 * @return response object with status and any error messages.
-	 * @throws JinxException if parameters are null or empty, or if there are any errors.
-	 */
-	public Response deleteComment(String commentId) throws JinxException {
-		JinxUtils.validateParams(commentId);
-		Map<String, String> params = new TreeMap<String, String>();
-		params.put("method", "flickr.photosets.comments.deleteComment");
-		params.put("comment_id", commentId);
-		return jinx.flickrPost(params, Response.class);
-	}
+  /**
+   * Add a comment to a photoset.
+   * <br>
+   * This method requires authentication with 'write' permission.
+   *
+   * @param photosetId id of the photoset to add a comment to.
+   * @param comment    text of the comment.
+   * @return object with the newly created comment's ID.
+   * @throws JinxException if parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photosets.comments.addComment.html">flickr.photosets.comments.addComment</a>
+   */
+  public CommentAdd addComment(String photosetId, String comment) throws JinxException {
+    JinxUtils.validateParams(photosetId, comment);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photosets.comments.addComment");
+    params.put("photoset_id", photosetId);
+    params.put("comment_text", comment);
+    return jinx.flickrPost(params, CommentAdd.class);
+  }
 
 
-	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.editComment.html">flickr.photosets.comments.editComment</a>
-	 *
-	 * Edit the text of a comment as the currently authenticated user.
-	 * <br>
-	 * This method requires authentication with 'write' permission.
-	 *
-	 * @param commentId id of the comment to edit.
-	 * @param comment   text of the updated comment.
-	 * @return response object with status and any error messages.
-	 * @throws JinxException if parameters are null or empty, or if there are any errors.
-	 *                       \
-	 */
-	public Response editComment(String commentId, String comment) throws JinxException {
-		JinxUtils.validateParams(commentId, comment);
-		Map<String, String> params = new TreeMap<String, String>();
-		params.put("method", "flickr.photosets.comments.editComment");
-		params.put("comment_id", commentId);
-		params.put("comment_text", comment);
-		return jinx.flickrPost(params, Response.class);
-	}
+  /**
+   * Delete a photoset comment as the currently authenticated user.
+   * <br>
+   * This method requires authentication with 'write' permission.
+   *
+   * @param commentId id of the comment to delete from a photoset.
+   * @return response object with status and any error messages.
+   * @throws JinxException if parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photosets.comments.deleteComment.html">flickr.photosets.comments.deleteComment</a>
+   */
+  public Response deleteComment(String commentId) throws JinxException {
+    JinxUtils.validateParams(commentId);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photosets.comments.deleteComment");
+    params.put("comment_id", commentId);
+    return jinx.flickrPost(params, Response.class);
+  }
 
-	/**
-	 * <a href="https://www.flickr.com/services/api/flickr.photosets.comments.getList.html">flickr.photosets.comments.getList</a>
-	 *
-	 * Returns the comments for a photoset.
-	 *
-	 * @param photosetId id of the photoset to fetch comments for.
-	 * @return comment list object.
-	 * @throws JinxException if the parameter is null or empty, or if there are any errors.
-	 */
-	public CommentList getList(String photosetId) throws JinxException {
-		JinxUtils.validateParams(photosetId);
-		Map<String, String> params = new TreeMap<String, String>();
-		params.put("method", "flickr.photosets.comments.getList");
-		params.put("photoset_id", photosetId);
-		return jinx.flickrGet(params, CommentList.class);
-	}
+
+  /**
+   * Edit the text of a comment as the currently authenticated user.
+   * <br>
+   * This method requires authentication with 'write' permission.
+   *
+   * @param commentId id of the comment to edit.
+   * @param comment   text of the updated comment.
+   * @return response object with status and any error messages.
+   * @throws JinxException if parameters are null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photosets.comments.editComment.html">flickr.photosets.comments.editComment</a>
+   */
+  public Response editComment(String commentId, String comment) throws JinxException {
+    JinxUtils.validateParams(commentId, comment);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photosets.comments.editComment");
+    params.put("comment_id", commentId);
+    params.put("comment_text", comment);
+    return jinx.flickrPost(params, Response.class);
+  }
+
+  /**
+   * Returns the comments for a photoset.
+   *
+   * @param photosetId id of the photoset to fetch comments for.
+   * @return comment list object.
+   * @throws JinxException if the parameter is null or empty, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photosets.comments.getList.html">flickr.photosets.comments.getList</a>
+   */
+  public CommentList getList(String photosetId) throws JinxException {
+    JinxUtils.validateParams(photosetId);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photosets.comments.getList");
+    params.put("photoset_id", photosetId);
+    return jinx.flickrGet(params, CommentList.class);
+  }
 }

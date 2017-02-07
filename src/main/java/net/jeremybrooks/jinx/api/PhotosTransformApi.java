@@ -27,37 +27,39 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Created by jeremyb on 7/22/14.
+ * Provides access to the flickr.photos.transform API methods.
+ *
+ * @author Jeremy Brooks
+ * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PhotosTransformApi {
-    private Jinx jinx;
+  private Jinx jinx;
 
-    private PhotosTransformApi() {
-    }
+  private PhotosTransformApi() {
+  }
 
-    public PhotosTransformApi(Jinx jinx) {
-        this.jinx = jinx;
-    }
+  public PhotosTransformApi(Jinx jinx) {
+    this.jinx = jinx;
+  }
 
 
-    /**
-     * <a href="https://www.flickr.com/services/api/flickr.photos.transform.rotate.html">flickr.photos.transform.rotate</a>
-     * <br>
-     * Rotate a photo.
-     * <br>
-     * This method requires authentication with 'write' permission.
-     *
-     * @param photoId (Required) The id of the photo to rotate.
-     * @param degrees (Required) The amount of degrees by which to rotate the photo (clockwise) from it's current orientation.
-     * @return object with the photo id and secrets.
-     * @throws JinxException if required parameters are missing, or if there are any errors.
-     */
-    public TransformResult rotate(String photoId, JinxConstants.RotateDegrees degrees) throws JinxException {
-        JinxUtils.validateParams(photoId, degrees);
-        Map<String, String> params = new TreeMap<String, String>();
-        params.put("method", "flickr.photos.transform.rotate");
-        params.put("photo_id", photoId);
-        params.put("degrees", degrees.toString().replace("_", "")); // pull off the leading underscore
-        return jinx.flickrPost(params, TransformResult.class);
-    }
+  /**
+   * Rotate a photo.
+   * <br>
+   * This method requires authentication with 'write' permission.
+   *
+   * @param photoId (Required) The id of the photo to rotate.
+   * @param degrees (Required) The amount of degrees by which to rotate the photo (clockwise) from it's current orientation.
+   * @return object with the photo id and secrets.
+   * @throws JinxException if required parameters are missing, or if there are any errors.
+   * @see <a href="https://www.flickr.com/services/api/flickr.photos.transform.rotate.html">flickr.photos.transform.rotate</a>
+   */
+  public TransformResult rotate(String photoId, JinxConstants.RotateDegrees degrees) throws JinxException {
+    JinxUtils.validateParams(photoId, degrees);
+    Map<String, String> params = new TreeMap<>();
+    params.put("method", "flickr.photos.transform.rotate");
+    params.put("photo_id", photoId);
+    params.put("degrees", degrees.toString().replace("_", "")); // pull off the leading underscore
+    return jinx.flickrPost(params, TransformResult.class);
+  }
 }
