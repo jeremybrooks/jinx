@@ -6,8 +6,36 @@ Jinx is a Java interface to the Flickr API. The project goals are:
  * Complete coverage of the Flickr API
  * Minimal library requirements
 
-You can find an example of how to use the Jinx library here: <https://github.com/jeremybrooks/jinxexamples>
+# Using Jinx
 
+First, go to [developer.flickr.com](http://www.flickr.com/services/api/) and familiarize yourself with the Flickr API.
+
+The package net.jeremybrooks.jinx.api contains a class for each section of the Flickr API. Each class has methods corresponding
+to Flickr API methods. So, if you wanted to call the flickr.contacts.getList method, you would call the getList method
+of the Jinx class net.jeremybrooks.jinx.api.ContactsApi. 
+
+Generally, methods will return objects from the net.jeremybrooks.jinx.response package. The returned object depends
+on what method you call, and what data Flickr sends back.
+
+For example code, including how to authenticate users of your Flickr application and how to call methods, see the
+example code here: <https://github.com/jeremybrooks/jinxexamples>
+
+## REQUIREMENTS
+You must be using Java 1.7 or higher.
+
+If you are using Maven, just include this in your pom.xml file
+
+	<dependency>
+		<groupId>net.jeremybrooks</groupId>
+		<artifactId>jinx</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+
+If you are not using Maven, you will need these libraries, and their dependencies:
+  
+  * Gson 2.8.0+ -- deserializes json documents in to Java objects
+  * Scribe 1.3.7 -- provides OAuth services
+  
 ## Notes About Jinx
 
 ### ID's (NSID)
@@ -40,21 +68,7 @@ If you need to log the body of a photo upload request, you must set a JinxLogger
 	jinx.setVerboseLogging(true);
 	jinx.setMultpartLogging(true);
 
-# REQUIREMENTS
-You must be using Java 1.7 or higher.
 
-If you are using Maven, just include this in your pom.xml file
-
-	<dependency>
-		<groupId>net.jeremybrooks</groupId>
-		<artifactId>jinx</artifactId>
-		<version>0.8.2</version>
-	</dependency>
-
-If you are not using Maven, you will need these libraries, and their dependencies:
-  
-  * Gson 2.8.0+ -- deserializes json documents in to Java objects
-  * Scribe 1.3.7 -- provides OAuth services
   
 # VERSION HISTORY
   
