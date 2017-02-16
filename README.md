@@ -72,7 +72,8 @@ If you need to log the body of a photo upload request, you must set a JinxLogger
   
 # VERSION HISTORY
   
-## Version 1.0.0 supports the following API's
+## Version 1.0.0
+### API support:
   * activity
   * auth.oauth
   * blogs (have not really tested the postPhoto method, though)
@@ -111,6 +112,7 @@ If you need to log the body of a photo upload request, you must set a JinxLogger
   * test
   * urls
   
+### Other Features 
   * Logging of multipart requests is now controlled by a flag, rather than a system property.
   * Updated dependencies to newer versions where applicable.
   * Dependencies all come from Maven Central.
