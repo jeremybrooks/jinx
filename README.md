@@ -321,5 +321,4 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
 
-# TODO
 
