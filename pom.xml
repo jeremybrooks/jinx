@@ -187,8 +187,8 @@
                 <version>3.6.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                    <source>1.9</source>
-                    <target>1.9</target>
+                    <source>9</source>
+                    <target>9</target>
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
