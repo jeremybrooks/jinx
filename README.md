@@ -30,7 +30,7 @@ If you are using Maven, just include this in your pom.xml file
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>2.0.0</version>
+		<version>2.0.2</version>
 	</dependency>
 
 If you are not using Maven, you will need these libraries, and their dependencies:
