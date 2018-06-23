@@ -21,7 +21,7 @@ For example code, including how to authenticate users of your Flickr application
 example code here: <https://github.com/jeremybrooks/jinxexamples>
 
 ## REQUIREMENTS
-Jinx 2.0.0 requires Java 9 or higher.
+Jinx 2.0.0+ requires Java 9 or higher.
 
 Jinx 1.0.0 supports Java 7 and 8.
 
