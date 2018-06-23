@@ -21,20 +21,26 @@ For example code, including how to authenticate users of your Flickr application
 example code here: <https://github.com/jeremybrooks/jinxexamples>
 
 ## REQUIREMENTS
-You must be using Java 1.7 or higher.
+Jinx 2.0.0 requires Java 9 or higher.
+
+Jinx 1.0.0 supports Java 7 and 8.
 
 If you are using Maven, just include this in your pom.xml file
 
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>1.0.0</version>
+		<version>2.0.0</version>
 	</dependency>
 
 If you are not using Maven, you will need these libraries, and their dependencies:
   
   * Gson 2.8.0+ -- deserializes json documents in to Java objects
   * Scribe 1.3.7 -- provides OAuth services
+  * jaxb-api 2.2.11
+  * jaxb-core 2.2.11
+  * jabx-impl 2.2.11
+  * activation 1.1.1
   
 ## Notes About Jinx
 
@@ -306,7 +312,7 @@ Since this library uses Gson to deserialize JSON documents into Java classes, th
 
 
 # LICENSE
-Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
+Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
 
 Jinx is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
