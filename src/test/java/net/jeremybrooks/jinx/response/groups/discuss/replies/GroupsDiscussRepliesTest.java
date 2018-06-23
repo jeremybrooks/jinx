@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -88,10 +88,10 @@ public class GroupsDiscussRepliesTest {
         assertNull(t.isLocked());
         assertEquals("1404713682", t.getDateCreate());
         assertEquals("1404762423", t.getDateLastPost());
-        assertEquals(new Integer(1), t.getTotal());
-        assertEquals(new Integer(1), t.getPage());
-        assertEquals(new Integer(100), t.getPerPage());
-        assertEquals(new Integer(1), t.getPages());
+        assertEquals(Integer.valueOf(1), t.getTotal());
+        assertEquals(Integer.valueOf(1), t.getPage());
+        assertEquals(Integer.valueOf(100), t.getPerPage());
+        assertEquals(Integer.valueOf(1), t.getPages());
 
         List<Reply> list = replies.getReplyList();
         assertNotNull(list);

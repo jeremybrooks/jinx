@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,10 +41,10 @@ public class PhotosGeoTest {
         assertEquals("ok", location.getStat());
         assertEquals(0, location.getCode());
         assertEquals("14654888764", location.getPhotoId());
-        assertEquals(new Float(37.791125), location.getLatitude());
-        assertEquals(new Float(-122.399187), location.getLongitude());
-        assertEquals(new Integer(16), location.getAccuracy());
-        assertEquals(new Integer(0), location.getContext());
+        assertEquals(Float.valueOf(37.791125f), location.getLatitude());
+        assertEquals(Float.valueOf(-122.399187f), location.getLongitude());
+        assertEquals(Integer.valueOf(16), location.getAccuracy());
+        assertEquals(Integer.valueOf(0), location.getContext());
         assertEquals("Financial District", location.getNeighbourhoodName());
         assertEquals("GddgqTpTUb8LgT93hw", location.getNeighbourhoodPlaceId());
         assertEquals("23512022", location.getNeighbourhoodWoeId());

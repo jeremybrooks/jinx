@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -197,7 +197,7 @@ public class PeopleApiTest {
         assertEquals("ok", photos.getStat());
         assertEquals(0, photos.getCode());
         assertNotNull(photos.getPhotoList());
-        assertEquals(new Integer(3), photos.getPage());
+        assertEquals(Integer.valueOf(3), photos.getPage());
         assertEquals(10, photos.getPhotoList().size());
         for (Photo p : photos.getPhotoList()) {
             assertNotNull(p.getTags());

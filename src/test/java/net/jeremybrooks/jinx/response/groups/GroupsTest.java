@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,9 +47,9 @@ public class GroupsTest {
         assertEquals("SF Bay Area Shooters (sfbas)", groupInfo.getName());
         assertEquals("Share tips, photo locations, and organize photoshoots with San Francisco Bay Area photographers!\n\nCheck out our official SFBAS Shoot pictures:\n<a href=\"http://flickr.com/photos/tags/sfbas/clusters/\">flickr.com/photos/tags/sfbas/clusters/</a>\n\nCheck out our SFBAS Group Pictures:\n<a href=\"http://www.flickr.com/groups/sfbas/discuss/72157602621370134/\">www.flickr.com/groups/sfbas/discuss/72157602621370134/</a>\n\nAnd please visit our master shoot location list for upcoming photo shoots!\n<a href=\"http://flickr.com/groups/sfbas/discuss/72157594179606707/\">flickr.com/groups/sfbas/discuss/72157594179606707/</a>\n\n<a href=\"http://www.flickr.com/groups/sfbas/discuss/72157594501754869/\">Thank your for using caution when using the SFBAS tag</a>\n\n", groupInfo.getDescription());
         assertEquals("", groupInfo.getRules());
-        assertEquals(new Integer(4409), groupInfo.getMembers());
-        assertEquals(new Integer(145199), groupInfo.getPoolCount());
-        assertEquals(new Integer(848), groupInfo.getTopicCount());
+        assertEquals(Integer.valueOf(4409), groupInfo.getMembers());
+        assertEquals(Integer.valueOf(145199), groupInfo.getPoolCount());
+        assertEquals(Integer.valueOf(848), groupInfo.getTopicCount());
         assertEquals("3", groupInfo.getPrivacy());
         assertEquals("", groupInfo.getLang());
         assertFalse(groupInfo.isPoolModerated());
@@ -65,9 +65,9 @@ public class GroupsTest {
         assertEquals("1327974979", groupInfo.getBlast().getDateBlastAdded());
         assertEquals("642072", groupInfo.getBlast().getUserId());
         assertNotNull(groupInfo.getThrottle());
-        assertEquals(new Integer(5), groupInfo.getThrottle().getCount());
+        assertEquals(Integer.valueOf(5), groupInfo.getThrottle().getCount());
         assertEquals("day", groupInfo.getThrottle().getMode());
-        assertEquals(new Integer(4), groupInfo.getThrottle().getRemaining());
+        assertEquals(Integer.valueOf(4), groupInfo.getThrottle().getRemaining());
         assertNotNull(groupInfo.getRestrictions());
         assertTrue(groupInfo.getRestrictions().isPhotosOk());
         assertTrue(groupInfo.getRestrictions().isVideosOk());
@@ -88,10 +88,10 @@ public class GroupsTest {
         assertNotNull(groupSearch);
         assertEquals("ok", groupSearch.getStat());
         assertEquals(0, groupSearch.getCode());
-        assertEquals(new Integer(1), groupSearch.getPage());
-        assertEquals(new Integer(500), groupSearch.getPages());
-        assertEquals(new Integer(10), groupSearch.getPerPage());
-        assertEquals(new Integer(4998), groupSearch.getTotal());
+        assertEquals(Integer.valueOf(1), groupSearch.getPage());
+        assertEquals(Integer.valueOf(500), groupSearch.getPages());
+        assertEquals(Integer.valueOf(10), groupSearch.getPerPage());
+        assertEquals(Integer.valueOf(4998), groupSearch.getTotal());
         assertNotNull(groupSearch.getGroupList());
         assertEquals(10, groupSearch.getGroupList().size());
         GroupSearch.Group g = groupSearch.getGroupList().get(0);
@@ -100,8 +100,8 @@ public class GroupsTest {
         assertFalse(g.isEighteenPlus());
         assertEquals("3455", g.getIconServer());
         assertEquals("4", g.getIconFarm());
-        assertEquals(new Integer(68), g.getMemberCount());
-        assertEquals(new Integer(733), g.getPoolCount());
-        assertEquals(new Integer(1), g.getTopicCount());
+        assertEquals(Integer.valueOf(68), g.getMemberCount());
+        assertEquals(Integer.valueOf(733), g.getPoolCount());
+        assertEquals(Integer.valueOf(1), g.getTopicCount());
     }
 }

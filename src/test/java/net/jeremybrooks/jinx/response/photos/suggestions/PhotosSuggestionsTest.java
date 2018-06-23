@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,9 +40,9 @@ public class PhotosSuggestionsTest {
         assertNotNull(suggestions);
         assertEquals("ok", suggestions.getStat());
         assertEquals(0, suggestions.getCode());
-        assertEquals(new Integer(0), suggestions.getTotal());
-        assertEquals(new Integer(250), suggestions.getPerPage());
-        assertEquals(new Integer(1), suggestions.getPage());
+        assertEquals(Integer.valueOf(0), suggestions.getTotal());
+        assertEquals(Integer.valueOf(250), suggestions.getPerPage());
+        assertEquals(Integer.valueOf(1), suggestions.getPage());
         assertNotNull(suggestions.getSuggestionList());
         assertEquals(0, suggestions.getSuggestionList().size());
     }
@@ -55,9 +55,9 @@ public class PhotosSuggestionsTest {
         assertNotNull(suggestions);
         assertEquals("ok", suggestions.getStat());
         assertEquals(0, suggestions.getCode());
-        assertEquals(new Integer(2), suggestions.getTotal());
-        assertEquals(new Integer(250), suggestions.getPerPage());
-        assertEquals(new Integer(1), suggestions.getPage());
+        assertEquals(Integer.valueOf(2), suggestions.getTotal());
+        assertEquals(Integer.valueOf(250), suggestions.getPerPage());
+        assertEquals(Integer.valueOf(1), suggestions.getPage());
         assertNotNull(suggestions.getSuggestionList());
         assertEquals(2, suggestions.getSuggestionList().size());
         Suggestions.Suggestion s = suggestions.getSuggestionList().get(0);
@@ -69,9 +69,9 @@ public class PhotosSuggestionsTest {
         assertEquals("jinxlib", s.getSuggestedByUsername());
         assertEquals("test", s.getNote());
         assertEquals("23512022", s.getWoeId());
-        assertEquals(new Float(37.791125), s.getLatitude());
-        assertEquals(new Float(-122.399187), s.getLongitude());
-        assertEquals(new Integer(16), s.getAccuracy());
+        assertEquals(Float.valueOf(37.791125f), s.getLatitude());
+        assertEquals(Float.valueOf(-122.399187f), s.getLongitude());
+        assertEquals(Integer.valueOf(16), s.getAccuracy());
         assertEquals("Financial District", s.getNeighbourhoodName());
         assertEquals("GddgqTpTUb8LgT93hw", s.getNeighbourhoodPlaceId());
         assertEquals("23512022", s.getNeighbourhoodWoeId());

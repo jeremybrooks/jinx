@@ -1,3 +1,20 @@
+/*
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
@@ -60,8 +77,8 @@ public class PlacesApiTest {
 
   @Test
   public void testFindByLatLon() throws Exception {
-    Float latitude = new Float(37.765);
-    Float longitude = new Float(-122.4202);
+    Float latitude = 37.765f;
+    Float longitude = -122.4202f;
     Places places = placesApi.findByLatLon(latitude, longitude, 16);
     assertNotNull(places);
     assertNotNull(places.getPlaces());
@@ -151,7 +168,7 @@ public class PlacesApiTest {
   @Test
   public void testGetPlacesForTags() throws Exception {
     String placeId = "NsbUWfBTUb4mbyVu";
-    List<String> tags = new ArrayList();
+    List<String> tags = new ArrayList<>();
     tags.add("neon");
     Places places = placesApi.getPlacesForTags(JinxConstants.PlaceTypeId.country, placeId, null,
         null, tags, JinxConstants.TagMode.any, null, null, null, null,

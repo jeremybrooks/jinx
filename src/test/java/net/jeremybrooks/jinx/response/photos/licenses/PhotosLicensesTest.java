@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ public class PhotosLicensesTest {
         assertNotNull(licenses.getLicenseList());
         assertEquals(9, licenses.getLicenseList().size());
         Licenses.License license = licenses.getLicenseList().get(1);
-        assertEquals(new Integer(4), license.getLicenseId());
+        assertEquals(Integer.valueOf(4), license.getLicenseId());
         assertEquals("Attribution License", license.getName());
         assertEquals("https://creativecommons.org/licenses/by/2.0/", license.getUrl());
     }

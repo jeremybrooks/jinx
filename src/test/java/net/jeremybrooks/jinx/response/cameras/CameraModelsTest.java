@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,28 +51,28 @@ public class CameraModelsTest {
 			assertNotNull(camera.getSmallImageUrl());
 			assertNotNull(camera.getLargeImageUrl());
 			if (camera.getName().equals("Canon EOS 5D Mark II")) {
-				assertEquals(new Float(3.0), camera.getLcdScreenSize());
-				assertEquals(new Float(21.1), camera.getMegapixels());
+				assertEquals(Float.valueOf(3.0f), camera.getLcdScreenSize());
+				assertEquals(Float.valueOf(21.1f), camera.getMegapixels());
 			}
 			if (camera.getName().equals("Canon EOS 7D")) {
-				assertEquals(new Float(3.0), camera.getLcdScreenSize());
-				assertEquals(new Float(18.0), camera.getMegapixels());
+				assertEquals(Float.valueOf(3.0f), camera.getLcdScreenSize());
+				assertEquals(Float.valueOf(18.0f), camera.getMegapixels());
 			}
 			if (camera.getName().equals("Canon EOS REBEL T2i")) {
-				assertEquals(new Float(3.0), camera.getLcdScreenSize());
-				assertEquals(new Float(18.0), camera.getMegapixels());
+				assertEquals(Float.valueOf(3.0f), camera.getLcdScreenSize());
+				assertEquals(Float.valueOf(18.0f), camera.getMegapixels());
 			}
 			if (camera.getName().equals("Canon EOS REBEL T3i")) {
-				assertEquals(new Float(3.0), camera.getLcdScreenSize());
-				assertEquals(new Float(18.0), camera.getMegapixels());
+				assertEquals(Float.valueOf(3.0f), camera.getLcdScreenSize());
+				assertEquals(Float.valueOf(18.0f), camera.getMegapixels());
 			}
 			if (camera.getName().equals("Canon EOS 60D")) {
-				assertEquals(new Float(3.0), camera.getLcdScreenSize());
-				assertEquals(new Float(18.0), camera.getMegapixels());
+				assertEquals(Float.valueOf(3.0f), camera.getLcdScreenSize());
+				assertEquals(Float.valueOf(18.0f), camera.getMegapixels());
 			}
 			if (camera.getName().equals("Canon EOS 5D Mark III")) {
-				assertEquals(new Float(3.2), camera.getLcdScreenSize());
-				assertEquals(new Float(22.3), camera.getMegapixels());
+				assertEquals(Float.valueOf(3.2f), camera.getLcdScreenSize());
+				assertEquals(Float.valueOf(22.3f), camera.getMegapixels());
 			}
 		}
 	}

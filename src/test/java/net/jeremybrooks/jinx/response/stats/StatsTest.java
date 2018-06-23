@@ -1,3 +1,20 @@
+/*
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.jeremybrooks.jinx.response.stats;
 
 import com.google.gson.Gson;
@@ -31,15 +48,15 @@ public class StatsTest {
     InputStreamReader reader = new InputStreamReader(StatsTest.class.getResourceAsStream("/response/stats/sample_get_photo_domains.json"));
     Domains domains = new Gson().fromJson(reader, Domains.class);
     assertNotNull(domains);
-    assertEquals(new Integer(1), domains.getPage());
-    assertEquals(new Integer(25), domains.getPerPage());
-    assertEquals(new Integer(1), domains.getPages());
-    assertEquals(new Integer(7), domains.getTotal());
+    assertEquals(Integer.valueOf(1), domains.getPage());
+    assertEquals(Integer.valueOf(25), domains.getPerPage());
+    assertEquals(Integer.valueOf(1), domains.getPages());
+    assertEquals(Integer.valueOf(7), domains.getTotal());
     assertNotNull(domains.getDomainList());
     Domain domain = domains.getDomainList().get(0);
     assertNotNull(domain);
     assertEquals("flickr.com", domain.getName());
-    assertEquals(new Integer(3486), domain.getViews());
+    assertEquals(Integer.valueOf(3486), domain.getViews());
   }
 
   /**
@@ -56,15 +73,15 @@ public class StatsTest {
     Referrers referrers = new Gson().fromJson(reader, Referrers.class);
     assertNotNull(referrers);
     assertEquals("flickr.com", referrers.getName());
-    assertEquals(new Integer(1), referrers.getPage());
-    assertEquals(new Integer(25), referrers.getPerPage());
-    assertEquals(new Integer(57), referrers.getPages());
-    assertEquals(new Integer(1420), referrers.getTotal());
+    assertEquals(Integer.valueOf(1), referrers.getPage());
+    assertEquals(Integer.valueOf(25), referrers.getPerPage());
+    assertEquals(Integer.valueOf(57), referrers.getPages());
+    assertEquals(Integer.valueOf(1420), referrers.getTotal());
     assertNotNull(referrers.getReferrerList());
     Referrer referrer = referrers.getReferrerList().get(1);
     assertNotNull(referrer);
     assertEquals("http://flickr.com/search/?q=contra+costa+county", referrer.getUrl());
-    assertEquals(new Integer(172), referrer.getViews());
+    assertEquals(Integer.valueOf(172), referrer.getViews());
     assertEquals("contra costa county", referrer.getSearchTerm());
   }
 
@@ -81,9 +98,9 @@ public class StatsTest {
     InputStreamReader reader = new InputStreamReader(StatsTest.class.getResourceAsStream("/response/stats/sample_get_photo_stats.json"));
     Stats stats = new Gson().fromJson(reader, Stats.class);
     assertNotNull(stats);
-    assertEquals(new Integer(12), stats.getViews());
-    assertEquals(new Integer(5), stats.getComments());
-    assertEquals(new Integer(50), stats.getFavorites());
+    assertEquals(Integer.valueOf(12), stats.getViews());
+    assertEquals(Integer.valueOf(5), stats.getComments());
+    assertEquals(Integer.valueOf(50), stats.getFavorites());
   }
 
   @Test
@@ -103,10 +120,10 @@ public class StatsTest {
     InputStreamReader reader = new InputStreamReader(StatsTest.class.getResourceAsStream("/response/stats/sample_get_popular_photos.json"));
     Photos photos = new Gson().fromJson(reader, Photos.class);
     assertNotNull(photos);
-    assertEquals(new Integer(1), photos.getPage());
-    assertEquals(new Integer(385), photos.getPages());
-    assertEquals(new Integer(5), photos.getPerPage());
-    assertEquals(new Integer(1921), photos.getTotal());
+    assertEquals(Integer.valueOf(1), photos.getPage());
+    assertEquals(Integer.valueOf(385), photos.getPages());
+    assertEquals(Integer.valueOf(5), photos.getPerPage());
+    assertEquals(Integer.valueOf(1921), photos.getTotal());
     assertNotNull(photos.getPhotoList());
     Photo photo = photos.getPhotoList().get(0);
     assertEquals("2349210861", photo.getPhotoId());
@@ -120,12 +137,12 @@ public class StatsTest {
     assertFalse(photo.isFamily());
     assertNotNull(photo.getPhotoStats());
     PhotoStats stats = photo.getPhotoStats();
-    assertEquals(new Integer(61), stats.getViews());
-    assertEquals(new Integer(0), stats.getComments());
-    assertEquals(new Integer(0), stats.getFavorites());
-    assertEquals(new Integer(1296), stats.getTotalViews());
-    assertEquals(new Integer(1), stats.getTotalComments());
-    assertEquals(new Integer(2), stats.getTotalFavorites());
+    assertEquals(Integer.valueOf(61), stats.getViews());
+    assertEquals(Integer.valueOf(0), stats.getComments());
+    assertEquals(Integer.valueOf(0), stats.getFavorites());
+    assertEquals(Integer.valueOf(1296), stats.getTotalViews());
+    assertEquals(Integer.valueOf(1), stats.getTotalComments());
+    assertEquals(Integer.valueOf(2), stats.getTotalFavorites());
   }
 
   @Test
@@ -133,11 +150,11 @@ public class StatsTest {
     InputStreamReader reader = new InputStreamReader(StatsTest.class.getResourceAsStream("/response/stats/sample_get_total_views.json"));
     TotalViews totalViews = new Gson().fromJson(reader, TotalViews.class);
     assertNotNull(totalViews);
-    assertEquals(new Integer(1277), totalViews.getTotalViews());
-    assertEquals(new Integer(1276), totalViews.getPhotosViews());
-    assertEquals(new Integer(1), totalViews.getPhotostreamViews());
-    assertEquals(new Integer(0), totalViews.getSetsViews());
-    assertEquals(new Integer(0), totalViews.getCollectionsViews());
-    assertEquals(new Integer(0), totalViews.getGalleriesViews());
+    assertEquals(Integer.valueOf(1277), totalViews.getTotalViews());
+    assertEquals(Integer.valueOf(1276), totalViews.getPhotosViews());
+    assertEquals(Integer.valueOf(1), totalViews.getPhotostreamViews());
+    assertEquals(Integer.valueOf(0), totalViews.getSetsViews());
+    assertEquals(Integer.valueOf(0), totalViews.getCollectionsViews());
+    assertEquals(Integer.valueOf(0), totalViews.getGalleriesViews());
   }
 }

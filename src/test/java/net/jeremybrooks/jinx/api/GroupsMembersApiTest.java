@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -62,7 +62,7 @@ public class GroupsMembersApiTest {
         assertNotNull(members);
         assertEquals("ok", members.getStat());
         assertEquals(0, members.getCode());
-        assertEquals(new Integer(10), members.getPerPage());
+        assertEquals(Integer.valueOf(10), members.getPerPage());
         assertNotNull(members.getMemberList());
         assertEquals(10, members.getMemberList().size());
     }
@@ -73,7 +73,7 @@ public class GroupsMembersApiTest {
         assertNotNull(members);
         assertEquals("ok", members.getStat());
         assertEquals(0, members.getCode());
-        assertEquals(new Integer(10), members.getPerPage());
+        assertEquals(Integer.valueOf(10), members.getPerPage());
         assertNotNull(members.getMemberList());
     }
 }

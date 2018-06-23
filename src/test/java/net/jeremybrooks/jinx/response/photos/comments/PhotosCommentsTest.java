@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -85,10 +85,10 @@ public class PhotosCommentsTest {
         assertNotNull(photos);
         assertEquals("ok", photos.getStat());
         assertEquals(0, photos.getCode());
-        assertEquals(new Integer(1), photos.getPage());
-        assertEquals(new Integer(1), photos.getPages());
-        assertEquals(new Integer(100), photos.getPerPage());
-        assertEquals(new Integer(1), photos.getTotal());
+        assertEquals(Integer.valueOf(1), photos.getPage());
+        assertEquals(Integer.valueOf(1), photos.getPages());
+        assertEquals(Integer.valueOf(100), photos.getPerPage());
+        assertEquals(Integer.valueOf(1), photos.getTotal());
         assertNotNull(photos.getPhotoList());
         assertEquals(1, photos.getPhotoList().size());
         Photo p = photos.getPhotoList().get(0);
@@ -101,58 +101,58 @@ public class PhotosCommentsTest {
         assertTrue(p.isPublic());
         assertFalse(p.isFriend());
         assertFalse(p.isFamily());
-        assertEquals(new Integer(2), p.getLicense());
+        assertEquals(Integer.valueOf(2), p.getLicense());
         assertEquals("", p.getDescription());
         assertEquals("640", p.getoWidth());
         assertEquals("640", p.getoHeight());
         assertEquals("1405530740", p.getDateUpload());
         assertEquals("1405536845", p.getLastUpdate());
         assertEquals("2014-07-16 10:12:20", p.getDateTaken());
-        assertEquals(new Integer(0), p.getDateTakenGranularity());
+        assertEquals(Integer.valueOf(0), p.getDateTakenGranularity());
         assertEquals("Thomas Hawk", p.getOwnerName());
         assertEquals("7370", p.getIconServer());
         assertEquals("8", p.getIconFarm());
-        assertEquals(new Integer(746), p.getViews());
+        assertEquals(Integer.valueOf(746), p.getViews());
         assertEquals("square squareformat iphoneography instagramapp uploaded:by=instagram", p.getTags());
         assertEquals("uploaded:by=instagram", p.getMachineTags());
         assertEquals("b978413cdf", p.getOriginalSecret());
         assertEquals("jpg", p.getOriginalFormat());
-        assertEquals(new Float(0.0), p.getLatitude());
-        assertEquals(new Float(0.0), p.getLongitude());
-        assertEquals(new Integer(0), p.getAccuracy());
-        assertEquals(new Integer(0), p.getContext());
+        assertEquals(Float.valueOf(0.0f), p.getLatitude());
+        assertEquals(Float.valueOf(0.0f), p.getLongitude());
+        assertEquals(Integer.valueOf(0), p.getAccuracy());
+        assertEquals(Integer.valueOf(0), p.getContext());
         assertEquals("photo", p.getMedia());
         assertEquals("ready", p.getMediaStatus());
         assertEquals("thomashawk", p.getPathAlias());
         assertEquals("https://farm4.staticflickr.com/3885/14670576965_2819225731_s.jpg", p.getUrlSq());
-        assertEquals(new Integer(75), p.getHeightSq());
-        assertEquals(new Integer(75), p.getWidthSq());
+        assertEquals(Integer.valueOf(75), p.getHeightSq());
+        assertEquals(Integer.valueOf(75), p.getWidthSq());
         assertEquals("https://farm4.staticflickr.com/3885/14670576965_2819225731_t.jpg", p.getUrlT());
-        assertEquals(new Integer(100), p.getHeightT());
-        assertEquals(new Integer(100), p.getWidthT());
+        assertEquals(Integer.valueOf(100), p.getHeightT());
+        assertEquals(Integer.valueOf(100), p.getWidthT());
         
         assertEquals("https://farm4.staticflickr.com/3885/14670576965_2819225731_m.jpg", p.getUrlS());
-        assertEquals(new Integer(240), p.getHeightS());
-        assertEquals(new Integer(240), p.getWidthS());
+        assertEquals(Integer.valueOf(240), p.getHeightS());
+        assertEquals(Integer.valueOf(240), p.getWidthS());
         
         assertEquals("https://farm4.staticflickr.com/3885/14670576965_2819225731_q.jpg", p.getUrlQ());
-        assertEquals(new Integer(150), p.getHeightQ());
-        assertEquals(new Integer(150), p.getWidthQ());
+        assertEquals(Integer.valueOf(150), p.getHeightQ());
+        assertEquals(Integer.valueOf(150), p.getWidthQ());
         
         assertEquals("https://farm4.staticflickr.com/3885/14670576965_2819225731.jpg", p.getUrlM());
-        assertEquals(new Integer(500), p.getHeightM());
-        assertEquals(new Integer(500), p.getWidthM());
+        assertEquals(Integer.valueOf(500), p.getHeightM());
+        assertEquals(Integer.valueOf(500), p.getWidthM());
         
         assertEquals("https://farm4.staticflickr.com/3885/14670576965_2819225731_n.jpg", p.getUrlN());
-        assertEquals(new Integer(320), p.getHeightN());
-        assertEquals(new Integer(320), p.getWidthN());
+        assertEquals(Integer.valueOf(320), p.getHeightN());
+        assertEquals(Integer.valueOf(320), p.getWidthN());
         
         assertEquals("https://farm4.staticflickr.com/3885/14670576965_2819225731_z.jpg", p.getUrlZ());
-        assertEquals(new Integer(640), p.getHeightZ());
-        assertEquals(new Integer(640), p.getWidthZ());
+        assertEquals(Integer.valueOf(640), p.getHeightZ());
+        assertEquals(Integer.valueOf(640), p.getWidthZ());
         
         assertEquals("https://farm4.staticflickr.com/3885/14670576965_b978413cdf_o.jpg", p.getUrlO());
-        assertEquals(new Integer(640), p.getHeightO());
-        assertEquals(new Integer(640), p.getWidthO());
+        assertEquals(Integer.valueOf(640), p.getHeightO());
+        assertEquals(Integer.valueOf(640), p.getWidthO());
     }
 }

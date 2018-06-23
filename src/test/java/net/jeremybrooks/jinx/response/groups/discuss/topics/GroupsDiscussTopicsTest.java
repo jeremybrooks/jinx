@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ public class GroupsDiscussTopicsTest {
         assertEquals("member", t.getRole());
         assertEquals("7344", t.getIconServer());
         assertEquals("8", t.getIconFarm());
-        assertEquals(new Integer(1), t.getCountReplies());
+        assertEquals(Integer.valueOf(1), t.getCountReplies());
         assertFalse(t.isCanEdit());
         assertFalse(t.isCanDelete());
         assertFalse(t.isCanReply());
@@ -76,14 +76,14 @@ public class GroupsDiscussTopicsTest {
         assertEquals("3686", topics.getIconServer());
         assertEquals("4", topics.getIconFarm());
         assertEquals("Flickr API", topics.getName());
-        assertEquals(new Integer(14376), topics.getMembers());
+        assertEquals(Integer.valueOf(14376), topics.getMembers());
         assertEquals("3", topics.getPrivacy());
         assertEquals("en-us", topics.getLang());
         assertTrue(topics.isPoolModerated());
-        assertEquals(new Integer(3630), topics.getTotal());
-        assertEquals(new Integer(1), topics.getPage());
-        assertEquals(new Integer(10), topics.getPerPage());
-        assertEquals(new Integer(363), topics.getPages());
+        assertEquals(Integer.valueOf(3630), topics.getTotal());
+        assertEquals(Integer.valueOf(1), topics.getPage());
+        assertEquals(Integer.valueOf(10), topics.getPerPage());
+        assertEquals(Integer.valueOf(363), topics.getPages());
         List<Topic> list = topics.getTopicList();
         assertNotNull(list);
         assertEquals(10, list.size());
@@ -99,7 +99,7 @@ public class GroupsDiscussTopicsTest {
         assertEquals("member", t.getRole());
         assertEquals("0", t.getIconServer());
         assertEquals("0", t.getIconFarm());
-        assertEquals(new Integer(1), t.getCountReplies());
+        assertEquals(Integer.valueOf(1), t.getCountReplies());
         assertFalse(t.isCanEdit());
         assertFalse(t.isCanDelete());
         assertFalse(t.isCanReply());

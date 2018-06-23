@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -337,9 +337,9 @@ public class JinxUtilsTest {
     public void testFlickrBooleanToBooleanInteger() {
         Integer i = null;
         assertNull(JinxUtils.flickrBooleanToBoolean(i));
-        assertTrue(JinxUtils.flickrBooleanToBoolean(new Integer(1)));
-        assertFalse(JinxUtils.flickrBooleanToBoolean(new Integer(0)));
-        assertFalse(JinxUtils.flickrBooleanToBoolean(new Integer(-1)));
+        assertTrue(JinxUtils.flickrBooleanToBoolean(Integer.valueOf(1)));
+        assertFalse(JinxUtils.flickrBooleanToBoolean(Integer.valueOf(0)));
+        assertFalse(JinxUtils.flickrBooleanToBoolean(Integer.valueOf(-1)));
     }
 
     @Test
@@ -373,10 +373,10 @@ public class JinxUtilsTest {
 
     @Test
     public void testMemberTypeEnumToId() {
-        assertEquals(new Integer(1), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.narwhal));
-        assertEquals(new Integer(2), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.member));
-        assertEquals(new Integer(3), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.moderator));
-        assertEquals(new Integer(4), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.admin));
+        assertEquals(Integer.valueOf(1), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.narwhal));
+        assertEquals(Integer.valueOf(2), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.member));
+        assertEquals(Integer.valueOf(3), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.moderator));
+        assertEquals(Integer.valueOf(4), JinxUtils.memberTypeToMemberTypeId(JinxConstants.MemberType.admin));
         assertNull(JinxUtils.memberTypeToMemberTypeId(null));
     }
 
@@ -391,9 +391,9 @@ public class JinxUtilsTest {
 
     @Test
     public void testGroupPrivacyEnumToId() {
-        assertEquals(new Integer(1), JinxUtils.groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy.group_private));
-        assertEquals(new Integer(2), JinxUtils.groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy.group_invite_only_public));
-        assertEquals(new Integer(3), JinxUtils.groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy.group_open_public));
+        assertEquals(Integer.valueOf(1), JinxUtils.groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy.group_private));
+        assertEquals(Integer.valueOf(2), JinxUtils.groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy.group_invite_only_public));
+        assertEquals(Integer.valueOf(3), JinxUtils.groupPrivacyEnumToPrivacyId(JinxConstants.GroupPrivacy.group_open_public));
         assertNull(JinxUtils.groupPrivacyEnumToPrivacyId(null));
     }
 
@@ -408,9 +408,9 @@ public class JinxUtilsTest {
 
     @Test
     public void testSuggestionStatusToFlickrId() {
-        assertEquals(new Integer(0), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.pending));
-        assertEquals(new Integer(1), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.approved));
-        assertEquals(new Integer(2), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.rejected));
+        assertEquals(Integer.valueOf(0), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.pending));
+        assertEquals(Integer.valueOf(1), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.approved));
+        assertEquals(Integer.valueOf(2), JinxUtils.suggestionStatusToFlickrSuggestionStatusId(JinxConstants.SuggestionStatus.rejected));
         assertNull(JinxUtils.suggestionStatusToFlickrSuggestionStatusId(null));
     }
 

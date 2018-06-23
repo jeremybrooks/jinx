@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -83,8 +83,8 @@ public class CamerasApiTest {
 		for (CameraModels.Camera camera : cameraModels.getCameraList()) {
 			if (camera.getId().equals("eos_5d_mark_ii")) {
 				assertEquals("Canon EOS 5D Mark II", camera.getName());
-				assertEquals(new Float(21.1), camera.getMegapixels());
-				assertEquals(new Float(3.0), camera.getLcdScreenSize());
+				assertEquals(Float.valueOf(21.1f), camera.getMegapixels());
+				assertEquals(Float.valueOf(3.0f), camera.getLcdScreenSize());
 				assertEquals("CompactFlash (CF) Card", camera.getMemoryType());
 			}
 		}

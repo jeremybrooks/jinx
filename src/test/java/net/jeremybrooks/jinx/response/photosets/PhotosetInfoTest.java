@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -135,8 +135,8 @@ public class PhotosetInfoTest {
 		assertEquals("sign:type=neon", ppe.getMachineTags());
 		assertEquals("e64cd9f5d9", ppe.getOriginalSecret());
 		assertEquals("jpg", ppe.getOriginalFormat());
-		assertEquals(new Float(41.248833), ppe.getLatitude());
-		assertEquals(new Float(-95.929666), ppe.getLongitude());
+		assertEquals(Float.valueOf(41.248833f), ppe.getLatitude());
+		assertEquals(Float.valueOf(-95.929666f), ppe.getLongitude());
 		assertEquals(16, (int) ppe.getAccuracy());
 		assertEquals(0, (int) ppe.getContext());
 		assertEquals("gNIcefxTWrgrNXMkFQ", ppe.getPlaceId());
@@ -210,8 +210,8 @@ public class PhotosetInfoTest {
 		assertEquals("sign:type=neon", photo.getMachineTags());
 		assertEquals("ae304bdb6c", photo.getOriginalSecret());
 		assertEquals("jpg", photo.getOriginalFormat());
-		assertEquals(new Float(37.795387), photo.getLatitude());
-		assertEquals(new Float(-122.406486), photo.getLongitude());
+		assertEquals(Float.valueOf(37.795387f), photo.getLatitude());
+		assertEquals(Float.valueOf(-122.406486f), photo.getLongitude());
 		assertEquals(16, (int)photo.getAccuracy());
 		assertEquals(0, (int)photo.getContext());
 		assertEquals("iIt1rq9TUb1LDiek", photo.getPlaceId());

@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,8 +70,8 @@ public class MachineTagsApiTest {
         assertNotNull(namespaces);
         assertEquals("ok", namespaces.getStat());
         assertEquals(0, namespaces.getCode());
-        assertEquals(new Integer(10), namespaces.getPerPage());
-        assertEquals(new Integer(10), namespaces.getPage());
+        assertEquals(Integer.valueOf(10), namespaces.getPerPage());
+        assertEquals(Integer.valueOf(10), namespaces.getPage());
         assertNotNull(namespaces.getNamespaceList());
         assertEquals(10, namespaces.getNamespaceList().size());
 
@@ -79,8 +79,8 @@ public class MachineTagsApiTest {
         assertNotNull(namespaces);
         assertEquals("ok", namespaces.getStat());
         assertEquals(0, namespaces.getCode());
-        assertEquals(new Integer(5), namespaces.getPerPage());
-        assertEquals(new Integer(1), namespaces.getPage());
+        assertEquals(Integer.valueOf(5), namespaces.getPerPage());
+        assertEquals(Integer.valueOf(1), namespaces.getPage());
         assertNotNull(namespaces.getNamespaceList());
     }
 
@@ -90,8 +90,8 @@ public class MachineTagsApiTest {
         assertNotNull(pairs);
         assertEquals("ok", pairs.getStat());
         assertEquals(0, pairs.getCode());
-        assertEquals(new Integer(10), pairs.getPerPage());
-        assertEquals(new Integer(1), pairs.getPage());
+        assertEquals(Integer.valueOf(10), pairs.getPerPage());
+        assertEquals(Integer.valueOf(1), pairs.getPage());
         assertNotNull(pairs.getPairList());
         assertEquals(10, pairs.getPairList().size());
 
@@ -99,8 +99,8 @@ public class MachineTagsApiTest {
         assertNotNull(pairs);
         assertEquals("ok", pairs.getStat());
         assertEquals(0, pairs.getCode());
-        assertEquals(new Integer(10), pairs.getPerPage());
-        assertEquals(new Integer(1), pairs.getPage());
+        assertEquals(Integer.valueOf(10), pairs.getPerPage());
+        assertEquals(Integer.valueOf(1), pairs.getPage());
         assertNotNull(pairs.getPairList());
         assertEquals(10, pairs.getPairList().size());
 
@@ -108,8 +108,8 @@ public class MachineTagsApiTest {
         assertNotNull(pairs);
         assertEquals("ok", pairs.getStat());
         assertEquals(0, pairs.getCode());
-        assertEquals(new Integer(10), pairs.getPerPage());
-        assertEquals(new Integer(1), pairs.getPage());
+        assertEquals(Integer.valueOf(10), pairs.getPerPage());
+        assertEquals(Integer.valueOf(1), pairs.getPage());
         assertNotNull(pairs.getPairList());
     }
 
@@ -119,8 +119,8 @@ public class MachineTagsApiTest {
         assertNotNull(predicates);
         assertEquals("ok", predicates.getStat());
         assertEquals(0, predicates.getCode());
-        assertEquals(new Integer(10), predicates.getPerPage());
-        assertEquals(new Integer(20), predicates.getPage());
+        assertEquals(Integer.valueOf(10), predicates.getPerPage());
+        assertEquals(Integer.valueOf(20), predicates.getPage());
         assertNotNull(predicates.getPredicateList());
         assertEquals(10, predicates.getPredicateList().size());
 
@@ -128,8 +128,8 @@ public class MachineTagsApiTest {
         assertNotNull(predicates);
         assertEquals("ok", predicates.getStat());
         assertEquals(0, predicates.getCode());
-        assertEquals(new Integer(10), predicates.getPerPage());
-        assertEquals(new Integer(20), predicates.getPage());
+        assertEquals(Integer.valueOf(10), predicates.getPerPage());
+        assertEquals(Integer.valueOf(20), predicates.getPage());
         assertNotNull(predicates.getPredicateList());
         assertEquals(10, predicates.getPredicateList().size());
     }
@@ -162,8 +162,8 @@ public class MachineTagsApiTest {
         assertNotNull(values);
         assertEquals("ok", values.getStat());
         assertEquals(0, values.getCode());
-        assertEquals(new Integer(10), values.getPerPage());
-        assertEquals(new Integer(1), values.getPage());
+        assertEquals(Integer.valueOf(10), values.getPerPage());
+        assertEquals(Integer.valueOf(1), values.getPage());
         assertNotNull(values.getValueList());
 
         values = machinetagsApi.getValues("geo", "airport", 0, 0, true);

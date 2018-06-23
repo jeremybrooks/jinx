@@ -1,3 +1,20 @@
+/*
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.jeremybrooks.jinx.response.push;
 
 import com.google.gson.Gson;
@@ -26,10 +43,10 @@ public class PushResponseTest {
     assertEquals("contacts_photos", subscription.getTopic());
     assertEquals("https://evening-wildwood-37988.herokuapp.com/streams.php", subscription.getCallback());
     assertTrue(subscription.getPending());
-    assertEquals(new Long(1486432778), subscription.getDateCreate());
+    assertEquals(Long.valueOf(1486432778), subscription.getDateCreate());
     assertNull(subscription.getLeaseSeconds());
-    assertEquals(new Long(0), subscription.getExpiry());
-    assertEquals(new Integer(1), subscription.getVerifyAttempts());
+    assertEquals(Long.valueOf(0), subscription.getExpiry());
+    assertEquals(Integer.valueOf(1), subscription.getVerifyAttempts());
   }
 
   @Test

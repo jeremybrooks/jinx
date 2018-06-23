@@ -1,3 +1,20 @@
+/*
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.jeremybrooks.jinx.response.tags;
 
 import com.google.gson.Gson;
@@ -44,11 +61,11 @@ public class TagsResponseTest {
     Clusters clusters = new Gson().fromJson(reader, Clusters.class);
     assertNotNull(clusters);
     assertEquals("neon", clusters.getSource());
-    assertEquals(new Integer(4), clusters.getTotal());
+    assertEquals(Integer.valueOf(4), clusters.getTotal());
     assertNotNull(clusters.getClusterList());
     Cluster cluster = clusters.getClusterList().get(1);
     assertNotNull(cluster);
-    assertEquals(new Integer(6), cluster.getTotal());
+    assertEquals(Integer.valueOf(6), cluster.getTotal());
     assertNotNull(cluster.getTagList());
     assertEquals("newyork", cluster.getTagList().get(0).getTag());
   }
@@ -59,10 +76,10 @@ public class TagsResponseTest {
     HotList hotlist = new Gson().fromJson(reader, HotList.class);
     assertNotNull(hotlist);
     assertEquals("day", hotlist.getPeriod());
-    assertEquals(new Integer(20), hotlist.getCount());
+    assertEquals(Integer.valueOf(20), hotlist.getCount());
     assertNotNull(hotlist.getTagList());
     Tag tag = hotlist.getTagList().get(0);
-    assertEquals(new Integer(100), tag.getScore());
+    assertEquals(Integer.valueOf(100), tag.getScore());
     assertEquals("feb23", tag.getTag());
   }
 
@@ -92,7 +109,7 @@ public class TagsResponseTest {
     assertNotNull(popularTagsForUser.getTagList());
     Tag tag = popularTagsForUser.getTagList().get(0);
     assertNotNull(tag);
-    assertEquals(new Integer(5171), tag.getCount());
+    assertEquals(Integer.valueOf(5171), tag.getCount());
     assertEquals("blackandwhite", tag.getTag());
   }
 
@@ -134,7 +151,7 @@ public class TagsResponseTest {
     Tag tag = tagsForUser.getTagList().get(0);
     assertNotNull(tag);
     assertEquals("44montgomery", tag.getTag());
-    assertEquals(new Integer(2), tag.getCount());
+    assertEquals(Integer.valueOf(2), tag.getCount());
   }
 
   @Test

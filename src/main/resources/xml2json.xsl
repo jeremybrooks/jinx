@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  ~ Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+  ~ Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
   ~
   ~ Jinx is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -14,9 +14,6 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
-  ~
-  ~ This XSLT was written by Bojan Bjelić - http://www.bjelic.net/2012/08/01/coding/convert-xml-to-json-using-xslt/
-  ~ and is used under terms of the Creative Commons by-sa 3.0 license: http://creativecommons.org/licenses/by-sa/3.0/
   -->
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">

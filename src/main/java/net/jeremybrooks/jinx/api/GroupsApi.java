@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2017 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,6 +51,7 @@ public class GroupsApi {
    * @see <a href="https://www.flickr.com/services/api/flickr.groups.browse.html">flickr.groups.browse</a>
    * @deprecated this is a legacy method, and will not return anything useful.
    */
+  @Deprecated
   public Response browse(String categoryId) throws JinxException {
     Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.groups.browse");

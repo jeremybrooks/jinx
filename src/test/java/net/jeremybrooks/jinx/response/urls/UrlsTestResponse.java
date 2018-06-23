@@ -1,3 +1,20 @@
+/*
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.jeremybrooks.jinx.response.urls;
 
 import com.google.gson.Gson;
@@ -77,14 +94,14 @@ public class UrlsTestResponse {
     assertEquals("8413449964", gallery.getPrimaryPhotoId());
     assertEquals("1402548358", gallery.getDateCreate());
     assertEquals("1484094962", gallery.getDateUpdate());
-    assertEquals(new Integer(13), gallery.getCountPhotos());
-    assertEquals(new Integer(0), gallery.getCountVideos());
-    assertEquals(new Integer(6), gallery.getCountViews());
-    assertEquals(new Integer(0), gallery.getCountComments());
+    assertEquals(Integer.valueOf(13), gallery.getCountPhotos());
+    assertEquals(Integer.valueOf(0), gallery.getCountVideos());
+    assertEquals(Integer.valueOf(6), gallery.getCountViews());
+    assertEquals(Integer.valueOf(0), gallery.getCountComments());
     assertEquals("Vintage Chinese Neon Signs (1484094961)", gallery.getTitle());
     assertEquals("A jinx test gallery. Test last run: 2017-01-10 16:36:01", gallery.getDescription());
     assertEquals("8473", gallery.getPrimaryPhotoServer());
-    assertEquals(new Integer(9), gallery.getPrimaryPhotoFarm());
+    assertEquals(Integer.valueOf(9), gallery.getPrimaryPhotoFarm());
     assertEquals("edd91a1d17", gallery.getPrimaryPhotoSecret());
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,7 +46,7 @@ public class GroupsPoolsTest {
         assertNotNull(context);
         assertEquals("ok", context.getStat());
         assertEquals(0, context.getCode());
-        assertEquals(new Integer(5), context.getCount());
+        assertEquals(Integer.valueOf(5), context.getCount());
         Context.PrevPhoto prev = context.getPrevPhoto();
         assertNotNull(prev);
         assertEquals("14090247837", prev.getPhotoId());
@@ -57,7 +57,7 @@ public class GroupsPoolsTest {
         assertEquals("Constantly", prev.getTitle());
         assertEquals("/photos/jinxlib/14090247837/in/pool-2723340@N22/", prev.getUrl());
         assertEquals("https://farm4.staticflickr.com/3745/14090247837_a00c1c8c01_s.jpg", prev.getThumb());
-        assertEquals(new Integer(0), prev.getLicense());
+        assertEquals(Integer.valueOf(0), prev.getLicense());
         assertEquals("photo", prev.getMedia());
         assertFalse(prev.isFaved());
 
@@ -71,7 +71,7 @@ public class GroupsPoolsTest {
         assertEquals("Hallgrímskirkja", next.getTitle());
         assertEquals("/photos/jinxlib/14253693206/in/pool-2723340@N22/", next.getUrl());
         assertEquals("https://farm4.staticflickr.com/3777/14253693206_62bbd1113a_s.jpg", next.getThumb());
-        assertEquals(new Integer(0), next.getLicense());
+        assertEquals(Integer.valueOf(0), next.getLicense());
         assertEquals("photo", next.getMedia());
         assertFalse(next.isFaved());
     }
@@ -84,10 +84,10 @@ public class GroupsPoolsTest {
         assertNotNull(groupSearch);
         assertEquals("ok", groupSearch.getStat());
         assertEquals(0, groupSearch.getCode());
-        assertEquals(new Integer(1), groupSearch.getPage());
-        assertEquals(new Integer(1), groupSearch.getPages());
-        assertEquals(new Integer(400), groupSearch.getPerPage());
-        assertEquals(new Integer(2), groupSearch.getTotal());
+        assertEquals(Integer.valueOf(1), groupSearch.getPage());
+        assertEquals(Integer.valueOf(1), groupSearch.getPages());
+        assertEquals(Integer.valueOf(400), groupSearch.getPerPage());
+        assertEquals(Integer.valueOf(2), groupSearch.getTotal());
         List<GroupSearch.Group> list = groupSearch.getGroupList();
         assertNotNull(list);
         assertEquals(2, list.size());
@@ -98,12 +98,12 @@ public class GroupsPoolsTest {
         assertFalse(group.isModerator());
         assertTrue(group.isAdmin());
         assertEquals(JinxConstants.GroupPrivacy.group_private, group.getPrivacy());
-        assertEquals(new Integer(1), group.getPhotos());
+        assertEquals(Integer.valueOf(1), group.getPhotos());
         assertEquals("2934", group.getIconServer());
         assertEquals("3", group.getIconFarm());
-        assertEquals(new Integer(1), group.getMemberCount());
-        assertEquals(new Integer(7), group.getTopicCount());
-        assertEquals(new Integer(1), group.getPoolCount());
+        assertEquals(Integer.valueOf(1), group.getMemberCount());
+        assertEquals(Integer.valueOf(7), group.getTopicCount());
+        assertEquals(Integer.valueOf(1), group.getPoolCount());
     }
 
     @Test
@@ -114,10 +114,10 @@ public class GroupsPoolsTest {
         assertNotNull(photos);
         assertEquals("ok", photos.getStat());
         assertEquals(0, photos.getCode());
-        assertEquals(new Integer(1), photos.getPage());
-        assertEquals(new Integer(1), photos.getPages());
-        assertEquals(new Integer(100), photos.getPerPage());
-        assertEquals(new Integer(5), photos.getTotal());
+        assertEquals(Integer.valueOf(1), photos.getPage());
+        assertEquals(Integer.valueOf(1), photos.getPages());
+        assertEquals(Integer.valueOf(100), photos.getPerPage());
+        assertEquals(Integer.valueOf(5), photos.getTotal());
         assertNotNull(photos.getPhotoList());
         Photo p = photos.getPhotoList().get(0);
         assertEquals("14253711336", p.getPhotoId());

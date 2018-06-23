@@ -1,3 +1,20 @@
+/*
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ *
+ * Jinx is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jinx is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.jeremybrooks.jinx.response.reflection;
 
 import com.google.gson.Gson;
@@ -24,7 +41,7 @@ public class ReflectionTest {
     assertEquals("flickr.places.placesForTags", method.getName());
     assertFalse(method.isNeedsLogin());
     assertFalse(method.isNeedsSigning());
-    assertEquals(new Integer(0), method.getRequiredPerms());
+    assertEquals(Integer.valueOf(0), method.getRequiredPerms());
     assertEquals("Return a list of the top 100 unique places clustered by a given placetype for set of tags or machine tags. ", method.getDescription());
     assertEquals("<places total=\"1\">\r\n" +
         "   <place place_id=\"kH8dLOubBZRvX_YZ\" woeid=\"2487956\"\r\n" +
@@ -44,7 +61,7 @@ public class ReflectionTest {
     List<Error> errors = methodInfo.getErrors();
     assertNotNull(errors);
     Error error = errors.get(0);
-    assertEquals(new Integer(100), error.getCode());
+    assertEquals(Integer.valueOf(100), error.getCode());
     assertEquals("Invalid API Key", error.getMessage());
     assertEquals("The API key passed was not valid or has expired.", error.getContent());
   }

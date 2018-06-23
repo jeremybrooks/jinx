@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2014 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,9 +38,9 @@ public class PhotosPeopleTest {
         assertNotNull(people);
         assertEquals("ok", people.getStat());
         assertEquals(0, people.getCode());
-        assertEquals(new Integer(1), people.getTotal());
-        assertEquals(new Integer(333), people.getPhotoWidth());
-        assertEquals(new Integer(500), people.getPhotoHeight());
+        assertEquals(Integer.valueOf(1), people.getTotal());
+        assertEquals(Integer.valueOf(333), people.getPhotoWidth());
+        assertEquals(Integer.valueOf(500), people.getPhotoHeight());
         assertNotNull(people.getPersonList());
         assertEquals(1, people.getPersonList().size());
         People.Person person = people.getPersonList().get(0);
