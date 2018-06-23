@@ -67,7 +67,7 @@ public class GroupsApiTest {
     /**
      * This is testing a method that is pretty much useless.
      * It is here mostly to detect if Flickr removes this method.
-     * @throws Exception
+     * @throws Exception on errors
      */
     @Test
     public void testBrowse() throws Exception {
@@ -130,7 +130,7 @@ public class GroupsApiTest {
     public void testSearch() throws Exception {
         GroupSearch groupSearch = groupsApi.search("neon", 10, 1);
         assertNotNull(groupSearch);
-        assertEquals(new Integer(1), groupSearch.getPage());
+        assertEquals(Integer.valueOf(1), groupSearch.getPage());
         assertNotNull(groupSearch.getGroupList());
         assertEquals(10, groupSearch.getGroupList().size());
     }
