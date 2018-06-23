@@ -12,7 +12,7 @@
   ~ GNU General Public License for more details.
   ~
   ~ You should have received a copy of the GNU General Public License
-  ~ along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
+  ~ along with Jinx.  If not, see <http://www.gnu.org/licenses />.
   -->
 
 <!-- NOTE
@@ -36,7 +36,7 @@
     <groupId>net.jeremybrooks</groupId>
     <artifactId>jinx</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.1-SNAPSHOT</version>
+    <version>2.0.2</version>
 
     <name>Jinx</name>
     <description>A Java library to access the Flickr API.</description>
@@ -59,7 +59,7 @@
         <connection>scm:git:git@github.com:jeremybrooks/jinx.git</connection>
         <developerConnection>scm:git:git@github.com:jeremybrooks/jinx.git</developerConnection>
         <url>git@github.com:jinx/jinx.git</url>
-        <tag>HEAD</tag>
+        <tag>jinx-2.0.2</tag>
     </scm>
 
     <developers>
