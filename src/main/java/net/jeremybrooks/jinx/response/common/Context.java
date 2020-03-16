@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,7 +53,8 @@ public class Context extends Response {
 
 
 	private class _Count implements Serializable {
-		@SerializedName("_content")
+    private static final long serialVersionUID = 2244002449621461488L;
+    @SerializedName("_content")
 		private Integer count;
 
 		@Override

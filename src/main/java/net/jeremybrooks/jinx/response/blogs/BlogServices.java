@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -58,7 +58,8 @@ public class BlogServices extends Response {
 
 
 	private class _Services implements Serializable {
-		private List<Service> service;
+    private static final long serialVersionUID = -807297732670615243L;
+    private List<Service> service;
 	}
 
 	/**
@@ -66,7 +67,8 @@ public class BlogServices extends Response {
 	 * Each service has an ID and a Name.
 	 */
 	public class Service implements Serializable {
-		private String id;
+    private static final long serialVersionUID = -8940134672269171031L;
+    private String id;
 		@SerializedName("_content")
 		private String name;
 

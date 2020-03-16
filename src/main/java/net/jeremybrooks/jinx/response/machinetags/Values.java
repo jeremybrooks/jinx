@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,9 @@ import java.util.List;
  */
 public class Values extends Response {
 
-    public Integer getPage() {
+  private static final long serialVersionUID = 4478473674366706506L;
+
+  public Integer getPage() {
         return values == null ? null : values.page;
     }
 
@@ -50,7 +52,8 @@ public class Values extends Response {
 
     private _Values values;
     private class _Values implements Serializable {
-        private Integer page;
+      private static final long serialVersionUID = -3630135329962791131L;
+      private Integer page;
         private Integer pages;
         @SerializedName("perpage")
         private Integer perPage;
@@ -60,7 +63,8 @@ public class Values extends Response {
     }
 
     public class Value implements Serializable {
-        @SerializedName("_content")
+      private static final long serialVersionUID = 2076076201783240880L;
+      @SerializedName("_content")
         private String value;
         private Integer usage;
         private String namespace;
