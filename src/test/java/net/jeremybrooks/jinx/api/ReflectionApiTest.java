@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,18 +17,10 @@
 
 package net.jeremybrooks.jinx.api;
 
-import net.jeremybrooks.jinx.Jinx;
-import net.jeremybrooks.jinx.OAuthAccessToken;
-import net.jeremybrooks.jinx.logger.JinxLogger;
-import net.jeremybrooks.jinx.logger.StdoutLogger;
 import net.jeremybrooks.jinx.response.reflection.MethodInfo;
 import net.jeremybrooks.jinx.response.reflection.Methods;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.Properties;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
@@ -42,19 +34,7 @@ public class ReflectionApiTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    Properties p = new Properties();
-    p.load(ReflectionApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
-    String filename = p.getProperty("path.to.oauth.token");
-    assertNotNull(filename);
-    File file = new File(filename);
-    assertTrue(file.exists());
-    OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
-    oAuthAccessToken.load(new FileInputStream(file));
-    assertNotNull(oAuthAccessToken);
-    Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
-//        jinx.setVerboseLogging(true);
-    JinxLogger.setLogger(new StdoutLogger());
-    reflectionApi = new ReflectionApi(jinx);
+    reflectionApi = new ReflectionApi(JinxApiTestCommon.getJinx());
   }
 
   @Test

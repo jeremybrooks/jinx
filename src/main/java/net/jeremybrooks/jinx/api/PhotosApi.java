@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -248,14 +248,14 @@ public class PhotosApi {
     params.put("method", "flickr.photos.getCounts");
     if (!JinxUtils.isNullOrEmpty(dates)) {
       Collections.sort(dates);
-      List<String> formattedDates = new ArrayList<String>();
+      List<String> formattedDates = new ArrayList<>();
       for (Date date : dates) {
         formattedDates.add(JinxUtils.formatDateAsUnixTimestamp(date));
       }
       params.put("dates", JinxUtils.buildCommaDelimitedList(formattedDates));
     }
     if (!JinxUtils.isNullOrEmpty(takenDates)) {
-      List<String> formattedDates = new ArrayList<String>();
+      List<String> formattedDates = new ArrayList<>();
       for (Date date : takenDates) {
         formattedDates.add(JinxUtils.formatDateAsMySqlTimestamp(date));
       }

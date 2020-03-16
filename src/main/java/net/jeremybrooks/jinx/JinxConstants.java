@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,8 +32,6 @@ public class JinxConstants {
   public static final String FLICKR_PHOTO_URL = "https://www.flickr.com/photos/";
   public static final String FLICKR_PHOTO_UPLOAD_URL = "https://up.flickr.com/services/upload/";
   public static final String FLICKR_PHOTO_REPLACE_URL = "https://up.flickr.com/services/replace/";
-
-  public static final String UTF8 = "UTF-8";
 
   public static enum OAuthPermissions {
     read,

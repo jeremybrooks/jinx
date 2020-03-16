@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,18 +17,18 @@
 
 package net.jeremybrooks.jinx;
 
+import com.github.scribejava.apis.FlickrApi;
+import com.github.scribejava.core.builder.ServiceBuilder;
+import com.github.scribejava.core.model.OAuth1AccessToken;
+import com.github.scribejava.core.model.OAuth1RequestToken;
+import com.github.scribejava.core.model.OAuthRequest;
+import com.github.scribejava.core.model.Verb;
+import com.github.scribejava.core.oauth.OAuth10aService;
 import com.google.gson.Gson;
 import net.jeremybrooks.jinx.logger.JinxLogger;
 import net.jeremybrooks.jinx.response.Response;
-import org.scribe.builder.ServiceBuilder;
-import org.scribe.builder.api.FlickrApi;
-import org.scribe.model.OAuthRequest;
-import org.scribe.model.Token;
-import org.scribe.model.Verb;
-import org.scribe.model.Verifier;
-import org.scribe.oauth.OAuthService;
 
-import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.net.Authenticator;
 import java.net.InetSocketAddress;
 import java.net.PasswordAuthentication;
@@ -36,6 +36,7 @@ import java.net.Proxy;
 import java.net.URLDecoder;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.concurrent.ExecutionException;
 
 import static net.jeremybrooks.jinx.JinxConstants.FLICKR_PHOTO_REPLACE_URL;
 import static net.jeremybrooks.jinx.JinxConstants.FLICKR_PHOTO_UPLOAD_URL;
@@ -132,8 +133,8 @@ public class Jinx {
 
   private Gson gson;
 
-  private OAuthService oAuthService;
-  private Token accessToken;
+  private OAuth10aService oAuthService;
+  private OAuth1AccessToken accessToken;
 
   private boolean flickrErrorThrowsException;
 
@@ -153,11 +154,12 @@ public class Jinx {
    * This method is sufficient when you do not have an access token to use yet,
    * such as before you have authenticated your user.
    *
-   * @param apiKey    the API key to use.
-   * @param apiSecret the API secret to use.
+   * @param apiKey      the API key to use.
+   * @param apiSecret   the API secret to use.
+   * @param permissions the requested Flickr permissions.
    */
-  public Jinx(String apiKey, String apiSecret) {
-    this(apiKey, apiSecret, null);
+  public Jinx(String apiKey, String apiSecret, JinxConstants.OAuthPermissions permissions) {
+    this(apiKey, apiSecret, null, permissions);
   }
 
   /**
@@ -170,8 +172,9 @@ public class Jinx {
    * @param apiKey           the API key to use.
    * @param apiSecret        the API secret to use.
    * @param oAuthAccessToken the oauth access token.
+   * @param permissions      the requested Flickr permissions.
    */
-  public Jinx(String apiKey, String apiSecret, OAuthAccessToken oAuthAccessToken) {
+  public Jinx(String apiKey, String apiSecret, OAuthAccessToken oAuthAccessToken, JinxConstants.OAuthPermissions permissions) {
     this.apiKey = apiKey;
     this.apiSecret = apiSecret;
     this.oAuthAccessToken = oAuthAccessToken;
@@ -179,11 +182,25 @@ public class Jinx {
     this.setVerboseLogging(false);
     this.setMultipartLogging(false);
     this.gson = new Gson();
-
-    this.oAuthService = new ServiceBuilder().provider(FlickrApi.class).apiKey(apiKey).apiSecret(apiSecret).build();
+    FlickrApi.FlickrPerm flickrPerm;
+    switch (permissions) {
+      case delete:
+        flickrPerm = FlickrApi.FlickrPerm.DELETE;
+        break;
+      case write:
+        flickrPerm = FlickrApi.FlickrPerm.WRITE;
+        break;
+      case read:
+      default:
+        flickrPerm = FlickrApi.FlickrPerm.READ;
+    }
+    this.oAuthService = new ServiceBuilder(apiKey)
+        .apiSecret(apiSecret)
+        .build(FlickrApi.instance(flickrPerm));
 
     if (oAuthAccessToken != null) {
-      this.accessToken = new Token(oAuthAccessToken.getOauthToken(), oAuthAccessToken.getOauthTokenSecret());
+      this.accessToken = new OAuth1AccessToken(
+          oAuthAccessToken.getOauthToken(), oAuthAccessToken.getOauthTokenSecret());
     }
 
     this.proxy = Proxy.NO_PROXY;
@@ -231,11 +248,7 @@ public class Jinx {
    * @return true if Jinx is using a network proxy, false otherwise.
    */
   public boolean isUseProxy() {
-    if (this.proxy.equals(Proxy.NO_PROXY)) {
-      return false;
-    } else {
-      return true;
-    }
+    return !this.proxy.equals(Proxy.NO_PROXY);
   }
 
   /**
@@ -246,7 +259,7 @@ public class Jinx {
    *
    * @return oauth request token.
    */
-  public Token getRequestToken() {
+  public OAuth1RequestToken getRequestToken() throws InterruptedException, ExecutionException, IOException {
     return this.oAuthService.getRequestToken();
   }
 
@@ -260,14 +273,12 @@ public class Jinx {
    * {@link #getAccessToken(org.scribe.model.Token, String)} method.
    *
    * @param requestToken the request token.
-   * @param permissions  the permissions your application is requesting.
    * @return authorization URL that the user should be directed to.
    * @throws JinxException if any parameter is null.
    */
-  public String getAuthorizationUrl(Token requestToken, JinxConstants.OAuthPermissions permissions) throws JinxException {
-    JinxUtils.validateParams(requestToken, permissions);
-    String url = this.oAuthService.getAuthorizationUrl(requestToken);
-    return url + "&perms=" + permissions.toString();
+  public String getAuthorizationUrl(OAuth1RequestToken requestToken) throws JinxException {
+    JinxUtils.validateParams(requestToken);
+    return this.oAuthService.getAuthorizationUrl(requestToken);
   }
 
   /**
@@ -281,15 +292,14 @@ public class Jinx {
    * @return access token.
    * @throws JinxException if any parameter is null, or if there are any errors.
    */
-  public OAuthAccessToken getAccessToken(Token requestToken, String verificationCode) throws JinxException {
+  public OAuthAccessToken getAccessToken(OAuth1RequestToken requestToken, String verificationCode) throws JinxException {
     JinxUtils.validateParams(requestToken, verificationCode);
     try {
-      Verifier verifier = new Verifier(verificationCode);
-      Token accessToken = this.oAuthService.getAccessToken(requestToken, verifier);
+      OAuth1AccessToken accessToken = this.oAuthService.getAccessToken(requestToken, verificationCode);
       if (accessToken != null) {
         this.oAuthAccessToken = new OAuthAccessToken();
         this.oAuthAccessToken.setOauthToken(accessToken.getToken());
-        this.oAuthAccessToken.setOauthTokenSecret(accessToken.getSecret());
+        this.oAuthAccessToken.setOauthTokenSecret(accessToken.getTokenSecret());
 
         // parse the raw response to get nsid, username, fullname
         // flickr response looks like this:
@@ -300,12 +310,16 @@ public class Jinx {
           int index = token.indexOf("=");
           String key = token.substring(0, index);
           String value = URLDecoder.decode(token.substring(index + 1), "UTF-8").trim();
-          if (key.equals("fullname")) {
-            this.oAuthAccessToken.setFullname(value);
-          } else if (key.equals("user_nsid")) {
-            this.oAuthAccessToken.setNsid(value);
-          } else if (key.equals("username")) {
-            this.oAuthAccessToken.setUsername(value);
+          switch (key) {
+            case "fullname":
+              this.oAuthAccessToken.setFullname(value);
+              break;
+            case "user_nsid":
+              this.oAuthAccessToken.setNsid(value);
+              break;
+            case "username":
+              this.oAuthAccessToken.setUsername(value);
+              break;
           }
         }
       }
@@ -359,7 +373,7 @@ public class Jinx {
    */
   public void setoAuthAccessToken(OAuthAccessToken oAuthAccessToken) {
     this.oAuthAccessToken = oAuthAccessToken;
-    this.accessToken = new Token(oAuthAccessToken.getOauthToken(), oAuthAccessToken.getOauthTokenSecret());
+    this.accessToken = new OAuth1AccessToken(oAuthAccessToken.getOauthToken(), oAuthAccessToken.getOauthTokenSecret());
   }
 
   /**
@@ -417,7 +431,7 @@ public class Jinx {
 
   /**
    * Set the verbose logging flag.
-   *
+   * <p>
    * You must set a {@link JinxLogger} before setting this flag to {@code true};
    *
    * @param verboseLogging true to enable verbose logging.
@@ -428,7 +442,7 @@ public class Jinx {
 
   /**
    * Set the multipart body logging flag.
-   *
+   * <p>
    * You must set a {@link JinxLogger} before setting this flag to {@code true};
    *
    * @param multipartLogging true to enable multipart body logging.
@@ -531,48 +545,54 @@ public class Jinx {
     params.put("nojsoncallback", "1");
     params.put("api_key", getApiKey());
 
-    org.scribe.model.Response flickrResponse;
-
-    if (method == Method.GET) {
-      OAuthRequest request = new OAuthRequest(Verb.GET, JinxConstants.REST_ENDPOINT);
-      for (String key : params.keySet()) {
-        request.addQuerystringParameter(key, params.get(key));
-        if (verboseLogging) {
-          JinxLogger.getLogger().log(String.format("Added query parameter %s=%s", key, params.get(key)));
+    com.github.scribejava.core.model.Response flickrResponse;
+    T fromJson;
+    try {
+      if (method == Method.GET) {
+        OAuthRequest request = new OAuthRequest(Verb.GET, JinxConstants.REST_ENDPOINT);
+        for (String key : params.keySet()) {
+          request.addQuerystringParameter(key, params.get(key));
+          if (verboseLogging) {
+            JinxLogger.getLogger().log(String.format("Added query parameter %s=%s", key, params.get(key)));
+          }
         }
-      }
-      if (sign) {
-        this.oAuthService.signRequest(this.accessToken, request);
-      }
-      flickrResponse = request.send();
-    } else if (method == Method.POST) {
-      OAuthRequest request = new OAuthRequest(Verb.POST, JinxConstants.REST_ENDPOINT);
-      for (String key : params.keySet()) {
-        request.addBodyParameter(key, params.get(key));
-        if (verboseLogging) {
-          JinxLogger.getLogger().log(String.format("Added body parameter %s=%s", key, params.get(key)));
+        if (sign) {
+          this.oAuthService.signRequest(this.accessToken, request);
         }
+        flickrResponse = this.oAuthService.execute(request);
+      } else if (method == Method.POST) {
+        OAuthRequest request = new OAuthRequest(Verb.POST, JinxConstants.REST_ENDPOINT);
+        for (String key : params.keySet()) {
+          request.addBodyParameter(key, params.get(key));
+          if (verboseLogging) {
+            JinxLogger.getLogger().log(String.format("Added body parameter %s=%s", key, params.get(key)));
+          }
+        }
+        if (sign) {
+          this.oAuthService.signRequest(this.accessToken, request);
+        }
+        flickrResponse = this.oAuthService.execute(request);
+      } else {
+        throw new JinxException("Unsupported method: " + method.toString());
       }
-      if (sign) {
-        this.oAuthService.signRequest(this.accessToken, request);
+
+      if (flickrResponse == null || flickrResponse.getBody() == null) {
+        throw new JinxException("Null return from call to Flickr.");
       }
-      flickrResponse = request.send();
-    } else {
-      throw new JinxException("Unsupported method: " + method.toString());
-    }
+      if (verboseLogging) {
+        JinxLogger.getLogger().log("RESPONSE is " + flickrResponse.getBody());
+      }
 
-    if (flickrResponse == null || flickrResponse.getBody() == null) {
-      throw new JinxException("Null return from call to Flickr.");
-    }
-    if (verboseLogging) {
-      JinxLogger.getLogger().log("RESPONSE is " + flickrResponse.getBody());
-    }
+      fromJson = gson.fromJson(flickrResponse.getBody(), tClass);
 
-    T fromJson = gson.fromJson(flickrResponse.getBody(), tClass);
-
-    if (this.flickrErrorThrowsException && ((Response) fromJson).getCode() != 0) {
-      Response r = (Response) fromJson;
-      throw new JinxException("Flickr returned non-zero status.", null, r);
+      if (this.flickrErrorThrowsException && ((Response) fromJson).getCode() != 0) {
+        Response r = (Response) fromJson;
+        throw new JinxException("Flickr returned non-zero status.", null, r);
+      }
+    } catch (JinxException je) {
+      throw je;
+    } catch (Exception e) {
+      throw new JinxException(String.format("Error executing %s.", method), e);
     }
     return fromJson;
   }
@@ -636,80 +656,39 @@ public class Jinx {
    */
   protected <T> T uploadOrReplace(Map<String, String> params, byte[] photoData, Class<T> tClass, OAuthRequest request) throws JinxException {
     String boundary = JinxUtils.generateBoundary();
+    request.initMultipartPayload(boundary);
+
     request.addHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
-    for (Map.Entry<String, String> entry : params.entrySet()) {
-      String key = entry.getKey();
-      if (!key.equals("photo") && !key.equals("filename") && !key.equals("filemimetype")) {
-        request.addQuerystringParameter(key, String.valueOf(entry.getValue()));
-      }
-    }
-
+    params.forEach(request::addQuerystringParameter);
     this.oAuthService.signRequest(this.accessToken, request);
+    request.addFileByteArrayBodyPartPayloadInMultipartPayload("form-data", photoData,
+        "photo",
+        params.getOrDefault("filename", "photo.jpg"));
 
-    // add all parameters to payload
-    params.putAll(request.getOauthParameters());
-    request.addPayload(buildMultipartBody(params, photoData, boundary));
+    T fromJson;
+    try {
+      com.github.scribejava.core.model.Response flickrResponse = this.oAuthService.execute(request);
 
-    org.scribe.model.Response flickrResponse = request.send();
+      if (flickrResponse == null || flickrResponse.getBody() == null) {
+        throw new JinxException("Null return from call to Flickr.");
+      }
+      if (verboseLogging) {
+        JinxLogger.getLogger().log("RESPONSE is " + flickrResponse.getBody());
+      }
 
-    if (flickrResponse == null || flickrResponse.getBody() == null) {
-      throw new JinxException("Null return from call to Flickr.");
-    }
-    if (verboseLogging) {
-      JinxLogger.getLogger().log("RESPONSE is " + flickrResponse.getBody());
-    }
+      // upload returns XML, so convert to json
+      String json = JinxUtils.xml2json(flickrResponse.getBody());
 
-    // upload returns XML, so convert to json
-    String json = JinxUtils.xml2json(flickrResponse.getBody());
-
-    T fromJson = gson.fromJson(json, tClass);
-
-    if (this.flickrErrorThrowsException && ((Response) fromJson).getCode() != 0) {
-      Response r = (Response) fromJson;
-      throw new JinxException("Flickr returned non-zero status.", null, r);
+      fromJson = gson.fromJson(json, tClass);
+      if (this.flickrErrorThrowsException && ((Response) fromJson).getCode() != 0) {
+        Response r = (Response) fromJson;
+        throw new JinxException("Flickr returned non-zero status.", null, r);
+      }
+    } catch (JinxException je) {
+      throw je;
+    } catch (Exception e) {
+      throw new JinxException("Error executing upload/replace.", e);
     }
     return fromJson;
-  }
-
-  /*
-   * Build a multipart body request.
-   */
-  private byte[] buildMultipartBody(Map<String, String> params, byte[] photoData, String boundary) throws JinxException {
-
-    ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-    try {
-      String filename = params.get("filename");
-      if (JinxUtils.isNullOrEmpty(filename)) {
-        filename = "image.jpg";
-      }
-      String fileMimeType = params.get("filemimetype");
-      if (JinxUtils.isNullOrEmpty(fileMimeType)) {
-        fileMimeType = "image/jpeg";
-      }
-
-      buffer.write(("--" + boundary + "\r\n").getBytes(JinxConstants.UTF8));
-      for (Map.Entry<String, String> entry : params.entrySet()) {
-        String key = entry.getKey();
-        if (!key.equals("filename") && !key.equals("filemimetype")) {
-
-          buffer.write(("Content-Disposition: form-data; name=\"" + key + "\"\r\n\r\n").getBytes(JinxConstants.UTF8));
-          buffer.write((entry.getValue()).getBytes(JinxConstants.UTF8));
-          buffer.write(("\r\n" + "--" + boundary + "\r\n").getBytes(JinxConstants.UTF8));
-        }
-      }
-      buffer.write(("Content-Disposition: form-data; name=\"photo\"; filename=\"" + filename + "\";\r\n").getBytes(JinxConstants.UTF8));
-      buffer.write(("Content-Type: " + fileMimeType + "\r\n\r\n").getBytes(JinxConstants.UTF8));
-      buffer.write(photoData);
-      buffer.write(("\r\n" + "--" + boundary + "--\r\n").getBytes(JinxConstants.UTF8));   // NOTE: last boundary has -- suffix
-
-    } catch (Exception e) {
-      throw new JinxException("Unable to build multipart body.", e);
-    }
-
-    if (this.isVerboseLogging() && this.isMultipartLogging()) {
-      JinxLogger.getLogger().log("Multipart body: " + buffer.toString());
-    }
-
-    return buffer.toByteArray();
   }
 }

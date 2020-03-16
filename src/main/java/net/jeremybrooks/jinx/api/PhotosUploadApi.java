@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -96,9 +96,7 @@ public class PhotosUploadApi {
                                JinxConstants.ContentType contentType, Boolean hidden, Boolean async) throws JinxException {
     JinxUtils.validateParams(photo);
     byte[] photoData = new byte[(int) photo.length()];
-    FileInputStream in = null;
-    try {
-      in = new FileInputStream(photo);
+    try (FileInputStream in = new FileInputStream(photo)) {
       in.read(photoData);
 
       if (JinxUtils.isNullOrEmpty(title)) {
@@ -111,8 +109,6 @@ public class PhotosUploadApi {
       }
     } catch (Exception e) {
       throw new JinxException("Unable to load data from photo " + photo.getAbsolutePath(), e);
-    } finally {
-      JinxUtils.close(in);
     }
     return upload(photoData, title, description, tags, isPublic, isFriend, isFamily, safetyLevel, contentType, hidden, async);
   }
@@ -196,14 +192,10 @@ public class PhotosUploadApi {
   public ReplaceResponse replace(File photo, String photoId, Boolean async) throws JinxException {
     JinxUtils.validateParams(photo, photoId);
     byte[] photoData = new byte[(int) photo.length()];
-    FileInputStream in = null;
-    try {
-      in = new FileInputStream(photo);
+    try (FileInputStream in = new FileInputStream(photo)) {
       in.read(photoData);
     } catch (Exception e) {
       throw new JinxException("Unable to load data from photo " + photo.getAbsolutePath(), e);
-    } finally {
-      JinxUtils.close(in);
     }
     return replace(photoData, photoId, async);
   }

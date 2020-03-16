@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ public class FavoritesApi {
    */
   public Response add(String photoId) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.favorites.add");
     params.put("photo_id", photoId);
     return jinx.flickrPost(params, Response.class);
@@ -99,7 +99,7 @@ public class FavoritesApi {
    * @see <a href="https://www.flickr.com/services/api/flickr.favorites.getList.html">flickr.favorites.getList</a>
    */
   public Photos getList(String userId, Date minFaveDate, Date maxFaveDate, EnumSet<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.favorites.getList");
     if (!JinxUtils.isNullOrEmpty(userId)) {
       params.put("user_id", userId);
@@ -140,7 +140,7 @@ public class FavoritesApi {
    */
   public Photos getPublicList(String userId, Date minFaveDate, Date maxFaveDate, EnumSet<JinxConstants.PhotoExtras> extras, int perPage, int page) throws JinxException {
     JinxUtils.validateParams(userId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.favorites.getList");
     params.put("user_id", userId);
     if (minFaveDate != null) {
@@ -174,7 +174,7 @@ public class FavoritesApi {
    */
   public Response remove(String photoId) throws JinxException {
     JinxUtils.validateParams(photoId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.favorites.remove");
     params.put("photo_id", photoId);
     return jinx.flickrPost(params, Response.class);
