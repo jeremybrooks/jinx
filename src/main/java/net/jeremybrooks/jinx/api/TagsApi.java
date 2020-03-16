@@ -140,6 +140,7 @@ public class TagsApi {
    *
    * This method does not require authentication.
    *
+   * @param photoId identifes the photo to get a tag list for.
    * @return tags list for the photo. Required.
    * @throws JinxException if required parameter is missing, or if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.tags.getListPhoto.html">flickr.tags.getListPhoto</a>

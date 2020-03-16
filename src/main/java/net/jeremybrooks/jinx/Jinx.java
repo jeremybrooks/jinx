@@ -34,6 +34,7 @@ import java.net.InetSocketAddress;
 import java.net.PasswordAuthentication;
 import java.net.Proxy;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.concurrent.ExecutionException;
@@ -255,9 +256,12 @@ public class Jinx {
    * OAuth workflow, step one: Get a request token.
    * <br>
    * Once a request token is retrieved, you can get the authorization URL
-   * by passing the request token to the {@link #getAuthorizationUrl(org.scribe.model.Token, net.jeremybrooks.jinx.JinxConstants.OAuthPermissions)} method.
+   * by passing the request token to the {@link #getAuthorizationUrl} method.
    *
    * @return oauth request token.
+   * @throws InterruptedException from the OAuth Service.
+   * @throws ExecutionException from the OAuth Service.
+   * @throws IOException from the OAuth Service.
    */
   public OAuth1RequestToken getRequestToken() throws InterruptedException, ExecutionException, IOException {
     return this.oAuthService.getRequestToken();
@@ -269,8 +273,7 @@ public class Jinx {
    * Once you have a request token pass it to this method to get the authorization URL.
    * The user should be directed to the returned URL, where they can authorize your
    * application. Once they have authorized your application, they will receive a
-   * verification code, which should be passed to the
-   * {@link #getAccessToken(org.scribe.model.Token, String)} method.
+   * verification code, which should be passed to the {@link #getAccessToken(OAuth1RequestToken, String)} method.
    *
    * @param requestToken the request token.
    * @return authorization URL that the user should be directed to.
@@ -309,7 +312,7 @@ public class Jinx {
           String token = tok.nextToken();
           int index = token.indexOf("=");
           String key = token.substring(0, index);
-          String value = URLDecoder.decode(token.substring(index + 1), "UTF-8").trim();
+          String value = URLDecoder.decode(token.substring(index + 1), StandardCharsets.UTF_8).trim();
           switch (key) {
             case "fullname":
               this.oAuthAccessToken.setFullname(value);
