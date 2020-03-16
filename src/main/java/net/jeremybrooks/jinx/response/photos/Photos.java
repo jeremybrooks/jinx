@@ -66,11 +66,7 @@ public class Photos extends Response {
 				pP = photos.perPage;
 			}
 
-			if (pp > pP) {
-				ret = pp;
-			} else {
-				ret = pP;
-			}
+      ret = Math.max(pp, pP);
 		}
 		return ret;
 	}

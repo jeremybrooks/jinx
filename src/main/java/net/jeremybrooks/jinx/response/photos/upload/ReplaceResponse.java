@@ -28,7 +28,9 @@ import java.io.Serializable;
  */
 public class ReplaceResponse extends Response {
 
-    public String getStat() {
+  private static final long serialVersionUID = 7831970317749747366L;
+
+  public String getStat() {
         return rsp == null ? null : rsp.stat;
     }
 
@@ -58,7 +60,8 @@ public class ReplaceResponse extends Response {
 
     private _Rsp rsp;
     private class _Rsp implements Serializable {
-        private String stat;
+      private static final long serialVersionUID = 9034099294403133061L;
+      private String stat;
         private int code;
         private String message;
         private _PhotoId photoid;
@@ -67,7 +70,8 @@ public class ReplaceResponse extends Response {
 
     }
     private class _PhotoId implements Serializable {
-        private String secret;
+      private static final long serialVersionUID = 4504813979581148623L;
+      private String secret;
         @SerializedName("originalsecret")
         private String originalSecret;
         @SerializedName("text")

@@ -33,7 +33,8 @@ import java.util.List;
  */
 public class PhotosetPhotos extends Response {
 
-	@SerializedName("photoset")
+  private static final long serialVersionUID = -6387648847992128571L;
+  @SerializedName("photoset")
 	private _PhotosetMetadata photoset;
 
 	public String getPhotosetId() {

@@ -58,7 +58,8 @@ public class BlogServices extends Response {
 
 
 	private class _Services implements Serializable {
-		private List<Service> service;
+    private static final long serialVersionUID = -807297732670615243L;
+    private List<Service> service;
 	}
 
 	/**
@@ -66,7 +67,8 @@ public class BlogServices extends Response {
 	 * Each service has an ID and a Name.
 	 */
 	public class Service implements Serializable {
-		private String id;
+    private static final long serialVersionUID = -8940134672269171031L;
+    private String id;
 		@SerializedName("_content")
 		private String name;
 

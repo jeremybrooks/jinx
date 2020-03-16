@@ -38,7 +38,9 @@ import java.io.Serializable;
  */
 public class UploadStatus extends Response {
 
-    public String getUserId() {
+  private static final long serialVersionUID = -80837404690972976L;
+
+  public String getUserId() {
         return user == null ? null : user.userId;
     }
 
@@ -133,7 +135,8 @@ public class UploadStatus extends Response {
     private _User user;
 
     private class _User implements Serializable {
-        @SerializedName("id")
+      private static final long serialVersionUID = -1838756473946416091L;
+      @SerializedName("id")
         private String userId;
         private String ispro;   // return as Boolean
         private _Username username;

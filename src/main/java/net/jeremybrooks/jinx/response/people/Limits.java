@@ -31,7 +31,9 @@ import java.io.Serializable;
  */
 public class Limits extends Response {
 
-    public String getUserId() { return person == null ? null : person.userId; }
+  private static final long serialVersionUID = 6617683527658326427L;
+
+  public String getUserId() { return person == null ? null : person.userId; }
 
     /**
      * Get maximum size in pixels for photos displayed on the site (0 means that no limit is in place).
@@ -65,17 +67,20 @@ public class Limits extends Response {
 
     private _Person person;
     private class _Person implements Serializable {
-        @SerializedName("nsid")
+      private static final long serialVersionUID = 2599243577098749472L;
+      @SerializedName("nsid")
         private String userId;
         private _Photos photos;
         private _Videos videos;
     }
     private class _Photos implements Serializable {
-        private String maxdisplaypx;
+      private static final long serialVersionUID = 9034271773188966899L;
+      private String maxdisplaypx;
         private String maxupload;
     }
     private class _Videos implements Serializable {
-        private String maxduration;
+      private static final long serialVersionUID = 461290860999888953L;
+      private String maxduration;
         private String maxupload;
     }
 

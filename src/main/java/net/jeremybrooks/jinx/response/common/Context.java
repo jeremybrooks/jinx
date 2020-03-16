@@ -53,7 +53,8 @@ public class Context extends Response {
 
 
 	private class _Count implements Serializable {
-		@SerializedName("_content")
+    private static final long serialVersionUID = 2244002449621461488L;
+    @SerializedName("_content")
 		private Integer count;
 
 		@Override

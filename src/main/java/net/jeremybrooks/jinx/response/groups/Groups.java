@@ -40,7 +40,8 @@ public class Groups extends Response {
     public List<Group> getGroupList() { return groups == null ? null : groups.groupList; }
 
     public class Group implements Serializable {
-        @SerializedName("nsid")
+      private static final long serialVersionUID = -3271597032766710044L;
+      @SerializedName("nsid")
         private String groupId;
         private String name;
         @SerializedName("iconfarm")
@@ -129,7 +130,8 @@ public class Groups extends Response {
         }
 
         private class _Privacy implements Serializable {
-            private Integer _content;
+          private static final long serialVersionUID = -6438697171107091936L;
+          private Integer _content;
         }
     }
 

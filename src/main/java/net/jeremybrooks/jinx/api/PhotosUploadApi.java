@@ -139,7 +139,9 @@ public class PhotosUploadApi {
   public UploadResponse upload(byte[] photoData, String title, String description, List<String> tags, Boolean isPublic,
                                Boolean isFriend, Boolean isFamily, JinxConstants.SafetyLevel safetyLevel,
                                JinxConstants.ContentType contentType, Boolean hidden, Boolean async) throws JinxException {
-    JinxUtils.validateParams(photoData);
+    if (photoData == null || photoData.length == 0) {
+      throw new JinxException("Photo data cannot be null or empty.");
+    }
     Map<String, String> params = new TreeMap<>();
     if (async != null && async) {
       params.put("async", "1");

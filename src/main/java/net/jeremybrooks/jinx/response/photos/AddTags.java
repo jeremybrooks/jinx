@@ -28,7 +28,8 @@ import java.util.List;
  */
 public class AddTags extends Response {
 
-	private _Tags tags;
+  private static final long serialVersionUID = -2219561509712352151L;
+  private _Tags tags;
 
 	public List<Tag> getTagList() {
 		return tags==null ? null : tags.tagList;
