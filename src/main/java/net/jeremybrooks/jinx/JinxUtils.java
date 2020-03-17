@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,13 +28,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
+import java.util.UUID;
 
 
 /**
@@ -215,7 +216,8 @@ public class JinxUtils {
             if (o == null) {
                 throw new JinxException("Parameters cannot be null.");
             } else if (o instanceof List) {
-                for (Object listObject : (List) o) {
+              //noinspection rawtypes
+              for (Object listObject : (List) o) {
                     if (listObject == null) {
                         throw new JinxException("Objects in list cannot be null.");
                     }
@@ -246,7 +248,7 @@ public class JinxUtils {
      * @param collection collection object to test.
      * @return true if the collection is null or if the collection has no objects.
      */
-    public static boolean isNullOrEmpty(Collection collection) {
+    public static <T> boolean isNullOrEmpty(Collection<T> collection) {
         return collection == null || collection.size() == 0;
     }
 
@@ -297,7 +299,7 @@ public class JinxUtils {
      * @param collection collection to convert.
      * @return comma delimited string, or null if the collection is null or empty.
      */
-    public static String buildCommaDelimitedList(Collection collection) {
+    public static <T> String buildCommaDelimitedList(Collection<T> collection) {
         if (isNullOrEmpty(collection)) {
             return null;
         }
@@ -329,7 +331,7 @@ public class JinxUtils {
         if (isNullOrEmpty(list)) {
             return null;
         }
-        List<String> tmp = new ArrayList<String>();
+        List<String> tmp = new ArrayList<>();
         for (String s : list) {
             tmp.add(s.replaceAll("[!#$%&'()*+\\.,'; ]", "").toLowerCase());
         }
@@ -360,7 +362,7 @@ public class JinxUtils {
       if (isNullOrEmpty(list)) {
         return null;
       }
-      List<String> tmp = new ArrayList<String>();
+      List<String> tmp = new ArrayList<>();
       for (String s : list) {
         String newString = s.replaceAll("[!#$%&'()*+\\.,';]", "").toLowerCase();
         if (newString.contains(" ")) {
@@ -383,7 +385,7 @@ public class JinxUtils {
         if (isNullOrEmpty(list)) {
             return null;
         }
-        List<String> tmp = new ArrayList<String>();
+        List<String> tmp = new ArrayList<>();
         for (String s : list) {
             if (s.contains(" ")) {
                 tmp.add("\"" + s + "\"");
@@ -918,26 +920,19 @@ public class JinxUtils {
      * @return multipart boundary.
      */
     public static String generateBoundary() {
-        StringBuilder buffer = new StringBuilder();
-        Random rand = new Random();
-        int count = rand.nextInt(11) + 30; // a random size from 30 to 40
-        for (int i = 0; i < count; i++) {
-            buffer.append(JinxConstants.MULTIPART_CHARS[rand.nextInt(JinxConstants.MULTIPART_CHARS.length)]);
-        }
-        return buffer.toString();
+      return "----------" + UUID.randomUUID();
     }
 
 
-
-    public static void close(InputStream in) {
-        if (in != null) {
-            try {
-                in.close();
-            } catch (Exception e) {
-                // ignore
-            }
-        }
-    }
+//    public static void close(InputStream in) {
+//        if (in != null) {
+//            try {
+//                in.close();
+//            } catch (Exception e) {
+//                // ignore
+//            }
+//        }
+//    }
 
     public static void close(Reader in) {
         if (in != null) {
@@ -983,9 +978,10 @@ public class JinxUtils {
         Transformer transformer;
         try {
             transformer = transformerFactory.newTransformer(xslt);
-            Source text = new StreamSource(new ByteArrayInputStream(xml.getBytes(JinxConstants.UTF8)));
+            Source text = new StreamSource(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
+
             transformer.transform(text, new StreamResult(baos));
-            json = baos.toString(JinxConstants.UTF8);
+            json = baos.toString(StandardCharsets.UTF_8);
         } catch (Exception e) {
             throw new JinxException("Unable to apply xml2json XSLT.", e);
         }

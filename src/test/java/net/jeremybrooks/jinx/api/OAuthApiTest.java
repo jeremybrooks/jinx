@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 package net.jeremybrooks.jinx.api;
 
 import net.jeremybrooks.jinx.Jinx;
+import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.OAuthAccessToken;
 import net.jeremybrooks.jinx.response.auth.oauth.OAuthCredentials;
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class OAuthApiTest {
 
 
 
-	/**
+	/*
 	 * To run this test, you must have a "secret.properties" file in the test/java/resources/response/auth directory.
 	 * This file must contain:
 	 *
@@ -51,7 +52,6 @@ public class OAuthApiTest {
    *
    * If you are wanting to get a new OAuth token for testing, see {@link net.jeremybrooks.jinx.JinxTest}.
 	 *
-	 * @throws Exception
 	 */
 	@Test
 	public void testOauth() throws Exception {
@@ -85,7 +85,8 @@ public class OAuthApiTest {
 
 		assertNotNull(oAuthAccessToken);
 
-		Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
+		Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken,
+        JinxConstants.OAuthPermissions.delete);
 		OAuthApi oAuthApi = new OAuthApi(jinx);
 
 		OAuthCredentials credentials = oAuthApi.checkToken(oAuthAccessToken.getOauthToken());
@@ -112,7 +113,7 @@ public class OAuthApiTest {
 		File file = new File(filename);
 		assertTrue(file.exists());
 
-		Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"));
+		Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), JinxConstants.OAuthPermissions.delete);
 		OAuthApi oAuthApi = new OAuthApi(jinx);
 
 		OAuthAccessToken oAuthAccessToken = oAuthApi.getAccessToken(new FileInputStream(file));

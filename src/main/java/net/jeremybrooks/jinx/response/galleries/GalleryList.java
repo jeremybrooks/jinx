@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,7 +57,8 @@ public class GalleryList extends Response {
 	}
 
 	private class _Galleries implements Serializable {
-		private Integer total;
+    private static final long serialVersionUID = 6497595247211796309L;
+    private Integer total;
 		private Integer page;
 		private Integer pages;
 		@SerializedName("perpage")

@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -58,7 +58,7 @@ public class GroupsMembersApi {
    */
   public Members getList(String groupId, EnumSet<JinxConstants.MemberType> memberTypes, int perPage, int page) throws JinxException {
     JinxUtils.validateParams(groupId);
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.groups.members.getList");
     params.put("group_id", groupId);
     if (memberTypes != null) {

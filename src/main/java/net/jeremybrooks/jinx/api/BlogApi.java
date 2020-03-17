@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -71,7 +71,7 @@ public class BlogApi {
    * @see <a href="https://www.flickr.com/services/api/flickr.blogs.getList.html">flickr.blogs.getList</a>
    */
   public BlogList getBlogList(String service) throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.blogs.getList");
     if (service != null) {
       params.put("service", service);
@@ -109,7 +109,7 @@ public class BlogApi {
   public Response postPhoto(String blogId, String photoId, String title, String description, String blogPassword, String serviceId) throws JinxException {
     JinxUtils.validateParams(photoId, title, description);
 
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.blogs.postPhoto");
     params.put("photo_id", photoId);
     params.put("title", title);

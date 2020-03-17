@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,9 +52,6 @@ public class PhotoUtils {
 	 * @throws JinxException if any parameter is null, or if there are any errors.
 	 */
 	public static BufferedImage getImageForSize(JinxConstants.PhotoSize size, Photo photo) throws JinxException {
-		if (photo == null || size == null) {
-			throw new JinxException("Cannot look up null photo or size.");
-		}
 		BufferedImage image;
 		try {
 			image = ImageIO.read(getUrlForSize(size, photo));
@@ -75,9 +72,6 @@ public class PhotoUtils {
 	 * @throws JinxException if any parameter is null, or if there are any errors.
 	 */
 	public static BufferedImage getImageForSize(JinxConstants.PhotoSize size, PhotoInfo info) throws JinxException {
-		if (info == null || size == null) {
-			throw new JinxException("Cannot look up null photo or size.");
-		}
 		BufferedImage image;
 		try {
 			image = ImageIO.read(getUrlForSize(size, info));

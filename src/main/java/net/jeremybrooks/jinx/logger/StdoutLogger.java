@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,10 +21,10 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
- * Log to <code>System.out</code>.
+ * Log to {@code System.out}.
  *
  * By default, Jinx will not log anything. If you want to see Jinx log output
- * on stdout, call <code>JinxLogger.setLogger(new StdoutLogger());</code>.
+ * on stdout, call {@code JinxLogger.setLogger(new StdoutLogger());}.
  * 
  * @author Jeremy Brooks
  */

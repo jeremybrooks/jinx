@@ -21,6 +21,8 @@ For example code, including how to authenticate users of your Flickr application
 example code here: <https://github.com/jeremybrooks/jinxexamples>
 
 ## REQUIREMENTS
+Jinx 3.0.0+ requires Java 11 or higher.
+
 Jinx 2.0.0+ requires Java 9 or higher.
 
 Jinx 1.0.0 supports Java 7 and 8.
@@ -30,17 +32,14 @@ If you are using Maven, just include this in your pom.xml file
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>2.0.2</version>
+		<version>3.0.0</version>
 	</dependency>
 
 If you are not using Maven, you will need these libraries, and their dependencies:
   
-  * Gson 2.8.0+ -- deserializes json documents in to Java objects
-  * Scribe 1.3.7 -- provides OAuth services
-  * jaxb-api 2.2.11
-  * jaxb-core 2.2.11
-  * jabx-impl 2.2.11
-  * activation 1.1.1
+  * Gson 2.8.6+ -- deserializes json documents in to Java objects
+  * Scribe 6.9.0+ -- provides OAuth services
+  * jaxb-runtime 2.3.2+
   
 ## Notes About Jinx
 
@@ -78,6 +77,11 @@ If you need to log the body of a photo upload request, you must set a JinxLogger
   
 # VERSION HISTORY
   
+## Version 3.0.0
+  * Updated to latest Scribe library to fix authentication issues.
+  * Requires Java 11+
+  * Cleanup some of the code
+
 ## Version 1.0.0
 ### API support:
   * activity
@@ -251,7 +255,6 @@ If the tests are failing and you want to build the jar anyway, add -DskipTests:
 
 	mvn clean package -DskipTests
 
-
 # JINX PROJECT CONTRIBUTORS - READ THIS
 Flickr apps need an API key to work properly. Jinx is no exception. To run the unit tests, you need to go to Flickr and apply for an API key. Once you have this key, you need to do the following:
 
@@ -300,6 +303,8 @@ Generally, response objects are read only. They will have getters, but not sette
 
 ## Coding Conventions
 
+This project uses the [git-flow workflow](https://nvie.com/posts/a-successful-git-branching-model/).
+
 This project attempts to follow the Oracle [Java coding conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html).
 
 Since this library uses Gson to deserialize JSON documents into Java classes, the Java classes contain a lot of inner classes. This can be confusing at first glance. The classes in the package net.jeremybrooks.jinx.response should follow these guidelines:
@@ -312,7 +317,7 @@ Since this library uses Gson to deserialize JSON documents into Java classes, th
 
 
 # LICENSE
-Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
 
 Jinx is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

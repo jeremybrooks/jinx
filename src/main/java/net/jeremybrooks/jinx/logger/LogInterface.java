@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ package net.jeremybrooks.jinx.logger;
  *
  * By default, Jinx will not log anything. If you wish to see Jinx log output,
  * you can implement this class and then tell Jinx what class to use for logging
- * by calling <code>JinxLogger.setLogger(your class instance)</code>.
+ * by calling {@code JinxLogger.setLogger(your class instance)}.
  * 
  * @author Jeremy Brooks
  */

@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -96,9 +96,7 @@ public class PhotosUploadApi {
                                JinxConstants.ContentType contentType, Boolean hidden, Boolean async) throws JinxException {
     JinxUtils.validateParams(photo);
     byte[] photoData = new byte[(int) photo.length()];
-    FileInputStream in = null;
-    try {
-      in = new FileInputStream(photo);
+    try (FileInputStream in = new FileInputStream(photo)) {
       in.read(photoData);
 
       if (JinxUtils.isNullOrEmpty(title)) {
@@ -111,8 +109,6 @@ public class PhotosUploadApi {
       }
     } catch (Exception e) {
       throw new JinxException("Unable to load data from photo " + photo.getAbsolutePath(), e);
-    } finally {
-      JinxUtils.close(in);
     }
     return upload(photoData, title, description, tags, isPublic, isFriend, isFamily, safetyLevel, contentType, hidden, async);
   }
@@ -143,7 +139,9 @@ public class PhotosUploadApi {
   public UploadResponse upload(byte[] photoData, String title, String description, List<String> tags, Boolean isPublic,
                                Boolean isFriend, Boolean isFamily, JinxConstants.SafetyLevel safetyLevel,
                                JinxConstants.ContentType contentType, Boolean hidden, Boolean async) throws JinxException {
-    JinxUtils.validateParams(photoData);
+    if (photoData == null || photoData.length == 0) {
+      throw new JinxException("Photo data cannot be null or empty.");
+    }
     Map<String, String> params = new TreeMap<>();
     if (async != null && async) {
       params.put("async", "1");
@@ -196,14 +194,10 @@ public class PhotosUploadApi {
   public ReplaceResponse replace(File photo, String photoId, Boolean async) throws JinxException {
     JinxUtils.validateParams(photo, photoId);
     byte[] photoData = new byte[(int) photo.length()];
-    FileInputStream in = null;
-    try {
-      in = new FileInputStream(photo);
+    try (FileInputStream in = new FileInputStream(photo)) {
       in.read(photoData);
     } catch (Exception e) {
       throw new JinxException("Unable to load data from photo " + photo.getAbsolutePath(), e);
-    } finally {
-      JinxUtils.close(in);
     }
     return replace(photoData, photoId, async);
   }

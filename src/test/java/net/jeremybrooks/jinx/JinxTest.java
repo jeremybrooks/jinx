@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,11 +17,11 @@
 
 package net.jeremybrooks.jinx;
 
+import com.github.scribejava.core.model.OAuth1RequestToken;
 import net.jeremybrooks.jinx.api.OAuthApiTest;
 import net.jeremybrooks.jinx.api.PhotosApi;
 import net.jeremybrooks.jinx.response.photos.PhotoInfo;
 import org.junit.Test;
-import org.scribe.model.Token;
 
 import javax.swing.JOptionPane;
 import java.io.File;
@@ -63,7 +63,7 @@ public class JinxTest {
 
     assertNotNull(oAuthAccessToken);
 
-    Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
+    Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken, JinxConstants.OAuthPermissions.delete);
     PhotosApi photosApi = new PhotosApi(jinx);
 
     try {
@@ -93,7 +93,8 @@ public class JinxTest {
 
     assertNotNull(oAuthAccessToken);
 
-    Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
+    Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken,
+        JinxConstants.OAuthPermissions.delete);
     jinx.setFlickrErrorThrowsException(false);
     PhotosApi photosApi = new PhotosApi(jinx);
 
@@ -118,7 +119,8 @@ public class JinxTest {
 
     assertNotNull(oAuthAccessToken);
 
-    Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
+    Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken,
+        JinxConstants.OAuthPermissions.delete);
     assertFalse(jinx.isUseProxy());
     jinx.setProxy(new JinxProxy("fake.com", 1234, "proxyuser", "proxypass".toCharArray()));
     assertTrue(jinx.isUseProxy());
@@ -166,14 +168,15 @@ public class JinxTest {
 
     String filename = p.getProperty("path.to.oauth.token");
 
-    Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"));
+    Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"),
+        JinxConstants.OAuthPermissions.delete);
 
     // step 1
-    Token requestToken = jinx.getRequestToken();
+    OAuth1RequestToken requestToken = jinx.getRequestToken();
     assertNotNull(requestToken);
 
     // step 2
-    String url = jinx.getAuthorizationUrl(requestToken, JinxConstants.OAuthPermissions.delete);
+    String url = jinx.getAuthorizationUrl(requestToken);
     assertNotNull(url);
 
     System.out.println(url);

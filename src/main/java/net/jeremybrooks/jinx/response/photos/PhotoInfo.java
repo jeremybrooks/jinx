@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -316,7 +316,8 @@ public class PhotoInfo extends Response {
 	}
 
 	private class _Location implements Serializable {
-		private Float latitude;
+    private static final long serialVersionUID = 3000496838034168614L;
+    private Float latitude;
 		private Float longitude;
 		private Integer accuracy;
 		private Integer context;

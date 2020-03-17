@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -72,12 +72,10 @@ public class JinxProxy {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("JinxProxy{");
-        sb.append("proxyHost='").append(proxyHost).append('\'');
-        sb.append(", proxyPort=").append(proxyPort);
-        sb.append(", proxyUser='").append(proxyUser).append('\'');
-        sb.append(", proxyPassword=").append(proxyPassword == null ? "[null]" : "[********]");
-        sb.append('}');
-        return sb.toString();
+      return "JinxProxy{" + "proxyHost='" + proxyHost + '\'' +
+          ", proxyPort=" + proxyPort +
+          ", proxyUser='" + proxyUser + '\'' +
+          ", proxyPassword=" + (proxyPassword == null ? "[null]" : "[********]") +
+          '}';
     }
 }

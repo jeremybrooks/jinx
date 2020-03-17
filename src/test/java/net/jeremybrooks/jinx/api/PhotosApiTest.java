@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,12 +17,8 @@
 
 package net.jeremybrooks.jinx.api;
 
-import net.jeremybrooks.jinx.Jinx;
 import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.JinxUtils;
-import net.jeremybrooks.jinx.OAuthAccessToken;
-import net.jeremybrooks.jinx.logger.JinxLogger;
-import net.jeremybrooks.jinx.logger.StdoutLogger;
 import net.jeremybrooks.jinx.response.Response;
 import net.jeremybrooks.jinx.response.common.Context;
 import net.jeremybrooks.jinx.response.photos.AddTags;
@@ -41,13 +37,10 @@ import net.jeremybrooks.jinx.response.photos.Tag;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Properties;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -64,19 +57,7 @@ public class PhotosApiTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    Properties p = new Properties();
-    p.load(OAuthApiTest.class.getResourceAsStream("/response/auth/secret.properties"));
-    String filename = p.getProperty("path.to.oauth.token");
-    assertNotNull(filename);
-    File file = new File(filename);
-    assertTrue(file.exists());
-    OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
-    oAuthAccessToken.load(new FileInputStream(file));
-    assertNotNull(oAuthAccessToken);
-    Jinx jinx = new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken);
-//        JinxLogger.setLogger(new StdoutLogger());
-//        jinx.setVerboseLogging(true);
-    photosApi = new PhotosApi(jinx);
+    photosApi = new PhotosApi(JinxApiTestCommon.getJinx());
   }
 
 
@@ -509,7 +490,6 @@ public class PhotosApiTest {
   @Test
   public void testSearchColors() throws Exception {
     SearchParameters sp = new SearchParameters();
-    sp.setUserId(userId);
     sp.setColorCodes(EnumSet.of(JinxConstants.ColorCode.orange));
 
     Photos photos = photosApi.search(sp);

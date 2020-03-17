@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Map;
 import java.util.Properties;
@@ -169,7 +170,7 @@ public class OAuthApi {
     try {
       MessageDigest m = MessageDigest.getInstance("MD5");
       m.reset();
-      m.update(authSb.toString().getBytes(JinxConstants.UTF8));
+      m.update(authSb.toString().getBytes(StandardCharsets.UTF_8));
       byte[] digest = m.digest();
       apiSig = JinxUtils.toHexString(digest);
     } catch (Exception e) {

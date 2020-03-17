@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,7 +43,8 @@ public class PhotoUtilsTest {
 		OAuthAccessToken oAuthAccessToken = new OAuthAccessToken();
 		oAuthAccessToken.load(new FileInputStream(file));
 		assertNotNull(oAuthAccessToken);
-		PhotosApi photosApi = new PhotosApi(new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"), oAuthAccessToken));
+		PhotosApi photosApi = new PhotosApi(new Jinx(p.getProperty("flickr.key"), p.getProperty("flickr.secret"),
+        oAuthAccessToken, JinxConstants.OAuthPermissions.delete));
 		PhotoInfo info = photosApi.getInfo("14276354684", null);
 
 		// use PhotoInfo to get the image

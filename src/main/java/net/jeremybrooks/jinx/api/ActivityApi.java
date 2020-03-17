@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ public class ActivityApi {
 		/* sample URL:
 			https://api.flickr.com/services/rest/?method=flickr.activity.userComments&api_key=be21c1db5ab3dee07f7907de26d1e9be&per_page=10&page=1&format=json&nojsoncallback=1&auth_token=72157632971491247-fb7b422f825749fb&api_sig=9e917303e6bef519ba28f6913a433734
 		*/
-		Map<String, String> params = new TreeMap<String, String>();
+		Map<String, String> params = new TreeMap<>();
 		params.put("method", "flickr.activity.userComments");
 
 		if (perPage != null) {
@@ -99,7 +99,7 @@ public class ActivityApi {
 			https://api.flickr.com/services/rest/?method=flickr.activity.userPhotos&api_key=be21c1db5ab3dee07f7907de26d1e9be&timeframe=2d&per_page=10&page=1&format=json&nojsoncallback=1&auth_token=72157632971491247-fb7b422f825749fb&api_sig=0e1e87e75be6915b6ba4c93ad8bae934
 		*/
 
-		Map<String, String> params = new TreeMap<String, String>();
+		Map<String, String> params = new TreeMap<>();
 		params.put("method", "flickr.activity.userPhotos");
 		if (timeframe != null) {
 			params.put("timeframe", timeframe);

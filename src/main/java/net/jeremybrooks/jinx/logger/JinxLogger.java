@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,37 +17,31 @@
 
 package net.jeremybrooks.jinx.logger;
 
+import java.util.Objects;
+
 /**
- *
  * @author Jeremy Brooks
  */
 public class JinxLogger {
 
-    private static LogInterface logger = null;
+  private static LogInterface logger = null;
 
 
-    /**
-     * @return the logger
-     */
-    public static LogInterface getLogger() {
-		if (logger == null) {
-			logger = new DefaultLogger();
-		}
-		return logger;
+  /**
+   * @return the logger
+   */
+  public static LogInterface getLogger() {
+    if (logger == null) {
+      logger = new DefaultLogger();
     }
+    return logger;
+  }
 
 
-    /**
-     * @param logger the logger to set
-     */
-    public static void setLogger(LogInterface logger) {
-	if (logger == null) {
-	    JinxLogger.logger = new DefaultLogger();
-	} else {
-	    JinxLogger.logger = logger;
-	}
-    }
-
-
-
+  /**
+   * @param logger the logger to set
+   */
+  public static void setLogger(LogInterface logger) {
+    JinxLogger.logger = Objects.requireNonNullElseGet(logger, DefaultLogger::new);
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2018 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ package net.jeremybrooks.jinx;
  */
 public class JinxConstants {
 
-  public static enum Method {
+  public enum Method {
     POST,
     GET
   }
@@ -33,15 +33,13 @@ public class JinxConstants {
   public static final String FLICKR_PHOTO_UPLOAD_URL = "https://up.flickr.com/services/upload/";
   public static final String FLICKR_PHOTO_REPLACE_URL = "https://up.flickr.com/services/replace/";
 
-  public static final String UTF8 = "UTF-8";
-
-  public static enum OAuthPermissions {
+  public enum OAuthPermissions {
     read,
     write,
     delete
   }
 
-  public static enum PhotoExtras {
+  public enum PhotoExtras {
     description,
     license,
     date_upload,
@@ -69,7 +67,7 @@ public class JinxConstants {
     url_o
   }
 
-  public static enum PrivacyFilter {
+  public enum PrivacyFilter {
     privacyPublic,
     privacyFriends,
     privacyFamily,
@@ -78,20 +76,20 @@ public class JinxConstants {
   }
 
 
-  public static enum MediaType {
+  public enum MediaType {
     all,
     photos,
     videos
   }
 
-  public static enum Perms {
+  public enum Perms {
     nobody,
     friendsAndFamily,
     contacts,
     everybody
   }
 
-  public static enum SortOrder {
+  public enum SortOrder {
     date_posted_asc,
     date_posted_desc,
     date_taken_asc,
@@ -101,7 +99,7 @@ public class JinxConstants {
     relevance
   }
 
-  public static enum ContentType {
+  public enum ContentType {
     photo,
     screenshot,
     other,
@@ -111,46 +109,46 @@ public class JinxConstants {
     all
   }
 
-  public static enum SafetyLevel {
+  public enum SafetyLevel {
     safe,
     moderate,
     restricted
   }
 
-  public static enum TagMode {
+  public enum TagMode {
     any,
     all
   }
 
-  public static enum Contacts {
+  public enum Contacts {
     all,
     ff
   }
 
-  public static enum GeoContext {
+  public enum GeoContext {
     not_defined,
     indoors,
     outdoors
   }
 
-  public static enum RadiusUnits {
+  public enum RadiusUnits {
     mi,
     km
   }
 
-  public static enum ContactFilter {
+  public enum ContactFilter {
     friends,
     family,
     both,
     neither
   }
 
-  public static enum ContactSort {
+  public enum ContactSort {
     name,
     time
   }
 
-  public static enum PhotoSize {
+  public enum PhotoSize {
     SIZE_SMALL_SQUARE,
     SIZE_THUMBNAIL,
     SIZE_SMALL,
@@ -165,47 +163,44 @@ public class JinxConstants {
     SIZE_LARGE_2048
   }
 
-  public static enum MemberType {
+  public enum MemberType {
     narwhal,
     member,
     moderator,
     admin
   }
 
-  public static enum GroupPrivacy {
+  public enum GroupPrivacy {
     group_private,
     group_invite_only_public,
     group_open_public
   }
 
-  public static enum GroupExtras {
+  public enum GroupExtras {
     privacy,
     throttle,
     restrictions
   }
 
-  public static enum SuggestionStatus {
+  public enum SuggestionStatus {
     pending,
     approved,
     rejected
   }
 
-  public static enum RotateDegrees {
+  public enum RotateDegrees {
     _90,
     _180,
     _270
   }
 
-  public static enum TicketStatus {
+  public enum TicketStatus {
     not_completed,
     completed,
     failed,
     invalid,
     undefined
   }
-
-  public final static char[] MULTIPART_CHARS =
-      "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
   public enum PlaceTypeId {
     neighbourhood(22),
@@ -214,7 +209,7 @@ public class JinxConstants {
     country(12),
     continent(29);
     private Integer typeId;
-    private PlaceTypeId(Integer typeId) {
+    PlaceTypeId(Integer typeId) {
       this.typeId = typeId;
     }
     public Integer getTypeId() { return this.typeId; }
