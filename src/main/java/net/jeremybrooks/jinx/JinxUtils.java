@@ -246,6 +246,7 @@ public class JinxUtils {
      * Test a Collection for empty or null.
      *
      * @param collection collection object to test.
+     * @param <T> the type of the collection.
      * @return true if the collection is null or if the collection has no objects.
      */
     public static <T> boolean isNullOrEmpty(Collection<T> collection) {
@@ -297,6 +298,7 @@ public class JinxUtils {
      * separate each object.
      *
      * @param collection collection to convert.
+     * @param <T> the type of the collection.
      * @return comma delimited string, or null if the collection is null or empty.
      */
     public static <T> String buildCommaDelimitedList(Collection<T> collection) {
