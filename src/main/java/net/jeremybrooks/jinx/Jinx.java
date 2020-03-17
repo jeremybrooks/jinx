@@ -120,14 +120,10 @@ import static net.jeremybrooks.jinx.JinxConstants.Method;
  */
 public class Jinx {
 
-  /**
-   * The Jinx API key to use.
-   */
+  /* The Jinx API key to use. */
   private String apiKey;
 
-  /**
-   * The Jinx API secret to use.
-   */
+  /* The Jinx API secret to use. */
   private String apiSecret;
 
   private OAuthAccessToken oAuthAccessToken;
