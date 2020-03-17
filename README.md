@@ -77,6 +77,11 @@ If you need to log the body of a photo upload request, you must set a JinxLogger
   
 # VERSION HISTORY
   
+## Version 3.0.0
+  * Updated to latest Scribe library to fix authentication issues.
+  * Requires Java 11+
+  * Cleanup some of the code
+
 ## Version 1.0.0
 ### API support:
   * activity
