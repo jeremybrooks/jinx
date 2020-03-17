@@ -250,7 +250,6 @@ If the tests are failing and you want to build the jar anyway, add -DskipTests:
 
 	mvn clean package -DskipTests
 
-
 # JINX PROJECT CONTRIBUTORS - READ THIS
 Flickr apps need an API key to work properly. Jinx is no exception. To run the unit tests, you need to go to Flickr and apply for an API key. Once you have this key, you need to do the following:
 
@@ -298,6 +297,8 @@ Rather than make the user remember which object the perms value is found in, the
 Generally, response objects are read only. They will have getters, but not setters. The Gson library is used to deserialize json documents into Java objects, and operates on the fields directly.
 
 ## Coding Conventions
+
+This project uses the [git-flow workflow](https://nvie.com/posts/a-successful-git-branching-model/).
 
 This project attempts to follow the Oracle [Java coding conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html).
 

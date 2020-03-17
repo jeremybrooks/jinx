@@ -23,9 +23,9 @@
   -
   - Typical release cycle is:
   - mvn test
-  - mvn -Darguments="-DskipTests" release:prepare
-  - mvn release:perform
-  - mvn release:clean
+  - mvn -Darguments="-DskipTests" gitflow:release-start
+  -   (update version info in README, etc.)
+  - mvn -Darguments="-DskipTests" gitflow:release-finish
   -
   - These steps will build, tag, and push to maven central.
   -->
@@ -115,6 +115,7 @@
         <scribejava.version>6.9.0</scribejava.version>
 
         <!-- plugin versions -->
+        <gitflow-maven-plugin.version>1.12.0</gitflow-maven-plugin.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
@@ -185,6 +186,11 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.amashchenko.maven.plugin</groupId>
+                <artifactId>gitflow-maven-plugin</artifactId>
+                <version>${gitflow-maven-plugin.version}</version>
+            </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
