@@ -216,7 +216,8 @@ public class JinxUtils {
             if (o == null) {
                 throw new JinxException("Parameters cannot be null.");
             } else if (o instanceof List) {
-                for (Object listObject : (List) o) {
+              //noinspection rawtypes
+              for (Object listObject : (List) o) {
                     if (listObject == null) {
                         throw new JinxException("Objects in list cannot be null.");
                     }
@@ -247,7 +248,7 @@ public class JinxUtils {
      * @param collection collection object to test.
      * @return true if the collection is null or if the collection has no objects.
      */
-    public static boolean isNullOrEmpty(Collection collection) {
+    public static <T> boolean isNullOrEmpty(Collection<T> collection) {
         return collection == null || collection.size() == 0;
     }
 
@@ -298,7 +299,7 @@ public class JinxUtils {
      * @param collection collection to convert.
      * @return comma delimited string, or null if the collection is null or empty.
      */
-    public static String buildCommaDelimitedList(Collection collection) {
+    public static <T> String buildCommaDelimitedList(Collection<T> collection) {
         if (isNullOrEmpty(collection)) {
             return null;
         }
@@ -330,7 +331,7 @@ public class JinxUtils {
         if (isNullOrEmpty(list)) {
             return null;
         }
-        List<String> tmp = new ArrayList<String>();
+        List<String> tmp = new ArrayList<>();
         for (String s : list) {
             tmp.add(s.replaceAll("[!#$%&'()*+\\.,'; ]", "").toLowerCase());
         }
@@ -361,7 +362,7 @@ public class JinxUtils {
       if (isNullOrEmpty(list)) {
         return null;
       }
-      List<String> tmp = new ArrayList<String>();
+      List<String> tmp = new ArrayList<>();
       for (String s : list) {
         String newString = s.replaceAll("[!#$%&'()*+\\.,';]", "").toLowerCase();
         if (newString.contains(" ")) {
