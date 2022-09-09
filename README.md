@@ -259,6 +259,33 @@ If the tests are failing and you want to build the jar anyway, add -DskipTests:
 
 	mvn clean package -DskipTests
 
+# RELEASING
+Before releasing, run the tests and fix things that fail, assuming they can be fixed.
+
+Releasing to Central requires some specific steps:
+
+1. export some JDK options so Java 17 will work:
+
+```
+export JDK_JAVA_OPTIONS='--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.text=ALL-UNNAMED --add-opens java.desktop/java.awt.font=ALL-UNNAMED'
+```
+
+2. Update the version in pom.xml
+3. Update the version in README.md
+4. Do the release: `mvn -Darguments="-DskipTests" -DskipTests clean deploy -Prelease`
+5. If the release is successful:
+	1. Commit and push
+	2. tag the repo `git tag -a x.y.z`
+	3. push the tag `git push origin --tags`
+	4. update the version in pom.xml for the next snapshot
+	5. commit and push
+6. Clear your JDK options:
+
+```
+unset JDK_JAVA_OPTIONS
+```
+
+
 # JINX PROJECT CONTRIBUTORS - READ THIS
 Flickr apps need an API key to work properly. Jinx is no exception. To run the unit tests, you need to go to Flickr and apply for an API key. Once you have this key, you need to do the following:
 

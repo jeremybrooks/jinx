@@ -97,7 +97,7 @@
         <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
         <maven-release-plugin.version>2.5</maven-release-plugin.version>
         <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.1</nexus-staging-maven-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.6</nexus-staging-maven-plugin.version>
     </properties>
 
     <dependencies>
