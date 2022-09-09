@@ -15,21 +15,6 @@
   ~ along with Jinx.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<!-- NOTE
-  - When releasing Jinx, you should run the tests BEFORE mvn:release steps!
-  - This will allow you to fix whatever is broken, and then skip tests during
-  - the release prepare/perform steps. The tests can take a long time, and
-  - may depend on data that is not available.
-  -
-  - Typical release cycle is:
-  - mvn test
-  - mvn -Darguments="-DskipTests" gitflow:release-start
-  -   (update version info in README, etc.)
-  - mvn -Darguments="-DskipTests" gitflow:release-finish
-  -
-  - These steps will build, tag, and push to maven central.
-  -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
