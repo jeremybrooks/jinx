@@ -924,16 +924,6 @@ public class JinxUtils {
     }
 
 
-//    public static void close(InputStream in) {
-//        if (in != null) {
-//            try {
-//                in.close();
-//            } catch (Exception e) {
-//                // ignore
-//            }
-//        }
-//    }
-
     public static void close(Reader in) {
         if (in != null) {
             try {

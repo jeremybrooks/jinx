@@ -418,8 +418,7 @@ public class JinxUtilsTest {
     public void testGenerateBoundary() {
         String boundary = JinxUtils.generateBoundary();
         assertNotNull(boundary);
-        assertTrue(boundary.length() >= 30);
-        assertTrue(boundary.length() <= 40);
+        assertTrue(boundary.startsWith("----------"));
         System.out.println(boundary);
     }
 
