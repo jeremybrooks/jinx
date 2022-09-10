@@ -22,7 +22,7 @@
     <groupId>net.jeremybrooks</groupId>
     <artifactId>jinx</artifactId>
     <packaging>jar</packaging>
-    <version>3.0.2-SNAPSHOT</version>
+    <version>3.0.2</version>
 
     <name>Jinx</name>
     <description>A Java library to access the Flickr API.</description>
@@ -73,7 +73,7 @@
         <gson.version>2.9.1</gson.version>
         <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
         <junit.version>4.13.1</junit.version>
-        <scribejava.version>6.9.0</scribejava.version>
+        <scribejava.version>8.3.1</scribejava.version>
 
         <!-- plugin versions -->
         <gitflow-maven-plugin.version>1.14.0</gitflow-maven-plugin.version>

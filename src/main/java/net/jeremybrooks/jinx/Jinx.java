@@ -19,6 +19,7 @@ package net.jeremybrooks.jinx;
 
 import com.github.scribejava.apis.FlickrApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
+import com.github.scribejava.core.httpclient.multipart.FileByteArrayBodyPartPayload;
 import com.github.scribejava.core.model.OAuth1AccessToken;
 import com.github.scribejava.core.model.OAuth1RequestToken;
 import com.github.scribejava.core.model.OAuthRequest;
@@ -39,9 +40,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.concurrent.ExecutionException;
 
-import static net.jeremybrooks.jinx.JinxConstants.FLICKR_PHOTO_REPLACE_URL;
-import static net.jeremybrooks.jinx.JinxConstants.FLICKR_PHOTO_UPLOAD_URL;
-import static net.jeremybrooks.jinx.JinxConstants.Method;
+import static net.jeremybrooks.jinx.JinxConstants.*;
 
 /**
  * This class contains the information needed to make calls to Flickr.
@@ -398,7 +397,7 @@ public class Jinx {
   /**
    * Indicates if verbose logging is enabled.
    * <br>
-   * By default this is false. If you want verbose logging, you need to set this to true and set a
+   * By default, this is false. If you want verbose logging, you need to set this to true and set a
    * {@link net.jeremybrooks.jinx.logger.JinxLogger} that is used to do the logging.
    * <br>
    * Verbose logging will cause the GET and POST parameters to be logged, as well as the response from Flickr.
@@ -416,7 +415,7 @@ public class Jinx {
   /**
    * Indicates if multipart logging is enabled.
    * <br>
-   * By default this is false. If you want to see multipart body content logging, you need to set this
+   * By default, this is false. If you want to see multipart body content logging, you need to set this
    * to true and set a {@link net.jeremybrooks.jinx.logger.JinxLogger} that is used to do the logging.
    * <br>
    * Multipart logging will cause the multipart POST body to be logged. You must also set verbose logging
@@ -529,7 +528,7 @@ public class Jinx {
    * flickrGet and flickrPost methods delegate work to this method.
    *
    * @param params request parameters.
-   * @param method http method to use. Method.GET and Method.POST are the only valid choices.
+   * @param method http method to use. Method.GET and Method. POST are the only valid choices.
    * @param tClass the class that will be returned.
    * @param <T>    type of the class returned.
    * @param sign   if true the request will be signed.
@@ -660,9 +659,9 @@ public class Jinx {
     request.addHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
     params.forEach(request::addQuerystringParameter);
     this.oAuthService.signRequest(this.accessToken, request);
-    request.addFileByteArrayBodyPartPayloadInMultipartPayload("form-data", photoData,
-        "photo",
-        params.getOrDefault("filename", "photo.jpg"));
+    request.addBodyPartPayloadInMultipartPayload(new FileByteArrayBodyPartPayload(
+            "form-data", photoData, "photo",
+            params.getOrDefault("filename", "photo.jpg")));
 
     T fromJson;
     try {
