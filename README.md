@@ -35,12 +35,6 @@ If you are using Maven, just include this in your pom.xml file
 		<version>3.0.3</version>
 	</dependency>
 
-If you are not using Maven, you will need these libraries, and their dependencies:
-  
-  * Gson 2.8.6+ -- deserializes json documents in to Java objects
-  * Scribe 6.9.0+ -- provides OAuth services
-  * jaxb-runtime 2.3.2+
-  
 ## Notes About Jinx
 
 ### ID's (NSID)
