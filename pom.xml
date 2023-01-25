@@ -30,7 +30,7 @@
     <licenses>
         <license>
             <name>GNU GPL, Version 3</name>
-            <url>http://www.gnu.org/licenses/</url>
+            <url>https://www.gnu.org/licenses/</url>
             <comments>The GNU General Public License</comments>
             <distribution>repo</distribution>
         </license>
@@ -52,8 +52,8 @@
         <developer>
             <id>jeremybrooks</id>
             <name>Jeremy Brooks</name>
-            <email>jeremyb@whirljack.net</email>
-            <url>http://jeremybrooks.net</url>
+            <email>jeremymbrooks@gmail.com</email>
+            <url>https://jeremybrooks.net</url>
             <roles>
                 <role>developer</role>
             </roles>
@@ -70,10 +70,10 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- library versions -->
-        <gson.version>2.9.1</gson.version>
-        <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
+        <gson.version>2.10.1</gson.version>
+        <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
         <junit.version>4.13.1</junit.version>
-        <scribejava.version>8.3.1</scribejava.version>
+        <scribejava.version>8.3.3</scribejava.version>
 
         <!-- plugin versions -->
         <gitflow-maven-plugin.version>1.14.0</gitflow-maven-plugin.version>
