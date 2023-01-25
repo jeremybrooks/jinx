@@ -32,7 +32,7 @@ If you are using Maven, just include this in your pom.xml file
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>3.0.2</version>
+		<version>3.0.3</version>
 	</dependency>
 
 If you are not using Maven, you will need these libraries, and their dependencies:
@@ -77,6 +77,11 @@ If you need to log the body of a photo upload request, you must set a JinxLogger
   
 # VERSION HISTORY
   
+## Version 3.0.3
+  * Updated scribejava to 8.3.3 (CVE-2022-42003)
+  * Updated gson to 2.10.1
+  * Updated jaxb-runtime to 4.0.1
+
 ## Version 3.0.2
   * Updated scribejava to 8.3.1 (CVE-2020-36518)
    
@@ -337,8 +342,6 @@ Generally, response objects are read only. They will have getters, but not sette
 
 ## Coding Conventions
 
-This project uses the [git-flow workflow](https://nvie.com/posts/a-successful-git-branching-model/).
-
 This project attempts to follow the Oracle [Java coding conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html).
 
 Since this library uses Gson to deserialize JSON documents into Java classes, the Java classes contain a lot of inner classes. This can be confusing at first glance. The classes in the package net.jeremybrooks.jinx.response should follow these guidelines:
@@ -351,7 +354,7 @@ Since this library uses Gson to deserialize JSON documents into Java classes, th
 
 
 # LICENSE
-Jinx is Copyright 2010-2020 by Jeremy Brooks and Contributors
+Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
 
 Jinx is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
