@@ -33,10 +33,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class ReflectionApi {
-  private Jinx jinx;
-
-  private ReflectionApi() {
-  }
+  private final Jinx jinx;
 
   public ReflectionApi(Jinx jinx) {
     this.jinx = jinx;

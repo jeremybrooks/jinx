@@ -36,7 +36,7 @@ import java.util.TreeMap;
 public class BlogApi {
 
 
-  private Jinx jinx;
+  private final Jinx jinx;
 
   public BlogApi(Jinx jinx) {
     this.jinx = jinx;

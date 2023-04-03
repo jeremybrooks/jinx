@@ -39,10 +39,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PlacesApi {
-  private Jinx jinx;
-
-  private PlacesApi() {
-  }
+  private final Jinx jinx;
 
   public PlacesApi(Jinx jinx) {
     this.jinx = jinx;

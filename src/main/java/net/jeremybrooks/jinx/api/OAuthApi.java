@@ -49,7 +49,7 @@ import java.util.TreeMap;
  */
 public class OAuthApi {
 
-  private Jinx jinx;
+  private final Jinx jinx;
 
   /**
    * Create a new instance of OAuthApi.

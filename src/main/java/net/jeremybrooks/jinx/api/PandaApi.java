@@ -35,7 +35,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PandaApi {
-  private Jinx jinx;
+  private final Jinx jinx;
 
   public PandaApi(Jinx jinx) {
     this.jinx = jinx;

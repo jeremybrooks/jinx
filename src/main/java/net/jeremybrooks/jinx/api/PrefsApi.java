@@ -34,10 +34,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PrefsApi {
-  private Jinx jinx;
-
-  private PrefsApi() {
-  }
+  private final Jinx jinx;
 
   public PrefsApi(Jinx jinx) {
     this.jinx = jinx;
