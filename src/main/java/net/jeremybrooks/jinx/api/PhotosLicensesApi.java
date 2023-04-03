@@ -33,7 +33,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PhotosLicensesApi {
-  private Jinx jinx;
+  private final Jinx jinx;
 
   public PhotosLicensesApi(Jinx jinx) {
     this.jinx = jinx;

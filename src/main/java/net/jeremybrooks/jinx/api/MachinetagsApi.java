@@ -35,7 +35,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class MachinetagsApi {
-  private Jinx jinx;
+  private final Jinx jinx;
 
   public MachinetagsApi(Jinx jinx) {
     this.jinx = jinx;

@@ -37,7 +37,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PhotosGeoApi {
-  private Jinx jinx;
+  private final Jinx jinx;
 
   public PhotosGeoApi(Jinx jinx) {
     this.jinx = jinx;
@@ -52,7 +52,7 @@ public class PhotosGeoApi {
    * <br>
    * Note: This method requires an HTTP POST request.
    *
-   * @param lat      (Required) The latitude of the photos to be update whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
+   * @param lat      (Required) The latitude of the photos to be updated whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
    * @param lon      (Required) The longitude of the photos to be updated whose valid range is -180 to 180. Anything more than 6 decimal places will be truncated.
    * @param accuracy (Required) Recorded accuracy level of the photos to be updated. World level is 1, Country is ~3, Region ~6, City ~11, Street ~16. Current range is 1-16.
    * @param placeId  A Flickr Places ID. (While optional, you must pass either a valid Places ID or a WOE ID.)

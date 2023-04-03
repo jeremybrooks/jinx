@@ -33,6 +33,8 @@ public class JinxConstants {
   public static final String FLICKR_PHOTO_UPLOAD_URL = "https://up.flickr.com/services/upload/";
   public static final String FLICKR_PHOTO_REPLACE_URL = "https://up.flickr.com/services/replace/";
 
+  public static final String USER_AGENT_HEADER_KEY = "User-Agent";
+
   public enum OAuthPermissions {
     read,
     write,
@@ -208,7 +210,7 @@ public class JinxConstants {
     region(8),
     country(12),
     continent(29);
-    private Integer typeId;
+    private final Integer typeId;
     PlaceTypeId(Integer typeId) {
       this.typeId = typeId;
     }
@@ -239,9 +241,9 @@ public class JinxConstants {
     gray("d", "#7c7c7c", "Gray"),
     black("e", "#000000", "Black");
 
-    private String colorValue;
-    private String hexTriplet;
-    private String colorName;
+    private final String colorValue;
+    private final String hexTriplet;
+    private final String colorName;
 
     ColorCode(String colorValue, String hexTriplet, String colorName) {
       this.colorValue = colorValue;
@@ -269,7 +271,7 @@ public class JinxConstants {
     }
 
     /**
-     * The human readable name of the color.
+     * The human-readable name of the color.
      *
      * @return color name.
      */
@@ -306,14 +308,14 @@ public class JinxConstants {
     pattern("Pattern"),
     minimalism("Minimalism");
 
-    private String styleName;
+    private final String styleName;
 
     PictureStyle(String styleName) {
       this.styleName = styleName;
     }
 
     /**
-     * The human readable description of the picture style.
+     * The human-readable description of the picture style.
      *
      * @return style name.
      */

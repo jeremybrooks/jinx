@@ -40,10 +40,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class TagsApi {
-  private Jinx jinx;
-
-  private TagsApi() {
-  }
+  private final Jinx jinx;
 
   public TagsApi(Jinx jinx) {
     this.jinx = jinx;

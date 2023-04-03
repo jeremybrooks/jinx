@@ -34,7 +34,7 @@ import java.util.TreeMap;
  */
 public class CamerasApi {
 
-	private Jinx jinx;
+	private final Jinx jinx;
 
 	public CamerasApi(Jinx jinx) {
 		this.jinx = jinx;

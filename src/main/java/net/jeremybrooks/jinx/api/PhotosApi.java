@@ -52,7 +52,7 @@ import java.util.TreeMap;
  */
 public class PhotosApi {
 
-  private Jinx jinx;
+  private final Jinx jinx;
 
   public PhotosApi(Jinx jinx) {
     this.jinx = jinx;
@@ -354,8 +354,8 @@ public class PhotosApi {
    *
    * @param minUploadDate Optional. Minimum upload date. Photos with an upload date greater than or equal to this value will be returned.
    * @param maxUploadDate Optional. Maximum upload date. Photos with an upload date less than or equal to this value will be returned.
-   * @param minTakenDate  Optional. Minimum taken date. Photos with an taken date greater than or equal to this value will be returned.
-   * @param maxTakenDate  Optional. Maximum taken date. Photos with an taken date less than or equal to this value will be returned.
+   * @param minTakenDate  Optional. Minimum taken date. Photos with a taken date greater than or equal to this value will be returned.
+   * @param maxTakenDate  Optional. Maximum taken date. Photos with a taken date less than or equal to this value will be returned.
    * @param privacyFilter Optional. Return photos only matching a certain privacy level.
    * @param mediaType     Optional. Filter results by media type.
    * @param extras        Optional. Extra information to fetch for each returned record.
@@ -475,8 +475,8 @@ public class PhotosApi {
    *
    * @param minUploadDate Optional. Minimum upload date. Photos with an upload date greater than or equal to this value will be returned.
    * @param maxUploadDate Optional. Maximum upload date. Photos with an upload date less than or equal to this value will be returned.
-   * @param minTakenDate  Optional. Minimum taken date. Photos with an taken date greater than or equal to this value will be returned.
-   * @param maxTakenDate  Optional. Maximum taken date. Photos with an taken date less than or equal to this value will be returned.
+   * @param minTakenDate  Optional. Minimum taken date. Photos with a taken date greater than or equal to this value will be returned.
+   * @param maxTakenDate  Optional. Maximum taken date. Photos with a taken date less than or equal to this value will be returned.
    * @param privacyFilter Optional. Return photos only matching a certain privacy level.
    * @param mediaType     Optional. Filter results by media type.
    * @param extras        Optional. Extra information to fetch for each returned record.
@@ -524,14 +524,14 @@ public class PhotosApi {
 
 
   /**
-   * Returns a list of your geo-tagged photos.
+   * Returns a list of your geotagged photos.
    * <br>
    * This method requires authentication with 'read' permission.
    *
    * @param minUploadDate Optional. Minimum upload date. Photos with an upload date greater than or equal to this value will be returned.
    * @param maxUploadDate Optional. Maximum upload date. Photos with an upload date less than or equal to this value will be returned.
-   * @param minTakenDate  Optional. Minimum taken date. Photos with an taken date greater than or equal to this value will be returned.
-   * @param maxTakenDate  Optional. Maximum taken date. Photos with an taken date less than or equal to this value will be returned.
+   * @param minTakenDate  Optional. Minimum taken date. Photos with a taken date greater than or equal to this value will be returned.
+   * @param maxTakenDate  Optional. Maximum taken date. Photos with a taken date less than or equal to this value will be returned.
    * @param privacyFilter Optional. Return photos only matching a certain privacy level.
    * @param sortOrder     Optional. The order in which to sort returned photos. If null, defaults to {@link net.jeremybrooks.jinx.JinxConstants.SortOrder#date_posted_desc}.
    * @param mediaType     Optional. Filter results by media type.
@@ -582,14 +582,14 @@ public class PhotosApi {
   }
 
   /**
-   * Returns a list of your photos which haven't been geo-tagged.
+   * Returns a list of your photos which haven't been geotagged.
    * <br>
    * This method requires authentication with 'read' permission.
    *
    * @param minUploadDate Optional. Minimum upload date. Photos with an upload date greater than or equal to this value will be returned.
    * @param maxUploadDate Optional. Maximum upload date. Photos with an upload date less than or equal to this value will be returned.
-   * @param minTakenDate  Optional. Minimum taken date. Photos with an taken date greater than or equal to this value will be returned.
-   * @param maxTakenDate  Optional. Maximum taken date. Photos with an taken date less than or equal to this value will be returned.
+   * @param minTakenDate  Optional. Minimum taken date. Photos with a taken date greater than or equal to this value will be returned.
+   * @param maxTakenDate  Optional. Maximum taken date. Photos with a taken date less than or equal to this value will be returned.
    * @param privacyFilter Optional. Return photos only matching a certain privacy level.
    * @param sortOrder     Optional. The order in which to sort returned photos. If null, defaults to {@link net.jeremybrooks.jinx.JinxConstants.SortOrder#date_posted_desc}.
    * @param mediaType     Optional. Filter results by media type.
@@ -873,7 +873,7 @@ public class PhotosApi {
 
 
   /**
-   * Set the content type of a photo.
+   * Set the content type of photo.
    * <br>
    * This method requires authentication with 'write' permission.
    *
@@ -992,7 +992,7 @@ public class PhotosApi {
    *
    * @param photoId     Required. The id of the photo to set the adultness of.
    * @param safetyLevel Optional. Safely level of the photo.
-   * @param hidden      Whether or not to additionally hide the photo from public searches.
+   * @param hidden      Whether to additionally hide the photo from public searches.
    * @return object with the result of the requested operation.
    * @throws JinxException if required parameters are null or empty, or if there are errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.photos.setSafetyLevel.html">flickr.photos.setSafetyLevel</a>

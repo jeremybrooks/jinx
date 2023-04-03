@@ -38,7 +38,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PeopleApi {
-  private Jinx jinx;
+  private final Jinx jinx;
 
   public PeopleApi(Jinx jinx) {
     this.jinx = jinx;
@@ -150,12 +150,12 @@ public class PeopleApi {
    * <br>
    * This method does not require authentication.
    *
-   * @param userId        (Required) The userId of the user who's photos to return. A value of "me" will return the calling user's photos.
+   * @param userId        (Required) The userId of the user whose photos to return. A value of "me" will return the calling user's photos.
    * @param safetyLevel   (Optional) safe search level of photos to return. Unsigned calls can only see safe content.
    * @param minUploadDate (Optional) Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.
    * @param maxUploadDate (Optional) Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
-   * @param minTakenDate  (Optional) Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime.
-   * @param maxTakenDate  (Optional) Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
+   * @param minTakenDate  (Optional) Minimum taken date. Photos with a taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime.
+   * @param maxTakenDate  (Optional) Maximum taken date. Photos with a taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.
    * @param contentType   (Optional) return photos matching a specific content type.
    * @param privacyFilter (Optional) Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own.
    * @param extras        (Optional) extra information to fetch for each returned photo.
@@ -273,7 +273,7 @@ public class PeopleApi {
    * <br>
    * This method does not require authentication.
    *
-   * @param userId      (Required) The userId of the user who's photos to return.
+   * @param userId      (Required) The userId of the user whose photos to return.
    * @param safetyLevel (Optional) safe search level of photos to return. Unsigned calls can only see safe content.
    * @param extras      (Optional) extra information to return for each photo.
    * @param perPage     Number of photos to return per page. If this argument is less than 1, it defaults to 100. The maximum allowed value is 500.

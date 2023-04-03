@@ -32,7 +32,7 @@ import java.util.TreeMap;
  */
 public class ActivityApi {
 
-	private Jinx jinx;
+	private final Jinx jinx;
 
 	public ActivityApi(Jinx jinx) {
 		this.jinx = jinx;

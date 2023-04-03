@@ -39,7 +39,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class PhotosetsApi {
-  private Jinx jinx;
+  private final Jinx jinx;
 
   public PhotosetsApi(Jinx jinx) {
     this.jinx = jinx;
@@ -226,7 +226,7 @@ public class PhotosetsApi {
    * This method does not require authentication.
    *
    * @param userId      Optional. The NSID of the user to get a photoset list for. If none is specified, the calling user is assumed.
-   * @param page        Optional. The page of results to get. Currently, if this is omitted, all sets are returned, but this behaviour may change in future. A value of zero will cause the parameter to be ignored.
+   * @param page        Optional. The page of results to get. Currently, if this is omitted, all sets are returned, but this behaviour may change in the future. A value of zero will cause the parameter to be ignored.
    * @param perPage     Optional. The number of sets to get per page. If paging is enabled, the maximum number of sets per page is 500. A value of zero will cause the parameter to be ignored.
    * @param photoExtras Optional. A list of extra information to fetch for the primary photo.
    * @return list of photosets belonging to the specified user.
@@ -394,7 +394,7 @@ public class PhotosetsApi {
    * If the photo is not already in the set, nothing will happen, and the method will report success.
    *
    * @param photosetId id of the photoset to set primary photo of.
-   * @param photoId    id of the photo set set as primary.
+   * @param photoId    id of the photo set as primary.
    * @return an empty success response if it completes without error.
    * @throws JinxException if any parameter is null or empty, or if there are other errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.photosets.setPrimaryPhoto.html">flickr.photosets.setPrimaryPhoto</a>

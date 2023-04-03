@@ -38,7 +38,7 @@ import java.util.TreeMap;
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
  */
 public class GalleriesApi {
-  private Jinx jinx;
+  private final Jinx jinx;
 
   public GalleriesApi(Jinx jinx) {
     this.jinx = jinx;
@@ -76,7 +76,7 @@ public class GalleriesApi {
    *
    * @param title          Required. The name of the gallery.
    * @param description    Required. A short description for the gallery.
-   * @param primaryPhotoId Optiona. The first photo to add to your gallery.
+   * @param primaryPhotoId Optional. The first photo to add to your gallery.
    * @param fullResult     Get the result in the same format as galleries.getList
    * @return information about the created gallery.
    * @throws JinxException if required parameters are null or empty, or if there are any errors.
