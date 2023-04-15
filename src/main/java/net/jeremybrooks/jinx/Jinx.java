@@ -755,9 +755,9 @@ public class Jinx {
             String json = JinxUtils.xml2json(flickrResponse.getBody());
 
             fromJson = gson.fromJson(json, tClass);
-            if (this.flickrErrorThrowsException && ((Response) fromJson).getCode() != 0) {
+            if (this.flickrErrorThrowsException && ((Response) fromJson).getStat().equals("fail")) {
                 Response r = (Response) fromJson;
-                throw new JinxException("Flickr returned non-zero status.", null, r);
+                throw new JinxException("Flickr returned 'fail' status.", null, r);
             }
         } catch (JinxException je) {
             throw je;
