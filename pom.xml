@@ -22,7 +22,7 @@
     <groupId>net.jeremybrooks</groupId>
     <artifactId>jinx</artifactId>
     <packaging>jar</packaging>
-    <version>3.0.4-SNAPSHOT</version>
+    <version>3.1.0</version>
 
     <name>Jinx</name>
     <description>A Java library to access the Flickr API.</description>

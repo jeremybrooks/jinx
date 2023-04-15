@@ -32,7 +32,7 @@ If you are using Maven, just include this in your pom.xml file
 	<dependency>
 		<groupId>net.jeremybrooks</groupId>
 		<artifactId>jinx</artifactId>
-		<version>3.0.3</version>
+		<version>3.1.0</version>
 	</dependency>
 
 ## Notes About Jinx
@@ -70,7 +70,10 @@ If you need to log the body of a photo upload request, you must set a JinxLogger
 
   
 # VERSION HISTORY
-  
+ 
+## Version 3.1.0
+  * Fixed a bug where failure during photo upload may not be reported.
+
 ## Version 3.0.3
   * Updated scribejava to 8.3.3 (CVE-2022-42003)
   * Updated gson to 2.10.1
