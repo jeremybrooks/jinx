@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,10 +27,10 @@ import java.util.List;
 
 /**
  * Represents a list of groups as returned by flickr.people.getGroups
- *
+ * <br>
  * There are subtle inconsistencies between the way groups are returned by various methods, so it is
  * necessary to have multiple classes that represent the group data.
- *
+ * <br>
  * Created by jeremyb on 7/15/14.
  */
 public class Groups extends Response {
@@ -39,7 +39,7 @@ public class Groups extends Response {
 
     public List<Group> getGroupList() { return groups == null ? null : groups.groupList; }
 
-    public class Group implements Serializable {
+    public static class Group implements Serializable {
       private static final long serialVersionUID = -3271597032766710044L;
       @SerializedName("nsid")
         private String groupId;
@@ -56,9 +56,7 @@ public class Groups extends Response {
         private Integer members;
         @SerializedName("pool_count")
         private Integer poolCount;
-
-        private _Privacy privacy;   // return value as JinxUtils.PrivacyFilter
-
+        private Integer privacy;
         private GroupInfo.Throttle throttle;
         private GroupInfo.Restrictions restrictions;
 
@@ -99,7 +97,7 @@ public class Groups extends Response {
         }
 
         public JinxConstants.GroupPrivacy getGroupPrivacy() {
-            return privacy == null ? null : JinxUtils.privacyIdToGroupPrivacyEnum(privacy._content);
+            return privacy == null ? null : JinxUtils.privacyIdToGroupPrivacyEnum(privacy);
         }
 
         public GroupInfo.Throttle getThrottle() {
@@ -128,16 +126,11 @@ public class Groups extends Response {
             sb.append('}');
             return sb.toString();
         }
-
-        private class _Privacy implements Serializable {
-          private static final long serialVersionUID = -6438697171107091936L;
-          private Integer _content;
-        }
     }
 
 
     private _Groups groups;
-    private class _Groups implements Serializable {
+    private static class _Groups implements Serializable {
         private static final long serialVersionUID = -3751967583936500705L;
         @SerializedName("group")
         private List<Group> groupList;

@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ public class JinxUtilsTest {
     @Test
     public void testValidateParams() throws Exception {
         String x = "whatever";
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         list.add(x);
         JinxUtils.validateParams(x);
         JinxUtils.validateParams(list);
@@ -63,7 +63,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testToFlickrPrivacy() throws Exception {
+    public void testToFlickrPrivacy() {
         assertEquals(1, JinxUtils.privacyFilterToFlickrPrivacyFilterId(JinxConstants.PrivacyFilter.privacyPublic));
         assertEquals(2, JinxUtils.privacyFilterToFlickrPrivacyFilterId(JinxConstants.PrivacyFilter.privacyFriends));
         assertEquals(3, JinxUtils.privacyFilterToFlickrPrivacyFilterId(JinxConstants.PrivacyFilter.privacyFamily));
@@ -72,8 +72,8 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testBuildCommaDelimitedList() throws Exception {
-        List<String> tags = new ArrayList<String>();
+    public void testBuildCommaDelimitedList() {
+        List<String> tags = new ArrayList<>();
         tags.add("california");
         tags.add("sanfrancisco");
         assertEquals("california,sanfrancisco", JinxUtils.buildCommaDelimitedList(tags));
@@ -85,8 +85,8 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testNormalizeTagsForSearch() throws Exception {
-        List<String> tags = new ArrayList<String>();
+    public void testNormalizeTagsForSearch() {
+        List<String> tags = new ArrayList<>();
         tags.add("California");
         tags.add("San Francisco");
         tags.add("neon");
@@ -96,6 +96,7 @@ public class JinxUtilsTest {
         tags.add("special !#$;%&'()*+ chars");
 
         List<String> result = JinxUtils.normalizeTagsForSearch(tags);
+        assert result != null;
         assertEquals("california", result.get(0));
         assertEquals("sanfrancisco", result.get(1));
         assertEquals("neon", result.get(2));
@@ -106,8 +107,8 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testNormalizeTagsForUpload() throws Exception {
-        List<String> tags = new ArrayList<String>();
+    public void testNormalizeTagsForUpload() {
+        List<String> tags = new ArrayList<>();
         tags.add("California");
         tags.add("San Francisco");
         tags.add("neon");
@@ -117,6 +118,7 @@ public class JinxUtilsTest {
         tags.add("special !#$;%&'()*+ chars");
 
         List<String> result = JinxUtils.normalizeTagsForUpload(tags);
+        assert result != null;
         assertEquals("California", result.get(0));
         assertEquals("\"San Francisco\"", result.get(1));
         assertEquals("neon", result.get(2));
@@ -134,7 +136,7 @@ public class JinxUtilsTest {
 	5 completely private photos
 	 */
     @Test
-    public void testPrivacyFilterToFlickrPrivacyFilterId() throws Exception {
+    public void testPrivacyFilterToFlickrPrivacyFilterId() {
         assertEquals(1, JinxUtils.privacyFilterToFlickrPrivacyFilterId(JinxConstants.PrivacyFilter.privacyPublic));
         assertEquals(2, JinxUtils.privacyFilterToFlickrPrivacyFilterId(JinxConstants.PrivacyFilter.privacyFriends));
         assertEquals(3, JinxUtils.privacyFilterToFlickrPrivacyFilterId(JinxConstants.PrivacyFilter.privacyFamily));
@@ -144,7 +146,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testFlickrPrivacyFilterIdToPrivacyFilter() throws Exception {
+    public void testFlickrPrivacyFilterIdToPrivacyFilter() {
         assertEquals(JinxConstants.PrivacyFilter.privacyPublic, JinxUtils.flickrPrivacyFilterIdToPrivacyFilter(1));
         assertEquals(JinxConstants.PrivacyFilter.privacyFriends, JinxUtils.flickrPrivacyFilterIdToPrivacyFilter(2));
         assertEquals(JinxConstants.PrivacyFilter.privacyFamily, JinxUtils.flickrPrivacyFilterIdToPrivacyFilter(3));
@@ -154,7 +156,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testFlickrPermsIdToPerms() throws Exception {
+    public void testFlickrPermsIdToPerms() {
         assertEquals(JinxConstants.Perms.nobody, JinxUtils.flickrPermsIdToPerms(0));
         assertEquals(JinxConstants.Perms.friendsAndFamily, JinxUtils.flickrPermsIdToPerms(1));
         assertEquals(JinxConstants.Perms.contacts, JinxUtils.flickrPermsIdToPerms(2));
@@ -163,7 +165,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testPermsToFlickrPermsId() throws Exception {
+    public void testPermsToFlickrPermsId() {
         assertEquals(0, JinxUtils.permsToFlickrPermsId(JinxConstants.Perms.nobody));
         assertEquals(1, JinxUtils.permsToFlickrPermsId(JinxConstants.Perms.friendsAndFamily));
         assertEquals(2, JinxUtils.permsToFlickrPermsId(JinxConstants.Perms.contacts));
@@ -172,8 +174,8 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testSortOrderToString() throws Exception {
-        assertEquals(null, JinxUtils.sortOrderToString(null));
+    public void testSortOrderToString() {
+        assertNull(JinxUtils.sortOrderToString(null));
         assertEquals("date-posted-asc", JinxUtils.sortOrderToString(JinxConstants.SortOrder.date_posted_asc));
         assertEquals("date-posted-desc", JinxUtils.sortOrderToString(JinxConstants.SortOrder.date_posted_desc));
         assertEquals("date-taken-asc", JinxUtils.sortOrderToString(JinxConstants.SortOrder.date_taken_asc));
@@ -184,8 +186,8 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testStringToSortOrder() throws Exception {
-        assertEquals(null, JinxUtils.stringToSortOrder(null));
+    public void testStringToSortOrder() {
+        assertNull(JinxUtils.stringToSortOrder(null));
         assertEquals(JinxConstants.SortOrder.date_posted_asc, JinxUtils.stringToSortOrder("date-posted-asc"));
         assertEquals(JinxConstants.SortOrder.date_posted_desc, JinxUtils.stringToSortOrder("date-posted-desc"));
         assertEquals(JinxConstants.SortOrder.date_taken_asc, JinxUtils.stringToSortOrder("date-taken-asc"));
@@ -206,7 +208,7 @@ public class JinxUtilsTest {
 	    7 for photos, screenshots, and 'other' (all).
 	*/
     @Test
-    public void testContentTypeToFlickrContentTypeId() throws Exception {
+    public void testContentTypeToFlickrContentTypeId() {
         assertEquals(1, JinxUtils.contentTypeToFlickrContentTypeId(JinxConstants.ContentType.photo));
         assertEquals(2, JinxUtils.contentTypeToFlickrContentTypeId(JinxConstants.ContentType.screenshot));
         assertEquals(3, JinxUtils.contentTypeToFlickrContentTypeId(JinxConstants.ContentType.other));
@@ -218,7 +220,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testFlickrContentTypeIdToContentType() throws Exception {
+    public void testFlickrContentTypeIdToContentType() {
         assertEquals(JinxConstants.ContentType.photo, JinxUtils.flickrContentTypeIdToContentType(1));
         assertEquals(JinxConstants.ContentType.screenshot, JinxUtils.flickrContentTypeIdToContentType(2));
         assertEquals(JinxConstants.ContentType.other, JinxUtils.flickrContentTypeIdToContentType(3));
@@ -235,15 +237,15 @@ public class JinxUtilsTest {
     3 for restricted.
 	 */
     @Test
-    public void testSafetyLevelToFlickrSafteyLevelId() throws Exception {
-        assertEquals(1, JinxUtils.safetyLevelToFlickrSafteyLevelId(JinxConstants.SafetyLevel.safe));
-        assertEquals(2, JinxUtils.safetyLevelToFlickrSafteyLevelId(JinxConstants.SafetyLevel.moderate));
-        assertEquals(3, JinxUtils.safetyLevelToFlickrSafteyLevelId(JinxConstants.SafetyLevel.restricted));
-        assertEquals(-1, JinxUtils.safetyLevelToFlickrSafteyLevelId(null));
+    public void testSafetyLevelToFlickrSafetyLevelId() {
+        assertEquals(1, JinxUtils.safetyLevelToFlickrSafetyLevelId(JinxConstants.SafetyLevel.safe));
+        assertEquals(2, JinxUtils.safetyLevelToFlickrSafetyLevelId(JinxConstants.SafetyLevel.moderate));
+        assertEquals(3, JinxUtils.safetyLevelToFlickrSafetyLevelId(JinxConstants.SafetyLevel.restricted));
+        assertEquals(-1, JinxUtils.safetyLevelToFlickrSafetyLevelId(null));
     }
 
     @Test
-    public void testFlickrSafetyLevelIdToSafetyLevel() throws Exception {
+    public void testFlickrSafetyLevelIdToSafetyLevel() {
         assertEquals(JinxConstants.SafetyLevel.safe, JinxUtils.flickrSafetyLevelIdToSafetyLevel(1));
         assertEquals(JinxConstants.SafetyLevel.moderate, JinxUtils.flickrSafetyLevelIdToSafetyLevel(2));
         assertEquals(JinxConstants.SafetyLevel.restricted, JinxUtils.flickrSafetyLevelIdToSafetyLevel(3));
@@ -257,7 +259,7 @@ public class JinxUtilsTest {
     2, outdoors.
 	 */
     @Test
-    public void testGeoContextToFlickrContextId() throws Exception {
+    public void testGeoContextToFlickrContextId() {
         assertEquals(0, JinxUtils.geoContextToFlickrContextId(JinxConstants.GeoContext.not_defined));
         assertEquals(1, JinxUtils.geoContextToFlickrContextId(JinxConstants.GeoContext.indoors));
         assertEquals(2, JinxUtils.geoContextToFlickrContextId(JinxConstants.GeoContext.outdoors));
@@ -265,7 +267,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testFlickContextIdToGeoContext() throws Exception {
+    public void testFlickContextIdToGeoContext() {
         assertEquals(JinxConstants.GeoContext.not_defined, JinxUtils.flickrContextIdToGeoContext(0));
         assertEquals(JinxConstants.GeoContext.indoors, JinxUtils.flickrContextIdToGeoContext(1));
         assertEquals(JinxConstants.GeoContext.outdoors, JinxUtils.flickrContextIdToGeoContext(2));
@@ -273,7 +275,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testParseMySqlDatetimeToDate() throws Exception {
+    public void testParseMySqlDatetimeToDate() {
         Date d = JinxUtils.parseMySqlDatetimeToDate("2004-11-29 16:01:26");
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(d);
@@ -288,7 +290,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testFormatDateAsYMD() throws Exception {
+    public void testFormatDateAsYMD() {
         assertEquals("", JinxUtils.formatDateAsYMD(null));
 
         GregorianCalendar cal = new GregorianCalendar();
@@ -300,7 +302,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testFormatDateAsUnixTimestamp() throws Exception {
+    public void testFormatDateAsUnixTimestamp() {
         GregorianCalendar cal = new GregorianCalendar();
         cal.clear();
         cal.set(Calendar.YEAR, 1999);
@@ -316,7 +318,7 @@ public class JinxUtilsTest {
     }
 
     @Test
-    public void testParseTimestampToDate() throws Exception {
+    public void testParseTimestampToDate() {
         String timestamp = "923196824";
         Date d = JinxUtils.parseTimestampToDate(timestamp);
         GregorianCalendar cal = new GregorianCalendar();
@@ -337,9 +339,9 @@ public class JinxUtilsTest {
     public void testFlickrBooleanToBooleanInteger() {
         Integer i = null;
         assertNull(JinxUtils.flickrBooleanToBoolean(i));
-        assertTrue(JinxUtils.flickrBooleanToBoolean(Integer.valueOf(1)));
-        assertFalse(JinxUtils.flickrBooleanToBoolean(Integer.valueOf(0)));
-        assertFalse(JinxUtils.flickrBooleanToBoolean(Integer.valueOf(-1)));
+        assertTrue(JinxUtils.flickrBooleanToBoolean(1));
+        assertFalse(JinxUtils.flickrBooleanToBoolean(0));
+        assertFalse(JinxUtils.flickrBooleanToBoolean(-1));
     }
 
     @Test
@@ -419,7 +421,6 @@ public class JinxUtilsTest {
         String boundary = JinxUtils.generateBoundary();
         assertNotNull(boundary);
         assertTrue(boundary.startsWith("----------"));
-        System.out.println(boundary);
     }
 
     @Test
@@ -442,6 +443,6 @@ public class JinxUtilsTest {
                 "<ticketid>124834485-72157646287534644</ticketid>\n" +
                 "</rsp>";
         json = JinxUtils.xml2json(replaceAsyncXML);
-        System.out.println(json);
+        assertEquals("{\"rsp\" : {\"stat\" : \"ok\", \"ticketid\" : \"124834485-72157646287534644\"}}", json);
     }
 }

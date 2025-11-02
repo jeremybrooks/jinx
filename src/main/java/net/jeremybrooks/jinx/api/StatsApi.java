@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.stats API methods.
+ * Provides access to the {@code flickr.stats} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -46,9 +46,9 @@ public class StatsApi {
 
   /**
    * Get a list of referring domains for a collection
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date         stats will be returned for this date. Required.
@@ -81,9 +81,9 @@ public class StatsApi {
 
   /**
    * Get a list of referrers from a given domain to a collection
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date         stats will be returned for this date. Required.
@@ -119,9 +119,9 @@ public class StatsApi {
 
   /**
    * Get the number of views on a collection for a given date.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date         stats will be returned for this date. Required.
@@ -141,9 +141,9 @@ public class StatsApi {
 
   /**
    * Get a list of referring domains for a photo
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date    stats will be returned for this date. Required.
@@ -174,7 +174,7 @@ public class StatsApi {
 
   /**
    * Get a list of referrers from a given domain to a photo
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date    stats will be returned for this date. Required.
@@ -209,7 +209,7 @@ public class StatsApi {
 
   /**
    * Get the number of views, comments and favorites on a photo for a given date.
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date    stats will be returned for this date. Required.
@@ -229,7 +229,7 @@ public class StatsApi {
 
   /**
    * Get a list of referring domains for a photoset
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date       stats will be returned for this date. Required.
@@ -260,7 +260,7 @@ public class StatsApi {
 
   /**
    * Get a list of referrers from a given domain to a photoset
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date       stats will be returned for this date. Required.
@@ -295,7 +295,7 @@ public class StatsApi {
 
   /**
    * Get the number of views on a photoset for a given date.
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date       stats will be returned for this date. Required.
@@ -315,7 +315,7 @@ public class StatsApi {
 
   /**
    * Get a list of referring domains for a photostream
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date    stats will be returned for this date. Required.
@@ -342,7 +342,7 @@ public class StatsApi {
 
   /**
    * Get a list of referrers from a given domain to a user's photostream
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date    stats will be returned for this date. Required.
@@ -373,7 +373,7 @@ public class StatsApi {
 
   /**
    * Get the number of views on a user's photostream for a given date.
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date stats will be returned for this date. Required.
@@ -392,9 +392,9 @@ public class StatsApi {
   /**
    * Returns a list of URLs for text files containing all your stats data (from November 26th 2007 onwards)
    * for the currently auth'd user.
-   *
-   * Please note, these files will only be available until June 1, 2010 Noon PDT.
-   *
+   * <p>
+   * Please note, these files will only be available until June 1, 2010, Noon PDT.
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @return stats object with csv files populated.
@@ -409,7 +409,7 @@ public class StatsApi {
 
   /**
    * List the photos with the most views, comments or favorites
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date    stats will be returned for this date. Optional.
@@ -441,7 +441,7 @@ public class StatsApi {
 
   /**
    * Get the overall view counts for an account
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param date stats will be returned for this date. Optional.

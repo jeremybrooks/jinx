@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,7 +57,7 @@ public class PhotosGeoApiTest {
 
   @Test
   public void testGetLocation() throws Exception {
-    Location location = photosGeoApi.getLocation(PHOTO_ID, false);
+    Location location = photosGeoApi.getLocation(PHOTO_ID);
     assertNotNull(location);
     assertEquals("ok", location.getStat());
     assertEquals(0, location.getCode());
@@ -107,8 +107,8 @@ public class PhotosGeoApiTest {
 
   @Test
   public void testSetCorrectContextRemove() throws Exception {
-    Float lat = Float.valueOf(37.863487f);
-    Float lon = Float.valueOf(-122.317378f);
+    Float lat = 37.863487f;
+    Float lon = -122.317378f;
     // set
     Response response = photosGeoApi.setLocation(PHOTO_FOR_WRITE_TEST, lat, lon, 6, null);
     assertNotNull(response);

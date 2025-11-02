@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.photos.comments API methods.
+ * Provides access to the {@code flickr.photos.comments} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -111,7 +111,7 @@ public class PhotosCommentsApi {
    * <br>
    *
    * @param photoId        (Required) The id of the photo to fetch comments for.
-   * @param minCommentDate (Optional) Minimum date that a a comment was added. The date should be in the form of a unix timestamp.
+   * @param minCommentDate (Optional) Minimum date that a comment was added. The date should be in the form of a unix timestamp.
    * @param maxCommentDate (Optional) Maximum date that a comment was added. The date should be in the form of a unix timestamp.
    * @param sign           if true, the request will be signed.
    * @return object with a list of comments for the specified photo.

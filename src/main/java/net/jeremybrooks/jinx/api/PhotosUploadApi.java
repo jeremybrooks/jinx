@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ import net.jeremybrooks.jinx.response.photos.upload.ReplaceResponse;
 import net.jeremybrooks.jinx.response.photos.upload.UploadResponse;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -92,9 +92,9 @@ public class PhotosUploadApi {
                                Boolean isFriend, Boolean isFamily, JinxConstants.SafetyLevel safetyLevel,
                                JinxConstants.ContentType contentType, Boolean hidden, Boolean async) throws JinxException {
     JinxUtils.validateParams(photo);
-    byte[] photoData = new byte[(int) photo.length()];
-    try (FileInputStream in = new FileInputStream(photo)) {
-      in.read(photoData);
+    byte[] photoData;
+    try {
+      photoData = Files.readAllBytes(photo.toPath());
 
       if (JinxUtils.isNullOrEmpty(title)) {
         int index = photo.getName().indexOf('.');
@@ -163,7 +163,7 @@ public class PhotosUploadApi {
       params.put("is_family", isFamily ? "1" : "0");
     }
     if (safetyLevel != null) {
-      params.put("safety_level", Integer.toString(JinxUtils.safetyLevelToFlickrSafteyLevelId(safetyLevel)));
+      params.put("safety_level", Integer.toString(JinxUtils.safetyLevelToFlickrSafetyLevelId(safetyLevel)));
     }
     if (contentType != null) {
       params.put("content_type", Integer.toString(JinxUtils.contentTypeToFlickrContentTypeId(contentType)));
@@ -190,9 +190,9 @@ public class PhotosUploadApi {
    */
   public ReplaceResponse replace(File photo, String photoId, Boolean async) throws JinxException {
     JinxUtils.validateParams(photo, photoId);
-    byte[] photoData = new byte[(int) photo.length()];
-    try (FileInputStream in = new FileInputStream(photo)) {
-      in.read(photoData);
+    byte[] photoData;
+    try {
+      photoData = Files.readAllBytes(photo.toPath());
     } catch (Exception e) {
       throw new JinxException("Unable to load data from photo " + photo.getAbsolutePath(), e);
     }

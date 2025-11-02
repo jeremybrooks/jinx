@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,19 +42,6 @@ public class GroupsApiTest {
     @BeforeClass
     public static void beforeClass() throws Exception {
         groupsApi = new GroupsApi(JinxApiTestCommon.getJinx());
-    }
-
-    /**
-     * This is testing a method that is pretty much useless.
-     * It is here mostly to detect if Flickr removes this method.
-     * @throws Exception on errors
-     */
-    @Test
-    public void testBrowse() throws Exception {
-        Response response = groupsApi.browse(null);
-        assertNotNull(response);
-        assertEquals("ok", response.getStat());
-        assertEquals(0, response.getCode());
     }
 
     @Test

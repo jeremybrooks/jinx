@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.photos.geo API methods.
+ * Provides access to the {@code flickr.photos.geo} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -118,12 +118,11 @@ public class PhotosGeoApi {
    * This method does not require authentication.
    *
    * @param photoId (Required) The id of the photo you want to retrieve location data for.
-   * @param sign    if true, the request will be signed.
    * @return location data for the specified photo.
    * @throws JinxException if required parameters are missing, or if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.photos.geo.getLocation.html">flickr.photos.geo.getLocation</a>
    */
-  public Location getLocation(String photoId, boolean sign) throws JinxException {
+  public Location getLocation(String photoId) throws JinxException {
     JinxUtils.validateParams(photoId);
     Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.geo.getLocation");

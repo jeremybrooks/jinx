@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ import java.util.Properties;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.auth.oauth API methods.
+ * Provides access to the {@code flickr.auth.oauth} API methods.
  * <p>
  * This class is used when getting OAuth tokens, querying the oauth api, and converting legacy tokens to oauth tokens.
  * See {@link Jinx} documentation for examples of how to use this class.

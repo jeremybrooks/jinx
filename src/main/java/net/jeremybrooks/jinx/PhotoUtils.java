@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,8 +32,8 @@ public class PhotoUtils {
 	/**
 	 * Get the photo page URL for this photo.
 	 * <br>
-	 * Photo URL's are in the format
-	 * https://www.flickr.com/photos/{user-id}/{photo-id}
+	 * Photo URLs are in the format
+	 * {@code https://www.flickr.com/photos/{user-id}/{photo-id}}
 	 * <br>
 	 *
    * @param info identifies the photo to get the URL for.
@@ -46,7 +46,7 @@ public class PhotoUtils {
 	/**
 	 * Get an image for a photo at a specific size.
 	 *
-	 * @param size  Required. The the desired size.
+	 * @param size  Required. The desired size.
 	 * @param photo Required. The photo to get the image for.
 	 * @return buffered image data from Flickr.
 	 * @throws JinxException if any parameter is null, or if there are any errors.
@@ -66,7 +66,7 @@ public class PhotoUtils {
 	/**
 	 * Get an image for photo info at a specific size.
 	 *
-	 * @param size Required. The the desired size.
+	 * @param size Required. The desired size.
 	 * @param info Required. The photo info describing the photo.
 	 * @return buffered image data from Flickr.
 	 * @throws JinxException if any parameter is null, or if there are any errors.
@@ -84,7 +84,7 @@ public class PhotoUtils {
 	}
 
 	/**
-	 * @param size           Required. The the desired size.
+	 * @param size           Required. The desired size.
 	 * @param photoId        Required. The ID of the photo.
 	 * @param secret         The secret of the photo. Required for all sizes except SIZE_ORIGINAL.
 	 * @param farm           Required. The farm of the photo.
@@ -119,7 +119,7 @@ public class PhotoUtils {
 	/**
 	 * Get the URL for a specific size of photo.
 	 *
-	 * @param size           Required. The the desired size.
+	 * @param size           Required. The desired size.
 	 * @param photoId        Required. The ID of the photo.
 	 * @param secret         The secret of the photo. Required for all sizes except SIZE_ORIGINAL.
 	 * @param farm           Required. The farm of the photo.
@@ -201,7 +201,7 @@ public class PhotoUtils {
 		try {
 			return new URL(sb.toString());
 		} catch (Exception e) {
-			throw new JinxException("Could not create URL from string " + sb.toString());
+			throw new JinxException("Could not create URL from string " + sb);
 		}
 	}
 }

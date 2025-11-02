@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.people API methods.
+ * Provides access to the {@code flickr.people} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -51,7 +51,7 @@ public class PeopleApi {
    * <br>
    * This returns the Person object, but only the userId and username will be populated.
    *
-   * @param email (Required) The email address of the user to find (may be primary or secondary).
+   * @param email (Required) The email address of the user to find (can be primary or secondary).
    * @return object with information about the person.
    * @throws JinxException if required parameters are missing, or if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.people.findByEmail.html">flickr.people.findByEmail</a>
@@ -91,7 +91,7 @@ public class PeopleApi {
    * This method requires authentication with 'read' permission.
    * <br>
    * Flickr does not return pagination information for this call. The returned object will not have any values set for
-   * pagination, and the the getPage(), getPages(), getPerPage(), or getTotal() methods will return null.
+   * pagination, and the getPage(), getPages(), getPerPage(), or getTotal() methods will return null.
    *
    * @param userId (Required) The user id of the user to fetch groups for.
    * @param extras extra information to fetch for each returned record.
@@ -175,7 +175,7 @@ public class PeopleApi {
     params.put("method", "flickr.people.getPhotos");
     params.put("user_id", userId);
     if (safetyLevel != null) {
-      params.put("safe_search", Integer.toString(JinxUtils.safetyLevelToFlickrSafteyLevelId(safetyLevel)));
+      params.put("safe_search", Integer.toString(JinxUtils.safetyLevelToFlickrSafetyLevelId(safetyLevel)));
     }
     if (!JinxUtils.isNullOrEmpty(minUploadDate)) {
       params.put("min_upload_date", minUploadDate);
@@ -290,7 +290,7 @@ public class PeopleApi {
     params.put("method", "flickr.people.getPublicPhotos");
     params.put("user_id", userId);
     if (safetyLevel != null) {
-      params.put("safe_search", Integer.toString(JinxUtils.safetyLevelToFlickrSafteyLevelId(safetyLevel)));
+      params.put("safe_search", Integer.toString(JinxUtils.safetyLevelToFlickrSafetyLevelId(safetyLevel)));
     }
     if (!JinxUtils.isNullOrEmpty(extras)) {
       params.put("extras", JinxUtils.buildCommaDelimitedList(extras));

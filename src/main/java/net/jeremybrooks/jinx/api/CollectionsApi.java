@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.collections API methods.
+ * Provides access to the {@code flickr.collections} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -41,7 +41,7 @@ public class CollectionsApi {
 
 
   /**
-   * Returns information for a single collection. Currently can only be called by the collection owner, this may change.
+   * Returns information for a single collection. Currently, can only be called by the collection owner, this may change.
    * <br>
    * This method requires authentication with 'read' permission.
    *
@@ -60,12 +60,12 @@ public class CollectionsApi {
 
 
   /**
-   * Returns a tree (or sub tree) of collections belonging to a given user.
+   * Returns a tree (or subtree) of collections belonging to a given user.
    * <br>
    * This method does not require authentication.
    *
    * @param collectionId Optional. The ID of the collection to fetch a tree for, or zero to fetch the root collection. Defaults to zero.
-   * @param userId       Optional. The ID of the account to fetch the collection tree for. Deafults to the calling user.
+   * @param userId       Optional. The ID of the account to fetch the collection tree for. Defaults to the calling user.
    * @return nested tree of collections, and the collections and sets they contain.
    * @throws JinxException if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.collections.getTree.html">flickr.collections.getTree</a>

@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,8 +56,8 @@ public class JinxUtils {
     }
 
 
-    private static SimpleDateFormat formatter;
-    private static SimpleDateFormat ymdFormatter;
+    private static final SimpleDateFormat formatter;
+    private static final SimpleDateFormat ymdFormatter;
     private static TransformerFactory transformerFactory;
 
 
@@ -129,7 +129,7 @@ public class JinxUtils {
     /**
      * Create a Date object from a Unix timestamp.
      * <br>
-     * A Unix timestamp is is the number of seconds that have elapsed since
+     * A Unix timestamp is the number of seconds that have elapsed since
      * January 1, 1970. This value is converted into milliseconds, then used
      * to create a Date object.
      * <br>
@@ -223,7 +223,7 @@ public class JinxUtils {
                     }
                 }
             } else if (o instanceof String) {
-                if (((String) o).trim().length() == 0) {
+                if (((String) o).trim().isEmpty()) {
                     throw new JinxException("String cannot be empty.");
                 }
             }
@@ -238,7 +238,7 @@ public class JinxUtils {
      * @return true if the string is null or has a trimmed length of 0.
      */
     public static boolean isNullOrEmpty(String s) {
-        return s == null || s.trim().length() == 0;
+        return s == null || s.trim().isEmpty();
     }
 
 
@@ -250,7 +250,7 @@ public class JinxUtils {
      * @return true if the collection is null or if the collection has no objects.
      */
     public static <T> boolean isNullOrEmpty(Collection<T> collection) {
-        return collection == null || collection.size() == 0;
+        return collection == null || collection.isEmpty();
     }
 
     /**
@@ -273,9 +273,9 @@ public class JinxUtils {
 
     /**
      * Convert Flickr true/false to Boolean.
-     *
+     * <p>
      * A null or empty value will return null. Generally, this means the parameter was not present in the reply from Flickr.
-     *
+     * <p>
      * A value of "true" or "1" will return {@link java.lang.Boolean#TRUE}. Any other non-null value will return
      * {@link java.lang.Boolean#FALSE}.
      *
@@ -283,7 +283,7 @@ public class JinxUtils {
      * @return corresponding Boolean value, or null if value was null.
      */
     public static Boolean flickrBooleanToBoolean(String value) {
-        if (value == null || value.trim().length() == 0) {
+        if (value == null || value.trim().isEmpty()) {
             return null;
         }
         value = value.trim();
@@ -292,14 +292,14 @@ public class JinxUtils {
 
 
     /**
-     * Convert a collection into a comma delimited String.
+     * Convert a collection into a comma-delimited String.
      * <br>
      * Each object in the collection will be converted to a trimmed String, and commas will be used to
      * separate each object.
      *
      * @param collection collection to convert.
      * @param <T> the type of the collection.
-     * @return comma delimited string, or null if the collection is null or empty.
+     * @return comma-delimited string, or null if the collection is null or empty.
      */
     public static <T> String buildCommaDelimitedList(Collection<T> collection) {
         if (isNullOrEmpty(collection)) {
@@ -335,7 +335,7 @@ public class JinxUtils {
         }
         List<String> tmp = new ArrayList<>();
         for (String s : list) {
-            tmp.add(s.replaceAll("[!#$%&'()*+\\.,'; ]", "").toLowerCase());
+            tmp.add(s.replaceAll("[!#$%&'()*+.,; ]", "").toLowerCase());
         }
         return tmp;
     }
@@ -366,7 +366,7 @@ public class JinxUtils {
       }
       List<String> tmp = new ArrayList<>();
       for (String s : list) {
-        String newString = s.replaceAll("[!#$%&'()*+\\.,';]", "").toLowerCase();
+        String newString = s.replaceAll("[!#$%&'()*+.,;]", "").toLowerCase();
         if (newString.contains(" ")) {
           newString = "\"" + newString + "\"";
         }
@@ -377,7 +377,7 @@ public class JinxUtils {
 
     /**
      * Normalize tags for uploads.
-     *
+     * <p>
      * This will put quotation marks around tags that contain spaces.
      *
      * @param list list of tags.
@@ -599,7 +599,7 @@ public class JinxUtils {
     }
 
     /**
-     * Convert a Flickr content type id to the eqivalent {@link net.jeremybrooks.jinx.JinxConstants.ContentType} enum.
+     * Convert a Flickr content type id to the equivalent {@link net.jeremybrooks.jinx.JinxConstants.ContentType} enum.
      *
      * @param type Flickr type id to convert.
      * @return equivalent ContentType enum, or null if the parameter is not a valid Flickr content type id.
@@ -641,7 +641,7 @@ public class JinxUtils {
      * @param safetyLevel safety level to convert.
      * @return corresponding Flickr safety level id, or -1 if the parameter is null.
      */
-    public static int safetyLevelToFlickrSafteyLevelId(JinxConstants.SafetyLevel safetyLevel) {
+    public static int safetyLevelToFlickrSafetyLevelId(JinxConstants.SafetyLevel safetyLevel) {
         if (safetyLevel == null) {
             return -1;
         }
@@ -975,7 +975,7 @@ public class JinxUtils {
             transformer.transform(text, new StreamResult(baos));
             json = baos.toString(StandardCharsets.UTF_8);
         } catch (Exception e) {
-            throw new JinxException("Unable to apply xml2json XSLT.", e);
+            throw new JinxException("Unable to apply xml2json XSLT. Source xml was '" + xml + "'", e);
         }
         return json;
     }

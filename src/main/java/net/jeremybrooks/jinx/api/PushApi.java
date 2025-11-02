@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.push API methods.
+ * Provides access to the {@code flickr.push} API methods.
  *
  * <p>This API is experimental. Check the Flickr documentation before using.</p>
  *
@@ -46,12 +46,12 @@ public class PushApi {
 
   /**
    * Returns a list of the subscriptions for the logged-in user.
-   *
+   * <p>
    * (this method is experimental and may change)
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
-   * @return subscriptions for the logged in user.
+   * @return subscriptions for the logged-in user.
    * @throws JinxException if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.push.getSubscriptions.html">flickr.push.getSubscriptions</a>
    */
@@ -63,9 +63,9 @@ public class PushApi {
 
   /**
    * Get all available push topics.
-   *
+   * <p>
    * (this method is experimental and may change)
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @return all the different flavors of topics.
@@ -81,9 +81,9 @@ public class PushApi {
 
   /**
    * Subscribe to a push feed.
-   *
+   * <p>
    * (this method is experimental and may change)
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param topic             the type of subscription. See {@link #getTopics()}. Required.
@@ -126,7 +126,7 @@ public class PushApi {
    *                          institutions. Optional.
    * @param tags              a list of strings to be used for tag subscriptions. Photos with one or more of the tags listed
    *                          will be included in the subscription. Only valid if the topic is tags. Optional.
-   * @return if successful, response.stat will be "ok".
+   * @return if successful, {@code response.stat} will be "ok".
    * @throws JinxException if required parameters are missing, or if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.push.subscribe.html">flickr.push.subscribe</a>
    */
@@ -179,9 +179,9 @@ public class PushApi {
 
   /**
    * Unsubscribe from a push feed.
-   *
+   * <p>
    * (this method is experimental and may change)
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param topic             the type of subscription. Required.
@@ -189,7 +189,7 @@ public class PushApi {
    * @param mode              verification mode. Required.
    * @param verificationToken verification token to be echoed back to the subscriber during the
    *                          verification callback. Optional.
-   * @return if successful, response.stat will be "ok".
+   * @return if successful, {@code response.stat} will be "ok".
    * @throws JinxException if required parameters are missing, or if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.push.unsubscribe.html">flickr.push.unsubscribe</a>
    */

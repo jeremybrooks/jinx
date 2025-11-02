@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.urls API methods.
+ * Provides access to the {@code flickr.urls} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -42,7 +42,7 @@ public class UrlsApi {
 
   /**
    * Returns the url to a group's page.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param groupId NSID of the group to fetch the url for. Required.
@@ -61,7 +61,7 @@ public class UrlsApi {
 
   /**
    * Returns the url to a user's photos.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param userId user id (NSID) of the user to fetch the url for. If omitted, the calling user is assumed. Optional.
@@ -80,7 +80,7 @@ public class UrlsApi {
 
   /**
    * Returns the url to a user's profile.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param userId user id (NSID) of the user to fetch the url for. If omitted, the calling user is assumed. Optional.
@@ -99,7 +99,7 @@ public class UrlsApi {
 
   /**
    * Returns gallery info, by url.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param url gallery URL to look up. Required.
@@ -117,7 +117,7 @@ public class UrlsApi {
 
   /**
    * Returns a group NSID, given the url to a group's page or photo pool.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param url url to the group's page or photo pool. Required.
@@ -135,7 +135,7 @@ public class UrlsApi {
 
   /**
    * Returns a user NSID, given the url to a user's photos or profile.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param url url to the user's profile or photos page. Required.

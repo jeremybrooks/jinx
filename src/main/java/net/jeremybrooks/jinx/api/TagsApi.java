@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.tags API methods.
+ * Provides access to the {@code flickr.tags} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -48,7 +48,7 @@ public class TagsApi {
 
   /**
    * Returns the first 24 photos for a given tag cluster
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param tag       the tag that the cluster belongs to. Required.
@@ -68,9 +68,9 @@ public class TagsApi {
 
   /**
    * Returns the first 24 photos for a given tag cluster
-   *
+   * <p>
    * This method does not require authentication.
-   *
+   * <p>
    * This method will combine the Strings in the clusterId list.
    *
    * @param tag       the tag that the cluster belongs to. Required.
@@ -93,7 +93,7 @@ public class TagsApi {
 
   /**
    * Gives you a list of tag clusters for the given tag.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param tag the tag to fetch clusters for. Required.
@@ -111,7 +111,7 @@ public class TagsApi {
 
   /**
    * Returns a list of hot tags for the given period.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param period period for which to fetch hot tags. Optional.
@@ -134,10 +134,10 @@ public class TagsApi {
 
   /**
    * Get the tag list for a given photo.
-   *
+   * <p>
    * This method does not require authentication.
    *
-   * @param photoId identifes the photo to get a tag list for.
+   * @param photoId identifies the photo to get a tag list for.
    * @return tags list for the photo. Required.
    * @throws JinxException if required parameter is missing, or if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.tags.getListPhoto.html">flickr.tags.getListPhoto</a>
@@ -152,12 +152,12 @@ public class TagsApi {
 
 
   /**
-   * Get the tag list for a given user (or the currently logged in user).
-   *
+   * Get the tag list for a given user (or the currently logged-in user).
+   * <p>
    * This method does not require authentication.
    *
    * @param userId NSID of the user to fetch the tag list for. If this argument is not
-   *               specified, the currently logged in user (if any) is assumed. Optional.
+   *               specified, the currently logged-in user (if any) is assumed. Optional.
    * @return tag list for given user.
    * @throws JinxException if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.tags.getListUser.html">flickr.tags.getListUser</a>
@@ -172,12 +172,12 @@ public class TagsApi {
   }
 
   /**
-   * Get the popular tags for a given user (or the currently logged in user).
-   *
+   * Get the popular tags for a given user (or the currently logged-in user).
+   * <p>
    * This method does not require authentication.
    *
    * @param userId NSID of the user to fetch the tag list for. If this argument is not
-   *               specified, the currently logged in user (if any) is assumed. Optional.
+   *               specified, the currently logged-in user (if any) is assumed. Optional.
    * @param count  number of popular tags to return. defaults to 10 when this argument is not present. Optional.
    * @return popular tags for the given user.
    * @throws JinxException if there are any errors.
@@ -197,11 +197,11 @@ public class TagsApi {
 
   /**
    * Get the raw versions of a given tag (or all tags) for the currently logged-in user.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param tag tag you want to retrieve all raw versions for. Optional.
-   * @return raw versions of a tag for the given tag, or all tags for the currently logged in user.
+   * @return raw versions of a tag for the given tag, or all tags for the currently logged-in user.
    * @throws JinxException if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.tags.getListUserRaw.html">flickr.tags.getListUserRaw</a>
    */
@@ -216,7 +216,7 @@ public class TagsApi {
 
   /**
    * Returns a list of most frequently used tags for a user.
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @return most frequently used tags for the calling user.
@@ -232,7 +232,7 @@ public class TagsApi {
 
   /**
    * Returns a list of tags 'related' to the given tag, based on clustered usage analysis.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param tag tag to fetch related tags for. Required.

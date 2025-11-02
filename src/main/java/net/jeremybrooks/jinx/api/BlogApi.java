@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.blogs API methods.
+ * Provides access to the {@code flickr.blogs} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -53,7 +53,7 @@ public class BlogApi {
    * @see <a href="http://www.flickr.com/services/api/flickr.blogs.getServices.html">flickr.blogs.getServices</a>
    */
   public BlogServices getServices() throws JinxException {
-    Map<String, String> params = new TreeMap<String, String>();
+    Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.blogs.getServices");
 
     return jinx.flickrGet(params, BlogServices.class, false);
@@ -101,7 +101,8 @@ public class BlogApi {
    * @param title        (Required) the blog post title
    * @param description  (Required) the blog post body
    * @param blogPassword (Optional) the password for the blog (used when the blog does not have a stored password).
-   * @param serviceId    (Optional) a Flickr supported blogging service. Instead of passing a blog id you can pass a service id and we'll post to the first blog of that service we find.
+   * @param serviceId    (Optional) a Flickr supported blogging service. Instead of passing a blog id you can pass a
+   *                     service id, and we'll post to the first blog of that service we find.
    * @return response object indicating success or fail.
    * @throws JinxException if required parameters are missing or if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.blogs.postPhoto.html">flickr.blogs.postPhoto</a>

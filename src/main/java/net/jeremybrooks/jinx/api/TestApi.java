@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.test API methods.
+ * Provides access to the {@code flickr.test} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -41,7 +41,7 @@ public class TestApi {
 
   /**
    * A testing method which echo's all parameters back in the response.
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @return object with parameters of the request.
@@ -57,10 +57,10 @@ public class TestApi {
   /**
    * A testing method which checks if the caller is logged in then returns their username.
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
-   * @return logged in user id and username.
+   * @return logged-in user id and username.
    * @throws JinxException if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.test.login.html">flickr.test.login</a>
    */
@@ -72,7 +72,7 @@ public class TestApi {
 
   /**
    * Null test
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @return response object. If successful, the stat parameter will be "ok".

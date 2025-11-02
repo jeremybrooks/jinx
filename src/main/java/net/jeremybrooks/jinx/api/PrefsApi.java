@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,8 +25,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.prefs API methods.
- *
+ * Provides access to the {@code flickr.prefs} API methods.
+ * <p>
  * The methods in this class return a {@link Person} object, but only the {@link Person#getUserId()} and
  * the preference getters will have values set.
  *
@@ -42,9 +42,9 @@ public class PrefsApi {
 
   /**
    * Returns the default content type preference for the user.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @return person object with nsid and contentType fields set.
@@ -60,11 +60,11 @@ public class PrefsApi {
 
   /**
    * Returns the default privacy level for geographic information attached to the user's
-   * photos and whether or not the user has chosen to use geo-related EXIF information to
+   * photos and if the user has chosen to use geo-related EXIF information to
    * automatically geotag their photos.
-   *
+   * <p>
    * Possible values, for viewing geotagged photos, are:
-   *
+   * <p>
    * 0 : No default set
    * 1 : Public
    * 2 : Contacts only
@@ -72,15 +72,15 @@ public class PrefsApi {
    * 4 : Friends only
    * 5 : Family only
    * 6 : Private
-   * Users can edit this preference at http://www.flickr.com/account/geo/privacy/.
-   *
-   * Possible values for whether or not geo-related EXIF information will be used to geotag a photo are:
+   * Users can edit this preference at <a href="http://www.flickr.com/account/geo/privacy/">...</a>.
+   * <p>
+   * Possible values for if geo-related EXIF information will be used to geotag a photo are:
    * 0: Geo-related EXIF information will be ignored
    * 1: Geo-related EXIF information will be used to try and geotag photos on upload
    * Users can edit this preference at http://www.flickr.com/account/geo/exif/?from=privacy
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @return person object with nsid, geoPerms, and importGeoExif fields set.
@@ -95,9 +95,9 @@ public class PrefsApi {
 
   /**
    * Returns the default hidden preference for the user.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @return person object with nsid and hidden fields set.
@@ -112,15 +112,15 @@ public class PrefsApi {
 
   /**
    * Returns the default privacy level preference for the user. Possible values are:
-   *
+   * <p>
    * 1 : Public
    * 2 : Friends only
    * 3 : Family only
    * 4 : Friends and Family
    * 5 : Private
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @return person object with nsid and privacy fields set.
@@ -135,9 +135,9 @@ public class PrefsApi {
 
   /**
    * Returns the default safety level preference for the user.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @return person object with nsid and safetyLevel fields set.

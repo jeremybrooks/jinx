@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.photos.transform API methods.
+ * Provides access to the {@code flickr.photos.transform} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -46,7 +46,7 @@ public class PhotosTransformApi {
    * This method requires authentication with 'write' permission.
    *
    * @param photoId (Required) The id of the photo to rotate.
-   * @param degrees (Required) The amount of degrees by which to rotate the photo (clockwise) from it's current orientation.
+   * @param degrees (Required) The amount of degrees by which to rotate the photo (clockwise) from its current orientation.
    * @return object with the photo id and secrets.
    * @throws JinxException if required parameters are missing, or if there are any errors.
    * @see <a href="https://www.flickr.com/services/api/flickr.photos.transform.rotate.html">flickr.photos.transform.rotate</a>

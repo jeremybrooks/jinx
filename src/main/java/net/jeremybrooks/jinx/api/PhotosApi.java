@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.photos API methods.
+ * Provides access to the {@code flickr.photos} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -772,7 +772,7 @@ public class PhotosApi {
     }
 
     if (searchParameters.getSafetyLevel() != null) {
-      params.put("safe_search", Integer.toString(JinxUtils.safetyLevelToFlickrSafteyLevelId(searchParameters.getSafetyLevel())));
+      params.put("safe_search", Integer.toString(JinxUtils.safetyLevelToFlickrSafetyLevelId(searchParameters.getSafetyLevel())));
     }
 
     if (searchParameters.getContentType() != null) {
@@ -1003,7 +1003,7 @@ public class PhotosApi {
     params.put("method", "flickr.photos.setSafetyLevel");
     params.put("photo_id", photoId);
     if (safetyLevel != null) {
-      params.put("safety_level", Integer.toString(JinxUtils.safetyLevelToFlickrSafteyLevelId(safetyLevel)));
+      params.put("safety_level", Integer.toString(JinxUtils.safetyLevelToFlickrSafetyLevelId(safetyLevel)));
     }
     params.put("hidden", hidden ? "1" : "0");
     return jinx.flickrPost(params, Response.class);
@@ -1034,7 +1034,7 @@ public class PhotosApi {
     Map<String, String> params = new TreeMap<>();
     params.put("method", "flickr.photos.setTags");
     params.put("photo_id", photoId);
-    if (tags == null || tags.size() == 0) {
+    if (tags == null || tags.isEmpty()) {
       params.put("tags", "");
     } else {
       StringBuilder sb = new StringBuilder();

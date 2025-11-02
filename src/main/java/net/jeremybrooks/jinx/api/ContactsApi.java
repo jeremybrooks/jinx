@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.contacts API methods.
+ * Provides access to the {@code flickr.contacts} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -83,7 +83,7 @@ public class ContactsApi {
    * This method requires authentication with 'read' permission.
    * <br>
    *
-   * @param dateLastUpload Optional. Limits the resultset to contacts that have uploaded photos since this date. The default offset is (1) hour and the maximum (24) hours.
+   * @param dateLastUpload Optional. Limits the result set to contacts that have uploaded photos since this date. The default offset is (1) hour and the maximum (24) hours.
    * @param filter         Optional. Limit the result set to all contacts or only those who are friends or family.
    * @return object containing contacts matching the parameters.
    * @throws JinxException if there are any errors.

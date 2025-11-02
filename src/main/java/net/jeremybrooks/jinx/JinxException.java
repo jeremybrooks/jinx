@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ public class JinxException extends java.lang.Exception {
 
 
   /**
-   * Constructs an instance of {@code JinxException} with the specified detail message and cause..
+   * Constructs an instance of {@code JinxException} with the specified detail message and cause.
    *
    * @param msg   the detail message.
    * @param cause the cause of the error.

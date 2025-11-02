@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ package net.jeremybrooks.jinx.logger;
 
 /**
  * Defines the interface that Jinx uses to log messages.
- *
+ * <p>
  * By default, Jinx will not log anything. If you wish to see Jinx log output,
  * you can implement this class and then tell Jinx what class to use for logging
  * by calling {@code JinxLogger.setLogger(your class instance)}.
@@ -33,7 +33,7 @@ public interface LogInterface {
      *
      * @param message the message.
      */
-    public void log(String message);
+    void log(String message);
 
 
     /**
@@ -42,6 +42,6 @@ public interface LogInterface {
      * @param message the message.
      * @param t the cause of the error.
      */
-    public void log(String message, Throwable t);
+    void log(String message, Throwable t);
     
 }

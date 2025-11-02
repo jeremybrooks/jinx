@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +19,7 @@ package net.jeremybrooks.jinx;
 
 /**
  * Encapsulates http proxy settings for Jinx to use.
- *
- * Created by jeremyb on 6/27/14.
+ * <p>
  */
 public class JinxProxy {
 

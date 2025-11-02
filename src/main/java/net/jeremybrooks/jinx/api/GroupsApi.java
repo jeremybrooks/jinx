@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.groups API methods.
+ * Provides access to the {@code flickr.groups} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -39,25 +39,6 @@ public class GroupsApi {
   public GroupsApi(Jinx jinx) {
     this.jinx = jinx;
   }
-
-
-  /**
-   * This is a legacy method and will not return anything useful.
-   *
-   * @param categoryId (Optional) Category id to fetch a list of groups and sub-categories for.
-   *                   If not specified, it defaults to zero, the root of the category tree.
-   * @return object with response from Flickr indicating ok or fail.
-   * @throws JinxException if required parameters are missing, or if there are any errors.
-   * @see <a href="https://www.flickr.com/services/api/flickr.groups.browse.html">flickr.groups.browse</a>
-   * @deprecated this is a legacy method, and will not return anything useful.
-   */
-  @Deprecated
-  public Response browse(String categoryId) throws JinxException {
-    Map<String, String> params = new TreeMap<>();
-    params.put("method", "flickr.groups.browse");
-    return jinx.flickrGet(params, Response.class);
-  }
-
 
   /**
    * Get information about a group.

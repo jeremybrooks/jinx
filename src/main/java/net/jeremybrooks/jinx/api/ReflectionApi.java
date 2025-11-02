@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.reflection API methods.
+ * Provides access to the {@code flickr.reflection} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -41,9 +41,9 @@ public class ReflectionApi {
 
   /**
    * Returns a list of available Flickr API methods.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @return available Flickr API methods.
@@ -58,9 +58,9 @@ public class ReflectionApi {
 
   /**
    * Returns information for a given Flickr API method.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param methodName the name of the method to fetch information for. Required.

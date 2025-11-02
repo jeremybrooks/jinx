@@ -1,5 +1,5 @@
 /*
- * Jinx is Copyright 2010-2023 by Jeremy Brooks and Contributors
+ * Jinx is Copyright 2010-2025 by Jeremy Brooks and Contributors
  *
  * Jinx is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Provides access to the flickr.places API methods.
+ * Provides access to the {@code flickr.places} API methods.
  *
  * @author Jeremy Brooks
  * @see <a href="https://www.flickr.com/services/api/">Flickr API documentation</a> for more details.
@@ -51,7 +51,7 @@ public class PlacesApi {
    * The flickr.places.find method is not a geocoder. It will round up to the nearest place type to which place
    * IDs apply. For example, if you pass it a street level address it will return the city that contains the
    * address rather than the street, or building, itself.
-   *
+   * <p>
    * Authentication
    * <p>
    * This method does not require authentication.
@@ -164,9 +164,9 @@ public class PlacesApi {
 
   /**
    * Lookup information about a place, by its flickr.com/places URL.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param url a flickr.com/places URL in the form of /country/region/city.
@@ -185,9 +185,9 @@ public class PlacesApi {
 
   /**
    * Fetches a list of available place types for Flickr.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @return available place types for Flickr.
@@ -229,9 +229,9 @@ public class PlacesApi {
 
   /**
    * Return the top 100 most geotagged places for a day.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param placeTypeId The type ID for a specific place type to cluster photos by. (Required)
@@ -276,7 +276,7 @@ public class PlacesApi {
    * </ul>
    *
    * Authentication
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param boundingBox a comma-delimited list of 4 values defining the Bounding Box of the area
@@ -299,9 +299,9 @@ public class PlacesApi {
 
   /**
    * Return a list of the top 100 unique places clustered by a given placetype for a user's contacts.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param placeTypeId       ID for a specific place type to cluster photos by. Required.
@@ -317,10 +317,10 @@ public class PlacesApi {
    *                          equal to this value will be returned. Optional.
    * @param maximumUploadDate Maximum upload date. Photos with an upload date less than or equal
    *                          to this value will be returned. Optional.
-   * @param minimumTakenDate  Minimum taken date. Photos with an taken date greater than or equal to
+   * @param minimumTakenDate  Minimum taken date. Photos with a taken date greater than or equal to
    *                          this value will be returned. Optional.
    *                          The date should be in the form of a mysql datetime.
-   * @param maximumTakenDate  Maximum taken date. Photos with an taken date less than or equal to
+   * @param maximumTakenDate  Maximum taken date. Photos with a taken date less than or equal to
    *                          this value will be returned. Optional.
    *                          The date should be in the form of a mysql datetime.
    * @return places for users contacts.
@@ -366,9 +366,9 @@ public class PlacesApi {
 
   /**
    * Return a list of the top 100 unique places clustered by a given placetype for set of tags or machine tags.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param placeTypeId       ID for a specific place type to cluster photos by. Required.
@@ -392,10 +392,10 @@ public class PlacesApi {
    *                          equal to this value will be returned. Optional.
    * @param maximumUploadDate Maximum upload date. Photos with an upload date less than or equal
    *                          to this value will be returned. Optional.
-   * @param minimumTakenDate  Minimum taken date. Photos with an taken date greater than or equal to
+   * @param minimumTakenDate  Minimum taken date. Photos with a taken date greater than or equal to
    *                          this value will be returned. Optional.
    *                          The date should be in the form of a mysql datetime.
-   * @param maximumTakenDate  Maximum taken date. Photos with an taken date less than or equal to
+   * @param maximumTakenDate  Maximum taken date. Photos with a taken date less than or equal to
    *                          this value will be returned. Optional.
    *                          The date should be in the form of a mysql datetime.
    * @return places for specified tags.
@@ -455,9 +455,9 @@ public class PlacesApi {
 
   /**
    * Return a list of the top 100 unique places clustered by a given placetype for a user.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method requires authentication with 'read' permission.
    *
    * @param placeTypeId       ID for a specific place type to cluster photos by.
@@ -472,10 +472,10 @@ public class PlacesApi {
    *                          equal to this value will be returned. Optional.
    * @param maximumUploadDate Maximum upload date. Photos with an upload date less than or equal
    *                          to this value will be returned. Optional.
-   * @param minimumTakenDate  Minimum taken date. Photos with an taken date greater than or equal to
+   * @param minimumTakenDate  Minimum taken date. Photos with a taken date greater than or equal to
    *                          this value will be returned. Optional.
    *                          The date should be in the form of a mysql datetime.
-   * @param maximumTakenDate  Maximum taken date. Photos with an taken date less than or equal to
+   * @param maximumTakenDate  Maximum taken date. Photos with a taken date less than or equal to
    *                          this value will be returned. Optional.
    *                          The date should be in the form of a mysql datetime.
    * @return places for users contacts.
@@ -521,7 +521,7 @@ public class PlacesApi {
    * <p>The Flickr method has been deprecated. This call is delegated to {@link #getInfo(String, String)}.</p>
    *
    * Authentication
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param placeId a Flickr Places ID. Required.
@@ -539,7 +539,7 @@ public class PlacesApi {
    * <p>The Flickr method has been deprecated. This call is delegated to {@link #getInfoByUrl(String)}.</p>
    *
    * Authentication
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param placeUrl a Flickr Places URL. Flickr Place URLs are of the form /country/region/city
@@ -553,9 +553,9 @@ public class PlacesApi {
 
   /**
    * Return a list of the top 100 unique tags for a Flickr Places or Where on Earth (WOE) ID.
-   *
+   * <p>
    * Authentication
-   *
+   * <p>
    * This method does not require authentication.
    *
    * @param placeId           a Flickr Places identifier to use to filter photo clusters.
@@ -566,10 +566,10 @@ public class PlacesApi {
    *                          equal to this value will be returned. Optional.
    * @param maximumUploadDate Maximum upload date. Photos with an upload date less than or equal
    *                          to this value will be returned. Optional.
-   * @param minimumTakenDate  Minimum taken date. Photos with an taken date greater than or equal to
+   * @param minimumTakenDate  Minimum taken date. Photos with a taken date greater than or equal to
    *                          this value will be returned. Optional.
    *                          The date should be in the form of a mysql datetime.
-   * @param maximumTakenDate  Maximum taken date. Photos with an taken date less than or equal to
+   * @param maximumTakenDate  Maximum taken date. Photos with a taken date less than or equal to
    *                          this value will be returned. Optional.
    *                          The date should be in the form of a mysql datetime.
    * @return top 100 unique tags for the place.
